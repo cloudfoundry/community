@@ -5,6 +5,6 @@ Eventually, this repository will become the official home for the technical comm
 # Governance
 * [Principles](PRINCIPLES.MD) - Core principles that inform the technical governance of the Cloud Foundry community
 * [Technical Governance](GOVERNANCE.MD) - Technical governance structure and process
-* [Change Plan](CHANGEPLAN.MD) - Plan
-* [Foundation Governance](https://www.cloudfoundry.org/governance/)
-* [Code of Conduct](https://www.cloudfoundry.org/code-of-conduct/)
+* [Change Plan](CHANGEPLAN.MD) - Plan for how to get from the community's current policies and practices to a new desired state
+* [Foundation Governance](https://www.cloudfoundry.org/governance/) - Top level policies of the Cloud Foundry Foundation
+* [Code of Conduct](https://www.cloudfoundry.org/code-of-conduct/) - Code of Conduct governing all participation in the Cloud Foundry community
