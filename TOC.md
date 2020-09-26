@@ -2,6 +2,7 @@ The Cloud Foundry Technical Oversight Committee (TOC) is responsible for cross-c
 product and design decisions.
 
 - [Charter](#charter)
+- [Composition](#composition)
 - [Committee Mechanics](#committee-mechanics)
 - [Committee Meeting](#committee-meeting)
 - [Committee Members](#committee-members)
@@ -42,6 +43,15 @@ product and design decisions.
 
   - Foster an environment for a healthy and happy community of developers and
     contributors.
+
+## Composition
+
+The TOC will have five seats, with a maximum of 2 seats being held by employees
+from the same vendor.
+
+There will be an annual election to determine the composition of the TOC for the
+following year. Three seats will be up for election in one year and two will be
+up for election the following year.
 
 ## Committee Mechanics
 
