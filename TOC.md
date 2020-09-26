@@ -77,6 +77,15 @@ during the community feedback period at the end of each meeting.
 | Meeting Notes              | [Notes]()                                                                                                                                                |
 | Document Folder            | [Folder]()                                                                                                                                               |
 
+## Chair
+
+The TOC will select a chair from amongst the TOC members.
+
+The TOC Chair is responsible for:
+* Calling meetings of the TOC
+* Setting meeting agendas
+* Representing the technical community on the CFF board
+
 ## Committee Members
 
 The members of the TOC are shown below. Membership in the TOC is determined by
