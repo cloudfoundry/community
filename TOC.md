@@ -3,6 +3,7 @@ product and design decisions.
 
 - [Charter](#charter)
 - [Committee Mechanics](#committee-mechanics)
+- [Committee Decisionmaking](#committee-decisionmaking)
 - [Committee Meeting](#committee-meeting)
 - [Committee Members](#committee-members)
 
@@ -63,7 +64,31 @@ The TOC’s work includes:
 - Act as a high-level sounding board for technical questions or designs bubbled
   up by the working groups.
 
+## Committee Decisionmaking
+
+The TOC will strive to make decisions based on consensus. 
+
+In situations where discussion is unable to result in consensus, any member of the TOC may call 
+a vote of the TOC to reach a decision. 
+
+Each member of the TOC is entitled to one vote in any voting matters. A vote will pass 
+by receiving a YES vote from a majority (more than 50%) of all TOC members not explicitly abstaining 
+from the vote.
+
+Because a vote indicates that consensus was not achieved, decisions requiring a vote are best handled 
+on a publicly visible, asynchronus medium (ex: email or GitHub issue). Voting in an asynchronus medium 
+allows TOC members time to consider the matter further and receive community input. 
+
+Votes held in a synchronus meeting require the meeting to have achieved quorum, and for the YES 
+vote count to have passed the majority criteria listed above.
+
+Votes held during a synchronus meeting must be documented transparently, including the specific votes 
+of each TOC member, after conclusion of the meeting in question. Limited exceptions to this transparency 
+requirement include situaions where there is a security or privacy reason for secrecy.
+
 ## Committee Meeting
+
+Quorum for TOC meetings requires at least 50% of TOC members to be present.
 
 Community members are encouraged to suggest topics for discussion ahead of the
 TOC meetings, and are invited to observe these meetings and engage with the TOC
