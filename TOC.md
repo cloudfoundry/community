@@ -5,6 +5,7 @@ product and design decisions.
 - [Committee Mechanics](#committee-mechanics)
 - [Committee Meeting](#committee-meeting)
 - [Committee Members](#committee-members)
+- [TOC Election Process](#election-process)
 
 ## Charter
 
@@ -118,7 +119,7 @@ similar to the kubernetes election process.
 We are committed to an inclusive process and will adapt future eligibility
 requirements based on community feedback.
 
-# Election Process
+### Election Method and Tools
 
 Elections will be held using a time-limited
 [Condorcet](https://en.wikipedia.org/wiki/Condorcet_method) ranking on
@@ -127,7 +128,7 @@ Elections will be held using a time-limited
 vote-getters will be elected to the open seats. This is the same process used by
 the Kubernetes project.
 
-## Election Officers
+### Election Administration
 
 On behalf of the Cloud Foundry Foundation's Board of Directors, foundation staff will 
 administer the election based on the process outlined above.
