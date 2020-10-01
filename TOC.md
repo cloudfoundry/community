@@ -82,7 +82,7 @@ allows TOC members time to consider the matter further and receive community inp
 Votes held in a synchronus meeting require the meeting to have achieved quorum, and for the YES 
 vote count to have passed the majority criteria listed above.
 
-Votes held during a synchronus meeting must be documented transparently, including the specific votes 
+Votes held during a synchronous meeting must be documented transparently, including the specific votes 
 of each TOC member, after conclusion of the meeting in question. Limited exceptions to this transparency 
 requirement include situaions where there is a security or privacy reason for secrecy.
 
