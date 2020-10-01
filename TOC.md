@@ -116,8 +116,8 @@ All eligible voters will be captured at
 will be captured at `cloudfoundry/community/elections/$YEAR/README.md`
 similar to the kubernetes election process.
 
-We are committed to an inclusive process and will adapt future eligibility
-requirements based on community feedback.
+We are committed to an inclusive process and the TOC will have the right to
+adjust future eligibility requirements based on community feedback.
 
 ### Election Method and Tools
 
