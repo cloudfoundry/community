@@ -10,7 +10,7 @@ This will ensure equal access to information about past decisions, current activ
 
 ## Clarity
 We want the community's rules (on all levels) to be documented and published in a way that provides easy and clear access.
-In particular, this means that the community's structure and rules for technical governance, including any deviations or additions for workgroups or sub-workgroups are written in markdown and published (or linked to) in this repository.
+In particular, this means that the community's structure and rules for technical governance, including any deviations or additions for working groups or sub-working groups are written in markdown and published (or linked to) in this repository.
 
 This will ensure, that any interested party can understand how and where decisions are made and how to participate in the decision making or execution.
 
