@@ -75,6 +75,9 @@ The TOC’s work includes:
 
 ## Committee Meeting
 
+The TOC will determine a schedule for regular meetings. It may also hold ad-hoc
+meetings at the request of two or more members of the TOC.
+
 Community members are encouraged to suggest topics for discussion ahead of the
 TOC meetings, and are invited to observe these meetings and engage with the TOC
 during the community feedback period at the end of each meeting.
@@ -86,6 +89,15 @@ during the community feedback period at the end of each meeting.
 | Community Meeting Calendar | Xdays at XX:XXa-XXp <br>[Calendar]()                                                                                                                     |
 | Meeting Notes              | [Notes]()                                                                                                                                                |
 | Document Folder            | [Folder]()                                                                                                                                               |
+
+## Chair
+
+The TOC will select a chair from amongst the TOC members.
+
+The TOC Chair is responsible for:
+* Chairing meetings of the TOC
+* Coordinating meeting agendas, based on feedback from the community and other TOC members
+* Representing the technical community on the CFF board
 
 ## Committee Members
 
