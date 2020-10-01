@@ -4,7 +4,7 @@ The following are the principles that guide the development and evolution of the
 
 ## Transparency
 We want community decisions to be proposed, evaluated and made in a manner that is fully transparent to any member of the community. 
-In particular, this means that all parts of the Cloud Foundry technical community (especially the TOC, workgroups and sub-workgroups) should document their decisions (e.g. with Architecture Decision Records), publish their roadmap (e.g. as GitHub project) and have public and recorded meetings.
+In particular, this means that all parts of the Cloud Foundry technical community (especially the TOC, working groups and sub-working groups) should document their decisions (e.g. with Architecture Decision Records), publish their roadmap (e.g. as GitHub project) and have public and recorded meetings.
 
 This will ensure equal access to information about past decisions, current activities and future plans. The sole exception is, for obvious reasons, security issue management. 
 
