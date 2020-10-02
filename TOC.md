@@ -103,11 +103,11 @@ and commenting on PRs, opening and commenting on issues, writing design docs,
 commenting on design docs, helping people on slack, participating in working
 groups, helping people on  and etc.
 
-[This dashboard]()
+[This dashboard][1]
 shows only GitHub based contributions and does not capture all the contributions
 we value. _We expect this metric not to capture everyone who should be eligible
 to vote._ If a community member has had significant contributions over the past
-year but is not captured in the stats.knative.dev dashboard, they will be able
+year but is not captured in the lfanalytics.io dashboard, they will be able
 to submit an exception form to the steering committee who will then review and
 determine whether this member should be marked as an exception.
 
@@ -137,3 +137,5 @@ administer the election based on the process outlined above.
 
 The initial content of this page is from the work of the [KNative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+
+[1]: https://lfanalytics.io/projects/cloud-foundry%2Fcloud-foundry/active-contributor?time=%7B%22from%22:%22now-1y%22,%22type%22:%22datemath%22,%22to%22:%22now%22%7D
