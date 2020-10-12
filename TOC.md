@@ -6,6 +6,7 @@ product and design decisions.
 - [Committee Mechanics](#committee-mechanics)
 - [Committee Meeting](#committee-meeting)
 - [Committee Members](#committee-members)
+- [TOC Election Process](#election-process)
 
 ## Charter
 
@@ -54,8 +55,6 @@ following year. Three seats will be up for election in one year and two will be
 up for election the following year.
 
 ## Committee Mechanics
-
-The TOC is [elected by the community](./mechanics/TOC.md).
 
 The TOC’s work includes:
 
@@ -108,7 +107,57 @@ the Cloud Foundry community via an election.
 | -------------------------------------------------------------- | -------------- | ------- | ---------------------------------------------------- |
 | GH picture        | name     | employer  | profile               |
 
+## Election Process
+
+### Candidate Eligibility
+
+Current TOC members and
+[Approvers](https://github.com/cloudfoundry/community/blob/master/ROLES.md#approver)
+with at least 3 months tenure are eligible to stand for election. Candidates may
+self-nominate or be nominated by another eligible member. The approximate time
+commitment of a TOC member is around 8 hours per week.
+
+### Voter Eligibility
+
+Anyone who has at least 50 contributions in the last 12 months is eligible to
+vote in the TOC election. Contributions are defined as opening PRs, reviewing
+and commenting on PRs, opening and commenting on issues, writing design docs,
+commenting on design docs, helping people on slack, participating in working
+groups, helping people on  and etc.
+
+[This dashboard][1]
+shows only GitHub based contributions and does not capture all the contributions
+we value. _We expect this metric not to capture everyone who should be eligible
+to vote._ If a community member has had significant contributions over the past
+year but is not captured in the lfanalytics.io dashboard, they will be able
+to submit an exception form to the steering committee who will then review and
+determine whether this member should be marked as an exception.
+
+All eligible voters will be captured at
+`cloudfoundry/community/elections/$YEAR/voters.md` and the voters’ guide
+will be captured at `cloudfoundry/community/elections/$YEAR/README.md`
+similar to the kubernetes election process.
+
+We are committed to an inclusive process and the TOC will have the right to
+adjust future eligibility requirements based on community feedback.
+
+### Election Method and Tools
+
+Elections will be held using a time-limited
+[Condorcet](https://en.wikipedia.org/wiki/Condorcet_method) ranking on
+[CIVS](http://civs.cs.cornell.edu/) using the
+[Schulze](https://en.wikipedia.org/wiki/Schulze_method) method. The top
+vote-getters will be elected to the open seats. This is the same process used by
+the Kubernetes project.
+
+### Election Administration
+
+On behalf of the Cloud Foundry Foundation's Board of Directors, foundation staff will 
+administer the election based on the process outlined above.
+
 ---
 
 The initial content of this page is from the work of the [KNative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+
+[1]: https://lfanalytics.io/projects/cloud-foundry%2Fcloud-foundry/active-contributor?time=%7B%22from%22:%22now-1y%22,%22type%22:%22datemath%22,%22to%22:%22now%22%7D
