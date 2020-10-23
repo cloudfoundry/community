@@ -27,7 +27,7 @@ other system (Apple Calendar or Outlook, for example),
 
 # Working Groups
 
-The current working groups are:
+Initial straw proposal for the working groups, to be modified and discussed by the first TOC:
 
 - [API](#api)
 - [Application Runtime](#application-runtime)
@@ -92,5 +92,4 @@ The current working groups are:
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/"> | <name>       | <company>  | [<GitHub handle>](https://github.com/<GitHub handle>) |
-
 
