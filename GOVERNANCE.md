@@ -2,7 +2,7 @@
 
 Initial design inspired by the [Istio](https://github.com/istio/community) and [Knative](https://github.com/knative/community) communities.
 
-Technical Oversight Committee (TOC)
+# Technical Oversight Committee (TOC)
 
 * Makes technical/architectural/direction decisions
 * Resolve disagreements and escalations
