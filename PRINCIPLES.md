@@ -6,7 +6,7 @@ The following are the principles that guide the development and evolution of the
 We want community decisions to be proposed, evaluated and made in a manner that is fully transparent to any member of the community. 
 In particular, this means that all parts of the Cloud Foundry technical community (especially the TOC, working groups and sub-working groups) should aim for transparent communication and decision making (e.g. with Meeting Notes, Feature Proposals, Deprecation Plans, or Architecture Decision Records), publish their roadmap (as applicable and appropriate, e.g. as a GitHub Project),  and have/participate in public and recorded meetings.
 
-This will ensure equal access to information about past decisions, current activities and future plans. The sole exception is, for obvious reasons, security issue management. 
+This will ensure equal access to information about past decisions, current activities and future plans. The sole exception is security issue management. 
 
 ## Clarity
 We want the community's rules (on all levels) to be documented and published in a way that provides easy and clear access.
