@@ -21,5 +21,5 @@ In particular, this means that there is a clear and documented path to contribut
 This will ensure that we foster a diverse community of users, contributors and committers.
 
 ---
-Being transparent, clear and inclusive does not mean saying yes to every proposal, contribution or comment - saying no after careful considwration of all relevant input can indeed be very important.
+Being transparent, clear and inclusive does not mean saying yes to every proposal, contribution or comment - saying no after careful consideration of all relevant input can indeed be very important.
 The rules have to be clear and non-discriminating and the careful consideration should be made in the open though.
