@@ -114,8 +114,7 @@ the Cloud Foundry community via an election.
 Current TOC members and
 [Approvers](https://github.com/cloudfoundry/community/blob/master/ROLES.md#approver)
 with at least 3 months tenure are eligible to stand for election. Candidates may
-self-nominate or be nominated by another eligible member. The approximate time
-commitment of a TOC member is around 8 hours per week.
+self-nominate or be nominated by another eligible member.
 
 ### Voter Eligibility
 
