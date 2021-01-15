@@ -127,8 +127,8 @@ the Cloud Foundry community via an election.
 
 ### Candidate Eligibility
 
-Current TOC members and
-[Approvers](https://github.com/cloudfoundry/community/blob/master/ROLES.md#approver)
+Current TOC members, [WG Leads](https://github.com/cloudfoundry/community/blob/master/ROLES.md#working-group-technical-lead), 
+and [Approvers](https://github.com/cloudfoundry/community/blob/master/ROLES.md#approver)
 with at least 3 months tenure are eligible to stand for election. Candidates may
 self-nominate or be nominated by another eligible member.
 
