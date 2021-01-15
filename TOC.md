@@ -134,11 +134,11 @@ self-nominate or be nominated by another eligible member.
 
 ### Voter Eligibility
 
-Contributions are defined as opening PRs, reviewing
+Contributions include, but are not limited to, opening PRs, reviewing
 and commenting on PRs, opening and commenting on issues, writing design docs,
-commenting on design docs, helping people on slack, participating in working
-groups, helping people on  and etc. Anyone who has at least 50 contributions in the last 12 months is eligible to
-vote in the TOC election. 
+commenting on design docs, helping people (e.g.: on slack), and participating in 
+working groups. Anyone who has at least 50 contributions in the last 12 months is 
+eligible to vote in the TOC election. 
 
 [This dashboard][1]
 shows only GitHub based contributions and does not capture all the contributions
