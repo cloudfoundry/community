@@ -4,6 +4,7 @@ product and design decisions.
 - [Charter](#charter)
 - [Composition](#composition)
 - [Committee Mechanics](#committee-mechanics)
+- [Committee Decision-Making](#committee-decision-making)
 - [Committee Meeting](#committee-meeting)
 - [Committee Members](#committee-members)
 - [TOC Election Process](#election-process)
@@ -71,6 +72,23 @@ The TOC’s work includes:
 
 - Act as a high-level sounding board for technical questions or designs bubbled
   up by the working groups.
+
+## Committee Decision-Making
+
+Any decision requires a quorum of the TOC, defined as the presence of a simple
+majority (greater than 50%) of the current TOC members. The TOC should strive
+to reach consensus on decisions when possible.
+
+If a TOC member sustains an objection to a proposed decision, any member of
+the TOC may call the decision to a vote. Each member of the TOC is entitled to
+one vote in any voting matter. A simple majority (greater than 50%) of the
+current members of the TOC must vote to approve the decision for it to be
+accepted.
+
+The TOC shall record calls to vote and decisions voted upon, including the
+individual votes of the TOC members, in the regularly published TOC meeting
+notes.
+
 
 ## Committee Meeting
 
