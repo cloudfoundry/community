@@ -60,8 +60,7 @@ up for election the following year.
 The TOC’s work includes:
 
 - Regular committee meetings to discuss hot topics, resulting in a set of
-  published
-  [meeting notes](https://docs.google.com/document/d/1hR5ijJQjz65QkLrgEhWjv3Q86tWVxYj_9xdhQ6Y5D8Q/edit#).
+  published meeting notes.
 
 - Create, review, approve and publish technical project governance documents.
 
