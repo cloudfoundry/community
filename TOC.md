@@ -55,6 +55,16 @@ There will be an annual election to determine the composition of the TOC for the
 following year. Three seats will be up for election in one year and two will be
 up for election the following year.
 
+### TOC Member Resignations or Removal
+
+In the case where a TOC member resigns or is removed from the TOC by the Governing
+Board, the remaining members of the TOC will have the right to determine if the 
+vacant seat will (1) remain vacant until the next annual election cycle, or (2) be 
+filled by using the results of the last election.
+
+When making this decision, the remaining members of the TOC should taking under 
+consideration the amount of time since the last election cycle.
+
 ## Committee Mechanics
 
 The TOC’s work includes:
