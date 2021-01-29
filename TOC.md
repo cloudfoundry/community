@@ -57,7 +57,9 @@ up for election the following year.
 The TOC’s work includes:
 
 - Regular committee meetings to discuss hot topics, resulting in a set of
-  published meeting notes.
+  published meeting notes. The meeting notes shall be open for viewing and 
+  commenting for anyone. In order to reduce spam and misuse, the access can 
+  require authentication.
 
 - Create, review, approve and publish technical project governance documents.
 
