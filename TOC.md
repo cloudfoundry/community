@@ -56,26 +56,25 @@ up for election the following year.
 
 ### TOC Employer diversity rule
 
-"Employer Diversity Rule" - TOC membership will be limited to a maximum of 2 seats being 
-held by employees from the same or Related Organizations (as defined below).
+Employer Diversity Rule: TOC membership will be limited to a maximum of 2 seats being 
+held by employees from the same organization or Related Organizations (as defined below).
 
-- “Related Organization” means any entity which controls or is controlled by an entity or
+- Related Organization means any entity which controls or is controlled by an entity or
   which, together with an entity, is under the common control of a third party, in each
   case where such control results from ownership, either directly or indirectly, of more
   than fifty percent of the voting securities or membership interests of the entity in
   question.
 
-- “Related Organizations” are entities that are each a Related Organization of an entity.
+- Related Organizations are entities that are each a Related Organization of an entity.
+
+During any TOC election cycle, if the natural cycle of TOC seat term expirations does 
+not resolve a violation of the Employer Diversity Rule, at least enough TOC members holding 
+seats in violation of that rule must resign in order for the election to correct the violation.
 
 If the Employer Diversity Rule is unable to be met during a TOC election cycle, the rule
 will not apply until the next election cycle. In cases where a change in employment of a 
 TOC member during their term causes the Employer Diversity Rule to be violated, the TOC 
-member will NOT be required to resign their TOC membership unless required during the next
-TOC election cycle.
-
-During the next TOC election cycle, if the natural cycle of TOC seat term expirations does 
-not resolve a violation of the Employer Diversity Rule, at least enough TOC members holding 
-seats in violation of that rule must resign in order for the election to correct the violation.
+member will NOT be required to resign their TOC membership.
 
 ## Committee Mechanics
 
