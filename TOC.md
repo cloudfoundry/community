@@ -36,10 +36,6 @@ The TOC shall also be responsible for the health and well-being of the Cloud Fou
 - establishing and maintaining the overall technical governance guidelines for
   the project;
 
-- deciding which sub-projects are part of the Cloud Foundry project, including
-  accepting new sub-projects and pruning existing sub-projects to maintain
-  community focus;
-
 - ensuring the team adheres to the Cloud Foundry community [code of
   conduct](https://www.cloudfoundry.org/code-of-conduct/) and respects
   community [principles](./PRINCIPLES.md);
