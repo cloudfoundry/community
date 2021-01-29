@@ -172,7 +172,7 @@ administer the election based on the process outlined above.
 
 ---
 
-The initial content of this page is from the work of the [KNative community](https://github.com/knative/community)
+The initial content of this page is from the work of the [Knative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
 [1]: https://lfanalytics.io/projects/cloud-foundry%2Fcloud-foundry/active-contributor?time=%7B%22from%22:%22now-1y%22,%22type%22:%22datemath%22,%22to%22:%22now%22%7D
