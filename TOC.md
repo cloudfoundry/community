@@ -62,7 +62,7 @@ Board, the remaining members of the TOC will have the right to determine if the
 vacant seat will (1) remain vacant until the next annual election cycle, or (2) be 
 filled by using the results of the last election.
 
-When making this decision, the remaining members of the TOC should taking under 
+When making this decision, the remaining members of the TOC should take under 
 consideration the amount of time since the last election cycle.
 
 ## Committee Mechanics
