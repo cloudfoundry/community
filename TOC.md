@@ -59,6 +59,9 @@ up for election the following year.
 
 The TOC’s work includes:
 
+- Define, document, publish and update the technical direction of the Cloud Foundry 
+  Foundation's open source projects as a whole.
+
 - Regular committee meetings to discuss hot topics, resulting in a set of
   published
   [meeting notes](https://docs.google.com/document/d/1hR5ijJQjz65QkLrgEhWjv3Q86tWVxYj_9xdhQ6Y5D8Q/edit#).
