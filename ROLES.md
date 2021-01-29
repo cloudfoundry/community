@@ -384,5 +384,5 @@ process is clear.
 
 ---
 
-The initial content of this page is from the work of the [KNative community](https://github.com/knative/community)
+The initial content of this page is from the work of the [Knative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
