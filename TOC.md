@@ -73,6 +73,16 @@ will not apply until the next election cycle. In cases where a change in employm
 TOC member during their term causes the Employer Diversity Rule to be violated, the TOC 
 member will NOT be required to resign their TOC membership.
 
+### TOC Member Resignations or Removal
+
+In the case where a TOC member resigns or is removed from the TOC by the Governing
+Board, the remaining members of the TOC will have the right to determine if the 
+vacant seat will (1) remain vacant until the next annual election cycle, or (2) be 
+filled by using the results of the last election.
+
+When making this decision, the remaining members of the TOC should take under 
+consideration the amount of time since the last election cycle.
+
 ## Committee Mechanics
 
 The TOC’s work includes:
