@@ -35,10 +35,6 @@ product and design decisions.
   - Establish and maintain the overall technical governance guidelines for the
     project.
 
-  - Decide which sub-projects are part of the Cloud Foundry project, including
-    accepting new sub-projects and pruning existing sub-projects to maintain
-    community focus
-
   - Ensure the team adheres to our
     [code of conduct](./CONTRIBUTING.md#code-of-conduct) and respects our
     [values](./VALUES.md).
