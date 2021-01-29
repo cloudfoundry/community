@@ -84,9 +84,9 @@ the TOC may call the decision to a vote. Each member of the TOC is entitled to
 one vote in any voting matter. A simple majority (greater than 50%) of all
 members of the TOC must vote to approve the decision for it to be accepted.
 
-If a TOC vote is required to reach a decision, the TOC should try to ensure that
-sufficient time is allowed for TOC members to seek community input prior to the
-vote.
+If a TOC vote is required to reach a decision, the TOC should ensure that
+sufficient time has been allowed for TOC members to seek community input 
+prior to the vote.
 
 The TOC shall record calls to vote and decisions voted upon, including the
 individual votes of the TOC members, in the regularly published TOC meeting
