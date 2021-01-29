@@ -355,8 +355,8 @@ Working Group meetings.
 Within this section "manager" refers to a member who is an Execution Lead, Tech
 Lead, Approver or Scribe. (this is different from a WG or Organization Member).
 
-- Initial managers are defined at the founding of the WG or Subproject as part
-  of the acceptance of that WG or Subproject.
+- Initial managers are defined at the founding of the WG as part of the
+  acceptance of that WG.
 - Managers SHOULD remain active and responsive in their Roles.
 - Managers MUST be community members to be eligible to hold a leadership role within a SIG.
 - Managers taking an extended leave of 1 or more months SHOULD coordinate with
@@ -384,5 +384,5 @@ process is clear.
 
 ---
 
-The initial content of this page is from the work of the [KNative community](https://github.com/knative/community)
+The initial content of this page is from the work of the [Knative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).

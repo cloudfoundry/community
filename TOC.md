@@ -11,49 +11,67 @@ product and design decisions.
 
 ## Charter
 
-- Technical Project Oversight, Direction & Delivery
+The TOC shall be responsible for the oversight, direction, and delivery of technical aspects of the Cloud Foundry project, including:
 
-  - Set the overall technical direction and roadmap of the project.
+- setting the overall technical direction and roadmap of the project;
 
-  - Resolve technical issues, technical disagreements and escalations within the
-    project.
+- resolving technical issues, technical disagreements, and escalations
+  within the project;
 
-  - Set the priorities of individual releases to ensure coherency and proper
-    sequencing.
+- setting the priorities of individual releases to ensure coherence and proper
+  sequencing;
 
-  - Approve the creation and dissolution of working groups and approve
-    leadership changes of working groups.
+- approving the creation and dissolution of working groups and
+  leadership changes within working groups;
 
-  - Create proposals based on TOC discussions and bring them to the relevant
-    working groups for discussion.
+- creating proposals based on TOC discussions and conveying them to the
+  relevant working groups for discussion;
 
-  - Approve the creation/deletion of GitHub repositories, along with other
-    high-level administrative issues around GitHub and our other tools.
+- approving the creation, archival, and deletion of GitHub repositories, along
+  with conducting other high-level administration of GitHub and other tools for
+  technical collaboration.
 
-- Happy Healthy Community
+The TOC shall also be responsible for the health and well-being of the Cloud Foundry technical community, including:
 
-  - Establish and maintain the overall technical governance guidelines for the
-    project.
+- establishing and maintaining the overall technical governance guidelines for
+  the project;
 
-  - Decide which sub-projects are part of the Cloud Foundry project, including
-    accepting new sub-projects and pruning existing sub-projects to maintain
-    community focus
+- ensuring the team adheres to the Cloud Foundry community [code of
+  conduct](https://www.cloudfoundry.org/code-of-conduct/) and respects
+  community [principles](./PRINCIPLES.md);
 
-  - Ensure the team adheres to our
-    [code of conduct](./CONTRIBUTING.md#code-of-conduct) and respects our
-    [values](./VALUES.md).
-
-  - Foster an environment for a healthy and happy community of developers and
-    contributors.
+- fostering an environment for a healthy and happy community of developers and
+  contributors.
 
 ## Composition
 
-The TOC will have five seats, with a maximum of 2 seats being held by employees
-from the same vendor.
+The TOC will have five seats, with a two year term for each seat.
 
 There will be an annual election to determine the composition of the TOC for the
 following year. Three seats will be up for election in one year and two will be
 up for election the following year.
+
+### TOC Employer diversity rule
+
+Employer Diversity Rule: TOC membership will be limited to a maximum of 2 seats being 
+held by employees from the same organization or Related Organizations (as defined below).
+
+- Related Organization means any entity which controls or is controlled by an entity or
+  which, together with an entity, is under the common control of a third party, in each
+  case where such control results from ownership, either directly or indirectly, of more
+  than fifty percent of the voting securities or membership interests of the entity in
+  question.
+
+- Related Organizations are entities that are each a Related Organization of an entity.
+
+During any TOC election cycle, if the natural cycle of TOC seat term expirations does 
+not resolve a violation of the Employer Diversity Rule, at least enough TOC members holding 
+seats in violation of that rule must resign in order for the election to correct the violation.
+
+If the Employer Diversity Rule is unable to be met during a TOC election cycle, the rule
+will not apply until the next election cycle. In cases where a change in employment of a 
+TOC member during their term causes the Employer Diversity Rule to be violated, the TOC 
+member will NOT be required to resign their TOC membership.
 
 ### TOC Member Resignations or Removal
 
@@ -70,8 +88,9 @@ consideration the amount of time since the last election cycle.
 The TOC’s work includes:
 
 - Regular committee meetings to discuss hot topics, resulting in a set of
-  published
-  [meeting notes](https://docs.google.com/document/d/1hR5ijJQjz65QkLrgEhWjv3Q86tWVxYj_9xdhQ6Y5D8Q/edit#).
+  published meeting notes. The meeting notes shall be open for viewing and 
+  commenting for anyone. In order to reduce spam and misuse, the access can 
+  require authentication.
 
 - Create, review, approve and publish technical project governance documents.
 
@@ -182,7 +201,7 @@ administer the election based on the process outlined above.
 
 ---
 
-The initial content of this page is from the work of the [KNative community](https://github.com/knative/community)
+The initial content of this page is from the work of the [Knative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
 [1]: https://lfanalytics.io/projects/cloud-foundry%2Fcloud-foundry/active-contributor?time=%7B%22from%22:%22now-1y%22,%22type%22:%22datemath%22,%22to%22:%22now%22%7D
