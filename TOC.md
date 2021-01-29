@@ -11,36 +11,37 @@ product and design decisions.
 
 ## Charter
 
-- Technical Project Oversight, Direction & Delivery
+The TOC shall be responsible for the oversight, direction, and delivery of technical aspects of the Cloud Foundry project, including:
 
-  - Set the overall technical direction and roadmap of the project.
+- setting the overall technical direction and roadmap of the project;
 
-  - Resolve technical issues, technical disagreements and escalations within the
-    project.
+- resolving technical issues, technical disagreements, and escalations
+  within the project;
 
-  - Set the priorities of individual releases to ensure coherency and proper
-    sequencing.
+- setting the priorities of individual releases to ensure coherence and proper
+  sequencing;
 
-  - Approve the creation and dissolution of working groups and approve
-    leadership changes of working groups.
+- approving the creation and dissolution of working groups and
+  leadership changes within working groups;
 
-  - Create proposals based on TOC discussions and bring them to the relevant
-    working groups for discussion.
+- creating proposals based on TOC discussions and conveying them to the
+  relevant working groups for discussion;
 
-  - Approve the creation/deletion of GitHub repositories, along with other
-    high-level administrative issues around GitHub and our other tools.
+- approving the creation, archival, and deletion of GitHub repositories, along
+  with conducting other high-level administration of GitHub and other tools for
+  technical collaboration.
 
-- Happy Healthy Community
+The TOC shall also be responsible for the health and well-being of the Cloud Foundry technical community, including:
 
-  - Establish and maintain the overall technical governance guidelines for the
-    project.
+- establishing and maintaining the overall technical governance guidelines for
+  the project;
 
-  - Ensure the team adheres to our
-    [code of conduct](./CONTRIBUTING.md#code-of-conduct) and respects our
-    [values](./VALUES.md).
+- ensuring the team adheres to the Cloud Foundry community [code of
+  conduct](https://www.cloudfoundry.org/code-of-conduct/) and respects
+  community [principles](./PRINCIPLES.md);
 
-  - Foster an environment for a healthy and happy community of developers and
-    contributors.
+- fostering an environment for a healthy and happy community of developers and
+  contributors.
 
 ## Composition
 
@@ -56,8 +57,7 @@ up for election the following year.
 The TOC’s work includes:
 
 - Regular committee meetings to discuss hot topics, resulting in a set of
-  published
-  [meeting notes](https://docs.google.com/document/d/1hR5ijJQjz65QkLrgEhWjv3Q86tWVxYj_9xdhQ6Y5D8Q/edit#).
+  published meeting notes.
 
 - Create, review, approve and publish technical project governance documents.
 
