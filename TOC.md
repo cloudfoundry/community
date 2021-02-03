@@ -53,8 +53,8 @@ up for election the following year.
 
 ### TOC Employer diversity rule
 
-Employer Diversity Rule: TOC membership will be limited to a maximum of 2 seats being 
-held by employees from the same organization or Related Organizations (as defined below).
+TOC membership will be limited to a maximum of 2 seats being  held by employees from 
+the same organization or Related Organizations (as defined below).
 
 - Related Organization means any entity which controls or is controlled by an entity or
   which, together with an entity, is under the common control of a third party, in each
