@@ -22,7 +22,7 @@ decisions.
 
 The TOC structure must be approved by the Cloud Foundry Foundation
 Governing Board. Once approved, the technical community can proceed
-with it's reorganization, lead by a newly elected TOC.
+with it's reorganization, led by a newly elected TOC.
 
 ### Initial TOC Eligibility
 
