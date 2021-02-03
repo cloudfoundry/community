@@ -75,8 +75,8 @@ member will NOT be required to resign their TOC membership.
 
 ### TOC Member Resignations or Removal
 
-In the case where a TOC member resigns or is removed from the TOC by the Governing
-Board, the remaining members of the TOC will have the right to determine if the 
+In the case where a TOC member resigns or is removed from the TOC by the Cloud Foundry Foundation's
+Board of Directors, the remaining members of the TOC will have the right to determine if the 
 vacant seat will (1) remain vacant until the next annual election cycle, or (2) be 
 filled by using the results of the last election.
 
