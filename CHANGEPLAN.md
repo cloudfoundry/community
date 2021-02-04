@@ -4,8 +4,8 @@
 
 The general approach to transitioning from the existing Cloud Foundry
 Foundation technical governance process to the new process is to start
-with the TOC and then allow that new TOC to work through the details
-of restructuring the community.
+with the Technical Oversight Committee (TOC) and then allow that new TOC 
+to work through the details of restructuring the community.
 
 It will be critically important that existing technical community members,
 and especially technical community leaders, continue their work on the
@@ -20,7 +20,7 @@ decisions.
 
 ### Governing Board Approval
 
-The Technical Oversight Committee (TOC) structure must be approved by the Cloud Foundry Foundation
+The TOC structure must be approved by the Cloud Foundry Foundation
 Governing Board. Once approved, the technical community can proceed
 with it's reorganization, led by a newly elected TOC.
 
