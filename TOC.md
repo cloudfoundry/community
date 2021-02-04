@@ -85,25 +85,26 @@ consideration the amount of time since the last election cycle.
 
 ## Committee Mechanics
 
-The TOC’s work includes:
+Activities of the TOC include:
 
-- Define, document, publish, and update the technical direction of the Cloud Foundry 
-  Foundation's open source projects as a whole.
+- Defining, documenting, publishing, and maintaining the overall technical
+  direction of the Cloud Foundry Foundation's open-source projects.
 
-- Regular committee meetings to discuss hot topics, resulting in a set of
-  published meeting notes. The meeting notes shall be open for viewing and 
-  commenting for anyone. In order to reduce spam and misuse, the access can 
-  require authentication.
+- Holding regular public meetings of the TOC to discuss topics currently under
+  consideration in the community, with meeting notes to be recorded and
+  published for community review and commentary. In order to prevent
+  vandalism, the TOC may require that making comments on the notes requires
+  authentication.
 
-- Create, review, approve and publish technical project governance documents.
+- Creating, reviewing, approving, and publishing technical project governance
+  documents.
 
-- Create proposals for consideration by individual working groups to help steer
-  their work towards a common project-wide objective.
+- Creating proposals to direct working groups towards project-wide objectives.
 
-- Review/address/comment on project issues.
+- Reviewing, addressing, and commenting on project issues.
 
-- Act as a high-level sounding board for technical questions or designs bubbled
-  up by the working groups.
+- Providing advice on technical questions or designs arising in the working
+  groups.
 
 ## Committee Decision-Making
 
