@@ -3,11 +3,12 @@ product and design decisions.
 
 - [Charter](#charter)
 - [Composition](#composition)
-- [Committee Mechanics](#committee-mechanics)
-- [Committee Decision-Making](#committee-decision-making)
-- [Committee Meeting](#committee-meeting)
-- [Committee Members](#committee-members)
-- [TOC Election Process](#election-process)
+- [Activities](#activities)
+- [Decision-Making](#decision-making)
+- [Meetings](#meetings)
+- [Chair](#chair)
+- [Members](#members)
+- [Election Process](#election-process)
 
 ## Charter
 
@@ -83,7 +84,7 @@ filled by using the results of the last election.
 When making this decision, the remaining members of the TOC should take under 
 consideration the amount of time since the last election cycle.
 
-## Committee Mechanics
+## Activities
 
 The TOC’s work includes:
 
@@ -105,7 +106,7 @@ The TOC’s work includes:
 - Act as a high-level sounding board for technical questions or designs bubbled
   up by the working groups.
 
-## Committee Decision-Making
+## Decision-Making
 
 The TOC should strive to reach consensus on decisions when possible. Any
 decision requires a quorum of the TOC, defined as the presence of a simple
@@ -120,7 +121,7 @@ The TOC shall record calls to vote and decisions voted upon, including the
 individual votes of the TOC members, in the regularly published TOC meeting
 notes.
 
-## Committee Meeting
+## Meetings
 
 The TOC will determine a schedule for regular meetings. It may also hold ad-hoc
 meetings at the request of two or more members of the TOC.
@@ -146,7 +147,7 @@ The TOC Chair is responsible for:
 * Coordinating meeting agendas, based on feedback from the community and other TOC members
 * Representing the technical community on the CFF board
 
-## Committee Members
+## Members
 
 The members of the TOC are shown below. Membership in the TOC is determined by
 the Cloud Foundry community via an election.
