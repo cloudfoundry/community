@@ -45,7 +45,7 @@ The TOC shall also be responsible for the health and well-being of the Cloud Fou
 
 ## Composition
 
-The TOC will have five seats, with a two year term for each seat.
+The TOC will have five seats, with a two-year term for each seat.
 
 There will be an annual election to determine the composition of the TOC for the
 following year. Three seats will be up for election in one year and two will be
