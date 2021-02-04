@@ -51,10 +51,10 @@ There will be an annual election to determine the composition of the TOC for the
 following year. Three seats will be up for election in one year and two will be
 up for election the following year.
 
-### TOC Employer diversity rule
+### Employer diversity
 
-Employer Diversity Rule: TOC membership will be limited to a maximum of 2 seats being 
-held by employees from the same organization or Related Organizations (as defined below).
+Employees from the same organization or Related Organizations (as defined
+below) should not hold more than two TOC seats.
 
 - Related Organization means any entity which controls or is controlled by an entity or
   which, together with an entity, is under the common control of a third party, in each
@@ -64,14 +64,14 @@ held by employees from the same organization or Related Organizations (as define
 
 - Related Organizations are entities that are each a Related Organization of an entity.
 
-During any TOC election cycle, if the natural cycle of TOC seat term expirations does 
-not resolve a violation of the Employer Diversity Rule, at least enough TOC members holding 
-seats in violation of that rule must resign in order for the election to correct the violation.
+During any TOC election, if the TOC membership would exceed this limit even
+after the natural cycle of TOC seat term expirations, enough TOC members must
+resign for it to be possible for the election to yield a diverse enough TOC.
 
-If the Employer Diversity Rule is unable to be met during a TOC election cycle, the rule
-will not apply until the next election cycle. In cases where a change in employment of a 
-TOC member during their term causes the Employer Diversity Rule to be violated, the TOC 
-member will NOT be required to resign their TOC membership.
+If a TOC election cannot produce a diverse enough TOC, the limit will not
+apply until the next election cycle. When a change in employment of a TOC
+member causes the TOC membership to exceed this limit, that TOC member will
+NOT be required to resign their TOC membership.
 
 ### TOC Member Resignations or Removal
 
