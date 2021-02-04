@@ -199,11 +199,10 @@ adjust future eligibility requirements based on community feedback.
 ### Election Method and Tools
 
 Elections will be held using a time-limited
-[Condorcet](https://en.wikipedia.org/wiki/Condorcet_method) ranking on
+[Condorcet](https://civs.cs.cornell.edu/rp.html) ranking on
 [CIVS](http://civs.cs.cornell.edu/) using the
-[Schulze](https://en.wikipedia.org/wiki/Schulze_method) method. The top
-vote-getters will be elected to the open seats. This is the same process used by
-the Kubernetes project.
+Schulze method. The top vote-getters will be elected to the open 
+seats. This is the same process used by the Kubernetes project.
 
 ### Election Administration
 
