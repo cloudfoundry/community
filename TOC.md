@@ -178,7 +178,9 @@ we value. **We expect this metric not to capture everyone who should be eligible
 to vote.** If a community member has had significant contributions over the past
 year but is not captured in the lfanalytics.io dashboard, they will be able
 to submit an exception form to the current TOC who will then review and
-determine whether this member should be marked as an exception.
+determine whether this member should be marked as an exception. In a case where the 
+TOC declines an exception request, the requestor may appeal that decision
+to the Governing Board.
 
 All eligible voters will be captured at
 `cloudfoundry/community/elections/$YEAR/voters.md` and the voters’ guide
