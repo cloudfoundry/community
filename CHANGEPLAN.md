@@ -20,7 +20,7 @@ decisions.
 
 ### Governing Board Approval
 
-The TOC structure must be approved by the Cloud Foundry Foundation
+The Technical Oversight Committee (TOC) structure must be approved by the Cloud Foundry Foundation
 Governing Board. Once approved, the technical community can proceed
 with it's reorganization, led by a newly elected TOC.
 
