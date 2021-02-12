@@ -145,12 +145,16 @@ during the community feedback period at the end of each meeting.
 
 ## Chair
 
-The TOC will select a chair from amongst the TOC members.
+The TOC will select one person from amongst its members to be the TOC Chair, following 
+the [TOC procedure for decision making](#decision-making). The TOC will select a Chair 
+after each yearly election, and in the event that the Chair is vacated.
 
 The TOC Chair is responsible for:
-* Chairing meetings of the TOC
-* Coordinating meeting agendas, based on feedback from the community and other TOC members
-* Representing the technical community on the CFF board
+- conducting meetings of the TOC;
+- coordinating meeting agendas, based on feedback from the community and other TOC members;
+- representing the technical community on the CFF Governing Board.
+
+The person holding the TOC Chair role may resign their role at any time.
 
 ## Members
 
