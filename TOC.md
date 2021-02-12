@@ -78,8 +78,8 @@ NOT be required to resign their TOC membership.
 
 In the case where a TOC member resigns or is removed from the TOC by the
 Governing Board, the remaining members of the TOC will determine whether the
-vacant seat will (1) remain vacant until the next annual election cycle, or
-(2) be filled by using the results of the latest election.
+vacant seat either will remain vacant until the next annual election cycle, or
+will be filled by using the results of the latest election.
 
 When making this decision, the remaining members of the TOC should consider
 whether too much time has elapsed since the latest election cycle for its
