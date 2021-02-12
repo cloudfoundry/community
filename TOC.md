@@ -145,7 +145,9 @@ during the community feedback period at the end of each meeting.
 
 ## Chair
 
-The TOC will select one person from amongst its members to be the TOC Chair, following the [TOC procedure for decision making](#decision-making). The TOC will select a Chair after each yearly election, and in the event that the Chair is vacated.
+The TOC will select one person from amongst its members to be the TOC Chair, following 
+the [TOC procedure for decision making](#decision-making). The TOC will select a Chair 
+after each yearly election, and in the event that the Chair is vacated.
 
 The TOC Chair is responsible for:
 - conducting meetings of the TOC;
