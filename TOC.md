@@ -177,20 +177,24 @@ self-nominate or be nominated by another eligible member.
 
 ### Voter Eligibility
 
-Contributions include, but are not limited to, opening PRs, reviewing
-and commenting on PRs, opening and commenting on issues, writing design docs,
-commenting on design docs, helping people (e.g.: on slack), and participating in 
-working groups. Anyone who has at least 50 contributions in the last 12 months is 
-eligible to vote in the TOC election. 
+We are committed to an inclusive process for electing the TOC. Any member of the
+technical community who has contributed to the project in the last year should 
+have the ability to participate in the TOC election process. Contributions include, 
+but are not limited to, opening PRs, reviewing and commenting on PRs, opening and 
+commenting on issues, writing design docs, commenting on design docs, helping people 
+(for example, on Slack), participating in mailing list discussions and participating in 
+working groups. 
 
-[This dashboard][1]
-shows only GitHub based contributions and does not capture all the contributions
-we value. **We expect this metric not to capture everyone who should be eligible
-to vote.** If a community member has had significant contributions over the past
-year but is not captured in the lfanalytics.io dashboard, they will be able
-to submit an exception form to the current TOC who will then review and
-determine whether this member should be marked as an exception. In a case where the 
-TOC declines an exception request, the requestor may appeal that decision
+For the purpose of simplifying the election administration, an initial set of voters 
+will be identified through automated reporting. Anyone who has at least 25 measurable
+contributions in the last 12 months will be automatically added to the eligible voter 
+list. [This dashboard][1] shows only GitHub based contributions and does not capture 
+all the contributions we value.
+
+If a community member has contributed over the past year but is not captured in the 
+dashboard, they will be able to submit an eligibility form to the current TOC who will 
+then determine whether this member will be eligible. In a case where the 
+TOC declines an eligibility request, the requestor may appeal that decision
 to the Governing Board.
 
 All eligible voters will be captured at
@@ -198,8 +202,8 @@ All eligible voters will be captured at
 will be captured at `cloudfoundry/community/elections/$YEAR/README.md`
 similar to the kubernetes election process.
 
-We are committed to an inclusive process and the TOC will have the right to
-adjust future eligibility requirements based on community feedback.
+The TOC will have the right to adjust future eligibility requirements based on 
+community feedback.
 
 ### Election Method and Tools
 
