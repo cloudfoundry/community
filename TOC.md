@@ -76,13 +76,14 @@ NOT be required to resign their TOC membership.
 
 ### TOC Member Resignations or Removal
 
-In the case where a TOC member resigns or is removed from the TOC by the Governing
-Board, the remaining members of the TOC will have the right to determine if the 
-vacant seat will (1) remain vacant until the next annual election cycle, or (2) be 
-filled by using the results of the last election.
+In the case where a TOC member resigns or is removed from the TOC by the
+Governing Board, the remaining members of the TOC will determine whether the
+vacant seat either will remain vacant until the next annual election cycle, or
+will be filled by using the results of the latest election.
 
-When making this decision, the remaining members of the TOC should take under 
-consideration the amount of time since the last election cycle.
+When making this decision, the remaining members of the TOC should consider
+whether too much time has elapsed since the latest election cycle for its
+results to represent the community adequately.
 
 ## Activities
 
