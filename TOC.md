@@ -150,7 +150,7 @@ The TOC will select one person from amongst its members to be the TOC Chair, fol
 The TOC Chair is responsible for:
 - conducting meetings of the TOC;
 - coordinating meeting agendas, based on feedback from the community and other TOC members;
-- representing the technical community on the CFF board.
+- representing the technical community on the CFF Governing Board.
 
 The person holding the TOC Chair role may resign their role at any time.
 
