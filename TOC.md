@@ -188,11 +188,10 @@ working groups.
 For the purpose of simplifying the election administration, an initial set of voters 
 will be identified through automated reporting. Anyone who has at least 25 measurable
 contributions in the last 12 months will be automatically added to the eligible voter 
-list. [This dashboard][1] shows only GitHub based contributions and does not capture 
-all the contributions we value.
+list.
 
-If a community member has contributed over the past year but is not captured in the 
-dashboard, they will be able to submit an eligibility form to the current TOC who will 
+If a community member has contributed over the past year but is not captured in automated
+reporting, they will be able to submit an eligibility form to the current TOC who will 
 then determine whether this member will be eligible. In a case where the 
 TOC declines an eligibility request, the requestor may appeal that decision
 to the Governing Board.
@@ -222,5 +221,3 @@ administer the election based on the process outlined above.
 
 The initial content of this page is from the work of the [Knative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
-
-[1]: https://lfanalytics.io/projects/cloud-foundry%2Fcloud-foundry/active-contributor?time=%7B%22from%22:%22now-1y%22,%22type%22:%22datemath%22,%22to%22:%22now%22%7D
