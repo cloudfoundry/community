@@ -181,7 +181,7 @@ approver in an OWNERS file:
 
 - Reviewed at least 30 PRs to the codebase.
 
-- Nominated by an a WG lead (with no objections from other leads).
+- Nominated by a WG lead (with no objections from other leads).
 
 ### Responsibilities and privileges
 
@@ -192,29 +192,28 @@ approver in an OWNERS file:
 
 - Demonstrate sound technical judgment.
 
-* Responsible for project quality control via [code reviews](./REVIEWING.md).
+- Responsible for project quality control via code reviews.
 
   - Focus on holistic acceptance of contribution such as dependencies with other
     features, backward / forward compatibility, API and flag definitions, etc.
 
-* Expected to be responsive to review requests as per
-  [community expectations](./REVIEWING.md).
+- Expected to be responsive to review requests as per community expectations.
 
-* Mentor new contributors and project members.
+- Mentor new contributors and project members.
 
-* Approve code contributions for acceptance.
+- Approve code contributions for acceptance.
 
 # Working Group Leadership Roles
 
 We differentiate here between two key roles, WG Execution Lead and WG Technical
 Lead. In small working groups, often these roles will be performed by one
 person; in larger working groups it might be best to have different individuals
-performing these roles. There is no 'formula', it is up to the working group
+performing these roles. There is no 'formula': it is up to the working group
 leadership to determine what is best for their working group.
 
 ## Working Group Technical Lead
 
-Working group technical leads, or just ‘tech leads’, are approvers of an entire
+Working group technical leads, or just 'tech leads', are approvers of an entire
 area that have demonstrated good judgement and responsibility. Tech leads accept
 design proposals and approve design decisions for their area of ownership, and
 are responsible for the overall technical health of their functional area.
@@ -223,7 +222,7 @@ are responsible for the overall technical health of their functional area.
 
 Getting to be a tech lead of an existing working group:
 
-- Recognized as having expertise in the group’s subject matter.
+- Recognized as having expertise in the group's subject matter.
 
 - Approver for a relevant part of the codebase for at least 3 months.
 
@@ -246,7 +245,7 @@ The following apply to the area / component for which one would be an owner.
 - Design/proposal approval authority over the area / component, though
   escalation to the technical oversight committee is possible.
 
-- Technical review of [feature tracks](./mechanics/FEATURE-TRACKS.md).
+- Technical review of feature tracks.
 
 - Perform issue triage on GitHub.
 
@@ -258,7 +257,7 @@ The following apply to the area / component for which one would be an owner.
 - Capable of directly applying lgtm + approve labels for any PR.
 
   - Expected to respect OWNERS files approvals and use
-    [standard procedure for merging code](./REVIEWING.md#merging-prs).
+    standard procedure for merging code.
 
 - Expected to work to holistically maintain the health of the project through:
 
@@ -274,7 +273,7 @@ The following apply to the area / component for which one would be an owner.
 
 ## Working Group Execution Lead
 
-Working group execution leads, or just ‘execution leads’, are responsible for
+Working group execution leads, or just 'execution leads', are responsible for
 the overall health and execution of the working group itself. Execution leads
 work with tech leads to ensure that the working group is making progress toward
 its goals, is aligned with the project roadmap, etc. The execution lead may also
@@ -285,14 +284,13 @@ be the tech lead in a smaller working group, but they are distinct roles.
 - Participant in the working group for at least 3 months, for example as scribe
   or approver.
 
-- Recognized as having expertise in the group’s subject matter.
+- Recognized as having expertise in the group's subject matter.
 
 - Sponsored by the technical oversight committee.
 
 ### Responsibilities and privileges
 
-- Run their working group as explained in the
-  [Working Group Processes](./mechanics/WORKING-GROUP-PROCESSES.md).
+- Run their working group according to community-wide process.
 
   - Meetings. Prepare the agenda and run the regular working group meetings.
 
@@ -305,8 +303,8 @@ be the tech lead in a smaller working group, but they are distinct roles.
 
   - Report. Report current status to the TOC meeting every 6 weeks.
 
-- Holistic responsibility for their working group's [feature
-  tracks](./mechanics/FEATURE-TRACKS.md): tracking, health, and execution.
+- Holistic responsibility for their working group's feature
+  tracks: tracking, health, and execution.
 
 - Perform issue triage on GitHub.
 
