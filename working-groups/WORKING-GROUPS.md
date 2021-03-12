@@ -27,12 +27,55 @@ other system (Apple Calendar or Outlook, for example),
 
 # Working Groups
 
-The current working groups are:
+Initial straw proposal for the working groups, to be modified and discussed by the first TOC:
 
+- [API](#api)
+- [Application Runtime](#application-runtime)
+- [Networking](#networking)
+- [Release Integration](#release-integration)
+- [Security](#security)(#release-integration)
+- [Services](#services)
+- [UX](#ux)
 - [<Working group name>](#<Working group name>)
 
+## API
+- CAPI
+- CAKE
+- CF-Swagger (from Extensions PMC)
 
+## Application Runtime
+- Diego
+- Eirini
+- Garden
+- Windows Containers
 
+## Networking
+- Networking
+- HAProxy BOSH Release
+
+## Observability
+- Logging and Metrics
+
+## Release Integration
+- Release Integration
+- KubeCF
+
+## Security
+- UAA
+- Credhub (from Extensions PMC)
+
+## Services
+- MySQL Release
+- Postgres Release
+- Services API
+- Volume Services
+- Service Fabrik (from Extensions PMC)
+
+## User Experience
+- CLI
+- Stratos UI (from Extension PMC)
+
+# Templates
 ## <Working group name>
 
 <GitHub repositories>
@@ -49,5 +92,4 @@ The current working groups are:
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/"> | <name>       | <company>  | [<GitHub handle>](https://github.com/<GitHub handle>) |
-
 
