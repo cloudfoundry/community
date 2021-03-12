@@ -2,6 +2,7 @@ This document describes the set of roles individuals might have within the
 Cloud Foundry community, the requirements of each role, and the privileges that each
 role grants.
 
+- [Scope of Technical Contributions](#scope-of-technical-contributions)
 - [Role Summary](#role-summary)
 - [Member](#member)
 - [Approver](#approver)
@@ -10,6 +11,19 @@ role grants.
 - [Scribe](#scribe)
 
 See also [notes](#notes) on roles.
+
+## Scope of Technical Contributions
+
+The roles below frequently refer to code and to the community codebase.
+That codebase encompasses not only the source code that constitutes the
+system components in the community, but also other artifacts such as
+documentation, specifications, and technical proposals.
+
+By PR below, we mean any proposed change to one of these artifacts via
+the natural proposal mechanism for that medium (for example, pull request
+in GitHub, or suggested change in Google Docs). Code review refers to the
+process of reviewing a proposed change, providing feedback on it, and
+advocating to accept or to reject it.
 
 ## Role Summary
 
@@ -156,7 +170,7 @@ in.
 
 ## Approver
 
-Code approvers are able to both review and approve code contributions. While
+Approvers are able to both review and approve code contributions. While
 code review is focused on code quality and correctness, approval is focused on
 holistic acceptance of a contribution including: backward / forward
 compatibility, adhering to API and flag conventions, subtle performance and
