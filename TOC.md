@@ -196,10 +196,9 @@ then determine whether this member will be eligible. In a case where the
 TOC declines an eligibility request, the requestor may appeal that decision
 to the Governing Board.
 
-All eligible voters will be captured at
-`cloudfoundry/community/elections/$YEAR/voters.md` and the voters’ guide
-will be captured at `cloudfoundry/community/elections/$YEAR/README.md`
-similar to the kubernetes election process.
+For the election in year `YEAR`, all eligible voters will be listed at
+`elections/YEAR/voters.md` in this repository, and the voters' guide will be
+available at `elections/YEAR/README.md`.
 
 The TOC will have the right to adjust future eligibility requirements based on 
 community feedback.
