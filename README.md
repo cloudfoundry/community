@@ -32,10 +32,10 @@ and the responsibilities, requirements, privileges and scope of each role
 * [Technical Oversight Committee](toc/TOC.md) - (Status: PROPOSED) - Technical governance structure and 
 process
 
-* [Governance Concept](GOVERNANCE.md) - (Status: INFORMATIONAL) - Informational background on the 
+* [Governance Concept](toc/GOVERNANCE.md) - (Status: INFORMATIONAL) - Informational background on the 
 thinking behind how the TOC should structure the work of the technical community.
 
-* [Change Plan](CHANGEPLAN.md) - (Status: PROPOSED / WORK IN PROGRESS) - Plan for how to get from the community's current policies and practices to a new desired state
+* [Change Plan](toc/CHANGEPLAN.md) - (Status: PROPOSED / WORK IN PROGRESS) - Plan for how to get from the community's current policies and practices to a new desired state
 
 ## Working Groups
 
