@@ -1,12 +1,45 @@
-# THIS REPOSITORY IS A WORK IN PROGRESS!!!
+This repository holds a set of documents that govern the work of the Cloud Foundry Foundation (CFF), 
+both the foundation itself and the technical communities that it supports.
 
-This repository is a starting point for the community to use to evolve the technical community's governance. Recent changes in the structure of the ecosystem around the Cloud Foundry project provide an opportunity to revisit how the CFF's technical community operates and to revise the technical governance docs to build a healthier and more dynamic open governance environment for the projects.
+There are two categories of governace included: foundation and technical community. 
 
-Eventually, this repository will become the official home for the technical community's governance process.
+# Foundation Governance
 
-# Governance
-* [Principles](PRINCIPLES.md) - Core principles that inform the technical governance of the Cloud Foundry community
-* [Technical Governance](GOVERNANCE.md) - Technical governance structure and process
-* [Change Plan](CHANGEPLAN.md) - Plan for how to get from the community's current policies and practices to a new desired state
-* [Foundation Governance](https://www.cloudfoundry.org/governance/) - Top level policies of the Cloud Foundry Foundation
-* [Code of Conduct](https://www.cloudfoundry.org/code-of-conduct/) - Code of Conduct governing all participation in the Cloud Foundry community
+Changes to these policies and agreements require a vote of the CFF Governing Board.
+
+* [CFF Charter](governing-board/charter.md) - (Status: ACTIVE) - The charter 
+for the CFF, included in the participation agreement that every member signs
+
+* [CFF Charter Proposal](governing-board/charter-with-toc.md) - (Status: PROPOSED) - Proposed version of 
+the CFF Charter that restructures the PMC Council into a Technical Oversight Committee
+
+* [Foundation Governance](https://www.cloudfoundry.org/governance/) - (Status: ACTIVE) - Top level 
+policies of the Cloud Foundry Foundation
+
+* [Code of Conduct](https://www.cloudfoundry.org/code-of-conduct/) - (Status: ACTIVE) - Code of Conduct 
+governing all participation in the Cloud Foundry community
+
+# Technical Community Governance
+
+Changes to these documents require a vote (or consensus) of the Technical Oversight Committee (TOC).
+
+* [Principles](toc/PRINCIPLES.md) - (Status: INFORMATIONAL) - Core principles that inform the technical 
+governance of the Cloud Foundry community
+
+* [Roles](toc/ROLES.md) - (Status: PROPOSED) - Description of the various technical community roles 
+and the responsibilities, requirements, privileges and scope of each role
+
+* [Technical Oversight Committee](toc/TOC.md) - (Status: PROPOSED) - Technical governance structure and 
+process
+
+* [Governance Concept](GOVERNANCE.md) - (Status: INFORMATIONAL) - Informational background on the 
+thinking behind how the TOC should structure the work of the technical community.
+
+* [Change Plan](CHANGEPLAN.md) - (Status: PROPOSED / WORK IN PROGRESS) - Plan for how to get from the community's current policies and practices to a new desired state
+
+## Working Groups
+
+(STATUS: WORK IN PROGRESS)
+
+The technical community's activities are structured into working groups by the TOC. For a listing of the
+active working groups, see [WORKING-GROUPS.md](toc/working-groups/WORKING-GROUPS.md).
