@@ -230,6 +230,8 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   d)	In the event of a tied vote with respect to an action that cannot be resolved by the Governing Board, any member of the Governing Board may refer the matter to the LF for assistance in helping the Governing Board reach a decision. If there is a tied vote in any Committee that cannot be resolved, the matter may be referred to the Governing Board.
 
+-   e)  This section (Section 8) does not apply to the TOC. TOC decision making rules are established in Section 7.d.
+
 ####    9)	Subsidiaries and Related Companies
 
 -   a)	Definitions:
