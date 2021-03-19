@@ -1,10 +1,3 @@
----
-title: "CFF TOC Election - YYYY Annual Election Guide"
-linkTitle: "YYYY Annual TOC Election Guide"
-weight: 30
-type: "docs"
----
-
 ```
 Steps to take prior to announcing the start of the annual election
 cycle are:
