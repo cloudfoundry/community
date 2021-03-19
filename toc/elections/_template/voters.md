@@ -1,4 +1,4 @@
-# YYYY TOC El
+# YYYY Eligible Voters for the TOC Election
 
 See the [README](README.md) for information on how this list is populated.
 
