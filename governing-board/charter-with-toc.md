@@ -127,7 +127,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   ii) resolving technical issues, technical disagreements, and escalations within the projects and technical working groups;
 
-    -   iii) setting the priorities of individual releases to ensure coherence and proper sequencing;
+    -   iii) coordinating project releases with the technical working groups;
 
     -   iv) approving the creation and dissolution of technical working groups and leadership changes within technical working groups;
 
@@ -135,7 +135,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
     
     -   vi)  creating proposals based on TOC discussions and conveying them to the relevant technical working groups for discussion;
 
-    -   vii) approving the creation, archival, and deletion of GitHub organizations and repositories, along with conducting other high-level administration of GitHub and other tools for technical collaboration;
+    -   vii) management of source control systems and other tools for collaboration used by the projects and technical working groups;
 
     -   viii) making recommendations to the Budget Committee of resource priorities for the technical community;
 
@@ -154,7 +154,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   b)	Composition:
 
-    -   i)	The TOC will be componsed of five (5) members.
+    -   i)	The TOC will be composed of five (5) members.
 
     -   ii) Each TOC member will be elected to a two-year term.
 
