@@ -159,8 +159,8 @@ this is not a requirement.
 
 - Responsive to issues and PRs assigned to them.
 
-- Active owner of code they have contributed (unless ownership is explicitly
-  transferred).
+- Active maintainer of code they have contributed (unless responsibility is 
+  explicitly transferred).
 
   - Code is well tested.
 
