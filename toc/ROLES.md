@@ -34,6 +34,10 @@ table describes:
 - Requirements necessary to join or stay in a given role
 - How the role manifests in terms of permissions and privileges.
 
+Keep in mind that responsibility follows a delegation model. The community delegates
+to the TOC, who in turn delegates to working groups and their leads. Working groups can 
+establish sub-working groups. Working groups delegate change approval to Approvers.
+
 <table>
   <thead>
     <tr>
