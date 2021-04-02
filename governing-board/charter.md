@@ -7,11 +7,11 @@ Effective January 1, 2021
 
 #### 1)	Mission and Scope of the Cloud Foundry Foundation.  
 
-a)	The purpose of the Cloud Foundry Foundation (the “CFF”) is to raise, budget and spend funds in support of various open source, open data and/or open standards projects relating to development of a Platform-as-a-Service (PaaS) open source technology, including infrastructure and support initiatives related thereto, including infrastructure and support initiatives related thereto (each such project, a “PMC”).  The governance of each PMC is as set forth in the applicable charter for each PMC.
+a)	The purpose of the Cloud Foundry Foundation (the “CFF”) is to raise, budget and spend funds in support of various open source, open data and/or open standards projects relating to development of a Platform-as-a-Service (PaaS) open source technology, including infrastructure and support initiatives related thereto.  The governance of each project is as set forth in the applicable charter for each project.
 
-b)	The CFF supports the PMCs. The initial PMCs supported at inception include Cloud Foundry Application Runtime, Cloud Foundry Extensions, Cloud Foundry BOSH,  and Open Service Broker API. The CFF operates under the guidance of the Governing Board of the CFF (the “Governing Board”) and The Linux Foundation (the “LF”) as may be consistent with The Linux Foundation’s tax-exempt status.  
+b)	The CFF supports the projects. The initial projects include Cloud Foundry, Paketo, and Open Service Broker API. The CFF operates under the guidance of the Governing Board of the CFF (the “Governing Board”) and The Linux Foundation (the “LF”) as may be consistent with The Linux Foundation’s tax-exempt status.  
 
-c)	The Governing Board manages the CFF. The CFF will also have an Outreach Committee, Project Management Committees Council, Budget Committee, Legal Committee and other working groups, councils, committees and similar bodies (collectively, “Committees”) that may be established by the Governing Board.  These committees report to the Governing Board.
+c)	The Governing Board manages the CFF. The CFF will also have an Outreach Committee, Technical Oversight Committee, Budget Committee, Legal Committee and other working groups, councils, committees and similar bodies (collectively, “Committees”) that may be established by the Governing Board.  These committees report to the Governing Board.
 
 #### 2)	Membership.
 
@@ -37,11 +37,11 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   ii)	the elected Gold Member Representatives; and
 
-    -   iii)	the PMCC Representative
+    -   iii)	the TOC Chair
 
 -   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate for a membership class election, a representative on the Governing Board.  No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate for Membership class election more than one representative for the Governing Board, or (ii) have more than two representatives on the Governing Board. 
 
-    -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the PMCC Representative on the Governing Board.
+    -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the TOC Chair on the Governing Board.
 
 -   c)	Conduct of Meetings
 
@@ -73,13 +73,13 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   v)	adopt and maintain policies or rules and procedures for the CFF (subject to LF approval);
 
-    -   vi)	establish advisory bodies, committees, programs or councils to resolve any particular matter or in support of the mission of the CFF and/or its PMCs including in support of end-users and ambassadors for the project;
+    -   vi)	establish advisory bodies, committees, programs or councils to resolve any particular matter or in support of the mission of the CFF and/or its projects including in support of end-users and ambassadors for the project;
 
-    -   vii)	establish any conformance programs and solicit input (including testing tools) from the applicable governance body of any PMC for defining and administering any programs related to conformance with any PMC (each, a “Conformance Program”); 
+    -   vii)	establish any conformance programs and solicit input (including testing tools) from the applicable governance body of any project for defining and administering any programs related to conformance with any project (each, a “Conformance Program”); 
 
     -   viii)	publish use cases, user stories, websites and priorities to help inform the ecosystem and technical community; 
 
-    -   ix)	establish and maintain an Individual Supporter program for individuals to show their support for the Cloud Foundry Foundation and its PMCs.
+    -   ix)	establish and maintain an Individual Supporter program for individuals to show their support for the Cloud Foundry Foundation and its projects.
 
     -   x)	approve procedures for the nomination and election of any representative of the Gold Members to the Governing Board and any Officer or other positions created by the Governing Board; and
 
@@ -97,7 +97,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   a)	The Legal Committee will consist of members of the Governing Board that wish to participate on the Legal Committee together with their legal counsel. Participation on the Legal Committee is voluntary, and the makeup of the Legal Committee will be determined annually or as otherwise directed by the Governing Board.
 
--   b)	The responsibilities of the Legal Committee include the creation of recommendations to the Governing Board in response to questions submitted to the Legal Committee by the Governing Board or the PMCC.
+-   b)	The responsibilities of the Legal Committee include the creation of recommendations to the Governing Board in response to questions submitted to the Legal Committee by the Governing Board or the TOC.
 
 -   c)	The Legal Committee will select, from among those Governing Board representatives that are participating on the Legal Committee, a chairperson of the Legal Committee who will call meetings, drive the agenda and communicate findings or recommendations of the Legal Committee to the Governing Board.
 
@@ -111,7 +111,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   ii)	developing and reporting metrics for the allocation of budget in relation to meeting the priorities of the Governing Board;
 
-    -   iii)	 reviewing the progress of the CFF against the annual budget;
+    -   iii) reviewing the progress of the CFF against the annual budget;
 
     -   iv)	preparing forecasts for future financial needs of the CFF; and
 
@@ -119,33 +119,106 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   c)	The Treasurer shall be chairperson of the Budget Committee.
 
-####    7)	Project Management Committees Council (“PMCC”)
+####    7)	Technical Oversight Committee (“TOC”)
 
--   a)	The role of the PMCC is to facilitate communication and collaboration among the PMCs.  The PMCC will be responsible for:
+-   a)  The TOC shall be responsible for the oversight, direction, and delivery of technical aspects of the Cloud Foundry projects, including:
 
-    -   i)	coordinating collaboration among PMCs, including development of an overall technical vision for the community;
+    -   i)  setting the overall technical direction and roadmap of the projects and technical working groups;
 
-    -   ii)	making recommendations to the Budget Committee of resource priorities for PMCs;
+    -   ii) resolving technical issues, technical disagreements, and escalations within the projects and technical working groups;
 
-    -   iii)	electing annually a chairperson to preside over meetings, set the agenda for meetings, ensure meeting minutes are taken and who will also serve on the Governing Board as the PMCC’s voting representative (the “PMCC Representative”);
+    -   iii) coordinating project releases with the technical working groups;
 
-    -   iv)	 creating, maintaining and amending project lifecycle procedures and processes, including the Development Governance Policy and Development Operations Policy, subject to the approval of the Governing Board; and
+    -   iv) approving the creation and dissolution of technical working groups and leadership changes within technical working groups;
 
-    -   v)	such other matters related to the technical role of the PMCC as may be communicated to the PMCC by the Governing Board.
+    -   v) approving the creation and dissolution of projects and assigning technical working group responsibility for the projects;
+    
+    -   vi)  creating proposals based on TOC discussions and conveying them to the relevant technical working groups for discussion;
 
--   b)	The members of the PMCC consist of:
+    -   vii) management of source control systems and other tools for collaboration used by the projects and technical working groups;
 
-    -   i)	the project lead of each PMC; and
+    -   viii) making recommendations to the Budget Committee of resource priorities for the technical community;
 
-    -   ii)	the Executive Director of the Directed Fund on a non-voting basis.
+    -   ix)  creating, maintaining and amending technical governance guidelines, subject to the approval of the Governing Board, for the technical working groups and projects;
 
--   c)	One representative of any Member may observe meetings of the PMCC. Any committers from a PMCC Project may observe meetings of the PMCC. The PMCC may change this at any point in time, including: (a) opening meetings to a broader community; (b) holding closed meetings; and (c) holding meetings open to the public.
+    -   x)  maintaining the health and well-being of the Cloud Foundry technical community, including:
 
--   d)	At the start of the CFF, the PMCs are those PMCs listed as such on the CFF’s web site.  
+        -   (1) ensuring the technical community adheres to the Cloud Foundry Foundation [code of conduct](https://www.cloudfoundry.org/code-of-conduct/)
+    
+        -   (2) establishing a set of community-wide principles that support neutrality, openness, and transparency, and ensuring the technical commnuity respects those principles;
 
--   e)	The PMCC will operate as provided under the Development Governance Policy. 
+        -   (3) fostering an environment for a healthy and happy community of developers and
+  contributors; and
 
--   f)	The PMCC representatives will elect a chair to preside over meetings, ensure minutes are taken and drive the PMCC agenda with input from the PMCC representatives.
+    -   xi)	such other matters related to the technical role of the TOC as may be communicated to the TOC by the Governing Board.
+
+-   b)	Composition:
+
+    -   i)	The TOC will be composed of five (5) members.
+
+    -   ii) Each TOC member will be elected to a two-year term.
+
+    -   iii) There will be an annual election to determine the composition of the TOC for the following year. Three seats will be up for election in one year and two will be up for election the following year.
+
+    -   iv) Employees from the same company or Related Companies (as defined in Section 9) should not hold more than two TOC seats.
+    
+        -   a) During any TOC election, if the TOC membership would exceed this limit even after the natural cycle of TOC seat term expirations, enough TOC members must resign for it to be possible for the election to yield a diverse enough TOC.
+        
+        -   b) If a TOC election cannot produce a diverse enough TOC, the limit will not apply until the next election cycle. When a change in employment of a TOC member causes the TOC membership to exceed this limit, that TOC member will NOT be required to resign their TOC membership.
+
+-   c)  TOC Chair:
+
+    -   i) The TOC will select one person from amongst its members to be the TOC Chair, following the [TOC procedure for decision making](#toc-decision-making). The TOC will select a Chair after each yearly election, and in the event that the Chair is vacated.
+
+    -   ii) The TOC Chair is responsible for:
+
+        -   (1)  conducting meetings of the TOC;
+
+        -   (2)  coordinating meeting agendas, based on feedback from the community and other TOC members;
+
+        -   (3)  representing the technical community on the CFF Governing Board.
+
+    -   iii) The person holding the TOC Chair role may resign their role at any time.
+
+-   d)  TOC Decision-Making
+
+    -   i)  The TOC should strive to reach consensus on decisions when possible. Any decision requires a quorum of the TOC, defined as the presence of a simple majority (greater than 50%) of the current TOC members.
+
+    -   ii) If a TOC member sustains an objection to a proposed decision, any member of the TOC may call the decision to a vote. Each member of the TOC is entitled to one vote in any voting matter. A simple majority (greater than 50%) of all members of the TOC must vote to approve the decision for it to be accepted.
+
+    -   iii) If a TOC vote is required to reach a decision, the TOC should ensure that sufficient time has been allowed for TOC members to seek community input prior to the vote.
+
+    -   iv) The TOC shall record calls to vote and decisions voted upon, including the individual votes of the TOC members, in the regularly published TOC meeting notes.
+
+-   e)  TOC Elections
+
+    -   i) Candidate Eligibility
+
+        -   (1)  Current TOC members, Working Group Leads, and Approvers with at least 3 months tenure are eligible to stand for election.
+        
+        -   (2)  Candidates may self-nominate or be nominated by another eligible member.
+
+    -   ii) TOC Voter Eligibility
+
+        -   (1) Any individual who has contributed to CFF projects or technical working groups in the twelve months prior to the election is eligible to vote in the TOC election. 
+        
+        -   (2) Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, helping people, participating in mailing list discussions and participating in working groups.
+
+        -   (3) Each election cycle, an initial set of voters will be identified through automated reporting. Any individual who has at least 25 measurable contributions in the last 12 months will be automatically added to the eligible voter list.
+
+        -   (4) If a community member has contributed over the past year but is not captured in automated reporting, they will be able to submit an eligibility form to the current TOC who will then determine whether this member will be eligible. In a case where the TOC declines an eligibility request, the requestor may appeal that decision to the Governing Board.
+
+    -   iii) Election Method and Tools
+
+        -   (1) If the number of candidates is equal to or less than the number of TOC seats available to be elected, the candidates shall be approved after the nomination period has closed.
+        
+        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking on [CIVS](http://civs.cs.cornell.edu/) using the Schulze method.
+
+-   f)  TOC Member Resignations or Removal
+
+    -   i) In the case where a TOC member resigns or is removed from the TOC by the Governing Board, the remaining members of the TOC will determine whether the vacant seat either will remain vacant until the next annual election cycle, or will be filled by using the results of the latest election.
+    
+    -   ii) When making this decision, the remaining members of the TOC should consider whether too much time has elapsed since the latest election cycle for its results to represent the community adequately.
 
 ####    8)	Voting
 
@@ -156,6 +229,8 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 -   c)	Except as provided in Section 16.a. or elsewhere in this Charter, decisions by vote at a meeting will require a simple majority vote, provided quorum is met. Except as provided in Section 16.a. or elsewhere in this Charter, decisions by electronic vote without a meeting will require a majority of all voting representatives.
 
 -   d)	In the event of a tied vote with respect to an action that cannot be resolved by the Governing Board, any member of the Governing Board may refer the matter to the LF for assistance in helping the Governing Board reach a decision. If there is a tied vote in any Committee that cannot be resolved, the matter may be referred to the Governing Board.
+
+-   e)  This section (Section 8) does not apply to the TOC. TOC decision making rules are established in Section 7.d.
 
 ####    9)	Subsidiaries and Related Companies
 
@@ -179,7 +254,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 ####    11)	Trademarks
 
--   a)	Any trademarks relating to the CFF or the PMC, including without limitation any mark relating to any Conformance Program, must be transferred to and held by LF Projects, LLC or the Linux Foundation and available for use pursuant to LF Projects, LLC’s trademark usage policy, available at www.lfprojects.org/trademarks/.
+-   a)	Any trademarks relating to the CFF or the projects, including without limitation any mark relating to any Conformance Program, must be transferred to and held by LF Projects, LLC or the Linux Foundation and available for use pursuant to LF Projects, LLC’s trademark usage policy, available at www.lfprojects.org/trademarks/.
 
 ####    12)	Antitrust Guidelines
 
@@ -189,7 +264,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 ####    13)	Budget
 
--   a)	The Governing Board will approve an annual budget and never commit to spend in excess of funds raised. The budget and the purposes to which it is applied must be consistent with both (a) the non-profit and tax-exempt mission of The Linux Foundation and (b) the aggregate goals of the PMCs.
+-   a)	The Governing Board will approve an annual budget and never commit to spend in excess of funds raised. The budget and the purposes to which it is applied must be consistent with both (a) the non-profit and tax-exempt mission of The Linux Foundation and (b) the aggregate goals of the projects.
 
 -   b)	The Linux Foundation will provide the Governing Board with regular reports of spend levels against the budget. Under no circumstances will The Linux Foundation have any expectation or obligation to undertake an action on behalf of the CFF or otherwise related to the CFF that is not covered in full by funds raised by the CFF.
 
@@ -207,7 +282,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   b)	respect the rights of all trademark owners, including any branding and usage guidelines;
 
--   c)	engage or coordinate with The Linux Foundation on all outreach, website and marketing activities regarding the CFF or on behalf of any PMC that invoke or associate the name of any PMC or The Linux Foundation; and
+-   c)	engage or coordinate with The Linux Foundation on all outreach, website and marketing activities regarding the CFF or on behalf of any project that invoke or associate the name of any project or The Linux Foundation; and
 
 -   d)	operate under such rules and procedures as may be approved by the Governing Board and confirmed by The Linux Foundation.
 
