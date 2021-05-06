@@ -2,7 +2,7 @@ The Cloud Foundry Foundation Charter
 
 The Linux Foundation
 
-Effective January 1, 2021
+Effective May 5, 2021
 
 
 #### 1)	Mission and Scope of the Cloud Foundry Foundation.  
@@ -11,7 +11,7 @@ a)	The purpose of the Cloud Foundry Foundation (the “CFF”) is to raise, budg
 
 b)	The CFF supports the projects. The initial projects include Cloud Foundry, Paketo, and Open Service Broker API. The CFF operates under the guidance of the Governing Board of the CFF (the “Governing Board”) and The Linux Foundation (the “LF”) as may be consistent with The Linux Foundation’s tax-exempt status.  
 
-c)	The Governing Board manages the CFF. The CFF will also have an Outreach Committee, Technical Oversight Committee, Budget Committee, Legal Committee and other working groups, councils, committees and similar bodies (collectively, “Committees”) that may be established by the Governing Board.  These committees report to the Governing Board.
+c)	The Governing Board manages the CFF. The CFF will also have an Outreach Committee, Technical Oversight Committee (TOC), Budget Committee, Legal Committee and other working groups, councils, committees and similar bodies (collectively, “Committees”) that may be established by the Governing Board.  These committees report to the Governing Board.
 
 #### 2)	Membership.
 
@@ -145,7 +145,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1) ensuring the technical community adheres to the Cloud Foundry Foundation [code of conduct](https://www.cloudfoundry.org/code-of-conduct/)
     
-        -   (2) establishing a set of community-wide principles that support neutrality, openness, and transparency, and ensuring the technical commnuity respects those principles;
+        -   (2) establishing a set of community-wide principles that support neutrality, openness, and transparency, and ensuring the technical community respects those principles;
 
         -   (3) fostering an environment for a healthy and happy community of developers and
   contributors; and
@@ -168,7 +168,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   c)  TOC Chair:
 
-    -   i) The TOC will select one person from amongst its members to be the TOC Chair, following the [TOC procedure for decision making](#toc-decision-making). The TOC will select a Chair after each yearly election, and in the event that the Chair is vacated.
+    -   i) The TOC will select one person from amongst its members to be the TOC Chair, in accordance with the [TOC procedure for decision making](#toc-decision-making), as outlined in Section 7.d. The TOC will select a Chair after each yearly election, and in the event that the Chair is vacated.
 
     -   ii) The TOC Chair is responsible for:
 
@@ -188,21 +188,21 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   iii) If a TOC vote is required to reach a decision, the TOC should ensure that sufficient time has been allowed for TOC members to seek community input prior to the vote.
 
-    -   iv) The TOC shall record calls to vote and decisions voted upon, including the individual votes of the TOC members, in the regularly published TOC meeting notes.
+    -   iv) The TOC shall record calls to vote and decisions voted upon, including the individual votes of the TOC members, in the regularly published TOC meeting notes which might be publicly available.
 
 -   e)  TOC Elections
 
     -   i) Candidate Eligibility
 
-        -   (1)  Current TOC members, Working Group Leads, and Approvers with at least 3 months tenure are eligible to stand for election.
+        -   (1)  Current TOC members, Working Group Leads, and the Cloud Foundry community members who meet requirements, for at least 3 months immediately preceding the voting, for an Approver, a Working Group Technical Lead, or a Working Group Execution Lead as defined in [ROLES.md](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md).
         
-        -   (2)  Candidates may self-nominate or be nominated by another eligible member.
+        -   (2)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
 
     -   ii) TOC Voter Eligibility
 
         -   (1) Any individual who has contributed to CFF projects or technical working groups in the twelve months prior to the election is eligible to vote in the TOC election. 
         
-        -   (2) Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, helping people, participating in mailing list discussions and participating in working groups.
+        -   (2) Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, participating in mailing list discussions and participating in working groups.
 
         -   (3) Each election cycle, an initial set of voters will be identified through automated reporting. Any individual who has at least 25 measurable contributions in the last 12 months will be automatically added to the eligible voter list.
 
