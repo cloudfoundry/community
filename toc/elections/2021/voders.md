@@ -1,0 +1,245 @@
+# 2021 Eligible Voters for the TOC Election
+
+See the [README](README.md) for information on how this list is initially populated.
+Eligible voters that are not shown are encouraged to have their name added by 
+[submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-toc-election.md&title=Request+to+be+an+elector+for+TOC+election).
+
+---
+
+## Voters List
+
+- 	Aakash Shah	 : 	VMware, Inc.
+- 	Abil Dermendzhiev	 : 	SAP
+- 	Aidan Obley	 : 	VMware, Inc.
+- 	Alex Standke	 : 	VMware, Inc.
+- 	Alexander Berezovsky	 : 	VMware, Inc.
+- 	Alexander Tsvetkov	 : 	SAP
+- 	Amelia Downs	 : 	VMware, Inc.
+- 	Amin Jamali	 : 	VMware, Inc.
+- 	Anand Gaitonde	 : 	VMware, Inc.
+- 	Andreas Kupries	 : 	SUSE LLC
+- 	Andrew Costa	 : 	VMware, Inc.
+- 	Andrew Crump	 : 	VMware, Inc.
+- 	Andrew Edgar	 : 	IBM
+- 	Andrew Wittrock	 : 	VMware, Inc.
+- 	Andy Brown	 : 	VMware, Inc.
+- 	Anoop Joseph Babu	 : 	Nokia Corporation
+- 	Anthony Emengo	 : 	VMware, Inc.
+- 	Anuj Bansal	 : 	Individual - No Account
+- 	aqan213	 : 	IBM
+- 	Aram Price	 : 	VMware, Inc.
+- 	Arjun Sreedharan	 : 	VMware, Inc.
+- 	Austina Lin	 : 	VMware, Inc.
+- 	Belinda Liu	 : 	VMware, Inc.
+- 	Ben Hale	 : 	VMware, Inc.
+- 	Benjamin Fuller	 : 	VMware, Inc.
+- 	Bernd Krannich	 : 	SAP
+- 	Beyhan Veli	 : 	SAP
+- 	Bikramdeep Singh	 : 	SUSE LLC
+- 	Boris Iliev	 : 	SAP
+- 	Boyan Velinov	 : 	SAP
+- 	Braunson	 : 	Shared Services Canada
+- 	Brayan Henao	 : 	VMware, Inc.
+- 	Bret Mogilefsky	 : 	General Services Administration
+- 	Brian Butz	 : 	VMware, Inc.
+- 	Brian Cunnie	 : 	VMware, Inc.
+- 	Brian Cunnie	 : 	VMware, Inc.
+- 	Brian Upton	 : 	VMware, Inc.
+- 	Bruce Ricard	 : 	VMware, Inc.
+- 	Caitlyn Yu	 : 	VMware, Inc.
+- 	Carson Long	 : 	VMware, Inc.
+- 	Chip Childers	 : 	Forbes Technology Council
+- 	Chloe Hollingsworth	 : 	VMware, Inc.
+- 	Chris Clark	 : 	Cloud Foundry Foundation
+- 	Chris Selzo	 : 	VMware, Inc.
+- 	Christian Ang	 : 	VMware, Inc.
+- 	Clay Kauzlaric	 : 	VMware, Inc.
+- 	Connor Braa	 : 	VMware, Inc.
+- 	Danail Branekov	 : 	SAP
+- 	Daniel Mikusa	 : 	VMware, Inc.
+- 	Danny Berger	 : 	VMware, Inc.
+- 	Dave Walter	 : 	VMware, Inc.
+- 	David McClure	 : 	VMware, Inc.
+- 	David Stevenson	 : 	VMware, Inc.
+- 	David Timm	 : 	VMware, Inc.
+- 	Dennis Leon	 : 	VMware, Inc.
+- 	Derik Evangelista	 : 	VMware, Inc.
+- 	Diego Lemos	 : 	VMware, Inc.
+- 	Dimitar Donchev	 : 	SAP
+- 	Dimitris Karakasilis	 : 	SUSE LLC
+- 	Dimitrov Radoslav	 : 	SAP
+- 	Dominik Froehlich	 : 	SAP
+- 	Dr Nic Williams	 : 	Stark & Wayne LLC
+- 	Edward Xiao	 : 	IBM
+- 	Emily Casey	 : 	VMware, Inc.
+- 	Emily Johnson	 : 	VMware, Inc.
+- 	Eric Malm	 : 	VMware, Inc.
+- 	Eric Promislow	 : 	SUSE LLC
+- 	Ernie Billing	 : 	VMware, Inc.
+- 	Ettore Di Giacinto	 : 	SUSE LLC
+- 	Evelyn Rabil	 : 	VMware, Inc.
+- 	Fabio Berchtold	 : 	Swisscom
+- 	Felisia Martini	 : 	VMware, Inc.
+- 	Felix Riegger	 : 	SAP
+- 	Fernando Naranjo	 : 	VMware, Inc.
+- 	Florian Tack	 : 	SAP
+- 	Forest Eckhardt	 : 	VMware, Inc.
+- 	Frankie Gallina-Jones	 : 	VMware, Inc.
+- 	Gareth Smith	 : 	VMware, Inc.
+- 	Gary A Korhonen	 : 	SUSE LLC
+- 	Gary Liu	 : 	VMware, Inc.
+- 	Genevieve L'Esperance	 : 	Doximity
+- 	George Blue	 : 	VMware, Inc.
+- 	George Gelashvili	 : 	VMware, Inc.
+- 	Georgi Dankov	 : 	SAP
+- 	Georgi Sabev	 : 	SAP
+- 	Giuseppe Capizzi	 : 	VMware, Inc.
+- 	Greg Cobb	 : 	VMware, Inc.
+- 	Gu Bin	 : 	International Business Machines Corporation (IBM)
+- 	Guillaume Berche	 : 	Orange S.A.
+- 	Guillermo Bandrés Catalina	 : 	VMware, Inc.
+- 	Harsha Nandiwada	 : 	VMware, Inc.
+- 	He Guimin	 : 	Alibaba
+- 	Ivan Dimitrov	 : 	SAP
+- 	Ivan Kapelyukhin	 : 	SUSE LLC
+- 	Ivan Kasarov	 : 	SAP
+- 	J Russell Boykin	 : 	IBM
+- 	Jacob Schuenke	 : 	VMware, Inc.
+- 	Jaime Gomes	 : 	SUSE LLC
+- 	James Hunt	 : 	Stark & Wayne LLC
+- 	James Norman	 : 	VMware, Inc.
+- 	James Palmer	 : 	VMware, Inc.
+- 	Jamie Monserrate	 : 	VMware, Inc.
+- 	Jan Dubois	 : 	SUSE LLC
+- 	Jan von Löwenstein	 : 	SAP
+- 	Jane Day	 : 	VMware, Inc.
+- 	Jaskanwal Pawar	 : 	VMware, Inc.
+- 	Jatin Naik	 : 	VMware, Inc.
+- 	Jayesh Kshirsagar	 : 	SAP
+- 	Jeff Bunagan	 : 	HCL Technologies Ltd.
+- 	Jen Spinney	 : 	VMware, Inc.
+- 	Jenna Goldstrich	 : 	VMware, Inc.
+- 	Jennifer Spinney	 : 	VMware, Inc.
+- 	Jeremy Morony	 : 	VMware, Inc.
+- 	Jesse Weaver	 : 	VMware, Inc.
+- 	JimmyMa	 : 	Sina Com Technology
+- 	Joe Gee	 : 	VMware, Inc.
+- 	Johannes Dillmann	 : 	SAP
+- 	John Shahid	 : 	VMware, Inc.
+- 	Joseph Palermo	 : 	VMware, Inc.
+- 	Josh Collins	 : 	VMware, Inc.
+- 	Josh Russett	 : 	VMware, Inc.
+- 	Josh Zarrabi	 : 	VMware, Inc.
+- 	Joshua Casey	 : 	VMware, Inc.
+- 	Julian Hjortshoj	 : 	EMC
+- 	Julz Skupnjak	 : 	International Business Machines Corporation (IBM)
+- 	Kaiting Chen	 : 	VMware, Inc.
+- 	Kaitlin Barrer	 : 	VMware, Inc.
+- 	Kashyap Vedurmudi	 : 	VMware, Inc.
+- 	Kauana dos Santos	 : 	VMware, Inc.
+- 	Kenneth DuMez	 : 	VMware, Inc.
+- 	Kenneth Lakin	 : 	VMware, Inc.
+- 	Kevin Ortega	 : 	International Business Machines Corporation (IBM)
+- 	Kevin Rutten	 : 	Stark & Wayne LLC
+- 	Kieron Browne	 : 	VMware, Inc.
+- 	Kristian Atanasov	 : 	SAP
+- 	Leah Hanson	 : 	VMware, Inc.
+- 	Lisa Burns	 : 	VMware, Inc.
+- 	Louie Brann	 : 	Techstars
+- 	Lubron Zhan	 : 	VMware, Inc.
+- 	Marcela Campo	 : 	VMware, Inc.
+- 	Marco Voelz	 : 	SAP
+- 	Maria Shaldybin	 : 	VMware, Inc.
+- 	Mario Manno	 : 	SUSE LLC
+- 	Mario Nitchev	 : 	SAP
+- 	Mark DeLillo	 : 	VMware, Inc.
+- 	Mark Gangl	 : 	VMware, Inc.
+- 	Mark Stokan	 : 	VMware, Inc.
+- 	Mark Yen	 : 	SUSE LLC
+- 	Markus Strehle	 : 	SAP
+- 	Marty Spiewak	 : 	VMware, Inc.
+- 	Marty Spiewak	 : 	VMware, Inc.
+- 	Matt Royal	 : 	VMware, Inc.
+- 	Matt Royal	 : 	VMware, Inc.
+- 	Max Brauer	 : 	VMware, Inc.
+- 	Max Hufnagel	 : 	VMware, Inc.
+- 	Maya Rosecrance	 : 	VMware, Inc.
+- 	Melinda Gutermuth	 : 	VMware, Inc.
+- 	Melinda Jeffs Gutermuth	 : 	VMware, Inc.
+- 	Merric de Launey	 : 	VMware, Inc.
+- 	Mia Fryling	 : 	VMware, Inc.
+- 	Michael Claassen	 : 	Manulife Financial
+- 	Michael Oleske	 : 	VMware, Inc.
+- 	Mikael Manukyan	 : 	VMware, Inc.
+- 	Miranda Limonczenko	 : 	VMware, Inc.
+- 	Mona Mohebbi	 : 	VMware, Inc.
+- 	Nat J. Bennett	 : 	VMware, Inc.
+- 	Neil Hickey	 : 	VMware, Inc.
+- 	Neil MacDougall	 : 	SUSE LLC
+- 	Nick Webb	 : 	VMware, Inc.
+- 	Nitya Dhanushkodi	 : 	HashiCorp
+- 	Omer Bensaadon	 : 	VMware, Inc.
+- 	Paige Calvert	 : 	VMware, Inc.
+- 	Paul Harris	 : 	VMware, Inc.
+- 	Paul Warren	 : 	VMware, Inc.
+- 	Peter Chen	 : 	VMware, Inc.
+- 	Peter Stone	 : 	VMware, Inc.
+- 	Piyali Banerjee	 : 	VMware, Inc.
+- 	Prabal Sharma	 : 	SUSE LLC
+- 	Preeti Sawant	 : 	International Business Machines Corporation (IBM)
+- 	Ralf Pannemans	 : 	SAP
+- 	Ramon Makkelie	 : 	Stark & Wayne LLC
+- 	Rangel Ivanov	 : 	SAP
+- 	Raymond Xu	 : 	IBM
+- 	Reid Mitchell	 : 	VMware, Inc.
+- 	Renee Chu	 : 	VMware, Inc.
+- 	Richard Cox	 : 	SUSE LLC
+- 	Richard Johnson	 : 	VMware, Inc.
+- 	Robert Sullivan	 : 	VMware, Inc.
+- 	Ruben Koster	 : 	Stark & Wayne LLC
+- 	Ryan Hall	 : 	VMware, Inc.
+- 	Ryan Moran	 : 	VMware, Inc.
+- 	Ryker Reed	 : 	VMware, Inc.
+- 	Saikiran Yerram	 : 	VMware, Inc.
+- 	Sakala Venkata Krishna Rohit	 : 	SUSE LLC
+- 	Sam Coward	 : 	VMware, Inc.
+- 	Samuel Waggoner	 : 	VMware, Inc.
+- 	Sannidhi Jalukar	 : 	VMware, Inc.
+- 	Sarah Weinstein	 : 	VMware, Inc.
+- 	Sebastian Vidrio	 : 	VMware, Inc.
+- 	Seth Boyles	 : 	VMware, Inc.
+- 	Severine Tymon	 : 	VMware, Inc.
+- 	Shaan Sapra	 : 	VMware, Inc.
+- 	Shuang Men	 : 	International Business Machines Corporation (IBM)
+- 	Sophie Wigmore	 : 	VMware, Inc.
+- 	Sridhar Vennela	 : 	VMware, Inc.
+- 	Stefan Lay	 : 	SAP
+- 	Stefan Wutz	 : 	SAP
+- 	Steve Greenberg	 : 	Google
+- 	Steven Taylor	 : 	VMware, Inc.
+- 	Stu Charlton	 : 	VMware, Inc.
+- 	Subhankar Chattopadhyay	 : 	SAP
+- 	Sunjay Bhatia	 : 	VMware, Inc.
+- 	Teal Stannard	 : 	VMware, Inc.
+- 	Thomas Quandt	 : 	evoila GmbH
+- 	Thulio Ferraz Assis	 : 	SUSE LLC
+- 	Tim Hardeck	 : 	SUSE LLC
+- 	Tim Hausler	 : 	VMware, Inc.
+- 	Tim Hitchener	 : 	VMware, Inc.
+- 	Timothy Downey	 : 	VMware, Inc.
+- 	Tobias Schug	 : 	Microsoft Corporation
+- 	Toby Lorne	 : 	NHS
+- 	Travis Patterson	 : 	VMware, Inc.
+- 	Troy Topnik	 : 	SUSE LLC
+- 	Tushar Aggarwal	 : 	VMware, Inc.
+- 	Ulrich Kramer	 : 	SAP
+- 	Valeria Perticara	 : 	IBM
+- 	Venkata Krishna Rohit Sakala	 : 	SUSE LLC
+- 	Victoria Henry	 : 	VMware, Inc.
+- 	Vinayendraswamy Brahmandabheri	 : 	SAP
+- 	Visarg Soneji	 : 	SAP
+- 	Vivek Anand T Kallampally	 : 	SAP
+- 	Vlad Iovanov	 : 	SUSE LLC
+- 	Weyman Fung	 : 	VMware, Inc.
+- 	Will Pragnell	 : 	VMware, Inc.
+- 	Yulia Nedyalkova	 : 	SAP
