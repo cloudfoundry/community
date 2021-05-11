@@ -49,7 +49,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Bruce Ricard	 : 	VMware
 - 	Caitlyn Yu	 : 	VMware
 - 	Carson Long	 : 	VMware
-- 	Chip Childers	 : 	Forbes Technology Council
 - 	Chloe Hollingsworth	 : 	VMware
 - 	Chris Selzo	 : 	VMware
 - 	Christian Ang	 : 	VMware
@@ -239,7 +238,7 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Stefan Lay	 : 	SAP
 - 	Stefan Wutz	 : 	SAP
 - 	Stephen Levine	 : 	VMware
-- 	Steve Greenberg	 : 	Google
+- 	Steve Greenberg	 : 	Resilient Scale
 - 	Steve Taylor	 : 	VMware
 - 	Steven Taylor	 : 	VMware
 - 	Stu Charlton	 : 	VMware
@@ -260,8 +259,8 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Tushar Aggarwal	 : 	VMware
 - 	Ulrich Kramer	 : 	SAP
 - 	Urse Searle	 : 	VMware
+-   Valentin Velkov  :  SAP
 - 	Valeria Perticara	 : 	IBM
-- 	Valeria Perticara	 : 	VMware
 - 	Venkata Krishna Rohit Sakala	 : 	SUSE
 - 	Victor Cuadrado Juan	 : 	SUSE
 - 	Victoria Henry	 : 	VMware
