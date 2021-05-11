@@ -10,9 +10,6 @@ Changes to these policies and agreements require a vote of the CFF Governing Boa
 * [CFF Charter](governing-board/charter.md) - (Status: ACTIVE) - The charter 
 for the CFF, included in the participation agreement that every member signs
 
-* [CFF Charter Proposal](governing-board/charter-with-toc.md) - (Status: PROPOSED) - Proposed version of 
-the CFF Charter that restructures the PMC Council into a Technical Oversight Committee
-
 * [Foundation Governance](https://www.cloudfoundry.org/governance/) - (Status: ACTIVE) - Top level 
 policies of the Cloud Foundry Foundation
 
@@ -29,13 +26,13 @@ governance of the Cloud Foundry community
 * [Roles](toc/ROLES.md) - (Status: PROPOSED) - Description of the various technical community roles 
 and the responsibilities, requirements, privileges and scope of each role
 
-* [Technical Oversight Committee](toc/TOC.md) - (Status: PROPOSED) - Technical governance structure and 
+* [Technical Oversight Committee](toc/TOC.md) - (Status: ACTIVE) - Technical governance structure and 
 process
 
 * [Governance Concept](toc/GOVERNANCE.md) - (Status: INFORMATIONAL) - Informational background on the 
 thinking behind how the TOC should structure the work of the technical community.
 
-* [Change Plan](toc/CHANGEPLAN.md) - (Status: PROPOSED / WORK IN PROGRESS) - Plan for how to get from the community's current policies and practices to a new desired state
+* [Change Plan](toc/CHANGEPLAN.md) - (Status: WORK IN PROGRESS) - Plan for how to get from the community's current policies and practices to a new desired state
 
 ## Working Groups
 
