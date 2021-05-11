@@ -32,8 +32,8 @@ eligibility to be nominated for the TOC during the first election will
 be defined as:
 
 * Community members who are PMC Leads, Project Leads or committers within 
-  any PMC or project. Additionally, each member organization of the CFF
-  will have an opportunity, if they desire, to nominate a candidate for the
+  any PMC or project. Each member organization of the CFF can also nominate 
+  one additional person not meeting these criteria as a candidate for the 
   first TOC election.
   
 ### Initial TOC Election Voter Eligibility
