@@ -276,3 +276,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Andy Paine	 : 	EngineerBetter
 -   Patrick Lowin	 : 	SAP
 -   Jens Huesken	 : 	SAP
+-   Stephan Merker	 : 	SAP
