@@ -274,3 +274,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Yulia Nedyalkova	 : 	SAP
 -   Philipp Thun	 : 	SAP
 -   Andy Paine	 : 	EngineerBetter
+-   Patrick Lowin	 : 	SAP
