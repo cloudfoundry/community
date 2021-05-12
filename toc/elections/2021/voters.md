@@ -75,7 +75,7 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Edwin Xie	 : 	VMware
 - 	Emily Casey	 : 	VMware
 - 	Emily Johnson	 : 	VMware
-- 	Eric Malm	 : 	VMWare
+- 	Eric Malm	 : 	VMware
 - 	Eric Promislow	 : 	SUSE
 - 	Ernie Billing	 : 	VMware
 - 	Ettore Di Giacinto	 : 	SUSE
@@ -186,7 +186,7 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Miguel Luna	 : 	VMware
 - 	Mikael Manukyan	 : 	VMware
 - 	Miranda Limonczenko	 : 	VMware
-- 	Mona Mohebbi	 : 	VMWare
+- 	Mona Mohebbi	 : 	VMware
 - 	Morgan Fine	 : 	VMware
 - 	Nadja Conklin	 : 	VMware
 - 	Nat J. Bennett	 : 	VMware
