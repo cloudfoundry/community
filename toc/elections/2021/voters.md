@@ -277,3 +277,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Patrick Lowin	 : 	SAP
 -   Jens Huesken	 : 	SAP
 -   Stephan Merker	 : 	SAP
+-   Johannes Haaß	 : 	SAP
