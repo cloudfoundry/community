@@ -272,3 +272,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Will Pragnell	 : 	VMware
 - 	Yaron Parasol	 : 	VMware
 - 	Yulia Nedyalkova	 : 	SAP
+-   Philipp Thun	 : 	SAP
