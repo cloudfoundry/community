@@ -8,5 +8,7 @@ assignees: ''
 ---
 
 Github Username: [put the username to be added]
-Community participation: [describe your community participation over the last year]
 
+Affiliation: [employer of candidate]
+
+Community participation: [describe your community participation over the last year]
