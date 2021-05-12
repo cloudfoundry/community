@@ -282,3 +282,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Mo Sahihi Benis	 : 	SAP
 -   Kai Hofstetter	 : 	SAP
 -   Florian Nachtigall	 : 	SAP
+-   Marc Paquette	 : 	VMware
