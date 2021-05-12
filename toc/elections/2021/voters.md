@@ -273,3 +273,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Yaron Parasol	 : 	VMware
 - 	Yulia Nedyalkova	 : 	SAP
 -   Philipp Thun	 : 	SAP
+-   Andy Paine	 : 	EngineerBetter
