@@ -283,3 +283,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Kai Hofstetter	 : 	SAP
 -   Florian Nachtigall	 : 	SAP
 -   Marc Paquette	 : 	VMware
+-   Sven Krieger	 : 	SAP
