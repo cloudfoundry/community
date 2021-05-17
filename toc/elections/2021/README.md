@@ -4,7 +4,7 @@
 
 Each year, the CFF technical community holds an election for open seats on the 
 Technical Oversight Committee (TOC). The rules governing this election are set in the 
-[CFF's project charter](../../../governing-board/charter.md) (See section 9(b) and 9(e) 
+[CFF's project charter](../../../governing-board/charter.md) (See section 7(b) and 7(e)
 for the relevant details).
 
 This guide exists to serve as a guide to this year's election process.
