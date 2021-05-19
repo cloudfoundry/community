@@ -285,3 +285,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Marc Paquette	 : 	VMware
 -   Sven Krieger	 : 	SAP
 -   Jovan Kostovski	 : 	SAP
+-   Norman Abramovitz	 : 	Stark & Wayne
