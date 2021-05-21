@@ -139,7 +139,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Josh Zarrabi	 : 	VMware
 - 	Joshua Casey	 : 	VMware
 - 	Joshua Russett	 : 	VMware
-- 	Julian Hjortshoj	 : 	EMC
 - 	Julian Hjortshoj	 : 	VMware
 - 	Julian Skupnjak	 : 	IBM
 - 	Julz Friedman	 : 	IBM
