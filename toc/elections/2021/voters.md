@@ -285,3 +285,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Sven Krieger	 : 	SAP
 -   Jovan Kostovski	 : 	SAP
 -   Norman Abramovitz	 : 	Stark & Wayne
+-   Winna Bridgewater	 : 	VMware
