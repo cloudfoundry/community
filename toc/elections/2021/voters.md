@@ -12,7 +12,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Abil Dermendzhiev	 : 	SAP
 - 	Adam Hevenor	 : 	VMware
 - 	Aidan Obley	 : 	VMware
-- 	Alex Standke	 : 	VMware
 - 	Alexander Berezovsky	 : 	VMware
 - 	Alexander Standke	 : 	VMware
 - 	Alexander Tsvetkov	 : 	SAP
@@ -121,7 +120,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Jaskanwal Pawar	 : 	VMware
 - 	Jatin Naik	 : 	VMware
 - 	Jayesh Kshirsagar	 : 	SAP
-- 	Jeff Bunagan	 : 	HCL Cloud Native Labs
 - 	Jeff Bunagan	 : 	HCL Technologies Ltd.
 - 	Jen Spinney	 : 	VMware
 - 	Jenna Goldstrich	 : 	VMware
@@ -129,7 +127,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Jeremy Morony	 : 	VMware
 - 	Jesse Weaver	 : 	VMware
 - 	Jimmy Ma	 : 	IBM
-- 	JimmyMa	 : 	Sina Com Technology
 - 	Joe Gee	 : 	VMware
 - 	Johannes Dillmann	 : 	SAP
 - 	John Shahid	 : 	VMware
@@ -142,7 +139,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Julian Hjortshoj	 : 	VMware
 - 	Julian Skupnjak	 : 	IBM
 - 	Julz Friedman	 : 	IBM
-- 	Julz Skupnjak	 : 	IBM
 - 	Kaiting Chen	 : 	VMware
 - 	Kaitlin Barrer	 : 	VMware
 - 	Kartik Lunkad	 : 	VMware
@@ -158,7 +154,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Leah Hanson	 : 	VMware
 - 	Lisa Burns	 : 	VMware
 - 	Louie Brann	 : 	Techstars
-- 	Louie Brann	 : 	VMware
 - 	Lubron Zhan	 : 	VMware
 - 	Marcela Campo	 : 	VMware
 - 	Marco Nicosia	 : 	VMware
@@ -177,7 +172,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Max Hufnagel	 : 	VMware
 - 	Maya Rosecrance	 : 	VMware
 - 	Melinda Gutermuth	 : 	VMware
-- 	Melinda Jeffs Gutermuth	 : 	VMware
 - 	Merric de Launey	 : 	VMware
 - 	Mia Fryling	 : 	VMware
 - 	Michael Claassen	 : 	Manulife Financial
@@ -194,7 +188,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Nick Webb	 : 	VMware
 - 	Nikolay Valchev	 : 	SAP
 - 	Nitya Dhanushkodi	 : 	HashiCorp
-- 	Nitya Dhanushkodi	 : 	VMware
 - 	Omer Bensaadon	 : 	VMware
 - 	Paige Calvert	 : 	VMware
 - 	Paul Harris	 : 	VMware
@@ -219,7 +212,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Ryan Moran	 : 	VMware
 - 	Ryker Reed	 : 	VMware
 - 	Saikiran Yerram	 : 	VMware
-- 	Sakala Rohit	 : 	SUSE
 - 	Sakala Venkata Krishna Rohit	 : 	SUSE
 - 	Sam Coward	 : 	VMware
 - 	Samuel Waggoner	 : 	VMware
@@ -239,7 +231,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Stephen Levine	 : 	VMware
 - 	Steve Greenberg	 : 	Resilient Scale
 - 	Steve Taylor	 : 	VMware
-- 	Steven Taylor	 : 	VMware
 - 	Stu Charlton	 : 	VMware
 - 	Subhankar Chattopadhyay	 : 	SAP
 - 	Sunjay Bhatia	 : 	VMware
@@ -260,7 +251,6 @@ Eligible voters that are not shown are encouraged to have their name added by
 - 	Urse Searle	 : 	VMware
 -   Valentin Velkov  :  SAP
 - 	Valeria Perticara	 : 	IBM
-- 	Venkata Krishna Rohit Sakala	 : 	SUSE
 - 	Victor Cuadrado Juan	 : 	SUSE
 - 	Victoria Henry	 : 	VMware
 - 	Vinayendraswamy Brahmandabheri	 : 	SAP
