@@ -277,3 +277,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Norman Abramovitz	 : 	Stark & Wayne
 -   Winna Bridgewater	 : 	VMware
 -   Silvestre Zabala	 : 	SAP
+-   Sven Kohlhaas	 : 	SAP
