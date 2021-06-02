@@ -279,3 +279,4 @@ Eligible voters that are not shown are encouraged to have their name added by
 -   Silvestre Zabala	 : 	SAP
 -   Sven Kohlhaas	 : 	SAP
 -   Peter Burkholder	 : 	Self (Unaffiliated)
+-   Simon Moser	 : 	IBM
