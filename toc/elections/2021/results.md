@@ -43,4 +43,4 @@ Our TOC rules for a maximum of 2 TOC members from the same employer must be appl
 
 Eric and David were the top two nominees of the group, meaning that both of them will have the full two year TOC member term. Jan, Stephan and Lee will each have a one year term, and their seats on the TOC will be up for election again in 2022. Keep in mind that this difference in term lengths only applies to this first election. In 2022, those three TOC seats will be elected for the standard TOC member term of two years. Of course, Jan, Stephan and Lee will be more than welcome to run in 2022.
 
-Records of all cast ballots are available in [CSV format here](https://github.com/cloudfoundry/community/blob/main/toc/elections/2021/ballots.md).
+Records of all cast ballots are available in [CSV format here](https://github.com/cloudfoundry/community/blob/main/toc/elections/2021/ballots.csv).
