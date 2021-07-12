@@ -82,7 +82,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p><b>For 1+ repos in an area:</b></p>
         <p>Triage PRs and issues</p>
         <p>Approve and merge contributions from other members</p>
-        <p>Perform small maintenance tasks, such as debugging test failures</p>
+        <p>Perform maintenance tasks, such as debugging test failures</p>
     </td>
     <td>Highly experienced and active reviewer and contributor to an area</td>
     <td>Entry in one or more OWNERS files in GitHub, and write permissions
