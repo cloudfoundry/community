@@ -50,10 +50,10 @@ establish sub-working groups. Working groups delegate change approval to Approve
   </thead>
 
   <tr>
-    <td>(none)</td>
+    <td>(everyone)</td>
     <td>None</td>
     <td>
-        <p>Signed CLA</p>
+        <p>Signed CLA (only for PRs)</p>
     </td>
     <td>
         <p>Can submit PRs and issues</p>
