@@ -29,22 +29,81 @@ other system (Apple Calendar or Outlook, for example),
 
 The current working groups are:
 
-- [<Working group name>](#<Working group name>)
+- App Runtime Deployments
+- App Runtime Interfaces
+- App Runtime Platform
+- Buildpacks
+- Community Experience
+- Foundational Infrastructure
+- Service Management
+- Vulnerability Management
 
 
+## App Runtime Deployments
 
-## <Working group name>
+Mission: Provides reference deployments of the CF App Runtime to CF community end users, CF community contributors, and CF commercial vendors.
 
-<GitHub repositories>
+Technical assets: Includes components from the CF Infrastructure (BOSH boot-loader), KubeCF, Quarks, and Release Integration projects.
 
-| Artifact                   | Link                                                                                                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Forum                      | []()                                                                                           |
-| Community Meeting VC       | See the top of the [Meeting notes]()                                      |
-| Community Meeting Calendar | WEEKDAY TIME <br>[Calendar]() |
-| Meeting Notes              | [Notes]()                                                                 |
-| Document Folder            | [Folder]()                                                                       |
-| Slack Channel              | [#serving-api]()                                                                                                |
+
+## App Runtime Interfaces
+
+Mission: Provides APIs for the CF App Runtime and community clients for end users.
+
+Technical assets: Includes components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, Notifications, and Stratos projects.
+
+
+## App Runtime Platform
+
+Mission: Provides operational components for the CF App Runtime, including those for application build, application execution, ingress and app-to-app routing, and aggregation of application logs and metrics.
+
+Technical assets: Includes components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Networking, Windows Containers projects.
+
+
+## Buildpacks
+
+Mission: Provides cloud-native buildpacks for servers, languages, and frameworks popular with application developers.
+
+Technical assets: Includes components from the CF Buildpacks, Java Buildpack, and Paketo projects.
+
+
+## Community Experience
+
+Mission: Provides accessible, clear entrypoints for CF end users and contributors, including documentation and example resources.
+
+Technical assets: Includes repositories for Cloud Foundry documentation sites.
+
+
+## Foundational Infrastructure
+
+Mission: Provides infrastructure automation and core capabilities shared across CF projects, including identity management, credential management, and integrated data services.
+
+Technical assets: Includes components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and UAA projects.
+
+
+## Service Management
+
+Mission: Provides interfaces and frameworks for the management of services within application platforms.
+
+Technical assets: Includes components from the Cloud Service Broker, Open Service Broker API, Service Fabrik, and Volume Services projects.
+
+
+## Vulnerability Management
+
+Mission: Coordinates intake, processing, and disclosure of security reports and issues relevant for active CF projects.
+
+Technical assets: Includes security process and broadcast channels for security disclosures.
+
+
+## (Working Group Template)
+
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Forum                      | TBD  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channel              | TBD  |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
