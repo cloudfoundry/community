@@ -57,7 +57,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     </td>
     <td>
         <p>Can submit PRs and issues</p>
-        <p>Can join slack workspace</p>
+        <p>Can join CF Slack workspace</p>
         <p>Can take part in community discussions</p>
     </td>
     <td>GitHub Organization</td>
