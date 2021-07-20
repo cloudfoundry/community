@@ -282,6 +282,8 @@ approver in an OWNERS file:
 
 - Approve code contributions for acceptance.
 
+- Triage new issues and PRs.
+
 # Working Group Leadership Roles
 
 We differentiate here between two key roles, WG Execution Lead and WG Technical
