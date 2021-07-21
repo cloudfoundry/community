@@ -43,19 +43,20 @@ TBD
 
 ## Technical Assets
 
-Existing CF App Runtime deployments, namely cf-deployment, KubeCF, and cf-for-k8s, along with Quarks and bosh-bootloader.
+Existing CF App Runtime deployments, namely cf-deployment, KubeCF, and cf-for-k8s, along with Quarks.
 
 Repositories:
 - https://github.com/cloudfoundry/cf-deployment
+- https://github.com/cloudfoundry/cf-deployment-concourse-tasks/
 - https://github.com/cloudfoundry/cf-acceptance-tests
 - https://github.com/cloudfoundry/cf-smoke-tests
 - https://github.com/cloudfoundry/cf-smoke-tests-release
 - https://github.com/cloudfoundry/uptimer
-- https://github.com/cloudfoundry/bosh-bootloader
+- https://github.com/cloudfoundry/runtime-ci/
 - https://github.com/cloudfoundry/cf-for-k8s
 - https://github.com/cloudfoundry-incubator/kubecf
 - https://github.com/cloudfoundry-incubator/quarks-operator
 
-Public, active pipelines for building and releasing CF deployments.
+Public, active pipelines for building and releasing CF deployments, to be run on CFF community infrastructure.
 
 
