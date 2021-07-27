@@ -50,7 +50,36 @@ establish sub-working groups. Working groups delegate change approval to Approve
   </thead>
 
   <tr>
+    <td>(everyone)</td>
+    <td>None</td>
+    <td>None</td>
+    <td>
+        <p>Can submit PRs and issues</p>
+        <p>Can join CF Slack workspace</p>
+        <p>Can take part in community discussions</p>
+    </td>
+    <td>GitHub Organization</td>
+  </tr>  
+
+  <tr>
     <td>Member</td>
+    <td>
+        <p>Adheres to code of conduct</p>
+    </td>
+    <td>
+        <p>Signed CLA (only for PRs)</p>
+    </td>
+    <td>
+        <p>Can get PRs accepted</p>
+    </td>
+    <td>GitHub Organization</td>
+  </tr>
+
+  <tr>
+    <td rowspan="2">Contributor</td>
+    <td colspan="4"><i>Inherits from Member Role</i></td>
+  </tr>
+  <tr>
     <td>Regular active contributor in the community</td>
     <td>
         <p>Has made multiple contributions to the project</p>
@@ -63,9 +92,16 @@ establish sub-working groups. Working groups delegate change approval to Approve
   </tr>
 
   <tr>
-    <td>Approver</td>
+  <tr>
+    <td rowspan="2">Approver</td>
+    <td colspan="4"><i>Inherits from Contributor Role</i></td>
+  </tr>
+  <tr>
     <td>
-        <p>Approve contributions from other members</p>
+        <p><b>For 1+ repos in an area:</b></p>
+        <p>Triage PRs and issues</p>
+        <p>Approve and merge contributions from other members</p>
+        <p>Perform small maintenance tasks, such as debugging test failures</p>
     </td>
     <td>Highly experienced and active reviewer and contributor to an area</td>
     <td>Entry in one or more OWNERS files in GitHub, and write permissions
@@ -75,7 +111,10 @@ establish sub-working groups. Working groups delegate change approval to Approve
   </tr>
 
   <tr>
-    <td>Working Group Technical Lead</td>
+    <td rowspan="2">Working Group Technical Lead</td>
+    <td colspan="4"><i>Inherits from Approver Role</i></td>
+  </tr>
+  <tr>
     <td>
         <p>Set priorities for a functional area and approve proposals</p>
         <p>Triage incoming issues, set milestones, repo labels</p>
@@ -92,7 +131,10 @@ establish sub-working groups. Working groups delegate change approval to Approve
   </tr>
 
   <tr>
-    <td>Working Group Execution Lead</td>
+    <td rowspan="2">Working Group Execution Lead</td>
+    <td colspan="4"><i>Inherits from Contributor Role</i></td>
+  </tr>
+  <tr>
     <td>
         <p>Run their working group: Meetings, notes, roadmap, report</p>
         <p>Responsible for the holistic health of the <i>working group</i></p>
@@ -109,7 +151,10 @@ establish sub-working groups. Working groups delegate change approval to Approve
   </tr>
 
   <tr>
-    <td>Scribe</td>
+    <td rowspan="2">Scribe</td>
+    <td colspan="4"><i>Inherits from Member Role</i></td>
+  </tr>
+  <tr>
     <td>
         <p>Ensure important information is represented in working group notes</p>
         <p>Post WG recordings to team drive</p>
@@ -123,20 +168,32 @@ establish sub-working groups. Working groups delegate change approval to Approve
 
 ## Member
 
-Established community members are expected to demonstrate their adherence to the
+A member is an occasional community contributor. They should adhere to the code of conduct, and
+work towards becoming contributors as their involvement increases.
+
+### Requirements
+
+- Signs CLA
+- Files PRs for changes and is responsive to feedback on their PRs.
+
+## Contributor
+
+<i>Includes everything from [Member](#member)</i>
+
+Established community contributor are expected to demonstrate their adherence to the
 principles in this document, familiarity with project organization, roles,
 policies, procedures, conventions, etc., and technical and/or writing ability.
 
-Members are continuously active contributors in the community. They can have
+Contributors are continuously active making contributions the community. They can have
 issues and PRs assigned to them, participate in working group meetings, and
-pre-submit tests are automatically run for their PRs. Members are expected to
-remain active contributors to the community.
+pre-submit tests are automatically run for their PRs. Contributors are expected to
+remain active in the community.
 
-All members are encouraged to help with the code review burden, although each PR
+All contributors are encouraged to help with community code review, although each PR
 must be reviewed by an official [Approver](#approver).
 
-When reviewing, members should focus on code quality and correctness, including
-testing and factoring. Members might also review for more holistic issues, but
+When reviewing, contributors should focus on code quality and correctness, including
+testing and factoring. Contributors might also review for more holistic issues, but
 this is not a requirement.
 
 ### Requirements
@@ -168,18 +225,20 @@ this is not a requirement.
 
   - Addresses bugs or issues discovered after code is accepted.
 
-Members who frequently contribute code are expected to proactively perform code
+Contributors who frequently contribute code are expected to proactively perform code
 reviews and work towards becoming an approver for the area that they are active
 in.
 
 ## Approver
+
+<i>Includes everything from [Contributor](#contributor)</i>
 
 Approvers are able to both review and approve code contributions. While
 code review is focused on code quality and correctness, approval is focused on
 holistic acceptance of a contribution including: backward / forward
 compatibility, adhering to API and flag conventions, subtle performance and
 correctness issues, interactions with other parts of the system, etc. Approver
-status is scoped to a part of the codebase.
+status is scoped to a subset of the working group's codebases.
 
 ### Requirements
 
@@ -217,9 +276,13 @@ approver in an OWNERS file:
 
 - Expected to be responsive to review requests as per community expectations.
 
+- Shares burden of executing smaller maintenance tasks in the working group
+
 - Mentor new contributors and project members.
 
 - Approve code contributions for acceptance.
+
+- Triage new issues and PRs.
 
 # Working Group Leadership Roles
 
@@ -230,6 +293,8 @@ performing these roles. There is no 'formula': it is up to the working group
 leadership to determine what is best for their working group.
 
 ## Working Group Technical Lead
+
+<i>Includes everything from [Approver](#approver)</i>
 
 Working group technical leads, or just 'tech leads', are approvers of an entire
 area that have demonstrated good judgement and responsibility. Tech leads accept
@@ -291,6 +356,8 @@ The following apply to the area / component for which one would be an owner.
 
 ## Working Group Execution Lead
 
+<i>Includes everything from [Contributor](#contributor)</i>
+
 Working group execution leads, or just 'execution leads', are responsible for
 the overall health and execution of the working group itself. Execution leads
 work with tech leads to ensure that the working group is making progress toward
@@ -342,6 +409,8 @@ be the tech lead in a smaller working group, but they are distinct roles.
   - Mentoring and guiding approvers, members, and new contributors.
 
 ## Scribe
+
+<i>Includes everything from [Member](#member)</i>
 
 One of the most underrated roles in open source projects is the role of note
 taker. The importance and value of this role is frequently overlooked and
