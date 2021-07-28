@@ -52,11 +52,9 @@ during the community feedback period at the end of each meeting.
 
 | Artifact                   | Link                                                                                                                                                     |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Google Group               | [cf-toc@lists.cloudfoundry.org](https://lists.cloudfoundry.org//g/cf-toc)                                                                                |
-| Community Meeting VC       | See the top of the [Meeting notes]()                                                                                                                     |
-| Community Meeting Calendar | Xdays at XX:XXa-XXp <br>[Calendar]()                                                                                                                     |
-| Meeting Notes              | [Notes]()                                                                                                                                                |
-| Document Folder            | [Folder]()                                                                                                                                               |
+| Meeting Schedule | Tuesdays from 10:30 to 11:30 am ET <br>[CF Community Calendar](https://www.cloudfoundry.org/community-calendar/)                                                                                                                     |
+| Meeting Video Chat       | See the coordinates section of the [meeting notes](https://docs.google.com/document/d/1ng8rAcnrCbTm5RVNAKZ_ptqXiwcBIPgC8rbYp6A8lUo/edit#heading=h.dlm4q8auhcx4)                                                                                                                     |
+| Meeting Notes              | [CFF TOC meeting notes](https://docs.google.com/document/d/1ng8rAcnrCbTm5RVNAKZ_ptqXiwcBIPgC8rbYp6A8lUo/edit)                                                                                                                                                |
 
 ## Members
 
