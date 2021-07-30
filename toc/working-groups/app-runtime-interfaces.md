@@ -8,7 +8,7 @@ Provides APIs for the CF App Runtime and community clients for end users.
 ## Goals
 
 - End users can build against a stable, reliable, performing and well documented CF API.
-- End users can chose from a range of CF API clients according to their needs: cli, UI and client libraries for selected programming languages.
+- End users can choose from a range of CF API clients according to their needs: cli, UI and client libraries for selected programming languages.
 - Community Contributors and especially the App Runtime Deployments WG can integrate a tested CF API release into the different CF distributions.
 
 
@@ -58,6 +58,8 @@ CAPI:
 - https://github.com/cloudfoundry/capi-k8s-release
 - https://github.com/cloudfoundry/capi-ci
 - https://github.com/cloudfoundry-incubator/cf-performance-tests
+- https://github.com/cloudfoundry/tps
+- https://github.com/cloudfoundry/cc-uploader
 
 CLI
 - https://github.com/cloudfoundry/cli
