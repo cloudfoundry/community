@@ -7,7 +7,8 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 ## Goals
 
-- End users can build against a stable, reliable, performing and well documented CF API.
+- End users can build against a stable, reliable, performant and well documented CF API.
+- End users can build against a stable, reliable, performant and well documented higher-level CF API related services.
 - End users can choose from a range of CF API clients according to their needs: cli, UI and client libraries for selected programming languages.
 - Community Contributors and especially the App Runtime Deployments WG can integrate a tested CF API release into the different CF distributions.
 
@@ -20,6 +21,7 @@ Provides APIs for the CF App Runtime and community clients for end users.
 - Provide the community with pipelines and test suites to validate functionality, compatibility and performance of the CF API.
 - Provide the community with technical API documentation, end user documentation and operator documentation.
 - Collaborate with the other Working Groups and evolve the cf-push experience.
+- Where it is appropriate, integrate higher-level API extensions into CF API directly.
 
 
 ## Non-Goals
@@ -29,8 +31,11 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 ## Open Questions
 
+- Should we split up this WG into a 'core interfaces' and 'extension' WG or try to manage the impressive long list of github projects in one WG? E.g.:
+  - 'core' App Runtime Interfaces WG: Buildpacks, CAPI, CLI
+  - App Runtime Extensions WG: Autoscaler, Java Tools, Multiapps, Notifications, Stratos, additional language clients (Python, golang)
 - Include https://github.com/cloudfoundry-community/cf-python-client as a second language binding that is under active development?
-- Ownership of CF API related test projects like capi-bara-tests, cf-performance-tests, cf-smoke-tests, cf-acceptance-tests
+- Ownership of CF API related test projects like capi-bara-tests, cf-performance-tests, cf-smoke-tests, cf-acceptance-tests: Interface or Deployments WG
 
 
 ## Proposed Membership
@@ -49,6 +54,48 @@ Autoscaler:
 - https://github.com/cloudfoundry/app-autoscaler
 - https://github.com/cloudfoundry/app-autoscaler-ci
 - https://github.com/cloudfoundry/app-autoscaler-cli-plugin
+
+Buildpacks
+- https://github.com/cloudfoundry/java-buildpack
+- https://github.com/cloudfoundry/java-buildpack-memory-calculator
+- https://github.com/cloudfoundry/java-buildpack-release
+- https://github.com/cloudfoundry/java-buildpack-system-test
+- https://github.com/cloudfoundry/java-buildpack-dependency-builder
+- https://github.com/cloudfoundry/java-buildpack-container-customizer
+- https://github.com/cloudfoundry/java-test-applications
+- https://github.com/cloudfoundry/java-buildpack-support
+- https://github.com/cloudfoundry/java-buildpack-security-provider
+- https://github.com/cloudfoundry/java-buildpack-metric-writer
+- https://github.com/cloudfoundry/java-buildpack-client-certificate-mapper
+- https://github.com/cloudfoundry/java-buildpack-auto-reconfiguration
+- https://github.com/cloudfoundry/ibm-websphere-liberty-buildpack
+- https://github.com/cloudfoundry/nodejs-buildpack
+- https://github.com/cloudfoundry/nodejs-buildpack-release
+- https://github.com/cloudfoundry/php-buildpack
+- https://github.com/cloudfoundry/php-buildpack-release
+- https://github.com/cloudfoundry/ruby-buildpack
+- https://github.com/cloudfoundry/ruby-buildpack-release
+- https://github.com/cloudfoundry/python-buildpack
+- https://github.com/cloudfoundry/python-buildpack-release
+- https://github.com/cloudfoundry/go-buildpack
+- https://github.com/cloudfoundry/go-buildpack-release
+- https://github.com/cloudfoundry/binary-buildpack
+- https://github.com/cloudfoundry/binary-buildpack-release
+- https://github.com/cloudfoundry/nodejs-buildpack
+- https://github.com/cloudfoundry/nodejs-buildpack-release
+- https://github.com/cloudfoundry/dotnet-core-buildpack
+- https://github.com/cloudfoundry/dotnet-core-buildpack-release
+- https://github.com/cloudfoundry/hwc-buildpack
+- https://github.com/cloudfoundry/hwc-buildpack-release
+- https://github.com/cloudfoundry/nginx-buildpack
+- https://github.com/cloudfoundry/nginx-buildpack-release
+- https://github.com/cloudfoundry/staticfile-buildpack
+- https://github.com/cloudfoundry/staticfile-buildpack-release
+- https://github.com/cloudfoundry/r-buildpack
+- https://github.com/cloudfoundry/r-buildpack-release
+- https://github.com/cloudfoundry/apt-buildpack
+- https://github.com/cloudfoundry/docs-buildpacks
+- https://github.com/cloudfoundry/brats
 
 CAPI:
 - https://github.com/cloudfoundry/cloud_controller_ng
