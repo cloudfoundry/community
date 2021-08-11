@@ -9,7 +9,7 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 
 - Provides end users with stable, reliable and performant buildpacks in which to host their application.
 - Provides end users with buildpacks that are compatable with multiple platforms.
-- Collaborate with App Runtime Interfaces WG to enable Paketo buildpacks to have first class support in Cloud Foundry.
+- Provides documentation to enable platforms to adopt Paketo buildpacks and maintain compatability with Paketo buildpacks.
 
 ## Scope
 
@@ -17,6 +17,7 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 - Provide timely releases to address CVEs.
 - Maintain public roadmaps for the development of Paketo.
 - Provide the community with technical and end user documentation.
+- Collaborate with App Runtime Interfaces WG to enable Paketo buildpacks to have first class support in Cloud Foundry.
 
 ## Non-Goals
 
