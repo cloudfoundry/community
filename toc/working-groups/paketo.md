@@ -7,9 +7,9 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 
 ## Goals
 
-- Provides end users with stable, reliable and performant buildpacks in which to host their application.
-- Provides end users with buildpacks that are compatable with multiple platforms.
-- Provides documentation to enable platforms to adopt Paketo buildpacks and maintain compatability with Paketo buildpacks.
+- Provides end users with stable, reliable and performant buildpacks with which to build their application.
+- Provides end users with buildpacks that are compatable with multiple platforms (i.e. Cloud Foundry, Docker, Kubernetes).
+- Provides documentation to enable platforms to adopt Paketo buildpacks and maintain compatibility with Paketo buildpacks.
 
 ## Scope
 
