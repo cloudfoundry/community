@@ -7,7 +7,7 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Goals
 
-- End-user platform teams have reliable, performant, and well-documented system components to provide core CF App Runtime capabilities on supported infrastructure platforms, such as BOSH and Kubernetes.
+- End-user platform teams have reliable, performant, and well-documented system components to provide core CF App Runtime capabilities on designated infrastructure platforms, such as BOSH and Kubernetes.
 - Community contributors can build against core CF App Runtime system components via stable, well-documented APIs.
 - Community contributors can integrate tested CF App Runtime components into community reference deployments.
 
@@ -26,14 +26,19 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Non-Goals
 
-
+- Be responsible for these functional domain areas outside of the CF App Runtime system.
 
 
 ## Proposed Membership
 
 - Technical Lead(s): @ameowlia, others TBD
 - Execution Lead(s): TBD
-- Approvers: TBD
+- Approvers by area:
+  - Diego: @acrmp, @aminjam, @Benjamintf1, @jrussett, @pivotalgeorge, @reneighbor, @selzoc
+  - Eirini: @danail-branekov, @gcapizzi, @georgethebeatle, @kieron-dev, @mnitchev
+  - Garden Containers: @aemengo, @danail-branekov, @gcapizzi, @georgethebeatle, @kieron-dev, @mnitchev
+  - Logging and Metrics: @acrmp, @aminjam, @Benjamintf1, @jrussett, @pivotalgeorge, @reneighbor, @selzoc
+  - Networking: @46bit, @acrmp, @aminjam, @Benjamintf1, @domdom82, @geofffranks, @Gerg, @jrussett, @mkocher, @pivotalgeorge, @reneighbor, @selzoc, @stefanlay
 
 
 ## Technical Assets
@@ -43,44 +48,44 @@ Components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Network
 ### Diego
 * https://github.com/cloudfoundry/diego-release
   * https://github.com/cloudfoundry/archiver
-  *  https://github.com/cloudfoundry/auction
-  *  https://github.com/cloudfoundry/auctioneer
-  *  https://github.com/cloudfoundry/bbs
-  *  https://github.com/cloudfoundry/benchmarkbbs
-  *  https://github.com/cloudfoundry/bytefmt
-  *  https://github.com/cloudfoundry/cacheddownloader
-  *  https://github.com/cloudfoundry/certsplitter
-  *  https://github.com/cloudfoundry/cfdot
-  *  https://github.com/cloudfoundry/clock
-  *  https://github.com/cloudfoundry/consuladapter
-  *  https://github.com/cloudfoundry/debugserver
-  *  https://github.com/cloudfoundry/diego-dockerfiles
-  *  https://github.com/cloudfoundry/diego-logging-client
-  *  https://github.com/cloudfoundry/diego-upgrade-stability-tests
-  *  https://github.com/cloudfoundry/dockerdriver
-  *  https://github.com/cloudfoundry/durationjson
-  *  https://github.com/cloudfoundry/ecrhelper
-  *  https://github.com/cloudfoundry/eventhub
-  *  https://github.com/cloudfoundry/executor
-  *  https://github.com/cloudfoundry/fileserver
-  *  https://github.com/cloudfoundry/healthcheck
-  *  https://github.com/cloudfoundry/inigo
-  *  https://github.com/cloudfoundry/localdriver
-  *  https://github.com/cloudfoundry/localip
-  *  https://github.com/cloudfoundry/locket
-  *  https://github.com/cloudfoundry/operationq
-  *  https://github.com/cloudfoundry/rep
-  *  https://github.com/cloudfoundry/route-emitter
-  *  https://github.com/cloudfoundry/systemcerts
-  *  https://github.com/cloudfoundry/tlsconfig
-  *  https://github.com/cloudfoundry/vizzini
-  *  https://github.com/cloudfoundry/volman
-  *  https://github.com/cloudfoundry/workpool
+  * https://github.com/cloudfoundry/auction
+  * https://github.com/cloudfoundry/auctioneer
+  * https://github.com/cloudfoundry/bbs
+  * https://github.com/cloudfoundry/benchmarkbbs
+  * https://github.com/cloudfoundry/bytefmt
+  * https://github.com/cloudfoundry/cacheddownloader
+  * https://github.com/cloudfoundry/certsplitter
+  * https://github.com/cloudfoundry/cfdot
+  * https://github.com/cloudfoundry/clock
+  * https://github.com/cloudfoundry/consuladapter
+  * https://github.com/cloudfoundry/debugserver
+  * https://github.com/cloudfoundry/diego-dockerfiles
+  * https://github.com/cloudfoundry/diego-logging-client
+  * https://github.com/cloudfoundry/diego-upgrade-stability-tests
+  * https://github.com/cloudfoundry/dockerdriver
+  * https://github.com/cloudfoundry/durationjson
+  * https://github.com/cloudfoundry/ecrhelper
+  * https://github.com/cloudfoundry/eventhub
+  * https://github.com/cloudfoundry/executor
+  * https://github.com/cloudfoundry/fileserver
+  * https://github.com/cloudfoundry/healthcheck
+  * https://github.com/cloudfoundry/inigo
+  * https://github.com/cloudfoundry/localdriver
+  * https://github.com/cloudfoundry/localip
+  * https://github.com/cloudfoundry/locket
+  * https://github.com/cloudfoundry/operationq
+  * https://github.com/cloudfoundry/rep
+  * https://github.com/cloudfoundry/route-emitter
+  * https://github.com/cloudfoundry/systemcerts
+  * https://github.com/cloudfoundry/tlsconfig
+  * https://github.com/cloudfoundry/vizzini
+  * https://github.com/cloudfoundry/volman
+  * https://github.com/cloudfoundry/workpool
 
 ### Eirini
 * https://github.com/cloudfoundry-incubator/eirini
 
-### Garden
+### Garden Containers
 * https://github.com/cloudfoundry/garden-runc-release
   * https://github.com/cloudfoundry/dontpanic/
   * https://github.com/cloudfoundry/garden
@@ -89,17 +94,18 @@ Components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Network
   * https://github.com/cloudfoundry/guardian
   * https://github.com/cloudfoundry/idmapper
   * https://github.com/cloudfoundry/netplugin-shim
+* https://github.com/cloudfoundry/winc-release
+  * https://github.com/cloudfoundry/winc
+  * https://github.com/cloudfoundry/groot-windows
+  * https://github.com/cloudfoundry-incubator/diff-exporter
+  * https://github.com/cloudfoundry/cert-injector
 
-### HAproxy
-* https://github.com/cloudfoundry-incubator/haproxy-boshrelease
 
 ### Logging and Metrics
 * https://github.com/cloudfoundry/bosh-system-metrics-forwarder-release
 * https://github.com/cloudfoundry/log-cache-release
 * https://github.com/cloudfoundry/loggregator-release
 * https://github.com/cloudfoundry/loggregator-agent-release
-* https://github.com/pivotal-cf/metric-registrar-release
-* https://github.com/pivotal-cf/metric-registrar-cli
 * https://github.com/cloudfoundry/metrics-discovery-release
 * https://github.com/cloudfoundry/statsd-injector-release
 * https://github.com/cloudfoundry/syslog-release
@@ -115,6 +121,7 @@ Components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Network
   * https://github.com/cloudfoundry/routing-info
   * https://github.com/cloudfoundry/gorouter
   * https://github.com/cloudfoundry/route-registrar
+* https://github.com/cloudfoundry-incubator/haproxy-boshrelease
 * https://github.com/cloudfoundry/cf-networking-release
   * https://github.com/cloudfoundry/networking-oss-deployments
   * https://github.com/cloudfoundry/cf-networking-helpers
@@ -123,11 +130,5 @@ Components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Network
 * https://github.com/cloudfoundry/nats-release
 
 
-### Windows Containers
-* https://github.com/cloudfoundry/winc-release
-  * https://github.com/cloudfoundry/winc
-  * https://github.com/cloudfoundry/groot-windows
-  * https://github.com/cloudfoundry-incubator/diff-exporter
-  * https://github.com/cloudfoundry/cert-injector
 
 
