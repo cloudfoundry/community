@@ -8,7 +8,7 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 ## Goals
 
 - Provides end users with stable, reliable and performant buildpacks with which to build their application.
-- Provides end users with buildpacks that are compatable with multiple platforms (i.e. Cloud Foundry, Docker, Kubernetes).
+- Provides end users with buildpacks that are compatible with multiple platforms (such as Cloud Foundry, Docker, and Kubernetes).
 - Provides documentation to enable platforms to adopt Paketo buildpacks and maintain compatibility with Paketo buildpacks.
 
 ## Scope
@@ -17,7 +17,7 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 - Provide timely releases to address CVEs.
 - Maintain public roadmaps for the development of Paketo.
 - Provide the community with technical and end user documentation.
-- Collaborate with App Runtime Interfaces WG to enable Paketo buildpacks to have first class support in Cloud Foundry.
+- Collaborate with App Runtime Interfaces WG to enable Paketo buildpacks to have first-class support in Cloud Foundry.
 
 ## Non-Goals
 
@@ -33,7 +33,7 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 
 ## Technical Assets
 
-Technical assets for the Paketo working group are contained in the following Github Organisations;
+Technical assets for the Paketo working group are contained in the following Github Organizations:
 
 - [github.com/paketo-buildpacks](https://github.com/paketo-buildpacks)
 - [github.com/paketo-community](https://github.com/paketo-community)
