@@ -120,7 +120,6 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Triage incoming issues, set milestones, repo labels</p>
         <p>Roadmap alignment with top-level backlog</p>
         <p>Mentor new contributors, project members, and approvers</p>
-        <p>Succession - identifying next steps for members of the working group</p>
         <p>Responsible for technical health of their functional area</p>
     </td>
     <td>Sponsored by the technical oversight committee as documented
