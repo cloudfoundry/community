@@ -23,13 +23,13 @@ Provides Paketo buildpacks for servers, languages, and frameworks popular with a
 
 - Maintaining V2 (classic) buildpacks
 
+## Working Group Governance Structure
 
-## Proposed Membership
+[Working group governance structure](https://github.com/paketo-buildpacks/community/blob/main/GOVERNANCE.md)
 
-- Technical Lead(s): TBD
-- Execution Lead(s): TBD
-- Approvers: TBD
+## Membership
 
+[Working group membership](https://github.com/paketo-buildpacks/community/blob/main/TEAMS.md)
 
 ## Technical Assets
 
