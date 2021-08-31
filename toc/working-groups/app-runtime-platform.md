@@ -31,14 +31,61 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Proposed Membership
 
-- Technical Lead(s): @ameowlia, others TBD
-- Execution Lead(s): TBD
-- Approvers by area:
-  - Diego: @acrmp, @aminjam, @Benjamintf1, @jrussett, @pivotalgeorge, @reneighbor, @selzoc
-  - Eirini: @danail-branekov, @gcapizzi, @georgethebeatle, @kieron-dev, @mnitchev
-  - Garden Containers: @aemengo, @danail-branekov, @gcapizzi, @georgethebeatle, @kieron-dev, @mnitchev
-  - Logging and Metrics: @acrmp, @aminjam, @Benjamintf1, @jrussett, @pivotalgeorge, @reneighbor, @selzoc
-  - Networking: @46bit, @acrmp, @aminjam, @Benjamintf1, @domdom82, @geofffranks, @Gerg, @jrussett, @mkocher, @pivotalgeorge, @reneighbor, @selzoc, @stefanlay
+Technical and Execution Lead: @ameowlia
+
+### Approvers by area
+
+Diego:
+- @acrmp
+- @aminjam
+- @Benjamintf1
+- @geofffranks
+- @IvanHristov98
+- @jrussett
+- @pivotalgeorge
+- @reneighbor
+- @selzoc
+
+Eirini:
+- @danail-branekov
+- @gcapizzi
+- @georgethebeatle
+- @kieron-dev
+- @mnitchev
+
+Garden Containers:
+- @aemengo
+- @danail-branekov
+- @gcapizzi
+- @georgethebeatle
+- @kieron-dev
+- @mnitchev
+
+Logging and Metrics:
+- @acrmp
+- @aminjam
+- @Benjamintf1
+- @geofffranks
+- @jrussett
+- @pivotalgeorge
+- @reneighbor
+- @selzoc
+
+Networking:
+- @46bit
+- @acrmp
+- @aminjam
+- @Benjamintf1
+- @ctlong
+- @domdom82
+- @geofffranks
+- @Gerg
+- @jrussett
+- @mkocher
+- @pivotalgeorge
+- @reneighbor
+- @selzoc
+- @stefanlay
 
 
 ## Technical Assets
