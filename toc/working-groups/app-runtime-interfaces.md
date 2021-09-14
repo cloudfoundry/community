@@ -42,14 +42,40 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 - Technical Lead(s): TBD
 - Execution Lead(s): TBD
-- Approvers: TBD
 
+### Approvers by Area
+Autoscaler
+- tbd
+
+Buildpacks
+- tbd
+
+CAPI
+- @tjvman
+- @sweinstein22
+- @MarcPaquette
+- @JenGoldstrich
+- @FloThinksPi
+- @philippthun
+- @andy-paine 
+
+Java Tools
+- tbd
+
+MultiApps
+- tbd
+
+Notifications
+- tbd
+
+Stratos
+- tbd
 
 ## Technical Assets
 
 Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, Notifications, and Stratos projects.
 
-Autoscaler:
+Autoscaler
 - https://github.com/cloudfoundry/app-autoscaler-release
 - https://github.com/cloudfoundry/app-autoscaler
 - https://github.com/cloudfoundry/app-autoscaler-ci
@@ -97,7 +123,7 @@ Buildpacks
 - https://github.com/cloudfoundry/docs-buildpacks
 - https://github.com/cloudfoundry/brats
 
-CAPI:
+CAPI
 - https://github.com/cloudfoundry/cloud_controller_ng
 - https://github.com/cloudfoundry/capi-release
 - https://github.com/cloudfoundry/capi-dockerfiles
