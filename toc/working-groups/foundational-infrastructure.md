@@ -24,28 +24,39 @@ Provide infrastructure automation and core capabilities shared across CF project
 * Provide generic operational databases for other use-cases
 * Solve non-CF related identity and credential problems.
 
-## Proposed Membership
-
-Technical Lead(s): 
+## Technical Lead(s):
 - Ruben Koster (@rkoster)
 
-Execution Lead(s):
+## Execution Lead(s):
 - Ruben Koster (@rkoster)
 
-Approvers: 
+## Approvers (by Area):
+### VM deployment lifecycle (BOSH)
 - Joseph Palermo (@jpalermo)
 - Long Nguyen (@lnguyen)
-- Peter Chen (@peterhaochen47)
-- Andrew Garner (@abg)
 - Ramon Makkelie (@ramonskie)
-- Markus Strehle (@strehle)
-- Beyhan Veli (@beyhan)
 - Benjamin Gandon (@bgandon)
+- Beyhan Veli (@beyhan)
+
+### Identity and Auth (UAA)
+- Peter Chen (@peterhaochen47)
+- Markus Strehle (@strehle)
+
+### Credential Management (Credhub)
+- Peter Chen (@peterhaochen47)
+
+### Integrated Databases
+- Andrew Garner (@abg)
+- Shaan Sapra (@ssapra)
+
+### System logging and metrics
+- Ben Fuller (@Benjamintf1)
 
 ## Technical Assets
 
 Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and UAA projects.
 
+### VM deployment lifecycle (BOSH)
 - [bosh-io/releases-index](https://github.com/bosh-io/releases-index)
 - [bosh-io/releases](https://github.com/bosh-io/releases)
 - [bosh-io/stemcells-core-index](https://github.com/bosh-io/stemcells-core-index)
@@ -68,21 +79,8 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 - [cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests](https://github.com/cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests)
 - [cloudfoundry-incubator/bosh-windows-acceptance-tests](https://github.com/cloudfoundry-incubator/bosh-windows-acceptance-tests)
 - [cloudfoundry-incubator/bosh-windows-stemcell-builder](https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder)
-- [cloudfoundry-incubator/cf-mysql-ci](https://github.com/cloudfoundry-incubator/cf-mysql-ci)
-- [cloudfoundry-incubator/credhub-acceptance-tests](https://github.com/cloudfoundry-incubator/credhub-acceptance-tests)
-- [cloudfoundry-incubator/credhub-api-site](https://github.com/cloudfoundry-incubator/credhub-api-site)
-- [cloudfoundry-incubator/credhub-ci-locks](https://github.com/cloudfoundry-incubator/credhub-ci-locks)
-- [cloudfoundry-incubator/credhub-cli](https://github.com/cloudfoundry-incubator/credhub-cli)
-- [cloudfoundry-incubator/credhub-perf-release](https://github.com/cloudfoundry-incubator/credhub-perf-release)
-- [cloudfoundry-incubator/credhub](https://github.com/cloudfoundry-incubator/credhub)
 - [cloudfoundry-incubator/disaster-recovery-acceptance-tests](https://github.com/cloudfoundry-incubator/disaster-recovery-acceptance-tests)
-- [cloudfoundry-incubator/event-log-release](https://github.com/cloudfoundry-incubator/event-log-release)
 - [cloudfoundry-incubator/exemplar-backup-and-restore-release](https://github.com/cloudfoundry-incubator/exemplar-backup-and-restore-release)
-- [cloudfoundry-incubator/greenhouse-ci](https://github.com/cloudfoundry-incubator/greenhouse-ci)
-- [cloudfoundry-incubator/hey](https://github.com/cloudfoundry-incubator/hey)
-- [cloudfoundry-incubator/mysql-backup-release](https://github.com/cloudfoundry-incubator/mysql-backup-release)
-- [cloudfoundry-incubator/mysql-monitoring-release](https://github.com/cloudfoundry-incubator/mysql-monitoring-release)
-- [cloudfoundry-incubator/pxc-release](https://github.com/cloudfoundry-incubator/pxc-release)
 - [cloudfoundry-incubator/resolvconf-manager-index](https://github.com/cloudfoundry-incubator/resolvconf-manager-index)
 - [cloudfoundry-incubator/resolvconf-manager](https://github.com/cloudfoundry-incubator/resolvconf-manager)
 - [cloudfoundry-incubator/sample-windows-bosh-release](https://github.com/cloudfoundry-incubator/sample-windows-bosh-release)
@@ -127,34 +125,49 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 - [cloudfoundry/bosh](https://github.com/cloudfoundry/bosh)
 - [cloudfoundry/bpm-release](https://github.com/cloudfoundry/bpm-release)
 - [cloudfoundry/bsdtar](https://github.com/cloudfoundry/bsdtar)
-- [cloudfoundry/cf-acceptance-tests](https://github.com/cloudfoundry/cf-acceptance-tests)
-- [cloudfoundry/cf-deployment](https://github.com/cloudfoundry/cf-deployment)
-- [cloudfoundry/cf-identity-acceptance-tests-release](https://github.com/cloudfoundry/cf-identity-acceptance-tests-release)
-- [cloudfoundry/cf-mysql-deployment](https://github.com/cloudfoundry/cf-mysql-deployment)
-- [cloudfoundry/cf-mysql-release](https://github.com/cloudfoundry/cf-mysql-release)
-- [cloudfoundry/cf-uaa-lib](https://github.com/cloudfoundry/cf-uaa-lib)
-- [cloudfoundry/cf-uaac](https://github.com/cloudfoundry/cf-uaac)
 - [cloudfoundry/config-server-release](https://github.com/cloudfoundry/config-server-release)
 - [cloudfoundry/config-server](https://github.com/cloudfoundry/config-server)
-- [cloudfoundry/docs-bbr](https://github.com/cloudfoundry/docs-bbr)
-- [cloudfoundry/docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry)
 - [cloudfoundry/docs-bosh](https://github.com/cloudfoundry/docs-bosh)
-- [cloudfoundry/docs-credhub](https://github.com/cloudfoundry/docs-credhub)
-- [cloudfoundry/docs-dev-guide](https://github.com/cloudfoundry/docs-dev-guide)
-- [cloudfoundry/galera-init](https://github.com/cloudfoundry/galera-init)
+- [cloudfoundry/docs-bbr](https://github.com/cloudfoundry/docs-bbr)
 - [cloudfoundry/gofileutils](https://github.com/cloudfoundry/gofileutils)
 - [cloudfoundry/gosigar](https://github.com/cloudfoundry/gosigar)
-- [cloudfoundry/omniauth-uaa-oauth2](https://github.com/cloudfoundry/omniauth-uaa-oauth2)
 - [cloudfoundry/os-conf-release](https://github.com/cloudfoundry/os-conf-release)
-- [cloudfoundry/postgres-release](https://github.com/cloudfoundry/postgres-release)
-- [cloudfoundry/secure-credentials-broker](https://github.com/cloudfoundry/secure-credentials-broker)
 - [cloudfoundry/socks5-proxy](https://github.com/cloudfoundry/socks5-proxy)
-- [cloudfoundry/syslog-release](https://github.com/cloudfoundry/syslog-release)
 - [cloudfoundry/tlsconfig](https://github.com/cloudfoundry/tlsconfig)
+- [cloudfoundry/usn-resource](https://github.com/cloudfoundry/usn-resource)
+- [cloudfoundry/yagnats](https://github.com/cloudfoundry/yagnats)
+- [cloudfoundry/windows-tools-release](https://github.com/cloudfoundry/windows-tools-release)
+
+### Identity and Auth (UAA)
+- [cloudfoundry/cf-uaa-lib](https://github.com/cloudfoundry/cf-uaa-lib)
+- [cloudfoundry/cf-uaac](https://github.com/cloudfoundry/cf-uaac)
+- [cloudfoundry/omniauth-uaa-oauth2](https://github.com/cloudfoundry/omniauth-uaa-oauth2)
 - [cloudfoundry/uaa-key-rotator](https://github.com/cloudfoundry/uaa-key-rotator)
 - [cloudfoundry/uaa-release](https://github.com/cloudfoundry/uaa-release)
 - [cloudfoundry/uaa-singular](https://github.com/cloudfoundry/uaa-singular)
 - [cloudfoundry/uaa](https://github.com/cloudfoundry/uaa)
-- [cloudfoundry/usn-resource](https://github.com/cloudfoundry/usn-resource)
-- [cloudfoundry/windows-tools-release](https://github.com/cloudfoundry/windows-tools-release)
-- [cloudfoundry/yagnats](https://github.com/cloudfoundry/yagnats)
+
+### Credential Management (Credhub)
+- [cloudfoundry-incubator/credhub-acceptance-tests](https://github.com/cloudfoundry-incubator/credhub-acceptance-tests)
+- [cloudfoundry-incubator/credhub-api-site](https://github.com/cloudfoundry-incubator/credhub-api-site)
+- [cloudfoundry-incubator/credhub-ci-locks](https://github.com/cloudfoundry-incubator/credhub-ci-locks)
+- [cloudfoundry-incubator/credhub-cli](https://github.com/cloudfoundry-incubator/credhub-cli)
+- [cloudfoundry-incubator/credhub-perf-release](https://github.com/cloudfoundry-incubator/credhub-perf-release)
+- [cloudfoundry-incubator/credhub](https://github.com/cloudfoundry-incubator/credhub)
+- [cloudfoundry/docs-credhub](https://github.com/cloudfoundry/docs-credhub)
+- [cloudfoundry/secure-credentials-broker](https://github.com/cloudfoundry/secure-credentials-broker)
+
+### Integrated Databases
+- [cloudfoundry-incubator/cf-mysql-ci](https://github.com/cloudfoundry-incubator/cf-mysql-ci)
+- [cloudfoundry-incubator/mysql-backup-release](https://github.com/cloudfoundry-incubator/mysql-backup-release)
+- [cloudfoundry-incubator/mysql-monitoring-release](https://github.com/cloudfoundry-incubator/mysql-monitoring-release)
+- [cloudfoundry-incubator/pxc-release](https://github.com/cloudfoundry-incubator/pxc-release)
+- [cloudfoundry/cf-mysql-deployment](https://github.com/cloudfoundry/cf-mysql-deployment)
+- [cloudfoundry/cf-mysql-release](https://github.com/cloudfoundry/cf-mysql-release)
+- [cloudfoundry/galera-init](https://github.com/cloudfoundry/galera-init)
+- [cloudfoundry/postgres-release](https://github.com/cloudfoundry/postgres-release)
+
+### System logging and metrics
+- [cloudfoundry-incubator/event-log-release](https://github.com/cloudfoundry-incubator/event-log-release)
+- [cloudfoundry/syslog-release](https://github.com/cloudfoundry/syslog-release)
+- [cloudfoundry/windows-syslog-release](https://github.com/cloudfoundry/windows-syslog-release)
