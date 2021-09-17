@@ -7,9 +7,9 @@ Provide infrastructure automation and core capabilities shared across CF project
 
 ## Goals
 
-* Operators have a multi-cloud deployment system that can  deploy Cloud Foundry onto VMs with a strong 
-  set of day 2 operators features.
-* Provide a flexible identity/authentication and credential management system for use within BOSH and Cloud Foundry
+* Operators have a multi-cloud deployment system that can deploy Cloud Foundry onto VMs with a strong 
+  set of day 2 operator features.
+* Provide a flexible identity/authentication and credential management system for use within BOSH and Cloud Foundry.
 * Maintain a set of databases, required for the self-contained deployment and operation of BOSH and Cloud Foundry. 
 
 ## Scope
