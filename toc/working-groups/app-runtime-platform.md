@@ -46,13 +46,6 @@ Diego:
 - @reneighbor
 - @selzoc
 
-Eirini:
-- @danail-branekov
-- @gcapizzi
-- @georgethebeatle
-- @kieron-dev
-- @mnitchev
-
 Garden Containers:
 - @aemengo
 - @danail-branekov
@@ -91,7 +84,7 @@ Networking:
 
 ## Technical Assets
 
-Components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Networking, Windows Containers projects.
+Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Windows Containers projects.
 
 ### Diego
 * https://github.com/cloudfoundry/diego-release
@@ -129,9 +122,6 @@ Components from the Diego, Eirini, Garden, HAproxy, Logging and Metrics, Network
   * https://github.com/cloudfoundry/vizzini
   * https://github.com/cloudfoundry/volman
   * https://github.com/cloudfoundry/workpool
-
-### Eirini
-* https://github.com/cloudfoundry-incubator/eirini
 
 ### Garden Containers
 * https://github.com/cloudfoundry/garden-runc-release
