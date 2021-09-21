@@ -7,7 +7,7 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Goals
 
-- End-user platform teams have reliable, performant, and well-documented system components to provide core CF App Runtime capabilities on designated infrastructure platforms, such as BOSH and Kubernetes.
+- End-user platform teams have reliable, performant, and well-documented system components to provide core CF App Runtime capabilities within BOSH-based deployments.
 - Community contributors can build against core CF App Runtime system components via stable, well-documented APIs.
 - Community contributors can integrate tested CF App Runtime components into community reference deployments.
 
