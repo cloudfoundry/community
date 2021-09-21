@@ -36,7 +36,8 @@ Provide infrastructure automation and core capabilities shared across CF project
 - Long Nguyen (@lnguyen)
 - Ramon Makkelie (@ramonskie)
 - Benjamin Gandon (@bgandon)
-- Beyhan Veli (@beyhan)
+- Kai Hofstetter (@KaiHofstetter)
+- Felix Riegger (@friegger)
 
 ### Identity and Auth (UAA)
 - Peter Chen (@peterhaochen47)
