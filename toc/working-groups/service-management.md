@@ -46,20 +46,20 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 ### Cloud Service Broker
 
 * [cloud-service-broker](https://github.com/cloudfoundry-incubator/cloud-service-broker)
-* [csb-azure-brokerpak](https://github.com/cloudfoundry-incubator/csb-brokerpak-azure)
-* [csb-aws-brokerpak](https://github.com/cloudfoundry-incubator/csb-brokerpak-aws)
-* [csb-gcp-brokerpak](https://github.com/cloudfoundry-incubator/csb-brokerpak-gcp)
+* [csb-brokerpak-azure](https://github.com/cloudfoundry-incubator/csb-brokerpak-azure)
+* [csb-brokerpak-aws](https://github.com/cloudfoundry-incubator/csb-brokerpak-aws)
+* [csb-brokerpak-gcp](https://github.com/cloudfoundry-incubator/csb-brokerpak-gcp)
 
 ### Volume Service Adapters
 
 * [nfsv3driver](https://github.com/cloudfoundry/nfsv3driver)
 * [nfsbroker](https://github.com/cloudfoundry/nfsbroker)
-* [nfsboshrelease](https://github.com/cloudfoundry/nfs-volume-release)
+* [nfs-volume-release](https://github.com/cloudfoundry/nfs-volume-release)
 * [smbdriver](https://github.com/cloudfoundry/smbdriver)
 * [smbbroker](https://github.com/cloudfoundry/smbbroker)
-* [smbboshrelease](https://github.com/cloudfoundry/smb-volume-release)
+* [smb-volume-release](https://github.com/cloudfoundry/smb-volume-release)
 
 ### ServiceFabrik
 
-* [serviceFabrikBroker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
+* [service-fabrik-broker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
 * [service-fabrik-blueprint-app](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-app)
