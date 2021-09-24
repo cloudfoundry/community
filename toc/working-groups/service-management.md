@@ -60,3 +60,6 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 * [smbboshrelease](https://github.com/cloudfoundry/smb-volume-release)
 
 ### ServiceFabrik
+
+* [serviceFabrikBroker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
+* [service-fabrik-blueprint-app](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-app)
