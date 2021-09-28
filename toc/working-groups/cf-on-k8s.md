@@ -27,7 +27,12 @@ Bring the ease and simplicity of the Cloud Foundry developer experience to Kuber
 
 ## Proposed Membership
 
-Technical and Execution Lead: @gcapizzi
+Technical Leads:
+* @gcapizzi
+* @mnitchev
+
+Execution Lead:
+* @gcapizzi
 
 ### Approvers
 
@@ -40,7 +45,6 @@ Technical and Execution Lead: @gcapizzi
 * @gnovv
 * @kieron-dev
 * @matt-royal
-* @mnitchev
 * @tcdowney
 
 ## Technical Assets
