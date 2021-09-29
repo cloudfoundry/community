@@ -28,8 +28,13 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ## Approvers by Area
 ### OSBAPI
+* @Samse
 
 ### Cloud Service Broker
+* @blgm
+* @FelisiaM
+* @pivotal-marcela-campo 
+
 
 ### Volume Service Adapters
 
@@ -42,6 +47,7 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 
 ### OSBAPI
 * [OSBAPI spec](https://github.com/openservicebrokerapi/servicebroker)
+* [osb-checker](https://github.com/openservicebrokerapi/osb-checker)
 
 ### Cloud Service Broker
 
