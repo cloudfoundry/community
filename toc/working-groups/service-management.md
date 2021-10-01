@@ -39,6 +39,13 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ### Volume Service Adapters
 
+* @dlresende
+* @fejnartal
+* @gbandres98
+* @jimbo459
+* @tinygrasshopper
+* @totherme
+
 ### ServiceFabrik
 
 
