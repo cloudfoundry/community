@@ -29,7 +29,7 @@ Bring the ease and simplicity of the Cloud Foundry developer experience to Kuber
 
 Technical Leads:
 * @gcapizzi
-* @mnitchev
+* @georgethebeatle
 
 Execution Lead:
 * @gcapizzi
@@ -41,10 +41,10 @@ Execution Lead:
 * @akrishna90
 * @danail-branekov
 * @davewalter
-* @georgethebeatle
 * @gnovv
 * @kieron-dev
 * @matt-royal
+* @mnitchev
 * @tcdowney
 
 ## Technical Assets
