@@ -59,11 +59,23 @@ CAPI
 - @philippthun
 - @andy-paine 
 
+CLI
+- tbd
+
 Java Tools
 - tbd
 
 MultiApps
-- tbd
+- @nictas
+- @IvanBorislavovDimitrov
+- @theghost5800
+- @boyan-velinov
+- @radito3
+- @ddonchev
+- @ikasarov
+- @abdermendz
+- @vkalapov
+- @nvvalchev
 
 Notifications
 - tbd
@@ -133,6 +145,7 @@ CAPI
 - https://github.com/cloudfoundry-incubator/cf-performance-tests
 - https://github.com/cloudfoundry/tps
 - https://github.com/cloudfoundry/cc-uploader
+- https://github.com/cloudfoundry/sync-integration-tests
 
 CLI
 - https://github.com/cloudfoundry/cli
