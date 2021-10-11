@@ -45,10 +45,18 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 ### Approvers by Area
 Autoscaler
-- tbd
+- @garethjevans
+- @asalan316
+- @silvestre
+- @KevinJCross 
+- @aadeshmisra
+- @bonzofenix
+- @joergdw
 
 Buildpacks
-- tbd
+- @dmikusa-pivotal
+- @pivotal-david-osullivan
+- tbd for non-java buildpacks
 
 CAPI
 - @tjvman
@@ -58,12 +66,15 @@ CAPI
 - @FloThinksPi
 - @philippthun
 - @andy-paine 
-
+- @MerricdeLauney
+- @monamohebbi
+ 
 CLI
 - tbd
 
 Java Tools
-- tbd
+- @dmikusa-pivotal
+- @pivotal-david-osullivan
 
 MultiApps
 - @nictas
@@ -78,7 +89,7 @@ MultiApps
 - @nvvalchev
 
 Notifications
-- tbd
+- @dsboulder
 
 Stratos
 - tbd
