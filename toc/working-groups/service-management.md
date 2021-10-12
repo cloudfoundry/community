@@ -28,23 +28,23 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ## Approvers by Area
 ### OSBAPI
-* @Samse
-* @rsampaio
+* [@Samse](https://github.com/Samse)
+* [@rsampaio](https://github.com/rsampaio)
 
 ### Cloud Service Broker
-* @blgm
-* @FelisiaM
-* @pivotal-marcela-campo 
+* [@blgm](https://github.com/blgm)
+* [@FelisiaM](https://github.com/FelisiaM)
+* [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) 
 
 
 ### Volume Service Adapters
 
-* @dlresende
-* @fejnartal
-* @gbandres98
-* @jimbo459
-* @tinygrasshopper
-* @totherme
+* [@dlresende](https://github.com/dlresende)
+* [@fejnartal](https://github.com/fejnartal)
+* [@gbandres98](https://github.com/gbandres98)
+* [@jimbo459](https://github.com/jimbo459)
+* [@tinygrasshopper](https://github.com/tinygrasshopper)
+* [@totherme](https://github.com/totherme)
 
 ### ServiceFabrik
 
