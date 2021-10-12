@@ -29,18 +29,9 @@ Provides APIs for the CF App Runtime and community clients for end users.
 - Provide the community with 'all' language specific CF clients libraries.
 
 
-## Open Questions
-
-- Should we split up this WG into a 'core interfaces' and 'extension' WG or try to manage the impressive long list of github projects in one WG? E.g.:
-  - 'core' App Runtime Interfaces WG: Buildpacks, CAPI, CLI
-  - App Runtime Extensions WG: Autoscaler, Java Tools, Multiapps, Notifications, Stratos, additional language clients (Python, golang)
-- Include https://github.com/cloudfoundry-community/cf-python-client as a second language binding that is under active development?
-- Ownership of CF API related test projects like capi-bara-tests, cf-performance-tests, cf-smoke-tests, cf-acceptance-tests: Interface or Deployments WG
-
-
 ## Proposed Membership
 
-- Technical Lead(s): TBD
+- Technical Lead(s): @Gerg
 - Execution Lead(s): TBD
 
 ### Approvers by Area
@@ -154,6 +145,7 @@ CAPI
 - https://github.com/cloudfoundry/capi-k8s-release
 - https://github.com/cloudfoundry/capi-ci
 - https://github.com/cloudfoundry-incubator/cf-performance-tests
+- https://github.com/cloudfoundry-incubator/cf-performance-tests-pipeline
 - https://github.com/cloudfoundry/tps
 - https://github.com/cloudfoundry/cc-uploader
 - https://github.com/cloudfoundry/sync-integration-tests
