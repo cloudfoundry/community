@@ -48,6 +48,11 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ### ServiceFabrik
 
+* [@saud89](https://github.com/saud89)
+* [@anoopjb](https://github.com/anoopjb)
+* [@Pooja-08](https://github.com/Pooja-08) 
+* [@swati1102](https://github.com/swati1102)
+
 
 ## Technical Assets by Area
 
