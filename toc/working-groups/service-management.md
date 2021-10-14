@@ -41,9 +41,6 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 * [@dlresende](https://github.com/dlresende)
 * [@fejnartal](https://github.com/fejnartal)
-* [@gbandres98](https://github.com/gbandres98)
-* [@jimbo459](https://github.com/jimbo459)
-* [@tinygrasshopper](https://github.com/tinygrasshopper)
 * [@totherme](https://github.com/totherme)
 
 ### ServiceFabrik
