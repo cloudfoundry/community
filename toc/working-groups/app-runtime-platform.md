@@ -132,6 +132,8 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/guardian
   * https://github.com/cloudfoundry/idmapper
   * https://github.com/cloudfoundry/netplugin-shim
+  * https://github.com/cloudfoundry/cpu-entitlement-plugin
+  * https://github.com/cloudfoundry/cpu-entitlement-admin-plugin
 * https://github.com/cloudfoundry/winc-release
   * https://github.com/cloudfoundry/winc
   * https://github.com/cloudfoundry/groot-windows
