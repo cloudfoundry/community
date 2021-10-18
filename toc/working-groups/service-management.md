@@ -68,12 +68,20 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 
 ### Volume Service Adapters
 
+* [existing-volume-broker](https://github.com/cloudfoundry/existingvolumebroker)
+* [goshims](https://github.com/cloudfoundry/goshims)
+* [mapfs](https://github.com/cloudfoundry/mapfs)
+* [mapfs-release](https://github.com/cloudfoundry/mapfs-release)
+* [migrate-mysql-to-credhub](https://github.com/cloudfoundry/migrate_mysql_to_credhub)
 * [nfsv3driver](https://github.com/cloudfoundry/nfsv3driver)
 * [nfsbroker](https://github.com/cloudfoundry/nfsbroker)
 * [nfs-volume-release](https://github.com/cloudfoundry/nfs-volume-release)
+* [perci-ci](https://github.com/cloudfoundry/persi-ci)
+* [service-broker-store](https://github.com/cloudfoundry/service-broker-store)
 * [smbdriver](https://github.com/cloudfoundry/smbdriver)
 * [smbbroker](https://github.com/cloudfoundry/smbbroker)
 * [smb-volume-release](https://github.com/cloudfoundry/smb-volume-release)
+* [volume-mount-options](https://github.com/cloudfoundry/volume-mount-options)
 
 ### ServiceFabrik
 
