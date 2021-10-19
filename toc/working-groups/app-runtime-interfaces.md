@@ -61,7 +61,8 @@ CAPI
 - @monamohebbi
  
 CLI
-- tbd
+- @a-b 
+- @jdgonzaleza
 
 Java Tools
 - @dmikusa-pivotal
