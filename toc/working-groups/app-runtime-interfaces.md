@@ -45,8 +45,8 @@ Autoscaler
 - @joergdw
 
 Buildpacks
-- @dmikusa-pivotal
-- @pivotal-david-osullivan
+- @dmikusa-pivotal (Java)
+- @pivotal-david-osullivan (Java)
 - tbd for non-java buildpacks
 
 CAPI
@@ -82,9 +82,6 @@ MultiApps
 
 Notifications
 - @dsboulder
-
-Stratos
-- tbd
 
 ## Technical Assets
 
@@ -169,10 +166,6 @@ Notifications
 - https://github.com/cloudfoundry-incubator/notifications-release
 - https://github.com/cloudfoundry-incubator/notifications
 - https://github.com/cloudfoundry-incubator/notifications-sendgrid-receiver
-
-Stratos
-- https://github.com/cloudfoundry/stratos
-- https://github.com/cloudfoundry/stratos-buildpack
 
 
 Public, active pipelines for building and releasing the components CF deployments, to be run on CFF community infrastructure.
