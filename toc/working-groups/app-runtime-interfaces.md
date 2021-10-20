@@ -45,9 +45,15 @@ Autoscaler
 - @joergdw
 
 Buildpacks
-- @dmikusa-pivotal (Java)
-- @pivotal-david-osullivan (Java)
-- tbd for non-java buildpacks
+- @dmikusa-pivotal
+- @pivotal-david-osullivan
+- @ForestEckhardt
+- @ryanmoran
+- @fg-j
+- @sophiewigmore
+- @arjun024
+- @thitch97
+- @brayanhenao
 
 CAPI
 - @tjvman
