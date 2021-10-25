@@ -47,12 +47,8 @@ Autoscaler
 Buildpacks
 - @dmikusa-pivotal
 - @pivotal-david-osullivan
-- @ForestEckhardt
-- @ryanmoran
-- @fg-j
-- @sophiewigmore
+- @menehune23
 - @arjun024
-- @thitch97
 - @brayanhenao
 
 CAPI
