@@ -23,8 +23,8 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ## Proposed Membership
 
-- Technical Lead(s): Marcela Campo
-- Execution Lead(s): Marcela Campo
+- Technical Lead(s): Marcela Campo (@pivotal-marcela-campo)
+- Execution Lead(s): Marcela Campo (@pivotal-marcela-campo)
 
 ## Approvers by Area
 ### OSBAPI
