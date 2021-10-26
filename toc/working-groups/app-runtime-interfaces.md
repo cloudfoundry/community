@@ -167,7 +167,6 @@ MultiApps
 Notifications
 - https://github.com/cloudfoundry-incubator/notifications-release
 - https://github.com/cloudfoundry-incubator/notifications
-- https://github.com/cloudfoundry-incubator/notifications-sendgrid-receiver
 
 
 Public, active pipelines for building and releasing the components CF deployments, to be run on CFF community infrastructure.
