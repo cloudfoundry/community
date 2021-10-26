@@ -31,8 +31,8 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 ## Proposed Membership
 
-- Technical Lead(s): @Gerg
-- Execution Lead(s): TBD
+- Technical Lead(s): Greg Cobb @gerg
+- Execution Lead(s): Greg Cobb @gerg 
 
 ### Approvers by Area
 Autoscaler
