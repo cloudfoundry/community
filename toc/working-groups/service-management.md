@@ -6,9 +6,9 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ## Goals
 
-- Define the service extension API for cloud foundry brokered services
-- Provide a flexible adapater layer to common hyperscaler service providers
-- Mantain a set of reference volume service brokers and drivers for CF applications to mount stateful data
+- Define the service extension API for Cloud Foundry brokered services.
+- Provide a flexible adapter layer to common hyperscaler service providers.
+- Maintain a set of reference volume service brokers and drivers for CF applications to mount stateful data.
 
 ## Scope
 - Lead OSBAPI
