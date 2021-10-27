@@ -11,10 +11,10 @@ Provides interfaces for service lifecycle within application platforms and adapt
 - Maintain a set of reference volume service brokers and drivers for CF applications to mount stateful data.
 
 ## Scope
-- Lead OSBAPI
-- Develop and maintain Cloud Service Brokers for AWS, Azure, and GCP
+- Lead OSBAPI.
+- Develop and maintain Cloud Service Brokers for AWS, Azure, and GCP.
 - Maintain volume service adapters for NFS and SMB.
-- Develop and maintain ServiceFabrik, a generic BOSH-based and Docker-container-based service instance manager
+- Develop and maintain ServiceFabrik, a generic BOSH-based and Docker-container-based service instance manager.
 
 ## Non-Goals
 
