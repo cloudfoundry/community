@@ -27,37 +27,30 @@ Provides interfaces for service lifecycle within application platforms and adapt
 - Execution Lead(s): Marcela Campo (@pivotal-marcela-campo)
 
 ## Approvers by Area
-### OSBAPI
-* [@Samze](https://github.com/Samze)
-* [@rsampaio](https://github.com/rsampaio)
-
 ### Cloud Service Broker
 * [@blgm](https://github.com/blgm)
 * [@FelisiaM](https://github.com/FelisiaM)
 * [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) 
 
-
-### Volume Service Adapters
-
-* [@dlresende](https://github.com/dlresende)
-* [@fejnartal](https://github.com/fejnartal)
-* [@totherme](https://github.com/totherme)
+### OSBAPI
+* [@Samze](https://github.com/Samze)
+* [@rsampaio](https://github.com/rsampaio)
 
 ### ServiceFabrik
-
 * [@saud89](https://github.com/saud89)
 * [@anoopjb](https://github.com/anoopjb)
 * [@Pooja-08](https://github.com/Pooja-08) 
 * [@swati1102](https://github.com/swati1102)
 
+### Volume Service Adapters
+* [@dlresende](https://github.com/dlresende)
+* [@fejnartal](https://github.com/fejnartal)
+* [@totherme](https://github.com/totherme)
+
 
 ## Technical Assets by Area
 
 Components from the Cloud Service Broker, Open Service Broker API, Service Fabrik, and Volume Services projects.
-
-### OSBAPI
-* [OSBAPI spec](https://github.com/openservicebrokerapi/servicebroker)
-* [osb-checker](https://github.com/openservicebrokerapi/osb-checker)
 
 ### Cloud Service Broker
 
@@ -65,6 +58,23 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 * [csb-brokerpak-azure](https://github.com/cloudfoundry-incubator/csb-brokerpak-azure)
 * [csb-brokerpak-aws](https://github.com/cloudfoundry-incubator/csb-brokerpak-aws)
 * [csb-brokerpak-gcp](https://github.com/cloudfoundry-incubator/csb-brokerpak-gcp)
+
+
+### OSBAPI
+
+* [OSBAPI spec](https://github.com/openservicebrokerapi/servicebroker)
+* [osb-checker](https://github.com/openservicebrokerapi/osb-checker)
+
+### ServiceFabrik
+
+* [service-fabrik-broker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
+* [service-fabrik-blueprint-app](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-app)
+* [service-fabrik-boshrelease](cloudfoundry-incubator/service-fabrik-boshrelease)
+* [service-fabrik-backup-restore](cloudfoundry-incubator/service-fabrik-backup-restore)
+* [service-fabrik-blueprint-service](cloudfoundry-incubator/service-fabrik-blueprint-service)
+* [service-fabrik-blueprint-boshrelease](cloudfoundry-incubator/service-fabrik-blueprint-boshrelease)
+* [service-fabrik-cli-plugin](cloudfoundry-incubator/service-fabrik-cli-plugin)
+* [service-fabrik-lvm-volume-driver](cloudfoundry-incubator/service-fabrik-lvm-volume-driver)
 
 ### Volume Service Adapters
 
@@ -82,14 +92,3 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 * [smbbroker](https://github.com/cloudfoundry/smbbroker)
 * [smb-volume-release](https://github.com/cloudfoundry/smb-volume-release)
 * [volume-mount-options](https://github.com/cloudfoundry/volume-mount-options)
-
-### ServiceFabrik
-
-* [service-fabrik-broker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
-* [service-fabrik-blueprint-app](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-app)
-* [service-fabrik-boshrelease](cloudfoundry-incubator/service-fabrik-boshrelease)
-* [service-fabrik-backup-restore](cloudfoundry-incubator/service-fabrik-backup-restore)
-* [service-fabrik-blueprint-service](cloudfoundry-incubator/service-fabrik-blueprint-service)
-* [service-fabrik-blueprint-boshrelease](cloudfoundry-incubator/service-fabrik-blueprint-boshrelease)
-* [service-fabrik-cli-plugin](cloudfoundry-incubator/service-fabrik-cli-plugin)
-* [service-fabrik-lvm-volume-driver](cloudfoundry-incubator/service-fabrik-lvm-volume-driver)
