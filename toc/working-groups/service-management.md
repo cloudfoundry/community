@@ -28,7 +28,7 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ## Approvers by Area
 ### OSBAPI
-* [@Samse](https://github.com/Samse)
+* [@Samze](https://github.com/Samze)
 * [@rsampaio](https://github.com/rsampaio)
 
 ### Cloud Service Broker
