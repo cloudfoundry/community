@@ -97,13 +97,14 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/cacheddownloader
   * https://github.com/cloudfoundry/certsplitter
   * https://github.com/cloudfoundry/cfdot
-  * https://github.com/cloudfoundry/clock
+  * https://github.com/cloudfoundry/cf-volume-services-acceptance-tests
   * https://github.com/cloudfoundry/consuladapter
   * https://github.com/cloudfoundry/debugserver
   * https://github.com/cloudfoundry/diego-dockerfiles
   * https://github.com/cloudfoundry/diego-logging-client
   * https://github.com/cloudfoundry/diego-upgrade-stability-tests
   * https://github.com/cloudfoundry/dockerdriver
+  * https://github.com/cloudfoundry/docker_driver_integration_tests
   * https://github.com/cloudfoundry/durationjson
   * https://github.com/cloudfoundry/ecrhelper
   * https://github.com/cloudfoundry/eventhub
@@ -121,6 +122,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/tlsconfig
   * https://github.com/cloudfoundry/vizzini
   * https://github.com/cloudfoundry/volman
+  * https://github.com/cloudfoundry/volumedriver
   * https://github.com/cloudfoundry/workpool
 
 ### Garden Containers
