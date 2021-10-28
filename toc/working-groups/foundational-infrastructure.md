@@ -76,6 +76,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 - [bosh-packages/ruby-release](https://github.com/bosh-packages/ruby-release)
 - [cloudfoundry-incubator/backup-and-restore-sdk-release](https://github.com/cloudfoundry-incubator/backup-and-restore-sdk-release)
 - [cloudfoundry-incubator/bosh-alicloud-light-stemcell-builder](https://github.com/cloudfoundry-incubator/bosh-alicloud-light-stemcell-builder)
+- [cloudfoundry-incubator/bosh-backup-and-restore](https://github.com/cloudfoundry-incubator/bosh-backup-and-restore)
 - [cloudfoundry-incubator/bosh-backup-and-restore-test-releases](https://github.com/cloudfoundry-incubator/bosh-backup-and-restore-test-releases)
 - [cloudfoundry-incubator/bosh-cpi-certification](https://github.com/cloudfoundry-incubator/bosh-cpi-certification)
 - [cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests](https://github.com/cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests)
