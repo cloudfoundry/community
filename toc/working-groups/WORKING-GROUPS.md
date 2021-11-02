@@ -49,10 +49,10 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [app-runtime-platform.md](./app-runtime-platform.md)  |
-| Forum                      | TBD  |
-| Community Meeting Calendar | TBD  |
-| Meeting Notes              | TBD  |
-| Slack Channel              | TBD  |
+| Forum                      | [Video chat](https://zoom.us/j/96811724570?pwd=akxYdzlPQVJZMU9ySDVKSThNTUI4dz09) |
+| Community Meeting Calendar | [Monthly on the first Wednesday at noon ET / 9 am PT](https://calendar.google.com/event?action=TEMPLATE&tmeid=bnBmZTMzMzYyNGlxY3U5ODR2ZHFtZ2kyZDRfMjAyMTExMDNUMTYwMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL)  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1aGT5P_1kFiDMqgvRgmryXMvjGRXKpmtexAhAGK0t3yc/edit)  |
+| Slack Channel              | [&#x23;wg-app-runtime-platform](https://cloudfoundry.slack.com/archives/C02HNDJB31R)  |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                  |
 | -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
@@ -69,10 +69,10 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [cf-on-k8s.md](./cf-on-k8s.md)  |
-| Forum                      | TBD  |
-| Community Meeting Calendar | TBD  |
-| Meeting Notes              | TBD  |
-| Slack Channel              | TBD  |
+| Forum                      | [Video chat](https://zoom.us/j/98762513821?pwd=dUk1WGZwcXJqR0UxRXQ4NnljcCtydz09)  |
+| Community Meeting Calendar | Every other Tuesday at 11:30 am ET / 8:30 am PT  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1ULNBEjlrNAgn3ko9y8ZJfwI7mw5-oofYdjl-dhkEoDA/edit)  |
+| Slack Channel              | [&#x23;cf-k8s-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
@@ -89,10 +89,10 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [foundational-infrastructure.md](./foundational-infrastructure.md)  |
-| Forum                      | TBD  |
-| Community Meeting Calendar | TBD  |
-| Meeting Notes              | TBD  |
-| Slack Channel              | TBD  |
+| Forum                      | [Video chat](https://zoom.us/j/92400700135?pwd=MTZONUlRdGQxTmMveDVlMVYvRTFIZz09)  |
+| Community Meeting Calendar | Weekly on Thursdays at 10:30 am ET / 7:30 am PT  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1pLKTANki82JsCqPr4DE8vu4je_omA20eH96CUuRW_8Q)  |
+| Slack Channels              | [&#x23;bosh](https://cloudfoundry.slack.com/archives/C02HPPYQ2) &middot; [&#x23;credhub](https://cloudfoundry.slack.com/archives/C3EN0BFC0) &middot; [&#x23;uaa](https://cloudfoundry.slack.com/archives/C03FXANBV) &middot; [&#x23;mysql-galera](https://cloudfoundry.slack.com/archives/C7NDVQ55Z) &middot; [&#x23;postgres-release](https://cloudfoundry.slack.com/archives/C3CR3GC1F) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
