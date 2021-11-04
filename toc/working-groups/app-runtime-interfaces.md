@@ -96,6 +96,7 @@ Autoscaler
 - https://github.com/cloudfoundry/app-autoscaler-cli-plugin
 
 Buildpacks
+- https://github.com/cloudfoundry/cflinuxfs3
 - https://github.com/cloudfoundry/java-buildpack
 - https://github.com/cloudfoundry/java-buildpack-memory-calculator
 - https://github.com/cloudfoundry/java-buildpack-release
