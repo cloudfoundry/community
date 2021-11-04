@@ -48,10 +48,13 @@ Below is the outline of a typical PR workflow. [See drawing](https://docs.google
 ## FAQ
 
 ❓ **How can I see what is assigned to me?**
-
-Go to the github project.
-Either click on your face on a card that is already assigned to you or
-add the following query param to the URL: `?card_filter_query=assignee:YOUR-GITHUB-USERNAME`
+1. To view all open issues assigned to you in the cf org
+  *   Go to this link when you are logged in: [https://github.com/issues/assigned?q=is%3Aopen+archived%3Afalse+org%3Acloudfoundry](https://github.com/issues/assigned?q=is%3Aopen+archived%3Afalse+org%3Acloudfoundry).
+2. To view all open issues assigned to you for a particuluar project
+  * Go to the github project.
+  * Click on your icon on a card that is already assigned to you.
+  * OR 
+  * Add the following query param to the URL: `?card_filter_query=assignee:YOUR-GITHUB-USERNAME`.
 
 ❓ **How much time will this take per week?**
 
