@@ -12,7 +12,7 @@
 
 ## Solution Details
 
-* Use github actions build in [stale action](https://github.com/actions/stale), driven by the central [configuration file](link pending).
+* Use github actions build in [stale action](https://github.com/actions/stale), driven by the central configuration file as described [here](2021-11-09-roadmap-visibility.md).
 
 ## FAQ
 
