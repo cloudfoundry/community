@@ -163,7 +163,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/routing-info
   * https://github.com/cloudfoundry/gorouter
   * https://github.com/cloudfoundry/route-registrar
-* https://github.com/cloudfoundry-incubator/haproxy-boshrelease
+* https://github.com/cloudfoundry/haproxy-boshrelease
 * https://github.com/cloudfoundry/cf-networking-release
   * https://github.com/cloudfoundry/networking-oss-deployments
   * https://github.com/cloudfoundry/cf-networking-helpers
