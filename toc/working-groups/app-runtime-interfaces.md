@@ -61,7 +61,6 @@ CAPI
 - @andy-paine 
 - @MerricdeLauney
 - @monamohebbi
-- @sethboyles
  
 CLI
 - @a-b 

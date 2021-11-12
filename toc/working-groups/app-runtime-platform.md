@@ -98,7 +98,6 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/certsplitter
   * https://github.com/cloudfoundry/cfdot
   * https://github.com/cloudfoundry/cf-volume-services-acceptance-tests
-  * https://github.com/cloudfoundry/clock
   * https://github.com/cloudfoundry/consuladapter
   * https://github.com/cloudfoundry/debugserver
   * https://github.com/cloudfoundry/diego-dockerfiles
