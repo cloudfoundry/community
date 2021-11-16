@@ -15,7 +15,7 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 
 ## Scope
 
-- Package and release reference CF App Runtime deployments for different platforms, such as BOSH and Kubernetes.
+- Package and release reference CF App Runtime deployments for different platforms, such as BOSH and, maybe in future, Kubernetes.
 - Maintain public roadmaps for each reference deployment.
 - Collaborate with other Working Groups to ensure that App Runtime components are integrated regularly into the community deployments.
 - Provide the community with tooling and reference pipelines needed to build and release the CF reference deployments.
@@ -32,18 +32,23 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 
 ## Open Questions (to be considered before WG formation)
 
-- How much API and behavioral consistency should there be between official CF deployments?
+- How much API and behavioral consistency should there be between official CF deployments? - becomes relevant only if a k8s based CF deployment is part of technical assets
 - How much of that consistency should be the responsibility of this working group, when that consistency may lie within the domain of another working group (for example, one that owns Buildpacks)?
 
 
-## Proposed Leadership
+## Membership
+
+- Technical Lead(s): TBD
+- Execution Lead(s): TBD
+
+### Approvers by Area
 
 TBD
 
 
 ## Technical Assets
 
-Existing CF App Runtime deployments, namely cf-deployment, KubeCF, and cf-for-k8s, along with Quarks.
+Existing CF App Runtime deployments, namely cf-deployment.
 
 Repositories:
 - https://github.com/cloudfoundry/cf-deployment
@@ -53,9 +58,6 @@ Repositories:
 - https://github.com/cloudfoundry/cf-smoke-tests-release
 - https://github.com/cloudfoundry/uptimer
 - https://github.com/cloudfoundry/runtime-ci/
-- https://github.com/cloudfoundry/cf-for-k8s
-- https://github.com/cloudfoundry-incubator/kubecf
-- https://github.com/cloudfoundry-incubator/quarks-operator
 
 Public, active pipelines for building and releasing CF deployments, to be run on CFF community infrastructure.
 
