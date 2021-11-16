@@ -101,8 +101,10 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/clock
   * https://github.com/cloudfoundry/consuladapter
   * https://github.com/cloudfoundry/debugserver
+  * https://github.com/cloudfoundry/diego-ci
   * https://github.com/cloudfoundry/diego-dockerfiles
   * https://github.com/cloudfoundry/diego-logging-client
+  * https://github.com/cloudfoundry/diego-team
   * https://github.com/cloudfoundry/diego-upgrade-stability-tests
   * https://github.com/cloudfoundry/dockerdriver
   * https://github.com/cloudfoundry/docker_driver_integration_tests
@@ -111,6 +113,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/eventhub
   * https://github.com/cloudfoundry/executor
   * https://github.com/cloudfoundry/fileserver
+  * https://github.com/cloudfoundry/grace
   * https://github.com/cloudfoundry/healthcheck
   * https://github.com/cloudfoundry/inigo
   * https://github.com/cloudfoundry/localdriver
