@@ -85,6 +85,9 @@ MultiApps
 
 Notifications
 - @dsboulder
+- @totherme
+- @dlresende
+- @fejnartal
 
 ## Technical Assets
 
