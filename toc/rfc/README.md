@@ -8,7 +8,7 @@ Cloud Foundry community members use this directory as a forum to discuss, make a
 2. Include any images etc in a separate directory named `rfc-000` and link to them.
 3. Make a Pull Request (PR) for your branch.
 4. Rename your file and directory with the number of the PR and push as a new commits.
-5. Post a link to your PR in [#toc](https://cloudfoundry.slack.com/archives/C026XJGNC2U) on Slack and to the related working group slack channels if appropriate. @mention teams in the PR description if you want particular attention from them.
+5. Tag `@toc` and any relevant working groups in your PR to enable discussion of the RFC. 
 6. Cloud Foundry community members discuss your proposal using both inline comments against your RFC document and the general PR comments section.
 7. As changes are requested and agreed in comments, make the changes in your RFC and push them as new commits.
 8. Stay active in the discussion and encourage and remind other relevant people to participate. If you’re unsure who should be involved in a discussion, ask your Technical Lead, Execution Lead or the TOC. If you start an RFC it’s up to you to push it through the process and engage people.
