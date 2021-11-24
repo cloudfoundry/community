@@ -1,6 +1,6 @@
 # Cloud Foundry Request For Comments
 
-Cloud Foundry community members use this directory as a forum to discuss, make and record both process and technical decisions. The outcomes of these discussions can be either an Action Plan, a new Standard or Process that the Cloud Foundry community should follow. This repository is open as a reference for all working groups and for the wider community.
+Cloud Foundry community members use this directory as a forum to make, discuss and record both process and technical decisions. The outcomes of these discussions can be either an Action Plan, a new Standard or Process that the Cloud Foundry community should follow. This repository is open as a reference for all working groups and for the wider community.
 
 ## Process
 
