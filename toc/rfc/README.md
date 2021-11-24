@@ -16,9 +16,9 @@ Cloud Foundry community members use this directory as a forum to discuss, make a
 10. When an RFC is accepted, ensure the Cloud Foundry community is made aware of it via Slack using the previously used channels.
 11. An RFC can be rejected. This can happen if a consensus isn’t reached, or people agree rejecting it is the right thing to do. In this case the PR should be closed with a suitable comment.
 
-## Managing Standards
+## Managing Standards and Processes
 
-Standards RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Standard, the original RFC must be superseded by a new one. The process for this is:
+Standards and Processes RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Standard or Process, the original RFC must be superseded by a new one. The process for this is:
 
 1. Create a new RFC PR as above, noting in the summary which RFC it is superseding.
 2. In the same branch, mark the old RFC as superseded and link to the new RFC and move (using `git mv`) it into the archived directory.
@@ -26,12 +26,4 @@ Standards RFCs shouldn’t be substantially altered after they are accepted, alt
 
 ## Managing Action Plans
 For RFCs where the outcome is an agreed Action Plan, you may want to update the RFC with meaningful status updates in new PRs. Once the plan is either complete or no longer relevant, it should be moved to the archived directory in a new PR.
-
-## Managing Processes
-
-Process RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Process, the original RFC must be superseded by a new one. The process for this is:
-
-1. Create a new RFC PR as above, noting in the summary which RFC it is superseding.
-2. In the same branch, mark the old RFC as superseded and link to the new RFC and move (using `git mv`) it into the archived directory.
-3. When the new RFC is accepted and the PR is merged, the old RFC will no longer be active.
 
