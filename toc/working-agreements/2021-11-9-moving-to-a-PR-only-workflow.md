@@ -43,3 +43,7 @@ No. Github does not let you review your own PRs. So even if you are a Working
 Group approver you will need another approver to review your PR. We can change
 this if it is a burden.
 
+**What about bots?**
+Some teams have bots (like dependabot) that currently make a PR, wait for checks to pass, and then merge their own PR. With this review proposal that will no longer be possible. To continue with a fully automated workflow we suggest using a **two bot** workflow. Have one bot for making PRs (dependabot) and one for merging them (mergebot). This is similar to the Istio and Kubernetes processes. 
+
+
