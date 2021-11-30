@@ -122,7 +122,6 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/tlsconfig
   * https://github.com/cloudfoundry/vizzini
   * https://github.com/cloudfoundry/volman
-  * https://github.com/cloudfoundry/volumedriver
   * https://github.com/cloudfoundry/workpool
 
 ### Garden Containers
