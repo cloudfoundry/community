@@ -23,8 +23,8 @@ Cloud Foundry community members use this directory as a forum to make, discuss a
 Standards and Processes RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Standard or Process, the original RFC must be superseded by a new one. The process for this is:
 
 1. Create a new RFC PR as above, noting in the summary which RFC it is superseding.
-2. In the same branch, mark the old RFC as superseded and link to the new RFC and move (using `git mv`) it into the archived directory.
-3. When the new RFC is accepted and the PR is merged, the old RFC will no longer be active.
+1. In the same branch, mark the old RFC as superseded and link to the new RFC and move (using `git mv`) it into the archived directory.
+1. When the new RFC is accepted and the PR is merged, the old RFC will no longer be active.
 
 ## Managing Action Plans
 
