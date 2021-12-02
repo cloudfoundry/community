@@ -146,8 +146,17 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 ### Logging and Metrics
 * https://github.com/cloudfoundry/bosh-system-metrics-forwarder-release
 * https://github.com/cloudfoundry/log-cache-release
+  * https://github.com/cloudfoundry/go-log-cache
 * https://github.com/cloudfoundry/loggregator-release
+  * https://github.com/cloudfoundry/go-diodes
+  * https://github.com/cloudfoundry/go-envstruct
+  * https://github.com/cloudfoundry/go-loggregator
+  * https://github.com/cloudfoundry/go-metric-registry
+  * https://github.com/cloudfoundry/go-pubsub
 * https://github.com/cloudfoundry/loggregator-agent-release
+  * https://github.com/cloudfoundry/dropsonde
+  * https://github.com/cloudfoundry/go-batching
+  * github.com/cloudfoundry/sonde-go
 * https://github.com/cloudfoundry/metrics-discovery-release
 * https://github.com/cloudfoundry/statsd-injector-release
 * https://github.com/cloudfoundry/system-metrics-scraper-release
