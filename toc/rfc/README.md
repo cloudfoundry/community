@@ -4,9 +4,9 @@ Cloud Foundry community members use this directory as a forum to make, discuss a
 
 ## Process
 
-1. Create a new branch on this repo and copy `rfc-000-template.md` to `rfc-000-my-proposal.md` and edit. The numbering used should be the next sequential number.
+1. Create a new branch on this repo and copy `rfc-000-template.md` to `rfc-000-my-proposal.md` and edit. The numbering used should be the next sequential number that is available when you create your PR.
 1. If your RFC is only relevant for a single Working Group, please place it in a directory for the working group within toc/rfc.
-   1. If your RFC is only relevant for a sigle Working Group, and the Working Group hosts RFCs elsewhere, please create a directory within toc/rfc and place a link to where the RFCs can be found to aid in discoverability and follow the already agreed process. 
+   1. If your RFC is only relevant for a sigle Working Group, and the Working Group hosts RFCs elsewhere and this step has not already been completed, please create a directory within toc/rfc and place a link to where the RFCs can be found to aid in discoverability and follow the already agreed process. 
 1. Include any images etc in a separate directory named `rfc-000` (using the number of your RFC) and link to them.
 1. Make a Pull Request (PR) for your branch.
 1. Rename your file and directory with the number of the PR and push as a new commits.
