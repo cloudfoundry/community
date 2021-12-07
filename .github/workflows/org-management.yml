@@ -1,0 +1,29 @@
+name: 'Sync Github Organization Settings'
+on:
+  push:
+    paths:
+      - 'org/*'
+      - '.github/workflows/org-management.yml'
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  peribolos:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: write token
+        run: echo "${GITHUB_TOKEN}" > token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: peribolos
+        uses: docker://gcr.io/k8s-prow/peribolos
+        with:
+          entrypoint: /app/prow/cmd/peribolos/app.binary
+          args: |
+            --github-token-path token \
+            --config-path org/cloudfoundry.yml \
+            --fix-org \
+            --fix-org-members \
+            --fix-teams \
+            --fix-team-members
