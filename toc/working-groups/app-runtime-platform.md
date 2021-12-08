@@ -156,7 +156,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 * https://github.com/cloudfoundry/loggregator-agent-release
   * https://github.com/cloudfoundry/dropsonde
   * https://github.com/cloudfoundry/go-batching
-  * github.com/cloudfoundry/sonde-go
+  * https://github.com/cloudfoundry/sonde-go
 * https://github.com/cloudfoundry/metrics-discovery-release
 * https://github.com/cloudfoundry/statsd-injector-release
 * https://github.com/cloudfoundry/system-metrics-scraper-release
