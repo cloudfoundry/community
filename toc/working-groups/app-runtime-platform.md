@@ -45,6 +45,7 @@ Diego:
 - @pivotalgeorge
 - @reneighbor
 - @selzoc
+- @MarcPaquette
 
 Garden Containers:
 - @aemengo
@@ -53,6 +54,7 @@ Garden Containers:
 - @georgethebeatle
 - @kieron-dev
 - @mnitchev
+- @MarcPaquette
 
 Logging and Metrics:
 - @acrmp
@@ -80,6 +82,7 @@ Networking:
 - @reneighbor
 - @selzoc
 - @stefanlay
+- @MarcPaquette
 
 
 ## Technical Assets
