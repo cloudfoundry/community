@@ -1,3 +1,12 @@
+# Meta
+[meta]: #meta
+- Name: (fill in the feature name: My Feature)
+- Start Date: (fill in today's date: YYYY-MM-DD)
+- Author(s): (Github usernames)
+- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- RFC Pull Request: (fill in with PR number when you raise it)
+
+
 ## Summary
 
 An abstract, tl;dr or executive summary of your RFC.
