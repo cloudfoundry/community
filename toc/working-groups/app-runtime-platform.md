@@ -104,7 +104,6 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/diego-ci
   * https://github.com/cloudfoundry/diego-dockerfiles
   * https://github.com/cloudfoundry/diego-logging-client
-  * https://github.com/cloudfoundry/diego-team
   * https://github.com/cloudfoundry/diego-upgrade-stability-tests
   * https://github.com/cloudfoundry/dockerdriver
   * https://github.com/cloudfoundry/docker_driver_integration_tests
@@ -131,7 +130,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 
 ### Garden Containers
 * https://github.com/cloudfoundry/garden-runc-release
-  * https://github.com/cloudfoundry/dontpanic/
+  * https://github.com/cloudfoundry/dontpanic
   * https://github.com/cloudfoundry/garden
   * https://github.com/cloudfoundry/garden-integration-tests
   * https://github.com/cloudfoundry/grootfs
@@ -158,7 +157,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 * https://github.com/cloudfoundry/system-metrics-scraper-release
 
 ### Networking
-* http://github.com/cloudfoundry/routing-release
+* https://github.com/cloudfoundry/routing-release
   * https://github.com/cloudfoundry/routing-acceptance-tests
   * https://github.com/cloudfoundry/routing-api
   * https://github.com/cloudfoundry/routing-api-cli
@@ -169,12 +168,13 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/route-registrar
 * https://github.com/cloudfoundry-incubator/haproxy-boshrelease
 * https://github.com/cloudfoundry/cf-networking-release
-  * https://github.com/cloudfoundry/networking-oss-deployments
   * https://github.com/cloudfoundry/cf-networking-helpers
 * https://github.com/cloudfoundry/silk-release
-  * https://github.com/cloudfoundry/silk/
+  * https://github.com/cloudfoundry/silk
 * https://github.com/cloudfoundry/nats-release
 
 
-
-
+### Technical Assets
+* cloudfoundry/diego-team
+* cloudfoundry/garden-ci
+* cloudfoundry/networking-oss-deployments
