@@ -100,6 +100,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/cf-volume-services-acceptance-tests
   * https://github.com/cloudfoundry/consuladapter
   * https://github.com/cloudfoundry/debugserver
+  * https://github.com/cloudfoundry/diego-ci
   * https://github.com/cloudfoundry/diego-dockerfiles
   * https://github.com/cloudfoundry/diego-logging-client
   * https://github.com/cloudfoundry/diego-upgrade-stability-tests
@@ -110,6 +111,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/eventhub
   * https://github.com/cloudfoundry/executor
   * https://github.com/cloudfoundry/fileserver
+  * https://github.com/cloudfoundry/grace
   * https://github.com/cloudfoundry/healthcheck
   * https://github.com/cloudfoundry/inigo
   * https://github.com/cloudfoundry/localdriver
@@ -127,7 +129,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 
 ### Garden Containers
 * https://github.com/cloudfoundry/garden-runc-release
-  * https://github.com/cloudfoundry/dontpanic/
+  * https://github.com/cloudfoundry/dontpanic
   * https://github.com/cloudfoundry/garden
   * https://github.com/cloudfoundry/garden-integration-tests
   * https://github.com/cloudfoundry/grootfs
@@ -162,7 +164,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 * https://github.com/cloudfoundry/system-metrics-scraper-release
 
 ### Networking
-* http://github.com/cloudfoundry/routing-release
+* https://github.com/cloudfoundry/routing-release
   * https://github.com/cloudfoundry/routing-acceptance-tests
   * https://github.com/cloudfoundry/routing-api
   * https://github.com/cloudfoundry/routing-api-cli
@@ -173,12 +175,13 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/route-registrar
 * https://github.com/cloudfoundry/haproxy-boshrelease
 * https://github.com/cloudfoundry/cf-networking-release
-  * https://github.com/cloudfoundry/networking-oss-deployments
   * https://github.com/cloudfoundry/cf-networking-helpers
 * https://github.com/cloudfoundry/silk-release
-  * https://github.com/cloudfoundry/silk/
+  * https://github.com/cloudfoundry/silk
 * https://github.com/cloudfoundry/nats-release
 
 
-
-
+### Technical Assets
+* cloudfoundry/diego-team
+* cloudfoundry/garden-ci
+* cloudfoundry/networking-oss-deployments
