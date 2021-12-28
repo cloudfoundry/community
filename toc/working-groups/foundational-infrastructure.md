@@ -156,6 +156,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 - [cloudfoundry/uaa-release](https://github.com/cloudfoundry/uaa-release)
 - [cloudfoundry/uaa-singular](https://github.com/cloudfoundry/uaa-singular)
 - [cloudfoundry/uaa](https://github.com/cloudfoundry/uaa)
+- [cloudfoundry/identity-ci](https://github.com/cloudfoundry/identity-ci)
 
 ### Credential Management (Credhub)
 - [cloudfoundry-incubator/credhub-acceptance-tests](https://github.com/cloudfoundry-incubator/credhub-acceptance-tests)
