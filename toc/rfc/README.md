@@ -4,7 +4,7 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 ## Process
 
-1. Create a new branch on this repo and copy `rfc-000-template.md` to `rfc-000-my-proposal.md` and edit. The numbering used should be the next sequential number that is available when you create your PR.
+1. Create a new branch on this repo and copy `rfc-000-template.md` to `rfc-000-my-proposal.md` and edit. The numbering used should be the next sequential number that is available when your PR has been accepted and is ready for merging. This is to remove the numbering gaps that would be caused by rejected RFCs.
 1. If your RFC is relevant for only a single Working Group, please place it in a subdirectory of `toc/rfc` specifically for that working group.
    1. If that Working Group hosts its RFCs elsewhere, its RFC subdirectory will contain a file called `EXTERNAL.md` that contains a link to that group's RFC repository. In that case, follow that link to create the group-specific RFC in that repository.
 1. Include any images etc in a separate directory named `rfc-000` (using the number of your RFC) and link to them.
@@ -20,7 +20,7 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 ## Managing Standards and Processes
 
-Standards and Processes RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Standard or Process, the original RFC must be superseded by a new one. The process for this is:
+[Standards](#Standards) and [Processes](#Processes) RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Standard or Process, the original RFC must be superseded by a new one. The process for this is:
 
 1. Create a new RFC PR as above, noting in the summary which RFC it is superseding.
 1. In the same branch, mark the old RFC as superseded and link to the new RFC and move (using `git mv`) it into the archived directory.
@@ -30,3 +30,12 @@ Standards and Processes RFCs shouldn’t be substantially altered after they are
 
 For RFCs where the outcome is an agreed Action Plan, you may want to update the RFC with meaningful status updates in new PRs. Once the plan is either complete or no longer relevant, it should be moved to the archived directory in a new PR.
 
+### Definitions
+
+#### Standards
+
+A standard is a repeatable, harmonised, agreed and documented way of doing something. Standards contain technical specifications or other precise criteria designed to be used consistently as a rule, guideline, or definition.
+
+#### Processes
+
+A process is a procedure, something you do in order to achieve a certain result.
