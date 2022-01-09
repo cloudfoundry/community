@@ -166,6 +166,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 - [cloudfoundry-incubator/credhub](https://github.com/cloudfoundry-incubator/credhub)
 - [cloudfoundry/docs-credhub](https://github.com/cloudfoundry/docs-credhub)
 - [cloudfoundry/secure-credentials-broker](https://github.com/cloudfoundry/secure-credentials-broker)
+- [pivotal/credhub-release](https://github.com/pivotal/credhub-release)
 
 ### Integrated Databases
 - [cloudfoundry-incubator/cf-mysql-ci](https://github.com/cloudfoundry-incubator/cf-mysql-ci)
