@@ -53,11 +53,11 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   d)	Officers
 
-    -   i)	The officers (“Officers”) of the CFF as of the first meeting of the Governing Board will be a Chairperson (“Chair”), Executive Director, and a Treasurer.  Additional Officer positions may be created by the Governing Board.
+    -   i) The officers (“Officers”) of the CFF as of the first meeting of the Governing Board will be a Chairperson (“Chair”) and a Treasurer.  Additional Officer positions may be created by the Governing Board.
 
-    -   ii)	The Executive Director of the Directed Fund will be responsible for managing any day-to-day operational decisions of the Directed Fund.
+    -   ii)	The staff of the Directed Fund will be responsible for managing any day-to-day operational decisions of the Directed Fund.
 
-    -   iii)	The Chair will preside over meetings of the Governing Board, will submit minutes for Governing Board approval, and may manage any day-to-day operational decisions of the Directed Fund if the Executive Director is unavailable or the position is unfilled. 
+    -   iii) The Chair will preside over meetings of the Governing Board, will act as liaison for the Governing Board and the staff of the Directed Fund as needed, and may manage any day-to-day operational decisions of the Directed Fund if the staff is unavailable.
 
     -   iv)	The Treasurer will assist in the preparation of budgets for Governing Board approval, monitor expenses against the budget and authorize expenditures approved in the budget.
 
