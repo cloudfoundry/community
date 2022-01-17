@@ -4,7 +4,7 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 ## Process
 
-1. Create a new branch on this repo and copy `rfc-000-template.md` to `rfc-000-my-proposal-title.md` and edit. The number of the RFC should not be selected until you are ready to merge the RFC. The number used should be the next sequential number to follow on from the already merged RFCs. This is to remove numbering gaps that would be caused by rejected RFCs if numbers were chosen earlier.
+1. Create a new branch on this repo and copy `rfc-0000-template.md` to `rfc-0000-my-proposal-title.md` and edit. The number of the RFC should not be selected until you are ready to merge the RFC. The number used should be the next sequential number to follow on from the already merged RFCs. This is to remove numbering gaps that would be caused by rejected RFCs if numbers were chosen earlier.
 1. If your RFC is relevant for only a single Working Group, please place it in a subdirectory of `toc/rfc` specifically for that working group.
    1. If that Working Group hosts its RFCs elsewhere, its RFC subdirectory will contain a file called `EXTERNAL.md` that contains a link to that group's RFC repository. In that case, follow that link to create the group-specific RFC in that repository.
 1. Include any images etc in a separate directory named `rfc-000` (using the number of your RFC) and link to them.
