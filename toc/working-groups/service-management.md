@@ -69,12 +69,12 @@ Components from the Cloud Service Broker, Open Service Broker API, Service Fabri
 
 * [service-fabrik-broker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
 * [service-fabrik-blueprint-app](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-app)
-* [service-fabrik-boshrelease](cloudfoundry-incubator/service-fabrik-boshrelease)
-* [service-fabrik-backup-restore](cloudfoundry-incubator/service-fabrik-backup-restore)
-* [service-fabrik-blueprint-service](cloudfoundry-incubator/service-fabrik-blueprint-service)
-* [service-fabrik-blueprint-boshrelease](cloudfoundry-incubator/service-fabrik-blueprint-boshrelease)
-* [service-fabrik-cli-plugin](cloudfoundry-incubator/service-fabrik-cli-plugin)
-* [service-fabrik-lvm-volume-driver](cloudfoundry-incubator/service-fabrik-lvm-volume-driver)
+* [service-fabrik-boshrelease](https://github.com/cloudfoundry-incubator/service-fabrik-boshrelease)
+* [service-fabrik-backup-restore](https://github.com/cloudfoundry-incubator/service-fabrik-backup-restore)
+* [service-fabrik-blueprint-service](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-service)
+* [service-fabrik-blueprint-boshrelease](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-boshrelease)
+* [service-fabrik-cli-plugin](https://github.com/cloudfoundry-incubator/service-fabrik-cli-plugin)
+* [service-fabrik-lvm-volume-driver](https://github.com/cloudfoundry-incubator/service-fabrik-lvm-volume-driver)
 
 ### Volume Service Adapters
 
