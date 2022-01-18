@@ -129,7 +129,6 @@ members:
 - cf-identity
 - cf-identity-service
 - cf-infra-bot
-- cf-log-cache-ci
 - cf-london
 - cf-pub-tools
 - cf-rabbit-bot
@@ -4081,7 +4080,6 @@ teams:
     - robertjsullivan
     - jpmcb
     - gggevorgyan
-    - cf-log-cache-ci
     - josephgee
     - sboyajyan
     - metric-store-ci
