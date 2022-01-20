@@ -151,7 +151,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 ### Identity and Auth (UAA)
 - [cloudfoundry/cf-uaa-lib](https://github.com/cloudfoundry/cf-uaa-lib)
 - [cloudfoundry/cf-uaac](https://github.com/cloudfoundry/cf-uaac)
-- [cloudfoundry-incubator/uaa-cli](https://github.com/cloudfoundry-incubator/uaa-cli)
+- [cloudfoundry/uaa-cli](https://github.com/cloudfoundry/uaa-cli)
 - [cloudfoundry/omniauth-uaa-oauth2](https://github.com/cloudfoundry/omniauth-uaa-oauth2)
 - [cloudfoundry/uaa-key-rotator](https://github.com/cloudfoundry/uaa-key-rotator)
 - [cloudfoundry/uaa-release](https://github.com/cloudfoundry/uaa-release)
