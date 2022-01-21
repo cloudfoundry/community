@@ -23,6 +23,7 @@ members:
 - a-b
 - a-peek4
 - a-shan
+- a-sudarsanan
 - aaronshurley
 - ab-pivot
 - AbelHu
@@ -41,6 +42,7 @@ members:
 - aduffeck
 - aemengo
 - ahrtr
+- aiswarianair
 - ajackson
 - akazantsau
 - akodali18
@@ -78,9 +80,7 @@ members:
 - bbr-ci
 - bclozel
 - beckermarc
-- belinda-liu
 - Benjamintf1
-- benmoss
 - bepotts
 - berlin-ab
 - beyhan
@@ -129,7 +129,6 @@ members:
 - cf-identity
 - cf-identity-service
 - cf-infra-bot
-- cf-log-cache-ci
 - cf-london
 - cf-pub-tools
 - cf-rabbit-bot
@@ -163,11 +162,9 @@ members:
 - ctlong
 - cunnie
 - cwang-pivotal
-- d
 - dalvarado
 - danail-branekov
 - danhigham
-- daniel-keeney
 - danielfor
 - DanielJonesEB
 - danyoung
@@ -177,7 +174,6 @@ members:
 - davidschachner
 - dbasner
 - dbuchko
-- dcorricelli
 - degaurab
 - DennisDenuto
 - derwei
@@ -210,7 +206,6 @@ members:
 - edwardecook
 - edwardstudy
 - ekcasey
-- elenasharma
 - elsony
 - EngineerBetterCI
 - erabil
@@ -218,7 +213,6 @@ members:
 - erjohnso
 - evanfarrar
 - Everlag
-- ewrenn8
 - f0rmiga
 - farmermel
 - fcioanca
@@ -262,6 +256,7 @@ members:
 - greenhouse-ci
 - gsiener
 - gu-bin
+- gururajsh
 - harshah
 - haydonryan
 - hcf-bot
@@ -269,7 +264,6 @@ members:
 - heidmotron
 - hemarsai
 - herrjulz
-- heycait
 - heyjcollins
 - hillrw3
 - hjcalderon10
@@ -296,16 +290,15 @@ members:
 - jdeppe-pivotal
 - jdgonzaleza
 - jeff-hobbs
-- JenGoldstrich
 - jerrybelmonte
 - jessepye
 - jgawor
+- jhasu
 - jhvhs
 - jianqiu
 - jimbo459
 - jimmykarily
 - jkjell
-- jknostman3
 - jkonicki
 - jmarrero
 - jncd
@@ -314,6 +307,7 @@ members:
 - joefitzgerald
 - joeldsa
 - joergdw
+- johha
 - johncornish
 - jomsie
 - JordanICollier
@@ -330,6 +324,7 @@ members:
 - KaiHofstetter
 - kaleo211
 - kartiklunkad26
+- kathap
 - kauana
 - KauzClay
 - kcboyle
@@ -351,7 +346,6 @@ members:
 - ktollivervmw
 - ktpv
 - kushmerick
-- kvedurmu
 - langered
 - lbarncord
 - lenapivotal
@@ -386,11 +380,9 @@ members:
 - metric-store-ci
 - mfine30
 - mgibson1121
-- micahyoung
 - michaelklishin
 - miguelverissimo
 - mihaibuzgau
-- mike1808
 - MirahImage
 - mjgutermuth
 - mjj209
@@ -400,6 +392,7 @@ members:
 - mkuratczyk
 - MMisoch
 - mnitchev
+- MoatazBM
 - modelseer
 - moggibear
 - moleske
@@ -460,7 +453,6 @@ members:
 - philippthun
 - phschon
 - piachakra
-- pianohacker
 - Pivotal-Christopher-Wong
 - pivotal-david-osullivan
 - pivotal-lyle-murphy
@@ -476,7 +468,6 @@ members:
 - pnikonowicz
 - poconnor1
 - pradyutsarma
-- professor
 - Proplex
 - pspinrad
 - pubtools-docs-helper
@@ -525,7 +516,7 @@ members:
 - runtime-ci
 - ryanmattcollins
 - ryanmoran
-- ryantang
+- ryanwittrup
 - s4heid
 - sampeinado
 - Samze
@@ -575,6 +566,7 @@ members:
 - suraiyasuliman
 - svennam92
 - svkrieger
+- swalchemist
 - swalner-pivotal
 - swati-nair
 - sweinstein22
@@ -600,6 +592,7 @@ members:
 - TisVictress
 - tjvman
 - tmegan1
+- toabctl
 - tom-collings
 - tomkennedy513
 - torsten-sap
@@ -621,7 +614,6 @@ members:
 - WeiQuan0605
 - weymanf
 - willmadison
-- winnab
 - xiongli
 - xtreme-andrei-dinin
 - xtreme-bozhidar-lenchov
@@ -801,8 +793,8 @@ repos:
     allow_merge_commit: false
     allow_squash_merge: false
     default_branch: main
-    description: Command line utility for standing up a BOSH director on an IAAS of
-      your choice.
+    description: Command line utility for standing up a BOSH director on an IAAS
+      of your choice.
     has_projects: false
     has_wiki: false
   bosh-cli:
@@ -904,9 +896,11 @@ repos:
     has_projects: true
   bosh-system-metrics-forwarder-release:
     allow_merge_commit: false
+    default_branch: main
     has_projects: true
   bosh-system-metrics-server-release:
     allow_merge_commit: false
+    default_branch: main
     has_projects: true
   bosh-utils:
     description: Generic packages extracted from bosh-agent and bosh-init
@@ -969,8 +963,8 @@ repos:
     has_projects: false
     has_wiki: false
   buildpackapplifecycle:
-    description: The bit that takes some bits, mashes them together with other bits,
-      and produces a new bit
+    description: The bit that takes some bits, mashes them together with other
+      bits, and produces a new bit
     has_projects: false
     has_wiki: false
   buildpacks-ci:
@@ -1056,8 +1050,8 @@ repos:
     has_projects: true
   cc-uploader:
     default_branch: main
-    description: CC Bridge component to enable Diego to upload files to Cloud Controller's
-      blobstore
+    description: CC Bridge component to enable Diego to upload files to Cloud
+      Controller's blobstore
     has_projects: true
   cert-injector:
     has_projects: true
@@ -1077,6 +1071,7 @@ repos:
     description: Helper methods for ruby apps on Cloud Foundry
     has_projects: true
   cf-crd-explorations:
+    archived: true
     default_branch: main
     has_projects: true
   cf-deployment:
@@ -1088,7 +1083,7 @@ repos:
     has_projects: true
   cf-drain-cli:
     allow_merge_commit: false
-    default_branch: develop
+    default_branch: main
     description: CF CLI plugin to create syslog drains
     has_projects: true
   cf-for-k8s:
@@ -1142,7 +1137,8 @@ repos:
     has_projects: true
     private: true
   cf-mysql-ci:
-    description: Contains Concourse CI scripts and configuration we use to test cf-mysql-release
+    description: Contains Concourse CI scripts and configuration we use to test
+      cf-mysql-release
     has_projects: true
   cf-mysql-deployment:
     default_branch: develop
@@ -1153,7 +1149,8 @@ repos:
     has_projects: true
   cf-networking-deployments:
     archived: true
-    description: Private manifests and credentials for the Container Networking team
+    description: Private manifests and credentials for the Container Networking
+      team
     has_issues: false
     has_projects: true
     has_wiki: false
@@ -1202,8 +1199,8 @@ repos:
     description: TCP Router repository for Cloud Foundry
     has_projects: true
   cf-uaa-lib:
-    description: Ruby client APIs to access the Cloud Foundry User Account and Authentication
-      service
+    description: Ruby client APIs to access the Cloud Foundry User Account and
+      Authentication service
     has_projects: true
   cf-uaac:
     has_projects: true
@@ -1268,9 +1265,10 @@ repos:
     has_projects: true
     private: true
   cff-platform-certification:
-    description: Cloud Foundry Platform Certification technical requirements. All
-      changes to the technical requirements document must be approved by the PMC Council,
-      but may be proposed by any member in good standing of the Cloud Foundry Foundation.
+    description: Cloud Foundry Platform Certification technical requirements.
+      All changes to the technical requirements document must be approved by the
+      PMC Council, but may be proposed by any member in good standing of the Cloud
+      Foundry Foundation.
     has_projects: true
     private: true
   cfhttp:
@@ -1349,8 +1347,8 @@ repos:
   communitydashboard:
     has_projects: true
   compile-extensions:
-    description: Bash library which provides extra functions and overrides for Cloud
-      Foundry Buildpack compile scripts.
+    description: Bash library which provides extra functions and overrides for
+      Cloud Foundry Buildpack compile scripts.
     has_projects: false
     has_wiki: false
   config-server:
@@ -1378,8 +1376,8 @@ repos:
     allow_merge_commit: false
     allow_squash_merge: false
     default_branch: main
-    description: CredHub centralizes and secures credential generation, storage, lifecycle
-      management, and access
+    description: CredHub centralizes and secures credential generation, storage,
+      lifecycle management, and access
     has_projects: true
     has_wiki: false
   credhub-acceptance-tests:
@@ -1398,8 +1396,8 @@ repos:
     has_projects: true
   credhub-cli:
     default_branch: main
-    description: CredHub CLI provides a command line interface to interact with CredHub
-      servers
+    description: CredHub CLI provides a command line interface to interact with
+      CredHub servers
     has_projects: true
   credhub-perf-release:
     has_projects: true
@@ -1418,8 +1416,8 @@ repos:
     has_projects: true
   deployments-diego:
     allow_merge_commit: false
-    description: Configuration files for deployments owned and managed by the CF Diego
-      team.
+    description: Configuration files for deployments owned and managed by the
+      CF Diego team.
     has_projects: true
     private: true
   deployments-loggregator:
@@ -1439,8 +1437,8 @@ repos:
     has_projects: true
     private: true
   dev-cert-grading:
-    description: Grading code developed by the Biarca team and to be reviewed by Item
-      Writers
+    description: Grading code developed by the Biarca team and to be reviewed
+      by Item Writers
     has_projects: true
     private: true
   developer-training-class-apps:
@@ -1553,8 +1551,8 @@ repos:
     has_wiki: false
     homepage: http://docs.cloudfoundry.org/buildpacks/
   docs-cf-admin:
-    description: A place to put documentation about how to operate your Cloud Foundry
-      deployment using the command line tools bosh and cf
+    description: A place to put documentation about how to operate your Cloud
+      Foundry deployment using the command line tools bosh and cf
     has_projects: true
   docs-cf-cli:
     has_projects: true
@@ -1605,7 +1603,8 @@ repos:
     archived: true
     has_projects: true
   dropsonde:
-    description: Go library to collect and emit metric and logging data from CF components.
+    description: Go library to collect and emit metric and logging data from CF
+      components.
     has_projects: true
   dropsonde-protocol:
     description: Protobuf protocol for dropsonde
@@ -1628,8 +1627,8 @@ repos:
     has_projects: false
     private: true
   etcd:
-    description: A highly-available key value store for shared configuration and service
-      discovery
+    description: A highly-available key value store for shared configuration and
+      service discovery
     has_issues: false
     has_projects: true
     has_wiki: false
@@ -1724,9 +1723,16 @@ repos:
     has_wiki: false
     homepage: http://bosh.io/releases/github.com/cloudfoundry/go-buildpack-release
   go-cf-api:
+    allow_rebase_merge: false
+    allow_squash_merge: false
     default_branch: main
+    description: A proof of concept implementation as an alternative to cloud_controller_ng,
+      written in Go.
     has_projects: true
+    has_wiki: false
+    homepage: https://cloudfoundry.github.io/go-cf-api/
   go-cf-api-release:
+    allow_rebase_merge: false
     default_branch: main
     has_projects: true
   go-cnb:
@@ -1736,8 +1742,8 @@ repos:
     description: Diodes are ring buffers manipulated via atomics.
     has_projects: true
   go-envstruct:
-    description: envstruct is a simple library for populating values on structs from
-      environment variables.
+    description: envstruct is a simple library for populating values on structs
+      from environment variables.
     has_projects: true
   go-fetcher:
     has_projects: true
@@ -1882,7 +1888,8 @@ repos:
     has_projects: true
   java-buildpack-dependency-builder:
     default_branch: main
-    description: Automated building and publication of Java Buildpack dependency artifacts
+    description: Automated building and publication of Java Buildpack dependency
+      artifacts
     has_projects: true
   java-buildpack-memory-calculator:
     default_branch: main
@@ -1922,8 +1929,8 @@ repos:
   jsonry:
     allow_merge_commit: false
     default_branch: main
-    description: A Go library and notation for converting between a Go struct and
-      JSON
+    description: A Go library and notation for converting between a Go struct
+      and JSON
     has_projects: false
     has_wiki: false
     homepage: https://pkg.go.dev/code.cloudfoundry.org/jsonry?tab=doc
@@ -1999,7 +2006,7 @@ repos:
     has_projects: true
   log-cache-cli:
     allow_merge_commit: false
-    default_branch: develop
+    default_branch: main
     has_projects: false
     has_wiki: false
   log-cache-deployments:
@@ -2012,7 +2019,8 @@ repos:
     has_projects: true
   log-stream-cli:
     default_branch: develop
-    description: Cloud Foundry CLI plugin to consume logs and metrics from the RLP
+    description: Cloud Foundry CLI plugin to consume logs and metrics from the
+      RLP
     has_projects: true
   logging-acceptance-tests:
     archived: true
@@ -2097,13 +2105,14 @@ repos:
     allow_merge_commit: false
     allow_squash_merge: false
     default_branch: develop
-    description: 'Metric Store: A Cloud-Native Time Series Database for Cloud Foundry'
+    description: 'Metric Store: A Cloud-Native Time Series Database for Cloud
+      Foundry'
     has_projects: true
   metrics-discovery-release:
     allow_merge_commit: false
     default_branch: main
-    description: BOSH Release to discovery Prometheus-formatted metric endpoints in
-      Cloud Foundry
+    description: BOSH Release to discovery Prometheus-formatted metric endpoints
+      in Cloud Foundry
     has_projects: true
   migrate_mysql_to_credhub:
     description: A go tool to migrate broker data from mysql to credhub
@@ -2174,7 +2183,8 @@ repos:
   noisy-neighbor-nozzle:
     allow_merge_commit: false
     archived: true
-    description: A nozzle and CLI tool for identifying high volume log producing applications
+    description: A nozzle and CLI tool for identifying high volume log producing
+      applications
     has_projects: true
   omniauth-uaa-oauth2:
     has_projects: true
@@ -2197,8 +2207,8 @@ repos:
     has_projects: true
     private: true
   oss-summit-class:
-    description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18 in
-      Vancouver '
+    description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18
+      in Vancouver '
     has_projects: true
   overview-broker:
     allow_merge_commit: false
@@ -2236,8 +2246,8 @@ repos:
       Meetings
     has_projects: true
   policy_client:
-    description: Policy Client allows Cloud Foundry system components to query the
-      policy server for policies
+    description: Policy Client allows Cloud Foundry system components to query
+      the policy server for policies
     has_projects: true
   postgres-ci-env:
     has_projects: true
@@ -2317,8 +2327,8 @@ repos:
     has_projects: true
   route-emitter:
     allow_merge_commit: false
-    description: Registers and unregisters processes running on executors with the
-      gorouter
+    description: Registers and unregisters processes running on executors with
+      the gorouter
     has_issues: false
     has_projects: true
   route-registrar:
@@ -2446,8 +2456,8 @@ repos:
   silk:
     allow_merge_commit: false
     default_branch: main
-    description: a network fabric for containers.  inspired by flannel, designed for
-      Cloud Foundry.
+    description: a network fabric for containers.  inspired by flannel, designed
+      for Cloud Foundry.
     has_projects: true
   silk-release:
     allow_merge_commit: false
@@ -2496,8 +2506,8 @@ repos:
     homepage: http://bosh.io/releases/github.com/cloudfoundry/staticfile-buildpack-release
   statsd-injector:
     archived: true
-    description: Companion component to Metron that receives Statsd and emits Dropsonde
-      to Metron
+    description: Companion component to Metron that receives Statsd and emits
+      Dropsonde to Metron
     has_projects: true
   statsd-injector-release:
     allow_merge_commit: false
@@ -2523,8 +2533,8 @@ repos:
     description: Hands-on Labs for CF Summit Boston '18 and beyond
     has_projects: true
   summit-training-classes:
-    description: 'Opensourced content for cloud foundry training classes: zero to
-      hero (beginner), bosh/operator, and microservices'
+    description: 'Opensourced content for cloud foundry training classes: zero
+      to hero (beginner), bosh/operator, and microservices'
     has_projects: true
   switchblade:
     default_branch: main
@@ -2647,7 +2657,7 @@ repos:
     has_wiki: false
   winc-release:
     default_branch: develop
-    description: A BOSH release for deploying winc
+    description: A BOSH release for deploying winc on windows
     has_projects: true
     has_wiki: false
   windows-regression-tests:
@@ -2699,7 +2709,7 @@ teams:
     - rahulkj
     - skibum55
     privacy: secret
-  App Runtime Interfaces:
+  App Runtime Interfaces WG:
     description: Approvers for the App Runtime Interfaces Working Group
     maintainers:
     - Gerg
@@ -2713,7 +2723,6 @@ teams:
     - tjvman
     - MarcPaquette
     - sweinstein22
-    - JenGoldstrich
     - MerricdeLauney
     privacy: closed
     teams:
@@ -2730,7 +2739,6 @@ teams:
         - tjvman
         - MarcPaquette
         - sweinstein22
-        - JenGoldstrich
         - MerricdeLauney
         privacy: closed
         repos:
@@ -2750,6 +2758,7 @@ teams:
     maintainers:
     - ameowlia
     members:
+    - stefanlay
     - ameowlia
     privacy: closed
     repos:
@@ -2785,7 +2794,7 @@ teams:
       garden: write
       garden-integration-tests: write
       garden-runc-release: write
-      gorouter: write
+      gorouter: admin
       groot-windows: write
       grootfs: write
       guardian: write
@@ -2812,7 +2821,7 @@ teams:
       routing-api-cli: write
       routing-info: write
       routing-perf-release: write
-      routing-release: write
+      routing-release: admin
       silk: write
       silk-release: write
       statsd-injector-release: write
@@ -2864,6 +2873,7 @@ teams:
           garden: admin
           garden-integration-tests: admin
           garden-runc-release: admin
+          go-pubsub: admin
           gorouter: admin
           groot-windows: admin
           grootfs: admin
@@ -2923,7 +2933,6 @@ teams:
     - cppforlife
     - tekul
     - frodenas
-    - d
     - avade
     - fhanik
     - cobyrne
@@ -2996,8 +3005,10 @@ teams:
   BOSH Ecosystem:
     description: Parent Team for BOSH
     maintainers:
+    - aramprice
     - dsboulder
     - jpalermo
+    - ragaskar
     - ystros
     - rkoster
     - selzoc
@@ -3009,6 +3020,7 @@ teams:
     - klakin-pivotal
     - camilalonart
     members:
+    - aramprice
     - jpalermo
     - ragaskar
     - ystros
@@ -3056,6 +3068,7 @@ teams:
       bosh-utils: admin
       bosh-virtualbox-cpi-release: admin
       bosh-warden-cpi-release: admin
+      bosh-windows-acceptance-tests: admin
       bosh-workstation: admin
       bpm-release: admin
       bsdtar: admin
@@ -3068,6 +3081,7 @@ teams:
       homebrew-tap: admin
       os-conf-release: admin
       socks5-proxy: admin
+      stembuild: admin
       syslog-release: write
       usn-resource: admin
       windows-tools-release: admin
@@ -3076,10 +3090,12 @@ teams:
       yagnats: admin
     teams:
       CF BOSH:
-        description: Child of BOSH Ecosystem, for backwards compatability for resources
-          that need this team name stable
+        description: Child of BOSH Ecosystem, for backwards compatability for
+          resources that need this team name stable
         maintainers:
+        - aramprice
         - jpalermo
+        - ragaskar
         - ystros
         - idoru
         - rkoster
@@ -3091,55 +3107,59 @@ teams:
         - klakin-pivotal
         - nouseforaname
         - camilalonart
-        members:
-        - ragaskar
         privacy: closed
         repos:
-          bosh: read
-          bosh-acceptance-tests: read
-          bosh-agent: read
-          bosh-agent-index: read
-          bosh-aws-cpi-release: read
-          bosh-aws-light-stemcell-builder: read
-          bosh-azure-cpi-release: read
-          bosh-cli: read
-          bosh-compiled-releases-index: read
-          bosh-cpi-go: read
-          bosh-cpi-ruby: read
-          bosh-davcli: read
-          bosh-deployment: read
-          bosh-deployment-resource: read
-          bosh-dns-aliases-release: read
-          bosh-dns-release: read
-          bosh-docker-cpi-release: read
-          bosh-gcscli: read
-          bosh-google-cpi-release: read
-          bosh-google-light-stemcell-builder: read
-          bosh-linux-stemcell-builder: read
-          bosh-openstack-cpi-release: read
-          bosh-s3cli: read
-          bosh-stemcells-ci: read
-          bosh-utils: read
-          bosh-virtualbox-cpi-release: read
-          bosh-warden-cpi-release: read
-          bpm-release: read
-          bsdtar: read
-          config-server: read
-          config-server-release: read
-          docs-bosh: read
-          event-log-release: read
-          gofileutils: read
-          gosigar: read
-          homebrew-tap: read
-          os-conf-release: read
-          socks5-proxy: read
-          syslog-release: read
+          bosh: admin
+          bosh-acceptance-tests: admin
+          bosh-agent: admin
+          bosh-agent-index: admin
+          bosh-aws-cpi-release: admin
+          bosh-aws-light-stemcell-builder: admin
+          bosh-azure-cpi-release: admin
+          bosh-bbl-ci-envs: admin
+          bosh-cli: admin
+          bosh-compiled-releases-index: admin
+          bosh-cpi-environments: admin
+          bosh-cpi-go: admin
+          bosh-cpi-kb: admin
+          bosh-cpi-ruby: admin
+          bosh-davcli: admin
+          bosh-deployment: admin
+          bosh-deployment-resource: admin
+          bosh-dns-aliases-release: admin
+          bosh-dns-release: admin
+          bosh-docker-cpi-release: admin
+          bosh-gcscli: admin
+          bosh-google-cpi-release: admin
+          bosh-google-light-stemcell-builder: admin
+          bosh-linux-stemcell-builder: admin
+          bosh-openstack-cpi-release: admin
+          bosh-s3cli: admin
+          bosh-stemcells-ci: admin
+          bosh-utils: admin
+          bosh-virtualbox-cpi-release: admin
+          bosh-warden-cpi-release: admin
+          bosh-windows-acceptance-tests: admin
+          bosh-workstation: admin
+          bpm-release: admin
+          bsdtar: admin
+          config-server: admin
+          config-server-release: admin
+          docs-bosh: admin
+          event-log-release: admin
+          gofileutils: write
+          gosigar: admin
+          homebrew-tap: admin
+          os-conf-release: admin
+          socks5-proxy: admin
+          stembuild: admin
+          syslog-release: write
           tlsconfig: write
-          usn-resource: read
-          windows-tools-release: read
-          windows-utilities-release: read
-          windows-utilities-tests: read
-          yagnats: read
+          usn-resource: admin
+          windows-tools-release: admin
+          windows-utilities-release: admin
+          windows-utilities-tests: admin
+          yagnats: admin
   BOSH admin bot:
     description: ""
     members:
@@ -3244,23 +3264,23 @@ teams:
     description: ""
     maintainers:
     - evanfarrar
+    - aramprice
     - dsboulder
+    - jpalermo
+    - ragaskar
+    - ystros
     - rkoster
+    - selzoc
+    - lnguyen
     - cunnie
     - syslxg
     - mrosecrance
     - markstokan
     - julian-hj
-    - moleske
-    - nouseforaname
-    members:
-    - jpalermo
-    - ragaskar
-    - ystros
-    - selzoc
-    - lnguyen
     - danielfor
+    - moleske
     - klakin-pivotal
+    - nouseforaname
     - camilalonart
     privacy: closed
     repos:
@@ -3289,7 +3309,6 @@ teams:
     - bgandon
     - joergdw
     - FlorianNachtigall
-    - yatzek
     - cf-bosh-ci-bot
     privacy: closed
     repos:
@@ -3374,7 +3393,6 @@ teams:
     - sophiewigmore
     - fg-j
     - pivotal-david-osullivan
-    - kvedurmu
     - mvalliath
     - bhh1893
     privacy: closed
@@ -3455,9 +3473,9 @@ teams:
     - moleske
     - tjvman
     - sweinstein22
-    - JenGoldstrich
     - MerricdeLauney
     members:
+    - evanfarrar
     - matt-royal
     - tcdowney
     - piyalibanerjee
@@ -3517,40 +3535,51 @@ teams:
         - piyalibanerjee
         privacy: closed
         repos:
-          api-docs: read
-          blobstore_url_signer: read
-          canibump: read
-          capi-bara-tests: read
-          capi-ci: read
-          capi-dockerfiles: read
-          capi-integration-tests: read
-          capi-k8s-release: read
-          capi-release: read
-          capi-workspace: read
-          cc-api-v3-style-guide: read
-          cc-uploader: read
-          cf-acceptance-tests: read
-          cf-app-utils-ruby: read
-          cf-deployment: read
-          cf-for-k8s: read
-          cf-k8s-logging: read
-          cf-smoke-tests: read
-          cf-uaa-lib: read
-          cli: read
-          cloud_controller_ng: read
-          delayed_job_sequel: read
-          docs-cf-admin: read
-          docs-cloudfoundry-concepts: read
-          docs-deploying-cf: read
-          docs-running-cf: read
-          docs-services: read
-          jsonry: read
-          overview-broker: read
-          runtimeschema: read
-          steno: read
-          sync-integration-tests: read
-          tps: read
-          vcap-common: read
+          api-docs: admin
+          blobstore_url_signer: admin
+          bosh-stemcell-resource: admin
+          canibump: admin
+          capi-bara-tests: admin
+          capi-ci: admin
+          capi-ci-private: admin
+          capi-datadog: write
+          capi-dockerfiles: admin
+          capi-env-pool: admin
+          capi-integration-tests: admin
+          capi-k8s-release: admin
+          capi-release: admin
+          capi-team-checklists: admin
+          capi-workspace: admin
+          cc-api-v3-style-guide: write
+          cc-uploader: admin
+          cf-acceptance-tests: write
+          cf-app-utils-ruby: write
+          cf-deployment: write
+          cf-for-k8s: write
+          cf-k8s-logging: write
+          cf-smoke-tests: write
+          cf-uaa-lib: admin
+          cli: write
+          cloud_controller_ng: admin
+          delayed_job_sequel: write
+          deployments-diego: read
+          deployments-routing: read
+          docs-cf-admin: write
+          docs-cloudfoundry-concepts: write
+          docs-deploying-cf: write
+          docs-running-cf: write
+          docs-services: write
+          jsonry: write
+          overview-broker: write
+          runtime-credentials: write
+          runtime-team-checklists: write
+          runtime1-env: write
+          runtimeschema: admin
+          services-api-home: write
+          steno: write
+          sync-integration-tests: admin
+          tps: admin
+          vcap-common: write
   CF CI Pull:
     description: ""
     members:
@@ -3584,14 +3613,14 @@ teams:
     - a-b
     - hemarsai
     members:
-    - bepotts
     - hjcalderon10
     - cf-cli-eng
     - pivotalgeorge
     - reedr3
     - sebGilR
     - jdgonzaleza
-    - dominicrobertsc
+    - ccjaimes
+    - gururajsh
     privacy: closed
     repos:
       CLAW: admin
@@ -3647,6 +3676,7 @@ teams:
     - ohkyle
     - kmarkwardt-vmware
     - ricardo-vm
+    - ryanwittrup
     privacy: closed
     repos:
       api-docs: write
@@ -3673,9 +3703,9 @@ teams:
     - adobley
     - tomkennedy513
     - bruce-ricard
+    - swalchemist
     - peterhaochen47
     - LizClaireMorris
-    - jknostman3
     - ccjaimes
     - zzori-theoriginal
     - hsinn0
@@ -3684,6 +3714,7 @@ teams:
     repos:
       cf-acceptance-tests: write
       cf-deployment: write
+      credhub: admin
       docs-credhub: write
       secure-credentials-broker: admin
   CF Developer Training:
@@ -3865,9 +3896,7 @@ teams:
   CF Greenhouse:
     description: Windows Support for CF
     members:
-    - micahyoung
     - idoru
-    - benmoss
     - Shanfan
     - stuart-pollock
     - aminjam
@@ -3879,7 +3908,6 @@ teams:
     - amakhija
     - TisVictress
     - mvalliath
-    - dcorricelli
     - fejnartal
     privacy: closed
     repos:
@@ -3973,7 +4001,6 @@ teams:
     - Birdrock
     - rainmaker
     - paulcwarren
-    - heycait
     privacy: closed
     repos:
       auth-proxy: admin
@@ -4074,14 +4101,12 @@ teams:
     description: ""
     members:
     - heidmotron
-    - pianohacker
     - rheaton
     - colins
     - thepeterstone
     - robertjsullivan
     - jpmcb
     - gggevorgyan
-    - cf-log-cache-ci
     - josephgee
     - sboyajyan
     - metric-store-ci
@@ -4128,7 +4153,6 @@ teams:
     - flawedmatrix
     - tcdowney
     - mcwumbly
-    - mike1808
     - rosenhouse
     - ameowlia
     - kauana
@@ -4136,7 +4160,6 @@ teams:
     - jrussett
     - KeshavS0519
     members:
-    - mike1808
     - routing-ci
     - kauana
     - KauzClay
@@ -4174,36 +4197,41 @@ teams:
     teams:
       CF for K8s Networking:
         description: ""
-        maintainers:
-        - mike1808
         members:
         - kauana
         - KauzClay
         - KeshavS0519
         privacy: closed
         repos:
-          capi-k8s-release: read
-          capi-release: read
-          cf-acceptance-tests: read
-          cf-deployment: read
+          capi-k8s-release: write
+          capi-release: write
+          cf-acceptance-tests: write
+          cf-deployment: write
           cf-for-k8s: write
           cf-k8s-logging: write
-          cf-k8s-networking: read
-          cf-k8s-networking-scaling: read
-          cloud_controller_ng: read
+          cf-k8s-networking: admin
+          cf-k8s-networking-scaling: admin
+          cf-networking-deployments: admin
+          cloud_controller_ng: write
+          deployments-routing: admin
           diego-release: read
-          docs-routing: read
-          filelock: read
-          istio-scaling: read
-          istio-scriptio: read
-          multierror: read
+          docs-routing: write
+          filelock: admin
+          garden-ci: read
+          istio-scaling: admin
+          istio-scriptio: admin
+          multierror: write
           networking-oss-deployments: admin
+          networking-program-checklists: admin
           networking-workspace: admin
-          policy_client: read
-          route-emitter: read
-          routing-ci: read
-          routing-sample-apps: read
-          sync-integration-tests: read
+          policy_client: admin
+          relint-team: read
+          route-emitter: write
+          routing-ci: admin
+          routing-datadog-config: write
+          routing-sample-apps: admin
+          routing-team-checklists: write
+          sync-integration-tests: write
   CF PivNet:
     description: ""
     members:
@@ -4221,6 +4249,8 @@ teams:
     - GowriRegistry
     - Tejuvmware
     - pkvatvmware
+    - jhasu
+    - a-sudarsanan
     privacy: secret
   CF Release Integration:
     description: ""
@@ -4238,7 +4268,7 @@ teams:
     - akrishna90
     members:
     - ctlong
-    - JenGoldstrich
+    - tjvman
     privacy: closed
     repos:
       bosh-bootloader: admin
@@ -4323,6 +4353,7 @@ teams:
       blackbox: admin
       cf-deployment: write
       durandal-env: admin
+      event-log-release: write
       leela-env: admin
       syslog-ci-private: admin
       syslog-release: admin
@@ -4336,7 +4367,9 @@ teams:
     - tack-sap
     - torsten-sap
     members:
-    - cphi-vmw
+    - bruce-ricard
+    - swalchemist
+    - hsinn0
     privacy: closed
     repos:
       uaa: admin
@@ -4546,7 +4579,6 @@ teams:
     - ragaskar
     - ryanmoran
     - wattersjames
-    - benmoss
     - avade
     - fhanik
     - selzoc
@@ -4559,7 +4591,6 @@ teams:
     - animatedmax
     - anEXPer
     - paulcwarren
-    - elenasharma
     - pivotal-lyle-murphy
     - cf-pub-tools
     - pulkit-chandra
@@ -4747,6 +4778,7 @@ teams:
     - beyhan
     - lnguyen
     - ramonskie
+    - Benjamintf1
     - bgandon
     - KaiHofstetter
     - friegger
@@ -4956,7 +4988,6 @@ teams:
     - weymanf
     - ameowlia
     - monamohebbi
-    - belinda-liu
     - moleske
     - ram-pivot
     privacy: closed
@@ -5038,7 +5069,8 @@ teams:
     repos:
       metric-store-release: read
   OSS-PMS-SECURITY:
-    description: Open Source PMs +anchors that should have access to security issues
+    description: Open Source PMs +anchors that should have access to security
+      issues
     maintainers:
     - emalm
     members:
@@ -5051,8 +5083,6 @@ teams:
       security-notices: read
   PCF Apps Manager:
     description: ""
-    maintainers:
-    - elenasharma
     members:
     - a-b
     - weymanf
@@ -5060,6 +5090,7 @@ teams:
     - sweinstein22
     - jdgonzaleza
     - dominicrobertsc
+    - gururajsh
     privacy: secret
   PCF BAM:
     description: ""
@@ -5214,7 +5245,6 @@ teams:
     - pabloarodas
     - ansergit
     - sebGilR
-    - JenGoldstrich
     - jaristiz
     - pydctw
     - ram-pivot
@@ -5236,7 +5266,6 @@ teams:
     - ajackson
     - robdimsdale
     - achasveachas
-    - jknostman3
     - jsampson1
     privacy: closed
   PCF Security Triage Bot:
@@ -5289,6 +5318,7 @@ teams:
     members:
     - tinygrasshopper
     - cf-toolsmiths
+    - MoatazBM
     privacy: closed
     repos:
       cf-slackin: admin
@@ -5343,7 +5373,6 @@ teams:
     - smoser-ibm
     - kartiklunkad26
     - mnitchev
-    - JenGoldstrich
     - Soha-Albaghdady
     - pvaramballypivot
     privacy: secret
@@ -5352,10 +5381,7 @@ teams:
       pmc-notes: write
   Pivotal-only Greenhouse:
     description: Pivots only - Windows Garden
-    maintainers:
-    - benmoss
     members:
-    - micahyoung
     - idoru
     - Shanfan
     - stuart-pollock
@@ -5390,7 +5416,6 @@ teams:
     - mariash
     - cppforlife
     - frodenas
-    - d
     - fhanik
     - dsabeti
     - jhvhs
@@ -5482,8 +5507,8 @@ teams:
     - briannebrown
     privacy: closed
   Tracker:
-    description: A team for the Pivotal Tracker folks to get read only access to key
-      repos
+    description: A team for the Pivotal Tracker folks to get read only access
+      to key repos
     members:
     - oppegard
     - tracker-common
@@ -5502,17 +5527,9 @@ teams:
     - sweinstein22
     - MerricdeLauney
     members:
-    - selzoc
-    - cunnie
     - sethboyles
-    - bepotts
-    - weymanf
-    - belinda-liu
     - piyalibanerjee
-    - MarcPaquette
-    - JenGoldstrich
     - hnandiwada
-    - ewrenn8
     privacy: closed
     repos:
       CLAW: write
@@ -5581,7 +5598,6 @@ teams:
     - tinygrasshopper
     - totherme
     - mamachanko
-    - winnab
     - neil-hickey
     - MirahImage
     - jimbo459
@@ -5635,19 +5651,36 @@ teams:
     - friegger
     - christopherclark
     members:
+    - jpalermo
+    - ragaskar
+    - ystros
     - mvach
+    - selzoc
+    - lnguyen
+    - cunnie
     - ramonskie
     - mrosecrance
     - bgandon
     - joergdw
-    - StefanWutz
+    - danielfor
     - FlorianNachtigall
-    - yatzek
+    - klakin-pivotal
+    - nouseforaname
+    - camilalonart
     - cf-bosh-ci-bot
+    - suraiyasuliman
     privacy: closed
     repos:
       bosh-community-stemcell-ci-infra: write
       bosh-linux-stemcell-builder: admin
+  bosh-stemcell-fips:
+    description: ""
+    maintainers:
+    - rkoster
+    members:
+    - toabctl
+    - ramonskie
+    privacy: closed
   bosh-website-admins:
     description: ""
     members:
@@ -5685,7 +5718,6 @@ teams:
     - matt-royal
     - tcdowney
     - angelachin
-    - heycait
     - piyalibanerjee
     privacy: closed
     repos:
@@ -5756,11 +5788,10 @@ teams:
     - bruce-ricard
     - cf-identity
     - peterhaochen47
-    - ccjaimes
     - hsinn0
     members:
+    - swalchemist
     - cf-uaa
-    - cphi-vmw
     privacy: secret
     repos:
       cf-identity-acceptance-tests-release: admin
@@ -5921,13 +5952,15 @@ teams:
     - FloThinksPi
     - jochenehret
     - andy-paine
+    - kathap
     - svkrieger
+    - johha
     - MMisoch
     - WeiQuan0605
     - iaftab-alam
     privacy: closed
     repos:
-      go-cf-api: write
+      go-cf-api: admin
       go-cf-api-release: write
   ibm-read:
     description: ""
@@ -5937,6 +5970,24 @@ teams:
     privacy: secret
     repos:
       ibm-websphere-liberty-buildpack: read
+  observability:
+    description: ""
+    members:
+    - mkocher
+    - acrmp
+    - Benjamintf1
+    - ctlong
+    - rroberts2222
+    - cphi-vmw
+    - aiswarianair
+    privacy: closed
+    repos:
+      dropsonde: write
+      go-batching: write
+      go-envstruct: write
+      go-pubsub: write
+      gosigar: write
+      noaa: write
   other-uaa-committers:
     description: Other comitters to the UAA project
     maintainers:
@@ -5988,13 +6039,10 @@ teams:
   pks-bosh-lifecycle:
     description: ""
     members:
-    - professor
-    - benmoss
     - SenatorSupes
     - briannebrown
     - ahrtr
     - swalner-pivotal
-    - daniel-keeney
     privacy: closed
     repos:
       docs-cfcr: admin
@@ -6064,8 +6112,10 @@ teams:
       blackbox: admin
       bosh-system-metrics-forwarder-release: admin
       bosh-system-metrics-server-release: admin
+      buildpackapplifecycle: admin
       bytefmt: admin
       cacheddownloader: admin
+      cert-injector: admin
       certauthority: admin
       certsplitter: admin
       cf-drain-cli: admin
@@ -6091,6 +6141,7 @@ teams:
       diego-ssh: admin
       diego-team: admin
       diego-upgrade-stability-tests: admin
+      diff-exporter: admin
       dockerapplifecycle: admin
       dockerdriver: admin
       dontpanic: admin
@@ -6098,18 +6149,23 @@ teams:
       ecrhelper: admin
       eventhub: admin
       executor: admin
+      filelock: admin
       fileserver: admin
       garden: admin
       garden-ci: admin
       garden-integration-tests: admin
       garden-runc-release: admin
+      garden-windows-ci: admin
       go-diodes: admin
       go-log-cache: admin
       go-loggregator: admin
       go-metric-registry: admin
       gorouter: admin
+      groot-windows: admin
+      grootfs: admin
       guardian: admin
       healthcheck: admin
+      hydrator: admin
       idmapper: admin
       inigo: admin
       lager: admin
@@ -6149,7 +6205,13 @@ teams:
       tlsconfig: admin
       vizzini: admin
       volman: admin
+      winc: admin
+      winc-release: admin
       windows-syslog-release: admin
+      windows-tools-release: admin
+      windows2016fs: admin
+      windows2019fs-release: admin
+      windowsfs-online-release: admin
       workpool: admin
   stratos-ui:
     description: ""
