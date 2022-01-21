@@ -20,13 +20,4 @@ jobs:
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /app/prow/cmd/peribolos/app.binary
-          args: |
-            --confirm=false \
-            --required-admins=thelinuxfoundation \
-            --min-admins=5 \
-            --github-token-path token \
-            --config-path=org/cloudfoundry.yml \
-            --fix-org \
-            --fix-org-members \
-            --fix-teams \
-            --fix-team-members
+          args: --confirm=false --required-admins=thelinuxfoundation --min-admins=5 --github-token-path token --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-teams --fix-team-members
