@@ -2,9 +2,9 @@
 [meta]: #meta
 - Name: (fill in the feature name: My Feature)
 - Start Date: (fill in today's date: YYYY-MM-DD)
-- Author(s): (Github usernames)
+- Author(s): (GitHub usernames)
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR number when you raise it)
+- RFC Pull Request: (fill in with PR link after you submit it)
 
 
 ## Summary

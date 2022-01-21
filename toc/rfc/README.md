@@ -4,32 +4,47 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 ## Process
 
-1. Create a new branch on this repo and copy `rfc-0000-template.md` to `rfc-0000-my-proposal-title.md` and edit. The number of the RFC should not be selected until you are ready to merge the RFC. The number used should be the next sequential number to follow on from the already merged RFCs. This is to remove numbering gaps that would be caused by rejected RFCs if numbers were chosen earlier.
+### Draft Creation
+
+1. Create a new branch on this repository or on a fork of it.
+1. Copy `rfc-template.md` to `rfc-draft-<my-proposal-title>.md`, where `<my-proposal-title>` is a short identifier for the RFC, and edit the draft RFC document.
 1. If your RFC is relevant for only a single Working Group, please place it in a subdirectory of `toc/rfc` specifically for that working group.
    1. If that Working Group hosts its RFCs elsewhere, its RFC subdirectory will contain a file called `EXTERNAL.md` that contains a link to that group's RFC repository. In that case, follow that link to create the group-specific RFC in that repository.
-1. Include any images etc in a separate directory named `rfc-000` (using the number of your RFC) and link to them.
+1. If your RFC includes images, include them in a separate directory named `rfc-draft-<my-proposal-title>` and link to them from the RFC document.
+
+### Public Discussion Period
+
 1. Make a Pull Request (PR) for your branch.
-1. Rename your file and directory with the number of the PR and push as a new commits.
-1. Tag `@toc` and any relevant working groups in your PR to enable discussion of the RFC. 
-1. Cloud Foundry community members discuss your proposal using both inline comments against your RFC document and the general PR comments section.
-1. As changes are requested and agreed in comments, make the changes in your RFC and push them as new commits.
+1. Update the metadata section in your RFC draft with a link to its PR.
+1. Mention `@cloudfoundry/toc` and any relevant working groups in your PR to raise awareness of the proposed RFC.
+1. Cloud Foundry community members discuss your proposal using both inline comments on your RFC document and the general PR comments section.
+1. As changes are requested and agreed upon in comments, make corresponding changes in your RFC draft and push them as new commits.
 1. Stay active in the discussion and encourage and remind other relevant people to participate. If you’re unsure who should be involved in a discussion, ask the Leads for relevant working groups or the TOC. If you start an RFC it is up to you to engage people to guide it through the process.
-1. Once the proposers are ready and all discussions have taken place they will propse a "motion for final comment period (FCP)" with the proposed outcome (accepted / rejected). The FCP will last for 7 days.
-1. Once the FCP is proposed, approvals shall be given using the Github review system, the PR can be merged early if there is a majority agreement by the project leads.
-1. When an RFC is accepted, ensure the Cloud Foundry community is made aware of it via Slack using the previously used channels.
-1. An RFC can be rejected. This can happen if a consensus isn’t reached, or people agree rejecting it is the right thing to do. In this case the PR should be closed with a suitable comment. There is no preset time limit for an RFC to be automatically rejected, it must be explicitly acknowledged that a consensus was not reached. The proposal author or the TOC should perform the closing of the rejected RFC.
+
+### Final Comment Period
+
+1. Once enough of the discussions conclude, propose a motion for a Final Comment Period (FCP), including the desired outcome ("accepted" or "rejected").
+1. For the FCP to start, a majority of the decision makers (the TOC or the leads for relevant working group) must approve the FCP motion. The FCP will last for 7 days.
+1. Once the FCP starts, approvals shall be given using the GitHub review system. The PR can be merged or closed early if there is consensus among the decision makers.
+1. If substantial new issues are raised during the FCP, the RFC shall go back into the public discussion phase.
+1. If the RFC is accepted, ensure the Cloud Foundry community is made aware of it via Slack using the previously used channels.
+1. If the RFC is rejected, the author or a TOC member should close the PR for the RFC with a suitable comment.
+
+### Number Assignment
+
+Each accepted RFC is assigned a unique sequence number, replacing the `draft` segment in the names of its document and its optional image directory. This sequence of RFC numbers is shared between the community-wide RFCs and the working-group-specific RFCs contained in this repository. The user merging an RFC after a decision to accept is responsible for assigning the correct sequence number to that RFC.
 
 ## Managing Standards and Processes
 
-[Standards](#Standards) and [Processes](#Processes) RFCs shouldn’t be substantially altered after they are accepted, although it’s fine to correct typos and other mistakes via a new PR. In order to change a Standard or Process, the original RFC must be superseded by a new one. The process for this is:
+An RFC defining a [Standard](#Standards) or a [Process](#Processes) should not be substantially altered after it is accepted, although it is fine to correct typos and other mistakes via a new PR. In order to change a Standard or Process, a new RFC must supersede the original RFC. The process for this is:
 
 1. Create a new RFC PR as above, noting in the summary which RFC it is superseding.
-1. In the same branch, mark the old RFC as superseded and link to the new RFC and move (using `git mv`) it into the archived directory.
-1. When the new RFC is accepted and the PR is merged, the old RFC will no longer be active.
+1. In the same branch, change the status of the original RFC to "Superseded", link to the new RFC, and use `git mv` to move it into the `archived` directory.
+1. When the new RFC is accepted and the PR is merged, the original RFC will no longer be active.
 
 ## Managing Action Plans
 
-For RFCs where the outcome is an agreed Action Plan, you may want to update the RFC with meaningful status updates in new PRs. Once the plan is either complete or no longer relevant, it should be moved to the archived directory in a new PR.
+For an RFC where the outcome is an agreed Action Plan, you may want to update the RFC with meaningful status updates in new PRs. Once the plan is either complete or no longer relevant, it should be moved to the archived directory in a new PR.
 
 ### Definitions
 
