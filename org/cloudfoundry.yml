@@ -2717,7 +2717,6 @@ orgs:
         - Gerg
         members:
         - philippthun
-        - Gerg
         - sethboyles
         - FloThinksPi
         - monamohebbi
@@ -2761,7 +2760,6 @@ orgs:
         - ameowlia
         members:
         - stefanlay
-        - ameowlia
         privacy: closed
         repos:
           archiver: write
@@ -3022,20 +3020,9 @@ orgs:
         - klakin-pivotal
         - camilalonart
         members:
-        - aramprice
-        - jpalermo
-        - ragaskar
-        - ystros
         - idoru
-        - selzoc
-        - cunnie
-        - mrosecrance
         - bgandon
-        - julian-hj
-        - danielfor
-        - klakin-pivotal
         - nouseforaname
-        - camilalonart
         - bosh-windows-ci
         - suraiyasuliman
         privacy: closed
@@ -4163,7 +4150,6 @@ orgs:
         - KeshavS0519
         members:
         - routing-ci
-        - KeshavS0519
         privacy: closed
         repos:
           capi-k8s-release: write
@@ -4775,7 +4761,6 @@ orgs:
         - christopherclark
         members:
         - jpalermo
-        - beyhan
         - lnguyen
         - ramonskie
         - Benjamintf1
