@@ -15,14 +15,17 @@ jobs:
       - name: write token
         run: echo "${GITHUB_TOKEN}" > token
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: peribolos
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /app/prow/cmd/peribolos/app.binary
           args: |
+            --confirm=false \
+            --required-admins=thelinuxfoundation \
+            --min-admins=5 \
             --github-token-path token \
-            --config-path org/cloudfoundry.yml \
+            --config-path=org/cloudfoundry.yml \
             --fix-org \
             --fix-org-members \
             --fix-teams \
