@@ -66,6 +66,9 @@ CLI
 - @a-b 
 - @jdgonzaleza
 
+Docs
+- @mjgutermuth
+
 Java Tools
 - @dmikusa-pivotal
 - @pivotal-david-osullivan
@@ -142,6 +145,7 @@ Buildpacks
 - https://github.com/cloudfoundry/brats
 
 CAPI
+- https://github.com/cloudfoundry/api-docs
 - https://github.com/cloudfoundry/cloud_controller_ng
 - https://github.com/cloudfoundry/capi-release
 - https://github.com/cloudfoundry/capi-dockerfiles
@@ -159,6 +163,12 @@ CLI
 - https://github.com/cloudfoundry/cli-i18n
 - https://github.com/cloudfoundry/cli-ci
 - https://github.com/cloudfoundry/cli-plugin-repo
+
+Docs
+- https://github.com/cloudfoundry/docs-cf-cli
+- https://github.com/cloudfoundry/docs-cloudfoundry-concepts
+- https://github.com/cloudfoundry/docs-dev-guide
+- https://github.com/cloudfoundry/docs-services
 
 Java Tools
 - https://github.com/cloudfoundry/cf-java-client
