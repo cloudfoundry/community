@@ -5,7 +5,7 @@ on:
       - 'org/*'
       - '.github/workflows/org-management.yml'
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 */2 * * *'
 
 jobs:
   peribolos:
