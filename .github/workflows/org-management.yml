@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: write token
-        run: echo "${GITHUB_TOKEN}" > token
+      - name: write github private key
+        run: echo "${GITHUB_PRIVATE_KEY}" > private_key
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
       - name: peribolos
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /app/prow/cmd/peribolos/app.binary
-          args: --confirm=false --required-admins=thelinuxfoundation --min-admins=5 --github-token-path token --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-teams --fix-team-members
+          args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-teams --fix-team-members
