@@ -28,159 +28,195 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 - Provide the community with 'all' language specific CF clients libraries.
 
-
-## Proposed Membership
-
-- Technical Lead(s): Greg Cobb @gerg
-- Execution Lead(s): Greg Cobb @gerg 
-
-### Approvers by Area
-Autoscaler
-- @garethjevans
-- @asalan316
-- @silvestre
-- @KevinJCross 
-- @aadeshmisra
-- @bonzofenix
-- @joergdw
-
-Buildpacks
-- @dmikusa-pivotal
-- @pivotal-david-osullivan
-- @menehune23
-- @arjun024
-- @brayanhenao
-
-CAPI
-- @tjvman
-- @sweinstein22
-- @MarcPaquette
-- @JenGoldstrich
-- @FloThinksPi
-- @philippthun
-- @andy-paine 
-- @MerricdeLauney
-- @monamohebbi
- 
-CLI
-- @a-b 
-- @jdgonzaleza
-
-Docs
-- @mjgutermuth
-
-Java Tools
-- @dmikusa-pivotal
-- @pivotal-david-osullivan
-
-MultiApps
-- @nictas
-- @IvanBorislavovDimitrov
-- @theghost5800
-- @boyan-velinov
-- @radito3
-- @ddonchev
-- @ikasarov
-- @abdermendz
-- @vkalapov
-- @nvvalchev
-
-Notifications
-- @dsboulder
-- @totherme
-- @dlresende
-- @fejnartal
-
-## Technical Assets
-
+## Roles & Technical Assets
 Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, Notifications, and Stratos projects.
 
-Autoscaler
-- https://github.com/cloudfoundry/app-autoscaler-release
-- https://github.com/cloudfoundry/app-autoscaler
-- https://github.com/cloudfoundry/app-autoscaler-ci
-- https://github.com/cloudfoundry/app-autoscaler-cli-plugin
+```yaml
+name: App Runtime Interfaces
+execution_leads:
+- name: Greg Cobb 
+  github: gerg
+technical_leads:
+- name: Greg Cobb 
+  github: gerg
+areas:
+- name: Autoscaler
+  approvers:
+  - name: Gareth Evans
+    github: garethjevans
+  - name: Arsalan Khan
+    github: asalan316
+  - name: Silvestre Zabala
+    github: silvestre
+  - name: Kevin Cross
+    github: KevinJCross 
+  - name: Aadesh Misra
+    github: aadeshmisra
+  - name: Alan Morán
+    github: bonzofenix
+  - name: Jörg Weisbarth
+    github: joergdw
+  repositories:
+  - cloudfoundry/app-autoscaler-release
+  - cloudfoundry/app-autoscaler
+  - cloudfoundry/app-autoscaler-ci
+  - cloudfoundry/app-autoscaler-cli-plugin
+- name: Buildpacks
+  approvers:
+  - name: Daniel Mikusa
+    github: dmikusa-pivotal
+  - name: David O'Sullivan
+    github: pivotal-david-osullivan
+  - name: Andrew Meyer
+    github: menehune23
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Brayan Henao
+    github: brayanhenao
+  repositories:
+  - cloudfoundry/cflinuxfs3
+  - cloudfoundry/java-buildpack
+  - cloudfoundry/java-buildpack-memory-calculator
+  - cloudfoundry/java-buildpack-release
+  - cloudfoundry/java-buildpack-system-test
+  - cloudfoundry/java-buildpack-dependency-builder
+  - cloudfoundry/java-buildpack-container-customizer
+  - cloudfoundry/java-test-applications
+  - cloudfoundry/java-buildpack-support
+  - cloudfoundry/java-buildpack-security-provider
+  - cloudfoundry/java-buildpack-metric-writer
+  - cloudfoundry/java-buildpack-client-certificate-mapper
+  - cloudfoundry/java-buildpack-auto-reconfiguration
+  - cloudfoundry/ibm-websphere-liberty-buildpack
+  - cloudfoundry/nodejs-buildpack
+  - cloudfoundry/nodejs-buildpack-release
+  - cloudfoundry/php-buildpack
+  - cloudfoundry/php-buildpack-release
+  - cloudfoundry/ruby-buildpack
+  - cloudfoundry/ruby-buildpack-release
+  - cloudfoundry/python-buildpack
+  - cloudfoundry/python-buildpack-release
+  - cloudfoundry/go-buildpack
+  - cloudfoundry/go-buildpack-release
+  - cloudfoundry/binary-buildpack
+  - cloudfoundry/binary-buildpack-release
+  - cloudfoundry/nodejs-buildpack
+  - cloudfoundry/nodejs-buildpack-release
+  - cloudfoundry/dotnet-core-buildpack
+  - cloudfoundry/dotnet-core-buildpack-release
+  - cloudfoundry/hwc-buildpack
+  - cloudfoundry/hwc-buildpack-release
+  - cloudfoundry/nginx-buildpack
+  - cloudfoundry/nginx-buildpack-release
+  - cloudfoundry/staticfile-buildpack
+  - cloudfoundry/staticfile-buildpack-release
+  - cloudfoundry/r-buildpack
+  - cloudfoundry/r-buildpack-release
+  - cloudfoundry/apt-buildpack
+  - cloudfoundry/docs-buildpacks
+  - cloudfoundry/brats  
+- name: CAPI
+  approvers:
+  - name: Tom Viehman
+    github: tjvman
+  - name: Sarah Weinstein
+    github: sweinstein22
+  - name: Marc Paquette
+    github: MarcPaquette
+  - name: Jenna Goldstrich
+    github: JenGoldstrich
+  - name: Florian Braun
+    github: FloThinksPi
+  - name: Philipp Thun
+    github: philippthun
+  - name: Andy Paine
+    github: andy-paine 
+  - name: Merric de Launey
+    github: MerricdeLauney
+  - github: monamohebbi
+  repositories:
+  - cloudfoundry/cloud_controller_ng
+  - cloudfoundry/capi-release
+  - cloudfoundry/capi-dockerfiles
+  - cloudfoundry/capi-bara-tests
+  - cloudfoundry/capi-k8s-release
+  - cloudfoundry/capi-ci
+  - cloudfoundry/cf-performance-tests
+  - cloudfoundry/cf-performance-tests-pipeline
+  - cloudfoundry/tps
+  - cloudfoundry/cc-uploader
+  - cloudfoundry/sync-integration-tests
+ 
+- name: CLI
+  approvers:
+  - name: Al Berez
+    github: a-b
+  - name: Juan Diego González
+    github: jdgonzaleza
+  repositories:
+  - cloudfoundry/cli
+  - cloudfoundry/cli-i18n
+  - cloudfoundry/cli-ci
+  - cloudfoundry/cli-plugin-repo
+  
+- name: Docs
+  approvers:
+  - name: Melinda Jeffs Gutermuth
+    github: mjgutermuth
+  repositories:
+  - cloudfoundry/docs-cf-cli
+  - cloudfoundry/docs-cloudfoundry-concepts
+  - cloudfoundry/docs-dev-guide
+  - cloudfoundry/docs-services
 
-Buildpacks
-- https://github.com/cloudfoundry/cflinuxfs3
-- https://github.com/cloudfoundry/java-buildpack
-- https://github.com/cloudfoundry/java-buildpack-memory-calculator
-- https://github.com/cloudfoundry/java-buildpack-release
-- https://github.com/cloudfoundry/java-buildpack-system-test
-- https://github.com/cloudfoundry/java-buildpack-dependency-builder
-- https://github.com/cloudfoundry/java-buildpack-container-customizer
-- https://github.com/cloudfoundry/java-test-applications
-- https://github.com/cloudfoundry/java-buildpack-support
-- https://github.com/cloudfoundry/java-buildpack-security-provider
-- https://github.com/cloudfoundry/java-buildpack-metric-writer
-- https://github.com/cloudfoundry/java-buildpack-client-certificate-mapper
-- https://github.com/cloudfoundry/java-buildpack-auto-reconfiguration
-- https://github.com/cloudfoundry/ibm-websphere-liberty-buildpack
-- https://github.com/cloudfoundry/nodejs-buildpack
-- https://github.com/cloudfoundry/nodejs-buildpack-release
-- https://github.com/cloudfoundry/php-buildpack
-- https://github.com/cloudfoundry/php-buildpack-release
-- https://github.com/cloudfoundry/ruby-buildpack
-- https://github.com/cloudfoundry/ruby-buildpack-release
-- https://github.com/cloudfoundry/python-buildpack
-- https://github.com/cloudfoundry/python-buildpack-release
-- https://github.com/cloudfoundry/go-buildpack
-- https://github.com/cloudfoundry/go-buildpack-release
-- https://github.com/cloudfoundry/binary-buildpack
-- https://github.com/cloudfoundry/binary-buildpack-release
-- https://github.com/cloudfoundry/nodejs-buildpack
-- https://github.com/cloudfoundry/nodejs-buildpack-release
-- https://github.com/cloudfoundry/dotnet-core-buildpack
-- https://github.com/cloudfoundry/dotnet-core-buildpack-release
-- https://github.com/cloudfoundry/hwc-buildpack
-- https://github.com/cloudfoundry/hwc-buildpack-release
-- https://github.com/cloudfoundry/nginx-buildpack
-- https://github.com/cloudfoundry/nginx-buildpack-release
-- https://github.com/cloudfoundry/staticfile-buildpack
-- https://github.com/cloudfoundry/staticfile-buildpack-release
-- https://github.com/cloudfoundry/r-buildpack
-- https://github.com/cloudfoundry/r-buildpack-release
-- https://github.com/cloudfoundry/apt-buildpack
-- https://github.com/cloudfoundry/docs-buildpacks
-- https://github.com/cloudfoundry/brats
+- name: Java Tools
+  approvers:
+  - name: Daniel Mikusa
+    github: dmikusa-pivotal
+  - name: David O'Sullivan
+    github: pivotal-david-osullivan
+  repositories:
+  - cloudfoundry/cf-java-client
 
-CAPI
-- https://github.com/cloudfoundry/api-docs
-- https://github.com/cloudfoundry/cloud_controller_ng
-- https://github.com/cloudfoundry/capi-release
-- https://github.com/cloudfoundry/capi-dockerfiles
-- https://github.com/cloudfoundry/capi-bara-tests
-- https://github.com/cloudfoundry/capi-k8s-release
-- https://github.com/cloudfoundry/capi-ci
-- https://github.com/cloudfoundry/cf-performance-tests
-- https://github.com/cloudfoundry/cf-performance-tests-pipeline
-- https://github.com/cloudfoundry/tps
-- https://github.com/cloudfoundry/cc-uploader
-- https://github.com/cloudfoundry/sync-integration-tests
+- name: MultiApps
+  approvers:
+  - name: Alexander Tsvetkov
+    github: nictas
+  - name: Ivan Dimitrov
+    github: IvanBorislavovDimitrov
+  - name: Kristian Atanasov
+    github: theghost5800
+  - name: Boyan Velinov
+    github: boyan-velinov
+  - name: Rangel Ivanov
+    github: radito3
+  - name: Dido
+    github: ddonchev
+  - name: Ikasarov
+    github: ikasarov
+  - name: Abil Dermendzhiev
+    github: abdermendz
+  - name: Velizar Kalapov
+    github: vkalapov
+  - name: Nikolay Valchev
+    github: nvvalchev
+  repositories:
+  - cloudfoundry/multiapps-controller
+  - cloudfoundry/multiapps-cli-plugin
+  - cloudfoundry/multiapps
 
-CLI
-- https://github.com/cloudfoundry/cli
-- https://github.com/cloudfoundry/cli-i18n
-- https://github.com/cloudfoundry/cli-ci
-- https://github.com/cloudfoundry/cli-plugin-repo
+- name: Notifications
+  approvers:
+  - name: David Stevenson
+    github: dsboulder
+  - name: Gareth Smith
+    github: totherme
+  - name: Diego Lemos
+    github: dlresende
+  - name: Fernando Naranjo
+    github: fejnartal
+  repositories:
+  - cloudfoundry/notifications-release
+  - cloudfoundry/notifications
 
-Docs
-- https://github.com/cloudfoundry/docs-cf-cli
-- https://github.com/cloudfoundry/docs-cloudfoundry-concepts
-- https://github.com/cloudfoundry/docs-dev-guide
-- https://github.com/cloudfoundry/docs-services
-
-Java Tools
-- https://github.com/cloudfoundry/cf-java-client
-
-MultiApps
-- https://github.com/cloudfoundry/multiapps-controller
-- https://github.com/cloudfoundry/multiapps-cli-plugin
-- https://github.com/cloudfoundry/multiapps
-
-Notifications
-- https://github.com/cloudfoundry/notifications-release
-- https://github.com/cloudfoundry/notifications
-
-
-Public, active pipelines for building and releasing the components CF deployments, to be run on CFF community infrastructure.
+```

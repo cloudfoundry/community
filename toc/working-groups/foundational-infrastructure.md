@@ -29,6 +29,7 @@ Provide infrastructure automation and core capabilities shared across CF project
 Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and UAA projects.
 
 ```yaml
+name: Foundational Infrastructure
 execution_leads:
 - name: Ruben Koster
   github: rkoster
@@ -44,6 +45,7 @@ areas:
     github: peterhaochen47
   repositories:
   - cloudfoundry-incubator/credhub-acceptance-tests
+  - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry-incubator/credhub-api-site
   - cloudfoundry-incubator/credhub-ci-locks
   - cloudfoundry-incubator/credhub-cli
@@ -76,6 +78,7 @@ areas:
   repositories:
   - cloudfoundry/cf-uaa-lib
   - cloudfoundry/cf-uaac
+  - cloudfoundry/docs-uaa
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
