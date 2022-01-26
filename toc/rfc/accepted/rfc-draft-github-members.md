@@ -26,7 +26,7 @@ contributor is to make multiple contributions and be an active member of the com
 Working Group Leads to make the judgement call on if an individual has met the criteria to become a contributor.
 
 The addition of raising and merging PRs to add members to the cloudfoundry and other foundation org(s) is the 
-responsibility or the working group approvers and leads.
+responsibility of the working group approvers and leads.
 
 Removing members of the cloudfoundry and other foundation org(s) may have unintended consequences. As a result the 
 process is slightly different, raising PRs to remove members of the cloudfoundry and other foundation org(s) is the 
