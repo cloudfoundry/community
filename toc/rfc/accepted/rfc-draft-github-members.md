@@ -29,6 +29,6 @@ The addition of raising and merging PRs to add members to the cloudfoundry and o
 responsibility or the working group approvers and leads.
 
 Removing members of the cloudfoundry and other foundation org(s) may have unintended consequences. Raising PRs to remove
-members of the cloudfoundry and other foundation org(s) is the responsibility or the working group approvers and leads.
+members of the cloudfoundry and other foundation org(s) is the responsibility of the working group approvers and leads.
 These PRs should be tagged `toc` and mention `@cloudfoundry/toc`. The TOC will then take responsibility for the merging
 or closing of the raised PRs.
