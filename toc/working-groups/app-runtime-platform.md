@@ -46,6 +46,9 @@ Diego:
 - @reneighbor
 - @selzoc
 
+Docs:
+- @mjgutermuth
+
 Garden Containers:
 - @aemengo
 - @danail-branekov
@@ -125,6 +128,12 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
   * https://github.com/cloudfoundry/vizzini
   * https://github.com/cloudfoundry/volman
   * https://github.com/cloudfoundry/workpool
+
+### Docs
+* https://github.com/cloudfoundry/docs-book-cloudfoundry
+* https://github.com/cloudfoundry/docs-cf-admin
+* https://github.com/cloudfoundry/docs-loggregator
+* https://github.com/cloudfoundry/docs-running-cf
 
 ### Garden Containers
 * https://github.com/cloudfoundry/garden-runc-release

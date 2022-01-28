@@ -151,6 +151,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 ### Identity and Auth (UAA)
 - [cloudfoundry/cf-uaa-lib](https://github.com/cloudfoundry/cf-uaa-lib)
 - [cloudfoundry/cf-uaac](https://github.com/cloudfoundry/cf-uaac)
+- [cloudfoundry/docs-uaa](https://github.com/cloudfoundry/docs-uaa)
 - [cloudfoundry/omniauth-uaa-oauth2](https://github.com/cloudfoundry/omniauth-uaa-oauth2)
 - [cloudfoundry/uaa-key-rotator](https://github.com/cloudfoundry/uaa-key-rotator)
 - [cloudfoundry/uaa-release](https://github.com/cloudfoundry/uaa-release)
@@ -159,6 +160,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 
 ### Credential Management (Credhub)
 - [cloudfoundry-incubator/credhub-acceptance-tests](https://github.com/cloudfoundry-incubator/credhub-acceptance-tests)
+- [cloudfoundry-incubator/credhub-api-docs](https://github.com/cloudfoundry-incubator/credhub-api-docs)
 - [cloudfoundry-incubator/credhub-api-site](https://github.com/cloudfoundry-incubator/credhub-api-site)
 - [cloudfoundry-incubator/credhub-ci-locks](https://github.com/cloudfoundry-incubator/credhub-ci-locks)
 - [cloudfoundry-incubator/credhub-cli](https://github.com/cloudfoundry-incubator/credhub-cli)
