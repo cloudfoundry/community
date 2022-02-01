@@ -2893,6 +2893,7 @@ orgs:
               netplugin-shim: admin
               networking-oss-deployments: admin
               operationq: admin
+              policy_server: admin
               rep: admin
               route-emitter: admin
               route-registrar: admin
@@ -6169,6 +6170,7 @@ orgs:
           networking-oss-deployments: admin
           noisy-neighbor-nozzle: admin
           operationq: admin
+          policy_client: admin
           rep: admin
           route-emitter: admin
           route-registrar: admin
