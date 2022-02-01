@@ -184,6 +184,7 @@ Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Win
 * https://github.com/cloudfoundry/haproxy-boshrelease
 * https://github.com/cloudfoundry/cf-networking-release
   * https://github.com/cloudfoundry/cf-networking-helpers
+  * https://github.com/cloudfoundry/policy_client
 * https://github.com/cloudfoundry/silk-release
   * https://github.com/cloudfoundry/silk
 * https://github.com/cloudfoundry/nats-release
