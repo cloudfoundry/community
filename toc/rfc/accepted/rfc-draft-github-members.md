@@ -9,8 +9,9 @@
 
 ## Summary
 
-As the Cloudfoundry moves from the dojo model to an open committer model the existing central team in VMWare are no 
-longer appropriately positioned to grant and revoke access to users of the Cloudfoundry GitHub org
+As we use a working group based approach it seems sensible to leverage the working groups to control access to their
+repositories within the cloudfoundry and other associated GitHub orgs. As the working groups are closer to what is 
+happening in their projects they are better positioned to react faster to adding and removing individuals.
 
 ## Problem
 
@@ -25,8 +26,8 @@ should be members of the Cloudfoundry org and possibly other orgs if appropriate
 contributor is to make multiple contributions and be an active member of the community, it should for the Approvers and 
 Working Group Leads to make the judgement call on if an individual has met the criteria to become a contributor.
 
-The addition of raising and merging PRs to add members to the cloudfoundry and other foundation org(s) is the 
-responsibility of the working group approvers and leads.
+Raising PRs to add members to the cloudfoundry and other foundation org(s) is the responsibility of the working group 
+approvers and leads. Woorking Group leads are required to merge in the PRs to the community repo due to access constraints.
 
 Removing members of the cloudfoundry and other foundation org(s) may have unintended consequences. As a result the 
 process is slightly different, raising PRs to remove members of the cloudfoundry and other foundation org(s) is the 
@@ -34,3 +35,4 @@ responsibility of the working group approvers and leads as they are closest to t
 potential unintended consequences of removing members, the working group will not be responsible for the merging or 
 closing of removal PRs. Removal PRs should be tagged `toc` and mention `@cloudfoundry/toc`. The TOC will then take 
 responsibility for the merging or closing of the raised PRs.
+
