@@ -142,7 +142,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 
 ### Disaster Recovery (BBR)
 - [cloudfoundry/bosh-backup-and-restore](https://github.com/cloudfoundry/bosh-backup-and-restore)
-- [cloudfoundry/backup-and-restore-sdk-release](https://github.com/cloudfoundr/backup-and-restore-sdk-release)
+- [cloudfoundry/backup-and-restore-sdk-release](https://github.com/cloudfoundry/backup-and-restore-sdk-release)
 - [cloudfoundry/bosh-backup-and-restore-test-releases](https://github.com/cloudfoundry/bosh-backup-and-restore-test-releases)
 - [cloudfoundry/bosh-disaster-recovery-acceptance-tests](https://github.com/cloudfoundry/bosh-disaster-recovery-acceptance-tests)
 - [cloudfoundry/disaster-recovery-acceptance-tests](https://github.com/cloudfoundry/disaster-recovery-acceptance-tests)
