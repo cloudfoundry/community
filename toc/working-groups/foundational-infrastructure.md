@@ -160,7 +160,7 @@ Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and
 - [cloudfoundry/uaa](https://github.com/cloudfoundry/uaa)
 
 ### Credential Management (Credhub)
-- [cloudfoundry/credhub-acceptance-tests](https://github.com/cloudfoundry-incubator/credhub-acceptance-tests)
+- [cloudfoundry/credhub-acceptance-tests](https://github.com/cloudfoundry/credhub-acceptance-tests)
 - [cloudfoundry/credhub-api-docs](https://github.com/cloudfoundry/credhub-api-docs)
 - [cloudfoundry/credhub-api-site](https://github.com/cloudfoundry/credhub-api-site)
 - [cloudfoundry/credhub-ci-locks](https://github.com/cloudfoundry/credhub-ci-locks)
