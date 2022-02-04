@@ -38,13 +38,15 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 
 ## Membership
 
-- Technical Lead(s): TBD
-- Execution Lead(s): TBD
+- Technical Lead(s): Jochen Ehret, @jochenehret
+- Execution Lead(s): Jochen Ehret, @jochenehret
 
 ### Approvers by Area
 
-TBD
-
+- @philippthun
+- @johha
+- @svkrieger
+- @iaftab-alam
 
 ## Technical Assets
 
