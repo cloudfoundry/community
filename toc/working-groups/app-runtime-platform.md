@@ -164,8 +164,12 @@ areas:
     github: selzoc
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
+  - cloudfoundry/bosh-system-metrics-server-release
+  - cloudfoundry/dropsonde-protocol
+  - cloudfoundry/log-cache-cli
   - cloudfoundry/log-cache-release
   - cloudfoundry/go-log-cache
+  - cloudfoundry/loggregator-api
   - cloudfoundry/loggregator-release
   - cloudfoundry/go-diodes
   - cloudfoundry/go-envstruct
