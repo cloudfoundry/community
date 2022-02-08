@@ -27,7 +27,7 @@ contributor is to make multiple contributions and be an active member of the com
 Working Group Leads to make the judgement call on if an individual has met the criteria to become a contributor.
 
 Raising PRs to add members to the cloudfoundry and other foundation org(s) is the responsibility of the working group 
-approvers and leads. Woorking Group leads are required to merge in the PRs to the community repo due to access constraints.
+approvers and leads. Working Group leads are required to merge in the PRs to the community repo due to access constraints.
 
 Removing members of the cloudfoundry and other foundation org(s) may have unintended consequences. As a result the 
 process is slightly different, raising PRs to remove members of the cloudfoundry and other foundation org(s) is the 
