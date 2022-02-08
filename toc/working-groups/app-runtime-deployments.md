@@ -43,10 +43,15 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 
 ### Approvers by Area
 
+- @davewalter
 - @philippthun
 - @johha
 - @svkrieger
 - @iaftab-alam
+- @jimconner
+- @andrewdriver123
+- @combor
+- @shaun7pan
 
 ## Technical Assets
 
