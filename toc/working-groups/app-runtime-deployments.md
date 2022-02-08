@@ -19,7 +19,7 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 - Maintain public roadmaps for each reference deployment.
 - Collaborate with other Working Groups to ensure that App Runtime components are integrated regularly into the community deployments.
 - Provide the community with tooling and reference pipelines needed to build and release the CF reference deployments.
-- Provide the community with test suites to assess functionality and behavioral compatibility of a CF deployment.
+- Provide the community with test suites to assess functionality and behavioral compatibility of a CF deployment. Collaborate with other Working Groups on the test suites.
 - Publicly operate the tooling and reference pipelines to build and release CF reference deployments regularly.
 - Provide sensible defaults and sufficient configurability in the reference deployments for the needs of the community, contributors, and commercializing vendors while maintaining reasonable scope for the working group operation.
 - Ensure upgrade pathways for reference deployments, with disruptive changes communicated clearly.
@@ -28,13 +28,6 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 ## Non-Goals
 
 - Provide significant extensions or other major projects in the CF App Runtime reference deployments, such as managed services or extension clients.
-
-
-## Open Questions (to be considered before WG formation)
-
-- How much API and behavioral consistency should there be between official CF deployments? - becomes relevant only if a k8s based CF deployment is part of technical assets
-- How much of that consistency should be the responsibility of this working group, when that consistency may lie within the domain of another working group (for example, one that owns Buildpacks)?
-
 
 ## Membership
 
