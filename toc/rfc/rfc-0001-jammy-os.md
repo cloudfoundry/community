@@ -18,7 +18,7 @@ The CF ecosystem has undergone a few expensive operation system transitions in t
 ## Proposal
 
 Execute a coordinated cross-component move to Jammy Jellyfish, starting in March or April of 2022. The move affects many components and groups, here's the approximate supply chain propagation:
-![Jammy supply chain](rfc-draft-jammy-os/jammy-jellyfish-cf-supply-chain.png)
+![Jammy supply chain](rfc-0001-jammy-os/jammy-jellyfish-cf-supply-chain.png)
 
 The tasks break down below:
 
