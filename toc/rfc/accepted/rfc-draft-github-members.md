@@ -9,30 +9,25 @@
 
 ## Summary
 
-As we use a working group based approach it seems sensible to leverage the working groups to control access to their
-repositories within the cloudfoundry and other associated GitHub orgs. As the working groups are closer to what is 
-happening in their projects they are better positioned to react faster to adding and removing individuals.
+Working group leads and approvers are the primary roles responsible for granting GitHub users membership in the `cloudfoundry` GitHub org, as they have the most context on which users within the CF community meet the criteria to be regular contributors. 
+
+The TOC is the body responsible for removing an existing member from the `cloudfoundry` GitHub org and coordinating with working groups to ensure that the removal does not have unexpected consequences.
 
 ## Problem
 
-Previously re was a central team in VMWare that undertook adding of individuals on successful completion of the dojo, 
-as this was the process for gaining committer rights on the repositories. However, as this model is no longer in use it
-presents a problem in terms of who should fulfil this role.
+Under the previous dojo-based participation model, a central team of VMware admins was primarily responsible for managing the members of the `cloudfoundry` GitHub org. In the current system of CF community roles and responsibilities, however, that delegation to the administrative team of a single member company no longer makes sense.
 
 ## Proposal
 
-As defined in the [roles](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md), contributor and above roles
-should be members of the Cloudfoundry org and possibly other orgs if appropriate. As the responsibility to become a
-contributor is to make multiple contributions and be an active member of the community, it should for the Approvers and 
-Working Group Leads to make the judgement call on if an individual has met the criteria to become a contributor.
+As defined in the [roles](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md), each Contributor
+should be a member of the `cloudfoundry` GitHub org.
+The leads and approvers within a Working Group are best positioned to decide whether an individual has met the minimum contribution criteria to become an official contributor.
 
-Raising PRs to add members to the cloudfoundry and other foundation org(s) is the responsibility of the working group 
-approvers and leads. Working Group leads are required to merge in the PRs to the community repo due to access constraints.
+A Working Group approver or lead should raise a PR on the [community](github.com/cloudfoundry/community) repository to propose adding a new member to the `cloudfoundry` GitHub org.
+This PR should add the member directly to the YAML file describing the organization membership, as automation will synchronize the GitHub org membership with the contents of this file periodically. 
+Only Working Group leads and the TOC will actually have permission to merge these PRs under the planned access control on the community repository.
 
-Removing members of the cloudfoundry and other foundation org(s) may have unintended consequences. As a result the 
-process is slightly different, raising PRs to remove members of the cloudfoundry and other foundation org(s) is the 
-responsibility of the working group approvers and leads as they are closest to the members. However as there are 
-potential unintended consequences of removing members, the working group will not be responsible for the merging or 
-closing of removal PRs. Removal PRs should be tagged `toc` and mention `@cloudfoundry/toc`. The TOC will then take 
-responsibility for the merging or closing of the raised PRs.
+As removing a member from the `cloudfoundry` GitHub org may have unintended consequences across the organization, the TOC is the body required to approve those removals.
+Proposals to remove a member should also be submitted via PR, and the submitter should tag the PR with `toc` and should mention `@cloudfoundry/toc` to make the TOC aware of the request.
+The TOC will then consult any working groups that may be affected by the removal of this member and use its usual decision process to approve or reject the removal. 
 
