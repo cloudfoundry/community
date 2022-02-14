@@ -3,7 +3,7 @@
 - Name: Who is able to add and remove members of the Cloudfoundry GitHub org
 - Start Date: 2022-01-26
 - Author(s): @LeePorte
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: https://github.com/cloudfoundry/community/pull/194
 
 
