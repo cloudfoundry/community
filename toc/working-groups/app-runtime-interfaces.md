@@ -152,8 +152,8 @@ CAPI
 - https://github.com/cloudfoundry/capi-bara-tests
 - https://github.com/cloudfoundry/capi-k8s-release
 - https://github.com/cloudfoundry/capi-ci
-- https://github.com/cloudfoundry-incubator/cf-performance-tests
-- https://github.com/cloudfoundry-incubator/cf-performance-tests-pipeline
+- https://github.com/cloudfoundry/cf-performance-tests
+- https://github.com/cloudfoundry/cf-performance-tests-pipeline
 - https://github.com/cloudfoundry/tps
 - https://github.com/cloudfoundry/cc-uploader
 - https://github.com/cloudfoundry/sync-integration-tests
