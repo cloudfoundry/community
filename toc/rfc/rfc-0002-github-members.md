@@ -23,7 +23,7 @@ As defined in the [roles](https://github.com/cloudfoundry/community/blob/main/to
 should be a member of the `cloudfoundry` GitHub org.
 The leads and approvers within a Working Group are best positioned to decide whether an individual has met the minimum contribution criteria to become an official contributor.
 
-A Working Group approver or lead should raise a PR on the [community](github.com/cloudfoundry/community) repository to propose adding a new member to the `cloudfoundry` GitHub org.
+A Working Group approver or lead should raise a PR on the [community](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml) repository to propose adding a new member to the `cloudfoundry` GitHub org.
 This PR should add the member directly to the YAML file describing the organization membership, as automation will synchronize the GitHub org membership with the contents of this file periodically. 
 Only Working Group leads and the TOC will actually have permission to merge these PRs under the planned access control on the community repository.
 
