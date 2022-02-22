@@ -41,6 +41,25 @@ The current working groups are:
 - Paketo
 
 
+## App Runtime Deployments
+
+Mission: Provide reference deployments of the CF App Runtime to CF community end users, CF community contributors, and CF commercial vendors.
+
+The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-app-runtime-deployments` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [app-runtime-deployments.md](./app-runtime-deployments.md)  |
+| Forum                      | TBD  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channel              | [&#x23;wg-app-runtime-deployments](https://cloudfoundry.slack.com/archives/C033ALST37V)  |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                  |
+| -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
+| <img width="30px" src="https://github.com/jochenehret.png"> | Jochen Ehret | SAP | [@jochenehret](https://github.com/jochenehret) |
+
+
 ## App Runtime Interfaces
 
 Mission: To provide APIs for the CF App Runtime and community clients for end users.
