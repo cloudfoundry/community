@@ -39,6 +39,7 @@ The current working groups are:
 - CF on K8s
 - Foundational Infrastructure
 - Paketo
+- Service Management
 
 
 ## App Runtime Deployments
@@ -158,6 +159,25 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | <img width="30px" src="https://github.com/dmikusa-pivotal.png"> | Daniel Mikusa       | VMware  | [@dmikusa-pivotal](https://github.com/dmikusa-pivotal) |
 | <img width="30px" src="https://github.com/ekcasey.png"> | Emily Casey       | VMware  | [@ekcasey](https://github.com/ekcasey) |
 | <img width="30px" src="https://github.com/ryanmoran.png"> | Ryan Moran       | VMware  | [@ryanmoran](https://github.com/ryanmoran) |
+
+
+## Service Management
+
+Mission: Provides interfaces for service lifecycle within application platforms and adapters to common external service providers.
+
+The GitHub repos this WG manages in the `cloudfoundry` and `cloudfoundry-incubator` GitHub organization are to be labeled with the `cff-wg-service-manangement` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [service-management.md](./service-management.md)  |
+| Forum                      | TBD  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channels             | [&#x23;wg-service-management](https://cloudfoundry.slack.com/archives/C02TXDMPSUS)|
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/pivotal-marcela-campo.png"> | Marcela Campo       | VMWare  | [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) |
 
 
 <!--
