@@ -152,8 +152,8 @@ CAPI
 - https://github.com/cloudfoundry/capi-bara-tests
 - https://github.com/cloudfoundry/capi-k8s-release
 - https://github.com/cloudfoundry/capi-ci
-- https://github.com/cloudfoundry-incubator/cf-performance-tests
-- https://github.com/cloudfoundry-incubator/cf-performance-tests-pipeline
+- https://github.com/cloudfoundry/cf-performance-tests
+- https://github.com/cloudfoundry/cf-performance-tests-pipeline
 - https://github.com/cloudfoundry/tps
 - https://github.com/cloudfoundry/cc-uploader
 - https://github.com/cloudfoundry/sync-integration-tests
@@ -174,13 +174,13 @@ Java Tools
 - https://github.com/cloudfoundry/cf-java-client
 
 MultiApps
-- https://github.com/cloudfoundry-incubator/multiapps-controller
-- https://github.com/cloudfoundry-incubator/multiapps-cli-plugin
-- https://github.com/cloudfoundry-incubator/multiapps
+- https://github.com/cloudfoundry/multiapps-controller
+- https://github.com/cloudfoundry/multiapps-cli-plugin
+- https://github.com/cloudfoundry/multiapps
 
 Notifications
-- https://github.com/cloudfoundry-incubator/notifications-release
-- https://github.com/cloudfoundry-incubator/notifications
+- https://github.com/cloudfoundry/notifications-release
+- https://github.com/cloudfoundry/notifications
 
 
 Public, active pipelines for building and releasing the components CF deployments, to be run on CFF community infrastructure.
