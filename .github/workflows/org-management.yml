@@ -1,6 +1,8 @@
 name: 'Sync Github Organization Settings'
 on:
   push:
+    branches:
+      - 'main'
     paths:
       - 'org/*'
       - '.github/workflows/org-management.yml'
@@ -19,5 +21,5 @@ jobs:
       - name: peribolos
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
-          entrypoint: /app/prow/cmd/peribolos/app.binary
+          entrypoint: /ko-app/peribolos
           args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-teams --fix-team-members

@@ -111,6 +111,7 @@ orgs:
     - bsoroushian
     - bwinter
     - C-Otto
+    - cagiti
     - caijj
     - camilalonart
     - carlo-colombo
@@ -626,6 +627,7 @@ orgs:
     - wayneadams
     - WeiQuan0605
     - weymanf
+    - will-gant
     - willmadison
     - xiongli
     - xtreme-andrei-dinin
@@ -6254,6 +6256,8 @@ orgs:
         - MMisoch
         - WeiQuan0605
         - iaftab-alam
+        - cagiti
+        - will-gant
         privacy: closed
         repos:
           cf-performance-tests: write
