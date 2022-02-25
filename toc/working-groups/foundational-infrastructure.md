@@ -37,7 +37,6 @@ Provide infrastructure automation and core capabilities shared across CF project
 - Long Nguyen (@lnguyen)
 - Ramon Makkelie (@ramonskie)
 - Benjamin Gandon (@bgandon)
-- Kai Hofstetter (@KaiHofstetter)
 - Felix Riegger (@friegger)
 
 ### Disaster Recovery (BBR)
