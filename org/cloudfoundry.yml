@@ -61,6 +61,7 @@ orgs:
     - AndreasSchoesser
     - andrew-edgar
     - andrew-su
+    - andrewdriver123
     - andrewedstrom
     - andy-paine
     - anEXPer
@@ -156,6 +157,7 @@ orgs:
     - cobyrne
     - cobyrne-pivot
     - colins
+    - combor
     - cornelius
     - cphi-vmw
     - cppforlife
@@ -306,6 +308,7 @@ orgs:
     - jhvhs
     - jianqiu
     - jimbo459
+    - jimconner
     - jimmykarily
     - jkjell
     - jkonicki
@@ -546,6 +549,7 @@ orgs:
     - shamus
     - Shanfan
     - shanks3012
+    - shaun7pan
     - silvestre
     - simonjjones
     - simonleung8
@@ -2772,6 +2776,60 @@ orgs:
         - rahulkj
         - skibum55
         privacy: secret
+      App Runtime Deployments WG:
+        description: Approvers for the App Runtime Deployments Working Group
+        maintainers:
+          - jochenehret
+        members:
+          - andrewdriver123
+          - combor
+          - ctlong
+          - davewalter
+          - iaftab-alam
+          - jimconner
+          - johha
+          - philippthun
+          - shaun7pan
+          - svkrieger
+          - tjvman
+        privacy: closed
+        teams:
+          App Runtime Deployments WG:
+            description: Approvers for the App Runtime Deployments area
+            maintainers:
+              - andrewdriver123
+              - combor
+              - ctlong
+              - davewalter
+              - iaftab-alam
+              - jimconner
+              - johha
+              - philippthun
+              - shaun7pan
+              - svkrieger
+              - tjvman
+            privacy: closed
+            repos:
+              cf-acceptance-tests: write
+              cf-deployment-concourse-tasks: write
+              cf-deployment: write
+              cf-smoke-tests-release: write
+              cf-smoke-tests: write
+              runtime-ci: write
+              uptimer: write
+          App Runtime Deployments WG Leads:
+            description: Technical and Execution Leads for the App Runtime Deployments area
+            maintainers:
+              - jochenehret
+            privacy: closed
+            repos:
+              cf-acceptance-tests: admin
+              cf-deployment-concourse-tasks: admin
+              cf-deployment: admin
+              cf-smoke-tests-release: admin
+              cf-smoke-tests: admin
+              runtime-ci: admin
+              uptimer: admin
       App Runtime Interfaces WG:
         description: Approvers for the App Runtime Interfaces Working Group
         maintainers:
