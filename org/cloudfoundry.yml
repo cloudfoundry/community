@@ -2794,7 +2794,7 @@ orgs:
           - tjvman
         privacy: closed
         teams:
-          App Runtime Deployments WG:
+          App Runtime Deployments WG Approvers:
             description: Approvers for the App Runtime Deployments area
             maintainers:
               - andrewdriver123
