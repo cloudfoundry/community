@@ -29,39 +29,48 @@ Provide reference deployments of the CF App Runtime to CF community end users, C
 
 - Provide significant extensions or other major projects in the CF App Runtime reference deployments, such as managed services or extension clients.
 
-## Membership
-
-- Technical Lead(s): Jochen Ehret, @jochenehret
-- Execution Lead(s): Jochen Ehret, @jochenehret
-
-### Approvers by Area
-
-- @davewalter
-- @ctlong
-- @tjvman 
-- @philippthun
-- @johha
-- @svkrieger
-- @iaftab-alam
-- @jimconner
-- @andrewdriver123
-- @combor
-- @shaun7pan
-
-## Technical Assets
-
+## Roles & Technical Assets
 Existing CF App Runtime deployments, namely cf-deployment.
 
-Repositories:
-- https://github.com/cloudfoundry/cf-deployment
-- https://github.com/cloudfoundry/cf-deployment-concourse-tasks
-- https://github.com/cloudfoundry/cf-acceptance-tests
-- https://github.com/cloudfoundry/cf-smoke-tests
-- https://github.com/cloudfoundry/cf-smoke-tests-release
-- https://github.com/cloudfoundry/cf-test-helpers
-- https://github.com/cloudfoundry/uptimer
-- https://github.com/cloudfoundry/runtime-ci
-
-Public, active pipelines for building and releasing CF deployments, to be run on CFF community infrastructure.
-
-
+```yaml
+name: App Runtime Deployments
+execution_leads:
+- name: Jochen Ehret
+  github: jochenehret
+technical_leads:
+- name: Jochen Ehret
+  github: jochenehret
+areas:
+- name: CF Deployment
+  approvers:
+  - github: davewalter
+    name: Dave Walter
+  - github: ctlong
+    name: Carson Long
+  - github: tjvman
+    name: Tom Viehman
+  - github: philippthun
+    name: Philipp Thun
+  - github: johha
+    name: Johannes Haass
+  - github: svkrieger
+    name: Sven Krieger
+  - github: iaftab-alam
+    name: Aftab Alam
+  - github: jimconner
+    name: Jim Conner
+  - github: andrewdriver123
+    name: Andrew Driver
+  - github: combor
+    name: Piotr Komborski
+  - github: shaun7pan
+    name: Shaun Pan
+  repositories:
+  - cloudfoundry/cf-deployment
+  - cloudfoundry/cf-deployment-concourse-tasks
+  - cloudfoundry/cf-acceptance-tests
+  - cloudfoundry/cf-smoke-tests
+  - cloudfoundry/cf-smoke-tests-release
+  - cloudfoundry/uptimer
+  - cloudfoundry/runtime-ci
+```
