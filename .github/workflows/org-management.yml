@@ -22,4 +22,4 @@ jobs:
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /ko-app/peribolos
-          args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-teams --fix-team-members
+          args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
