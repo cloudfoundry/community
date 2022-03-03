@@ -50,4 +50,7 @@ Execution Lead:
 ## Technical Assets
 
 * https://github.com/cloudfoundry/cf-k8s-controllers
-* https://github.com/cloudfoundry-incubator/eirini-controller
+* https://github.com/cloudfoundry/eirini
+* https://github.com/cloudfoundry/eirini-ci
+* https://github.com/cloudfoundry/eirini-controller
+* https://github.com/cloudfoundry/eirini-release
