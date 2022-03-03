@@ -29,7 +29,8 @@ Provides APIs for the CF App Runtime and community clients for end users.
 - Provide the community with 'all' language specific CF clients libraries.
 
 ## Roles & Technical Assets
-Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, Notifications, and Stratos projects.
+
+Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifications projects.
 
 ```yaml
 name: App Runtime Interfaces
