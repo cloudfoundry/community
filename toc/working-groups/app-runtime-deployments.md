@@ -54,12 +54,13 @@ Existing CF App Runtime deployments, namely cf-deployment.
 
 Repositories:
 - https://github.com/cloudfoundry/cf-deployment
-- https://github.com/cloudfoundry/cf-deployment-concourse-tasks/
+- https://github.com/cloudfoundry/cf-deployment-concourse-tasks
 - https://github.com/cloudfoundry/cf-acceptance-tests
 - https://github.com/cloudfoundry/cf-smoke-tests
 - https://github.com/cloudfoundry/cf-smoke-tests-release
+- https://github.com/cloudfoundry/cf-test-helpers
 - https://github.com/cloudfoundry/uptimer
-- https://github.com/cloudfoundry/runtime-ci/
+- https://github.com/cloudfoundry/runtime-ci
 
 Public, active pipelines for building and releasing CF deployments, to be run on CFF community infrastructure.
 
