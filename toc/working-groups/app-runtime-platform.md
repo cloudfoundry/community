@@ -177,6 +177,7 @@ areas:
   - cloudfoundry/go-batching
   - cloudfoundry/sonde-go
   - cloudfoundry/metrics-discovery-release
+  - cloudfoundry/metric-store-release
   - cloudfoundry/statsd-injector-release
   - cloudfoundry/system-metrics-scraper-release
 
