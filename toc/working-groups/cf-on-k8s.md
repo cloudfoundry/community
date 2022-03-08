@@ -25,29 +25,42 @@ Bring the ease and simplicity of the Cloud Foundry developer experience to Kuber
 
 - Provide full compatibility with the existing Cloud Foundry behaviour.
 
-## Proposed Membership
+## Roles & Technical Assets
 
-Technical Leads:
-* @gcapizzi
-* @georgethebeatle
-
-Execution Lead:
-* @gcapizzi
-
-### Approvers
-
-* @Birdrock
-* @acosta11
-* @akrishna90
-* @danail-branekov
-* @davewalter
-* @gnovv
-* @kieron-dev
-* @matt-royal
-* @mnitchev
-* @tcdowney
-
-## Technical Assets
-
-* https://github.com/cloudfoundry/cf-k8s-controllers
-* https://github.com/cloudfoundry-incubator/eirini-controller
+```yaml
+name: CF on K8s
+execution_leads:
+- name: Giuseppe Capizzi
+  github: gcapizzi
+technical_leads:
+- name: Giuseppe Capizzi
+  github: gcapizzi
+- name: George
+  github: georgethebeatle
+areas:
+- name: CF on k8s
+  approvers:
+  - name: Andrew Wittrock
+    github: Birdrock
+  - name: Andrew Costa
+    github: acosta11
+  - name: Ashwin Krishna
+    github: akrishna90
+  - name: Danail Branekov
+    github: danail-branekov
+  - name: Dave Walter
+    github: davewalter
+  - name: Akira Wong
+    github: gnovv
+  - name: Kieron Browne
+    github: kieron-dev
+  - name: Matt Royal
+    github: matt-royal
+  - name: Mario Nitchev
+    github: mnitchev
+  - name: Tim Downey
+    github: tcdowney
+  repositories:
+  - cloudfoundry/cf-k8s-controllers
+  - cloudfoundry-incubator/eirini-controller
+```

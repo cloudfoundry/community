@@ -18,82 +18,87 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 ## Non-Goals
 
-
-
-
-## Proposed Membership
-
-- Technical Lead(s): Marcela Campo (@pivotal-marcela-campo)
-- Execution Lead(s): Marcela Campo (@pivotal-marcela-campo)
-
-## Approvers by Area
-### Cloud Service Broker
-* [@blgm](https://github.com/blgm)
-* [@FelisiaM](https://github.com/FelisiaM)
-* [@jimbo459](https://github.com/jimbo459)
-* [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) 
-* [@tinygrasshopper](https://github.com/tinygrasshopper)
-
-
-### OSBAPI
-* [@Samze](https://github.com/Samze)
-* [@rsampaio](https://github.com/rsampaio)
-
-### ServiceFabrik
-* [@anoopjb](https://github.com/anoopjb)
-* [@jintusebastian](https://github.com/jintusebastian)
-* [@Pooja-08](https://github.com/Pooja-08) 
-* [@swati1102](https://github.com/swati1102)
-* [@visargsoneji](https://github.com/visargsoneji)
-
-### Volume Service Adapters
-* [@dlresende](https://github.com/dlresende)
-* [@fejnartal](https://github.com/fejnartal)
-* [@totherme](https://github.com/totherme)
-
-
-## Technical Assets by Area
-
+## Roles & Technical Assets
 Components from the Cloud Service Broker, Open Service Broker API, Service Fabrik, and Volume Services projects.
 
-### Cloud Service Broker
-
-* [cloud-service-broker](https://github.com/cloudfoundry-incubator/cloud-service-broker)
-* [csb-brokerpak-azure](https://github.com/cloudfoundry-incubator/csb-brokerpak-azure)
-* [csb-brokerpak-aws](https://github.com/cloudfoundry-incubator/csb-brokerpak-aws)
-* [csb-brokerpak-gcp](https://github.com/cloudfoundry-incubator/csb-brokerpak-gcp)
-
-
-### OSBAPI
-
-* [OSBAPI spec](https://github.com/openservicebrokerapi/servicebroker)
-* [osb-checker](https://github.com/openservicebrokerapi/osb-checker)
-
-### ServiceFabrik
-
-* [service-fabrik-broker](https://github.com/cloudfoundry-incubator/service-fabrik-broker)
-* [service-fabrik-blueprint-app](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-app)
-* [service-fabrik-boshrelease](https://github.com/cloudfoundry-incubator/service-fabrik-boshrelease)
-* [service-fabrik-backup-restore](https://github.com/cloudfoundry-incubator/service-fabrik-backup-restore)
-* [service-fabrik-blueprint-service](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-service)
-* [service-fabrik-blueprint-boshrelease](https://github.com/cloudfoundry-incubator/service-fabrik-blueprint-boshrelease)
-* [service-fabrik-cli-plugin](https://github.com/cloudfoundry-incubator/service-fabrik-cli-plugin)
-* [service-fabrik-lvm-volume-driver](https://github.com/cloudfoundry-incubator/service-fabrik-lvm-volume-driver)
-
-### Volume Service Adapters
-
-* [existing-volume-broker](https://github.com/cloudfoundry/existingvolumebroker)
-* [goshims](https://github.com/cloudfoundry/goshims)
-* [mapfs](https://github.com/cloudfoundry/mapfs)
-* [mapfs-release](https://github.com/cloudfoundry/mapfs-release)
-* [migrate-mysql-to-credhub](https://github.com/cloudfoundry/migrate_mysql_to_credhub)
-* [nfsv3driver](https://github.com/cloudfoundry/nfsv3driver)
-* [nfsbroker](https://github.com/cloudfoundry/nfsbroker)
-* [nfs-volume-release](https://github.com/cloudfoundry/nfs-volume-release)
-* [perci-ci](https://github.com/cloudfoundry/persi-ci)
-* [service-broker-store](https://github.com/cloudfoundry/service-broker-store)
-* [smbdriver](https://github.com/cloudfoundry/smbdriver)
-* [smbbroker](https://github.com/cloudfoundry/smbbroker)
-* [smb-volume-release](https://github.com/cloudfoundry/smb-volume-release)
-* [volume-mount-options](https://github.com/cloudfoundry/volume-mount-options)
-* [volume-driver](https://github.com/cloudfoundry/volumedriver)
+```yaml
+name: Service Management
+execution_leads:
+- name: Marcela Campo
+  github: pivotal-marcela-campo
+technical_leads:
+- name: Marcela Campo
+  github: pivotal-marcela-campo
+areas:
+- name: Cloud Service Broker
+  approvers:
+  - name: George Blue
+    github: blgm
+  - name: Felisia Martini
+    github: FelisiaM
+  - name: James Norman
+    github: jimbo459
+  - name: Marcela Campo
+    github: pivotal-marcela-campo
+  - name: Jatin Naik
+    github: tinygrasshopper
+  repositories:
+  - cloudfoundry-incubator/cloud-service-broker
+  - cloudfoundry-incubator/csb-brokerpak-azure
+  - cloudfoundry-incubator/csb-brokerpak-aws
+  - cloudfoundry-incubator/csb-brokerpak-gcp
+- name: OSBAPI
+  approvers:
+  - name: Sam Gunaratne
+    github: Samze
+  - name: Rodrigo Sampaio Vaz
+    github: rsampaio
+  repositories:
+  - openservicebrokerapi/servicebroker
+  - openservicebrokerapi/osb-checker
+- name: ServiceFabrik
+  approvers:
+  - name: Anoop Joseph Babu
+    github: anoopjb
+  - name: Jintu Sebastian
+    github: jintusebastian
+  - name: Pooja
+    github: Pooja-08
+  - name: Swati
+    github: swati1102
+  - name: Visarg Soneji
+    github: visargsoneji
+  repositories:
+  - cloudfoundry-incubator/service-fabrik-broker
+  - cloudfoundry-incubator/service-fabrik-blueprint-app
+  - cloudfoundry-incubator/service-fabrik-boshrelease
+  - cloudfoundry-incubator/service-fabrik-backup-restore
+  - cloudfoundry-incubator/service-fabrik-blueprint-service
+  - cloudfoundry-incubator/service-fabrik-blueprint-boshrelease
+  - cloudfoundry-incubator/service-fabrik-cli-plugin
+  - cloudfoundry-incubator/service-fabrik-lvm-volume-driver
+- name: Volume Service Adapters
+  approvers:
+  - name: Diego Lemos
+    github: dlresende
+  - name: fnaranjo
+    github: fejnartal
+  - name: Gareth Smith
+    github: totherme
+  repositories:
+  - cloudfoundry/existingvolumebroker
+  - cloudfoundry/goshims
+  - cloudfoundry/mapfs
+  - cloudfoundry/mapfs-release
+  - cloudfoundry/migrate_mysql_to_credhub
+  - cloudfoundry/nfsv3driver
+  - cloudfoundry/nfsbroker
+  - cloudfoundry/nfs-volume-release
+  - cloudfoundry/persi-ci
+  - cloudfoundry/service-broker-store
+  - cloudfoundry/smbdriver
+  - cloudfoundry/smbbroker
+  - cloudfoundry/smb-volume-release
+  - cloudfoundry/volume-mount-options
+  - cloudfoundry/volumedriver
+```

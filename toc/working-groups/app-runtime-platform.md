@@ -28,168 +28,205 @@ Provides operational components for the CF App Runtime, including those for appl
 
 - Be responsible for these functional domain areas outside of the CF App Runtime system.
 
-
-## Proposed Membership
-
-Technical and Execution Lead: @ameowlia
-
-### Approvers by area
-
-Diego:
-- @acrmp
-- @aminjam
-- @Benjamintf1
-- @geofffranks
-- @IvanHristov98
-- @jrussett
-- @pivotalgeorge
-- @reneighbor
-- @selzoc
-
-Docs:
-- @mjgutermuth
-
-Garden Containers:
-- @aemengo
-- @danail-branekov
-- @gcapizzi
-- @georgethebeatle
-- @kieron-dev
-- @mnitchev
-
-Logging and Metrics:
-- @acrmp
-- @aminjam
-- @Benjamintf1
-- @geofffranks
-- @jrussett
-- @pivotalgeorge
-- @reneighbor
-- @selzoc
-
-Networking:
-- @46bit
-- @acrmp
-- @aminjam
-- @Benjamintf1
-- @ctlong
-- @domdom82
-- @geofffranks
-- @Gerg
-- @jrussett
-- @mkocher
-- @pivotalgeorge
-- @plowin
-- @reneighbor
-- @selzoc
-- @stefanlay
-
-
-## Technical Assets
+## Roles & Technical Assets
 
 Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Windows Containers projects.
 
-### Diego
-* https://github.com/cloudfoundry/diego-release
-  * https://github.com/cloudfoundry/archiver
-  * https://github.com/cloudfoundry/auction
-  * https://github.com/cloudfoundry/auctioneer
-  * https://github.com/cloudfoundry/bbs
-  * https://github.com/cloudfoundry/benchmarkbbs
-  * https://github.com/cloudfoundry/bytefmt
-  * https://github.com/cloudfoundry/cacheddownloader
-  * https://github.com/cloudfoundry/certsplitter
-  * https://github.com/cloudfoundry/cfdot
-  * https://github.com/cloudfoundry/cf-volume-services-acceptance-tests
-  * https://github.com/cloudfoundry/consuladapter
-  * https://github.com/cloudfoundry/debugserver
-  * https://github.com/cloudfoundry/diego-ci
-  * https://github.com/cloudfoundry/diego-dockerfiles
-  * https://github.com/cloudfoundry/diego-logging-client
-  * https://github.com/cloudfoundry/diego-upgrade-stability-tests
-  * https://github.com/cloudfoundry/dockerdriver
-  * https://github.com/cloudfoundry/docker_driver_integration_tests
-  * https://github.com/cloudfoundry/durationjson
-  * https://github.com/cloudfoundry/ecrhelper
-  * https://github.com/cloudfoundry/eventhub
-  * https://github.com/cloudfoundry/executor
-  * https://github.com/cloudfoundry/fileserver
-  * https://github.com/cloudfoundry/grace
-  * https://github.com/cloudfoundry/healthcheck
-  * https://github.com/cloudfoundry/inigo
-  * https://github.com/cloudfoundry/localdriver
-  * https://github.com/cloudfoundry/localip
-  * https://github.com/cloudfoundry/locket
-  * https://github.com/cloudfoundry/operationq
-  * https://github.com/cloudfoundry/rep
-  * https://github.com/cloudfoundry/route-emitter
-  * https://github.com/cloudfoundry/systemcerts
-  * https://github.com/cloudfoundry/tlsconfig
-  * https://github.com/cloudfoundry/vizzini
-  * https://github.com/cloudfoundry/volman
-  * https://github.com/cloudfoundry/workpool
+```yaml
+name: App Runtime Platform
+execution_leads:
+- name: Amelia Downs
+  github: ameowlia
+technical_leads:
+- name: Amelia Downs
+  github: ameowlia
+areas:
+- name: Diego
+  approvers:
+  - name: Andrew Crump
+    github: acrmp
+  - name: Amin Jamali
+    github: aminjam
+  - name: Benjamin Fuller
+    github: Benjamintf1
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Ivan Hristov
+    github: IvanHristov98
+  - name: Josh Russett
+    github: jrussett
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Renee Chu
+    github: reneighbor
+  - name: Chris Selzo
+    github: selzoc
+  repositories:
+  - cloudfoundry/diego-team
+  - cloudfoundry/diego-release
+  - cloudfoundry/archiver
+  - cloudfoundry/auction
+  - cloudfoundry/auctioneer
+  - cloudfoundry/bbs
+  - cloudfoundry/benchmarkbbs
+  - cloudfoundry/bytefmt
+  - cloudfoundry/cacheddownloader
+  - cloudfoundry/certsplitter
+  - cloudfoundry/cfdot
+  - cloudfoundry/cf-volume-services-acceptance-tests
+  - cloudfoundry/consuladapter
+  - cloudfoundry/debugserver
+  - cloudfoundry/diego-ci
+  - cloudfoundry/diego-dockerfiles
+  - cloudfoundry/diego-logging-client
+  - cloudfoundry/diego-upgrade-stability-tests
+  - cloudfoundry/dockerdriver
+  - cloudfoundry/docker_driver_integration_tests
+  - cloudfoundry/durationjson
+  - cloudfoundry/ecrhelper
+  - cloudfoundry/eventhub
+  - cloudfoundry/executor
+  - cloudfoundry/fileserver
+  - cloudfoundry/grace
+  - cloudfoundry/healthcheck
+  - cloudfoundry/inigo
+  - cloudfoundry/localdriver
+  - cloudfoundry/localip
+  - cloudfoundry/locket
+  - cloudfoundry/operationq
+  - cloudfoundry/rep
+  - cloudfoundry/route-emitter
+  - cloudfoundry/systemcerts
+  - cloudfoundry/tlsconfig
+  - cloudfoundry/vizzini
+  - cloudfoundry/volman
+  - cloudfoundry/workpool
 
-### Docs
-* https://github.com/cloudfoundry/docs-book-cloudfoundry
-* https://github.com/cloudfoundry/docs-cf-admin
-* https://github.com/cloudfoundry/docs-loggregator
-* https://github.com/cloudfoundry/docs-running-cf
+- name: Docs
+  approvers:
+  - name: Melinda Jeffs Gutermuth
+    github: mjgutermuth
+  repositories:
+  - cloudfoundry/docs-book-cloudfoundry
+  - cloudfoundry/docs-cf-admin
+  - cloudfoundry/docs-loggregator
+  - cloudfoundry/docs-running-cf
 
-### Garden Containers
-* https://github.com/cloudfoundry/garden-runc-release
-  * https://github.com/cloudfoundry/dontpanic
-  * https://github.com/cloudfoundry/garden
-  * https://github.com/cloudfoundry/garden-integration-tests
-  * https://github.com/cloudfoundry/grootfs
-  * https://github.com/cloudfoundry/guardian
-  * https://github.com/cloudfoundry/idmapper
-  * https://github.com/cloudfoundry/netplugin-shim
-  * https://github.com/cloudfoundry/cpu-entitlement-plugin
-  * https://github.com/cloudfoundry/cpu-entitlement-admin-plugin
-* https://github.com/cloudfoundry/winc-release
-  * https://github.com/cloudfoundry/winc
-  * https://github.com/cloudfoundry/groot-windows
-  * https://github.com/cloudfoundry-incubator/diff-exporter
-  * https://github.com/cloudfoundry/cert-injector
+- name: Garden Containers
+  approvers:
+  - name: Anthony Emengo
+    github: aemengo
+  - name: Danail Branekov
+    github: danail-branekov
+  - name: Giuseppe Capizzi
+    github: gcapizzi
+  - name: George
+    github: georgethebeatle
+  - name: Kieron Browne
+    github: kieron-dev
+  - name: Mario Nitchev
+    github: mnitchev
+  repositories:
+  - cloudfoundry/garden-ci
+  - cloudfoundry/garden-runc-release
+  - cloudfoundry/dontpanic
+  - cloudfoundry/garden
+  - cloudfoundry/garden-integration-tests
+  - cloudfoundry/grootfs
+  - cloudfoundry/guardian
+  - cloudfoundry/idmapper
+  - cloudfoundry/netplugin-shim
+  - cloudfoundry/cpu-entitlement-plugin
+  - cloudfoundry/cpu-entitlement-admin-plugin
+  - cloudfoundry/winc-release
+  - cloudfoundry/winc
+  - cloudfoundry/groot-windows
+  - cloudfoundry-incubator/diff-exporter
+  - cloudfoundry/cert-injector
 
+- name: Logging and Metrics
+  approvers:
+  - name: Andrew Crump
+    github: acrmp
+  - name: Amin Jamali
+    github: aminjam
+  - name: Benjamin Fuller
+    github: Benjamintf1
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Josh Russett
+    github: jrussett
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Renee Chu
+    github: reneighbor
+  - name: Chris Selzo
+    github: selzoc
+  repositories:
+  - cloudfoundry/bosh-system-metrics-forwarder-release
+  - cloudfoundry/log-cache-release
+  - cloudfoundry/go-log-cache
+  - cloudfoundry/loggregator-release
+  - cloudfoundry/go-diodes
+  - cloudfoundry/go-envstruct
+  - cloudfoundry/go-loggregator
+  - cloudfoundry/go-metric-registry
+  - cloudfoundry/go-pubsub
+  - cloudfoundry/loggregator-agent-release
+  - cloudfoundry/dropsonde
+  - cloudfoundry/go-batching
+  - cloudfoundry/sonde-go
+  - cloudfoundry/metrics-discovery-release
+  - cloudfoundry/statsd-injector-release
+  - cloudfoundry/system-metrics-scraper-release
 
-### Logging and Metrics
-* https://github.com/cloudfoundry/bosh-system-metrics-forwarder-release
-* https://github.com/cloudfoundry/log-cache-release
-  * https://github.com/cloudfoundry/go-log-cache
-* https://github.com/cloudfoundry/loggregator-release
-  * https://github.com/cloudfoundry/go-diodes
-  * https://github.com/cloudfoundry/go-envstruct
-  * https://github.com/cloudfoundry/go-loggregator
-  * https://github.com/cloudfoundry/go-metric-registry
-  * https://github.com/cloudfoundry/go-pubsub
-* https://github.com/cloudfoundry/loggregator-agent-release
-  * https://github.com/cloudfoundry/dropsonde
-  * https://github.com/cloudfoundry/go-batching
-  * https://github.com/cloudfoundry/sonde-go
-* https://github.com/cloudfoundry/metrics-discovery-release
-* https://github.com/cloudfoundry/statsd-injector-release
-* https://github.com/cloudfoundry/system-metrics-scraper-release
-
-### Networking
-* https://github.com/cloudfoundry/routing-release
-  * https://github.com/cloudfoundry/routing-acceptance-tests
-  * https://github.com/cloudfoundry/routing-api
-  * https://github.com/cloudfoundry/routing-api-cli
-  * https://github.com/cloudfoundry/routing-perf-release
-  * https://github.com/cloudfoundry/cf-tcp-router
-  * https://github.com/cloudfoundry/routing-info
-  * https://github.com/cloudfoundry/gorouter
-  * https://github.com/cloudfoundry/route-registrar
-* https://github.com/cloudfoundry/haproxy-boshrelease
-* https://github.com/cloudfoundry/cf-networking-release
-  * https://github.com/cloudfoundry/cf-networking-helpers
-* https://github.com/cloudfoundry/silk-release
-  * https://github.com/cloudfoundry/silk
-* https://github.com/cloudfoundry/nats-release
-
-
-### Technical Assets
-* cloudfoundry/diego-team
-* cloudfoundry/garden-ci
-* cloudfoundry/networking-oss-deployments
+- name: Networking
+  approvers:
+  - name: Miki Mokrysz
+    github: 46bit
+  - name: Andrew Crump
+    github: acrmp
+  - name: Amin Jamali
+    github: aminjam
+  - name: Benjamin Fuller
+    github: Benjamintf1
+  - name: Carson Long
+    github: ctlong
+  - name: Dominik Froehlich
+    github: domdom82
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Greg Cobb
+    github: Gerg
+  - name: Josh Russett
+    github: jrussett
+  - name: Matthew Kocher
+    github: mkocher
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Patrick Lowin
+    github: plowin
+  - name: Renee Chu
+    github: reneighbor
+  - name: Chris Selzo
+    github: selzoc
+  - name: Stefan Lay
+    github: stefanlay
+  repositories:
+  - cloudfoundry/networking-oss-deployments
+  - cloudfoundry/routing-release
+  - cloudfoundry/routing-acceptance-tests
+  - cloudfoundry/routing-api
+  - cloudfoundry/routing-api-cli
+  - cloudfoundry/routing-perf-release
+  - cloudfoundry/cf-tcp-router
+  - cloudfoundry/routing-info
+  - cloudfoundry/gorouter
+  - cloudfoundry/route-registrar
+  - cloudfoundry/haproxy-boshrelease
+  - cloudfoundry/cf-networking-release
+  - cloudfoundry/cf-networking-helpers
+  - cloudfoundry/silk-release
+  - cloudfoundry/silk
+  - cloudfoundry/nats-release
+```
