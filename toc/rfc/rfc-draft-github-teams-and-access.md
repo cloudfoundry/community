@@ -18,7 +18,7 @@ new roles like Tech Lead and Approver. Most working groups also have sub-groups.
 
 We need ways within the community to:
 * Provide the team members with proper push access to certain repos,
-* Provide a way for others to tag groups of people.cribe the problem your RFC is trying to solve.
+* Provide a way for others to tag groups of people.
 
 ## Proposal
 
