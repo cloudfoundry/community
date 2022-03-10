@@ -78,6 +78,7 @@ areas:
   repositories:
   - cloudfoundry/cf-uaa-lib
   - cloudfoundry/cf-uaac
+  - cloudfoundry/uaa-cli
   - cloudfoundry/docs-uaa
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa-key-rotator
@@ -195,4 +196,3 @@ areas:
   - cloudfoundry/yagnats
   - cloudfoundry/windows-tools-release
 ```
-
