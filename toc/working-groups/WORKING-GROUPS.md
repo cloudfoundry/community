@@ -34,11 +34,32 @@ Most working groups manage a subset of repositories in the `cloudfoundry` GitHub
 
 The current working groups are:
 
+- App Runtime Deployments
 - App Runtime Interfaces
 - App Runtime Platform
 - CF on K8s
 - Foundational Infrastructure
 - Paketo
+- Service Management
+
+
+## App Runtime Deployments
+
+Mission: Provide reference deployments of the CF App Runtime to CF community end users, CF community contributors, and CF commercial vendors.
+
+The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-app-runtime-deployments` topic.
+
+| Artifact                   | Link |
+| -------------------------- | -- |
+| Charter                    | [app-runtime-deployments.md](./app-runtime-deployments.md) |
+| Forum                      | TBD |
+| Community Meeting Calendar | [Monthly on the second Thursday at 4:30pm – 5:30pm UTC](https://www.google.com/calendar/event?eid=ZjM5ZTJpZTUwaXJlOGxuM2tycjN1NGhraThfMjAyMjAzMTBUMTYzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&ctz=UTC)  |
+| Meeting Notes              | TBD |
+| Slack Channel              | [&#x23;wg-app-runtime-deployments](https://cloudfoundry.slack.com/archives/C033ALST37V) |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                  |
+| -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
+| <img width="30px" src="https://github.com/jochenehret.png"> | Jochen Ehret | SAP | [@jochenehret](https://github.com/jochenehret) |
 
 
 ## App Runtime Interfaces
@@ -139,6 +160,25 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | <img width="30px" src="https://github.com/dmikusa-pivotal.png"> | Daniel Mikusa       | VMware  | [@dmikusa-pivotal](https://github.com/dmikusa-pivotal) |
 | <img width="30px" src="https://github.com/ekcasey.png"> | Emily Casey       | VMware  | [@ekcasey](https://github.com/ekcasey) |
 | <img width="30px" src="https://github.com/ryanmoran.png"> | Ryan Moran       | VMware  | [@ryanmoran](https://github.com/ryanmoran) |
+
+
+## Service Management
+
+Mission: Provides interfaces for service lifecycle within application platforms and adapters to common external service providers.
+
+The GitHub repos this WG manages in the `cloudfoundry` and `cloudfoundry-incubator` GitHub organization are to be labeled with the `cff-wg-service-manangement` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [service-management.md](./service-management.md)  |
+| Forum                      | TBD  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channels             | [&#x23;wg-service-management](https://cloudfoundry.slack.com/archives/C02TXDMPSUS)|
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/pivotal-marcela-campo.png"> | Marcela Campo       | VMWare  | [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) |
 
 
 <!--

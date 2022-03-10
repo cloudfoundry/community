@@ -1,0 +1,25 @@
+name: 'Sync Github Organization Settings'
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'org/*'
+      - '.github/workflows/org-management.yml'
+  schedule:
+    - cron: '0 */2 * * *'
+
+jobs:
+  peribolos:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: write github private key
+        run: echo "${GITHUB_PRIVATE_KEY}" > private_key
+        env:
+          GITHUB_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+      - name: peribolos
+        uses: docker://gcr.io/k8s-prow/peribolos
+        with:
+          entrypoint: /ko-app/peribolos
+          args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
