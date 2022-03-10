@@ -43,10 +43,10 @@ areas:
   - name: Jatin Naik
     github: tinygrasshopper
   repositories:
-  - cloudfoundry-incubator/cloud-service-broker
-  - cloudfoundry-incubator/csb-brokerpak-azure
-  - cloudfoundry-incubator/csb-brokerpak-aws
-  - cloudfoundry-incubator/csb-brokerpak-gcp
+  - cloudfoundry/cloud-service-broker
+  - cloudfoundry/csb-brokerpak-azure
+  - cloudfoundry/csb-brokerpak-aws
+  - cloudfoundry/csb-brokerpak-gcp
 - name: OSBAPI
   approvers:
   - name: Sam Gunaratne
