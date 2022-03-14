@@ -1,4 +1,4 @@
-# CFF “Open Governance” Model Proposal (rough strawman)
+# CFF “Open Governance” Model Proposal
 
 Initial design inspired by the [Istio](https://github.com/istio/community) and [Knative](https://github.com/knative/community) communities.
 
