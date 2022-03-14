@@ -41,6 +41,7 @@ The current working groups are:
 - Foundational Infrastructure
 - Paketo
 - Service Management
+- Vulnerability Management
 
 
 ## App Runtime Deployments
@@ -180,6 +181,23 @@ The GitHub repos this WG manages in the `cloudfoundry` and `cloudfoundry-incubat
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/pivotal-marcela-campo.png"> | Marcela Campo       | VMWare  | [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) |
 
+
+## Vulnerability Management
+
+Mission: Provides discreet management of security vulnerabilities issues relevant for active CF projects.
+
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [vulnerability-management.md](./vulnerability-management.md)  |
+| Forum                      | TBD  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channels             | [&#x23;security](https://cloudfoundry.slack.com/archives/C0DEQSW9W)|
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/paulcwarren.png"> | Paul Warren       | VMWare  | [@paulcwarren](https://github.com/paulcwarren) |
 
 <!--
 ## Working Group Template
