@@ -128,6 +128,7 @@ areas:
     github: mnitchev
   repositories:
   - cloudfoundry/garden-ci
+  - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-runc-release
   - cloudfoundry/dontpanic
   - cloudfoundry/garden
