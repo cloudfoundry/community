@@ -229,4 +229,6 @@ areas:
   - cloudfoundry/silk-release
   - cloudfoundry/silk
   - cloudfoundry/nats-release
+  - cloudfoundry/logging-route-service
+
 ```
