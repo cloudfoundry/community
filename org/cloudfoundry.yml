@@ -6487,6 +6487,11 @@ orgs:
           loggregator-api: admin
           loggregator-ci: admin
           loggregator-release: admin
+          loggregator-tools: admin
+          sonde-go: admin
+          dropsonde-protocol: admin
+          dropsonde-protocol-js: admin
+          dropsonde: admin
           metrics-discovery-release: admin
           nats-release: admin
           netplugin-shim: admin
