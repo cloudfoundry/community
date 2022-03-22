@@ -32,7 +32,7 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 ### Number Assignment
 
-Each accepted RFC is assigned a unique sequence number, replacing the `draft` segment in the names of its document and its optional image directory. This sequence of RFC numbers is shared between the community-wide RFCs and the working-group-specific RFCs contained in this repository. The user merging an RFC after a decision to accept is responsible for assigning the correct sequence number to that RFC.
+Each accepted RFC is assigned a unique sequence number, replacing the `draft` segment in the names of its document and its optional image directory. This sequence of RFC numbers is shared between the community-wide RFCs and the working-group-specific RFCs contained in this repository. The user merging an RFC after a decision to accept is responsible for assigning the correct sequence number to that RFC. There is a script (toc/rfc/assign-rfc-number.sh) that can automate this for you.
 
 ## Managing Standards and Processes
 
