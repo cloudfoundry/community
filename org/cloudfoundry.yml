@@ -282,6 +282,7 @@ orgs:
     - hyakuhei
     - iaftab-alam
     - idoru
+    - ifindlay-cci
     - IgorBelyi
     - ihcsim
     - ikasarov
@@ -6149,6 +6150,7 @@ orgs:
         - totherme
         - dlresende
         - fejnartal
+        - ifindlay-cci
         members:
         - cf-gitbot
         - Cryogenics-CI
