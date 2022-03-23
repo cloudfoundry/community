@@ -6150,6 +6150,7 @@ orgs:
         - totherme
         - dlresende
         - fejnartal
+        - ifindlay-cci
         members:
         - cf-gitbot
         - Cryogenics-CI
