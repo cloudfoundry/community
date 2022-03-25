@@ -1222,6 +1222,11 @@ orgs:
         default_branch: main
         description: TCP Router repository for Cloud Foundry
         has_projects: true
+      cf-test-helpers:
+        allow_merge_commit: false
+        default_branch: main
+        description: Helpers for running tests against Cloud Foundry
+        has_projects: true
       cf-uaa-lib:
         description: Ruby client APIs to access the Cloud Foundry User Account and Authentication service
         has_projects: true
@@ -2816,6 +2821,7 @@ orgs:
               cf-deployment: write
               cf-smoke-tests-release: write
               cf-smoke-tests: write
+              cf-test-helpers: write
               runtime-ci: write
               uptimer: write
           App Runtime Deployments WG Leads:
@@ -2829,6 +2835,7 @@ orgs:
               cf-deployment: admin
               cf-smoke-tests-release: admin
               cf-smoke-tests: admin
+              cf-test-helpers: admin
               runtime-ci: admin
               uptimer: admin
       App Runtime Interfaces WG:
