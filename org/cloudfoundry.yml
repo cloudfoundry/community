@@ -1598,6 +1598,7 @@ orgs:
         description: A place for architecture and concept docs
         has_projects: true
       docs-credhub:
+        default_branch: master
         has_projects: true
       docs-deploying-cf:
         description: The docs repo for material on deploying Cloud Foundry
