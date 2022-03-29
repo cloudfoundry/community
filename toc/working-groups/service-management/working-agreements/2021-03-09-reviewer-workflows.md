@@ -7,7 +7,7 @@ See the community calendar for more details.
 
 ## Problem
 Our working group has many different projects maintained by disjointed groups of people.
-In order to run a healthy open source community we need to make sure that we triage issues and merge PRs in a timely fashion.
+In order to run a healthy open source community we need to make sure that we triage issues and review PRs in a timely fashion.
 
 **As a PR author I want:**
 * To have my PR reviewed and merged in a timely manner.
