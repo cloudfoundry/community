@@ -71,6 +71,7 @@ areas:
   - cloudfoundry/cf-acceptance-tests
   - cloudfoundry/cf-smoke-tests
   - cloudfoundry/cf-smoke-tests-release
+  - cloudfoundry/cf-test-helpers
   - cloudfoundry/uptimer
   - cloudfoundry/runtime-ci
 ```
