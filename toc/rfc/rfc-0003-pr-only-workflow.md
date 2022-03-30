@@ -3,8 +3,8 @@
 - Name: Move to a PR Only Workflow
 - Start Date: 2022-02-28
 - Author(s): @ameowlia
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/171
+- Status: Accepted
+- RFC Pull Request: [community#171](https://github.com/cloudfoundry/community/pull/171)
 
 
 ## Summary
