@@ -2870,6 +2870,7 @@ orgs:
         - ikasarov
         - fejnartal
         - vkalapov
+        - dalvarado
         privacy: closed
         teams:
           App Runtime Interfaces WG Autoscaler:
@@ -2925,6 +2926,7 @@ orgs:
             - MarcPaquette
             - sweinstein22
             - MerricdeLauney
+            - dalvarado
             privacy: closed
             repos:
               capi-bara-tests: write
@@ -3726,6 +3728,7 @@ orgs:
         - monamohebbi
         - moleske
         - tjvman
+        - dalvarado
         - sweinstein22
         - MerricdeLauney
         members:
