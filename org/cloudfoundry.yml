@@ -457,6 +457,7 @@ orgs:
     - pcfdev-bot
     - pcfrabbitmq-concourse-ci
     - perm-ci-bot
+    - PeteLevineA
     - PeterEltgroth
     - petergtz
     - peterhaochen47
@@ -3874,6 +3875,7 @@ orgs:
         - jdgonzaleza
         - ccjaimes
         - gururajsh
+        - PeteLevineA
         privacy: closed
         repos:
           CLAW: admin
@@ -5351,10 +5353,9 @@ orgs:
         - a-b
         - weymanf
         - reedr3
-        - sweinstein22
         - jdgonzaleza
-        - dominicrobertsc
         - gururajsh
+        - PeteLevineA
         privacy: secret
       PCF BAM:
         description: ""
