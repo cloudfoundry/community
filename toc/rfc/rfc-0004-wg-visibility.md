@@ -3,8 +3,8 @@
 - Name: Roadmap Visibility Expectations
 - Start Date: 2022-02-23
 - Author(s): @rkoster, @ameowlia, @geofffranks
-- Status: Draft
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/173
+- Status: Accepted
+- RFC Pull Request: [community#173](https://github.com/cloudfoundry/community/pull/173)
 
 
 ## Summary
