@@ -1,29 +1,32 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -e
+set -u
+set -o pipefail
 
-script="$0"
+script_dir="$(cd $(dirname "$BASH_SOURCE[0]") && pwd)"
 
 ####
 # CONFIG
 #
 
-MAIN_BRANCH=${MAIN_BRANCH:-main}
-OWNER=${OWNER:-cloudfoundry}
-REPO=community
+DEBUG=${DEBUG:-}
 
-REPOBASENAME=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4\/\5/p')
-REPOOWNER=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4/p')
-REPONAME=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\5/p')
-ISAFORK=$(curl -s https://api.github.com/repos/${REPOOWNER}/${REPONAME} | jq '.fork')
-UPSTREAMSET=$(git remote -v | grep upstream)
+if [[ "${DEBUG}" ]] ; then
+  set -x
+fi
+
+OWNER=${OWNER:-cloudfoundry}
+REPO=${REPO:-community}
+MAIN_BRANCH=${MAIN_BRANCH:-main}
+NOPUSH=${NOPUSH:-}
 
 ####
 # FUNCTIONS
 #
 
 generate_id() {
-  id="$(find toc/rfc -maxdepth 2 -type f | sed 's/[^0-9]*//' | sed -E 's|^([[:digit:]]{4})-.*$|\1|' | sort | tail -n 1  |  sed 's/^0*//')"
+  id="$(find "$script_dir" -maxdepth 2 -type f | sed 's/[^0-9]*//' | sed -E 's|^([[:digit:]]{4})-.*$|\1|' | sort | tail -n 1  |  sed 's/^0*//')"
   ((id++))
   printf "%04d" "${id}"
 }
@@ -50,16 +53,20 @@ require_command curl
 # TASK
 #
 
+REPOBASENAME=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4\/\5/p')
+REPOOWNER=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4/p')
+REPONAME=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\5/p')
+ISAFORK=$(curl -s https://api.github.com/repos/${REPOOWNER}/${REPONAME} | jq '.fork')
+UPSTREAMSET=$((git remote -v | grep upstream) || echo "")
 
-if [ "$ISAFORK" = true ] ; then
-        if [ -z "$UPSTREAMSET" ] ; then
+if [[ "$ISAFORK" = true ]] ; then
+        if [[ -z "$UPSTREAMSET" ]] ; then
             git remote add upstream https://github.com/${OWNER}/${REPO}.git
         fi
     git fetch upstream
     git checkout ${MAIN_BRANCH}
     git merge upstream/${MAIN_BRANCH}
 fi
-
 
 echo "> Pulling latest changes...."
 git pull origin ${MAIN_BRANCH} --rebase
@@ -68,32 +75,38 @@ RFC_ID=$(generate_id)
 echo "> Generated RFC number: ${RFC_ID}"
 
 
-SOURCE_DOC=$(find toc/rfc/ -maxdepth 2 -type f -name 'rfc-draft-*')
+SOURCE_DOC=$(find "${script_dir}" -maxdepth 1 -type f -name 'rfc-draft-*')
 TARGET_DOC=${SOURCE_DOC//rfc-draft/rfc-${RFC_ID}}
-SOURCE_DIR=$(find toc/rfc/ -maxdepth 2 -type d -name 'rfc-draft-*')
+SOURCE_DIR=$(find "${script_dir}" -maxdepth 1 -type d -name 'rfc-draft-*')
 TARGET_DIR=${SOURCE_DIR//rfc-draft/rfc-${RFC_ID}}
-PR_NUMBER=$(git ls-remote origin 'pull/*/head' | grep -F -f <(git rev-parse HEAD) | awk -F'/' '{print $3}')
+PR_NUMBER=$(git ls-remote origin 'pull/*/head' | grep -F -f <(git rev-parse HEAD^2) | awk -F'/' '{print $3}')
 
-echo "> Updating document: ${SOURCE_DOC}"
-SEDOPTION="-i"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  SEDOPTION="-i ''"
-fi
-sed $SEDOPTION "s|- RFC Pull Request:.*|- RFC Pull Request: [${REPO}#${PR_NUMBER}](https://github.com/${OWNER}/${REPO}/pull/${PR_NUMBER})|" "${SOURCE_DOC}"
-sed $SEDOPTION "s|- Status:.*|- Status: Accepted|" "${SOURCE_DOC}"
-sed $SEDOPTION "s|rfc-draft-|rfc-${RFC_ID}-|" "${SOURCE_DOC}"
+echo "> Transforming '${SOURCE_DOC}' into '${TARGET_DOC}'"
+sed \
+  -e "s|- RFC Pull Request:.*|- RFC Pull Request: [${REPO}#${PR_NUMBER}](https://github.com/${OWNER}/${REPO}/pull/${PR_NUMBER})|" \
+  -e "s|- Status:.*|- Status: Accepted|" \
+  -e "s|rfc-draft-|rfc-${RFC_ID}-|" \
+  "${SOURCE_DOC}" \
+  > "${TARGET_DOC}"
 
-echo "> Moving ${SOURCE_DOC} to ${TARGET_DOC}..."
-git mv "${SOURCE_DOC}" "${TARGET_DOC}"
+echo "> Adding '${TARGET_DOC}'..."
 git add "${TARGET_DOC}"
-if [ ! -z "$SOURCE_DIR" ] ; then
+
+echo "> Removing '${SOURCE_DOC}'..."
+git rm "${SOURCE_DOC}"
+
+if [[ "$SOURCE_DIR" ]] ; then
+  echo "> Moving ${SOURCE_DIR} to ${TARGET_DIR}..."
   git mv "${SOURCE_DIR}" "${TARGET_DIR}"
-  git add "${TARGET_DIR}"
 fi
 
+echo "> Committing to '${MAIN_BRANCH}'..."
+git commit -m "Assigning number ${RFC_ID} to RFC from PR #${PR_NUMBER}"
 
-echo "> Committing..."
-git commit -m "Assigning RFC ${RFC_ID}"
-
-echo "> Pushing..."
-git push
+if [[ -n "${NOPUSH}" ]] ; then
+  echo "> *NOT* pushing to '${MAIN_BRANCH}' automatically!"
+  echo "> *** Push to '${MAIN_BRANCH}' after verifying RFC number and status changes ***"
+else
+  echo "> Pushing to '${MAIN_BRANCH}'..."
+  git push
+fi
