@@ -2070,7 +2070,7 @@ orgs:
         allow_merge_commit: false
         default_branch: main
         has_projects: false
-        has_wiki: false
+        has_wiki: true
       log-cache-deployments:
         has_projects: true
         private: true
