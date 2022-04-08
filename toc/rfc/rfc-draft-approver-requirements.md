@@ -4,7 +4,7 @@
 - Start Date: 2022-04-08)
 - Author(s): @ameowlia, @ctlong
 - Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: #244
 
 ## Summary
 
