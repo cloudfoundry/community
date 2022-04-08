@@ -3302,6 +3302,7 @@ orgs:
           bosh-bbl-ci-envs: admin
           bosh-cli: admin
           bosh-compiled-releases-index: admin
+          bosh-cpi-certification: admin
           bosh-cpi-environments: admin
           bosh-cpi-go: admin
           bosh-cpi-kb: admin
