@@ -4,7 +4,7 @@
 - Start Date: 2022-04-08)
 - Author(s): @ameowlia, @ctlong
 - Status: Draft
-- RFC Pull Request: #244
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/244
 
 ## Summary
 
