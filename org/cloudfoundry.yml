@@ -3284,10 +3284,11 @@ orgs:
         - danielfor
         - klakin-pivotal
         - camilalonart
+        - nouseforaname
+        - malba
         members:
         - idoru
         - bgandon
-        - nouseforaname
         - bosh-windows-ci
         - suraiyasuliman
         privacy: closed
@@ -3361,6 +3362,7 @@ orgs:
             - klakin-pivotal
             - nouseforaname
             - camilalonart
+            - malba
             privacy: closed
             repos:
               bosh: admin
