@@ -62,6 +62,19 @@ areas:
   - name: Chris Selzo
     github: selzoc
   repositories:
+  - cloudfoundry/cfhttp
+  - cloudfoundry/diego-ci-pools
+  - cloudfoundry/diego-design-notes
+  - cloudfoundry/diego-notes
+  - cloudfoundry/diego-perf-release
+  - cloudfoundry/diego-release
+  - cloudfoundry/diego-ssh
+  - cloudfoundry/diego-stress-tests
+  - cloudfoundry/diego-windows-release
+  - cloudfoundry/diegocanaryapp
+  - cloudfoundry/dockerapplifecycle
+  - cloudfoundry/sample-http-app
+  - cloudfoundry/runtimeschema
   - cloudfoundry/diego-team
   - cloudfoundry/diego-release
   - cloudfoundry/archiver
@@ -127,6 +140,19 @@ areas:
   - name: Mario Nitchev
     github: mnitchev
   repositories:
+  - cloudfoundry/garden-ci-artifacts-release
+  - cloudfoundry/garden-dockerfiles
+  - cloudfoundry/garden-dotfiles
+  - cloudfoundry/garden-performance-acceptance-tests
+  - cloudfoundry/garden-windows-ci
+  - cloudfoundry/groot
+  - cloudfoundry/hwc
+  - cloudfoundry/hydrator
+  - cloudfoundry/commandrunner
+  - cloudfoundry/windows-regression-tests
+  - cloudfoundry/windows2016fs
+  - cloudfoundry/windows2019fs-release
+  - cloudfoundry/windowsfs-online-release
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-runc-release
@@ -164,6 +190,19 @@ areas:
   - name: Chris Selzo
     github: selzoc
   repositories:
+  - cloudfoundry/cf-drain-cli
+  - cloudfoundry/metric-store-ci
+  - cloudfoundry/metric-store-dotfiles
+  - cloudfoundry/metric-store-release
+  - cloudfoundry/noaa
+  - cloudfoundry/lager
+  - cloudfoundry/go-orchestrator
+  - cloudfoundry/loggregator-api
+  - cloudfoundry/loggregator-dotfiles
+  - cloudfoundry/loggregator-tools
+  - cloudfoundry/dropsonde-protocol
+  - cloudfoundry/dropsonde-protocol-js
+  - cloudfoundry/filelock
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/log-cache-release
   - cloudfoundry/go-log-cache
@@ -214,6 +253,12 @@ areas:
   - name: Stefan Lay
     github: stefanlay
   repositories:
+  - cloudfoundry/envoy-nginx-release
+  - cloudfoundry/cf-routing-test-helpers
+  - cloudfoundry/service-metrics-release
+  - cloudfoundry/policy_client
+  - cloudfoundry/cf-networking-onboarding
+  - cloudfoundry/multierror
   - cloudfoundry/networking-oss-deployments
   - cloudfoundry/routing-release
   - cloudfoundry/routing-acceptance-tests
