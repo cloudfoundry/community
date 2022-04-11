@@ -62,21 +62,6 @@ areas:
   - name: Chris Selzo
     github: selzoc
   repositories:
-  - cloudfoundry/cfhttp
-  - cloudfoundry/diego-ci-pools
-  - cloudfoundry/diego-design-notes
-  - cloudfoundry/diego-notes
-  - cloudfoundry/diego-perf-release
-  - cloudfoundry/diego-release
-  - cloudfoundry/diego-ssh
-  - cloudfoundry/diego-stress-tests
-  - cloudfoundry/diego-windows-release
-  - cloudfoundry/diegocanaryapp
-  - cloudfoundry/dockerapplifecycle
-  - cloudfoundry/sample-http-app
-  - cloudfoundry/runtimeschema
-  - cloudfoundry/diego-team
-  - cloudfoundry/diego-release
   - cloudfoundry/archiver
   - cloudfoundry/auction
   - cloudfoundry/auctioneer
@@ -85,16 +70,29 @@ areas:
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter
-  - cloudfoundry/cfdot
   - cloudfoundry/cf-volume-services-acceptance-tests
+  - cloudfoundry/cfdot
+  - cloudfoundry/cfhttp
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
   - cloudfoundry/diego-ci
+  - cloudfoundry/diego-ci-pools
+  - cloudfoundry/diego-design-notes
   - cloudfoundry/diego-dockerfiles
   - cloudfoundry/diego-logging-client
+  - cloudfoundry/diego-notes
+  - cloudfoundry/diego-perf-release
+  - cloudfoundry/diego-release
+  - cloudfoundry/diego-release
+  - cloudfoundry/diego-ssh
+  - cloudfoundry/diego-stress-tests
+  - cloudfoundry/diego-team
   - cloudfoundry/diego-upgrade-stability-tests
-  - cloudfoundry/dockerdriver
+  - cloudfoundry/diego-windows-release
+  - cloudfoundry/diegocanaryapp
   - cloudfoundry/docker_driver_integration_tests
+  - cloudfoundry/dockerapplifecycle
+  - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
   - cloudfoundry/ecrhelper
   - cloudfoundry/eventhub
@@ -109,6 +107,8 @@ areas:
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
+  - cloudfoundry/runtimeschema
+  - cloudfoundry/sample-http-app
   - cloudfoundry/systemcerts
   - cloudfoundry/tlsconfig
   - cloudfoundry/vizzini
@@ -140,36 +140,36 @@ areas:
   - name: Mario Nitchev
     github: mnitchev
   repositories:
+  - cloudfoundry-incubator/diff-exporter
+  - cloudfoundry/cert-injector
+  - cloudfoundry/commandrunner
+  - cloudfoundry/cpu-entitlement-admin-plugin
+  - cloudfoundry/cpu-entitlement-plugin
+  - cloudfoundry/dontpanic
+  - cloudfoundry/garden
+  - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
   - cloudfoundry/garden-dockerfiles
+  - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-dotfiles
+  - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
+  - cloudfoundry/garden-runc-release
   - cloudfoundry/garden-windows-ci
   - cloudfoundry/groot
+  - cloudfoundry/groot-windows
+  - cloudfoundry/grootfs
+  - cloudfoundry/guardian
   - cloudfoundry/hwc
   - cloudfoundry/hydrator
-  - cloudfoundry/commandrunner
+  - cloudfoundry/idmapper
+  - cloudfoundry/netplugin-shim
+  - cloudfoundry/winc
+  - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
   - cloudfoundry/windows2016fs
   - cloudfoundry/windows2019fs-release
   - cloudfoundry/windowsfs-online-release
-  - cloudfoundry/garden-ci
-  - cloudfoundry/garden-dockerfiles
-  - cloudfoundry/garden-runc-release
-  - cloudfoundry/dontpanic
-  - cloudfoundry/garden
-  - cloudfoundry/garden-integration-tests
-  - cloudfoundry/grootfs
-  - cloudfoundry/guardian
-  - cloudfoundry/idmapper
-  - cloudfoundry/netplugin-shim
-  - cloudfoundry/cpu-entitlement-plugin
-  - cloudfoundry/cpu-entitlement-admin-plugin
-  - cloudfoundry/winc-release
-  - cloudfoundry/winc
-  - cloudfoundry/groot-windows
-  - cloudfoundry-incubator/diff-exporter
-  - cloudfoundry/cert-injector
 
 - name: Logging and Metrics
   approvers:
@@ -190,33 +190,33 @@ areas:
   - name: Chris Selzo
     github: selzoc
   repositories:
+  - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/cf-drain-cli
-  - cloudfoundry/metric-store-ci
-  - cloudfoundry/metric-store-dotfiles
-  - cloudfoundry/metric-store-release
-  - cloudfoundry/noaa
-  - cloudfoundry/lager
-  - cloudfoundry/go-orchestrator
-  - cloudfoundry/loggregator-api
-  - cloudfoundry/loggregator-dotfiles
-  - cloudfoundry/loggregator-tools
+  - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
   - cloudfoundry/dropsonde-protocol-js
   - cloudfoundry/filelock
-  - cloudfoundry/bosh-system-metrics-forwarder-release
-  - cloudfoundry/log-cache-release
-  - cloudfoundry/go-log-cache
-  - cloudfoundry/loggregator-release
+  - cloudfoundry/go-batching
   - cloudfoundry/go-diodes
   - cloudfoundry/go-envstruct
+  - cloudfoundry/go-log-cache
   - cloudfoundry/go-loggregator
   - cloudfoundry/go-metric-registry
+  - cloudfoundry/go-orchestrator
   - cloudfoundry/go-pubsub
+  - cloudfoundry/lager
+  - cloudfoundry/log-cache-release
   - cloudfoundry/loggregator-agent-release
-  - cloudfoundry/dropsonde
-  - cloudfoundry/go-batching
-  - cloudfoundry/sonde-go
+  - cloudfoundry/loggregator-api
+  - cloudfoundry/loggregator-dotfiles
+  - cloudfoundry/loggregator-release
+  - cloudfoundry/loggregator-tools
+  - cloudfoundry/metric-store-ci
+  - cloudfoundry/metric-store-dotfiles
+  - cloudfoundry/metric-store-release
   - cloudfoundry/metrics-discovery-release
+  - cloudfoundry/noaa
+  - cloudfoundry/sonde-go
   - cloudfoundry/statsd-injector-release
   - cloudfoundry/system-metrics-scraper-release
 
@@ -253,26 +253,26 @@ areas:
   - name: Stefan Lay
     github: stefanlay
   repositories:
-  - cloudfoundry/envoy-nginx-release
-  - cloudfoundry/cf-routing-test-helpers
-  - cloudfoundry/service-metrics-release
-  - cloudfoundry/policy_client
+  - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
+  - cloudfoundry/cf-networking-release
+  - cloudfoundry/cf-routing-test-helpers
+  - cloudfoundry/cf-tcp-router
+  - cloudfoundry/envoy-nginx-release
+  - cloudfoundry/gorouter
+  - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/multierror
+  - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
-  - cloudfoundry/routing-release
+  - cloudfoundry/policy_client
+  - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
   - cloudfoundry/routing-api
   - cloudfoundry/routing-api-cli
-  - cloudfoundry/routing-perf-release
-  - cloudfoundry/cf-tcp-router
   - cloudfoundry/routing-info
-  - cloudfoundry/gorouter
-  - cloudfoundry/route-registrar
-  - cloudfoundry/haproxy-boshrelease
-  - cloudfoundry/cf-networking-release
-  - cloudfoundry/cf-networking-helpers
-  - cloudfoundry/silk-release
+  - cloudfoundry/routing-perf-release
+  - cloudfoundry/routing-release
+  - cloudfoundry/service-metrics-release
   - cloudfoundry/silk
-  - cloudfoundry/nats-release
+  - cloudfoundry/silk-release
 ```
