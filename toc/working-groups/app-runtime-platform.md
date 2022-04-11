@@ -83,7 +83,6 @@ areas:
   - cloudfoundry/diego-notes
   - cloudfoundry/diego-perf-release
   - cloudfoundry/diego-release
-  - cloudfoundry/diego-release
   - cloudfoundry/diego-ssh
   - cloudfoundry/diego-stress-tests
   - cloudfoundry/diego-team
@@ -149,7 +148,6 @@ areas:
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
-  - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-dotfiles
   - cloudfoundry/garden-integration-tests
