@@ -9,7 +9,7 @@
 
 ## Summary
 
-All working groups SHOULD creating GitHub teams using the standardized format.
+All working groups SHOULD create GitHub teams using the standardized name format.
 
 ## Problem
 
