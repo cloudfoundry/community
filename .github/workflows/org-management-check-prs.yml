@@ -1,0 +1,21 @@
+name: 'Check Github Organization Settings PRs'
+on:
+  pull_request:
+    paths:
+      - 'org/*'
+
+jobs:
+  peribolos-check:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: write github token
+        run: |
+          echo "${GITHUB_TOKEN}" > token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: peribolos-check
+        uses: docker://gcr.io/k8s-prow/peribolos
+        with:
+          entrypoint: /ko-app/peribolos
+          args: --confirm=false --required-admins=thelinuxfoundation --min-admins=5 --github-token-path=token --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
