@@ -50,6 +50,11 @@ following are examples of substantial Issues: feature requests, bug write ups,
 debugging help requests. The following are examples of non-substantial Issues:
 minor doc change requests.
 
+A technical discussion is a thread on slack or in GitHub that requires knowledge
+of the codebase. The following are examples of technical discussions that will
+be considered: resolving interrupts in slack, or commenting on proposals.
+Technical discussions are counted per-thread, not per-message.
+
 The WG lead has final say if an issue, PR, or discussion is considered
 substantial.
 
