@@ -19,7 +19,27 @@ jobs:
         env:
           GITHUB_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
       - name: peribolos
+        continue-on-error: true
+        id: peribolos
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /ko-app/peribolos
           args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
+      - name: generate-peribolos-dump
+        if: ${{ steps.peribolos.outcome }} == 'failure'
+        uses: docker://gcr.io/k8s-prow/peribolos
+        with:
+          entrypoint: /ko-app/peribolos
+          args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
+      - name: Create Pull Request
+        if: ${{ steps.peribolos.outcome }} == 'failure'
+        uses: peter-evans/create-pull-request@v4
+        with:
+          add-paths: org/cloudfoundry.yml
+          commit-message: Run peribolos -dump-full
+          branch: peribolos-dump
+          title: 'Sync org/cloudfoundry.yml with reality'
+          body: |
+            Peribolos failed to sync here: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+
+            This PR contains a fresh periobos dump which once merged should resolve the sync issues.
