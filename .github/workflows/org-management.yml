@@ -15,8 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: write github private key
-        run: echo "${GITHUB_PRIVATE_KEY}" > private_key
+        run: |
+          echo "${GITHUB_PRIVATE_KEY}" > private_key
+          echo "${GITHUB_TOKEN}" > token
         env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
       - name: peribolos
         continue-on-error: true
@@ -30,7 +33,9 @@ jobs:
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /ko-app/peribolos
-          args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
+          # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
+          # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
+          args: --dump-full --dump cloudfoundry --github-token-path=token > org/cloudfoundry.yml
       - name: Create Pull Request
         if: ${{ steps.peribolos.outcome }} == 'failure'
         uses: peter-evans/create-pull-request@v4
