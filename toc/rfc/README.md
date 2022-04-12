@@ -32,7 +32,21 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 ### Number Assignment
 
-Each accepted RFC is assigned a unique sequence number, replacing the `draft` segment in the names of its document and its optional image directory. This sequence of RFC numbers is shared between the community-wide RFCs and the working-group-specific RFCs contained in this repository. The user merging an RFC after a decision to accept is responsible for assigning the correct sequence number to that RFC. There is a script (toc/rfc/assign-rfc-number.sh) that can automate this for you.
+Each accepted RFC is assigned a unique sequence number, replacing the `draft` segment in the names of its document and its optional image directory. This sequence of RFC numbers is shared between the community-wide RFCs and the working-group-specific RFCs contained in this repository. The user merging an RFC after a decision to accept is responsible for assigning the correct sequence number to that RFC.
+
+The [`assign-rfc-number.sh`](assign-rfc-number.sh) script will assign the next RFC number in sequence. Immediately after the RFC PR is merged:
+
+1. Check out the `main` branch at the RFC PR merge commit.
+1. Change into the `toc/rfc` directory.
+1. Run `./assign-rfc-number.sh`.
+1. If you had set `NOPUSH=true` when running the script, push the numbering commit to `main`.
+
+Script options, to be set via environment variable (such as `DEBUG=true ./assign-rfc-number.sh`):
+* `MAIN_BRANCH`: Sets the main branch of the repository. (Default: `main`)
+* `OWNER`: Sets the owner of the repository. (Default: `cloudfoundry`)
+* `REPO`: Sets the name of the repository. (Default: `community`)
+* `DEBUG`: Set to a nonzero value to enable script debugging via the `-x` flag in Bash. (Default: unset)
+* `NOPUSH`: Set to a nonzero value not to push the renumbering commit automatically. (Default: unset)
 
 ## Managing Standards and Processes
 
