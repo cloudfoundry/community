@@ -61,6 +61,19 @@ areas:
   - name: Tim Downey
     github: tcdowney
   repositories:
+  - cloudfoundry/cf-for-k8s
+  - cloudfoundry/cf-for-k8s-docs
+  - cloudfoundry/cf-k8s-ci
   - cloudfoundry/cf-k8s-controllers
-  - cloudfoundry-incubator/eirini-controller
+  - cloudfoundry/cf-k8s-logging
+  - cloudfoundry/cf-k8s-logging-fluent
+  - cloudfoundry/cf-k8s-networking
+  - cloudfoundry/cf-k8s-prometheus
+  - cloudfoundry/eirini
+  - cloudfoundry/eirini-ci
+  - cloudfoundry/eirini-controller
+  - cloudfoundry/eirini-release
+  - cloudfoundry/fluent-plugin-syslog_rfc5424
+  - cloudfoundry/metric-proxy
+  - cloudfoundry/yttk8smatchers
 ```
