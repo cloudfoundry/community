@@ -259,6 +259,7 @@ areas:
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/gorouter
   - cloudfoundry/haproxy-boshrelease
+  - cloudfoundry/logging-route-service
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
