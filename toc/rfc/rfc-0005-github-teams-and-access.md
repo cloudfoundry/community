@@ -3,8 +3,8 @@
 - Name: Standardizing Github Teams and Access
 - Start Date: 2022-02-28
 - Author(s): @ameowlia
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/170
+- Status: Accepted
+- RFC Pull Request: [community#170](https://github.com/cloudfoundry/community/pull/170)
 
 
 ## Summary
