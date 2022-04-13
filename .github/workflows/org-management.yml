@@ -32,10 +32,10 @@ jobs:
         if: ${{ steps.peribolos.outcome }} == 'failure'
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
-          entrypoint: /ko-app/peribolos
+          entrypoint: /bin/sh
           # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
           # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
-          args: --dump-full --dump cloudfoundry --github-token-path=token > org/cloudfoundry.yml
+          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-token-path=token > org/cloudfoundry.yml"
       - name: Create Pull Request
         if: ${{ steps.peribolos.outcome }} == 'failure'
         uses: peter-evans/create-pull-request@v4
@@ -48,3 +48,8 @@ jobs:
             Peribolos failed to sync here: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
             This PR contains a fresh periobos dump which once merged should resolve the sync issues.
+      - name: Fail job on sync failure
+        if: ${{ steps.peribolos.outcome }} == 'failure'
+        run: |
+          echo "sync job failed, dump PR created"
+          exit 1
