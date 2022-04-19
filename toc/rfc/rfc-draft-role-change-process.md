@@ -74,7 +74,7 @@ they may submit a PR adding themselves to the appropriate Working Group in
 
 - An existing Contributor or Approver may submit the revocation request on
   behalf of someone else, but the person whose role is being revoked must be
-  given a week to refute the revocation.
+  given two weeks to refute the revocation.
 
 - Any Working Group Lead may merge the PR, without review.
 
@@ -87,7 +87,7 @@ they may submit a PR adding themselves to the appropriate Working Group in
   [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml).
 
 - An existing Approver may submit the revocation request on behalf of someone
-  else, but the person whose role is being revoked must be given a week to
+  else, but the person whose role is being revoked must be given two weeks to
   refute the revocation.
 
 - A Working Group Lead for that Working Group may merge the PR, without review.
