@@ -48,8 +48,8 @@ they may submit a PR adding themselves to the organization in
 
 - When a person meets the criteria to be an Approver for a Working Group as defined in
 [ROLES.md](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md),
-they may submit a PR adding themselves to the appropriate Working Group in
-[cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml).
+they may submit a PR to the appropriate Working Group Charter that adds
+themselves to the team's yaml definition.
 
 - Two existing Approvers for that Working Group must attest that they meet the criteria
   by reviewing the PR.
@@ -83,8 +83,7 @@ they may submit a PR adding themselves to the appropriate Working Group in
 ### Revoking Approver Role
 
 - People with an Approver role may submit a PR to revoke their role by removing
-  the appropriate entry from
-  [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml).
+  the appropriate entry from the yaml definition in their Working Group's charter.
 
 - An existing Approver may submit the revocation request on behalf of someone
   else, but the person whose role is being revoked must be given two weeks to
