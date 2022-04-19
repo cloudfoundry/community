@@ -111,7 +111,6 @@ orgs:
     - bsoroushian
     - bwinter
     - C-Otto
-    - cagiti
     - caijj
     - camilalonart
     - carlo-colombo
@@ -331,7 +330,6 @@ orgs:
     - jsampson1
     - julian-hj
     - Justin-W
-    - k-don
     - k1tm
     - KaiHofstetter
     - kaleo211
@@ -630,7 +628,6 @@ orgs:
     - weymanf
     - will-gant
     - willmadison
-    - xandroc
     - xiongli
     - xtreme-andrei-dinin
     - xtreme-bozhidar-lenchov
@@ -1129,13 +1126,6 @@ orgs:
         archived: true
         default_branch: main
         has_projects: true
-      cf-k8s-ci:
-        default_branch: main
-        has_projects: true
-      cf-k8s-controllers:
-        default_branch: main
-        description: Cloud Foundry on Kubernetes
-        has_projects: true
       cf-k8s-logging:
         default_branch: main
         has_projects: true
@@ -1407,6 +1397,10 @@ orgs:
           Cloud Foundry Buildpack compile scripts.
         has_projects: false
         has_wiki: false
+      concourse-flake-hunter:
+        description: Searches for flakes on Concourse
+        has_issues: false
+        has_projects: true
       config-server:
         description: Example config server that integrates with BOSH Director
         has_projects: false
@@ -2066,6 +2060,13 @@ orgs:
         description: Terminate the JVM when resources are exhausted
         has_projects: true
         has_wiki: false
+      korifi:
+        default_branch: main
+        description: Cloud Foundry on Kubernetes
+        has_projects: true
+      korifi-ci:
+        default_branch: main
+        has_projects: true
       lager:
         allow_merge_commit: false
         description: An opinionated logger for Go.
@@ -2944,6 +2945,7 @@ orgs:
         - ddonchev
         - a-b
         - philippthun
+        - Gerg
         - totherme
         - dlresende
         - sethboyles
@@ -3120,6 +3122,7 @@ orgs:
         - ameowlia
         members:
         - stefanlay
+        - ameowlia
         privacy: closed
         repos:
           archiver: write
@@ -3386,11 +3389,21 @@ orgs:
         - danielfor
         - klakin-pivotal
         - camilalonart
-        - nouseforaname
-        - malba
         members:
+        - aramprice
+        - jpalermo
+        - ragaskar
+        - ystros
         - idoru
+        - selzoc
+        - cunnie
+        - mrosecrance
         - bgandon
+        - julian-hj
+        - danielfor
+        - klakin-pivotal
+        - nouseforaname
+        - camilalonart
         - bosh-windows-ci
         - suraiyasuliman
         privacy: closed
@@ -3405,7 +3418,6 @@ orgs:
           bosh-bbl-ci-envs: admin
           bosh-cli: admin
           bosh-compiled-releases-index: admin
-          bosh-cpi-certification: admin
           bosh-cpi-environments: admin
           bosh-cpi-go: admin
           bosh-cpi-kb: admin
@@ -3465,7 +3477,6 @@ orgs:
             - klakin-pivotal
             - nouseforaname
             - camilalonart
-            - malba
             privacy: closed
             repos:
               bosh: admin
@@ -3970,6 +3981,7 @@ orgs:
         - a-b
         - hemarsai
         members:
+        - PeteLevineA
         - hjcalderon10
         - cf-cli-eng
         - pivotalgeorge
@@ -3977,7 +3989,6 @@ orgs:
         - jdgonzaleza
         - ccjaimes
         - gururajsh
-        - PeteLevineA
         privacy: closed
         repos:
           CLAW: admin
@@ -4360,6 +4371,7 @@ orgs:
         - angelachin
         - Birdrock
         - rainmaker
+        - ameowlia
         - paulcwarren
         privacy: closed
         repos:
@@ -4446,7 +4458,6 @@ orgs:
         - carlo-colombo
         - hoegaarden
         - st3v
-        - k-don
         - spikymonkey
         - cf-london
         - teddyking
@@ -4520,6 +4531,8 @@ orgs:
         - jrussett
         members:
         - routing-ci
+        - kauana
+        - KauzClay
         privacy: closed
         repos:
           capi-k8s-release: write
@@ -5131,13 +5144,13 @@ orgs:
         - christopherclark
         members:
         - jpalermo
+        - beyhan
         - lnguyen
         - ramonskie
         - Benjamintf1
         - bgandon
         - KaiHofstetter
         - friegger
-        - strehle
         - cf-rabbit-bot
         privacy: closed
         repos:
@@ -5457,12 +5470,10 @@ orgs:
         - a-b
         - weymanf
         - reedr3
+        - sweinstein22
         - jdgonzaleza
-        - hjcalderon10
-        - pivotalgeorge
-        - ccjaimes
+        - dominicrobertsc
         - gururajsh
-        - PeteLevineA
         privacy: secret
       PCF BAM:
         description: ""
@@ -6165,10 +6176,10 @@ orgs:
         privacy: closed
         repos:
           cf-k8s-api: admin
-          cf-k8s-ci: admin
-          cf-k8s-controllers: admin
           cf-k8s-secrets: admin
           cf-on-k8s-integration: write
+          korifi: admin
+          korifi-ci: admin
       cf-release-notes-bot:
         description: Team for bot that creates release notes on cf-release repo
         members:
@@ -6363,14 +6374,13 @@ orgs:
         - FloThinksPi
         - jochenehret
         - andy-paine
+        - will-gant
         - kathap
         - svkrieger
         - johha
         - MMisoch
         - WeiQuan0605
         - iaftab-alam
-        - cagiti
-        - will-gant
         privacy: closed
         repos:
           cf-performance-tests: write
