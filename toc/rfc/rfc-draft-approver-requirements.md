@@ -57,9 +57,3 @@ Technical discussions are counted per-thread, not per-message.
 
 The WG lead has final say if an issue, PR, or discussion is considered
 substantial.
-
-When a reviewer has achieved all of these requirements they can then open a PR
-against the community repo adding their name to the list of approvers in a
-Working Group. This PR should include links to all of their completed
-requirements.
-
