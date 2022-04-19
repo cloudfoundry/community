@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: write github token
         run: |
-          echo "${GITHUB_TOKEN}" > token
+          echo "${GH_TOKEN}" > token
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: peribolos-check
         uses: docker://gcr.io/k8s-prow/peribolos
         with:

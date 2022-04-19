@@ -14,38 +14,24 @@ jobs:
     runs-on: ubuntu-18.04
     concurrency:
       group: peribolos
-      cancel-in-progress: true
-    services:
-      ghproxy:
-        image: gcr.io/k8s-prow/ghproxy
-        args: --legacy-disable-disk-cache-partitions-by-auth-header=false --cache-dir=/cache --cache-sizeGB=5
-        ports:
-        - 8888:8888
-        volumes:
-        - ~/ghproxy-cache:/cache
     steps:
-      - name: ghproxy-cache
-        uses: actions/cache@v3
-        with:
-          path: ~/ghproxy-cache
-          key: ${{ runner.os }}-ghproxy-cache-${{ hashFiles('org/*.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-ghproxy-cache-
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # full clone so a PR can be created if needed
       - name: write github private key
         run: |
-          echo "${GITHUB_PRIVATE_KEY}" > private_key
-          echo "${GITHUB_TOKEN}" > token
+          echo "${GH_PRIVATE_KEY}" > private_key
+          echo "${GH_TOKEN}" > token
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
       - name: peribolos
         continue-on-error: true
         id: peribolos
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /ko-app/peribolos
-          args: --confirm=true --github-endpoint http://ghproxy:8888 --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
+          args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
       - name: generate-peribolos-dump
         if: ${{ steps.peribolos.outcome }} == 'failure'
         uses: docker://gcr.io/k8s-prow/peribolos
@@ -53,7 +39,7 @@ jobs:
           entrypoint: /bin/sh
           # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
           # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
-          args: -c "/ko-app/peribolos --github-endpoint http://ghproxy:8888 --dump-full --dump cloudfoundry --github-token-path=token > org/cloudfoundry.yml"
+          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-token-path=token > org/cloudfoundry.yml"
       - name: Create Pull Request
         if: ${{ steps.peribolos.outcome }} == 'failure'
         uses: peter-evans/create-pull-request@v4
