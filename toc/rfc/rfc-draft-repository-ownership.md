@@ -4,7 +4,7 @@
 - Start Date: 2022-04-19
 - Author(s): [@emalm](https://github.com/emalm)
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: [community#251](https://github.com/cloudfoundry/community/pull/251)
 
 
 ## Summary
