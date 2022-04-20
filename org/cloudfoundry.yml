@@ -764,7 +764,8 @@ orgs:
         has_projects: true
       bosh:
         default_branch: main
-        description: Cloud Foundry BOSH is an open source tool chain for release engineering, deployment and lifecycle management of large scale distributed services.
+        description: Cloud Foundry BOSH is an open source tool chain for release engineering,
+          deployment and lifecycle management of large scale distributed services.
         has_projects: false
         has_wiki: false
         homepage: https://bosh.io
@@ -813,7 +814,8 @@ orgs:
         allow_merge_commit: false
         allow_squash_merge: false
         default_branch: main
-        description: Command line utility for standing up a BOSH director on an IAAS of your choice.
+        description: Command line utility for standing up a BOSH director on an IAAS
+          of your choice.
         has_projects: false
         has_wiki: false
       bosh-cli:
@@ -983,7 +985,8 @@ orgs:
         has_projects: false
         has_wiki: false
       buildpackapplifecycle:
-        description: The bit that takes some bits, mashes them together with other bits, and produces a new bit
+        description: The bit that takes some bits, mashes them together with other
+          bits, and produces a new bit
         has_projects: false
         has_wiki: false
       buildpacks-ci:
@@ -1069,7 +1072,8 @@ orgs:
         has_projects: true
       cc-uploader:
         default_branch: main
-        description: CC Bridge component to enable Diego to upload files to Cloud Controller's blobstore
+        description: CC Bridge component to enable Diego to upload files to Cloud
+          Controller's blobstore
         has_projects: true
       cert-injector:
         has_projects: true
@@ -1086,6 +1090,7 @@ orgs:
         description: CF Acceptance tests
         has_projects: true
       cf-app-utils-ruby:
+        archived: true
         description: Helper methods for ruby apps on Cloud Foundry
         has_projects: true
       cf-crd-explorations:
@@ -1158,7 +1163,8 @@ orgs:
         description: Auto-bootstrap errand for cf-mysql-release
         has_projects: true
       cf-mysql-ci:
-        description: Contains Concourse CI scripts and configuration we use to test cf-mysql-release
+        description: Contains Concourse CI scripts and configuration we use to test
+          cf-mysql-release
         has_projects: true
       cf-mysql-cluster-health-logger:
         has_projects: true
@@ -1171,7 +1177,8 @@ orgs:
         has_projects: true
       cf-networking-deployments:
         archived: true
-        description: Private manifests and credentials for the Container Networking team
+        description: Private manifests and credentials for the Container Networking
+          team
         has_issues: false
         has_projects: true
         has_wiki: false
@@ -1183,8 +1190,9 @@ orgs:
         has_projects: false
         has_wiki: false
       cf-networking-onboarding:
-        default_branch: main
-        description: Onboarding materials for new contributors in the routing/networking area of CF
+        default_branch: gh-pages
+        description: Onboarding materials for new contributors in the routing/networking
+          area of CF
         has_projects: true
       cf-networking-release:
         allow_merge_commit: false
@@ -1213,7 +1221,8 @@ orgs:
         private: true
       cf-smoke-tests:
         default_branch: main
-        description: Smoke tests for CloudFoundry that are safe to run in a production environment
+        description: Smoke tests for CloudFoundry that are safe to run in a production
+          environment
         has_projects: true
       cf-smoke-tests-release:
         default_branch: main
@@ -1224,12 +1233,12 @@ orgs:
         description: TCP Router repository for Cloud Foundry
         has_projects: true
       cf-test-helpers:
-        allow_merge_commit: false
         default_branch: main
         description: Helpers for running tests against Cloud Foundry
         has_projects: true
       cf-uaa-lib:
-        description: Ruby client APIs to access the Cloud Foundry User Account and Authentication service
+        description: Ruby client APIs to access the Cloud Foundry User Account and
+          Authentication service
         has_projects: true
       cf-uaac:
         has_projects: true
@@ -1242,11 +1251,16 @@ orgs:
         archived: true
         has_projects: true
       cfar-proposals:
+        archived: true
         description: Repository for Cloud Foundry Application Runtime Proposals
+        has_projects: true
+      cfbench:
+        has_issues: false
         has_projects: true
       cfcd-broker:
         default_branch: main
-        description: This service broker to manage infrastructure as part of the Cloud Foundry Certified Developer exam.
+        description: This service broker to manage infrastructure as part of the Cloud
+          Foundry Certified Developer exam.
         has_projects: true
         private: true
       cfcd-cert-items:
@@ -1293,7 +1307,10 @@ orgs:
         has_projects: true
         private: true
       cff-platform-certification:
-        description: Cloud Foundry Platform Certification technical requirements. All changes to the technical requirements document must be approved by the PMC Council, but may be proposed by any member in good standing of the Cloud Foundry Foundation.
+        description: Cloud Foundry Platform Certification technical requirements.
+          All changes to the technical requirements document must be approved by the
+          PMC Council, but may be proposed by any member in good standing of the Cloud
+          Foundry Foundation.
         has_projects: true
         private: true
       cfhttp:
@@ -1302,9 +1319,11 @@ orgs:
         has_issues: false
         has_projects: true
       cflinuxfs2:
+        archived: true
         description: The official Cloud Foundry app container rootfs
         has_projects: true
       cflinuxfs2-release:
+        archived: true
         has_projects: true
       cflinuxfs3:
         default_branch: main
@@ -1314,6 +1333,7 @@ orgs:
         description: Cloud Foundry stack based on Ubuntu 18.04 LTS
         has_projects: true
       cli:
+        allow_merge_commit: false
         description: The official command line client for Cloud Foundry
         has_projects: true
         homepage: https://docs.cloudfoundry.org/cf-cli
@@ -1354,7 +1374,8 @@ orgs:
         allow_merge_commit: false
         allow_rebase_merge: false
         default_branch: main
-        description: OSBAPI service broker that uses Terraform to provision and bind services. Derived from https://github.com/GoogleCloudPlatform/gcp-service-broker
+        description: OSBAPI service broker that uses Terraform to provision and bind
+          services. Derived from https://github.com/GoogleCloudPlatform/gcp-service-broker
         has_projects: true
         has_wiki: false
       cloud_controller_ng:
@@ -1381,7 +1402,9 @@ orgs:
         archived: true
         has_projects: true
       compile-extensions:
-        description: Bash library which provides extra functions and overrides for Cloud Foundry Buildpack compile scripts.
+        archived: true
+        description: Bash library which provides extra functions and overrides for
+          Cloud Foundry Buildpack compile scripts.
         has_projects: false
         has_wiki: false
       config-server:
@@ -1409,7 +1432,8 @@ orgs:
         allow_merge_commit: false
         allow_squash_merge: false
         default_branch: main
-        description: CredHub centralizes and secures credential generation, storage, lifecycle management, and access
+        description: CredHub centralizes and secures credential generation, storage,
+          lifecycle management, and access
         has_projects: true
         has_wiki: false
       credhub-acceptance-tests:
@@ -1428,7 +1452,8 @@ orgs:
         has_projects: true
       credhub-cli:
         default_branch: main
-        description: CredHub CLI provides a command line interface to interact with CredHub servers
+        description: CredHub CLI provides a command line interface to interact with
+          CredHub servers
         has_projects: true
       credhub-perf-release:
         has_projects: true
@@ -1460,9 +1485,12 @@ orgs:
         description: Sequel backend for Delayed Job
         has_issues: false
         has_projects: true
+      dependachore:
+        has_projects: true
       deployments-diego:
         allow_merge_commit: false
-        description: Configuration files for deployments owned and managed by the CF Diego team.
+        description: Configuration files for deployments owned and managed by the
+          CF Diego team.
         has_projects: true
         private: true
       deployments-loggregator:
@@ -1477,15 +1505,18 @@ orgs:
         has_wiki: false
         private: true
       dev-cert:
-        description: CF Developer Certification Exam - Private to all that have signed agreement
+        description: CF Developer Certification Exam - Private to all that have signed
+          agreement
         has_projects: true
         private: true
       dev-cert-grading:
-        description: Grading code developed by the Biarca team and to be reviewed by Item Writers
+        description: Grading code developed by the Biarca team and to be reviewed
+          by Item Writers
         has_projects: true
         private: true
       developer-training-class-apps:
-        description: Public repo making apps that are used for the developer training course available to students
+        description: Public repo making apps that are used for the developer training
+          course available to students
         has_projects: true
       developer-training-class-site:
         has_projects: true
@@ -1528,7 +1559,8 @@ orgs:
         description: Diego Notes
         has_projects: true
       diego-perf-release:
-        description: Used to deploy multiple app-pushers and fezzik-runners for performance-testing a Diego(+Runtime) deployment
+        description: Used to deploy multiple app-pushers and fezzik-runners for performance-testing
+          a Diego(+Runtime) deployment
         has_projects: true
       diego-release:
         allow_merge_commit: false
@@ -1592,11 +1624,13 @@ orgs:
         has_wiki: false
         homepage: http://docs.cloudfoundry.org/buildpacks/
       docs-cf-admin:
-        description: A place to put documentation about how to operate your Cloud Foundry deployment using the command line tools bosh and cf
+        description: A place to put documentation about how to operate your Cloud
+          Foundry deployment using the command line tools bosh and cf
         has_projects: true
       docs-cf-cli:
         has_projects: true
       docs-cfcr:
+        archived: true
         description: This repo contains the content for the CFCR documentation.
         has_projects: true
         homepage: https://docs.cloudfoundry.org/cfcr
@@ -1604,22 +1638,24 @@ orgs:
         description: A place for architecture and concept docs
         has_projects: true
       docs-credhub:
-        default_branch: master
         has_projects: true
       docs-deploying-cf:
         description: The docs repo for material on deploying Cloud Foundry
         has_projects: true
       docs-dev-guide:
-        description: Documentation for application developers who want to deploy their applications to Cloud Foundry
+        description: Documentation for application developers who want to deploy their
+          applications to Cloud Foundry
         has_projects: true
       docs-dotnet-core-tutorial:
         has_projects: true
       docs-loggregator:
         has_projects: true
       docs-routing:
+        archived: true
         has_projects: true
       docs-running-cf:
-        description: A place for docs related to running, monitoring, and troubleshooting a Cloud Foundry deployment
+        description: A place for docs related to running, monitoring, and troubleshooting
+          a Cloud Foundry deployment
         has_projects: true
       docs-services:
         description: Documentation on extending Cloud Foundry
@@ -1642,7 +1678,8 @@ orgs:
         archived: true
         has_projects: true
       dropsonde:
-        description: Go library to collect and emit metric and logging data from CF components.
+        description: Go library to collect and emit metric and logging data from CF
+          components.
         has_projects: true
       dropsonde-protocol:
         description: Protobuf protocol for dropsonde
@@ -1662,7 +1699,8 @@ orgs:
         has_issues: false
         has_projects: true
       eirini:
-        description: Pluggable container orchestration for Cloud Foundry, and a Kubernetes backend
+        description: Pluggable container orchestration for Cloud Foundry, and a Kubernetes
+          backend
         has_projects: false
         has_wiki: false
       eirini-ci:
@@ -1680,11 +1718,13 @@ orgs:
         has_projects: true
       envoy-nginx-release:
         default_branch: develop
-        description: BOSH release for deploying nginx in place of envoy to enable route integrity on Windows.
+        description: BOSH release for deploying nginx in place of envoy to enable
+          route integrity on Windows.
         has_projects: true
       etcd:
         archived: true
-        description: A highly-available key value store for shared configuration and service discovery
+        description: A highly-available key value store for shared configuration and
+          service discovery
         has_issues: false
         has_projects: true
         has_wiki: false
@@ -1716,6 +1756,8 @@ orgs:
         description: 'Bob Loblaw''s file server '
         has_issues: false
         has_projects: true
+      flightattendant:
+        has_projects: true
       flintstone:
         description: Store pipeline credentials and templates.
         has_projects: true
@@ -1732,7 +1774,8 @@ orgs:
         has_projects: true
         private: true
       galera-healthcheck:
-        description: A lightweight web server written in Golang to check the health of a node in a Galera cluster
+        description: A lightweight web server written in Golang to check the health
+          of a node in a Galera cluster
         has_projects: true
       galera-init:
         description: Monit ctl script for MariaDB in cf-mysql-release
@@ -1766,6 +1809,8 @@ orgs:
         private: true
       garden-windows-ci:
         has_projects: true
+      garden-windows-tools-release:
+        has_projects: true
       git-release-notes:
         archived: true
         has_projects: true
@@ -1786,7 +1831,8 @@ orgs:
         allow_rebase_merge: false
         allow_squash_merge: false
         default_branch: main
-        description: A proof of concept implementation as an alternative to cloud_controller_ng, written in Go.
+        description: A proof of concept implementation as an alternative to cloud_controller_ng,
+          written in Go.
         has_projects: true
         has_wiki: false
         homepage: https://cloudfoundry.github.io/go-cf-api/
@@ -1798,11 +1844,13 @@ orgs:
         archived: true
         has_projects: true
       go-diodes:
+        allow_merge_commit: false
         default_branch: main
         description: Diodes are ring buffers manipulated via atomics.
         has_projects: true
       go-envstruct:
-        description: envstruct is a simple library for populating values on structs from environment variables.
+        description: envstruct is a simple library for populating values on structs
+          from environment variables.
         has_projects: true
       go-fetcher:
         has_projects: true
@@ -1935,9 +1983,11 @@ orgs:
         has_issues: false
         has_projects: true
       istio-scaling:
+        archived: true
         has_projects: false
         has_wiki: false
       istio-scriptio:
+        default_branch: main
         has_projects: true
       java-buildpack:
         default_branch: main
@@ -1958,7 +2008,8 @@ orgs:
         has_projects: true
       java-buildpack-dependency-builder:
         default_branch: main
-        description: Automated building and publication of Java Buildpack dependency artifacts
+        description: Automated building and publication of Java Buildpack dependency
+          artifacts
         has_projects: true
       java-buildpack-memory-calculator:
         default_branch: main
@@ -1998,7 +2049,8 @@ orgs:
       jsonry:
         allow_merge_commit: false
         default_branch: main
-        description: A Go library and notation for converting between a Go struct and JSON
+        description: A Go library and notation for converting between a Go struct
+          and JSON
         has_projects: false
         has_wiki: false
         homepage: https://pkg.go.dev/code.cloudfoundry.org/jsonry?tab=doc
@@ -2075,8 +2127,8 @@ orgs:
       log-cache-cli:
         allow_merge_commit: false
         default_branch: main
+        description: Better interactions with Cloudfoundry's Log Cache
         has_projects: false
-        has_wiki: true
       log-cache-deployments:
         has_projects: true
         private: true
@@ -2087,7 +2139,8 @@ orgs:
         has_projects: true
       log-stream-cli:
         default_branch: develop
-        description: Cloud Foundry CLI plugin to consume logs and metrics from the RLP
+        description: Cloud Foundry CLI plugin to consume logs and metrics from the
+          RLP
         has_projects: true
       logging-acceptance-tests:
         archived: true
@@ -2099,6 +2152,9 @@ orgs:
       logging-deployment:
         has_projects: true
         private: true
+      logging-route-service:
+        description: A sample route service written in Go.
+        has_projects: true
       loggregator:
         archived: true
         description: 'Archived: Now bundled in https://github.com/cloudfoundry/loggregator-release'
@@ -2175,12 +2231,14 @@ orgs:
         allow_merge_commit: false
         allow_squash_merge: false
         default_branch: develop
-        description: 'Metric Store: A Cloud-Native Time Series Database for Cloud Foundry'
+        description: 'Metric Store: A Cloud-Native Time Series Database for Cloud
+          Foundry'
         has_projects: true
       metrics-discovery-release:
         allow_merge_commit: false
         default_branch: main
-        description: BOSH Release to discover Prometheus-formatted metric endpoints in Cloud Foundry
+        description: BOSH Release to discover Prometheus-formatted metric endpoints
+          in Cloud Foundry
         has_projects: true
       migrate_mysql_to_credhub:
         description: A go tool to migrate broker data from mysql to credhub
@@ -2189,13 +2247,16 @@ orgs:
         has_projects: true
         private: true
       multiapps:
-        description: Parsers, validators, persistence and utilities for Multi-Target Application (MTA) models.
+        description: Parsers, validators, persistence and utilities for Multi-Target
+          Application (MTA) models.
         has_projects: true
       multiapps-cli-plugin:
-        description: A CLI plugin for Multi-Target Application (MTA) operations in Cloud Foundry
+        description: A CLI plugin for Multi-Target Application (MTA) operations in
+          Cloud Foundry
         has_projects: true
       multiapps-controller:
-        description: The server side component (controller) for Multi-Target Application (MTA) for Cloud Foundry
+        description: The server side component (controller) for Multi-Target Application
+          (MTA) for Cloud Foundry
         has_projects: true
       multierror:
         has_projects: true
@@ -2219,6 +2280,7 @@ orgs:
         has_projects: true
         private: true
       networking-workspace:
+        archived: true
         description: Machine setup for Cloud Foundry Networking team
         has_projects: true
       nfs-volume-release:
@@ -2238,7 +2300,8 @@ orgs:
         has_projects: true
         private: true
       noaa:
-        description: NOAA is a client library to consume metric and log messages from Doppler.
+        description: NOAA is a client library to consume metric and log messages from
+          Doppler.
         has_projects: true
       nodejs-buildpack:
         description: Cloud Foundry buildpack for Node.js
@@ -2259,14 +2322,16 @@ orgs:
       noisy-neighbor-nozzle:
         allow_merge_commit: false
         archived: true
-        description: A nozzle and CLI tool for identifying high volume log producing applications
+        description: A nozzle and CLI tool for identifying high volume log producing
+          applications
         has_projects: true
       notifications:
         description: The notifications service component of Cloud Foundry
         has_projects: true
         has_wiki: false
       notifications-release:
-        description: A BOSH release that contains the notifications application and an errand to push it
+        description: A BOSH release that contains the notifications application and
+          an errand to push it
         has_projects: true
       omniauth-uaa-oauth2:
         has_projects: true
@@ -2289,11 +2354,13 @@ orgs:
         has_projects: true
         private: true
       oss-summit-class:
-        description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18 in Vancouver '
+        description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18
+          in Vancouver '
         has_projects: true
       overview-broker:
         allow_merge_commit: false
-        description: A service broker that provides an overview of its service instances and bindings. Conforms to the Open Service Broker API standard.
+        description: A service broker that provides an overview of its service instances
+          and bindings. Conforms to the Open Service Broker API standard.
         has_projects: true
       persi-ci:
         has_projects: true
@@ -2322,10 +2389,13 @@ orgs:
         has_projects: true
         private: true
       pmc-notes:
-        description: Agendas and Notes for Cloud Foundry Project Management Committee Meetings
+        archived: true
+        description: Agendas and Notes for Cloud Foundry Project Management Committee
+          Meetings
         has_projects: true
       policy_client:
-        description: Policy Client allows Cloud Foundry system components to query the policy server for policies
+        description: Policy Client allows Cloud Foundry system components to query
+          the policy server for policies
         has_projects: true
       postgres-ci-env:
         has_projects: true
@@ -2372,6 +2442,7 @@ orgs:
         has_projects: false
         has_wiki: false
       rbenv-cookbook:
+        archived: true
         description: Installs and configures rbenv
         has_issues: false
         has_projects: true
@@ -2395,7 +2466,8 @@ orgs:
         private: true
       rep:
         allow_merge_commit: false
-        description: Representative bids on tasks and schedules them on an associated Executor
+        description: Representative bids on tasks and schedules them on an associated
+          Executor
         has_issues: false
         has_projects: true
       resolvconf-manager:
@@ -2404,13 +2476,15 @@ orgs:
         has_projects: true
       route-emitter:
         allow_merge_commit: false
-        description: Registers and unregisters processes running on executors with the gorouter
+        description: Registers and unregisters processes running on executors with
+          the gorouter
         has_issues: false
         has_projects: true
       route-registrar:
         allow_merge_commit: false
         default_branch: main
-        description: A standalone executable written in golang that continuously broadcasts a route using NATS to the CF router.
+        description: A standalone executable written in golang that continuously broadcasts
+          a route using NATS to the CF router.
         has_projects: true
       routing-acceptance-tests:
         allow_merge_commit: false
@@ -2426,6 +2500,7 @@ orgs:
         default_branch: main
         has_projects: true
       routing-ci:
+        archived: true
         has_projects: true
       routing-datadog-config:
         has_projects: true
@@ -2449,6 +2524,7 @@ orgs:
       routing-sample-apps:
         allow_merge_commit: false
         allow_squash_merge: false
+        archived: true
         has_projects: false
         has_wiki: false
       routing-team-checklists:
@@ -2472,6 +2548,7 @@ orgs:
         has_projects: true
         private: true
       runtime-og-ci:
+        archived: true
         has_projects: true
       runtime-og-ci-private:
         has_projects: true
@@ -2531,7 +2608,8 @@ orgs:
       silk:
         allow_merge_commit: false
         default_branch: main
-        description: a network fabric for containers.  inspired by flannel, designed for Cloud Foundry.
+        description: a network fabric for containers.  inspired by flannel, designed
+          for Cloud Foundry.
         has_projects: true
       silk-release:
         allow_merge_commit: false
@@ -2539,6 +2617,7 @@ orgs:
         description: Silk - CNI plugin BOSH release for Cloud Foundry
         has_projects: true
       sipid:
+        archived: true
         has_projects: true
       slack-interrupt-bot:
         has_projects: false
@@ -2565,7 +2644,8 @@ orgs:
         archived: true
         has_projects: true
       stack-auditor:
-        description: Stack Auditor is a cf CLI plugin that provides commands for listing apps and their stacks, migrating apps to a new stack, and deleting a stack.
+        description: Stack Auditor is a cf CLI plugin that provides commands for listing
+          apps and their stacks, migrating apps to a new stack, and deleting a stack.
         has_projects: true
         homepage: https://docs.cloudfoundry.org/adminguide/stack-auditor.html
       staticfile-buildpack:
@@ -2579,14 +2659,16 @@ orgs:
         homepage: http://bosh.io/releases/github.com/cloudfoundry/staticfile-buildpack-release
       statsd-injector:
         archived: true
-        description: Companion component to Metron that receives Statsd and emits Dropsonde to Metron
+        description: Companion component to Metron that receives Statsd and emits
+          Dropsonde to Metron
         has_projects: true
       statsd-injector-release:
         allow_merge_commit: false
         default_branch: main
         has_projects: true
       stembuild:
-        description: Binary to be used to build BOSH-compatible stemcells for Windows Server 2019 on vSphere.
+        description: Binary to be used to build BOSH-compatible stemcells for Windows
+          Server 2019 on vSphere.
         has_projects: true
       stemcells-alicloud-index:
         description: Alibaba Cloud Stemcell index produced by Alibaba Cloud team
@@ -2604,7 +2686,8 @@ orgs:
         description: Hands-on Labs for CF Summit Boston '18 and beyond
         has_projects: true
       summit-training-classes:
-        description: 'Opensourced content for cloud foundry training classes: zero to hero (beginner), bosh/operator, and microservices'
+        description: 'Opensourced content for cloud foundry training classes: zero
+          to hero (beginner), bosh/operator, and microservices'
         has_projects: true
       switchblade:
         default_branch: main
@@ -2630,7 +2713,8 @@ orgs:
       syslog-release:
         allow_merge_commit: false
         default_branch: main
-        description: BOSH release for forwarding logs (either sent to syslog or picked up /var/vcap/sys/log/**/*)
+        description: BOSH release for forwarding logs (either sent to syslog or picked
+          up /var/vcap/sys/log/**/*)
         has_projects: true
         has_wiki: false
       system-metrics-release:
@@ -2644,6 +2728,10 @@ orgs:
       systemcerts:
         allow_merge_commit: false
         has_issues: false
+        has_projects: true
+      test-log-emitter:
+        has_projects: true
+      test-log-emitter-release:
         has_projects: true
       tlsconfig:
         allow_merge_commit: false
@@ -2706,10 +2794,14 @@ orgs:
         description: A Cloud Foundry availability measurement tool for eventful times
         has_projects: true
       urljoiner:
+        archived: true
         has_projects: true
       usn-resource:
         has_projects: true
+      vantablackbox-release:
+        has_projects: true
       vcap-common:
+        archived: true
         has_projects: true
         has_wiki: false
       vizzini:
@@ -2727,7 +2819,8 @@ orgs:
         has_projects: true
       winc:
         default_branch: develop
-        description: CLI tool for spawning and running containers on Windows according to the OCI specification
+        description: CLI tool for spawning and running containers on Windows according
+          to the OCI specification
         has_projects: true
         has_wiki: false
       winc-release:
@@ -2827,7 +2920,8 @@ orgs:
               runtime-ci: write
               uptimer: write
           App Runtime Deployments WG Leads:
-            description: Technical and Execution Leads for the App Runtime Deployments area
+            description: Technical and Execution Leads for the App Runtime Deployments
+              area
             maintainers:
               - jochenehret
             privacy: closed
@@ -3354,7 +3448,8 @@ orgs:
           yagnats: admin
         teams:
           CF BOSH:
-            description: Child of BOSH Ecosystem, for backwards compatability for resources that need this team name stable
+            description: Child of BOSH Ecosystem, for backwards compatability for
+              resources that need this team name stable
             maintainers:
             - aramprice
             - jpalermo
@@ -5145,7 +5240,8 @@ orgs:
           yagnats: write
         teams:
           Foundational Infrastructure WG leads:
-            description: Technical and Execution Leads for the Foundational Infrastructure WG
+            description: Technical and Execution Leads for the Foundational Infrastructure
+              WG
             maintainers:
             - rkoster
             - christopherclark
@@ -5343,7 +5439,8 @@ orgs:
         repos:
           metric-store-release: read
       OSS-PMS-SECURITY:
-        description: Open Source PMs +anchors that should have access to security issues
+        description: Open Source PMs +anchors that should have access to security
+          issues
         maintainers:
         - emalm
         members:
@@ -5806,7 +5903,8 @@ orgs:
         - briannebrown
         privacy: closed
       Tracker:
-        description: A team for the Pivotal Tracker folks to get read only access to key repos
+        description: A team for the Pivotal Tracker folks to get read only access
+          to key repos
         members:
         - oppegard
         - tracker-common
@@ -6158,7 +6256,8 @@ orgs:
         - pws-team-admin-client
         privacy: secret
       cryogenics:
-        description: specialists in transitioning from highly agile software development to highly sustainable software maintenance and support
+        description: specialists in transitioning from highly agile software development
+          to highly sustainable software maintenance and support
         maintainers:
         - totherme
         - dlresende
