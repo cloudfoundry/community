@@ -2880,58 +2880,58 @@ orgs:
       App Runtime Deployments WG:
         description: Approvers for the App Runtime Deployments Working Group
         maintainers:
-          - jochenehret
+        - jochenehret
         members:
-          - andrewdriver123
-          - combor
-          - ctlong
-          - davewalter
-          - iaftab-alam
-          - jimconner
-          - johha
-          - philippthun
-          - shaun7pan
-          - svkrieger
-          - tjvman
+        - davewalter
+        - combor
+        - philippthun
+        - jimconner
+        - ctlong
+        - tjvman
+        - andrewdriver123
+        - shaun7pan
+        - svkrieger
+        - johha
+        - iaftab-alam
         privacy: closed
         teams:
           App Runtime Deployments WG Approvers:
             description: Approvers for the App Runtime Deployments area
             maintainers:
-              - andrewdriver123
-              - combor
-              - ctlong
-              - davewalter
-              - iaftab-alam
-              - jimconner
-              - johha
-              - philippthun
-              - shaun7pan
-              - svkrieger
-              - tjvman
+            - davewalter
+            - combor
+            - philippthun
+            - jimconner
+            - ctlong
+            - tjvman
+            - andrewdriver123
+            - shaun7pan
+            - svkrieger
+            - johha
+            - iaftab-alam
             privacy: closed
             repos:
               cf-acceptance-tests: write
-              cf-deployment-concourse-tasks: write
               cf-deployment: write
-              cf-smoke-tests-release: write
+              cf-deployment-concourse-tasks: write
               cf-smoke-tests: write
               cf-test-helpers: write
+              cf-smoke-tests-release: write
               runtime-ci: write
               uptimer: write
           App Runtime Deployments WG Leads:
             description: Technical and Execution Leads for the App Runtime Deployments
               area
             maintainers:
-              - jochenehret
+            - jochenehret
             privacy: closed
             repos:
               cf-acceptance-tests: admin
-              cf-deployment-concourse-tasks: admin
               cf-deployment: admin
-              cf-smoke-tests-release: admin
+              cf-deployment-concourse-tasks: admin
               cf-smoke-tests: admin
               cf-test-helpers: admin
+              cf-smoke-tests-release: admin
               runtime-ci: admin
               uptimer: admin
       App Runtime Interfaces WG:
