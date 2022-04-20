@@ -1129,13 +1129,6 @@ orgs:
         archived: true
         default_branch: main
         has_projects: true
-      cf-k8s-ci:
-        default_branch: main
-        has_projects: true
-      cf-k8s-controllers:
-        default_branch: main
-        description: Cloud Foundry on Kubernetes
-        has_projects: true
       cf-k8s-logging:
         default_branch: main
         has_projects: true
@@ -2066,6 +2059,13 @@ orgs:
         description: Terminate the JVM when resources are exhausted
         has_projects: true
         has_wiki: false
+      korifi:
+        default_branch: main
+        description: Cloud Foundry on Kubernetes
+        has_projects: true
+      korifi-ci:
+        default_branch: main
+        has_projects: true
       lager:
         allow_merge_commit: false
         description: An opinionated logger for Go.
@@ -6164,10 +6164,9 @@ orgs:
         privacy: closed
         repos:
           cf-k8s-api: admin
-          cf-k8s-ci: admin
-          cf-k8s-controllers: admin
           cf-k8s-secrets: admin
-          cf-on-k8s-integration: write
+          korifi: admin
+          korifi-ci: admin
       cf-release-notes-bot:
         description: Team for bot that creates release notes on cf-release repo
         members:
