@@ -42,6 +42,8 @@ Addition of a repository to the partition corresponds either to creating a new r
 
 Removal of a repository corresponds either to transferring it to another GitHub organization or to deleting the repository entirely, neither of which should be undertaken lightly. The CF community SHOULD ensure that either of these cases receives thorough consideration and scrutiny before proceeding.
 
+Proposed changes to repository ownership SHOULD be submitted for consideration as a pull request on the [Cloud Foundry community repository](https://github.com/cloudfoundry/community) that modifies the charter documents of the appropriate Working Groups. As per [RFC 0003](rfc-0003-pr-only-workflow.md), a pull request is preferable in order to provide visibility in the CF community, to encourage asynchronous discussion across time zones, and to reduce fragmentation of discussion.
+
 
 ### Ownership change approvals
 
@@ -50,8 +52,6 @@ The TOC MUST approve any change to repository ownership, just as it originally a
 Additionally, if a change affects the subset of repositories that a Working Group owns, that Working Group MUST approve the change as well. Approval consists of a quorum decision by the leads of the Working Group.
 
 The TOC MUST also approve of any proposal to create a new repository within the `cloudfoundry` GitHub organization or to rename an existing repository. 
-
-Proposed changes to repository ownership SHOULD be submitted for consideration as a pull request or issue on the [Cloud Foundry community repository](https://github.com/cloudfoundry/community) to provide visibility in the CF community, to encourage asynchronous discussion, and to reduce fragmentation of discussion.
 
 We illustrate several different cases of repository ownership changes and the approvals required for them to proceed:
 
