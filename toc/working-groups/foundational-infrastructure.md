@@ -44,13 +44,13 @@ areas:
   - name: Peter Chen
     github: peterhaochen47
   repositories:
-  - cloudfoundry-incubator/credhub-acceptance-tests
   - cloudfoundry-incubator/credhub-api-docs
-  - cloudfoundry-incubator/credhub-api-site
-  - cloudfoundry-incubator/credhub-ci-locks
-  - cloudfoundry-incubator/credhub-cli
-  - cloudfoundry-incubator/credhub-perf-release
-  - cloudfoundry-incubator/credhub
+  - cloudfoundry/credhub-acceptance-tests
+  - cloudfoundry/credhub-api-site
+  - cloudfoundry/credhub-ci-locks
+  - cloudfoundry/credhub-cli
+  - cloudfoundry/credhub-perf-release
+  - cloudfoundry/credhub
   - cloudfoundry/docs-credhub
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
@@ -62,12 +62,12 @@ areas:
   - name: Gareth Smith 
     github: totherme
   repositories:
-  - cloudfoundry-incubator/bosh-backup-and-restore
-  - cloudfoundry-incubator/backup-and-restore-sdk-release
-  - cloudfoundry-incubator/bosh-backup-and-restore-test-releases
-  - cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests
-  - cloudfoundry-incubator/disaster-recovery-acceptance-tests
-  - cloudfoundry-incubator/exemplar-backup-and-restore-release
+  - cloudfoundry/bosh-backup-and-restore
+  - cloudfoundry/backup-and-restore-sdk-release
+  - cloudfoundry/bosh-backup-and-restore-test-releases
+  - cloudfoundry/bosh-disaster-recovery-acceptance-tests
+  - cloudfoundry/disaster-recovery-acceptance-tests
+  - cloudfoundry/exemplar-backup-and-restore-release
   - cloudfoundry/docs-bbr
 - name: Identity and Auth (UAA)
   approvers:
@@ -95,10 +95,10 @@ areas:
   - name: Shaan Sapra
     github: ssapra
   repositories:
-  - cloudfoundry-incubator/cf-mysql-ci
-  - cloudfoundry-incubator/mysql-backup-release
-  - cloudfoundry-incubator/mysql-monitoring-release
-  - cloudfoundry-incubator/pxc-release
+  - cloudfoundry/cf-mysql-ci
+  - cloudfoundry/mysql-backup-release
+  - cloudfoundry/mysql-monitoring-release
+  - cloudfoundry/pxc-release
   - cloudfoundry/cf-mysql-bootstrap
   - cloudfoundry/cf-mysql-cluster-health-logger
   - cloudfoundry/cf-mysql-deployment
@@ -112,7 +112,7 @@ areas:
   - name: Ben Fuller
     github: Benjamintf1
   repositories:
-  - cloudfoundry-incubator/event-log-release
+  - cloudfoundry/event-log-release
   - cloudfoundry/blackbox
   - cloudfoundry/metrics-release
   - cloudfoundry/syslog-release
@@ -145,17 +145,17 @@ areas:
   - bosh-packages/nginx-release
   - bosh-packages/python-release
   - bosh-packages/ruby-release
-  - cloudfoundry-incubator/bosh-alicloud-light-stemcell-builder
-  - cloudfoundry-incubator/bosh-cpi-certification
-  - cloudfoundry-incubator/bosh-windows-acceptance-tests
-  - cloudfoundry-incubator/bosh-windows-stemcell-builder
-  - cloudfoundry-incubator/resolvconf-manager-index
-  - cloudfoundry-incubator/resolvconf-manager
-  - cloudfoundry-incubator/sample-windows-bosh-release
-  - cloudfoundry-incubator/stembuild
-  - cloudfoundry-incubator/stemcells-alicloud-index
-  - cloudfoundry-incubator/windows-utilities-release
-  - cloudfoundry-incubator/windows-utilities-tests
+  - cloudfoundry/bosh-alicloud-light-stemcell-builder
+  - cloudfoundry/bosh-cpi-certification
+  - cloudfoundry/bosh-windows-acceptance-tests
+  - cloudfoundry/bosh-windows-stemcell-builder
+  - cloudfoundry/resolvconf-manager-index
+  - cloudfoundry/resolvconf-manager
+  - cloudfoundry/sample-windows-bosh-release
+  - cloudfoundry/stembuild
+  - cloudfoundry/stemcells-alicloud-index
+  - cloudfoundry/windows-utilities-release
+  - cloudfoundry/windows-utilities-tests
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh-acceptance-tests
   - cloudfoundry/bosh-agent-index
