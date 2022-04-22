@@ -45,12 +45,12 @@ areas:
     github: peterhaochen47
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
+  - cloudfoundry/credhub
   - cloudfoundry/credhub-acceptance-tests
   - cloudfoundry/credhub-api-site
-  - cloudfoundry/credhub-ci-locks
   - cloudfoundry/credhub-cli
+  - cloudfoundry/credhub-ci-locks
   - cloudfoundry/credhub-perf-release
-  - cloudfoundry/credhub
   - cloudfoundry/docs-credhub
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
@@ -62,13 +62,13 @@ areas:
   - name: Gareth Smith 
     github: totherme
   repositories:
-  - cloudfoundry/bosh-backup-and-restore
   - cloudfoundry/backup-and-restore-sdk-release
+  - cloudfoundry/bosh-backup-and-restore
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/disaster-recovery-acceptance-tests
-  - cloudfoundry/exemplar-backup-and-restore-release
   - cloudfoundry/docs-bbr
+  - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen 
@@ -95,25 +95,25 @@ areas:
   - name: Shaan Sapra
     github: ssapra
   repositories:
-  - cloudfoundry/cf-mysql-ci
-  - cloudfoundry/mysql-backup-release
-  - cloudfoundry/mysql-monitoring-release
-  - cloudfoundry/pxc-release
   - cloudfoundry/cf-mysql-bootstrap
+  - cloudfoundry/cf-mysql-ci
   - cloudfoundry/cf-mysql-cluster-health-logger
   - cloudfoundry/cf-mysql-deployment
   - cloudfoundry/cf-mysql-release
   - cloudfoundry/galera-healthcheck
   - cloudfoundry/galera-init
+  - cloudfoundry/mysql-backup-release
+  - cloudfoundry/mysql-monitoring-release
   - cloudfoundry/postgres-release
+  - cloudfoundry/pxc-release
   - cloudfoundry/switchboard
 - name: System logging and metrics
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
   repositories:
-  - cloudfoundry/event-log-release
   - cloudfoundry/blackbox
+  - cloudfoundry/event-log-release
   - cloudfoundry/metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
@@ -145,18 +145,11 @@ areas:
   - bosh-packages/nginx-release
   - bosh-packages/python-release
   - bosh-packages/ruby-release
+  - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh-alicloud-light-stemcell-builder
   - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-windows-acceptance-tests
   - cloudfoundry/bosh-windows-stemcell-builder
-  - cloudfoundry/resolvconf-manager-index
-  - cloudfoundry/resolvconf-manager
-  - cloudfoundry/sample-windows-bosh-release
-  - cloudfoundry/stembuild
-  - cloudfoundry/stemcells-alicloud-index
-  - cloudfoundry/windows-utilities-release
-  - cloudfoundry/windows-utilities-tests
-  - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh-acceptance-tests
   - cloudfoundry/bosh-agent-index
   - cloudfoundry/bosh-agent
@@ -187,7 +180,6 @@ areas:
   - cloudfoundry/bosh-softlayer-cpi-release
   - cloudfoundry/bosh-stemcell-ci-infra
   - cloudfoundry/bosh-stemcells-ci
-  - cloudfoundry/system-metrics-server-release
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
@@ -206,9 +198,17 @@ areas:
   - cloudfoundry/greenhouse-ci
   - cloudfoundry/jumpbox-deployment
   - cloudfoundry/os-conf-release
+  - cloudfoundry/resolvconf-manager
+  - cloudfoundry/resolvconf-manager-index
+  - cloudfoundry/sample-windows-bosh-release
+  - cloudfoundry/stembuild
+  - cloudfoundry/stemcells-alicloud-index
   - cloudfoundry/socks5-proxy
+  - cloudfoundry/system-metrics-server-release
   - cloudfoundry/tlsconfig
   - cloudfoundry/usn-resource
-  - cloudfoundry/yagnats
+  - cloudfoundry/windows-utilities-release
+  - cloudfoundry/windows-utilities-tests
   - cloudfoundry/windows-tools-release
+  - cloudfoundry/yagnats
 ```
