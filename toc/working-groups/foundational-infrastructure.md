@@ -76,15 +76,18 @@ areas:
   - name: Markus Strehle
     github: strehle
   repositories:
+  - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
   - cloudfoundry/cf-uaac
-  - cloudfoundry/uaa-cli
   - cloudfoundry/docs-uaa
+  - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
+  - cloudfoundry/uaa
+  - cloudfoundry/uaa-cli
+  - cloudfoundry/uaa-k8s-release
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
-  - cloudfoundry/uaa
 - name: Integrated Databases
   approvers:
   - name: Andrew Garner 
@@ -96,16 +99,22 @@ areas:
   - cloudfoundry-incubator/mysql-backup-release
   - cloudfoundry-incubator/mysql-monitoring-release
   - cloudfoundry-incubator/pxc-release
+  - cloudfoundry/cf-mysql-bootstrap
+  - cloudfoundry/cf-mysql-cluster-health-logger
   - cloudfoundry/cf-mysql-deployment
   - cloudfoundry/cf-mysql-release
+  - cloudfoundry/galera-healthcheck
   - cloudfoundry/galera-init
   - cloudfoundry/postgres-release
+  - cloudfoundry/switchboard
 - name: System logging and metrics
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
   repositories:
   - cloudfoundry-incubator/event-log-release
+  - cloudfoundry/blackbox
+  - cloudfoundry/metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
 - name: VM deployment lifecycle (BOSH)
@@ -147,6 +156,7 @@ areas:
   - cloudfoundry-incubator/stemcells-alicloud-index
   - cloudfoundry-incubator/windows-utilities-release
   - cloudfoundry-incubator/windows-utilities-tests
+  - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh-acceptance-tests
   - cloudfoundry/bosh-agent-index
   - cloudfoundry/bosh-agent
@@ -154,6 +164,7 @@ areas:
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
   - cloudfoundry/bosh-bbl-ci-envs
+  - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
   - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-compiled-releases-index
@@ -176,6 +187,7 @@ areas:
   - cloudfoundry/bosh-softlayer-cpi-release
   - cloudfoundry/bosh-stemcell-ci-infra
   - cloudfoundry/bosh-stemcells-ci
+  - cloudfoundry/system-metrics-server-release
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
@@ -187,8 +199,12 @@ areas:
   - cloudfoundry/config-server-release
   - cloudfoundry/config-server
   - cloudfoundry/docs-bosh
+  - cloudfoundry/exemplar-release
+  - cloudfoundry/go-socks5
   - cloudfoundry/gofileutils
   - cloudfoundry/gosigar
+  - cloudfoundry/greenhouse-ci
+  - cloudfoundry/jumpbox-deployment
   - cloudfoundry/os-conf-release
   - cloudfoundry/socks5-proxy
   - cloudfoundry/tlsconfig
