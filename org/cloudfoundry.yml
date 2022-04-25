@@ -1146,7 +1146,7 @@ orgs:
       cf-k8s-prometheus:
         default_branch: main
         has_projects: true
-      cf-k8s-secrets:
+      korifi-secrets:
         default_branch: main
         has_projects: true
         private: true
@@ -6165,7 +6165,7 @@ orgs:
         privacy: closed
         repos:
           cf-k8s-api: admin
-          cf-k8s-secrets: admin
+          korifi-secrets: admin
           korifi: admin
           korifi-ci: admin
       cf-release-notes-bot:
