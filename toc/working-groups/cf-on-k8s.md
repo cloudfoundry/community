@@ -61,6 +61,8 @@ areas:
   - name: Tim Downey
     github: tcdowney
   repositories:
+  - cloudfoundry/cf-k8s-secrets
+  - cloudfoundry/eirini-controller
   - cloudfoundry/korifi
-  - cloudfoundry-incubator/eirini-controller
+  - cloudfoundry/korifi-ci
 ```
