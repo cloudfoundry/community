@@ -15,7 +15,7 @@ This guide exists to serve as a guide to this year's election process.
 | -------------------------- | ------------------------ |
 | May 11                   | Announcement of Election (at least 4 weeks before results) |
 | May 11 through May 28  | Candidate nomination period (at least 2 weeks long and ending 2 weeks before results |
-| June 1     | Election Begins via email ballots (alow 2 work days to prepare election system) |
+| May 31     | Election Begins via email ballots (alow 2 work days to prepare election system) |
 | June 15     | Election Closes (at least 2 weeks after election begins) |
 | *June 17*   | Announcement of Results (at least 2 work days after election ends) |
 
