@@ -3,8 +3,8 @@
 - Name: Approver Requirements
 - Start Date: 2022-04-08)
 - Author(s): @ameowlia, @ctlong
-- Status: Draft
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/244
+- Status: Accepted
+- RFC Pull Request: [community#244](https://github.com/cloudfoundry/community/pull/244)
 
 ## Summary
 
