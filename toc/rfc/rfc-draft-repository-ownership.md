@@ -27,7 +27,7 @@ We can represent the ownership structure of the repositories in the `cloudfoundr
 
 The subset of repositories that each Working Group owns MUST be identical to the set of repositories listed in its charter description. This set of repositories MAY further be partitioned into technical areas within the Working Group, at the discretion of the Working Group.
 
-The subsets of repositories that the TOC and the CF Foundation staff own SHOULD be as small as possible and should be scoped to those that enable the effective operation of the CF community. They SHOULD NOT be concerned with development of tools and systems that are broadly valuable to the end-user community, as the Working Groups collectively SHOULD own these kinds of repositories.
+The subsets of repositories that the TOC and the CF Foundation staff own SHOULD be as small as possible and should be scoped to those that enable the effective operation of the CF community. These repostiories SHOULD NOT be concerned with development of tools and systems that are broadly valuable to the end-user community, as the Working Groups collectively SHOULD own those kinds of repositories instead. These two sets of repositories MUST be listed in the charter document for the TOC in this repository.
 
 The subset of unmanaged active repositories SHOULD be empty under steady-state operation. The community MUST collectively act to resolve the status of an unmanaged active repository within a reasonable period of time, either by archiving it or by placing it under the ownership of a  Working Group, of the TOC, or of the CFF staff, as is appropriate.
 
