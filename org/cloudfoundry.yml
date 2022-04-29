@@ -30,6 +30,7 @@ orgs:
     - abdermendz
     - AbelHu
     - abg
+    - abh1kg
     - ablease
     - abubakarm94
     - AccraZed
@@ -69,6 +70,7 @@ orgs:
     - angelachin
     - animatedmax
     - ankeesler
+    - anoopjb
     - ansd
     - ansergit
     - APShirley
@@ -310,6 +312,7 @@ orgs:
     - jimbo459
     - jimconner
     - jimmykarily
+    - jintusebastian
     - jkjell
     - jkonicki
     - jmarrero
@@ -480,6 +483,7 @@ orgs:
     - pkvatvmware
     - pnikonowicz
     - poconnor1
+    - Pooja-08
     - pradyutsarma
     - Proplex
     - pspinrad
@@ -582,6 +586,7 @@ orgs:
     - svkrieger
     - swalchemist
     - swalner-pivotal
+    - swati1102
     - swati-nair
     - sweinstein22
     - sykesm
@@ -622,7 +627,9 @@ orgs:
     - vgogate
     - videlov
     - vikafed
+    - vinaybheri
     - viovanov
+    - visargsoneji
     - vkalapov
     - voelzmo
     - wattersjames
@@ -6634,11 +6641,28 @@ orgs:
           windows2019fs-release: admin
           windowsfs-online-release: admin
           workpool: admin
-      service-fabrik:
-        description: service-fabrik contributors
+      wg-service-management-service-fabrik-approvers:
+        description: service-fabrik approvers
         maintainers:
         - pivotal-marcela-campo
+        members:
+        - abh1kg
+        - anoopjb
+        - jintusebastian
+        - swati1102
+        - Pooja-08
+        - vinaybheri
+        - visargsoneji
         privacy: closed
+        repos:
+          service-fabrik-broker: admin
+          service-fabrik-blueprint-app: admin
+          service-fabrik-boshrelease: admin
+          service-fabrik-backup-restore: admin
+          service-fabrik-blueprint-service: admin
+          service-fabrik-blueprint-boshrelease: admin
+          service-fabrik-cli-plugin: admin
+          service-fabrik-lvm-volume-driver: admin
       stratos-ui:
         description: ""
         maintainers:
