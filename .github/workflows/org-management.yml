@@ -54,16 +54,28 @@ jobs:
             --github-endpoint http://ghproxy:8888
             --required-admins=thelinuxfoundation
             --min-admins=5
-            --github-app-id=${{ secrets.GH_APP_ID }}
-            --github-app-private-key-path=private_key
+            --github-token-path=token
             --require-self=false
             --config-path=community/org/cloudfoundry.yml
             --fix-org
-            --fix-org-members
-            --fix-repos
-            --fix-teams
-            --fix-team-members
-            --fix-team-repos
+          # args: >-
+          #   --confirm=true
+          #   --github-endpoint http://ghproxy:8888
+          #   --required-admins=thelinuxfoundation
+          #   --min-admins=5
+          #   --github-app-id=${{ secrets.GH_APP_ID }}
+          #   --github-app-private-key-path=private_key
+          #   --require-self=false
+          #   --config-path=community/org/cloudfoundry.yml
+          #   --fix-org
+            # --fix-org-members
+            # --fix-repos
+            # --fix-teams
+            # --fix-team-members
+            # --fix-team-repos
+
+      - name: debug
+        run: echo "${{ toJSON(steps.peribolos.outcome == 'failure') }}"
       - name: generate-peribolos-dump
         if: ${{ steps.peribolos.outcome == 'failure' }}
         uses: docker://gcr.io/k8s-prow/peribolos
