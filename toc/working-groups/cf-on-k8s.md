@@ -60,6 +60,8 @@ areas:
     github: mnitchev
   - name: Tim Downey
     github: tcdowney
+  - name: Clint Yoshimura
+    github: clintyoshimura
   repositories:
   - cloudfoundry/korifi
   - cloudfoundry-incubator/eirini-controller
