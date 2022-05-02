@@ -40,7 +40,8 @@ they may submit a PR adding themselves to the organization in
 - An existing Contributor or Approver may submit the promotion request on behalf of someone else, but they
   may not serve as a reviewer.
 
-- Any Working Group Lead may merge the PR after it has been reviewed.
+- A Working Group Lead from any Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
 
 - TOC members may bypass the review process and merge the PR at their
   discretion.
@@ -61,8 +62,8 @@ themselves to the team's yaml definition.
 - An existing Approver may submit the promotion request on behalf of someone else, but they
   may not serve as a reviewer.
 
-- A Working Group Lead for that Working Group may merge the PR after it has been
-  reviewed.
+- A Working Group Lead for that Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
 
 - TOC members may bypass the review process and merge the PR at their
   discretion.
@@ -77,7 +78,8 @@ themselves to the team's yaml definition.
   behalf of someone else, but the person whose role is being revoked must be
   given two weeks to refute the revocation.
 
-- Any Working Group Lead may merge the PR, without review.
+- A Working Group Lead from any Working Group will merge or close the PR, at
+  their discretion and without review.
 
 - TOC members may merge the PR at their discretion.
 
@@ -90,6 +92,7 @@ themselves to the team's yaml definition.
   else, but the person whose role is being revoked must be given two weeks to
   refute the revocation.
 
-- A Working Group Lead for that Working Group may merge the PR, without review.
+- A Working Group Lead for that Working Group will merge or close the PR, at
+  their discretion and without review.
 
 - TOC members may merge the PR at their discretion.
