@@ -42,16 +42,12 @@ technical_leads:
 areas:
 - name: Autoscaler
   approvers:
-  - name: Gareth Evans
-    github: garethjevans
   - name: Arsalan Khan
     github: asalan316
   - name: Silvestre Zabala
     github: silvestre
   - name: Kevin Cross
     github: KevinJCross 
-  - name: Aadesh Misra
-    github: aadeshmisra
   - name: Alan Morán
     github: bonzofenix
   - name: Jörg Weisbarth
