@@ -146,7 +146,9 @@ areas:
   - cloudfoundry/tps
   - cloudfoundry/cc-uploader
   - cloudfoundry/sync-integration-tests
- 
+  - cloudfoundry/go-cf-api
+  - cloudfoundry/go-cf-api-release
+
 - name: CLI
   approvers:
   - name: Al Berez
