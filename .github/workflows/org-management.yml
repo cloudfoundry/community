@@ -7,17 +7,35 @@ on:
       - 'org/*'
       - '.github/workflows/org-management.yml'
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */5 * * *'
 
 jobs:
   peribolos:
     runs-on: ubuntu-18.04
     concurrency:
       group: peribolos
+    services:
+      ghproxy:
+        image: rkoster/ghproxy
+        options: >-
+          --mount type=bind,source=/etc/passwd,target=/etc/passwd,readonly
+          --mount type=bind,source=/etc/group,target=/etc/group,readonly
+        ports:
+          - 8888:8888
+        volumes:
+          - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
+      - name: ghproxy-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/ghproxy-cache
+          key: ghproxy-cache-${{ github.run_number }}
+          restore-keys: |
+            ghproxy-cache-
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # full clone so a PR can be created if needed
+          path: community
       - name: write github private key
         run: |
           echo "${GH_PRIVATE_KEY}" > private_key
@@ -31,19 +49,46 @@ jobs:
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /ko-app/peribolos
-          args: --confirm=true --required-admins=thelinuxfoundation --min-admins=5 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --require-self=false --config-path=org/cloudfoundry.yml --fix-org --fix-org-members --fix-repos --fix-teams --fix-team-members --fix-team-repos
+          args: >-
+            --confirm=true
+            --github-endpoint http://ghproxy:8888
+            --required-admins=thelinuxfoundation
+            --min-admins=5
+            --github-token-path=token
+            --require-self=false
+            --config-path=community/org/cloudfoundry.yml
+            --fix-org
+          # args: >-
+          #   --confirm=true
+          #   --github-endpoint http://ghproxy:8888
+          #   --required-admins=thelinuxfoundation
+          #   --min-admins=5
+          #   --github-app-id=${{ secrets.GH_APP_ID }}
+          #   --github-app-private-key-path=private_key
+          #   --require-self=false
+          #   --config-path=community/org/cloudfoundry.yml
+          #   --fix-org
+            # --fix-org-members
+            # --fix-repos
+            # --fix-teams
+            # --fix-team-members
+            # --fix-team-repos
+
+      - name: debug
+        run: echo "${{ toJSON(steps.peribolos.outcome == 'failure') }}"
       - name: generate-peribolos-dump
-        if: ${{ steps.peribolos.outcome }} == 'failure'
+        if: ${{ steps.peribolos.outcome == 'failure' }}
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /bin/sh
           # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
           # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
-          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-token-path=token > org/cloudfoundry.yml"
+          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/org/cloudfoundry.yml"
       - name: Create Pull Request
-        if: ${{ steps.peribolos.outcome }} == 'failure'
+        if: ${{ steps.peribolos.outcome == 'failure' }}
         uses: peter-evans/create-pull-request@v4
         with:
+          path: community
           add-paths: org/cloudfoundry.yml
           commit-message: Run peribolos -dump-full
           branch: peribolos-dump
@@ -53,7 +98,7 @@ jobs:
 
             This PR contains a fresh periobos dump which once merged should resolve the sync issues.
       - name: Fail job on sync failure
-        if: ${{ steps.peribolos.outcome }} == 'failure'
+        if: ${{ steps.peribolos.outcome == 'failure' }}
         run: |
           echo "sync job failed, dump PR created"
           exit 1
