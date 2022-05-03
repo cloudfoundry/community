@@ -2985,8 +2985,7 @@ orgs:
             - bonzofenix
             - Gerg
             - joergdw
-            - mvach
-            - salzmannsusan
+            - KevinJCross
             - silvestre
             privacy: closed
           App Runtime Interfaces WG Buildpacks:
@@ -6132,15 +6131,15 @@ orgs:
         description: CF Application Autoscaler core dev team
         maintainers:
         - asalan316
+        - bonzofenix
         - joergdw
-        - mvach
-        - salzmannsusan
+        - KevinJCross
         - silvestre
         members:
         - app-autoscaler-ci-bot
-        - bonzofenix
         - donacarr
-        - KevinJCross
+        - mvach
+        - salzmannsusan
         privacy: closed
         repos:
           app-autoscaler: admin
