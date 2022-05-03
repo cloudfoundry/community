@@ -1,0 +1,36 @@
+name: 'Sync working group project boards'
+
+on:
+  schedule:
+  - cron: '0 */1 * * *'
+
+jobs:
+  configs:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - id: matrix
+        run: |
+          echo "::set-output name=matrix::$(./org/generate_working_group_projects_sync_config.sh)"
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+
+  sync_projects:
+    needs: configs
+    runs-on: ubuntu-18.04
+    container:
+      image: rkoster/github-multi-repo-project-card-sync
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ${{ fromJson(needs.configs.outputs.matrix) }}
+
+    steps:
+    - name: write-config
+      run:  echo '${{ toJSON(matrix.config) }}' > config.json
+    - name: github-projects-sync
+      run: /root/sync --config config.json
+      env:
+        GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
+        GITHUB_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
