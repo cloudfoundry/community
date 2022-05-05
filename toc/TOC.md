@@ -115,3 +115,26 @@ approval, based on community feedback.
 
 The initial content of this page is from the work of the [Knative community](https://github.com/knative/community)
 under the terms of the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+
+```yaml
+name: Technical Oversight Committee
+execution_leads:
+- name: Lee Porte
+  github: leeporte
+- name: David Stevenson
+  github: dsboulder
+- name: Eric Malm
+  github: emalm
+- name: Jan von Löwenstein
+  github: loewenstein
+- name: Stephan Merker
+  github: stephanme
+areas:
+- name: CloudFoundry Community
+  repositories:
+  - cloudfoundry/community
+config:
+  github_project_sync:
+    mapping:
+      cloudfoundry: 31
+```
