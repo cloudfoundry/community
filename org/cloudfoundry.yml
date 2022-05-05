@@ -3287,6 +3287,19 @@ orgs:
               windows2019fs-release: admin
               windowsfs-online-release: admin
               workpool: admin
+          App Runtime Platform WG Diego Reviewers:
+            members:
+            - dsabeti
+            - mariash
+            - ebroberson
+            - acrmp
+            - aminjam
+            - Benjamintf1
+            - geofffranks
+            - jrussett
+            - reneighbor
+            - selzoc
+            - MarcPaquette
           App Runtime Platform WG Diego:
             members:
             - acrmp
@@ -3350,6 +3363,9 @@ orgs:
               vizzini: write
               volman: write
               workpool: write
+          App Runtime Platform WG Docs Reviewers:
+            members:
+            - geofffranks
           App Runtime Platform WG Docs:
             members: []
             privacy: closed
@@ -3358,6 +3374,18 @@ orgs:
               docs-cf-admin: write
               docs-loggregator: write
               docs-running-cf: write
+          App Runtime Platform WG Garden Reviewers:
+            members:
+            - dsabeti
+            - mariash
+            - ebroberson
+            - geofffranks
+            - danail-branekov
+            - gcapizzi
+            - georgethebeatle
+            - kieron-dev
+            - mnitchev
+            - MarcPaquette
           App Runtime Platform WG Garden Containers:
             members:
               - danail-branekov
@@ -3396,6 +3424,17 @@ orgs:
               windows2016fs: write
               windows2019fs-release: write
               windowsfs-online-release: write
+          App Runtime Platform WG Logging and Metrics Reviewers:
+            members:
+              - rroberts2222
+              - acrmp
+              - aminjam
+              - Benjamintf1
+              - geofffranks
+              - jrussett
+              - reneighbor
+              - selzoc
+              - MarcPaquette
           App Runtime Platform WG Logging and Metrics:
             members:
               - acrmp
@@ -3436,6 +3475,24 @@ orgs:
               sonde-go: write
               statsd-injector-release: write
               system-metrics-scraper-release: write
+          App Runtime Platform WG Networking Reviewers:
+            members:
+            - dsabeti
+            - mariash
+            - ebroberson
+            - aminjam
+            - Benjamintf1
+            - ctlong
+            - domdom82
+            - geofffranks
+            - Gerg
+            - jrussett
+            - mkocher
+            - plowin
+            - reneighbor
+            - selzoc
+            - stefanley
+            - MarcPaquette
           App Runtime Platform WG Networking:
             members:
               - aminjam
