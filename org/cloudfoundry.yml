@@ -1,3 +1,4 @@
+---
 orgs:
   cloudfoundry:
     admins:
@@ -43,7 +44,6 @@ orgs:
     - adobley
     - aduffeck
     - advpetc
-    - aemengo
     - ahrtr
     - aiswarianair
     - ajackson
@@ -396,7 +396,6 @@ orgs:
     - miguelverissimo
     - mihaibuzgau
     - MirahImage
-    - mjgutermuth
     - mjj209
     - mkjelland
     - mklanjsek
@@ -3123,84 +3122,28 @@ orgs:
         maintainers:
         - ameowlia
         members:
-        - stefanlay
+        - Benjamintf1
+        - Gerg
+        - acrmp
+        - aminjam
+        - benjamintf1
+        - ctlong
+        - danail-branekov
+        - domdom82
+        - gcapizzi
+        - geofffranks
+        - georgethebeatle
+        - ivanhristov98
+        - jrussett
+        - kieron-dev
+        - mjgutermuth
+        - mkocher
+        - mnitchev
+        - plowin
+        - reneighbor
+        - selzoc
+        - stefanley
         privacy: closed
-        repos:
-          archiver: write
-          auction: write
-          auctioneer: write
-          bbs: write
-          benchmarkbbs: write
-          bosh-system-metrics-forwarder-release: write
-          bytefmt: write
-          cacheddownloader: write
-          cert-injector: write
-          certsplitter: write
-          cf-networking-helpers: write
-          cf-networking-release: write
-          cf-tcp-router: write
-          cfdot: write
-          clock: write
-          consuladapter: write
-          debugserver: write
-          diego-dockerfiles: write
-          diego-logging-client: write
-          diego-release: write
-          diego-upgrade-stability-tests: write
-          diff-exporter: read
-          dockerdriver: write
-          dontpanic: write
-          durationjson: write
-          ecrhelper: write
-          envoy-nginx-release: read
-          eventhub: write
-          executor: write
-          fileserver: write
-          garden: write
-          garden-integration-tests: write
-          garden-runc-release: write
-          go-orchestrator: read
-          gorouter: admin
-          groot-windows: write
-          grootfs: write
-          guardian: write
-          haproxy-boshrelease: write
-          healthcheck: write
-          idmapper: write
-          inigo: write
-          localdriver: write
-          localip: write
-          locket: write
-          log-cache-release: write
-          loggregator-agent-release: write
-          loggregator-release: write
-          loggregator-tools: read
-          metrics-discovery-release: write
-          nats-release: write
-          netplugin-shim: write
-          networking-oss-deployments: write
-          operationq: write
-          rep: write
-          route-emitter: write
-          route-registrar: write
-          routing-acceptance-tests: write
-          routing-api: write
-          routing-api-cli: write
-          routing-info: write
-          routing-perf-release: write
-          routing-release: admin
-          silk: write
-          silk-release: write
-          statsd-injector-release: write
-          syslog-release: write
-          system-metrics-scraper-release: write
-          systemcerts: write
-          tlsconfig: write
-          vizzini: write
-          volman: write
-          winc: write
-          winc-release: write
-          workpool: write
         teams:
           App Runtime Platform WG leads:
             description: ""
@@ -3218,63 +3161,121 @@ orgs:
               cacheddownloader: admin
               cert-injector: admin
               certsplitter: admin
+              cf-drain-cli: admin
               cf-networking-helpers: admin
+              cf-networking-onboarding: admin
               cf-networking-release: admin
+              cf-routing-test-helpers: admin
               cf-tcp-router: admin
+              cf-volume-services-acceptance-tests: admin
               cfdot: admin
+              cfhttp: admin
               clock: admin
+              commandrunner: admin
               consuladapter: admin
+              cpu-entitlement-admin-plugin: admin
+              cpu-entitlement-plugin: admin
               debugserver: admin
+              diego-ci-pools: admin
+              diego-ci: admin
+              diego-design-notes: admin
               diego-dockerfiles: admin
               diego-logging-client: admin
+              diego-notes: admin
+              diego-perf-release: admin
               diego-release: admin
+              diego-ssh: admin
+              diego-stress-tests: admin
+              diego-team: admin
               diego-upgrade-stability-tests: admin
+              diego-windows-release: admin
+              diegocanaryapp: admin
               diff-exporter: admin
+              docker_driver_integration_tests: admin
+              dockerapplifecycle: admin
               dockerdriver: admin
+              docs-book-cloudfoundry: admin
+              docs-cf-admin: admin
+              docs-loggregator: admin
+              docs-running-cf: admin
               dontpanic: admin
+              dropsonde-protocol-js: admin
+              dropsonde-protocol: admin
+              dropsonde: admin
               durationjson: admin
               ecrhelper: admin
-              envoy-nginx-release: read
+              envoy-nginx-release: admin
               eventhub: admin
               executor: admin
+              filelock: admin
               fileserver: admin
-              garden: admin
+              garden-ci-artifacts-release: admin
+              garden-ci: admin
+              garden-dockerfiles: admin
+              garden-dotfiles: admin
               garden-integration-tests: admin
+              garden-performance-acceptance-tests: admin
               garden-runc-release: admin
-              go-orchestrator: read
+              garden-windows-ci: admin
+              garden: admin
+              go-batching: admin
+              go-diodes: admin
+              go-envstruct: admin
+              go-log-cache: admin
+              go-loggregator: admin
+              go-metric-registry: admin
+              go-orchestrator: admin
               go-pubsub: admin
               gorouter: admin
+              grace: admin
               groot-windows: admin
+              groot: admin
               grootfs: admin
               guardian: admin
               haproxy-boshrelease: admin
               healthcheck: admin
+              hwc: admin
+              hydrator: admin
               idmapper: admin
               inigo: admin
+              lager: admin
               localdriver: admin
               localip: admin
               locket: admin
               log-cache-release: admin
+              logging-route-service: admin
               loggregator-agent-release: admin
+              loggregator-api: admin
+              loggregator-dotfiles: admin
               loggregator-release: admin
-              loggregator-tools: read
+              loggregator-tools: admin
+              metric-store-ci: admin
+              metric-store-dotfiles: admin
+              metric-store-release: admin
               metrics-discovery-release: admin
+              multierror: admin
               nats-release: admin
               netplugin-shim: admin
               networking-oss-deployments: admin
+              noaa: admin
               notifications-release: admin
               operationq: admin
+              policy_client: admin
               rep: admin
               route-emitter: admin
               route-registrar: admin
               routing-acceptance-tests: admin
-              routing-api: admin
               routing-api-cli: admin
+              routing-api: admin
               routing-info: admin
               routing-perf-release: admin
               routing-release: admin
-              silk: admin
+              runtimeschema: admin
+              sample-http-app: admin
+              service-metrics-release: admin
               silk-release: admin
+              silk: admin
+              sonde-go: admin
               statsd-injector-release: admin
               syslog-release: admin
               system-metrics-scraper-release: admin
@@ -3282,9 +3283,258 @@ orgs:
               tlsconfig: admin
               vizzini: admin
               volman: admin
-              winc: admin
               winc-release: admin
+              winc: admin
+              windows-regression-tests: admin
+              windows2016fs: admin
+              windows2019fs-release: admin
+              windowsfs-online-release: admin
               workpool: admin
+          App Runtime Platform WG Diego Reviewers:
+            members:
+            - dsabeti
+            - mariash
+            - ebroberson
+            - acrmp
+            - aminjam
+            - Benjamintf1
+            - geofffranks
+            - jrussett
+            - reneighbor
+            - selzoc
+            - MarcPaquette
+          App Runtime Platform WG Diego:
+            members:
+            - acrmp
+            - aminjam
+            - Benjamintf1
+            - geofffranks
+            - jrussett
+            - reneighbor
+            - selzoc
+            privacy: closed
+            repos:
+              archiver: write
+              auction: write
+              auctioneer: write
+              bbs: write
+              benchmarkbbs: write
+              bytefmt: write
+              cacheddownloader: write
+              certsplitter: write
+              cf-volume-services-acceptance-tests: write
+              cfdot: write
+              cfhttp: write
+              clock: write
+              consuladapter: write
+              debugserver: write
+              diego-ci: write
+              diego-ci-pools: write
+              diego-design-notes: write
+              diego-dockerfiles: write
+              diego-logging-client: write
+              diego-notes: write
+              diego-perf-release: write
+              diego-release: write
+              diego-ssh: write
+              diego-stress-tests: write
+              diego-team: write
+              diego-upgrade-stability-tests: write
+              diego-windows-release: write
+              diegocanaryapp: write
+              docker_driver_integration_tests: write
+              dockerapplifecycle: write
+              dockerdriver: write
+              durationjson: write
+              ecrhelper: write
+              eventhub: write
+              executor: write
+              fileserver: write
+              grace: write
+              healthcheck: write
+              inigo: write
+              localdriver: write
+              localip: write
+              locket: write
+              operationq: write
+              rep: write
+              route-emitter: write
+              runtimeschema: write
+              sample-http-app: write
+              systemcerts: write
+              tlsconfig: write
+              vizzini: write
+              volman: write
+              workpool: write
+          App Runtime Platform WG Docs Reviewers:
+            members:
+            - geofffranks
+          App Runtime Platform WG Docs:
+            members: []
+            privacy: closed
+            repos:
+              docs-book-cloudfoundry: write
+              docs-cf-admin: write
+              docs-loggregator: write
+              docs-running-cf: write
+          App Runtime Platform WG Garden Reviewers:
+            members:
+            - dsabeti
+            - mariash
+            - ebroberson
+            - geofffranks
+            - danail-branekov
+            - gcapizzi
+            - georgethebeatle
+            - kieron-dev
+            - mnitchev
+            - MarcPaquette
+          App Runtime Platform WG Garden Containers:
+            members:
+              - danail-branekov
+              - gcapizzi
+              - georgethebeatle
+              - kieron-dev
+              - mnitchev
+            privacy: closed
+            repos:
+              diff-exporter: write
+              cert-injector: write
+              commandrunner: write
+              cpu-entitlement-admin-plugin: write
+              cpu-entitlement-plugin: write
+              dontpanic: write
+              garden: write
+              garden-ci: write
+              garden-ci-artifacts-release: write
+              garden-dockerfiles: write
+              garden-dotfiles: write
+              garden-integration-tests: write
+              garden-performance-acceptance-tests: write
+              garden-runc-release: write
+              garden-windows-ci: write
+              groot: write
+              groot-windows: write
+              grootfs: write
+              guardian: write
+              hwc: write
+              hydrator: write
+              idmapper: write
+              netplugin-shim: write
+              winc: write
+              winc-release: write
+              windows-regression-tests: write
+              windows2016fs: write
+              windows2019fs-release: write
+              windowsfs-online-release: write
+          App Runtime Platform WG Logging and Metrics Reviewers:
+            members:
+              - rroberts2222
+              - acrmp
+              - aminjam
+              - Benjamintf1
+              - geofffranks
+              - jrussett
+              - reneighbor
+              - selzoc
+              - MarcPaquette
+          App Runtime Platform WG Logging and Metrics:
+            members:
+              - acrmp
+              - aminjam
+              - Benjamintf1
+              - geofffranks
+              - jrussett
+              - reneighbor
+              - selzoc
+            privacy: closed
+            repos:
+              bosh-system-metrics-forwarder-release: write
+              cf-drain-cli: write
+              dropsonde: write
+              dropsonde-protocol: write
+              dropsonde-protocol-js: write
+              filelock: write
+              go-batching: write
+              go-diodes: write
+              go-envstruct: write
+              go-log-cache: write
+              go-loggregator: write
+              go-metric-registry: write
+              go-orchestrator: write
+              go-pubsub: write
+              lager: write
+              log-cache-release: write
+              loggregator-agent-release: write
+              loggregator-api: write
+              loggregator-dotfiles: write
+              loggregator-release: write
+              loggregator-tools: write
+              metric-store-ci: write
+              metric-store-dotfiles: write
+              metric-store-release: write
+              metrics-discovery-release: write
+              noaa: write
+              sonde-go: write
+              statsd-injector-release: write
+              system-metrics-scraper-release: write
+          App Runtime Platform WG Networking Reviewers:
+            members:
+            - dsabeti
+            - mariash
+            - ebroberson
+            - aminjam
+            - Benjamintf1
+            - ctlong
+            - domdom82
+            - geofffranks
+            - Gerg
+            - jrussett
+            - mkocher
+            - plowin
+            - reneighbor
+            - selzoc
+            - stefanley
+            - MarcPaquette
+          App Runtime Platform WG Networking:
+            members:
+              - aminjam
+              - Benjamintf1
+              - ctlong
+              - domdom82
+              - geofffranks
+              - Gerg
+              - jrussett
+              - mkocher
+              - plowin
+              - reneighbor
+              - selzoc
+              - stefanley
+            privacy: closed
+            repos:
+              cf-networking-helpers: write
+              cf-networking-onboarding: write
+              cf-networking-release: write
+              cf-routing-test-helpers: write
+              cf-tcp-router: write
+              envoy-nginx-release: write
+              gorouter: write
+              haproxy-boshrelease: write
+              logging-route-service: write
+              multierror: write
+              nats-release: write
+              networking-oss-deployments: write
+              policy_client: write
+              route-registrar: write
+              routing-acceptance-tests: write
+              routing-api: write
+              routing-api-cli: write
+              routing-info: write
+              routing-perf-release: write
+              routing-release: write
+              service-metrics-release: write
+              silk: write
+              silk-release: write
       At Standup:
         description: ""
         maintainers:
@@ -5097,7 +5347,6 @@ orgs:
         - bosh-ci-push-pull
         - pspinrad
         - jncd
-        - mjgutermuth
         - vikafed
         privacy: secret
         repos:
