@@ -71,11 +71,13 @@ orgs:
     - ankeesler
     - ansd
     - ansergit
+    - app-autoscaler-ci-bot
     - APShirley
     - aqan213
     - aramprice
     - arjun024
     - asahil9009
+    - asalan316
     - ashvinmoro
     - atwoosnam
     - avade
@@ -342,6 +344,7 @@ orgs:
     - kcboyle
     - KeepAustinWired
     - kejadlen
+    - KevinJCross
     - Kiemes
     - kieron-dev
     - kimago
@@ -532,6 +535,7 @@ orgs:
     - ryanmoran
     - ryanwittrup
     - s4heid
+    - salzmannsusan
     - sampeinado
     - Samze
     - sanagaraj-pivotal
@@ -2978,10 +2982,12 @@ orgs:
           App Runtime Interfaces WG Autoscaler:
             description: Approvers for the App Runtime Interfaces Autoscaler area
             maintainers:
+            - asalan316
             - bonzofenix
             - Gerg
-            - silvestre
             - joergdw
+            - KevinJCross
+            - silvestre
             privacy: closed
           App Runtime Interfaces WG Buildpacks:
             description: Approvers for the App Runtime Buildpacks area
@@ -6377,10 +6383,16 @@ orgs:
       cf-autoscaler:
         description: CF Application Autoscaler core dev team
         maintainers:
+        - asalan316
+        - bonzofenix
+        - joergdw
+        - KevinJCross
         - silvestre
         members:
-        - bonzofenix
+        - app-autoscaler-ci-bot
         - donacarr
+        - mvach
+        - salzmannsusan
         privacy: closed
         repos:
           app-autoscaler: admin
