@@ -51,12 +51,8 @@ areas:
     github: Benjamintf1
   - name: Geoff Franks
     github: geofffranks
-  - name: Ivan Hristov
-    github: IvanHristov98
   - name: Josh Russett
     github: jrussett
-  - name: George Gelashvili
-    github: pivotalgeorge
   - name: Renee Chu
     github: reneighbor
   - name: Chris Selzo
@@ -73,6 +69,7 @@ areas:
   - cloudfoundry/cf-volume-services-acceptance-tests
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
+  - cloudfoundry/clock
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
   - cloudfoundry/diego-ci
@@ -116,8 +113,6 @@ areas:
 
 - name: Docs
   approvers:
-  - name: Melinda Jeffs Gutermuth
-    github: mjgutermuth
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
@@ -126,8 +121,6 @@ areas:
 
 - name: Garden Containers
   approvers:
-  - name: Anthony Emengo
-    github: aemengo
   - name: Danail Branekov
     github: danail-branekov
   - name: Giuseppe Capizzi
@@ -139,7 +132,7 @@ areas:
   - name: Mario Nitchev
     github: mnitchev
   repositories:
-  - cloudfoundry-incubator/diff-exporter
+  - cloudfoundry/diff-exporter
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
   - cloudfoundry/cpu-entitlement-admin-plugin
@@ -181,8 +174,6 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
-  - name: George Gelashvili
-    github: pivotalgeorge
   - name: Renee Chu
     github: reneighbor
   - name: Chris Selzo
@@ -220,8 +211,6 @@ areas:
 
 - name: Networking
   approvers:
-  - name: Miki Mokrysz
-    github: 46bit
   - name: Andrew Crump
     github: acrmp
   - name: Amin Jamali
@@ -240,8 +229,6 @@ areas:
     github: jrussett
   - name: Matthew Kocher
     github: mkocher
-  - name: George Gelashvili
-    github: pivotalgeorge
   - name: Patrick Lowin
     github: plowin
   - name: Renee Chu

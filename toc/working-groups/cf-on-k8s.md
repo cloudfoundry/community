@@ -60,7 +60,11 @@ areas:
     github: mnitchev
   - name: Tim Downey
     github: tcdowney
+  - name: Clint Yoshimura
+    github: clintyoshimura
   repositories:
+  - cloudfoundry/cf-k8s-secrets
+  - cloudfoundry/eirini-controller
   - cloudfoundry/korifi
-  - cloudfoundry-incubator/eirini-controller
+  - cloudfoundry/korifi-ci
 ```

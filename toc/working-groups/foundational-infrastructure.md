@@ -85,7 +85,7 @@ areas:
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
   - cloudfoundry/uaa
-- name: Integrated Databases
+- name: Integrated Databases (Mysql / Postgres)
   approvers:
   - name: Andrew Garner 
     github: abg
@@ -100,7 +100,7 @@ areas:
   - cloudfoundry/cf-mysql-release
   - cloudfoundry/galera-init
   - cloudfoundry/postgres-release
-- name: System logging and metrics
+- name: System Logging and Metrics (rsyslog / event-log)
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
@@ -174,7 +174,7 @@ areas:
   - cloudfoundry/bosh-openstack-cpi-release
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
-  - cloudfoundry/bosh-stemcell-ci-infra
+  - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-stemcells-ci
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
@@ -195,4 +195,8 @@ areas:
   - cloudfoundry/usn-resource
   - cloudfoundry/yagnats
   - cloudfoundry/windows-tools-release
+config:
+  github_project_sync:
+    mapping:
+      cloudfoundry: 21
 ```

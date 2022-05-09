@@ -7,7 +7,7 @@ on:
       - 'org/*'
       - '.github/workflows/org-management.yml'
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */5 * * *'
 
 jobs:
   peribolos:
@@ -54,18 +54,30 @@ jobs:
             --github-endpoint http://ghproxy:8888
             --required-admins=thelinuxfoundation
             --min-admins=5
-            --github-app-id=${{ secrets.GH_APP_ID }}
-            --github-app-private-key-path=private_key
+            --github-token-path=token
             --require-self=false
             --config-path=community/org/cloudfoundry.yml
             --fix-org
-            --fix-org-members
-            --fix-repos
-            --fix-teams
-            --fix-team-members
-            --fix-team-repos
+          # args: >-
+          #   --confirm=true
+          #   --github-endpoint http://ghproxy:8888
+          #   --required-admins=thelinuxfoundation
+          #   --min-admins=5
+          #   --github-app-id=${{ secrets.GH_APP_ID }}
+          #   --github-app-private-key-path=private_key
+          #   --require-self=false
+          #   --config-path=community/org/cloudfoundry.yml
+          #   --fix-org
+            # --fix-org-members
+            # --fix-repos
+            # --fix-teams
+            # --fix-team-members
+            # --fix-team-repos
+
+      - name: debug
+        run: echo "${{ toJSON(steps.peribolos.outcome == 'failure') }}"
       - name: generate-peribolos-dump
-        if: ${{ steps.peribolos.outcome }} == 'failure'
+        if: ${{ steps.peribolos.outcome == 'failure' }}
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /bin/sh
@@ -73,7 +85,7 @@ jobs:
           # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
           args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/org/cloudfoundry.yml"
       - name: Create Pull Request
-        if: ${{ steps.peribolos.outcome }} == 'failure'
+        if: ${{ steps.peribolos.outcome == 'failure' }}
         uses: peter-evans/create-pull-request@v4
         with:
           path: community
@@ -86,7 +98,7 @@ jobs:
 
             This PR contains a fresh periobos dump which once merged should resolve the sync issues.
       - name: Fail job on sync failure
-        if: ${{ steps.peribolos.outcome }} == 'failure'
+        if: ${{ steps.peribolos.outcome == 'failure' }}
         run: |
           echo "sync job failed, dump PR created"
           exit 1
