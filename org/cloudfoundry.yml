@@ -4296,6 +4296,7 @@ orgs:
         - kmarkwardt-vmware
         - ricardo-vm
         - ryanwittrup
+        - yimngli-vmware
         privacy: closed
         repos:
           api-docs: write
@@ -4313,6 +4314,10 @@ orgs:
           mysql-monitoring-release: admin
           omniauth-uaa-oauth2: write
           pxc-release: admin
+          galera-healthcheck: write
+          switchboard: write
+          cf-mysql-bootstrap: write
+          cf-mysql-cluster-health-logger: write
       CF Credhub:
         description: team responsible for CredHub
         maintainers:
