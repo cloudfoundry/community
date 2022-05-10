@@ -3,7 +3,7 @@
 - Name: Working Group Repository Ownership
 - Start Date: 2022-04-19
 - Author(s): [@emalm](https://github.com/emalm)
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- Status: Accepted
 - RFC Pull Request: [community#251](https://github.com/cloudfoundry/community/pull/251)
 
 
