@@ -47,7 +47,7 @@ Script options, to be set via environment variable (such as `DEBUG=true ./assign
 * `REPO`: Sets the name of the repository. (Default: `community`)
 * `DEBUG`: Set to a nonzero value to enable script debugging via the `-x` flag in Bash. (Default: unset)
 * `NOPUSH`: Set to a nonzero value not to push the renumbering commit automatically. (Default: unset)
-* `RFC_MERGE_COMMITISH`: Set to a "commit-is" (commit SHA or commit expression) that resolves to the merge commit of the RFC to number. (Default: `HEAD`)
+* `RFC_MERGE_COMMITISH`: Set to a "commit-ish" (commit SHA or commit expression) that resolves to the merge commit of the RFC to number. (Default: `HEAD`)
 
 ## Managing Standards and Processes
 
