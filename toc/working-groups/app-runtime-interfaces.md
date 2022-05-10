@@ -111,6 +111,22 @@ areas:
   - cloudfoundry/apt-buildpack
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/brats  
+  - cloudfoundry/binary-builder
+  - cloudfoundry/buildpack-packager
+  - cloudfoundry/buildpackapplifecycle
+  - cloudfoundry/buildpacks-ci
+  - cloudfoundry/buildpacks-feature-eng-ci
+  - cloudfoundry/buildpacks-github-config
+  - cloudfoundry/cflinuxfs3-release
+  - cloudfoundry/dagger
+  - cloudfoundry/example-sidecar-buildpack
+  - cloudfoundry/jvmkill
+  - cloudfoundry/libbuildpack
+  - cloudfoundry/pip-pop
+  - cloudfoundry/public-buildpacks-ci-robots
+  - cloudfoundry/stack-auditor
+  - cloudfoundry/switchblade
+
 - name: CAPI
   approvers:
   - name: Tom Viehman
@@ -144,6 +160,10 @@ areas:
   - cloudfoundry/sync-integration-tests
   - cloudfoundry/go-cf-api
   - cloudfoundry/go-cf-api-release
+  - cloudfoundry/blobstore_url_signer
+  - cloudfoundry/capi-workspace
+  - cloudfoundry/delayed_job_sequel
+  - cloudfoundry/steno
 
 - name: CLI
   approvers:
@@ -156,6 +176,11 @@ areas:
   - cloudfoundry/cli-i18n
   - cloudfoundry/cli-ci
   - cloudfoundry/cli-plugin-repo
+  - cloudfoundry/claw
+  - cloudfoundry/cli-docs-scripts
+  - cloudfoundry/cli-workstation
+  - cloudfoundry/jsonry
+  - cloudfoundry/ykk
   
 - name: Docs
   approvers:
@@ -166,6 +191,7 @@ areas:
   - cloudfoundry/docs-cloudfoundry-concepts
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
+  - cloudfoundry/docs-dotnet-core-tutorial
 
 - name: Java Tools
   approvers:
