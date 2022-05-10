@@ -54,8 +54,8 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | -------------------------- | -- |
 | Charter                    | [app-runtime-deployments.md](./app-runtime-deployments.md) |
 | Forum                      | TBD |
-| Community Meeting Calendar | [Monthly on the second Thursday at 4:30pm – 5:30pm UTC](https://www.google.com/calendar/event?eid=ZjM5ZTJpZTUwaXJlOGxuM2tycjN1NGhraThfMjAyMjAzMTBUMTYzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&ctz=UTC)  |
-| Meeting Notes              | TBD |
+| Community Meeting Calendar | [Monthly on the second Thursday at 4:30pm – 5:30pm UTC](https://calendar.google.com/event?action=TEMPLATE&tmeid=MHBqNGxmM24xbmE4NmE3MjBmbzUzN2xxbHFfMjAyMjA1MTJUMTYzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL) / [Monthly on the fourth Thursday at 4:30pm - 5:30pm UTC](https://calendar.google.com/event?action=TEMPLATE&tmeid=N2loZWdqb3VnOWhjcjVybWs5bGg2bzEydHNfMjAyMjA1MjZUMTUzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL) |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1lBOSKMWYb1y2d0YcUmIHe0JX7lc5qcLFO6sa-gp9N_g) |
 | Slack Channel              | [&#x23;wg-app-runtime-deployments](https://cloudfoundry.slack.com/archives/C033ALST37V) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                  |
