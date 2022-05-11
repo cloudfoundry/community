@@ -11,7 +11,7 @@ Provides interfaces for service lifecycle within application platforms and adapt
 - Maintain a set of reference volume service brokers and drivers for CF applications to mount stateful data.
 
 ## Scope
-- Lead OSBAPI.
+- Lead OSB API.
 - Develop and maintain Cloud Service Brokers for AWS, Azure, and GCP.
 - Maintain volume service adapters for NFS and SMB.
 - Develop and maintain ServiceFabrik, a generic BOSH-based and Docker-container-based service instance manager.
@@ -47,7 +47,7 @@ areas:
   - cloudfoundry/csb-brokerpak-azure
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
-- name: OSBAPI
+- name: OSB API
   approvers:
   - name: Sam Gunaratne
     github: Samze
@@ -56,7 +56,7 @@ areas:
   repositories:
   - openservicebrokerapi/servicebroker
   - openservicebrokerapi/osb-checker
-- name: ServiceFabrik
+- name: Service Fabrik
   approvers:
   - name: Anoop Joseph Babu
     github: anoopjb
@@ -77,7 +77,7 @@ areas:
   - cloudfoundry-incubator/service-fabrik-blueprint-boshrelease
   - cloudfoundry-incubator/service-fabrik-cli-plugin
   - cloudfoundry-incubator/service-fabrik-lvm-volume-driver
-- name: Volume Service Adapters
+- name: Volume Services
   approvers:
   - name: Diego Lemos
     github: dlresende
@@ -101,4 +101,10 @@ areas:
   - cloudfoundry/smb-volume-release
   - cloudfoundry/volume-mount-options
   - cloudfoundry/volumedriver
+config:
+  github_project_sync:
+    mapping:
+      cloudfoundry: 27
+      openservicebrokerapi: 1
+      cloudfoundry-incubator: 3
 ```

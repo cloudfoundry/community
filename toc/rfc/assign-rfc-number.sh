@@ -19,6 +19,7 @@ fi
 OWNER=${OWNER:-cloudfoundry}
 REPO=${REPO:-community}
 MAIN_BRANCH=${MAIN_BRANCH:-main}
+RFC_MERGE_COMMITISH=${RFC_MERGE_COMMITISH:-HEAD}
 NOPUSH=${NOPUSH:-}
 
 ####
@@ -53,6 +54,7 @@ require_command curl
 # TASK
 #
 
+
 REPOBASENAME=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4\/\5/p')
 REPOOWNER=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4/p')
 REPONAME=$(git config --get remote.origin.url | sed -nr 's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\5/p')
@@ -71,6 +73,17 @@ fi
 echo "> Pulling latest changes...."
 git pull origin ${MAIN_BRANCH} --rebase
 
+# check that the identified merge commit is a 2-parent merge commit
+num_parents=$(git cat-file commit "${RFC_MERGE_COMMITISH}" | grep ^parent | wc -l)
+
+if [[ "$num_parents" -ne 2 ]]; then
+  commit_sha=$(git rev-parse "${RFC_MERGE_COMMITISH}")
+  >&2 echo "Error: commit-ish '${RFC_MERGE_COMMITISH}' selected as RFC merge commit (with SHA ${commit_sha}) has $num_parents parents, not 2"
+  exit 2
+fi
+
+PR_NUMBER=$(git ls-remote origin 'pull/*/head' | grep -F -f <(git rev-parse "${RFC_MERGE_COMMITISH}^2") | awk -F'/' '{print $3}')
+
 RFC_ID=$(generate_id)
 echo "> Generated RFC number: ${RFC_ID}"
 
@@ -79,7 +92,6 @@ SOURCE_DOC=$(find "${script_dir}" -maxdepth 1 -type f -name 'rfc-draft-*')
 TARGET_DOC=${SOURCE_DOC//rfc-draft/rfc-${RFC_ID}}
 SOURCE_DIR=$(find "${script_dir}" -maxdepth 1 -type d -name 'rfc-draft-*')
 TARGET_DIR=${SOURCE_DIR//rfc-draft/rfc-${RFC_ID}}
-PR_NUMBER=$(git ls-remote origin 'pull/*/head' | grep -F -f <(git rev-parse HEAD^2) | awk -F'/' '{print $3}')
 
 echo "> Transforming '${SOURCE_DOC}' into '${TARGET_DOC}'"
 sed \
