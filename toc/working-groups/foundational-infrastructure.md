@@ -114,7 +114,7 @@ areas:
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/event-log-release
-  - cloudfoundry/metrics-release
+  - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
 - name: VM deployment lifecycle (BOSH)
