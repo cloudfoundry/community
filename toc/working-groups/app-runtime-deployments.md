@@ -73,5 +73,6 @@ areas:
   - cloudfoundry/cf-smoke-tests-release
   - cloudfoundry/cf-test-helpers
   - cloudfoundry/uptimer
+  - cloudfoundry/relint-ci-pools
   - cloudfoundry/runtime-ci
 ```
