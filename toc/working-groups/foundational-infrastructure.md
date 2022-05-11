@@ -44,13 +44,13 @@ areas:
   - name: Peter Chen
     github: peterhaochen47
   repositories:
-  - cloudfoundry-incubator/credhub-acceptance-tests
   - cloudfoundry-incubator/credhub-api-docs
-  - cloudfoundry-incubator/credhub-api-site
-  - cloudfoundry-incubator/credhub-ci-locks
-  - cloudfoundry-incubator/credhub-cli
-  - cloudfoundry-incubator/credhub-perf-release
-  - cloudfoundry-incubator/credhub
+  - cloudfoundry/credhub
+  - cloudfoundry/credhub-acceptance-tests
+  - cloudfoundry/credhub-api-site
+  - cloudfoundry/credhub-cli
+  - cloudfoundry/credhub-ci-locks
+  - cloudfoundry/credhub-perf-release
   - cloudfoundry/docs-credhub
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
@@ -62,13 +62,13 @@ areas:
   - name: Gareth Smith 
     github: totherme
   repositories:
-  - cloudfoundry-incubator/bosh-backup-and-restore
-  - cloudfoundry-incubator/backup-and-restore-sdk-release
-  - cloudfoundry-incubator/bosh-backup-and-restore-test-releases
-  - cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests
-  - cloudfoundry-incubator/disaster-recovery-acceptance-tests
-  - cloudfoundry-incubator/exemplar-backup-and-restore-release
+  - cloudfoundry/backup-and-restore-sdk-release
+  - cloudfoundry/bosh-backup-and-restore
+  - cloudfoundry/bosh-backup-and-restore-test-releases
+  - cloudfoundry/bosh-disaster-recovery-acceptance-tests
+  - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/docs-bbr
+  - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen 
@@ -76,15 +76,18 @@ areas:
   - name: Markus Strehle
     github: strehle
   repositories:
+  - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
   - cloudfoundry/cf-uaac
-  - cloudfoundry/uaa-cli
   - cloudfoundry/docs-uaa
+  - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
+  - cloudfoundry/uaa
+  - cloudfoundry/uaa-cli
+  - cloudfoundry/uaa-k8s-release
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
-  - cloudfoundry/uaa
 - name: Integrated Databases (Mysql / Postgres)
   approvers:
   - name: Andrew Garner 
@@ -92,20 +95,26 @@ areas:
   - name: Shaan Sapra
     github: ssapra
   repositories:
-  - cloudfoundry-incubator/cf-mysql-ci
-  - cloudfoundry-incubator/mysql-backup-release
-  - cloudfoundry-incubator/mysql-monitoring-release
-  - cloudfoundry-incubator/pxc-release
+  - cloudfoundry/cf-mysql-bootstrap
+  - cloudfoundry/cf-mysql-ci
+  - cloudfoundry/cf-mysql-cluster-health-logger
   - cloudfoundry/cf-mysql-deployment
   - cloudfoundry/cf-mysql-release
+  - cloudfoundry/galera-healthcheck
   - cloudfoundry/galera-init
+  - cloudfoundry/mysql-backup-release
+  - cloudfoundry/mysql-monitoring-release
   - cloudfoundry/postgres-release
+  - cloudfoundry/pxc-release
+  - cloudfoundry/switchboard
 - name: System Logging and Metrics (rsyslog / event-log)
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
   repositories:
-  - cloudfoundry-incubator/event-log-release
+  - cloudfoundry/blackbox
+  - cloudfoundry/event-log-release
+  - cloudfoundry/metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
 - name: VM deployment lifecycle (BOSH)
@@ -136,17 +145,11 @@ areas:
   - bosh-packages/nginx-release
   - bosh-packages/python-release
   - bosh-packages/ruby-release
-  - cloudfoundry-incubator/bosh-alicloud-light-stemcell-builder
-  - cloudfoundry-incubator/bosh-cpi-certification
-  - cloudfoundry-incubator/bosh-windows-acceptance-tests
-  - cloudfoundry-incubator/bosh-windows-stemcell-builder
-  - cloudfoundry-incubator/resolvconf-manager-index
-  - cloudfoundry-incubator/resolvconf-manager
-  - cloudfoundry-incubator/sample-windows-bosh-release
-  - cloudfoundry-incubator/stembuild
-  - cloudfoundry-incubator/stemcells-alicloud-index
-  - cloudfoundry-incubator/windows-utilities-release
-  - cloudfoundry-incubator/windows-utilities-tests
+  - cloudfoundry/bbl-state-resource
+  - cloudfoundry/bosh-alicloud-light-stemcell-builder
+  - cloudfoundry/bosh-cpi-certification
+  - cloudfoundry/bosh-windows-acceptance-tests
+  - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bosh-acceptance-tests
   - cloudfoundry/bosh-agent-index
   - cloudfoundry/bosh-agent
@@ -154,6 +157,7 @@ areas:
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
   - cloudfoundry/bosh-bbl-ci-envs
+  - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
   - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-compiled-releases-index
@@ -187,14 +191,26 @@ areas:
   - cloudfoundry/config-server-release
   - cloudfoundry/config-server
   - cloudfoundry/docs-bosh
+  - cloudfoundry/exemplar-release
+  - cloudfoundry/go-socks5
   - cloudfoundry/gofileutils
   - cloudfoundry/gosigar
+  - cloudfoundry/greenhouse-ci
+  - cloudfoundry/jumpbox-deployment
   - cloudfoundry/os-conf-release
+  - cloudfoundry/resolvconf-manager
+  - cloudfoundry/resolvconf-manager-index
+  - cloudfoundry/sample-windows-bosh-release
+  - cloudfoundry/stembuild
+  - cloudfoundry/stemcells-alicloud-index
   - cloudfoundry/socks5-proxy
+  - cloudfoundry/system-metrics-server-release
   - cloudfoundry/tlsconfig
   - cloudfoundry/usn-resource
-  - cloudfoundry/yagnats
+  - cloudfoundry/windows-utilities-release
+  - cloudfoundry/windows-utilities-tests
   - cloudfoundry/windows-tools-release
+  - cloudfoundry/yagnats
 config:
   github_project_sync:
     mapping:
