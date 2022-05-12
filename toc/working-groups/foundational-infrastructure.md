@@ -204,7 +204,6 @@ areas:
   - cloudfoundry/stembuild
   - cloudfoundry/stemcells-alicloud-index
   - cloudfoundry/socks5-proxy
-  - cloudfoundry/system-metrics-server-release
   - cloudfoundry/tlsconfig
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
