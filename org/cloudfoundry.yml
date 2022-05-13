@@ -6320,6 +6320,7 @@ orgs:
         - camilalonart
         - cf-bosh-ci-bot
         - suraiyasuliman
+        - anshrupani
         privacy: closed
         repos:
           bosh-community-stemcell-ci-infra: write
