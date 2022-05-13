@@ -31,8 +31,8 @@ Approver roles if they are no longer interested in participating at that level.
 
 - When a person meets the criteria to be a Contributor as defined in
 [ROLES.md](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md),
-they may submit a PR adding themselves to the organization in
-[cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml).
+they may submit a PR adding themselves to 
+[contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
 
 - Two existing Contributors or Approvers must attest that they meet the criteria
   by reviewing the PR.
@@ -72,7 +72,7 @@ themselves to the team's yaml definition.
 
 - People with the Contributor role may submit a PR to revoke their role by
   removing the appropriate entry from
-  [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml).
+  [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
 
 - An existing Contributor or Approver may submit the revocation request on
   behalf of someone else, but the person whose role is being revoked must be
