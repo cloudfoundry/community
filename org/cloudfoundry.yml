@@ -31,6 +31,7 @@ orgs:
     - abdermendz
     - AbelHu
     - abg
+    - abh1kg
     - ablease
     - abubakarm94
     - AccraZed
@@ -70,6 +71,7 @@ orgs:
     - angelachin
     - animatedmax
     - ankeesler
+    - anoopjb
     - ansd
     - ansergit
     - anshrupani
@@ -316,6 +318,7 @@ orgs:
     - jimbo459
     - jimconner
     - jimmykarily
+    - jintusebastian
     - jkjell
     - jkonicki
     - jmarrero
@@ -488,6 +491,7 @@ orgs:
     - plowin
     - pnikonowicz
     - poconnor1
+    - Pooja-08
     - pradyutsarma
     - Proplex
     - pspinrad
@@ -592,6 +596,7 @@ orgs:
     - svkrieger
     - swalchemist
     - swalner-pivotal
+    - swati1102
     - swati-nair
     - sweinstein22
     - sykesm
@@ -632,7 +637,9 @@ orgs:
     - vgogate
     - videlov
     - vikafed
+    - vinaybheri
     - viovanov
+    - visargsoneji
     - vkalapov
     - voelzmo
     - wattersjames
@@ -2590,6 +2597,36 @@ orgs:
         has_projects: true
         private: true
       service-broker-store:
+        has_projects: true
+      service-fabrik-backup-restore:
+        description: Service fabrik's library for backup and restore of service instances
+        has_projects: true
+      service-fabrik-blueprint-app:
+        description: Service fabrik's blueprint app which is a test app to test the
+          blueprint service
+        has_projects: true
+      service-fabrik-blueprint-boshrelease:
+        description: A boshrelease for service fabrik's blueprint service that is
+          used to try out service-fabrik broker
+        has_projects: true
+      service-fabrik-blueprint-service:
+        description: Service fabrik's blueprint service which is a test service to
+          try out service fabrik broker
+        has_projects: true
+      service-fabrik-boshrelease:
+        description: BOSH release to deploy the Service Fabrik which provisions service
+          instances as Docker containers and BOSH deployments.
+        has_projects: true
+      service-fabrik-broker:
+        description: Cloud Foundry service broker which provisions service instances
+          as Docker containers and BOSH deployments.
+        has_projects: true
+      service-fabrik-cli-plugin:
+        description: This is a Cloud Foundry CLI plugin for performing various backup
+          and restore operations on service instances in Cloud Foundry.
+        has_projects: true
+      service-fabrik-lvm-volume-driver:
+        description: The logical volume driver for service-fabrik's docker based services
         has_projects: true
       service-logs-release:
         archived: true
@@ -6906,11 +6943,44 @@ orgs:
           windows2019fs-release: admin
           windowsfs-online-release: admin
           workpool: admin
-      service-fabrik:
-        description: service-fabrik contributors
+      wg-service-management-service-fabrik-approvers:
+        description: service-fabrik approvers
         maintainers:
         - pivotal-marcela-campo
+        members:
+        - abh1kg
+        - anoopjb
+        - jintusebastian
+        - swati1102
+        - Pooja-08
+        - vinaybheri
+        - visargsoneji
         privacy: closed
+        repos:
+          service-fabrik-broker: admin
+          service-fabrik-blueprint-app: admin
+          service-fabrik-boshrelease: admin
+          service-fabrik-backup-restore: admin
+          service-fabrik-blueprint-service: admin
+          service-fabrik-blueprint-boshrelease: admin
+          service-fabrik-cli-plugin: admin
+          service-fabrik-lvm-volume-driver: admin
+      wg-service-management-bots:
+        description: service management working group bots
+        maintainers:
+        - pivotal-marcela-campo
+        members:
+        - cf-gitbot
+        privacy: closed
+        repos:
+          service-fabrik-broker: admin
+          service-fabrik-blueprint-app: admin
+          service-fabrik-boshrelease: admin
+          service-fabrik-backup-restore: admin
+          service-fabrik-blueprint-service: admin
+          service-fabrik-blueprint-boshrelease: admin
+          service-fabrik-cli-plugin: admin
+          service-fabrik-lvm-volume-driver: admin
       stratos-ui:
         description: ""
         maintainers:
@@ -7197,4 +7267,3 @@ orgs:
         privacy: secret
         repos:
           security-notices: admin
-

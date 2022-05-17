@@ -58,6 +58,8 @@ areas:
   - openservicebrokerapi/osb-checker
 - name: Service Fabrik
   approvers:
+  - name: Abhik Gupta
+    github: abh1kg
   - name: Anoop Joseph Babu
     github: anoopjb
   - name: Jintu Sebastian
@@ -66,6 +68,8 @@ areas:
     github: Pooja-08
   - name: Swati
     github: swati1102
+  - name: Vinayendraswamy Brahmandabheri
+    github: vinaybheri    
   - name: Visarg Soneji
     github: visargsoneji
   repositories:
