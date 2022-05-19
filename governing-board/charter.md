@@ -156,15 +156,15 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   i)	The TOC will be composed of five (5) members.
 
-    -   ii) Each TOC member will be elected to a two-year term.
+    -   ii) Each TOC member will be elected to a seat with a two-year term. Three (3) seats will have terms beginning and ending in even calendar years, and two (2) seats will have terms beginning and ending in odd calendar years.
 
-    -   iii) There will be an annual election to determine the composition of the TOC for the following year. Three seats will be up for election in one year and two will be up for election the following year.
+    -   iii) There will be an annual election to determine the composition of the TOC for the following year. All seats that are vacant at the start of the election or that are due to end during that calendar year are up for election.
 
     -   iv) Employees from the same company or Related Companies (as defined in Section 9) should not hold more than two TOC seats.
     
-        -   a) During any TOC election, if the TOC membership would exceed this limit even after the natural cycle of TOC seat term expirations, enough TOC members must resign for it to be possible for the election to yield a diverse enough TOC.
+        -   (1) During any TOC election, if the TOC membership would exceed this limit even after the natural cycle of TOC seat term expirations, enough TOC members must resign for it to be possible for the election to yield a diverse enough TOC.
         
-        -   b) If a TOC election cannot produce a diverse enough TOC, the limit will not apply until the next election cycle. When a change in employment of a TOC member causes the TOC membership to exceed this limit, that TOC member will NOT be required to resign their TOC membership.
+        -   (2) If a TOC election cannot produce a diverse enough TOC, the limit will not apply until the next election cycle. When a change in employment of a TOC member causes the TOC membership to exceed this limit, that TOC member will NOT be required to resign their TOC membership.
 
 -   c)  TOC Chair:
 
@@ -218,9 +218,13 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (3) Elections may be run either via the [Condorcet Internet Voting Service](https://civs1.civs.us/) or via a deployment of [Elekto](https://elekto.dev/) administered by the CFF staff.
 
+    -   iv) Term Assignment
+
+        -   (1) In the case where the seats to be filled in an election cycle are of different term lengths, the longer-term seats will be allocated as evenly as possible across the member companies winning seats. Within this distribution across member companies, precedence for the longer-term seats will given to the elected members with higher rankings in the election results.
+
 -   f)  TOC Member Resignations or Removal
 
-    -   i) In the case where a TOC member resigns or is removed from the TOC by the Governing Board, the remaining members of the TOC will determine whether the vacant seat either will remain vacant until the next annual election cycle, or will be filled by using the results of the latest election.
+    -   i) In the case where a TOC member resigns or is removed from the TOC by the Governing Board, the remaining members of the TOC will determine whether the vacated seat either will remain vacant until the next annual election cycle, or will be filled by using the results of the latest election.
     
     -   ii) When making this decision, the remaining members of the TOC should consider whether too much time has elapsed since the latest election cycle for its results to represent the community adequately.
 
