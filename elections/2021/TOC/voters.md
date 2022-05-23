@@ -1,0 +1,284 @@
+# 2021 Eligible Voters for the TOC Election
+
+See the [README](README.md) for information on how this list is initially populated.
+Eligible voters that are not shown are encouraged to have their name added by 
+[submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-toc-election.md&title=Request+to+be+an+elector+for+TOC+election).
+
+---
+
+## Voters List
+
+- 	Aakash Shah	 : 	VMware
+- 	Abil Dermendzhiev	 : 	SAP
+- 	Adam Hevenor	 : 	VMware
+- 	Aidan Obley	 : 	VMware
+- 	Alexander Berezovsky	 : 	VMware
+- 	Alexander Standke	 : 	VMware
+- 	Alexander Tsvetkov	 : 	SAP
+- 	Amelia Downs	 : 	VMware
+- 	Amin Jamali	 : 	VMware
+- 	Anand Gaitonde	 : 	VMware
+- 	Andreas Kupries	 : 	SUSE
+- 	Andrew Costa	 : 	VMware
+- 	Andrew Crump	 : 	VMware
+- 	Andrew Edgar	 : 	IBM
+- 	Andrew Wittrock	 : 	VMware
+- 	Andy Brown	 : 	VMware
+- 	Anoop Joseph Babu	 : 	Nokia Corporation
+- 	Anthony Emengo	 : 	VMware
+- 	Anuj Bansal	 : 	Individual - No Account
+- 	aqan213	 : 	IBM
+- 	Aram Price	 : 	VMware
+- 	Arjun Sreedharan	 : 	VMware
+- 	Austina Lin	 : 	VMware
+- 	Belinda Liu	 : 	VMware
+- 	Ben Hale	 : 	VMware
+- 	Benjamin Fuller	 : 	VMware
+- 	Bernd Krannich	 : 	SAP
+- 	Beyhan Veli	 : 	SAP
+- 	Bikramdeep Singh	 : 	SUSE
+- 	Boris Iliev	 : 	SAP
+- 	Boyan Velinov	 : 	SAP
+- 	Braunson	 : 	Shared Services Canada
+- 	Brayan Henao	 : 	VMware
+- 	Bret Mogilefsky	 : 	General Services Administration
+- 	Brian Butz	 : 	VMware
+- 	Brian Cunnie	 : 	VMware
+- 	Brian Upton	 : 	VMware
+- 	Bruce Ricard	 : 	VMware
+- 	Caitlyn Yu	 : 	VMware
+- 	Carson Long	 : 	VMware
+- 	Chloe Hollingsworth	 : 	VMware
+- 	Chris Selzo	 : 	VMware
+- 	Christian Ang	 : 	VMware
+- 	Cibaca Khandelwal	 : 	Atos
+- 	Clay Kauzlaric	 : 	VMware
+- 	Connor Braa	 : 	VMware
+- 	Dan Jahner	 : 	VMware
+- 	Danail Branekov	 : 	SAP
+- 	Daniel Mikusa	 : 	VMware
+- 	Danny Berger	 : 	VMware
+- 	Dave Walter	 : 	VMware
+- 	David McClure	 : 	VMware
+- 	David Stevenson	 : 	VMware
+- 	David Timm	 : 	VMware
+- 	Dennis Leon	 : 	VMware
+- 	Derik Evangelista	 : 	VMware
+- 	Diego Lemos	 : 	VMware
+- 	Dimitar Donchev	 : 	SAP
+- 	Dimitris Karakasilis	 : 	SUSE
+- 	Dimitrov Radoslav	 : 	SAP
+- 	Dominik Froehlich	 : 	SAP
+- 	Dr Nic Williams	 : 	Stark & Wayne
+- 	Edward Xiao	 : 	IBM
+- 	Edwin Xie	 : 	VMware
+- 	Emily Casey	 : 	VMware
+- 	Emily Johnson	 : 	VMware
+- 	Eric Malm	 : 	VMware
+- 	Eric Promislow	 : 	SUSE
+- 	Ernie Billing	 : 	VMware
+- 	Ettore Di Giacinto	 : 	SUSE
+- 	Evelyn Rabil	 : 	VMware
+- 	Fabio Berchtold	 : 	Swisscom
+- 	Felisia Martini	 : 	VMware
+- 	Felix Riegger	 : 	SAP
+- 	Fernando Naranjo	 : 	VMware
+- 	Florian Tack	 : 	SAP
+- 	Forest Eckhardt	 : 	VMware
+- 	Frankie Gallina-Jones	 : 	VMware
+- 	Gareth Smith	 : 	VMware
+- 	Gary A Korhonen	 : 	SUSE
+- 	Gary Liu	 : 	VMware
+- 	Genevieve L'Esperance	 : 	Doximity
+- 	Geoff Franks	 : 	Stark & Wayne
+- 	George Blue	 : 	VMware
+- 	George Gelashvili	 : 	VMware
+- 	Georgi Dankov	 : 	SAP
+- 	Georgi Sabev	 : 	SAP
+- 	Giuseppe Capizzi	 : 	VMware
+- 	Greg Cobb	 : 	VMware
+- 	Gu Bin	 : 	IBM
+- 	Guillaume Berche	 : 	Orange S.A.
+- 	Guillermo Bandrés Catalina	 : 	VMware
+- 	Harsha Nandiwada	 : 	VMware
+- 	He Guimin	 : 	Alibaba
+- 	Ivan Dimitrov	 : 	SAP
+- 	Ivan Kapelyukhin	 : 	SUSE
+- 	Ivan Kasarov	 : 	SAP
+- 	J Russell Boykin	 : 	IBM
+- 	Jacob Schuenke	 : 	VMware
+- 	Jaime Gomes	 : 	SUSE
+- 	Jake Schuenke	 : 	VMware
+- 	James Hunt	 : 	Stark & Wayne
+- 	James Norman	 : 	VMware
+- 	James Palmer	 : 	VMware
+- 	James Pollard	 : 	VMware
+- 	Jamie Monserrate	 : 	VMware
+- 	Jan Dubois	 : 	SUSE
+- 	Jan von Löwenstein	 : 	SAP
+- 	Jane Day	 : 	VMware
+- 	Jaskanwal Pawar	 : 	VMware
+- 	Jatin Naik	 : 	VMware
+- 	Jayesh Kshirsagar	 : 	SAP
+- 	Jeff Bunagan	 : 	HCL Technologies Ltd.
+- 	Jen Spinney	 : 	VMware
+- 	Jenna Goldstrich	 : 	VMware
+- 	Jennifer Spinney	 : 	VMware
+- 	Jeremy Morony	 : 	VMware
+- 	Jesse Weaver	 : 	VMware
+- 	Jimmy Ma	 : 	IBM
+- 	Joe Gee	 : 	VMware
+- 	Johannes Dillmann	 : 	SAP
+- 	John Shahid	 : 	VMware
+- 	Joseph Palermo	 : 	VMware
+- 	Josh Collins	 : 	VMware
+- 	Josh Russett	 : 	VMware
+- 	Josh Zarrabi	 : 	VMware
+- 	Joshua Casey	 : 	VMware
+- 	Joshua Russett	 : 	VMware
+- 	Julian Hjortshoj	 : 	VMware
+- 	Julian Skupnjak	 : 	IBM
+- 	Julz Friedman	 : 	IBM
+- 	Kaiting Chen	 : 	VMware
+- 	Kaitlin Barrer	 : 	VMware
+- 	Kartik Lunkad	 : 	VMware
+- 	Kashyap Vedurmudi	 : 	VMware
+- 	Kauana dos Santos	 : 	VMware
+- 	Kenneth DuMez	 : 	VMware
+- 	Kenneth Lakin	 : 	VMware
+- 	Keshav Sharma	 : 	VMware
+- 	Kevin Ortega	 : 	IBM
+- 	Kevin Rutten	 : 	Stark & Wayne
+- 	Kieron Browne	 : 	VMware
+- 	Kristian Atanasov	 : 	SAP
+- 	Leah Hanson	 : 	VMware
+- 	Lisa Burns	 : 	VMware
+- 	Louie Brann	 : 	Techstars
+- 	Lubron Zhan	 : 	VMware
+- 	Marcela Campo	 : 	VMware
+- 	Marco Nicosia	 : 	VMware
+- 	Marco Voelz	 : 	SAP
+- 	Maria Shaldybin	 : 	VMware
+- 	Mario Manno	 : 	SUSE
+- 	Mario Nitchev	 : 	SAP
+- 	Mark DeLillo	 : 	VMware
+- 	Mark Gangl	 : 	VMware
+- 	Mark Stokan	 : 	VMware
+- 	Mark Yen	 : 	SUSE
+- 	Markus Strehle	 : 	SAP
+- 	Marty Spiewak	 : 	VMware
+- 	Matt Royal	 : 	VMware
+- 	Max Brauer	 : 	VMware
+- 	Max Hufnagel	 : 	VMware
+- 	Maya Rosecrance	 : 	VMware
+- 	Melinda Gutermuth	 : 	VMware
+- 	Merric de Launey	 : 	VMware
+- 	Mia Fryling	 : 	VMware
+- 	Michael Claassen	 : 	Manulife Financial
+- 	Michael Oleske	 : 	VMware
+- 	Miguel Luna	 : 	VMware
+- 	Mikael Manukyan	 : 	VMware
+- 	Miranda Limonczenko	 : 	VMware
+- 	Mona Mohebbi	 : 	VMware
+- 	Morgan Fine	 : 	VMware
+- 	Nadja Conklin	 : 	VMware
+- 	Nat J. Bennett	 : 	VMware
+- 	Neil Hickey	 : 	VMware
+- 	Neil MacDougall	 : 	SUSE
+- 	Nick Webb	 : 	VMware
+- 	Nikolay Valchev	 : 	SAP
+- 	Nitya Dhanushkodi	 : 	HashiCorp
+- 	Omer Bensaadon	 : 	VMware
+- 	Paige Calvert	 : 	VMware
+- 	Paul Harris	 : 	VMware
+- 	Paul Warren	 : 	VMware
+- 	Peter Chen	 : 	VMware
+- 	Peter Stone	 : 	VMware
+- 	Piyali Banerjee	 : 	VMware
+- 	Prabal Sharma	 : 	SUSE
+- 	Preethi Varambally	 : 	VMware
+- 	Preeti Sawant	 : 	IBM
+- 	Ralf Pannemans	 : 	SAP
+- 	Ramon Makkelie	 : 	Stark & Wayne
+- 	Rangel Ivanov	 : 	SAP
+- 	Raymond Xu	 : 	IBM
+- 	Reid Mitchell	 : 	VMware
+- 	Renee Chu	 : 	VMware
+- 	Richard Cox	 : 	SUSE
+- 	Richard Johnson	 : 	VMware
+- 	Robert Sullivan	 : 	VMware
+- 	Ruben Koster	 : 	Stark & Wayne
+- 	Ryan Hall	 : 	VMware
+- 	Ryan Moran	 : 	VMware
+- 	Ryker Reed	 : 	VMware
+- 	Saikiran Yerram	 : 	VMware
+- 	Sakala Venkata Krishna Rohit	 : 	SUSE
+- 	Sam Coward	 : 	VMware
+- 	Samuel Waggoner	 : 	VMware
+- 	Sannidhi Jalukar	 : 	VMware
+- 	Sarah Weinstein	 : 	VMware
+- 	Sebastian Vidrio	 : 	VMware
+- 	Sebastian Vollath	 : 	SUSE
+- 	Seth Boyles	 : 	VMware
+- 	Severine Tymon	 : 	VMware
+- 	Shaan Sapra	 : 	VMware
+- 	Shannon Coen	 : 	VMware
+- 	Shuang Men	 : 	IBM
+- 	Sophie Wigmore	 : 	VMware
+- 	Sridhar Vennela	 : 	VMware
+- 	Stefan Lay	 : 	SAP
+- 	Stefan Wutz	 : 	SAP
+- 	Stephen Levine	 : 	VMware
+- 	Steve Greenberg	 : 	Resilient Scale
+- 	Steve Taylor	 : 	VMware
+- 	Stu Charlton	 : 	VMware
+- 	Subhankar Chattopadhyay	 : 	SAP
+- 	Sunjay Bhatia	 : 	VMware
+- 	Teal Stannard	 : 	VMware
+- 	Thomas Quandt	 : 	evoila GmbH
+- 	Thulio Ferraz Assis	 : 	SUSE
+- 	Tim Downey	 : 	VMware
+- 	Tim Hardeck	 : 	SUSE
+- 	Tim Hausler	 : 	VMware
+- 	Tim Hitchener	 : 	VMware
+- 	Timothy Downey	 : 	VMware
+- 	Tobias Schug	 : 	Microsoft Corporation
+- 	Toby Lorne	 : 	NHS
+- 	Travis Patterson	 : 	VMware
+- 	Troy Topnik	 : 	SUSE
+- 	Tushar Aggarwal	 : 	VMware
+- 	Ulrich Kramer	 : 	SAP
+- 	Urse Searle	 : 	VMware
+-   Valentin Velkov  :  SAP
+- 	Valeria Perticara	 : 	IBM
+- 	Victor Cuadrado Juan	 : 	SUSE
+- 	Victoria Henry	 : 	VMware
+- 	Vinayendraswamy Brahmandabheri	 : 	SAP
+- 	Visarg Soneji	 : 	SAP
+- 	Vivek Anand T Kallampally	 : 	SAP
+- 	Vlad Iovanov	 : 	SUSE
+- 	Weyman Fung	 : 	VMware
+- 	Will Pragnell	 : 	VMware
+- 	Yaron Parasol	 : 	VMware
+- 	Yulia Nedyalkova	 : 	SAP
+-   Philipp Thun	 : 	SAP
+-   Andy Paine	 : 	EngineerBetter
+-   Patrick Lowin	 : 	SAP
+-   Jens Huesken	 : 	SAP
+-   Stephan Merker	 : 	SAP
+-   Johannes Haaß	 : 	SAP
+-   Marc Misoch	 : 	SAP
+-   Mo Sahihi Benis	 : 	SAP
+-   Kai Hofstetter	 : 	SAP
+-   Florian Nachtigall	 : 	SAP
+-   Marc Paquette	 : 	VMware
+-   Sven Krieger	 : 	SAP
+-   Jovan Kostovski	 : 	SAP
+-   Norman Abramovitz	 : 	Stark & Wayne
+-   Winna Bridgewater	 : 	VMware
+-   Silvestre Zabala	 : 	SAP
+-   Sven Kohlhaas	 : 	SAP
+-   Peter Burkholder	 : 	Self (Unaffiliated)
+-   Simon Moser	 : 	IBM
+-   Angela Chin	 : 	VMware
+-   Florian Braun	 : 	SAP
