@@ -20,7 +20,7 @@ This guide exists to serve as a guide to this year's election process.
 | -------------------------- | ------------------------ |
 | May 18                   | Announcement of Election (at least 4 weeks before results) |
 | May 18 through June 2  | Candidate nomination period (at least 2 weeks long and ending 2 weeks before results) |
-| June 2     | Election Begins via email ballots (alow 2 work days to prepare election system) |
+| June 2     | Election Begins (alow 2 work days to prepare election system) |
 | June 17     | Election Closes (at least 2 weeks after election begins) |
 | *June 22*   | Announcement of Results (at least 2 work days after election ends) |
 
@@ -60,14 +60,14 @@ nomination.
 
 The 2022 TOC election will be conducted using a [CFF-managed instance]
 (https://elections.cloudfoundry.org) of [Elekto](https://elekto.dev), a CNCF infrastructure project
-that implements Condorcet ranked-choice voting using the Schulze method. Elekto uses GitHub OAuth
-as its identity and authentication system, which better matches how members interact with the Cloud
+that implements Condorcet ranked-choice voting using the Schulze method. Elekto relies on GitHub
+for user identity and authentication, which better matches how members interact with the Cloud
 Foundry community on a day-to-day basis than the email identity that the [Condorcet Internet Voting
 Service](https://civs1.civs.us/) requires.
 
 If Elekto fails to recognize you as eligible to vote in this election even though you believe you
 should be, please file a voting exception request [within the Elekto app]
-(https://elections.cloudfoundry.org/app/elections/2022-TOC/exception) or [via an issue on the
+(https://elections.cloudfoundry.org/app/elections/2022---TOC/exception) or [via an issue on the
 community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-toc-election.md&title=Request+to+be+an+elector+for+TOC+election).
 
 Once the official election period starts, you will be able to rank the candidates in your preferred
@@ -85,7 +85,7 @@ aggregate form.
 The newly elected body will be announced via cf-dev@lists.cloudfoundry.org on 22 Jun, 2022.
 
 
-Following the announcement, the raw voting results and winners will be published.
+Following the announcement, the voting results and winners will be published.
 
 
 ## Nominees
