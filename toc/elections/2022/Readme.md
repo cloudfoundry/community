@@ -20,7 +20,7 @@ This guide exists to serve as a guide to this year's election process.
 | -------------------------- | ------------------------ |
 | May 18                   | Announcement of Election (at least 4 weeks before results) |
 | May 18 through June 2  | Candidate nomination period (at least 2 weeks long and ending 2 weeks before results) |
-| June 2     | Election Begins via email ballots (alow 2 work days to prepare election system) |
+| June 2     | Election Begins via Elekto (alow 2 work days to prepare election system) |
 | June 17     | Election Closes (at least 2 weeks after election begins) |
 | *June 22*   | Announcement of Results (at least 2 work days after election ends) |
 
@@ -58,12 +58,9 @@ nomination.
 ## Voting Process
 
 
-The election will be conducted using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking 
-on [CIVS](http://civs.cs.cornell.edu/) using the Schulze method. 
+The election will be conducted using [Elekto](https://elekto.dev/), a voting application hosted by the Cloud Native Computing Foundation. 
 
-
-Voters will receive an email with a ballot link. Voters will have until the end of the election cycle 
-to submit their ballot.
+Please review voting eligibility requirements [here](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md). All eligible voters will be able to vote after authenticating with their GitHub login, once the election begins. 
 
 
 ## Election Results
@@ -72,7 +69,7 @@ to submit their ballot.
 The newly elected body will be announced via cf-dev@lists.cloudfoundry.org on 22 Jun, 2022.
 
 
-Following the announcement, the raw voting results and winners will be published.
+Following the announcement, the voting results and winners will be published.
 
 
 ## Nominees
