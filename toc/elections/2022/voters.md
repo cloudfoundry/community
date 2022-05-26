@@ -1,0 +1,516 @@
+# 2022 Eligible Voters for the TOC Election
+
+See the [README](README.md) for information on how this list is populated.
+Eligible voters that are not shown are encouraged to have their name added by 
+[submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-toc-election.md&title=Request+to+be+an+elector+for+TOC+election).
+
+---
+
+## Voters List
+
+- 	Aadesh Misra :	SAP
+- 	Aaron Huber	: Intel Corporation
+-   Abhishek Anand	
+-   Abil Dermendzhiev	: SAP
+-   Adam A. Zerella	: Parity Technologies
+-   Adam Zhang	: VMware, Inc.
+-   Adrian : Swisscom
+-   Akhilesh Appana	: Opentext, Inc.
+-   Akihiro Kitada	: VMware, Inc.
+-   Akira Wong	: VMware, Inc.
+-   Alan Moran	: SAP
+-   Albert Vaca : Cintora	
+-   Aleksa Sarai	: SUSE LLC
+-   Aleksandar Petkov	
+-   Alex Lam	: Manulife Financial
+-   Alex Rocha	: VMware, Inc.
+-   Alexander Berezovsky	: VMware, Inc.
+-   Alexander Lais	: SAP
+-   Alexander Nicke	: SAP
+-   Alexander Standke	: Shopify Inc.
+-   Alexander Tsvetkov	: SAP
+-   Allon Murienik	
+-   Amelia Castilla	: VMware, Inc.
+-   Amelia Downs	: VMware, Inc.
+-   Amin Jamali	: VMware, Inc.
+-   An Qin	: International Business Machines Corporation
+-   Anamul Haq Bappy : International Business Machines Corporation
+-   Anand Jayaram	
+-   Anand Mohan Tumuluri	: Philips
+-   Andrea Zucchini	: VMware, Inc.
+-   Andreas de Pretis	
+-   Andreas Koppenhöfer	: Schwarz IT GmbH & Co. KG
+-   Andreas Kupries	: SUSE LLC
+-   Andrei Arlou
+-   Andrei Krasnitski	: Altoros
+-   Andrei Muravev	
+-   Andrew Costa	: VMware, Inc.
+-   Andrew Crump	: VMware, Inc.
+-   Andrew Edgar	: International Business Machines Corporation
+-   Andrew Garner	: VMware, Inc.
+-   Andrew Lunde	: SAP
+-   Andrew Meyer	: VMware, Inc.
+-   Andrew Stakhov	: VMware, Inc.
+-   Andrew Wittrock	: VMware, Inc.
+-   Andrija Sagić	: Milutin Bojic National Library
+-   Andy Brown	: VMware, Inc.
+-   Andy Chase	: US Environmental Protection Agency (EPA)
+-   Andy Hunt	: Goverment Digital Service
+-   Andy Lo-A-Foe	: Philips
+-   Andy Paine	: EngineerBetter Ltd
+-   Angela Chin	: VMware, Inc.
+-   Anish Patel	: VMware, Inc.
+-   Ankur Sethi	: Amivero LLC
+-   Anoop Joseph Babu	: SAP
+-   Anthony Emengo	: VMware, Inc.
+-   Antony Leons	
+-   Aram Price	: VMware, Inc.
+-   aristosvo	
+-   Arjun Sreedharan	: VMware, Inc.
+-   Armondo Sayles	
+-   Arsen Martirosyan	: VMware, Inc.
+-   Arthur Halet	: Orange SA
+-   Ashwin Krishna	: VMware, Inc.
+-   Axel Siebenborn	: SAP
+-   Baris Cubukcuoglu	: mimacom management ag
+-   Belinda Liu	: VMware, Inc.
+-   Ben Berry	: US General Services Administration
+-   Ben Bodenmiller	: Boeing
+-   Ben Ross	: VMware, Inc.
+-   Benjamin Fuller	: VMware, Inc.
+-   Benjamin Gandon	: Gstack.io
+-   Benjamin Guttmann	: anynines GmbH
+-   Benjamin Wang	
+-   Bernd Goetz	
+-   Bernd Krannich	: SAP
+-   Beyhan Veli	: SAP
+-   Bharath Sekar	: Guidewire Software
+-   Blaine Forbush	: The Church of Jesus Christ of Latter Day Saints
+-   Blake Sherwood	: Smarsh
+-   Bmen
+-   Boyan Velinov	: SAP
+-   Brad Cooper	: Eastern Research Group, Inc
+-   Brandon Potts	: VMware, Inc.
+-   Brandon Roberson	: VMware, Inc.
+-   Brayan Henao	: VMware, Inc.
+-   Bret Mogilefsky	: US General Services Administration
+-   Brian Cunnie	: VMware, Inc.
+-   Brian Upton	: VMware, Inc.
+-   Bruce Ricard	: Pivotal Software, Inc.
+-   Bruno Grazioli	: Swisscom
+-   Bryan Huynh	
+-   Cai Cooper	: chakra
+-   Caitlyn Yu	: VMware, Inc.
+-   Carlos Iriarte	: VMware, Inc.
+-   Carson Long	: VMware, Inc.
+-   Charlie Baum	: Chase
+-   chenrui	
+-   Chip Childers	: Cloud Foundry Foundation
+-   Chris Clark	: Cloud Foundry Foundation
+-   Chris Lyons	: Accenture Global Solutions Limited
+-   Chris McGowan	: Stark & Wayne LLC
+-   Chris Sells	: VMware, Inc.
+-   Christof Weickhardt	: Swisscom (Switzerland) Ltd
+-   Christoph Langer	: SAP
+-   Christopher Hunter	: VMware, Inc.
+-   Christopher Martinez	: Intel Corporation
+-   Christopher Wong	: Pivotal Software, Inc.
+-   Claire Tinati	: VMware, Inc.
+-   Clint Yoshimura	: VMware, Inc.
+-   Colin Shield	: VMware, Inc.
+-   Colin Simmons	: EngineerBetter Ltd
+-   Craig Andrews	
+-   Craig J Smith	: Dell Technologies
+-   Cristhian Peña	: VMware, Inc.
+-   Danail Branekov	: SAP
+-   Daniel Felipe Ochoa	: VMware, Inc.
+-   Daniel Jones	: EngineerBetter Ltd
+-   Daniel Lynch	: VMware, Inc.
+-   Daniel Mikusa	: VMware, Inc.
+-   Danny Faught	: VMware, Inc.
+-   darshan
+-   Dave Walter	: VMware, Inc.
+-   David Alvarado	: VMware, Inc.
+-   David Andino	: Bosch
+-   David Dobmeier	: Stark & Wayne LLC
+-   David Marmugi	: Comcast Cable Communications, LLC
+-   David Mehi	: Google LLC
+-   David O'Sullivan	: VMware, Inc.
+-   David Page	: VMware, Inc.
+-   David Sabeti  : VMware, Inc.
+-   David Sharp	: VMware, Inc.
+-   David Stevenson	: VMware, Inc.
+-   David Timm	: VMware, Inc.
+-   davincizhao
+-   Denys Vitali	
+-   Derek Griffiths
+-   Derik Evangelista	: Raintank, Inc. – Grafana Labs
+-   Diego Lemos	: VMware, Inc.
+-   Dishant Pandya
+-   Jane Day	: VMware, Inc.
+-   Dominic Roberts	: VMware, Inc.
+-   Dominik Froehlich	: SAP
+-   Donatello Carriero	: International Business Machines Corporation
+-   Dr. Nic Williams	: Stark & Wayne LLC
+-   Eddy Guo	: SAP
+-   Elena Sharma	: VMware, Inc.
+-   Elliott Shanks	: VMware, Inc.
+-   Emily Johnson	: VMware, Inc.
+-   Enrico Kern	
+-   Eric Malm	: VMware, Inc.
+-   Eugene Titarchuk	: SkySoft.tech
+-   Evelyn Rabil	: VMware, Inc.
+-   Fabian Jungwirth	: dmTECH GmbH
+-   Fabio Berchtold	: Swisscom
+-   Felisia Martini	: VMware, Inc.
+-   Felix Hambrecht	: SAP
+-   Felix Riegger	: SAP
+-   Fernando Naranjo Talavera	: VMware, Inc.
+-   fisherxu	
+-   Florian Arthofer	: Dynatrace LLC
+-   Florian Braun	: SAP
+-   Florian Nachtigall	: SAP
+-   Florian Tack	: SAP
+-   Fopa Léon Constantin	: ACOSS
+-   Forest Eckhardt	: VMware, Inc.
+-   Frankie Gallina-Jones	: VMware, Inc.
+-   Galen Hammond
+-   Gareth Evans	: SAP
+-   Gareth Smith	: VMware, Inc.
+-   Garrett Folks	: Easy Dynamics Corporation
+-   Gary A Korhonen	: SUSE LLC
+-   Gary Liu	: VMware, Inc.
+-   Geoff Franks	: VMware, Inc.
+-   George Blue	: VMware, Inc.
+-   George Gelashvili	: VMware, Inc.
+-   George Smith	: Altoros
+-   Georgi Sabev	: SAP
+-   Gerhard Muth
+-   Ghata Khasakia	: Guidewire Software
+-   Gianluca Panzuto	: International Business Machines Corporation
+-   Gideon Goldberg	: Goverment Digital Service
+-   Giuseppe Capizzi	: VMware, Inc.
+-   Glyn Normington	
+-   Gowrisankar M	: SAP
+-   Greg Cobb	: VMware, Inc.
+-   Gregor Wolf
+-   Grigor Ivanov
+-   Guillaume Berche	: Orange SA
+-   Guillermo Bandrés : Catalina	VMware, Inc.
+-   Hananiel Sarella	: VMware, Inc.
+-   Hans-Joachim Kliemeck
+-   Harry Metske	: Rabobank
+-   He Guimin	: Alibaba.com
+-   Héctor José Calderón Pachón	: VMware, Inc.
+-   Hector Rivas Gandara	: Keymon
+-   Hendrik Frenzel	: Webfleet Solutions
+-   Henry Hippolyte	: Datadog, Inc
+-   Hongchol Sinn	: VMware, Inc.
+-   Hovhannes Manukyan	: VMware, Inc.
+-   Iain Findlay	: VMware, Inc.
+-   Ioannis Tsouvalas	: Stark & Wayne LLC
+-   Ivan Dimitrov	: SAP
+-   Ivan Hristov	: SAP
+-   Ivan Kasarov	: SAP
+-   Ivan Mijailovic	: Harness Inc.
+-   J Long	: SAP
+-   J Russell Boykin	: International Business Machines Corporation
+-   Jacek Szlachta	: Sullivan & Stanley Ltd
+-   James Cleveland	: EngineerBetter Ltd
+-   James Hunt	: Stark & Wayne LLC
+-   James Norman	: VMware, Inc.
+-   Jamie van Dyke
+-   Rukenshia
+-   Jan Dubois	: SUSE LLC
+-   Jan Sievers	: SAP
+-   Jan von Lowenstein	: SAP
+-   Jani Kraner	: Goverment Digital Service
+-   Jaskanwal Pawar	: VMware, Inc.
+-   Jason Zhen	: Broadcom Corporation
+-   Jatin Naik	: VMware, Inc.
+-   Jayesh Kshirsagar	: SAP
+-   Jean-Christophe Losapio	: Orange SA
+-   Jean-François Hovinne	: European Commission
+-   Jeff Bunagan	: HCL Technologies Ltd.
+-   Jenna Goldstrich	: VMware, Inc.
+-   Jerry Belmonte	: VMware, Inc.
+-   Jesse Thomas Alford	: VMware, Inc.
+-   Jesse Weaver	: VMware, Inc.
+-   Jhonathan Aristizabal	: VMware, Inc.
+-   Jim Conner
+-   Jim McStanton	: Garmin International, Inc.
+-   Jim Myers	: VMware, Inc.
+-   Jintu Sebastian	: SAP
+-   Jochen Dueckminor	: SAP
+-   Jochen Ehret : SAP
+-   Johannes Haaß	: SAP
+-   Jon Price	: Intel Corporation
+-   Jörg Weisbarth	: SAP
+-   Jorge Simao	
+-   Josef Hoerandtner	: Springer Nature
+-   Joseph Palermo	: VMware, Inc.
+-   Josh Gainey	: VMware, Inc.
+-   Josh Russett	: VMware, Inc.
+-   Jovan Kostovski	: SAP
+-   Juan Diego Gonzalez	: VMware, Inc.
+-   Juansebastian Arias	
+-   Julian Hjortshoj	: VMware, Inc
+-   Jürgen Walter	: SAP
+-   Justin Webster	: Guide-Rails – Calculi Corporation
+-   Kai Hofstetter	: SAP
+-   Karsten Schnitter	: SAP
+-   Katharina Przybili	: SAP
+-   Kei Yamazaki	: NTT Communications Corporation
+-   kelvin_j_li	: Manulife Financial
+-   Kenneth Lakin	: VMware, Inc.
+-   Kevin Cross	: SAP
+-   Kevin Markwardt	: VMware, Inc.
+-   Kevin Ortega	: International Business Machines Corporation
+-   Kevin Zhang	: SAP
+-   Keyli Iliev	: SAP
+-   Khan, Arsalan	: SAP
+-   Kieron Browne	: VMware, Inc.
+-   Kim Bassett	: VMware, Inc.
+-   Kira Combs Boyle	: VMware, Inc.
+-   Klaas van Schelven	: Politie Nederland
+-   Konstantin Kiess	: VMware, Inc.
+-   Kristian Atanasov	: SAP
+-   Kristian Kraljic	
+-   Krzysztof Marciniak	: International Business Machines Corporation
+-   Kyle Egbert	: Intel Corporation
+-   Kyle Ong	: VMware, Inc.
+-   kyrian
+-   Lee Porte	: Goverment Digital Service
+-   Lin Ling	: Guidewire Software
+-   Logan McDonald	: 18F
+-   Long Nguyen	: VMware, Inc.
+-   Lotfi Kecir
+-   Luiz Omori	
+-   M Rizwan Shaik	: SAP
+-   Mahantesh Karadigudda
+-   Maic Siemering	: Volkswagen Digital Lab
+-   Manoj Tyagi	
+-   Manuel Alba	: VMware, Inc.
+-   Marc Bischof	: Swisscom (Switzerland) Ltd
+-   Marc Misoch	: SAP
+-   Marc Paquette	: VMware, Inc.
+-   Marcela Campo	: VMware, Inc.
+-   Maria Camila Londono	: VMware, Inc.
+-   Maria Dacheva	: SAP
+-   Maria Shaldybin	: VMware, Inc.
+-   Mario Kukutsov	: SAP
+-   Mario Manno	: SUSE LLC
+-   Mario Nitchev	: SAP
+-   Marius Munteanu	: Swisscom
+-   Marius Obert	: SAP
+-   Mariusz Olejnik	: Infinite
+-   Mark Houliston	: VMware, Inc.
+-   Mark Stokan	: VMware, Inc.
+-   Mark Yen	: SUSE LLC
+-   Markus Strehle	: SAP
+-   Martin Janser	
+-   Martin Pfeifer	: dmTECH GmbH
+-   martin-d-aleksandrov	: SAP
+-   Mathias Bogaert	
+-   Mathieu Massé
+-   9numbernine9
+-   Matt Royal	: VMware, Inc.
+-   Matteias Collet	: Bluewin
+-   Matthew Kocher	: VMware, Inc.
+-   Matthew McNew	: VMware, Inc.
+-   Matthias Vach	: SAP
+-   Matthias Winzeler	: Swisscom
+-   Max Hufnagel	: VMware, Inc.
+-   Max Soest	: SAP
+-   Maxim Hansen	: Capgemini
+-   Maxim Mavrudiev	: Schwarz IT Bulgaria
+-   Maximilian Moehl	: SAP
+-   Maximilian Möhl	: SAP
+-   Maya Rosecrance	: VMware, Inc.
+-   Melinda Jeffs Gutermuth	: VMware, Inc.
+-   Meri Yeghiazaryan	: VMware, Inc.
+-   Merric de Launey	: VMware, Inc.
+-   Michael Both	: anynines GmbH
+-   Michael C. Kunkel	: Jefferson Lab
+-   Michael Claassen	: Manulife Financial
+-   Michael Haas	: SAP
+-   Michael Mayr	: Dynatrace LLC
+-   Michael McCaskill	: Cengage
+-   Michael Mokrysz	: SAP
+-   Michael Mokrysz	: Cloudflare, Inc
+-   Michael Oleske	: VMware, Inc.
+-   Michael Zanggl
+-   Mikulas Strelecky	: InterWay
+-   Milko Todorov	: SAP
+-   Mirah Gary	: VMware, Inc.
+-   Miranda Limonczenko	: VMware, Inc.
+-   Mona Mohebbi	: VMware, Inc.
+-   munireddy
+-   NagaArjun Nagarajan	
+-   Naveen Penumala
+-   Naveen Srinivasan
+-   Neil Hickey	: VMware, Inc.
+-   Nicholas Wang	
+-   Nick Burrett	
+-   Nick Pratley	: Internet Association of Australia Ltd
+-   Nico Schmoigl
+-   Nikkorenz Clarin	: International Business Machines Corporation
+-   Nilesh	
+-   Nitin Padalia	: Adobe Inc.
+-   Norman Abramovitz	: Stark & Wayne LLC
+-   Odidev	: PureSoftware Limited
+-   Oliver Mautschke	: SAP
+-   Olivier Grand	: Orange SA
+-   Pablo Rodas	: VMware, Inc.
+-   Paige Calvert	: VMware, Inc.
+-   Pallav Ghose	
+-   Patrick Lowin	: SAP
+-   Paul Bizouard	
+-   Paul Frischknecht	
+-   Paul Gilligan
+-   Paul Nikonowicz	: VMware, Inc.
+-   Paul Spinrad	: VMware, Inc.
+-   Paul Warren	: VMware, Inc.
+-   Pavel Lokhmakov	
+-   Peter Burkholder	: 18F
+-   Peter Chen	: VMware, Inc.
+-   Peter Ellis Jones
+-   Peter Jones	SAP
+-   Peter Levine	: VMware, Inc.
+-   Peter Turner	: HCL Technologies Ltd.
+-   Phil Corbett	: VMware, Inc.
+-   Philip Potter	: Goverment Digital Service
+-   Philipp Stehle	: SAP
+-   Philipp Thun	: SAP
+-   Pieter Janssens	vDeloitte Consulting LLP
+-   Piotr Hlawski	: SAP
+-   Piotr Komborski	: Goverment Digital Service
+-   Plamen Doychev	: SAP
+-   Pooja Sharma	: SAP
+-   Preethi Varambally	: VMware, Inc.
+-   Preeti Sawant	: International Business Machines Corporation
+-   Qing Chi	: VMware, Inc.
+-   Quentin Gliech
+-   Radoslav Dimitrov	: SAP
+-   Rajan Agaskar	vVMware, Inc.
+-   Ram Iyengar	: Cloud Foundry Foundation
+-   Ramon Makkelie	: Stark & Wayne LLC
+-   Rangel Ivanov	: SAP
+-   Raul Melo	vRabobank
+-   Ravi Singh	: Mendix, Inc.
+-   Raymond Xu	: International Business Machines Corporation
+-   Rebecca Roberts	vVMware, Inc.
+-   Rene Lehmann	: Swisscom
+-   Renee Chu	: VMware, Inc.
+-   Richard Cox	: SUSE LLC
+-   Richard Pryce	: EngineerBetter Ltd
+-   Richard Towers	: Goverment Digital Service
+-   Riddhi Chheda
+-   Rifa Achrinza	: AppRExp
+-   Roamer	: Opentext, Inc.
+-   Rob Dimsdale-Zucker	: VMware, Inc.
+-   Robert Boyd	
+-   Robert Gogolok	: anynines GmbH
+-   Robert Pająk	
+-   Robert Scott
+-   Robert Summers	: Armakuni
+-   Robin Watkins
+-   Romain Dartigues	: Meritis Group
+-   Roni Siegel	: Sealights Technologies Ltd
+-   Ruben Koster	: VMware, Inc.
+-   Rupam Chakraborty	
+-   Ryan Ahearn	: 18F
+-   Ryan Dens	: Traceable
+-   Ryan Grenz	
+-   Ryan Moran	: VMware, Inc.
+-   Ryan Wittrup	: VMware, Inc.
+-   ryenus
+-   Ryker Reed	: VMware, Inc.
+-   Sam Colson	vEngineerBetter Ltd
+-   Samia Nneji	: VMware, Inc.
+-   Samuel Crudge	: Cyber-Duck Ltd
+-   Sarah Weinstein	: Binti
+-   Sasmito Adibowo	
+-   Saud Fazil Khan	: SAP
+-   Scott Frederick	: VMware, Inc.
+-   Sebastiaan van Stijn	: Docker, Inc.
+-   Sebastian Gil Rodriguez	: VMware, Inc.
+-   Sebastian Max Dusch	: Microsoft Corporation
+-   Sebastian Ries	: Siemens AG
+-   Seth Boyles	: VMware, Inc.
+-   Shaan Sapra	: VMware, Inc.
+-   Shanil Shah	
+-   Shilpa Chandrashekara	: SAP
+-   Shu	
+-   Shwetha Gururaj	: VMware, Inc.
+-   Siddhartha Nepal
+-   Silvestre Zabala	: SAP
+-   Simon Moser	International Business Machines Corporation
+-   Simon Tremblay	
+-   Soha-Albaghdady	: SAP
+-   Sophie Wigmore	: VMware, Inc.
+-   Sourabh Sarvotham Parkala	: SAP
+-   Stefan Botzenhart	
+-   Stefan Lay	: SAP
+-   Stefan Mayr
+-   Stefan Wutz	: SAP
+-   Stephan Klevenz	: SAP
+-   Stephan Merker	: SAP
+-   Steve Greenberg	: Resilient Scale
+-   Steven Taylor	: VMware, Inc.
+-   Stijn Vet	: OpenValue Amsterdam B.V.
+-   Stu Charlton	: VMware, Inc.
+-   Subhankar Chattopadhyay	: SAP
+-   Susanne Salzmann 	: SAP
+-   Sven Kohlhaas	: SAP
+-   Sven Krieger	: SAP
+-   Sven Schmidt	: anynines GmbH
+-   Swati Jain	: SAP
+-   Tamara Boehm	: SAP
+-   Tanguturu Parasuram	: Siemens AG
+-   Teal Stannard	: VMware, Inc.
+-   Thomas Bechtold	: Canonical Group Limited
+-   Thomas Dufresne	
+-   Thomas Heinze	: SAP
+-   Thomas Kaltenbach	: SAP
+-   Tim Downey	: VMware, Inc.
+-   Tim Gerlach	: SAP
+-   Tim Hitchener	: VMware, Inc.
+-   Tobias Schultze
+-   Tom Godkin	: EngineerBetter Ltd
+-   Tom Kiemes	: SAP
+-   Tom Viehman	: VMware, Inc.
+-   Tomasz Kuryek	: SAP
+-   Torsten Luh	: SAP
+-   Travis Patterson	: Raintank, Inc. – Grafana Labs
+-   Triguna Mutuguppe Sripathi	: Philips
+-   Tushar Velingkar
+-   Vedran Pavic	
+-   Velizar Kalapov	: SAP
+-   Victor Herrero Otal	: SAP
+-   Victoria Henry	: World Wide Technology, Inc.
+-   Vinayendraswamy Brahmandabheri	: SAP
+-   vinioskii (vinayak)	
+-   Visarg Soneji	: SAP
+-   Vitaliy Orbidan	: Comcast Cable Communications, LLC (Xfinity)
+-   Vivek Anand	: SAP
+-   Vlad Iovanov	: SUSE LLC
+-   wdesplas	: Orange SA
+-   Wei Quan	: SAP
+-   Weyman Fung	: VMware, Inc.
+-   Will Gant	: EngineerBetter Ltd
+-   William Fish	
+-   Xavier Marcelet	: Orange SA
+-   Xiujuan Xiang	: VMware, Inc.
+-   Xueyuan Mei	
+-   Yang Qi	: International Business Machines Corporation
+-   Yansheng Wei	: MasterCard Incorporated
+-   YanzhaoLi	: VMware, Inc.
+-   Yechiel Kalmenson	: VMware, Inc.
+-   Yiming Li	: VMware, Inc.
+-   Ying Liu	: International Business Machines Corporation
+-   Yordan Ugrinov	: VMware, Inc.
+-   YunLemon	
+-   Yunping Zheng	: VMware, Inc.
+-   Zane Dufour	: Aspiration
+-   Zoltan Maradics	: Siemens AG
