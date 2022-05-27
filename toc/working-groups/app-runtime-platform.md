@@ -113,6 +113,8 @@ areas:
 
 - name: Docs
   approvers:
+  - name: Max Hufnagel
+    github: animatedmax
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
