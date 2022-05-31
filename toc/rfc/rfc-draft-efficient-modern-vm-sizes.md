@@ -37,7 +37,7 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | bosh | `Standard_D1_v2` | `Standard_B2s` | **28% cheaper** ($0.0570 vs $0.0416) | Adds bursting, stop using very old Dv2 series |
 | jumpbox | `Standard_D1_v2` | `Standard_B1s` | **82% cheaper** ($0.0570 vs $0.0104) |  |
 | minimal | `Standard_F1s` | `Standard_B1ms` | **58% cheaper** ($0.0497 vs $0.0207) | Adds bursting, stop using very old Fv1 series |
