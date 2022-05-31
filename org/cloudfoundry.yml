@@ -3829,6 +3829,7 @@ orgs:
         - bosh-admin-bot
         privacy: closed
         repos:
+          bbl-state-resource: admin
           bosh: admin
           bosh-acceptance-tests: admin
           bosh-agent: admin
@@ -3837,6 +3838,7 @@ orgs:
           bosh-aws-light-stemcell-builder: admin
           bosh-azure-cpi-release: admin
           bosh-bbl-ci-envs: admin
+          bosh-bootloader: admin
           bosh-cli: admin
           bosh-compiled-releases-index: admin
           bosh-cpi-environments: admin
@@ -3866,9 +3868,11 @@ orgs:
           config-server: admin
           config-server-release: admin
           docs-bosh: admin
+          exemplar-release: admin
           gofileutils: admin
           gosigar: admin
           homebrew-tap: write
+          jumpbox-deployment: admin
           os-conf-release: admin
           socks5-proxy: admin
           syslog-release: admin
