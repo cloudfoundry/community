@@ -30,7 +30,7 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 | --- | --- | --- |
 | bosh | bosh | A VM that MUST have at least 4 GB of memory and 1 CPU. The CPU MAY be burstable, since the director is often idle. Since UAA and/or credhub are common OpsFiles that add significant memory, the VM MAY default to 8GB of memory when cost effective |
 | jumpbox | jumpbox | A minimal VM with at least 1GB of memory and 1 CPU, SHOULD be burstable |
-| cf | minimal | A minimal VM that SHOULD have 1GB-2GB of memory and 1 CPU, SHOULD be burstable |
+| cf | minimal | A minimal VM that SHOULD have 2GB+ of memory and 1+ CPU, SHOULD be burstable |
 | cf | small | A default VM size for larger processes with 4GB-8GB of memory and 1-2 CPU, SHOULD NOT be burstable |
 | cf | small-highmem | A default app running VM size that SHOULD have 16GB+ of memory and 2 CPUs, MAY be burstable since app workloads can be burstable. These SHOULD have a higher memory-to-CPU ratio to optimize cost and fit more applications per Diego Cell. |
 
