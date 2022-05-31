@@ -214,7 +214,9 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1) If the number of candidates is equal to or less than the number of TOC seats available to be elected, the candidates shall be approved after the nomination period has closed.
         
-        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking on [CIVS](http://civs.cs.cornell.edu/) using the Schulze method.
+        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking using the Schulze method.
+
+        -   (3) Elections may be run either via the [Condorcet Internet Voting Service](https://civs1.civs.us/) or via a deployment of [Elekto](https://elekto.dev/) administered by the CFF staff.
 
 -   f)  TOC Member Resignations or Removal
 
