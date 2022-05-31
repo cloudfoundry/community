@@ -1,5 +1,5 @@
 ---
-voters: 
+eligible_voters: 
   - 46bit
   - a-b
   - ab-pivot
