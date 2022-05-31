@@ -1,16 +1,20 @@
 --- 
 name: 2022 Cloud Foundry Foundation TOC election
-start_datetime: 2021-06-02 23:00:00
-end_datetime: 2021-06-17 23:59:00
+start_datetime: 2021-06-03 06:00:00
+end_datetime: 2021-06-18 06:59:00
 no_winners: 3
 allow_no_opinion: True
 delete_after: True
 show_candidate_fields:
   - employer
+  - github
+  - slack
 election_officers:
   - christopherclark
   - ramiyengar
   - sgreenberg
+  - emalm
+  - stephanme
 eligibility: All contributors with more than 25 contributions in the past year are eligible to vote
 exception_descriptions:
-exceptions_due: 2021-06-14 23:59:00
+exceptions_due: 2021-06-15 06:00:00
