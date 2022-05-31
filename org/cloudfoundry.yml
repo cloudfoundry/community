@@ -3171,6 +3171,7 @@ orgs:
         maintainers:
         - ameowlia
         members:
+        - animatedmax
         - Benjamintf1
         - Gerg
         - acrmp
@@ -3418,8 +3419,10 @@ orgs:
           App Runtime Platform WG Docs Reviewers:
             members:
             - geofffranks
+            - animatedmax
           App Runtime Platform WG Docs:
-            members: []
+            members:
+            - animatedmax
             privacy: closed
             repos:
               docs-book-cloudfoundry: write
