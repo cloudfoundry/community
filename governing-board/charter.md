@@ -196,7 +196,9 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1)  Current TOC members, Working Group Leads, and the Cloud Foundry community members who meet requirements, for at least 3 months immediately preceding the voting, for an Approver, a Working Group Technical Lead, or a Working Group Execution Lead as defined in [ROLES.md](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md).
         
-        -   (2)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
+        -   (2)  If a community member is nominated as a candidate but does not meet these requirements, they may petition the TOC for eligibility. In a case where the TOC declines an eligibility request, the requestor may appeal that decision to the Governing Board.
+
+        -   (3)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
 
     -   ii) TOC Voter Eligibility
 
