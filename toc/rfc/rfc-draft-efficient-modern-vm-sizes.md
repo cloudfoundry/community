@@ -40,6 +40,7 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 | cf | small-highmem | A default app running VM size that SHOULD have 16GB+ of memory and 2 CPUs, MAY be burstable since app workloads can be burstable. These SHOULD have a higher memory-to-CPU ratio to optimize cost and fit more applications per Diego Cell. |
 
 ### Amazon Web Services VM Mapping
+Switch all storage from `gp2` to `gp3` for a X% cost savings on disks.
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
@@ -65,6 +66,7 @@ Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
 A default BBL+CF-D installation would now cost $1005/mo instead of $3355/mo, for a savings of 70%!
 
 ### Google Compute Cloud VM Mapping
+Switch all storage from `pd-ssd` to `pd-balanced` for a **41% cost savings** on disks.
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
@@ -75,3 +77,7 @@ A default BBL+CF-D installation would now cost $1005/mo instead of $3355/mo, for
 | small-highmem | `n1-highmem-4` | `e2-highmem-2` | **62% cheaper** ($0.236606 vs $0.09039) | Switch from 26GB RAM to 16GB RAM |
 
 A default BBL+CF-D installation would now cost $780/mo instead of $1742/mo, for a savings of 55%!
+
+### Optimizing Concourse Deployments
+
+Default concourse instances deployed by BOSH use only the `default` VM type for both ATC and workers. This VM type is likely in use for a variety of activities, and is loosely defined as 1-2 non-bustable CPUs with 4-8GB of RAM. These VM types are probably a poor match for concourse workers, especially the 4GB variants, and we expect that most concourse deployments optimize this configuration to find the best worker types. No significant cost savings exist for this VM type since most IaaS no longer offer a 4GB VM without also including a burstable CPU.
