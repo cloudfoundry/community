@@ -38,9 +38,10 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 | cf | minimal | A minimal VM that SHOULD have 2GB+ of memory and 1+ CPU, SHOULD be burstable |
 | cf | small | A default VM size for larger processes with 4GB-8GB of memory and 1-2 CPU, SHOULD NOT be burstable |
 | cf | small-highmem | A default app running VM size that SHOULD have 16GB+ of memory and 2 CPUs, MAY be burstable since app workloads can be burstable. These SHOULD have a higher memory-to-CPU ratio to optimize cost and fit more applications per Diego Cell. |
+| bosh | compilation | A high-compute VM pool that SHOULD have 2+ CPUs with at least 4GB of RAM and SHOULD NOT be burstable. On IaaSes with per-second billing the pool SHOULD be larger. |
 
 ### Amazon Web Services VM Mapping
-Switch all storage from `gp2` to `gp3` for a X% cost savings on disks.
+Switch all storage from `gp2` to `gp3` for a 20% cost savings on disks.
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
@@ -49,6 +50,7 @@ Switch all storage from `gp2` to `gp3` for a X% cost savings on disks.
 | minimal | `m4.large` | `t3.small` | **79% cheaper** ($0.1000 vs $0.0208) |  |
 | small | `m4.large` | `m5a.large` | **14% cheaper** ($0.1000 vs $0.0860)  |  |
 | small-highmem | `r4.xlarge` | `r5a.large` | **58% cheaper** ($0.2660 vs $0.1130) | Use 16GB instead of 32GB VM size to meet spec |
+| compilation | *5x* `c4.large` | *3x* `c5a.large` | **54% cheaper** ($0.5000 vs $0.231) | Hourly billing means smaller pool |
 
 A default BBL+CF-D installation would now cost $983/mo instead of $2668/mo, for a savings of 63%!
 
@@ -62,6 +64,7 @@ Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
 | minimal | `Standard_F1s` | `Standard_B1ms` | **58% cheaper** ($0.0497 vs $0.0207) | Adds bursting, stop using very old Fv1 series |
 | small | `Standard_F2s_v2` | `Standard_F2s_v2` | **same**  | Fv2 is modern and meets the spec already |
 | small-highmem | `Standard_GS2` | `Standard_E2s_v3` | **87% cheaper** ($0.9810 vs $0.1260) | Switch from very old mega G series with 56GB of memory to modern E series with only 16GB of memory. |
+| compilation | *5x* `Standard_DS1_v2` | *3x* `Standard_F2s_v2` | **11% cheaper** ($0.285 vs $0.253) | Fewer compile VMs with 2 CPUs to bring into spec |
 
 A default BBL+CF-D installation would now cost $1005/mo instead of $3355/mo, for a savings of 70%!
 
@@ -75,6 +78,7 @@ Switch all storage from `pd-ssd` to `pd-balanced` for a **41% cost savings** on 
 | minimal | `n1-standard-1` | `e2-small` | **65% cheaper** ($0.04749975 vs $0.016751) |  |
 | small | `n1-standard-2` | `e2-standard-2` | **29% cheaper** ($0.0949995 vs $0.067006)  |  |
 | small-highmem | `n1-highmem-4` | `e2-highmem-2` | **62% cheaper** ($0.236606 vs $0.09039) | Switch from 26GB RAM to 16GB RAM |
+| compilation | *5x* `n1-highcpu-8` | *5x* `e2-highcpu-4` | **65% cheaper** ($1.416972 vs $0.49468) | 4 CPUs is enough, keep pool large with per-second billing |
 
 A default BBL+CF-D installation would now cost $780/mo instead of $1742/mo, for a savings of 55%!
 
