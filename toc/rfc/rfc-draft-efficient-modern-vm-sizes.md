@@ -49,6 +49,7 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 | small | `m4.large` | `m5a.large` | **14% cheaper** ($0.1000 vs $0.0860)  |  |
 | small-highmem | `r4.xlarge` | `r5a.large` | **58% cheaper** ($0.2660 vs $0.1130) | Use 16GB instead of 32GB VM size to meet spec |
 
+A default BBL+CF-D installation would now cost $983/mo instead of $2668/mo, for a savings of 63%!
 
 ### Azure VM Mapping
 Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
