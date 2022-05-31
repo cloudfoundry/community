@@ -23,6 +23,11 @@ In addition our VM type usages are in need of a  refresh to match the newest Iaa
 
 ## Proposal
 
+### Important decisions:
+* VMs are allowed to be burstable, in minimal use cases
+* Diego cells should be smaller and consistent at 16GB of RAM, rather then the old 30-50GB ranges.
+* Modern (as of 2021) instance types should be used
+
 ### VM Size definitions
 We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-D, and Jumpbox-D as follows:
 
@@ -54,7 +59,7 @@ Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
 | jumpbox | `Standard_D1_v2` | `Standard_B1s` | **82% cheaper** ($0.0570 vs $0.0104) |  |
 | minimal | `Standard_F1s` | `Standard_B1ms` | **58% cheaper** ($0.0497 vs $0.0207) | Adds bursting, stop using very old Fv1 series |
 | small | `Standard_F2s_v2` | `Standard_F2s_v2` | **same**  | Fv2 is modern and meets the spec already |
-| small-highmem | `Standard_GS2` | `Standard_E4s_v3` | **87% cheaper** ($0.9810 vs $0.1260) | Switch from very old mega G series with 56GB of memory to modern E series with only 16GB of memory. |
+| small-highmem | `Standard_GS2` | `Standard_E2s_v3` | **87% cheaper** ($0.9810 vs $0.1260) | Switch from very old mega G series with 56GB of memory to modern E series with only 16GB of memory. |
 
 ### Google Compute Cloud VM Mapping
 
