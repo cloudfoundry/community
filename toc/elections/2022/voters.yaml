@@ -149,11 +149,14 @@ eligible_voters:
   - kathap
   - kbassett@vmware.com
   - kecirlotfi
-  - kennethlakin,klakin-pivotal
+  - kennethlakin
+  - klakin-pivotal
   - kevin-lacoo
   - kevin-ortega
   - KevinJCross
-  - kieron-dev,kieron-pivotal,kieronbrowne
+  - kieron-dev
+  - kieron-pivotal
+  - kieronbrowne
   - kirederik
   - klakin-pivotal
   - LeePorte
@@ -180,7 +183,8 @@ eligible_voters:
   - moleske
   - monamohebbi
   - mrosecrance
-  - mvach,mvacha
+  - mvach
+  - mvacha
   - myeghiazarya
   - neil-hickey
   - nouseforaname
@@ -199,7 +203,8 @@ eligible_voters:
   - pivotal-david-osullivan
   - pivotal-Josh-Gainey
   - pivotalgeorge
-  - plowin,plwn
+  - plowin
+  - plwn
   - pnikonowicz
   - Pooja-08
   - preetisawant
