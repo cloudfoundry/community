@@ -73,3 +73,5 @@ A default BBL+CF-D installation would now cost $1005/mo instead of $3355/mo, for
 | minimal | `n1-standard-1` | `e2-small` | **65% cheaper** ($0.04749975 vs $0.016751) |  |
 | small | `n1-standard-2` | `e2-standard-2` | **29% cheaper** ($0.0949995 vs $0.067006)  |  |
 | small-highmem | `n1-highmem-4` | `e2-highmem-2` | **62% cheaper** ($0.236606 vs $0.09039) | Switch from 26GB RAM to 16GB RAM |
+
+A default BBL+CF-D installation would now cost $780/mo instead of $1742/mo, for a savings of 55%!
