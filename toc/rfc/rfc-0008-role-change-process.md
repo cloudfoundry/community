@@ -3,8 +3,8 @@
 - Name: Role Change Process
 - Start Date: 2022-04-13
 - Author(s): @gerg
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request:
+- Status: Accepted
+- RFC Pull Request: [community#248](https://github.com/cloudfoundry/community/pull/248)
   [https://github.com/cloudfoundry/community/pull/248](https://github.com/cloudfoundry/community/pull/248)
 
 
