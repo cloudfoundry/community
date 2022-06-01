@@ -9,7 +9,7 @@
 
 ## Summary
 
-The vast majority of CF and BOSH deployments are doing automatically in CF testing pipelines (or in proprietary vendor pipelines), 
+The vast majority of CF and BOSH deployments are deployed automatically in CF testing pipelines (or in proprietary vendor pipelines), 
 so we should optimize the default VM sizes for these workloads. We will choose VM sizes that are either cheaper because they newer generation, 
 they provide a smaller/finer tuned amount of hardware, or they have burstable cores for appropriate workloads. 
 
