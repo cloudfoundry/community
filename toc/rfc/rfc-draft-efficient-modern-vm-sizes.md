@@ -36,7 +36,7 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 | bosh | bosh | A VM that MUST have at least 4 GB of memory and 1 CPU. The CPU MAY be burstable, since the director is often idle. Since UAA and/or credhub are common addons that add significant memory, an ops-file with 8GB RAM and more CPU MAY be provided |
 | jumpbox | jumpbox | A minimal VM with at least 1GB of memory and 1 CPU, SHOULD be burstable |
 | cf | minimal | A minimal VM that SHOULD have 2GB+ of memory and 1+ CPU, SHOULD be burstable |
-| cf | small | A default VM size for larger processes with 4GB-8GB of memory and 1-2 CPU, SHOULD NOT be burstable |
+| cf | small | A default VM size for larger processes that SHOULD have 4GB of memory (and may have 8GB) with 1 or 2 CPUs, SHOULD NOT be burstable |
 | cf | small-highmem | A default app running VM size that SHOULD have 16GB+ of memory and 2 CPUs, MAY be burstable since app workloads can be burstable. These SHOULD have a higher memory-to-CPU ratio to optimize cost and fit more applications per Diego Cell. |
 | bosh | compilation | A high-compute short-running VM pool that SHOULD have 2+ CPUs with at least 4GB of RAM and SHOULD NOT be burstable. This pool runs typically for 5-20 minutes, so it SHOULD be 5 nodes as long as billing is per-minute or per-second and SHOULD be 3 nodes when billed hourly |
 
@@ -45,10 +45,10 @@ Switch all storage from `gp2` to `gp3` for a **20% cost savings** on disks.
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
-| bosh | `m5.large` | `t3.medium` | **57% cheaper** ($0.096 vs $0.0416) |  |
+| bosh | `m5.large` | `t3.medium` | **57% cheaper** ($0.096 vs $0.0416) | Baseline CPU allocation is 40% of 1 core, unlimited mode allows credit borrowing |
 | jumpbox | `t2.micro` | `t3.micro` | **10% cheaper** ($0.0116 vs $0.0104) | T2 instances are now very old and sometimes fail to allocate |
-| minimal | `m4.large` | `t3.small` | **79% cheaper** ($0.1000 vs $0.0208) |  |
-| small | `m4.large` | `m5a.large` | **14% cheaper** ($0.1000 vs $0.0860)  |  |
+| minimal | `m4.large` | `t3.small` | **79% cheaper** ($0.1000 vs $0.0208) | Baseline CPU allocation is 40% of 1 core |
+| small | `m4.large` | `c5a.large` | **23% cheaper** ($0.1000 vs $0.077)  | Downsize from 8GB => 4GB |
 | small-highmem | `r4.xlarge` | `r5a.large` | **58% cheaper** ($0.2660 vs $0.1130) | Use 16GB instead of 32GB VM size to meet spec |
 | compilation | *5x* `c4.large` | *5x* `c5a.large` | **23% cheaper** ($0.5000 vs $0.385) | Per-second billing so keep pool large |
 
@@ -73,10 +73,10 @@ Switch all storage from `pd-ssd` to `pd-balanced` for a **41% cost savings** on 
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
-| bosh | `n1-standard-1` | `e2-medium` | **29% cheaper** ($0.04749975 vs $0.033503) | Burstable E-series equivilent |
+| bosh | `n1-standard-1` | `e2-medium` | **29% cheaper** ($0.04749975 vs $0.033503) | Burstable E-series equivilent, baseline CPU allocation allows constant 100% of 1 core |
 | jumpbox | `n1-standard-1` | `e2-micro` | **82% cheaper** ($0.04749975 vs $0.008376) | |
-| minimal | `n1-standard-1` | `e2-small` | **65% cheaper** ($0.04749975 vs $0.016751) |  |
-| small | `n1-standard-2` | `e2-standard-2` | **29% cheaper** ($0.0949995 vs $0.067006)  |  |
+| minimal | `n1-standard-1` | `e2-small` | **65% cheaper** ($0.04749975 vs $0.016751) | Baseline CPU allocation is 50% of 1 core |
+| small | `n1-standard-2` | `e2-custom-4GB2CPU` | **42% cheaper** ($0.0949995 vs $0.055314)  | Downsize from 8GB => 4GB, needs CPI change to support E2 custom |
 | small-highmem | `n1-highmem-4` | `e2-highmem-2` | **62% cheaper** ($0.236606 vs $0.09039) | Switch from 26GB RAM to 16GB RAM |
 | compilation | *5x* `n1-highcpu-8` | *5x* `e2-highcpu-4` | **65% cheaper** ($1.416972 vs $0.49468) | 4 CPUs is plenty, keep pool large with per-second billing |
 
