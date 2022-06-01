@@ -4,7 +4,7 @@ start_datetime: 2022-06-03 06:59:00 # 11:59 pm PDT, 02 Jun 2022
 end_datetime: 2022-06-18 06:59:00 # 11:59 pm PDT, 17 Jun 2022
 no_winners: 3
 allow_no_opinion: True
-delete_after: False
+delete_after: True
 show_candidate_fields:
 - employer
 - github
