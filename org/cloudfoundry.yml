@@ -540,7 +540,6 @@ orgs:
     - rroberts2222
     - rszumlakowski
     - runtime-ci
-    - ryanmattcollins
     - ryanmoran
     - ryanwittrup
     - s4heid
@@ -582,7 +581,6 @@ orgs:
     - st3v
     - staylor14
     - stefanlay
-    - stefanley
     - StefanWutz
     - strehle
     - stuart-pollock
@@ -3192,7 +3190,6 @@ orgs:
         - plowin
         - reneighbor
         - selzoc
-        - stefanley
         privacy: closed
         teams:
           App Runtime Platform WG leads:
@@ -3546,7 +3543,6 @@ orgs:
             - plowin
             - reneighbor
             - selzoc
-            - stefanley
             - MarcPaquette
           App Runtime Platform WG Networking:
             members:
@@ -3561,7 +3557,6 @@ orgs:
               - plowin
               - reneighbor
               - selzoc
-              - stefanley
             privacy: closed
             repos:
               cf-networking-helpers: write
@@ -4811,7 +4806,6 @@ orgs:
         - dprotaso
         - xtremerui
         - xtreme-jason-smith
-        - ryanmattcollins
         - xtreme-vikram-yadav
         privacy: secret
         repos:
