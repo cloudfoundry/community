@@ -9,6 +9,7 @@ role grants.
 - [Working Group Technical Lead](#working-group-technical-lead)
 - [Working Group Execution Lead](#working-group-execution-lead)
 - [Scribe](#scribe)
+- [Promotion and Revocation](#promotion-and-revocation)
 
 See also [notes](#notes) on roles.
 
@@ -246,16 +247,23 @@ approver in an OWNERS file:
 
 - Reviewer of the codebase for at least 3 months.
 
-- Primary reviewer for at least 10 substantial PRs to the codebase.
+- Have completed at least 20 of the following
+  - Submitted a substantial PR
+  - Reviewed a substantial PR
+  - Submitted a substantial Issue
+  - Reviewed a substantial Issue
+  - Involved in technical discussion. This includes, but is not limited to, being involved in technical decision making in proposals or resolving interrupts in slack.
 
-  - One path for getting the necessary reviews is to add yourself to the
-    `reviewers` section of the OWNERS file. Note that this does not give you any
-    additional privileges. By having yourself listed in this section in OWNERS
-    file means that you will get PRs assigned to you for code review. Getting
-    added to `reviewers` section is at the discretion of an approver after
-    enough evidence of quality contributions.
-
-- Reviewed at least 30 PRs to the codebase.
+   - One path for getting the necessary reviews is to add yourself to the
+     `reviewers` section of the OWNERS file. Note that this does not give you any
+     additional privileges. By having yourself listed in this section in OWNERS
+     file means that you will get PRs assigned to you for code review. Getting
+     added to `reviewers` section is at the discretion of an approver after
+     enough evidence of quality contributions.
+   - A substantial PR is anything that changes the logic of the code or introduces a complex amount of documentation. The following are examples of substantial PRs: bug fixes, features, large docs changes like creating a new debugging document or new architecture diagram. The following are examples of non-substantial PRs: dependabot PRs or small docs changes like fixing typos or reorganizing content.
+   - A substantial Issue is anything that requires knowledge of the codebase. The following are examples of substantial Issues: feature requests, bug write ups, debugging help requests. The following are examples of non-substantial Issues: minor doc change requests.
+   - A technical discussion is a thread on slack or in GitHub that requires knowledge of the codebase. The following are examples of technical discussions that will be considered: resolving interrupts in slack, or commenting on proposals. Technical discussions are counted per-thread, not per-message.
+   - The WG lead has final say if an issue, PR, or discussion is considered substantial.
 
 - Nominated by a WG lead (with no objections from other leads).
 
@@ -433,6 +441,78 @@ Working Group meetings.
 - Ensure that important information from meetings makes it into the WG notes.
 
 - Post WG recordings to the team drive.
+
+## Promotion and Revocation
+
+### Promotion to Contributor
+
+- When a person meets the criteria to be a Contributor as defined in
+[Contributor Role](#contributor),
+they may submit a PR adding themselves to 
+[contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
+
+- Two existing Contributors or Approvers must attest that they meet the criteria
+  by reviewing the PR.
+
+- An existing Contributor or Approver may submit the promotion request on behalf of someone else, but they
+  may not serve as a reviewer.
+
+- A Working Group Lead from any Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
+
+- TOC members may bypass the review process and merge the PR at their
+  discretion.
+
+### Promotion to Approver
+
+- When a person meets the criteria to be an Approver for a Working Group as defined in
+[Approver Role](#approver),
+they may submit a PR to the appropriate Working Group Charter that adds
+themselves to the team's yaml definition.
+
+- Two existing Approvers for that Working Group must attest that they meet the criteria
+  by reviewing the PR.
+
+- For Working Groups with fewer than 4 approvers, a single Approver review is
+  sufficient.
+
+- An existing Approver may submit the promotion request on behalf of someone else, but they
+  may not serve as a reviewer.
+
+- A Working Group Lead for that Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
+
+- TOC members may bypass the review process and merge the PR at their
+  discretion.
+
+### Revoking Contributor Role
+
+- People with the Contributor role may submit a PR to revoke their role by
+  removing the appropriate entry from
+  [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
+
+- An existing Contributor or Approver may submit the revocation request on
+  behalf of someone else, but the person whose role is being revoked must be
+  given two weeks to refute the revocation.
+
+- A Working Group Lead from any Working Group will merge or close the PR, at
+  their discretion and without review.
+
+- TOC members may merge the PR at their discretion.
+
+### Revoking Approver Role
+
+- People with an Approver role may submit a PR to revoke their role by removing
+  the appropriate entry from the yaml definition in their Working Group's charter.
+
+- An existing Approver may submit the revocation request on behalf of someone
+  else, but the person whose role is being revoked must be given two weeks to
+  refute the revocation.
+
+- A Working Group Lead for that Working Group will merge or close the PR, at
+  their discretion and without review.
+
+- TOC members may merge the PR at their discretion.
 
 # Notes
 
