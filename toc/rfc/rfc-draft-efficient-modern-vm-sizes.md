@@ -36,23 +36,23 @@ We'd like to further clarify the meaning of the default VM sizes for CF-D, BOSH-
 | bosh | bosh | A VM that MUST have at least 4 GB of memory and 1 CPU. The CPU MAY be burstable, since the director is often idle. Since UAA and/or credhub are common addons that add significant memory, an ops-file with 8GB RAM and more CPU MAY be provided |
 | jumpbox | jumpbox | A minimal VM with at least 1GB of memory and 1 CPU, SHOULD be burstable |
 | cf | minimal | A minimal VM that SHOULD have 2GB+ of memory and 1+ CPU, SHOULD be burstable |
-| cf | small | A default VM size for larger processes that SHOULD have 4GB of memory (and may have 8GB) with 1 or 2 CPUs, SHOULD NOT be burstable |
+| cf | small | A default VM size for larger processes that SHOULD have 4GB of memory with 1 or 2 CPUs, MAY be burstable if the VM can sustain baseline usage of at least 75% usage on a vCPU |
 | cf | small-highmem | A default app running VM size that SHOULD have 16GB+ of memory and 2 CPUs, MAY be burstable since app workloads can be burstable. These SHOULD have a higher memory-to-CPU ratio to optimize cost and fit more applications per Diego Cell. |
 | bosh | compilation | A high-compute short-running VM pool that SHOULD have 2+ CPUs with at least 4GB of RAM and SHOULD NOT be burstable. This pool runs typically for 5-20 minutes, so it SHOULD be 5 nodes as long as billing is per-minute or per-second and SHOULD be 3 nodes when billed hourly |
 
 ### Amazon Web Services VM Mapping
-Switch all storage from `gp2` to `gp3` for a **20% cost savings** on disks.
+Switch all storage from `gp2` to `gp3` for a **20% cost savings** on disks. The T3 series defaults to unlimited burst, allowing you to borrow burst credits from later in the day and eventally pay for extra burst if there's a deficit.
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
 | bosh | `m5.large` | `t3.medium` | **57% cheaper** ($0.096 vs $0.0416) | Baseline CPU allocation is 40% of 1 core, unlimited mode allows credit borrowing |
 | jumpbox | `t2.micro` | `t3.micro` | **10% cheaper** ($0.0116 vs $0.0104) | T2 instances are now very old and sometimes fail to allocate |
 | minimal | `m4.large` | `t3.small` | **79% cheaper** ($0.1000 vs $0.0208) | Baseline CPU allocation is 40% of 1 core |
-| small | `m4.large` | `c5a.large` | **23% cheaper** ($0.1000 vs $0.077)  | Downsize from 8GB => 4GB |
+| small | `m4.large` | `t3.medium` | **58% cheaper** ($0.1000 vs $0.0416)  | Downsize from 8GB => 4GB, unlimited mode allows lots of extra burst |
 | small-highmem | `r4.xlarge` | `r5a.large` | **58% cheaper** ($0.2660 vs $0.1130) | Use 16GB instead of 32GB VM size to meet spec |
 | compilation | *5x* `c4.large` | *5x* `c5a.large` | **23% cheaper** ($0.5000 vs $0.385) | Per-second billing so keep pool large |
 
-A default BBL+CF-D installation would now cost $983/mo instead of $2668/mo, for a savings of 63%!
+A default BBL+CF-D installation would now cost $791/mo instead of $2668/mo, for a savings of 70%!
 
 ### Azure VM Mapping
 Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
@@ -62,7 +62,7 @@ Note: VM sizes on Azure should now all allow Premium Storage (the `s` suffixes).
 | bosh | `Standard_D1_v2` | `Standard_B2s` | **28% cheaper** ($0.0570 vs $0.0416) | Adds bursting, stop using very old Dv2 series |
 | jumpbox | `Standard_D1_v2` | `Standard_B1s` | **82% cheaper** ($0.0570 vs $0.0104) |  |
 | minimal | `Standard_F1s` | `Standard_B1ms` | **58% cheaper** ($0.0497 vs $0.0207) | Adds bursting, stop using very old Fv1 series |
-| small | `Standard_F2s_v2` | `Standard_F2s_v2` | **same**  | Fv2 is modern and meets the spec already |
+| small | `Standard_F2s_v2` | `Standard_F2s_v2` | **same**  | Fv2 is modern and meets the spec already, B2 baseline is too low only 40% |
 | small-highmem | `Standard_GS2` | `Standard_E2s_v3` | **87% cheaper** ($0.9810 vs $0.1260) | Switch from very old mega G series with 56GB of memory to modern E series with only 16GB of memory. |
 | compilation | *5x* `Standard_DS1_v2` | *5x* `Standard_F2s_v2` | **32% more expensive** ($0.285 vs $0.422) | VMs should have 2 CPUs to bring into spec, but expect they run shorter time (billed per-minute in Azure) |
 
@@ -76,11 +76,11 @@ Switch all storage from `pd-ssd` to `pd-balanced` for a **41% cost savings** on 
 | bosh | `n1-standard-1` | `e2-medium` | **29% cheaper** ($0.04749975 vs $0.033503) | Burstable E-series equivilent, baseline CPU allocation allows constant 100% of 1 core |
 | jumpbox | `n1-standard-1` | `e2-micro` | **82% cheaper** ($0.04749975 vs $0.008376) | |
 | minimal | `n1-standard-1` | `e2-small` | **65% cheaper** ($0.04749975 vs $0.016751) | Baseline CPU allocation is 50% of 1 core |
-| small | `n1-standard-2` | `e2-custom-4GB2CPU` | **42% cheaper** ($0.0949995 vs $0.055314)  | Downsize from 8GB => 4GB, needs CPI change to support E2 custom |
+| small | `n1-standard-2` | `e2-medium` | **65% cheaper** ($0.0949995 vs $0.033503)  | Downsize from 8GB => 4GB, baseline CPU allocation high enough |
 | small-highmem | `n1-highmem-4` | `e2-highmem-2` | **62% cheaper** ($0.236606 vs $0.09039) | Switch from 26GB RAM to 16GB RAM |
 | compilation | *5x* `n1-highcpu-8` | *5x* `e2-highcpu-4` | **65% cheaper** ($1.416972 vs $0.49468) | 4 CPUs is plenty, keep pool large with per-second billing |
 
-A default BBL+CF-D installation would now cost $780/mo instead of $1742/mo, for a savings of 55%!
+A default BBL+CF-D installation would now cost $635/mo instead of $1742/mo, for a savings of 64%!
 
 ### Optimizing Concourse Deployments
 
