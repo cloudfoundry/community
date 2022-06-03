@@ -2,6 +2,16 @@ import unittest
 import yaml
 from org_management import OrgGenerator
 
+org_cfg = """
+---
+orgs:
+  cloudfoundry:
+    admins:
+    - admin1
+    members:
+    - member1
+"""
+
 wg1 = """
 name: WG1 Name
 execution_leads:
@@ -49,6 +59,23 @@ areas:
   - cloudfoundry/repo11
 """
 
+toc = """
+name: Technical Oversight Committee
+execution_leads:
+- name: TOC Member 1
+  github: toc-member-1
+- name: TOC Member 2
+  github: toc-member-2
+areas:
+- name: CloudFoundry Community
+  repositories:
+  - cloudfoundry/community
+config:
+  github_project_sync:
+    mapping:
+      cloudfoundry: 31
+"""
+
 contributors = """
 contributors:
 - contributor1
@@ -75,6 +102,30 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("execution-lead-1", members)
         self.assertIn("user1", members)
         self.assertIn("user10", members)
+
+    def test_org_admins_cannot_be_org_members(self):
+        contributors = """
+          contributors:
+          - contributor1
+          - Contributor2
+          - admin1
+        """
+        o = OrgGenerator(static_org_cfg=org_cfg, contributors=contributors)
+        o.generate_org_members()
+        self.assertListEqual(["Contributor2", "contributor1", "member1"], o.org_cfg["orgs"]["cloudfoundry"]["members"])
+
+    def test_toc_members_cannot_be_org_members(self):
+        # TODO: generate org admins from toc members
+        contributors = """
+          contributors:
+          - contributor1
+          - Contributor2
+          - toc-member-1
+          - toc-member-2
+        """
+        o = OrgGenerator(toc=toc, contributors=contributors)
+        o.generate_org_members()
+        self.assertListEqual(["Contributor2", "contributor1"], o.org_cfg["orgs"]["cloudfoundry"]["members"])
 
     def test_extract_wg_config(self):
         self.assertIsNone(OrgGenerator._extract_wg_config(""))

@@ -25,9 +25,9 @@ class OrgGenerator:
         toc: Optional[str] = None,
         working_groups: Optional[List[str]] = None,
     ):
-        self.org_cfg = yaml.safe_load(static_org_cfg) if static_org_cfg else {"orgs": {"cloudfoundry": {"members": []}}}
+        self.org_cfg = yaml.safe_load(static_org_cfg) if static_org_cfg else {"orgs": {"cloudfoundry": {"admins": [], "members": []}}}
         self.contributors = set(yaml.safe_load(contributors)["contributors"]) if contributors else set()
-        self.toc = OrgGenerator._extract_wg_config(toc) if toc else OrgGenerator._empty_wg_config("TOC")
+        self.toc = yaml.safe_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
         self.working_groups = [yaml.safe_load(wg) for wg in working_groups] if working_groups else []
 
     def load_from_project(self):
@@ -50,9 +50,11 @@ class OrgGenerator:
     def generate_org_members(self):
         org_members = set(self.org_cfg["orgs"]["cloudfoundry"]["members"])  # just in case, should be empty list
         org_members |= self.contributors
-        org_members |= OrgGenerator._wg_github_users(self.toc)
         for wg in self.working_groups:
             org_members |= OrgGenerator._wg_github_users(wg)
+        org_admins = OrgGenerator._wg_github_users(self.toc)
+        org_admins |= set(self.org_cfg["orgs"]["cloudfoundry"]["admins"])
+        org_members = org_members - org_admins
         self.org_cfg["orgs"]["cloudfoundry"]["members"] = sorted(org_members)
 
     def write_org_config(self, path: str):
