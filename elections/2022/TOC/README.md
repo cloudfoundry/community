@@ -90,4 +90,7 @@ Following the announcement, the voting results and winners will be published.
 
 |    Name    | Organization/Company |  GitHub  |
 |:----------:|:--------------------:|:--------:|
-| Name | Employer | [@githubid](https://github.com/githubid) |
+| Peter Burkholder | Cloud.gov | [@pburkholder](https://github.com/pburkholder) |
+| Andy Hunt | Gov.uk | [@AP-Hunt](https://github.com/AP-Hunt) |
+| Ruben Koster | VMware | [@rkoster](https://github.com/rkoster) |
+| Beyhan Veli | SAP | [@beyhan](https://github.com/beyhan) |
