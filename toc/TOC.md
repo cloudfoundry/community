@@ -64,10 +64,10 @@ the Cloud Foundry community via an election.
 | &nbsp;                                                      | Member                | Company     | Profile                                        | Term Start | Term End |
 | ----------------------------------------------------------- | --------------------- | ----------- | ---------------------------------------------- | ---------- | --------
 | <img width="30px" src="https://github.com/leeporte.png">    | Lee Porte (TOC Chair) | GOV.UK PaaS | [@leeporte](https://github.com/leeporte)       | 2021-06-17 | 2022     |
-| <img width="30px" src="https://github.com/dsboulder.png">   | David Stevenson       | VMware      | [@dsboulder](https://github.com/dsboulder)     | 2021-06-17 | 2023     |
+| <img width="30px" src="https://github.com/dsboulder.png">   | David Stevenson       | VMware      | [@dsboulder](https://github.com/dsboulder)     | 2021-06-17 | 2022     |
 | <img width="30px" src="https://github.com/emalm.png">       | Eric Malm             | VMware      | [@emalm](https://github.com/emalm)             | 2021-06-17 | 2023     |
 | <img width="30px" src="https://github.com/loewenstein.png"> | Jan von Löwenstein    | SAP         | [@loewenstein](https://github.com/loewenstein) | 2021-06-17 | 2022     |
-| <img width="30px" src="https://github.com/stephanme.png">   | Stephan Merker        | SAP         | [@stephanme](https://github.com/stephanme)     | 2021-06-17 | 2022     |
+| <img width="30px" src="https://github.com/stephanme.png">   | Stephan Merker        | SAP         | [@stephanme](https://github.com/stephanme)     | 2021-06-17 | 2023     |
 
 
 ## Elections
