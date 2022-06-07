@@ -91,6 +91,7 @@ jobs:
           add-paths: org/cloudfoundry.yml
           commit-message: Run peribolos -dump-full
           branch: peribolos-dump
+          draft: true
           title: 'Sync org/cloudfoundry.yml with reality'
           body: |
             Peribolos failed to sync here: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
