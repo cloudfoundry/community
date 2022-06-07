@@ -63,8 +63,6 @@ areas:
     github: dmikusa-pivotal
   - name: David O'Sullivan
     github: pivotal-david-osullivan
-  - name: Andrew Meyer
-    github: menehune23
   - name: Arjun Sreedharan
     github: arjun024
   - name: Brayan Henao
