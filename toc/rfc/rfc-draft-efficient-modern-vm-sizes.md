@@ -43,6 +43,7 @@ cost.
 * Diego cells should be smaller and consistent at 16GB of RAM, rather then the
   old 30-50GB ranges.
 * Modern (as of 2021) instance types should be used.
+* Cannot use ARM chipsets because CF and BOSH run arbitrary workloads, some of which won't work
 
 ### VM Size definitions
 We'd like to further clarify the meaning of the default VM sizes for CF-D,
@@ -55,7 +56,7 @@ BOSH-D, and Jumpbox-D as follows:
 | cf | minimal | A minimal VM that SHOULD have 2GB+ of memory and 1+ CPU; It SHOULD be burstable. |
 | cf | small | A default VM size for larger processes that SHOULD have 4GB of memory with 1 or 2 CPUs. It MAY be burstable if the VM can sustain baseline usage of at least 75% usage on a vCPU. |
 | cf | small-highmem | A default app running VM size that SHOULD have 16GB+ of memory and 2 CPUs. It MAY be burstable since app workloads can be burstable. These SHOULD have a higher memory-to-CPU ratio to optimize cost and fit more applications per Diego Cell. |
-| bosh | compilation | A high-compute, short-running VM pool that SHOULD have 2+ CPUs with at least 4GB of RAM and SHOULD NOT be burstable. This pool runs typically for 5-20 minutes, so it SHOULD be 5 nodes for per-minute or per-second billing or 3 nodes for hourly billing. |
+| bosh | compilation | A high-compute, short-running VM pool that SHOULD have 2+ CPUs with at least 4GB of RAM and SHOULD NOT be burstable. This pool runs typically for 5-20 minutes, so it SHOULD be 5+ nodes to get the job done quick since most IaaSes bill per-minute or per-second. |
 
 ### Amazon Web Services VM Mapping
 Switch all storage from `gp2` to `gp3` for a **20% cost savings** on disks. The
@@ -64,10 +65,10 @@ later in the day and eventually pay for extra burst if there's a deficit.
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
-| bosh | `m5.large` | `t3.medium` | **57% cheaper** ($0.096 vs $0.0416) | Baseline CPU allocation is 40% of 1 core. Unlimited mode allows credit borrowing. |
-| jumpbox | `t2.micro` | `t3.micro` | **10% cheaper** ($0.0116 vs $0.0104) | T2 instances are now very old and sometimes fail to allocate. |
-| minimal | `m4.large` | `t3.small` | **79% cheaper** ($0.1000 vs $0.0208) | Baseline CPU allocation is 40% of 1 core. |
-| small | `m4.large` | `t3.medium` | **58% cheaper** ($0.1000 vs $0.0416)  | Downsize from 8GB => 4GB. Unlimited mode allows lots of extra burst. |
+| bosh | `m5.large` | `t3a.medium` | **57% cheaper** ($0.096 vs $0.0416) | Baseline CPU allocation is 40% of 1 core. Unlimited mode allows credit borrowing. |
+| jumpbox | `t2.micro` | `t3a.micro` | **10% cheaper** ($0.0116 vs $0.0104) | T2 instances are now very old and sometimes fail to allocate. |
+| minimal | `m4.large` | `t3a.small` | **79% cheaper** ($0.1000 vs $0.0208) | Baseline CPU allocation is 40% of 1 core. |
+| small | `m4.large` | `t3a.medium` | **58% cheaper** ($0.1000 vs $0.0416)  | Downsize from 8GB => 4GB. Unlimited mode allows lots of extra burst. |
 | small-highmem | `r4.xlarge` | `r5a.large` | **58% cheaper** ($0.2660 vs $0.1130) | Use 16GB instead of 32GB VM size to meet spec. |
 | compilation | *5x* `c4.large` | *5x* `c5a.large` | **23% cheaper** ($0.5000 vs $0.385) | Keep 5 instances (billed per-second). |
 
@@ -76,7 +77,7 @@ a savings of 70%!
 
 ### Azure VM Mapping
 _Note: VM sizes on Azure should now all allow Premium Storage (the `s`
-suffixes)._
+suffixes so that SSDs can be used if desired)._
 
 | VM Size Name | Old Size | New Size | Cost Savings | Notes |
 | --- | --- | --- | --- | --- |
