@@ -240,24 +240,22 @@ correctness issues, interactions with other parts of the system, etc. Approver
 status is scoped to a subset of the working group's codebases.
 
 ### Requirements
-
-The following apply to the part of the codebase for which one would be an
-approver in an OWNERS file:
-
-- Reviewer of the codebase for at least 3 months.
-
-- Primary reviewer for at least 10 substantial PRs to the codebase.
-
-  - One path for getting the necessary reviews is to add yourself to the
-    `reviewers` section of the OWNERS file. Note that this does not give you any
-    additional privileges. By having yourself listed in this section in OWNERS
-    file means that you will get PRs assigned to you for code review. Getting
-    added to `reviewers` section is at the discretion of an approver after
-    enough evidence of quality contributions.
-
-- Reviewed at least 30 PRs to the codebase.
-
+- Be a reviewer for at least 3 months
+- Have completed at least 20 of the following
+  - Submitted a substantial PR
+  - Reviewed a substantial PR
+  - Submitted a substantial Issue
+  - Reviewed a substantial Issue
+  - Involved in technical discussion. This includes, but is not limited to, being involved in technical decision making in proposals or    resolving interrupts in slack.
 - Nominated by a WG lead (with no objections from other leads).
+
+A substantial PR is anything that changes the logic of the code or introduces a complex amount of documentation. The following are examples of substantial PRs: bug fixes, features, large docs changes like creating a new debugging document or new architecture diagram. The following are examples of non-substantial PRs: dependabot PRs or small docs changes like fixing typos or reorganizing content.
+
+A substantial Issue is anything that requires knowledge of the codebase. The following are examples of substantial Issues: feature requests, bug write ups, debugging help requests. The following are examples of non-substantial Issues: minor doc change requests.
+
+A technical discussion is a thread on slack or in GitHub that requires knowledge of the codebase. The following are examples of technical discussions that will be considered: resolving interrupts in slack, or commenting on proposals. Technical discussions are counted per-thread, not per-message.
+
+The WG lead has final say if an issue, PR, or discussion is considered substantial.
 
 ### Responsibilities and privileges
 
