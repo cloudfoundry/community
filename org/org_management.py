@@ -11,6 +11,7 @@ import yaml
 import re
 import os
 import argparse
+import jsonschema
 from typing import Set, List, Optional
 
 _SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -26,19 +27,24 @@ class OrgGenerator:
         working_groups: Optional[List[str]] = None,
     ):
         self.org_cfg = yaml.safe_load(static_org_cfg) if static_org_cfg else {"orgs": {"cloudfoundry": {"admins": [], "members": []}}}
-        self.contributors = set(yaml.safe_load(contributors)["contributors"]) if contributors else set()
+        OrgGenerator._validate_github_org_cfg(self.org_cfg)
+        self.contributors = (
+            set(OrgGenerator._validate_contributors(yaml.safe_load(contributors))["contributors"]) if contributors else set()
+        )
         self.toc = yaml.safe_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
-        self.working_groups = [yaml.safe_load(wg) for wg in working_groups] if working_groups else []
+        OrgGenerator._validate_wg(self.toc)
+        self.working_groups = [OrgGenerator._validate_wg(yaml.safe_load(wg)) for wg in working_groups] if working_groups else []
 
     def load_from_project(self):
         path = f"{_SCRIPT_PATH}/cloudfoundry.yml"
         print(f"Reading static org configuration from {path}")
-        self.org_cfg = OrgGenerator._read_yml_file(path)
+        self.org_cfg = OrgGenerator._validate_github_org_cfg(OrgGenerator._read_yml_file(path))
 
         path = f"{_SCRIPT_PATH}/contributors.yml"
         if os.path.exists(path):
             print(f"Reading contributors from {path}")
             contributors_yaml = OrgGenerator._read_yml_file(path)
+            OrgGenerator._validate_contributors(contributors_yaml)
             self.contributors = set(contributors_yaml["contributors"])
 
         # working group charters (including TOC)
@@ -84,8 +90,7 @@ class OrgGenerator:
     def _extract_wg_config(wg_charter: str):
         # extract (first) yaml block
         match = re.search(OrgGenerator._YAML_BLOCK_RE, wg_charter)
-        # TODO: some validation of wg definition
-        return yaml.safe_load(match.group(1)) if match else None
+        return OrgGenerator._validate_wg(yaml.safe_load(match.group(1))) if match else None
 
     @staticmethod
     def _empty_wg_config(name: str):
@@ -99,12 +104,87 @@ class OrgGenerator:
     @staticmethod
     def _wg_github_users(wg) -> Set[str]:
         users = {u["github"] for u in wg["execution_leads"]}
-        if "technical_leads" in wg:
-            users |= {u["github"] for u in wg["technical_leads"]}
+        users |= {u["github"] for u in wg["technical_leads"]}
         for area in wg["areas"]:
-            if "approvers" in area and isinstance(area["approvers"], list):
-                users |= {u["github"] for u in area["approvers"]}
+            users |= {u["github"] for u in area["approvers"]}
         return users
+
+    _CONTRIBUTORS_SCHEMA = {
+        "type": "object",
+        "properties": {"contributors": {"type": "array", "items": {"type": "string"}}},
+        "required": ["contributors"],
+        "additionalProperties": False
+    }
+
+    @staticmethod
+    def _validate_contributors(contributors):
+        jsonschema.validate(contributors, OrgGenerator._CONTRIBUTORS_SCHEMA)
+        return contributors
+
+    _WG_SCHEMA = {
+        "type": "object",
+        "properties": {
+            "name": {"type": "string"},
+            "execution_leads": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+            "technical_leads": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+            "areas": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                        "approvers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "repositories": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": ["name", "approvers", "repositories"],
+                    "additionalProperties": False
+                },
+            },
+            "config": {"type": "object"}
+        },
+        "required": ["name", "execution_leads", "technical_leads", "areas"],
+        "additionalProperties": False,
+        "$defs": {
+            "githubUser": {
+                "type": "object",
+                "properties": {"name": {"type": "string"}, "github": {"type": "string"}},
+                "required": ["name", "github"],
+                "additionalProperties": False
+            }
+        },
+    }
+
+    @staticmethod
+    def _validate_wg(wg):
+        jsonschema.validate(wg, OrgGenerator._WG_SCHEMA)
+        return wg
+
+    # schema for referenced fields only, not for complete config
+    _GITHUB_ORG_CFG_SCHEMA = {
+        "type": "object",
+        "properties": {
+            "orgs": {
+                "type": "object",
+                "properties": {
+                    "cloudfoundry": {
+                        "type": "object",
+                        "properties": {
+                            "admins": {"type": "array", "items": {"type": "string"}},
+                            "members": {"type": "array", "items": {"type": "string"}},
+                        },
+                        "required": ["admins", "members"],
+                    },
+                },
+                "required": ["cloudfoundry"],
+            },
+        },
+        "required": ["orgs"],
+    }
+
+    @staticmethod
+    def _validate_github_org_cfg(cfg):
+        jsonschema.validate(cfg, OrgGenerator._GITHUB_ORG_CFG_SCHEMA)
+        return cfg
 
 
 if __name__ == "__main__":
