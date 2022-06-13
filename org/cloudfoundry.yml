@@ -2382,6 +2382,7 @@ orgs:
             - joergdw
             - KevinJCross
             - silvestre
+            - marcinkubica
             privacy: closed
           App Runtime Interfaces WG Buildpacks:
             description: Approvers for the App Runtime Buildpacks area
@@ -5787,6 +5788,7 @@ orgs:
         - joergdw
         - KevinJCross
         - silvestre
+        - marcinkubica
         members:
         - app-autoscaler-ci-bot
         - donacarr
