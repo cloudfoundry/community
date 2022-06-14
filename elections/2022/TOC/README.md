@@ -86,9 +86,9 @@ Following the announcement, the voting results and winners will be published.
 ## Nominees
 
 
-|    Name    | Organization/Company |  GitHub  |
-|:----------:|:--------------------:|:--------:|
-| Peter Burkholder | Cloud.gov | [@pburkholder](https://github.com/pburkholder) |
-| Andy Hunt | Gov.uk | [@AP-Hunt](https://github.com/AP-Hunt) |
-| Ruben Koster | VMware | [@rkoster](https://github.com/rkoster) |
-| Beyhan Veli | SAP | [@beyhan](https://github.com/beyhan) |
+|    Name    | Organization/Company |  GitHub  | Nomination Statement |
+|:----------:|:--------------------:|:--------:| :-------------------: |
+| Peter Burkholder | Cloud.gov | [@pburkholder](https://github.com/pburkholder) | [#293](https://github.com/cloudfoundry/community/issues/293) |
+| Andy Hunt | Gov.uk | [@AP-Hunt](https://github.com/AP-Hunt) | [#281](https://github.com/cloudfoundry/community/issues/281)
+| Ruben Koster | VMware | [@rkoster](https://github.com/rkoster) | [#287](https://github.com/cloudfoundry/community/issues/287) |
+| Beyhan Veli | SAP | [@beyhan](https://github.com/beyhan) | [#285](https://github.com/cloudfoundry/community/issues/285) |
