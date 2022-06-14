@@ -73,14 +73,14 @@ areas:
   - name: Visarg Soneji
     github: visargsoneji
   repositories:
-  - cloudfoundry-incubator/service-fabrik-broker
-  - cloudfoundry-incubator/service-fabrik-blueprint-app
-  - cloudfoundry-incubator/service-fabrik-boshrelease
-  - cloudfoundry-incubator/service-fabrik-backup-restore
-  - cloudfoundry-incubator/service-fabrik-blueprint-service
-  - cloudfoundry-incubator/service-fabrik-blueprint-boshrelease
-  - cloudfoundry-incubator/service-fabrik-cli-plugin
-  - cloudfoundry-incubator/service-fabrik-lvm-volume-driver
+  - cloudfoundry/service-fabrik-broker
+  - cloudfoundry/service-fabrik-blueprint-app
+  - cloudfoundry/service-fabrik-boshrelease
+  - cloudfoundry/service-fabrik-backup-restore
+  - cloudfoundry/service-fabrik-blueprint-service
+  - cloudfoundry/service-fabrik-blueprint-boshrelease
+  - cloudfoundry/service-fabrik-cli-plugin
+  - cloudfoundry/service-fabrik-lvm-volume-driver
 - name: Volume Services
   approvers:
   - name: Diego Lemos
