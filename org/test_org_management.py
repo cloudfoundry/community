@@ -1,5 +1,6 @@
 import unittest
 import yaml
+import jsonschema
 from org_management import OrgGenerator
 
 org_cfg = """
@@ -66,8 +67,10 @@ execution_leads:
   github: toc-member-1
 - name: TOC Member 2
   github: toc-member-2
+technical_leads: []
 areas:
 - name: CloudFoundry Community
+  approvers: []
   repositories:
   - cloudfoundry/community
 config:
@@ -140,6 +143,50 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("execution-lead-1", users)
         self.assertIn("technical-lead-1", users)
         self.assertIn("user1", users)
+
+    def test_validate_contributors(self):
+        OrgGenerator._validate_contributors({"contributors": []})
+        OrgGenerator._validate_contributors(yaml.safe_load(contributors))
+        with self.assertRaises(jsonschema.ValidationError):
+            OrgGenerator._validate_contributors({})
+        with self.assertRaises(jsonschema.ValidationError):
+            OrgGenerator._validate_contributors({"contributors": 1})
+
+    def test_validate_wg(self):
+        OrgGenerator._validate_wg(OrgGenerator._empty_wg_config("wg"))
+        OrgGenerator._validate_wg(yaml.safe_load(wg1))
+        OrgGenerator._validate_wg(yaml.safe_load(wg2))
+        OrgGenerator._validate_wg(yaml.safe_load(toc))
+        with self.assertRaises(jsonschema.ValidationError):
+            OrgGenerator._validate_wg({})
+        with self.assertRaises(jsonschema.ValidationError):
+            wg = """
+                name: WG1 Name
+                execution_leads: []
+                technical_leads: []
+                areas:
+                - name: Area 1
+                  approvers: x
+                  repositories: 1
+            """
+            OrgGenerator._validate_wg(yaml.safe_load(wg))
+        with self.assertRaises(jsonschema.ValidationError):
+            wg = """
+                name: WG1 Name
+                execution_leads: []
+                technical_leads: []
+                areas:
+                - name: Area 1
+                  approvers: []
+                  repositories: []
+                  notAllowed: 1
+            """
+            OrgGenerator._validate_wg(yaml.safe_load(wg))
+
+    def test_validate_github_org_cfg(self):
+        OrgGenerator._validate_github_org_cfg(yaml.safe_load(org_cfg))
+        with self.assertRaises(jsonschema.ValidationError):
+            OrgGenerator._validate_github_org_cfg({})
 
     # test depends on data in this repo which may change
     def test_cf_org(self):

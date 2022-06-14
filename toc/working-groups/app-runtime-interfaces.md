@@ -143,7 +143,8 @@ areas:
     github: andy-paine 
   - name: Merric de Launey
     github: MerricdeLauney
-  - github: monamohebbi
+  - name: Mona Mohebbi
+    github: monamohebbi
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release

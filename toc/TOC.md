@@ -129,8 +129,10 @@ execution_leads:
   github: loewenstein
 - name: Stephan Merker
   github: stephanme
+technical_leads: []
 areas:
 - name: CloudFoundry Community
+  approvers: []
   repositories:
   - cloudfoundry/community
 config:
