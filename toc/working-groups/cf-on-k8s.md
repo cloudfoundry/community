@@ -37,6 +37,7 @@ technical_leads:
   github: gcapizzi
 - name: George
   github: georgethebeatle
+bots: []
 areas:
 - name: CF on k8s
   approvers:

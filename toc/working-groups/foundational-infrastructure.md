@@ -38,6 +38,7 @@ technical_leads:
   github: rkoster
 - name: Beyhan Veli
   github: beyhan
+bots: []
 areas:
 - name: Credential Management (Credhub)
   approvers:

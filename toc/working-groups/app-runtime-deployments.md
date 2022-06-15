@@ -40,6 +40,9 @@ execution_leads:
 technical_leads:
 - name: Jochen Ehret
   github: jochenehret
+bots:
+- name: cf-gitbot
+  github: cf-gitbot
 areas:
 - name: CF Deployment
   approvers:
