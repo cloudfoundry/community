@@ -208,7 +208,7 @@ class OrgGenerator:
         maintainers = {u["github"] for u in wg["execution_leads"]}
         maintainers |= {u["github"] for u in wg["technical_leads"]}
         approvers = {u["github"] for a in wg["areas"] for u in a["approvers"]}
-        repositories = {r for a in wg["areas"] for r in a["repositories"]}
+        repositories = {r for a in wg["areas"] for r in a["repositories"] if r.startswith("cloudfoundry/")}
         # WG team and teams for WG areas
         team = {
             "description": f"Leads and approvers for {wg['name']} WG",
@@ -221,7 +221,7 @@ class OrgGenerator:
                     "privacy": "closed",
                     "maintainers": sorted(maintainers),
                     "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
-                    "repos": {r: "write" for r in a["repositories"]},
+                    "repos": {r: "write" for r in a["repositories"] if r.startswith("cloudfoundry/")},
                 }
                 for a in wg["areas"]
             },
@@ -231,7 +231,7 @@ class OrgGenerator:
             "description": f"Leads for {wg['name']} WG",
             "privacy": "closed",
             "maintainers": sorted(maintainers),
-            "repos": {r: "admin" for r in repositories},
+            "repos": {r: "admin" for r in repositories if r.startswith("cloudfoundry/")},
         }
         # WG bots
         team["teams"][name + "-bots"] = {
@@ -239,7 +239,7 @@ class OrgGenerator:
             "privacy": "closed",
             "maintainers": sorted(maintainers),
             "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
-            "repos": {r: "write" for r in repositories},
+            "repos": {r: "write" for r in repositories if r.startswith("cloudfoundry/")},
         }
         return (name, team)
 

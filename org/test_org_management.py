@@ -63,6 +63,7 @@ areas:
   repositories:
   - cloudfoundry/repo10
   - cloudfoundry/repo11
+  - non-cloudfoundry/repo12
 """
 
 toc = """
@@ -232,6 +233,28 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["user2", "user3"], team["members"])
         self.assertDictEqual({"cloudfoundry/repo3": "write", "cloudfoundry/repo4": "write"}, team["repos"])
+
+    def test_generate_wg_teams_exclude_non_cf_repos(self):
+        _wg2 = yaml.safe_load(wg2)
+        (name, wg_team) = OrgGenerator._generate_wg_teams(_wg2)
+
+        self.assertEqual("wg-wg2-name", name)
+        self.assertListEqual(["execution-lead-2", "technical-lead-2"], wg_team["maintainers"])
+        self.assertListEqual(["user10"], wg_team["members"])
+
+        team = wg_team["teams"]["wg-wg2-name-leads"]
+        self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
+        self.assertDictEqual({"cloudfoundry/repo10": "admin", "cloudfoundry/repo11": "admin"}, team["repos"])
+
+        team = wg_team["teams"]["wg-wg2-name-bots"]
+        self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
+        self.assertListEqual([], team["members"])
+        self.assertDictEqual({"cloudfoundry/repo10": "write", "cloudfoundry/repo11": "write"}, team["repos"])
+
+        team = wg_team["teams"]["wg-wg2-name-area-1"]
+        self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
+        self.assertListEqual(["user10"], team["members"])
+        self.assertDictEqual({"cloudfoundry/repo10": "write", "cloudfoundry/repo11": "write"}, team["repos"])
 
     # test depends on data in this repo which may change
     def test_cf_org(self):
