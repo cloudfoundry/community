@@ -3,8 +3,8 @@
 - Name: CF and BOSH should default to more efficient and smaller performance VM sizes
 - Start Date: 2022-05-30
 - Author(s): @dsboulder
-- Status: Draft
-- RFC Pull Request: [#290](https://github.com/cloudfoundry/community/pull/290)
+- Status: Accepted
+- RFC Pull Request: [community#290](https://github.com/cloudfoundry/community/pull/290)
 
 
 ## Summary
