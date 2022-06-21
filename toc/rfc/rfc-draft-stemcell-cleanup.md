@@ -14,12 +14,15 @@ In an effort to reduce ongoing IaaS spend of the Cloud Foundry Foundation this R
 ## Problem
 
 Currently heavy stemcells (full stemcell images stored in s3/gcs) are stored indefinitly. This is also true for the images backing light stemcells.
-This becomes a costly endevour, especially on AWS where we need to keep a EBS snapshot per region per light stemcell.
+This becomes a costly endevour, especially on AWS where we need to keep an EBS snapshot per region per light stemcell.
 
 It has been estimated that cleaning up old stemcells could save tens of thousands of dollars.
 
+In addition to published stemcells we also store candiate stemcells which never have been published indefinitly.
+These should be save to cleanup after we are sure we are not gonna publish them.
+
 ## Proposal
 
-Cleanup light stemcells older then 1 year.
-Cleanup heavy stemcells older then 3 years.
+- Cleanup stemcells (heavy, light, windows, ect) older than 3 years.
+- Cleanup unpublished candidate stemcells after 2 months.
 
