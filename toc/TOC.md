@@ -130,6 +130,7 @@ execution_leads:
 - name: Stephan Merker
   github: stephanme
 technical_leads: []
+bots: []
 areas:
 - name: CloudFoundry Community
   approvers: []

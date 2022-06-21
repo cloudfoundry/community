@@ -39,6 +39,7 @@ execution_leads:
 technical_leads:
 - name: Greg Cobb 
   github: gerg
+bots: []
 areas:
 - name: Autoscaler
   approvers:

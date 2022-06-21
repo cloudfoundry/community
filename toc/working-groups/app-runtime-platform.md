@@ -40,6 +40,7 @@ execution_leads:
 technical_leads:
 - name: Amelia Downs
   github: ameowlia
+bots: []
 areas:
 - name: Diego
   approvers:

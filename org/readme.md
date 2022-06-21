@@ -11,7 +11,7 @@ Once approved and merged, the github action [org-management.yml](https://github.
 
 [org_management.py](https://github.com/cloudfoundry/community/blob/main/org/org-management.py) generates the following parts of the resulting cloudfoundry org configuration:
 
-### Organization Members 
+### Organization Members
 Organization members are generated according to [rfc-0002-github-members](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0002-github-members.md) and [rfc-draft-role-change-process](https://github.com/cloudfoundry/community/pull/248):
 - any members specified in [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml) (should be none)
 - all contributors from [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml)
@@ -19,10 +19,13 @@ Organization members are generated according to [rfc-0002-github-members](https:
 - org admins and TOC members must not be added to org member list
 
 ### Organization Admins
-TODO: add TOC members specified in [TOC.md](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md) as org admins 
+TODO: add TOC members specified in [TOC.md](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md) as org admins
 
 ### Github Teams for Working Group Areas
-TODO: generation of github teams according to [rfc-0005-github-teams-and-access](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md)
+Github Teams for Working Groups and Working Group Areas are generated according to [rfc-0005-github-teams-and-access](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md).
+Repositories listed in the working group yaml block that belong to github organizations other than `cloudfoundry` are ignored.
+
+TODO: toc and wg-leads teams
 
 ## Development
 
@@ -30,6 +33,7 @@ Requires Python 3.9.
 
 How to run locally:
 ```
+cd ./org
 pip install -r requirements.txt
 python -m org_management --help
 ```
@@ -48,6 +52,7 @@ optional arguments:
 
 How to run tests:
 ```
+cd ./org
 pip install -r requirements-dev.txt
 python -m flake8
 python -m unittest discover -s .

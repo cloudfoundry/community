@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'org/*'
+      - 'toc/TOC.md'
+      - 'toc/working-groups/*.md'
 
 jobs:
   peribolos-check:
