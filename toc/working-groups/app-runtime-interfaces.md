@@ -69,6 +69,7 @@ areas:
     github: brayanhenao
   repositories:
   - cloudfoundry/cflinuxfs3
+  - cloudfoundry/cflinuxfs4
   - cloudfoundry/java-buildpack
   - cloudfoundry/java-buildpack-memory-calculator
   - cloudfoundry/java-buildpack-release
@@ -116,6 +117,7 @@ areas:
   - cloudfoundry/buildpacks-feature-eng-ci
   - cloudfoundry/buildpacks-github-config
   - cloudfoundry/cflinuxfs3-release
+  - cloudfoundry/cflinuxfs4-release
   - cloudfoundry/dagger
   - cloudfoundry/example-sidecar-buildpack
   - cloudfoundry/jvmkill

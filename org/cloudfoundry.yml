@@ -694,6 +694,13 @@ orgs:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 18.04 LTS
         has_projects: true
+      cflinuxfs4:
+        default_branch: main
+        has_projects: true
+      cflinuxfs4-release:
+        default_branch: main
+        description: Cloud Foundry stack based on Ubuntu 22.04 LTS
+        has_projects: true
       cli:
         allow_merge_commit: false
         description: The official command line client for Cloud Foundry
