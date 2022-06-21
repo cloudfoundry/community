@@ -241,6 +241,7 @@ correctness issues, interactions with other parts of the system, etc. Approver
 status is scoped to a subset of the working group's codebases.
 
 ### Requirements
+Last ammended by [RFC-0006 Approver Requirements](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0006-approver-requirements.md)
 
 The following apply to the part of the codebase for which one would be an
 approver in an OWNERS file:
@@ -443,6 +444,7 @@ Working Group meetings.
 - Post WG recordings to the team drive.
 
 ## Promotion and Revocation
+Last ammended by [RFC-0008 Role Change Process](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md)
 
 ### Promotion to Contributor
 
