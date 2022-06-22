@@ -23,4 +23,4 @@ Complete results of the election, using the Schulze rules for Condorcet completi
 3. Andy Hunt
 4. Peter Burkholder
 
-Records of all cast ballots are available in [CSV format here](ballots.csv).
+Records of all cast ballots are available in [CSV format here](https://github.com/cloudfoundry/community/blob/main/elections/2022/TOC/ballots.csv).
