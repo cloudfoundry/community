@@ -60,19 +60,26 @@ class OrgGenerator:
         org_members |= self.contributors
         for wg in self.working_groups:
             org_members |= OrgGenerator._wg_github_users(wg)
-        org_admins = OrgGenerator._wg_github_users(self.toc)
-        org_admins |= set(self.org_cfg["orgs"]["cloudfoundry"]["admins"])
+        org_admins = set(self.org_cfg["orgs"]["cloudfoundry"]["admins"])
+        org_admins |= OrgGenerator._wg_github_users_leads(self.toc)
         org_members = org_members - org_admins
         self.org_cfg["orgs"]["cloudfoundry"]["members"] = sorted(org_members)
+        self.org_cfg["orgs"]["cloudfoundry"]["admins"] = sorted(org_admins)
 
     def generate_teams(self):
-        # overwrites any teams in cloudfoundry.yml that matches a generated team name according to RFC-0005
-        # TODO: TOC and WG leads
+        # overwrites any teams in cloudfoundry.yml that match a generated team name according to RFC-0005
+        # working group teams
         # TODO: enable for all WGs
         for wg in self.working_groups:
             (name, team) = OrgGenerator._generate_wg_teams(wg)
             if name in ("wg-app-runtime-deployments", "wg-foundational-infrastructure"):
                 self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+        # toc team
+        (name, team) = OrgGenerator._generate_toc_team(self.toc)
+        self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+        # wg-leads team
+        (name, team) = OrgGenerator._generate_wg_leads_team(self.working_groups)
+        self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
 
     def write_org_config(self, path: str):
         print(f"Writing org configuration to {path}")
@@ -120,6 +127,12 @@ class OrgGenerator:
         users |= {u["github"] for u in wg["bots"]}
         for area in wg["areas"]:
             users |= {u["github"] for u in area["approvers"]}
+        return users
+
+    @staticmethod
+    def _wg_github_users_leads(wg) -> Set[str]:
+        users = {u["github"] for u in wg["execution_leads"]}
+        users |= {u["github"] for u in wg["technical_leads"]}
         return users
 
     _CONTRIBUTORS_SCHEMA = {
@@ -231,7 +244,7 @@ class OrgGenerator:
             "description": f"Leads for {wg['name']} WG",
             "privacy": "closed",
             "maintainers": sorted(maintainers),
-            "repos": {r: "admin" for r in repositories if r.startswith("cloudfoundry/")},
+            "repos": {r: "admin" for r in repositories},
         }
         # WG bots
         team["teams"][name + "-bots"] = {
@@ -239,9 +252,34 @@ class OrgGenerator:
             "privacy": "closed",
             "maintainers": sorted(maintainers),
             "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
-            "repos": {r: "write" for r in repositories if r.startswith("cloudfoundry/")},
+            "repos": {r: "write" for r in repositories},
         }
         return (name, team)
+
+    @staticmethod
+    def _generate_toc_team(wg) -> Tuple[str, Dict[str, Any]]:
+        # assumption: TOC members are execution_leads
+        repositories = {r for a in wg["areas"] for r in a["repositories"] if r.startswith("cloudfoundry/")}
+        team = {
+            "description": wg["name"],
+            "privacy": "closed",
+            "maintainers": sorted({u["github"] for u in wg["execution_leads"]}),
+            "repos": {r: "admin" for r in repositories},
+        }
+        return ("toc", team)
+
+    @staticmethod
+    def _generate_wg_leads_team(wgs: List[Any]) -> Tuple[str, Dict[str, Any]]:
+        # RFC-0005 lists community repo explicitly (not all TOC repos)
+        repositories = {"cloudfoundry/community"}
+        members = {u for wg in wgs for u in OrgGenerator._wg_github_users_leads(wg)}
+        team = {
+            "description": "Technical and Execution Leads for all WGs",
+            "privacy": "closed",
+            "members": sorted(members),
+            "repos": {r: "write" for r in repositories},
+        }
+        return ("wg-leads", team)
 
     _KEBAB_CASE_RE = re.compile(r"[\W_]+")
 

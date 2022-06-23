@@ -73,11 +73,17 @@ execution_leads:
   github: toc-member-1
 - name: TOC Member 2
   github: toc-member-2
-technical_leads: []
-bots: []
+technical_leads:
+- name: TOC Tech Lead 1
+  github: toc-tech-lead-1
+bots:
+- name: TOC bot
+  github: toc-bot
 areas:
 - name: CloudFoundry Community
-  approvers: []
+  approvers:
+  - name: User TOC
+    github: user-toc
   repositories:
   - cloudfoundry/community
 config:
@@ -122,10 +128,10 @@ class TestOrgGenerator(unittest.TestCase):
         """
         o = OrgGenerator(static_org_cfg=org_cfg, contributors=contributors)
         o.generate_org_members()
+        self.assertListEqual(["admin1"], o.org_cfg["orgs"]["cloudfoundry"]["admins"])
         self.assertListEqual(["Contributor2", "contributor1", "member1"], o.org_cfg["orgs"]["cloudfoundry"]["members"])
 
-    def test_toc_members_cannot_be_org_members(self):
-        # TODO: generate org admins from toc members
+    def test_toc_members_are_org_admins(self):
         contributors = """
           contributors:
           - contributor1
@@ -135,6 +141,9 @@ class TestOrgGenerator(unittest.TestCase):
         """
         o = OrgGenerator(toc=toc, contributors=contributors)
         o.generate_org_members()
+        # bots and toc area approvers shall not be org admins
+        self.assertListEqual(["toc-member-1", "toc-member-2", "toc-tech-lead-1"], o.org_cfg["orgs"]["cloudfoundry"]["admins"])
+        # being org admins, toc members can't be org members
         self.assertListEqual(["Contributor2", "contributor1"], o.org_cfg["orgs"]["cloudfoundry"]["members"])
 
     def test_extract_wg_config(self):
@@ -151,6 +160,11 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("technical-lead-1", users)
         self.assertIn("user1", users)
         self.assertIn("bot1", users)
+
+    def test_wg_github_users_leads(self):
+        wg = yaml.safe_load(wg1)
+        users = OrgGenerator._wg_github_users_leads(wg)
+        self.assertSetEqual({"execution-lead-1", "technical-lead-1"}, users)
 
     def test_validate_contributors(self):
         OrgGenerator._validate_contributors({"contributors": []})
@@ -256,6 +270,28 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["user10"], team["members"])
         self.assertDictEqual({"cloudfoundry/repo10": "write", "cloudfoundry/repo11": "write"}, team["repos"])
 
+    def test_generate_toc_team(self):
+        _toc = yaml.safe_load(toc)
+        (name, team) = OrgGenerator._generate_toc_team(_toc)
+
+        self.assertEqual("toc", name)
+        self.assertListEqual(["toc-member-1", "toc-member-2"], team["maintainers"])
+        self.assertNotIn("members", team)
+        self.assertNotIn("teams", team)
+        self.assertDictEqual({"cloudfoundry/community": "admin"}, team["repos"])
+
+    def test_generate_wg_leads_team(self):
+        _wg1 = yaml.safe_load(wg1)
+        _wg2 = yaml.safe_load(wg2)
+
+        (name, team) = OrgGenerator._generate_wg_leads_team([_wg1, _wg2])
+
+        self.assertEqual("wg-leads", name)
+        self.assertNotIn("maintainers", team)
+        self.assertListEqual(["execution-lead-1", "execution-lead-2", "technical-lead-1", "technical-lead-2"], team["members"])
+        self.assertNotIn("teams", team)
+        self.assertDictEqual({"cloudfoundry/community": "write"}, team["repos"])
+
     # test depends on data in this repo which may change
     def test_cf_org(self):
         o = OrgGenerator()
@@ -267,3 +303,5 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("cf-bosh-ci-bot", members)
         teams = o.org_cfg["orgs"]["cloudfoundry"]["teams"]
         self.assertIn("wg-app-runtime-deployments", teams)
+        self.assertIn("toc", teams)
+        self.assertIn("wg-leads", teams)
