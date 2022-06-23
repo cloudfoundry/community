@@ -72,8 +72,7 @@ class OrgGenerator:
         # TODO: enable for all WGs
         for wg in self.working_groups:
             (name, team) = OrgGenerator._generate_wg_teams(wg)
-            if name in ("wg-app-runtime-deployments", "wg-foundational-infrastructure"):
-                self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+            self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
         # toc team
         (name, team) = OrgGenerator._generate_toc_team(self.toc)
         self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
