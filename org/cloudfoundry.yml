@@ -5788,8 +5788,8 @@ orgs:
         - joergdw
         - KevinJCross
         - silvestre
-        - marcinkubica
         members:
+        - marcinkubica
         - app-autoscaler-ci-bot
         - donacarr
         - mvach
