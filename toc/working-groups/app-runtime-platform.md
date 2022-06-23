@@ -181,6 +181,8 @@ areas:
     github: reneighbor
   - name: Chris Selzo
     github: selzoc
+  - name: Carson Long
+    github: ctlong
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/cf-drain-cli

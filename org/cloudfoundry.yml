@@ -2847,6 +2847,7 @@ orgs:
               - reneighbor
               - selzoc
               - MarcPaquette
+              - ctlong
           App Runtime Platform WG Logging and Metrics:
             members:
               - acrmp
@@ -2856,6 +2857,7 @@ orgs:
               - jrussett
               - reneighbor
               - selzoc
+              - ctlong
             privacy: closed
             repos:
               bosh-system-metrics-forwarder-release: write
