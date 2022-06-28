@@ -271,6 +271,9 @@ orgs:
         has_issues: false
         has_projects: true
         private: true
+      bosh-psmodules:
+        description: PowerShell modules for building Windows Stemcells
+        has_projects: false
       bosh-s3cli:
         description: Go CLI for S3
         has_projects: false
