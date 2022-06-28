@@ -3436,28 +3436,15 @@ orgs:
       CF Buildpacks:
         description: ""
         maintainers:
-        - sclevine
-        - TisVictress
+        - ryanmoran
         members:
         - simonjjones
-        - nebhale
         - ryanmoran
-        - GarimaSharma
         - arjun024
         - dmikusa-pivotal
-        - thitch97
         - cf-buildpacks-eng
-        - robdimsdale
-        - shanks3012
-        - AccraZed
-        - ForestEckhardt
         - brayanhenao
-        - mgibson1121
-        - sophiewigmore
-        - fg-j
         - pivotal-david-osullivan
-        - mvalliath
-        - bhh1893
         privacy: closed
         repos:
           apt-buildpack: admin
