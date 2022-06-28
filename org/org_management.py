@@ -214,6 +214,9 @@ class OrgGenerator:
         jsonschema.validate(cfg, OrgGenerator._GITHUB_ORG_CFG_SCHEMA)
         return cfg
 
+    _CF_ORG_PREFIX = "cloudfoundry/"
+    _CF_ORG_PREFIX_LEN = len(_CF_ORG_PREFIX)
+
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md
     @staticmethod
     def _generate_wg_teams(wg) -> Tuple[str, Dict[str, Any]]:
@@ -221,7 +224,12 @@ class OrgGenerator:
         maintainers = {u["github"] for u in wg["execution_leads"]}
         maintainers |= {u["github"] for u in wg["technical_leads"]}
         approvers = {u["github"] for a in wg["areas"] for u in a["approvers"]}
-        repositories = {r for a in wg["areas"] for r in a["repositories"] if r.startswith("cloudfoundry/")}
+        repositories = {
+            r[OrgGenerator._CF_ORG_PREFIX_LEN :]
+            for a in wg["areas"]
+            for r in a["repositories"]
+            if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+        }
         # WG team and teams for WG areas
         team = {
             "description": f"Leads and approvers for {wg['name']} WG",
@@ -234,7 +242,11 @@ class OrgGenerator:
                     "privacy": "closed",
                     "maintainers": sorted(maintainers),
                     "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
-                    "repos": {r: "write" for r in a["repositories"] if r.startswith("cloudfoundry/")},
+                    "repos": {
+                        r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write"
+                        for r in a["repositories"]
+                        if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                    },
                 }
                 for a in wg["areas"]
             },
@@ -259,7 +271,12 @@ class OrgGenerator:
     @staticmethod
     def _generate_toc_team(wg) -> Tuple[str, Dict[str, Any]]:
         # assumption: TOC members are execution_leads
-        repositories = {r for a in wg["areas"] for r in a["repositories"] if r.startswith("cloudfoundry/")}
+        repositories = {
+            r[OrgGenerator._CF_ORG_PREFIX_LEN :]
+            for a in wg["areas"]
+            for r in a["repositories"]
+            if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+        }
         team = {
             "description": wg["name"],
             "privacy": "closed",
@@ -271,7 +288,7 @@ class OrgGenerator:
     @staticmethod
     def _generate_wg_leads_team(wgs: List[Any]) -> Tuple[str, Dict[str, Any]]:
         # RFC-0005 lists community repo explicitly (not all TOC repos)
-        repositories = {"cloudfoundry/community"}
+        repositories = {"community"}  # without cloudfoundry/ prefix
         members = {u for wg in wgs for u in OrgGenerator._wg_github_users_leads(wg)}
         team = {
             "description": "Technical and Execution Leads for all WGs",

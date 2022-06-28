@@ -231,22 +231,22 @@ class TestOrgGenerator(unittest.TestCase):
 
         team = wg_team["teams"]["wg-wg1-name-leads"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
-        self.assertDictEqual({f"cloudfoundry/repo{i}": "admin" for i in range(1, 5)}, team["repos"])
+        self.assertDictEqual({f"repo{i}": "admin" for i in range(1, 5)}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-bots"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["bot1"], team["members"])
-        self.assertDictEqual({f"cloudfoundry/repo{i}": "write" for i in range(1, 5)}, team["repos"])
+        self.assertDictEqual({f"repo{i}": "write" for i in range(1, 5)}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-area-1"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["user1", "user2"], team["members"])
-        self.assertDictEqual({"cloudfoundry/repo1": "write", "cloudfoundry/repo2": "write"}, team["repos"])
+        self.assertDictEqual({"repo1": "write", "repo2": "write"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-area-2"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["user2", "user3"], team["members"])
-        self.assertDictEqual({"cloudfoundry/repo3": "write", "cloudfoundry/repo4": "write"}, team["repos"])
+        self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
 
     def test_generate_wg_teams_exclude_non_cf_repos(self):
         _wg2 = yaml.safe_load(wg2)
@@ -258,17 +258,17 @@ class TestOrgGenerator(unittest.TestCase):
 
         team = wg_team["teams"]["wg-wg2-name-leads"]
         self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
-        self.assertDictEqual({"cloudfoundry/repo10": "admin", "cloudfoundry/repo11": "admin"}, team["repos"])
+        self.assertDictEqual({"repo10": "admin", "repo11": "admin"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg2-name-bots"]
         self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
         self.assertListEqual([], team["members"])
-        self.assertDictEqual({"cloudfoundry/repo10": "write", "cloudfoundry/repo11": "write"}, team["repos"])
+        self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg2-name-area-1"]
         self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
         self.assertListEqual(["user10"], team["members"])
-        self.assertDictEqual({"cloudfoundry/repo10": "write", "cloudfoundry/repo11": "write"}, team["repos"])
+        self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
 
     def test_generate_toc_team(self):
         _toc = yaml.safe_load(toc)
@@ -278,7 +278,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["toc-member-1", "toc-member-2"], team["maintainers"])
         self.assertNotIn("members", team)
         self.assertNotIn("teams", team)
-        self.assertDictEqual({"cloudfoundry/community": "admin"}, team["repos"])
+        self.assertDictEqual({"community": "admin"}, team["repos"])
 
     def test_generate_wg_leads_team(self):
         _wg1 = yaml.safe_load(wg1)
@@ -290,7 +290,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertNotIn("maintainers", team)
         self.assertListEqual(["execution-lead-1", "execution-lead-2", "technical-lead-1", "technical-lead-2"], team["members"])
         self.assertNotIn("teams", team)
-        self.assertDictEqual({"cloudfoundry/community": "write"}, team["repos"])
+        self.assertDictEqual({"community": "write"}, team["repos"])
 
     # test depends on data in this repo which may change
     def test_cf_org(self):
@@ -303,5 +303,9 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("cf-bosh-ci-bot", members)
         teams = o.org_cfg["orgs"]["cloudfoundry"]["teams"]
         self.assertIn("wg-app-runtime-deployments", teams)
+        self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment"]["repos"])
+        self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
+        self.assertIn("cf-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
         self.assertIn("toc", teams)
+        self.assertIn("community", teams["toc"]["repos"])
         self.assertIn("wg-leads", teams)
