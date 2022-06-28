@@ -1442,6 +1442,9 @@ orgs:
       korifi-ci:
         default_branch: main
         has_projects: true
+      korifi-website:
+        default_branch: main
+        has_projects: false 
       lager:
         allow_merge_commit: false
         description: An opinionated logger for Go.
