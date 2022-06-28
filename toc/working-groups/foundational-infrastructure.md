@@ -134,6 +134,9 @@ areas:
     github: bgandon
   - name: Felix Riegger
     github: friegger
+  reviewers:
+  - name: Matthias Vach
+    github: mvach
   repositories:
   - bosh-io/releases-index
   - bosh-io/releases
