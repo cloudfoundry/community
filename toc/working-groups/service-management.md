@@ -29,7 +29,9 @@ execution_leads:
 technical_leads:
 - name: Marcela Campo
   github: pivotal-marcela-campo
-bots: []
+bots:
+- name: cf-gitbot
+  github: cf-gitbot
 areas:
 - name: Cloud Service Broker
   approvers:
