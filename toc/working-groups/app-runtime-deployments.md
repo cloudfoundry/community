@@ -77,4 +77,6 @@ areas:
   - cloudfoundry/cf-test-helpers
   - cloudfoundry/uptimer
   - cloudfoundry/runtime-ci
+  - cloudfoundry/bosh-bootloader
+  - cloudfoundry/bbl-state-resource
 ```

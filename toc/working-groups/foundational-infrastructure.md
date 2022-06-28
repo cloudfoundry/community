@@ -150,7 +150,6 @@ areas:
   - bosh-packages/nginx-release
   - bosh-packages/python-release
   - bosh-packages/ruby-release
-  - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh-alicloud-light-stemcell-builder
   - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-windows-acceptance-tests
@@ -162,7 +161,6 @@ areas:
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
   - cloudfoundry/bosh-bbl-ci-envs
-  - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
   - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-compiled-releases-index
