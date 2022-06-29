@@ -50,6 +50,7 @@ areas:
   - cloudfoundry/csb-brokerpak-azure
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
+  - cloudfoundry/upgrade-all-services-cli-plugin
 - name: OSB API
   approvers:
   - name: Sam Gunaratne
