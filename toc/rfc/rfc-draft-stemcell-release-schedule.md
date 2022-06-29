@@ -4,7 +4,7 @@
 - Start Date: 2022-06-29
 - Author(s): @thomasthal
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/...
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/331
 
 
 ## Summary
