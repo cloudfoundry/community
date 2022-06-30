@@ -2201,6 +2201,11 @@ orgs:
         description: Setup scripts for UAA workstations
         has_projects: true
         private: true
+      upgrade-all-services-cli-plugin:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        has_projects: true
       uptimer:
         default_branch: main
         description: A Cloud Foundry availability measurement tool for eventful times
@@ -5927,6 +5932,7 @@ orgs:
           csb-brokerpak-aws: admin
           csb-brokerpak-azure: admin
           csb-brokerpak-gcp: admin
+          upgrade-all-services-cli-plugin: admin
       cloudops-ci:
         description: ""
         members:
