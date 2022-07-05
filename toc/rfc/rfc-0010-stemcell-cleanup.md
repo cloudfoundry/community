@@ -3,8 +3,8 @@
 - Name: Stemcell Cleanup
 - Start Date: 2022-06-14
 - Author(s): @rkoster
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/308
+- Status: Accepted
+- RFC Pull Request: [community#308](https://github.com/cloudfoundry/community/pull/308)
 
 
 ## Summary
