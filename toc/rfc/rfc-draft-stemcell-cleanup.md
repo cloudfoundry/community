@@ -23,6 +23,6 @@ These should be safe to cleanup after we are sure we are not going to publish th
 
 ## Proposal
 
-- Cleanup stemcells (heavy, light, windows, ect) older than 3 years.
-- Cleanup unpublished candidate stemcells after 2 months.
+- Clean up stemcells (heavy, light, windows, etc.) older than 3 years.
+- Clean up unpublished candidate stemcells after 2 months.
 
