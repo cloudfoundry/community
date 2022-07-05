@@ -29,7 +29,9 @@ execution_leads:
 technical_leads:
 - name: Marcela Campo
   github: pivotal-marcela-campo
-bots: []
+bots:
+- name: cf-gitbot
+  github: cf-gitbot
 areas:
 - name: Cloud Service Broker
   approvers:
@@ -43,11 +45,14 @@ areas:
     github: pivotal-marcela-campo
   - name: Jatin Naik
     github: tinygrasshopper
+  - name: Andrea Zucchini
+    github: zucchinidev
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
+  - cloudfoundry/upgrade-all-services-cli-plugin
 - name: OSB API
   approvers:
   - name: Sam Gunaratne

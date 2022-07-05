@@ -136,6 +136,8 @@ areas:
     github: friegger
   - name: Brian Cunnie
     github: cunnie
+  - name: Aram Price
+    github: aramprice
   repositories:
   - bosh-io/releases-index
   - bosh-io/releases
@@ -183,6 +185,7 @@ areas:
   - cloudfoundry/bosh-google-light-stemcell-builder
   - cloudfoundry/bosh-linux-stemcell-builder
   - cloudfoundry/bosh-openstack-cpi-release
+  - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
   - cloudfoundry/bosh-community-stemcell-ci-infra

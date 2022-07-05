@@ -96,8 +96,6 @@ areas:
   - cloudfoundry/go-buildpack-release
   - cloudfoundry/binary-buildpack
   - cloudfoundry/binary-buildpack-release
-  - cloudfoundry/nodejs-buildpack
-  - cloudfoundry/nodejs-buildpack-release
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
   - cloudfoundry/hwc-buildpack
@@ -110,7 +108,7 @@ areas:
   - cloudfoundry/r-buildpack-release
   - cloudfoundry/apt-buildpack
   - cloudfoundry/docs-buildpacks
-  - cloudfoundry/brats  
+  - cloudfoundry/brats
   - cloudfoundry/binary-builder
   - cloudfoundry/buildpack-packager
   - cloudfoundry/buildpackapplifecycle

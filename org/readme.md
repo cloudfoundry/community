@@ -19,13 +19,13 @@ Organization members are generated according to [rfc-0002-github-members](https:
 - org admins and TOC members must not be added to org member list
 
 ### Organization Admins
-TODO: add TOC members specified in [TOC.md](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md) as org admins
+Organization admins are:
+- any admin specified in [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml)
+- all TOC execution leads and technical leads specified in [TOC.md](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md) 
 
 ### Github Teams for Working Group Areas
-Github Teams for Working Groups and Working Group Areas are generated according to [rfc-0005-github-teams-and-access](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md).
+Github Teams for the TOC, all Working Group Leads, Working Groups and Working Group Areas are generated according to [rfc-0005-github-teams-and-access](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md).
 Repositories listed in the working group yaml block that belong to github organizations other than `cloudfoundry` are ignored.
-
-TODO: toc and wg-leads teams
 
 ## Development
 
