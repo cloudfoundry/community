@@ -3,15 +3,9 @@ orgs:
   cloudfoundry:
     admins:
     - christopherclark
-    - dsboulder
-    - emalm
     - halliwilljustin
-    - LeePorte
-    - loewenstein
     - mjear
     - ramiyengar
-    - rkoster
-    - stephanme
     - thelinuxfoundation
     billing_email: ap@cloudfoundry.org
     company: ""
@@ -6415,17 +6409,6 @@ orgs:
         privacy: secret
         repos:
           bosh-cpi-kb: read
-      toc:
-        description: Technical Oversight Committee
-        maintainers:
-        - dsboulder
-        - loewenstein
-        - LeePorte
-        - stephanme
-        - emalm
-        privacy: closed
-        repos:
-          community: admin
       toolsmiths-bots:
         description: Gitbot and Dreddbot
         members:
