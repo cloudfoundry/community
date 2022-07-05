@@ -53,6 +53,8 @@ areas:
     github: bonzofenix
   - name: Jörg Weisbarth
     github: joergdw
+  - name: Marcin Kubica
+    github: marcinkubica
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler
