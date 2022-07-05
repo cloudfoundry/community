@@ -49,11 +49,13 @@ class OrgGenerator:
             OrgGenerator._validate_contributors(contributors_yaml)
             self.contributors = set(contributors_yaml["contributors"])
 
-        # working group charters (including TOC)
+        # working group charters (including TOC), ignore WGs without yaml block
         self.toc = OrgGenerator._read_wg_charter(f"{_SCRIPT_PATH}/../toc/TOC.md")
         for wg_file in glob.glob(f"{_SCRIPT_PATH}/../toc/working-groups/*.md"):
             if not wg_file.endswith("/WORKING-GROUPS.md"):
-                self.working_groups.append(OrgGenerator._read_wg_charter(wg_file))
+                wg = OrgGenerator._read_wg_charter(wg_file)
+                if wg:
+                    self.working_groups.append(wg)
 
     def generate_org_members(self):
         org_members = set(self.org_cfg["orgs"]["cloudfoundry"]["members"])  # just in case, should be empty list
@@ -72,8 +74,7 @@ class OrgGenerator:
         # TODO: enable for all WGs
         for wg in self.working_groups:
             (name, team) = OrgGenerator._generate_wg_teams(wg)
-            if name in ("wg-app-runtime-deployments", "wg-foundational-infrastructure"):
-                self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+            self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
         # toc team
         (name, team) = OrgGenerator._generate_toc_team(self.toc)
         self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
@@ -98,7 +99,7 @@ class OrgGenerator:
             wg_charter = stream.read()
             wg = OrgGenerator._extract_wg_config(wg_charter)
             if not wg:
-                wg = OrgGenerator._empty_wg_config(path)
+                wg = None
                 print("... Ignoring. Missing yaml block with WG definition.")
             return wg
 

@@ -292,15 +292,26 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertNotIn("teams", team)
         self.assertDictEqual({"community": "write"}, team["repos"])
 
-    # test depends on data in this repo which may change
+    # integration test, depends on data in this repo which may change
     def test_cf_org(self):
         o = OrgGenerator()
         o.load_from_project()
+        assert o.toc is not None
+        self.assertEquals("Technical Oversight Committee", o.toc["name"])
+        self.assertGreater(len(o.contributors), 100)
+        self.assertGreater(len(o.working_groups), 5)
+        self.assertEquals(1, len([wg for wg in o.working_groups if "Deployments" in wg["name"]]))
+        # packeto WG charter has no yaml block
+        self.assertEquals(0, len([wg for wg in o.working_groups if "packeto" in wg["name"].lower()]))
+        # no WGs without execution leads
+        self.assertEquals(0, len([wg for wg in o.working_groups if len(wg["execution_leads"]) == 0]))
+
         o.generate_org_members()
-        o.generate_teams()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
         self.assertGreater(len(members), 100)
         self.assertIn("cf-bosh-ci-bot", members)
+
+        o.generate_teams()
         teams = o.org_cfg["orgs"]["cloudfoundry"]["teams"]
         self.assertIn("wg-app-runtime-deployments", teams)
         self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment"]["repos"])
