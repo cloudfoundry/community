@@ -2411,27 +2411,62 @@ orgs:
             - pivotal-david-osullivan
             privacy: closed
             repos:
-              binary-buildpack: read
-              brats: read
-              docs-buildpacks: read
-              go-buildpack: read
-              ibm-websphere-liberty-buildpack: read
-              java-buildpack: read
-              java-buildpack-auto-reconfiguration: read
-              java-buildpack-client-certificate-mapper: read
-              java-buildpack-container-customizer: read
-              java-buildpack-dependency-builder: read
-              java-buildpack-memory-calculator: read
-              java-buildpack-metric-writer: read
-              java-buildpack-security-provider: read
-              java-buildpack-support: read
-              java-buildpack-system-test: read
-              java-test-applications: read
-              nodejs-buildpack: read
-              php-buildpack: read
-              python-buildpack: read
-              ruby-buildpack: read
-              staticfile-buildpack: read
+              cflinuxfs3: write
+              cflinuxfs4: write
+              java-buildpack: write
+              java-buildpack-memory-calculator: write
+              java-buildpack-release: write
+              java-buildpack-system-test: write
+              java-buildpack-dependency-builder: write
+              java-buildpack-container-customizer: write
+              java-test-applications: write
+              java-buildpack-support: write
+              java-buildpack-security-provider: write
+              java-buildpack-metric-writer: write
+              java-buildpack-client-certificate-mapper: write
+              java-buildpack-auto-reconfiguration: write
+              ibm-websphere-liberty-buildpack: write
+              nodejs-buildpack: write
+              nodejs-buildpack-release: write
+              php-buildpack: write
+              php-buildpack-release: write
+              ruby-buildpack: write
+              ruby-buildpack-release: write
+              python-buildpack: write
+              python-buildpack-release: write
+              go-buildpack: write
+              go-buildpack-release: write
+              binary-buildpack: write
+              binary-buildpack-release: write
+              dotnet-core-buildpack: write
+              dotnet-core-buildpack-release: write
+              hwc-buildpack: write
+              hwc-buildpack-release: write
+              nginx-buildpack: write
+              nginx-buildpack-release: write
+              staticfile-buildpack: write
+              staticfile-buildpack-release: write
+              r-buildpack: write
+              r-buildpack-release: write
+              apt-buildpack: write
+              docs-buildpacks: write
+              brats: write
+              binary-builder: write
+              buildpack-packager: write
+              buildpackapplifecycle: write
+              buildpacks-ci: write
+              buildpacks-feature-eng-ci: write
+              buildpacks-github-config: write
+              cflinuxfs3-release: write
+              cflinuxfs4-release: write
+              dagger: write
+              example-sidecar-buildpack: write
+              jvmkill: write
+              libbuildpack: write
+              pip-pop: write
+              public-buildpacks-ci-robots: write
+              stack-auditor: write
+              switchblade: write
           App Runtime Interfaces WG CAPI:
             description: Approvers for the App Runtime CAPI area
             maintainers:
@@ -3408,28 +3443,14 @@ orgs:
       CF Buildpacks:
         description: ""
         maintainers:
-        - sclevine
-        - TisVictress
+        - ryanmoran
         members:
         - simonjjones
-        - nebhale
-        - ryanmoran
-        - GarimaSharma
         - arjun024
         - dmikusa-pivotal
-        - thitch97
         - cf-buildpacks-eng
-        - robdimsdale
-        - shanks3012
-        - AccraZed
-        - ForestEckhardt
         - brayanhenao
-        - mgibson1121
-        - sophiewigmore
-        - fg-j
         - pivotal-david-osullivan
-        - mvalliath
-        - bhh1893
         privacy: closed
         repos:
           apt-buildpack: admin
