@@ -19,7 +19,7 @@ This becomes a costly endevour, especially on AWS where we need to keep an EBS s
 It has been estimated that cleaning up old stemcells could save tens of thousands of dollars.
 
 In addition to published stemcells we also store candiate stemcells which never have been published indefinitly.
-These should be save to cleanup after we are sure we are not gonna publish them.
+These should be safe to cleanup after we are sure we are not going to publish them.
 
 ## Proposal
 
