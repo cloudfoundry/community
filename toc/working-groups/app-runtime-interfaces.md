@@ -148,6 +148,8 @@ areas:
     github: MerricdeLauney
   - name: Mona Mohebbi
     github: monamohebbi
+  - name: Johannes Haass
+    github: johha
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
