@@ -45,6 +45,8 @@ areas:
     github: pivotal-marcela-campo
   - name: Jatin Naik
     github: tinygrasshopper
+  - name: Andrea Zucchini
+    github: zucchinidev
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure

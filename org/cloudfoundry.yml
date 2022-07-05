@@ -5949,6 +5949,7 @@ orgs:
         - blgm
         - pivotal-marcela-campo
         - jimbo459
+        - zucchinidev
         privacy: closed
         repos:
           cloud-service-broker: admin
