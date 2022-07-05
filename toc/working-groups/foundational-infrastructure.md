@@ -134,6 +134,8 @@ areas:
     github: bgandon
   - name: Felix Riegger
     github: friegger
+  - name: Aram Price
+    github: aramprice
   repositories:
   - bosh-io/releases-index
   - bosh-io/releases
