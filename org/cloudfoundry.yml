@@ -4642,7 +4642,6 @@ orgs:
         - anEXPer
         - paulcwarren
         - pivotal-lyle-murphy
-        - cf-pub-tools
         - pulkit-chandra
         - dpdavis
         - pubtools-docs-helper
@@ -5196,7 +5195,6 @@ orgs:
         - Pivotal-Christopher-Wong
         - pspinrad
         - nkguy
-        - cf-pub-tools
         - paigecalvert
         - jncd
         - mjgutermuth
@@ -5281,7 +5279,6 @@ orgs:
         - animatedmax
         members:
         - kejadlen
-        - cf-pub-tools
         - ClaudeFaundry
         - pubtools-docs-helper
         privacy: secret
@@ -6157,7 +6154,6 @@ orgs:
       pks-bosh-lifecycle:
         description: ""
         members:
-        - SenatorSupes
         - briannebrown
         - ahrtr
         - swalner-pivotal
