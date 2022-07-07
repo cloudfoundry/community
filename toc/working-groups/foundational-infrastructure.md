@@ -74,12 +74,14 @@ areas:
   - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/docs-bbr
   - cloudfoundry/exemplar-backup-and-restore-release
-- name: Identity and Auth (UAA)
+- name: User Account and Authentication (UAA)
   approvers:
   - name: Peter Chen 
     github: peterhaochen47
   - name: Markus Strehle
     github: strehle
+  - name: Bruce Ricard
+    github: bruce-ricard
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
