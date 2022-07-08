@@ -118,7 +118,6 @@ contributors:
 - cf-identity-service
 - cf-infra-bot
 - cf-london
-- cf-pub-tools
 - cf-rabbit-bot
 - cf-rel-int-cf-for-k8s-pr-bot
 - cf-release-notes-bot
@@ -537,7 +536,6 @@ contributors:
 - scottietremendous
 - sebGilR
 - selzoc
-- SenatorSupes
 - services-api-ci
 - sethboyles
 - shamus
