@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-18.04
     concurrency:
       group: peribolos
+    outputs:
+      peribolos-outcome: ${{ steps.peribolos.outcome }}
     services:
       ghproxy:
         image: rkoster/ghproxy
@@ -76,9 +78,43 @@ jobs:
             --fix-team-members
             --fix-team-repos
       - name: debug
-        run: echo "${{ toJSON(steps.peribolos.outcome == 'failure') }}"
-      - name: generate-peribolos-dump
+        run: |
+          echo "steps.peribolos.outcome = ${{ steps.peribolos.outcome }}"
+      - name: Fail on peribolos error
         if: ${{ steps.peribolos.outcome == 'failure' }}
+        run: |
+          echo "sync job failed, trigger creation of dump PR"
+          exit 1
+  
+  generate-peribolos-dump:
+    needs: peribolos
+    if: ${{ failure() && needs.peribolos.peribolos-outcome == 'failure' }} # only run on peribolos failures not on WG yaml validation errors
+    runs-on: ubuntu-18.04
+    concurrency:
+      group: peribolos
+    services:
+      ghproxy:
+        image: rkoster/ghproxy
+        options: >-
+          --mount type=bind,source=/etc/passwd,target=/etc/passwd,readonly
+          --mount type=bind,source=/etc/group,target=/etc/group,readonly
+        ports:
+          - 8888:8888
+        volumes:
+          - ${{ github.workspace }}/ghproxy-cache:/cache
+    steps:
+      - name: ghproxy-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/ghproxy-cache
+          key: ghproxy-cache-${{ github.run_number }}
+          restore-keys: |
+            ghproxy-cache-
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # full clone so a PR can be created if needed
+          path: community
+      - name: generate-peribolos-dump
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /bin/sh
@@ -86,7 +122,6 @@ jobs:
           # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
           args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/org/cloudfoundry.yml"
       - name: Create Pull Request
-        if: ${{ steps.peribolos.outcome == 'failure' }}
         uses: peter-evans/create-pull-request@v4
         with:
           path: community
@@ -99,8 +134,8 @@ jobs:
             Peribolos failed to sync here: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
             This PR contains a fresh periobos dump which once merged should resolve the sync issues.
+            PR is intended for debugging. Don't merge as-is because parts of the cloudfoundry org configuration are generated from WG charters.
       - name: Fail job on sync failure
-        if: ${{ steps.peribolos.outcome == 'failure' }}
         run: |
           echo "sync job failed, dump PR created"
           exit 1
