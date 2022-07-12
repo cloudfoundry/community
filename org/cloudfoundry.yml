@@ -5836,7 +5836,6 @@ orgs:
           app-autoscaler-release: admin
           app-autoscaler-ui: write
           bosh-compile-action: admin
-          runtime-og-ci-private: write
       cf-frontend bot:
         description: ""
         members:
