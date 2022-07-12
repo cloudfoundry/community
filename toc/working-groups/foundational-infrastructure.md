@@ -48,6 +48,8 @@ areas:
   approvers:
   - name: Peter Chen
     github: peterhaochen47
+  - name: Bruce Ricard
+    github: bruce-ricard
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -78,6 +80,8 @@ areas:
   approvers:
   - name: Peter Chen 
     github: peterhaochen47
+  - name: Bruce Ricard
+    github: bruce-ricard
   - name: Markus Strehle
     github: strehle
   repositories:
