@@ -1097,6 +1097,7 @@ orgs:
         homepage: http://coreos.com/docs/etcd/
       event-log-release:
         has_projects: true
+        archived: true
       eventhub:
         allow_merge_commit: false
         has_issues: false

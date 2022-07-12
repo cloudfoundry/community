@@ -122,7 +122,6 @@ areas:
     github: Benjamintf1
   repositories:
   - cloudfoundry/blackbox
-  - cloudfoundry/event-log-release
   - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
