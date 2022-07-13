@@ -37,7 +37,11 @@ technical_leads:
   github: gcapizzi
 - name: George
   github: georgethebeatle
-bots: []
+bots:
+- name: eirinici
+  github: eirinici
+- name: korifi-bot
+  github: korifi-bot
 areas:
 - name: CF on k8s
   approvers:
