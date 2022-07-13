@@ -114,6 +114,13 @@ jobs:
         with:
           fetch-depth: 0 # full clone so a PR can be created if needed
           path: community
+      - name: write github private key
+        run: |
+          echo "${GH_PRIVATE_KEY}" > private_key
+          echo "${GH_TOKEN}" > token
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
       - name: generate-peribolos-dump
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
