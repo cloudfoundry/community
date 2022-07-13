@@ -7,26 +7,9 @@ on:
       - 'toc/working-groups/*.md'
 
 jobs:
-  peribolos-check:
+  org-config-generation-check:
     runs-on: ubuntu-18.04
-    services:
-      ghproxy:
-        image: rkoster/ghproxy
-        options: >-
-          --mount type=bind,source=/etc/passwd,target=/etc/passwd,readonly
-          --mount type=bind,source=/etc/group,target=/etc/group,readonly
-        ports:
-          - 8888:8888
-        volumes:
-          - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
-      - name: ghproxy-cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/ghproxy-cache
-          key: ghproxy-cache-${{ github.run_number }}
-          restore-keys: |
-            ghproxy-cache-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -39,26 +22,3 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r community/org/requirements.txt
           python community/org/org_management.py -o cloudfoundry.out.yml
-      - name: write github token
-        run: |
-          echo "${GH_TOKEN}" > token
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      - name: peribolos-check
-        uses: docker://gcr.io/k8s-prow/peribolos
-        with:
-          entrypoint: /ko-app/peribolos
-          args: >-
-            --confirm=false
-            --github-endpoint http://ghproxy:8888
-            --required-admins=thelinuxfoundation
-            --min-admins=5
-            --github-token-path=token
-            --require-self=false
-            --config-path=cloudfoundry.out.yml
-            --fix-org
-            --fix-org-members
-            --fix-repos
-            --fix-teams
-            --fix-team-members
-            --fix-team-repos
