@@ -238,7 +238,7 @@ class OrgGenerator:
             "maintainers": sorted(maintainers),
             "members": sorted(approvers - maintainers),
             "teams": {
-                OrgGenerator._kebab_case(f"{name}-{a['name']}"): {
+                OrgGenerator._kebab_case(f"{name}-{a['name']}-approvers"): {
                     "description": f"Approvers for {wg['name']} WG, {a['name']} area",
                     "privacy": "closed",
                     "maintainers": sorted(maintainers),
