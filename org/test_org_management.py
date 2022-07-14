@@ -215,10 +215,13 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual("wg-a-b-c-d-e", OrgGenerator._kebab_case("wg-a b_c-d  e"))
         self.assertEqual("wg-a-b-c", OrgGenerator._kebab_case(":wg-a (b)/?=c "))
         self.assertEqual("wg-app-runtime-deployments", OrgGenerator._kebab_case("wg-App Runtime Deployments"))
-        self.assertEqual("wg-app-runtime-deployments-cf-deployments", OrgGenerator._kebab_case("wg-App Runtime Deployments-CF Deployments"))
         self.assertEqual(
-            "wg-foundational-infrastructure-integrated-databases-mysql-postgres",
-            OrgGenerator._kebab_case("wg-Foundational Infrastructure-Integrated Databases (Mysql / Postgres)"),
+            "wg-app-runtime-deployments-cf-deployments-approvers",
+            OrgGenerator._kebab_case("wg-App Runtime Deployments-CF Deployments-approvers"),
+        )
+        self.assertEqual(
+            "wg-foundational-infrastructure-integrated-databases-mysql-postgres-approvers",
+            OrgGenerator._kebab_case("wg-Foundational Infrastructure-Integrated Databases (Mysql / Postgres)-approvers"),
         )
 
     def test_generate_wg_teams(self):
@@ -238,12 +241,12 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["bot1"], team["members"])
         self.assertDictEqual({f"repo{i}": "write" for i in range(1, 5)}, team["repos"])
 
-        team = wg_team["teams"]["wg-wg1-name-area-1"]
+        team = wg_team["teams"]["wg-wg1-name-area-1-approvers"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["user1", "user2"], team["members"])
         self.assertDictEqual({"repo1": "write", "repo2": "write"}, team["repos"])
 
-        team = wg_team["teams"]["wg-wg1-name-area-2"]
+        team = wg_team["teams"]["wg-wg1-name-area-2-approvers"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["user2", "user3"], team["members"])
         self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
@@ -265,7 +268,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual([], team["members"])
         self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
 
-        team = wg_team["teams"]["wg-wg2-name-area-1"]
+        team = wg_team["teams"]["wg-wg2-name-area-1-approvers"]
         self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
         self.assertListEqual(["user10"], team["members"])
         self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
@@ -314,7 +317,9 @@ class TestOrgGenerator(unittest.TestCase):
         o.generate_teams()
         teams = o.org_cfg["orgs"]["cloudfoundry"]["teams"]
         self.assertIn("wg-app-runtime-deployments", teams)
-        self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment"]["repos"])
+        self.assertIn(
+            "cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment-approvers"]["repos"]
+        )
         self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
         self.assertIn("cf-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
         self.assertIn("toc", teams)
