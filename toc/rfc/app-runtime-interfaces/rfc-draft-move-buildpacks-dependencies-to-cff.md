@@ -80,3 +80,13 @@ AWS account for the time being.
 1. This migration will require some engineering and coordination effort between
    the CFF and teams within VMware to ensure a low/no downtime transfer.
 
+### Fallback Plans
+
+- In the event that we are not able to execute on this proposal prior to the
+  certificates' expirations, the Application Runtime Interfaces
+  working group will coordinate with the CFF to renew the certificate manually.
+- Once this proposal is implemented, the TOC will monitor the cost of maintaining
+  the CloudFront distributions. In the event that the TOC deems the costs too
+  high for the CFF to maintain, we will revert back to VMware-managed CloudFront
+  distributions, ideally under the direct control of VMware members of the
+  Application Runtime Interfaces working group.
