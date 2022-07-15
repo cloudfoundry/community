@@ -69,7 +69,11 @@ areas:
     github: clintyoshimura
   repositories:
   - cloudfoundry/cf-k8s-secrets
-  - cloudfoundry/eirini-controller
   - cloudfoundry/korifi
   - cloudfoundry/korifi-ci
+  - cloudfoundry/eirini
+  - cloudfoundry/eirini-ci
+  - cloudfoundry/eirini-controller
+  - cloudfoundry/eirini-private-config
+  - cloudfoundry/eirini-release
 ```
