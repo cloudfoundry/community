@@ -132,8 +132,6 @@ areas:
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Sarah Weinstein
-    github: sweinstein22
   - name: Marc Paquette
     github: MarcPaquette
   - name: Jenna Goldstrich
