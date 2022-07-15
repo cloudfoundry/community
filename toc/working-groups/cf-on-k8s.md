@@ -35,7 +35,7 @@ execution_leads:
 technical_leads:
 - name: Giuseppe Capizzi
   github: gcapizzi
-- name: George
+- name: Georgi Sabev
   github: georgethebeatle
 bots:
 - name: eirinici
@@ -43,7 +43,7 @@ bots:
 - name: korifi-bot
   github: korifi-bot
 areas:
-- name: CF on k8s
+- name: Korifi
   approvers:
   - name: Andrew Wittrock
     github: Birdrock
@@ -69,11 +69,27 @@ areas:
     github: clintyoshimura
   repositories:
   - cloudfoundry/cf-k8s-secrets
-  - cloudfoundry/korifi
-  - cloudfoundry/korifi-ci
   - cloudfoundry/eirini
   - cloudfoundry/eirini-ci
   - cloudfoundry/eirini-controller
   - cloudfoundry/eirini-private-config
   - cloudfoundry/eirini-release
+  - cloudfoundry/korifi
+  - cloudfoundry/korifi-ci
+areas:
+- name: CF for K8s
+  approvers:
+  - name: Andrew Wittrock
+    github: Birdrock
+  - name: Dave Walter
+    github: davewalter
+  repositories:
+  - cloudfoundry/capi-k8s-release
+  - cloudfoundry/cf-for-k8s
+  - cloudfoundry/cf-for-k8s-docs
+  - cloudfoundry/cf-k8s-logging
+  - cloudfoundry/cf-k8s-networking
+  - cloudfoundry/metric-proxy
+  - cloudfoundry/uaa-k8s-release
+  - cloudfoundry/yttk8smatchers
 ```
