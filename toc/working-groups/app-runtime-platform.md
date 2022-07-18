@@ -73,6 +73,9 @@ areas:
   - cloudfoundry/clock
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
+  - cloudfoundry/deployments-diego
+  - cloudfoundry/diego-acceptance
+  - cloudfoundry/diego-checkman
   - cloudfoundry/diego-ci
   - cloudfoundry/diego-ci-pools
   - cloudfoundry/diego-design-notes
@@ -95,16 +98,21 @@ areas:
   - cloudfoundry/eventhub
   - cloudfoundry/executor
   - cloudfoundry/fileserver
+  - cloudfoundry/garden-ci
+  - cloudfoundry/garden-wiki
   - cloudfoundry/grace
   - cloudfoundry/healthcheck
   - cloudfoundry/inigo
   - cloudfoundry/localdriver
   - cloudfoundry/localip
   - cloudfoundry/locket
+  - cloudfoundry/networking-oss-deployments
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
+  - cloudfoundry/routing-team-checklists
   - cloudfoundry/runtimeschema
+  - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
   - cloudfoundry/systemcerts
   - cloudfoundry/tlsconfig
