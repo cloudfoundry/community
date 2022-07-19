@@ -140,8 +140,6 @@ areas:
     github: FloThinksPi
   - name: Philipp Thun
     github: philippthun
-  - name: Andy Paine
-    github: andy-paine 
   - name: Merric de Launey
     github: MerricdeLauney
   - name: Mona Mohebbi
