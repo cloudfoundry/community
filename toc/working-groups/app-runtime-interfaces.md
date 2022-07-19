@@ -60,6 +60,7 @@ areas:
   - cloudfoundry/app-autoscaler
   - cloudfoundry/app-autoscaler-ci
   - cloudfoundry/app-autoscaler-cli-plugin
+  - cloudfoundry/app-autoscaler-env-bbl-state
 - name: Buildpacks
   approvers:
   - name: Daniel Mikusa
