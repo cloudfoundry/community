@@ -142,6 +142,20 @@ areas:
     github: kieron-dev
   - name: Mario Nitchev
     github: mnitchev
+  - name: Amin Jamali
+    github: aminjam
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Josh Russett
+    github: jrussett
+  - name: Renee Chu
+    github: reneighbor
+  - name: Maria Shaldybin
+    github: mariash
+  - name: David Sabeti
+    github: dsabeti
+  - name: Marc Paquette
+    github: MarcPaquette
   repositories:
   - cloudfoundry/diff-exporter
   - cloudfoundry/cert-injector
