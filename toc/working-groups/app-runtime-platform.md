@@ -98,19 +98,15 @@ areas:
   - cloudfoundry/eventhub
   - cloudfoundry/executor
   - cloudfoundry/fileserver
-  - cloudfoundry/garden-ci
-  - cloudfoundry/garden-wiki
   - cloudfoundry/grace
   - cloudfoundry/healthcheck
   - cloudfoundry/inigo
   - cloudfoundry/localdriver
   - cloudfoundry/localip
   - cloudfoundry/locket
-  - cloudfoundry/networking-oss-deployments
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
-  - cloudfoundry/routing-team-checklists
   - cloudfoundry/runtimeschema
   - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
@@ -172,6 +168,7 @@ areas:
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
   - cloudfoundry/garden-windows-ci
+  - cloudfoundry/garden-wiki
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
   - cloudfoundry/grootfs
@@ -285,6 +282,7 @@ areas:
   - cloudfoundry/routing-info
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
+  - cloudfoundry/routing-team-checklists
   - cloudfoundry/service-metrics-release
   - cloudfoundry/silk
   - cloudfoundry/silk-release
