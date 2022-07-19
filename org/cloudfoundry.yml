@@ -38,6 +38,7 @@ orgs:
         description: Auto Scaling for CF Applications
         has_projects: true
       app-autoscaler-ci:
+        archived: true
         description: The CI part of the app-autoscaler project
         has_projects: true
       app-autoscaler-cli-plugin:
@@ -52,6 +53,7 @@ orgs:
         default_branch: main
         has_projects: true
       app-autoscaler-ui:
+        archived: true
         description: A UI project for the Cloud Foundry incubator app-autoscaler
         has_projects: true
       apt-buildpack:

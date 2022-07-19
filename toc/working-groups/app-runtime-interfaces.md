@@ -57,8 +57,6 @@ areas:
     github: marcinkubica
   repositories:
   - cloudfoundry/app-autoscaler-release
-  - cloudfoundry/app-autoscaler
-  - cloudfoundry/app-autoscaler-ci
   - cloudfoundry/app-autoscaler-cli-plugin
   - cloudfoundry/app-autoscaler-env-bbl-state
 - name: Buildpacks
