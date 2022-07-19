@@ -3086,7 +3086,6 @@ orgs:
         - julian-hj
         - danielfor
         - klakin-pivotal
-        - camilalonart
         - nouseforaname
         - malba
         members:
@@ -3165,7 +3164,6 @@ orgs:
             - danielfor
             - klakin-pivotal
             - nouseforaname
-            - camilalonart
             - malba
             privacy: closed
             repos:
@@ -3345,7 +3343,6 @@ orgs:
         - moleske
         - klakin-pivotal
         - nouseforaname
-        - camilalonart
         privacy: closed
         repos:
           bosh-acceptance-tests: write
@@ -5746,7 +5743,6 @@ orgs:
         - FlorianNachtigall
         - klakin-pivotal
         - nouseforaname
-        - camilalonart
         - cf-bosh-ci-bot
         - suraiyasuliman
         - anshrupani
