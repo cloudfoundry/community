@@ -40,7 +40,9 @@ execution_leads:
 technical_leads:
 - name: Amelia Downs
   github: ameowlia
-bots: []
+bots:
+- name: CI bot
+  github: tas-runtime-bot
 areas:
 - name: Diego
   approvers:
