@@ -205,6 +205,8 @@ areas:
     github: selzoc
   - name: Carson Long
     github: ctlong
+  - name: Matthew Kocher
+    github: mkocher
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/cf-drain-cli
