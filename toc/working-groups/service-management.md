@@ -53,6 +53,7 @@ areas:
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
   - cloudfoundry/upgrade-all-services-cli-plugin
+  - cloudfoundry/terraform-provider-csbpg
 - name: OSB API
   approvers:
   - name: Sam Gunaratne
