@@ -5951,7 +5951,6 @@ orgs:
           csb-brokerpak-azure: admin
           csb-brokerpak-gcp: admin
           upgrade-all-services-cli-plugin: admin
-          terraform-provider-csbpg: admin
       cloudops-ci:
         description: ""
         members:
