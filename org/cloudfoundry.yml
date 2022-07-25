@@ -3750,17 +3750,13 @@ orgs:
         maintainers:
         - dsboulder
         members:
-        - tylerphelan
         - adobley
-        - tomkennedy513
         - bruce-ricard
         - swalchemist
         - peterhaochen47
         - LizClaireMorris
-        - ccjaimes
-        - zzori-theoriginal
         - hsinn0
-        - cphi-vmw
+        - Tallicia
         privacy: closed
         repos:
           cf-acceptance-tests: write
