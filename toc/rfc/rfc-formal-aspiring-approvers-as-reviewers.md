@@ -39,3 +39,36 @@ This extends [RFC-005 Standardizing Github Teams and Access](https://github.com/
 Where: 
 * `WORKING-GROUP-NAME` is the name of the Working Group, converted to kebab case,
 * `AREA-NAME` is the name of the area, also converted to kebab case, or a suitable short name that identifies it clearly and uniquely within the Working Group.
+
+[RFC-008 Role Change Process](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md) gets extended as well:
+
+### Promotion to Reviewer
+
+- When a contributor wishes to get a Reviewer for a Working Group  area,
+they may submit a PR to the appropriate Working Group Charter that adds
+themselves to the team's yaml definition.
+
+- Two existing Approvers for that Working Group must support the promotion by reviewing the PR.
+  There are no specific criteria beside being a contributor.
+
+- For Working Groups with fewer than 4 approvers, a single Approver review is
+  sufficient.
+
+- An existing Approver may submit the promotion request on behalf of someone else, but they
+  may not serve as a reviewer.
+
+- A Working Group Lead for that Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
+
+- TOC members may bypass the review process and merge the PR at their
+  discretion.
+
+### Revoking Reviewer Role
+
+- People with an Reviewer role may submit a PR to revoke their role by removing the appropriate entry from the yaml definition in their Working Group's charter.
+
+- An existing Approver may submit the revocation request on behalf of someone else, but the person whose role is being revoked must be given two weeks to refute the revocation.
+
+- A Working Group Lead for that Working Group will merge or close the PR, at their discretion and without review.
+
+- TOC members may merge the PR at their discretion.
