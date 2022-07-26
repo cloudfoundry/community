@@ -1,0 +1,57 @@
+name: 'Dump Github Organization Settings'
+on:
+  workflow_dispatch
+
+jobs:  
+  generate-peribolos-dump:
+    runs-on: ubuntu-18.04
+    concurrency:
+      group: peribolos
+    services:
+      ghproxy:
+        image: rkoster/ghproxy
+        options: >-
+          --mount type=bind,source=/etc/passwd,target=/etc/passwd,readonly
+          --mount type=bind,source=/etc/group,target=/etc/group,readonly
+        ports:
+          - 8888:8888
+        volumes:
+          - ${{ github.workspace }}/ghproxy-cache:/cache
+    steps:
+      - name: ghproxy-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/ghproxy-cache
+          key: ghproxy-cache-${{ github.run_number }}
+          restore-keys: |
+            ghproxy-cache-
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # full clone so a PR can be created if needed
+          path: community
+      - name: write github private key
+        run: |
+          echo "${GH_PRIVATE_KEY}" > private_key
+          echo "${GH_TOKEN}" > token
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+      - name: generate-peribolos-dump
+        uses: docker://gcr.io/k8s-prow/peribolos
+        with:
+          entrypoint: /bin/sh
+          # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
+          # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
+          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/org/cloudfoundry.yml"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          path: community
+          add-paths: org/cloudfoundry.yml
+          commit-message: Run peribolos -dump-full
+          branch: peribolos-dump
+          draft: true
+          title: 'Sync org/cloudfoundry.yml with reality'
+          body: |
+            This PR contains a fresh peribolos dump.
+            PR is intended for debugging. Don't merge as-is because parts of the cloudfoundry org configuration are generated from WG charters.
