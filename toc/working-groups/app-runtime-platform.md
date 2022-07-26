@@ -275,6 +275,7 @@ areas:
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
+  - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
