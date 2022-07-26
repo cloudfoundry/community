@@ -2570,6 +2570,7 @@ orgs:
         - ameowlia
         members:
         - animatedmax
+        - b1tamara
         - Benjamintf1
         - Gerg
         - acrmp
@@ -2946,6 +2947,7 @@ orgs:
             - reneighbor
             - selzoc
             - MarcPaquette
+            - b1tamara
           App Runtime Platform WG Networking:
             members:
               - aminjam
@@ -2959,6 +2961,7 @@ orgs:
               - plowin
               - reneighbor
               - selzoc
+              - b1tamara
             privacy: closed
             repos:
               cf-networking-helpers: write

@@ -242,6 +242,8 @@ areas:
     github: acrmp
   - name: Amin Jamali
     github: aminjam
+  - name: Tamara Boehm
+    github: b1tamara
   - name: Benjamin Fuller
     github: Benjamintf1
   - name: Carson Long
