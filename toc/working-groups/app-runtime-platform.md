@@ -64,6 +64,7 @@ areas:
   - cloudfoundry/auctioneer
   - cloudfoundry/bbs
   - cloudfoundry/benchmarkbbs
+  - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter

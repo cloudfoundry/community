@@ -112,7 +112,8 @@ areas:
   - cloudfoundry/brats
   - cloudfoundry/binary-builder
   - cloudfoundry/buildpack-packager
-  - cloudfoundry/buildpackapplifecycle
+  - cloudfoundry/buildpacks-envs
+  - cloudfoundry/buildpacks-workstation
   - cloudfoundry/buildpacks-ci
   - cloudfoundry/buildpacks-feature-eng-ci
   - cloudfoundry/buildpacks-github-config
