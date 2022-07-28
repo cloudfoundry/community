@@ -1,12 +1,7 @@
 ---
 orgs:
   cloudfoundry:
-    admins:
-    - christopherclark
-    - halliwilljustin
-    - mjear
-    - ramiyengar
-    - thelinuxfoundation
+    admins: [] # shall be empty, maintained in TOC.md
     billing_email: ap@cloudfoundry.org
     company: ""
     default_repository_permission: none
