@@ -2957,6 +2957,7 @@ orgs:
             - reneighbor
             - selzoc
             - MarcPaquette
+            - stefanlay
           App Runtime Platform WG Networking:
             members:
               - aminjam
@@ -2970,6 +2971,7 @@ orgs:
               - plowin
               - reneighbor
               - selzoc
+              - stefanlay
             privacy: closed
             repos:
               cf-networking-helpers: write
