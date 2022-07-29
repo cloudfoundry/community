@@ -41,6 +41,12 @@ areas:
     name: User 2
   - github: user3
     name: User 3
+  reviewers:
+  - github: user4
+    name: User 4
+  bots:
+  - github: bot2
+    name: WG1 Area2 Bot
   repositories:
   - cloudfoundry/repo3
   - cloudfoundry/repo4
@@ -246,9 +252,22 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["user1", "user2"], team["members"])
         self.assertDictEqual({"repo1": "write", "repo2": "write"}, team["repos"])
 
+        self.assertNotIn("wg-wg1-name-area-1-reviewers", wg_team["teams"])
+        self.assertNotIn("wg-wg1-name-area-1-bots", wg_team["teams"])
+
         team = wg_team["teams"]["wg-wg1-name-area-2-approvers"]
         self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
         self.assertListEqual(["user2", "user3"], team["members"])
+        self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
+
+        team = wg_team["teams"]["wg-wg1-name-area-2-reviewers"]
+        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
+        self.assertListEqual(["user4"], team["members"])
+        self.assertDictEqual({"repo3": "read", "repo4": "read"}, team["repos"])
+
+        team = wg_team["teams"]["wg-wg1-name-area-2-bots"]
+        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
+        self.assertListEqual(["bot2"], team["members"])
         self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
 
     def test_generate_wg_teams_exclude_non_cf_repos(self):
@@ -272,6 +291,9 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
         self.assertListEqual(["user10"], team["members"])
         self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
+
+        self.assertNotIn("wg-wg2-name-area-1-reviewers", wg_team["teams"])
+        self.assertNotIn("wg-wg2-name-area-1-bots", wg_team["teams"])
 
     def test_generate_toc_team(self):
         _toc = yaml.safe_load(toc)

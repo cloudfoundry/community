@@ -162,6 +162,8 @@ class OrgGenerator:
                     "properties": {
                         "name": {"type": "string"},
                         "approvers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "reviewers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "bots": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
                         "repositories": {"type": "array", "items": {"type": "string"}},
                     },
                     "required": ["name", "approvers", "repositories"],
@@ -238,34 +240,61 @@ class OrgGenerator:
             "maintainers": sorted(maintainers),
             "members": sorted(approvers - maintainers),
             "teams": {
-                OrgGenerator._kebab_case(f"{name}-{a['name']}-approvers"): {
-                    "description": f"Approvers for {wg['name']} WG, {a['name']} area",
+                f"{name}-leads": {
+                    "description": f"Leads for {wg['name']} WG",
                     "privacy": "closed",
                     "maintainers": sorted(maintainers),
-                    "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
-                    "repos": {
-                        r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write"
-                        for r in a["repositories"]
-                        if r.startswith(OrgGenerator._CF_ORG_PREFIX)
-                    },
-                }
-                for a in wg["areas"]
+                    "repos": {r: "admin" for r in repositories},
+                },
+                f"{name}-bots": {
+                    "description": f"Bot accounts for {wg['name']} WG",
+                    "privacy": "closed",
+                    "maintainers": sorted(maintainers),
+                    "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
+                    "repos": {r: "write" for r in repositories},
+                },
             },
         }
-        # WG leads
-        team["teams"][name + "-leads"] = {
-            "description": f"Leads for {wg['name']} WG",
-            "privacy": "closed",
-            "maintainers": sorted(maintainers),
-            "repos": {r: "admin" for r in repositories},
+        # approvers per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-approvers"): {
+                "description": f"Approvers for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
         }
-        # WG bots
-        team["teams"][name + "-bots"] = {
-            "description": f"Bot accounts for {wg['name']} WG",
-            "privacy": "closed",
-            "maintainers": sorted(maintainers),
-            "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
-            "repos": {r: "write" for r in repositories},
+        # optional reviewers per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-reviewers"): {
+                "description": f"Reviewers for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["reviewers"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "read" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
+            if "reviewers" in a
+        }
+        # optional bots per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-bots"): {
+                "description": f"Bot accounts for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["bots"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
+            if "bots" in a
         }
         return (name, team)
 
