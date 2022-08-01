@@ -2486,6 +2486,7 @@ orgs:
             - MarcPaquette
             - MerricdeLauney
             - dalvarado
+            - moleske
             privacy: closed
             repos:
               capi-bara-tests: write

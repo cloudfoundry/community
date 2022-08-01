@@ -146,6 +146,8 @@ areas:
     github: monamohebbi
   - name: Johannes Haass
     github: johha
+  - name: Michael Oleske
+    github: moleske
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
