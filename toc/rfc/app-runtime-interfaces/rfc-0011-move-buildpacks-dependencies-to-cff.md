@@ -3,8 +3,8 @@
 - Name: Move Buildpack Dependencies Repository to CFF
 - Start Date: 2022-05-18
 - Author(s): @gerg
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request:
+- Status: Accepted
+- RFC Pull Request: [community#333](https://github.com/cloudfoundry/community/pull/333)
   [https://github.com/cloudfoundry/community/pull/279](https://github.com/cloudfoundry/community/pull/279)
 
 
