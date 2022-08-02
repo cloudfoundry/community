@@ -196,7 +196,9 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1)  Current TOC members, Working Group Leads, and the Cloud Foundry community members who meet requirements, for at least 3 months immediately preceding the voting, for an Approver, a Working Group Technical Lead, or a Working Group Execution Lead as defined in [ROLES.md](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md).
         
-        -   (2)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
+        -   (2)  If a community member is nominated as a candidate but does not meet these requirements, they may petition the TOC for eligibility. In a case where the TOC declines an eligibility request, the requestor may appeal that decision to the Governing Board.
+
+        -   (3)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
 
     -   ii) TOC Voter Eligibility
 
@@ -212,7 +214,9 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1) If the number of candidates is equal to or less than the number of TOC seats available to be elected, the candidates shall be approved after the nomination period has closed.
         
-        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking on [CIVS](http://civs.cs.cornell.edu/) using the Schulze method.
+        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking using the Schulze method.
+
+        -   (3) Elections may be run either via the [Condorcet Internet Voting Service](https://civs1.civs.us/) or via a deployment of [Elekto](https://elekto.dev/) administered by the CFF staff.
 
 -   f)  TOC Member Resignations or Removal
 

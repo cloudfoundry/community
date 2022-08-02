@@ -39,6 +39,7 @@ execution_leads:
 technical_leads:
 - name: Greg Cobb 
   github: gerg
+bots: []
 areas:
 - name: Autoscaler
   approvers:
@@ -52,25 +53,25 @@ areas:
     github: bonzofenix
   - name: Jörg Weisbarth
     github: joergdw
+  - name: Marcin Kubica
+    github: marcinkubica
   repositories:
   - cloudfoundry/app-autoscaler-release
-  - cloudfoundry/app-autoscaler
-  - cloudfoundry/app-autoscaler-ci
   - cloudfoundry/app-autoscaler-cli-plugin
+  - cloudfoundry/app-autoscaler-env-bbl-state
 - name: Buildpacks
   approvers:
   - name: Daniel Mikusa
     github: dmikusa-pivotal
   - name: David O'Sullivan
     github: pivotal-david-osullivan
-  - name: Andrew Meyer
-    github: menehune23
   - name: Arjun Sreedharan
     github: arjun024
   - name: Brayan Henao
     github: brayanhenao
   repositories:
   - cloudfoundry/cflinuxfs3
+  - cloudfoundry/cflinuxfs4
   - cloudfoundry/java-buildpack
   - cloudfoundry/java-buildpack-memory-calculator
   - cloudfoundry/java-buildpack-release
@@ -96,8 +97,6 @@ areas:
   - cloudfoundry/go-buildpack-release
   - cloudfoundry/binary-buildpack
   - cloudfoundry/binary-buildpack-release
-  - cloudfoundry/nodejs-buildpack
-  - cloudfoundry/nodejs-buildpack-release
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
   - cloudfoundry/hwc-buildpack
@@ -110,14 +109,16 @@ areas:
   - cloudfoundry/r-buildpack-release
   - cloudfoundry/apt-buildpack
   - cloudfoundry/docs-buildpacks
-  - cloudfoundry/brats  
+  - cloudfoundry/brats
   - cloudfoundry/binary-builder
   - cloudfoundry/buildpack-packager
-  - cloudfoundry/buildpackapplifecycle
+  - cloudfoundry/buildpacks-envs
+  - cloudfoundry/buildpacks-workstation
   - cloudfoundry/buildpacks-ci
   - cloudfoundry/buildpacks-feature-eng-ci
   - cloudfoundry/buildpacks-github-config
   - cloudfoundry/cflinuxfs3-release
+  - cloudfoundry/cflinuxfs4-release
   - cloudfoundry/dagger
   - cloudfoundry/example-sidecar-buildpack
   - cloudfoundry/jvmkill
@@ -131,8 +132,6 @@ areas:
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Sarah Weinstein
-    github: sweinstein22
   - name: Marc Paquette
     github: MarcPaquette
   - name: Jenna Goldstrich
@@ -141,11 +140,14 @@ areas:
     github: FloThinksPi
   - name: Philipp Thun
     github: philippthun
-  - name: Andy Paine
-    github: andy-paine 
   - name: Merric de Launey
     github: MerricdeLauney
-  - github: monamohebbi
+  - name: Mona Mohebbi
+    github: monamohebbi
+  - name: Johannes Haass
+    github: johha
+  - name: Michael Oleske
+    github: moleske
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release

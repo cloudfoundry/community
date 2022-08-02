@@ -40,6 +40,9 @@ execution_leads:
 technical_leads:
 - name: Jochen Ehret
   github: jochenehret
+bots:
+- name: cf-gitbot
+  github: cf-gitbot
 areas:
 - name: CF Deployment
   approvers:
@@ -66,12 +69,17 @@ areas:
   - github: shaun7pan
     name: Shaun Pan
   repositories:
+  - cloudfoundry/cf-acceptance-tests
   - cloudfoundry/cf-deployment
   - cloudfoundry/cf-deployment-concourse-tasks
-  - cloudfoundry/cf-acceptance-tests
+  - cloudfoundry/cf-relint-ci-semver
   - cloudfoundry/cf-smoke-tests
   - cloudfoundry/cf-smoke-tests-release
   - cloudfoundry/cf-test-helpers
-  - cloudfoundry/uptimer
+  - cloudfoundry/honeycomb-ginkgo-reporter
+  - cloudfoundry/relint-ci-pools
+  - cloudfoundry/relint-envs
+  - cloudfoundry/relint-team
   - cloudfoundry/runtime-ci
+  - cloudfoundry/uptimer
 ```

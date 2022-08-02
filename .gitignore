@@ -1,3 +1,6 @@
 
 toc/elections/2021/private.csv
 /.secrets
+.vscode
+__pycache__
+cloudfoundry.out.yml

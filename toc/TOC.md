@@ -63,11 +63,11 @@ the Cloud Foundry community via an election.
 
 | &nbsp;                                                      | Member                | Company     | Profile                                        | Term Start | Term End |
 | ----------------------------------------------------------- | --------------------- | ----------- | ---------------------------------------------- | ---------- | --------
-| <img width="30px" src="https://github.com/leeporte.png">    | Lee Porte (TOC Chair) | GOV.UK PaaS | [@leeporte](https://github.com/leeporte)       | 2021-06-17 | 2022     |
-| <img width="30px" src="https://github.com/dsboulder.png">   | David Stevenson       | VMware      | [@dsboulder](https://github.com/dsboulder)     | 2021-06-17 | 2023     |
+| <img width="30px" src="https://github.com/AP-Hunt.png">     | Andy Hunt (TOC Chair) | GOV.UK PaaS | [@AP-Hunt](https://github.com/AP-Hunt)         | 2022-06-22 | 2024     |
+| <img width="30px" src="https://github.com/beyhan.png">      | Beyhan Veli           | SAP         | [@beyhan](https://github.com/beyhan)           | 2022-06-22 | 2024     |
 | <img width="30px" src="https://github.com/emalm.png">       | Eric Malm             | VMware      | [@emalm](https://github.com/emalm)             | 2021-06-17 | 2023     |
-| <img width="30px" src="https://github.com/loewenstein.png"> | Jan von Löwenstein    | SAP         | [@loewenstein](https://github.com/loewenstein) | 2021-06-17 | 2022     |
-| <img width="30px" src="https://github.com/stephanme.png">   | Stephan Merker        | SAP         | [@stephanme](https://github.com/stephanme)     | 2021-06-17 | 2022     |
+| <img width="30px" src="https://github.com/rkoster.png">     | Ruben Koster          | VMware      | [@rkoster](https://github.com/rkoster)         | 2022-06-22 | 2024     |
+| <img width="30px" src="https://github.com/stephanme.png">   | Stephan Merker        | SAP         | [@stephanme](https://github.com/stephanme)     | 2021-06-17 | 2023     |
 
 
 ## Elections
@@ -119,18 +119,27 @@ under the terms of the [Creative Commons Attribution 4.0 License](https://creati
 ```yaml
 name: Technical Oversight Committee
 execution_leads:
-- name: Lee Porte
-  github: leeporte
-- name: David Stevenson
-  github: dsboulder
+- name: Andy Hunt
+  github: AP-Hunt
+- name: Beyhan Veli
+  github: beyhan
 - name: Eric Malm
   github: emalm
-- name: Jan von Löwenstein
-  github: loewenstein
+- name: Ruben Koster
+  github: rkoster
 - name: Stephan Merker
   github: stephanme
+technical_leads:
+- name: Chris Clark
+  github: christopherclark
+- name: Ram Iyengar
+  github: ramiyengar
+- name: The Linux Foundation
+  github: thelinuxfoundation
+bots: []
 areas:
 - name: CloudFoundry Community
+  approvers: []
   repositories:
   - cloudfoundry/community
 config:

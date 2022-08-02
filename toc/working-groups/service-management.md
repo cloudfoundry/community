@@ -29,6 +29,9 @@ execution_leads:
 technical_leads:
 - name: Marcela Campo
   github: pivotal-marcela-campo
+bots:
+- name: cf-gitbot
+  github: cf-gitbot
 areas:
 - name: Cloud Service Broker
   approvers:
@@ -42,11 +45,15 @@ areas:
     github: pivotal-marcela-campo
   - name: Jatin Naik
     github: tinygrasshopper
+  - name: Andrea Zucchini
+    github: zucchinidev
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
+  - cloudfoundry/upgrade-all-services-cli-plugin
+  - cloudfoundry/terraform-provider-csbpg
 - name: OSB API
   approvers:
   - name: Sam Gunaratne
@@ -73,14 +80,14 @@ areas:
   - name: Visarg Soneji
     github: visargsoneji
   repositories:
-  - cloudfoundry-incubator/service-fabrik-broker
-  - cloudfoundry-incubator/service-fabrik-blueprint-app
-  - cloudfoundry-incubator/service-fabrik-boshrelease
-  - cloudfoundry-incubator/service-fabrik-backup-restore
-  - cloudfoundry-incubator/service-fabrik-blueprint-service
-  - cloudfoundry-incubator/service-fabrik-blueprint-boshrelease
-  - cloudfoundry-incubator/service-fabrik-cli-plugin
-  - cloudfoundry-incubator/service-fabrik-lvm-volume-driver
+  - cloudfoundry/service-fabrik-broker
+  - cloudfoundry/service-fabrik-blueprint-app
+  - cloudfoundry/service-fabrik-boshrelease
+  - cloudfoundry/service-fabrik-backup-restore
+  - cloudfoundry/service-fabrik-blueprint-service
+  - cloudfoundry/service-fabrik-blueprint-boshrelease
+  - cloudfoundry/service-fabrik-cli-plugin
+  - cloudfoundry/service-fabrik-lvm-volume-driver
 - name: Volume Services
   approvers:
   - name: Diego Lemos

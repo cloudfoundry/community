@@ -1,18 +1,7 @@
 ---
 orgs:
   cloudfoundry:
-    admins:
-    - christopherclark
-    - dsboulder
-    - emalm
-    - halliwilljustin
-    - LeePorte
-    - loewenstein
-    - mjear
-    - ramiyengar
-    - rkoster
-    - stephanme
-    - thelinuxfoundation
+    admins: [] # shall be empty, maintained in TOC.md
     billing_email: ap@cloudfoundry.org
     company: ""
     default_repository_permission: none
@@ -21,656 +10,7 @@ orgs:
     has_organization_projects: true
     has_repository_projects: true
     location: Worldwide
-    members:
-    - a-b
-    - a-peek4
-    - a-shan
-    - a-sudarsanan
-    - aaronshurley
-    - ab-pivot
-    - abdermendz
-    - AbelHu
-    - abg
-    - abh1kg
-    - ablease
-    - abubakarm94
-    - AccraZed
-    - achasveachas
-    - aclark801
-    - aclement
-    - acosta11
-    - acrmp
-    - acvwilson
-    - addytripathi
-    - adobley
-    - aduffeck
-    - advpetc
-    - aemengo
-    - ahrtr
-    - aiswarianair
-    - ajackson
-    - akazantsau
-    - akodali18
-    - akrishna90
-    - Albertoimpl
-    - alejandra-lara
-    - altonf4
-    - amakhija
-    - amartiro1979
-    - ameowlia
-    - aminjam
-    - andreas-kupries
-    - AndreasSchoesser
-    - andrew-edgar
-    - andrew-su
-    - andrewdriver123
-    - andrewedstrom
-    - andy-paine
-    - anEXPer
-    - anfernee
-    - angelachin
-    - animatedmax
-    - ankeesler
-    - anoopjb
-    - ansd
-    - ansergit
-    - anshrupani
-    - app-autoscaler-ci-bot
-    - APShirley
-    - aqan213
-    - aramprice
-    - arjun024
-    - asahil9009
-    - asalan316
-    - ashvinmoro
-    - atwoosnam
-    - avade
-    - awmartin
-    - bbr-ci
-    - bclozel
-    - beckermarc
-    - Benjamintf1
-    - bepotts
-    - berlin-ab
-    - beyhan
-    - bgandon
-    - bhh1893
-    - bikramnehra
-    - bingosummer
-    - Birdrock
-    - bkeelapudi
-    - blgm
-    - bonzofenix
-    - bosh-admin-bot
-    - bosh-ci-push-pull
-    - bosh-init-concourse
-    - bosh-windows-ci
-    - boyan-velinov
-    - boyang9527
-    - brannon
-    - brayanhenao
-    - BrianMMcClain
-    - briannebrown
-    - bruce-ricard
-    - brunssen
-    - bsnchan
-    - bsoroushian
-    - bwinter
-    - C-Otto
-    - cagiti
-    - caijj
-    - camilalonart
-    - carlo-colombo
-    - ccemeraldeyes
-    - ccjaimes
-    - cdlliuy
-    - cf-blobstore-eng
-    - cf-bosh-ci-bot
-    - cf-buildpacks-eng
-    - cf-ci-push-pull
-    - cf-cli-eng
-    - cf-cli-pools
-    - cf-commercial
-    - cf-datadog
-    - cf-diego
-    - cf-final-release-election-bot
-    - cf-frameworks
-    - cf-frontend
-    - cf-gitbot
-    - cf-identity
-    - cf-identity-service
-    - cf-infra-bot
-    - cf-london
-    - cf-pub-tools
-    - cf-rabbit-bot
-    - cf-rel-int-cf-for-k8s-pr-bot
-    - cf-release-notes-bot
-    - cf-services
-    - cf-sprout
-    - cf-toolsmiths
-    - cf-uaa
-    - cf-zapier
-    - cfdocs-bot
-    - cfryanr
-    - chaomonica
-    - christianang
-    - christo4ferris
-    - ChunyiLyu
-    - ciriarte
-    - ClaudeFaundry
-    - claurence
-    - clintyoshimura
-    - cobyrne
-    - cobyrne-pivot
-    - colins
-    - combor
-    - cornelius
-    - cphi-vmw
-    - cppforlife
-    - crhntr
-    - crsimmons
-    - Cryogenics-CI
-    - cshollingsworth
-    - csterwa
-    - ctlong
-    - cunnie
-    - cwang-pivotal
-    - dalvarado
-    - danail-branekov
-    - danhigham
-    - danielfor
-    - DanielJonesEB
-    - danyoung
-    - davewalter
-    - david-akhsakhalyan
-    - davidcurrie
-    - davidschachner
-    - dbasner
-    - dbuchko
-    - ddonchev
-    - degaurab
-    - DennisDenuto
-    - derwei
-    - devtdeng
-    - dgolds
-    - dhrapson
-    - djac
-    - djavos-bot
-    - dlresende
-    - dmikusa-pivotal
-    - dmutreja
-    - domdom82
-    - dominicrobertsc
-    - donacarr
-    - dpb587-pivotal
-    - dpdavis
-    - dprotaso
-    - dpruitt2
-    - dpw
-    - draganm
-    - drich10
-    - dsabeti
-    - dsharp-pivotal
-    - dsyer
-    - dtillman
-    - dtimm
-    - dumez-k
-    - ebroberson
-    - edespino
-    - edwardecook
-    - edwardstudy
-    - eirinici
-    - ekcasey
-    - elsony
-    - EngineerBetterCI
-    - erabil
-    - ericbottard
-    - erjohnso
-    - evanfarrar
-    - Everlag
-    - f0rmiga
-    - farmermel
-    - fcioanca
-    - fcohen26
-    - fejnartal
-    - FelisiaM
-    - fg-j
-    - fhanik
-    - fifthposition
-    - flawedmatrix
-    - flintstonecf
-    - FlorentFlament
-    - FlorianNachtigall
-    - FloThinksPi
-    - ForestEckhardt
-    - fredwangwang
-    - friegger
-    - frodenas
-    - gab-satchi
-    - galenhammond
-    - gaowa0215
-    - garden-gnome
-    - GarfieldLinux
-    - GarimaSharma
-    - garrying
-    - gbandres98
-    - gcapizzi
-    - gdankov
-    - geofffranks
-    - georgethebeatle
-    - georgi-lozev
-    - Gerg
-    - gertd
-    - gggevorgyan
-    - git-narya
-    - gmrodgers
-    - gnovv
-    - gossion
-    - GowriRegistry
-    - graeme-davison
-    - grahamlutz
-    - greenhouse-ci
-    - gsiener
-    - gu-bin
-    - gururajsh
-    - harshah
-    - haydonryan
-    - hcf-bot
-    - HeavyWombat
-    - heidmotron
-    - hemarsai
-    - herrjulz
-    - heyjcollins
-    - hjcalderon10
-    - hmanukyanVMw
-    - hnandiwada
-    - hoegaarden
-    - hsinn0
-    - hyakuhei
-    - iaftab-alam
-    - idoru
-    - ifindlay-cci
-    - IgorBelyi
-    - ihcsim
-    - ikasarov
-    - ilackarms
-    - iplay88keys
-    - IvanBorislavovDimitrov
-    - ivanhristov98
-    - jackfengibm
-    - jacksoncvm
-    - JacquesPerrault
-    - james-masson
-    - jamieklassen
-    - jamiemonserrate
-    - jandubois
-    - jaristiz
-    - jchenry
-    - jdeppe-pivotal
-    - jdgonzaleza
-    - jeff-hobbs
-    - jerrybelmonte
-    - jessepye
-    - jgawor
-    - jhasu
-    - jhvhs
-    - jianqiu
-    - jimbo459
-    - jimconner
-    - jimmykarily
-    - jintusebastian
-    - jkjell
-    - jkonicki
-    - jmarrero
-    - jncd
-    - jochenehret
-    - joeeltgroth
-    - joefitzgerald
-    - joeldsa
-    - joergdw
-    - johha
-    - johncornish
-    - JordanICollier
-    - josephgee
-    - joshlong
-    - jpalermo
-    - jpatel-pivotal
-    - jpmcb
-    - jrussett
-    - jsampson1
-    - julian-hj
-    - Justin-W
-    - k1tm
-    - KaiHofstetter
-    - kaleo211
-    - kartiklunkad26
-    - kathap
-    - kauana
-    - KauzClay
-    - kcboyle
-    - KeepAustinWired
-    - kejadlen
-    - KevinJCross
-    - Kiemes
-    - kieron-dev
-    - kimago
-    - kirederik
-    - klakin-pivotal
-    - KlapTrap
-    - kmarkwardt-vmware
-    - knm3000
-    - korifi-bot
-    - kreinecke
-    - kriscott
-    - krook
-    - ktchen14
-    - ktollivervmw
-    - ktpv
-    - kushmerick
-    - langered
-    - lbarncord
-    - lenapivotal
-    - lisamburns
-    - LizClaireMorris
-    - lnguyen
-    - loganloganlogan
-    - lterminasyan
-    - lwoydziak
-    - maheshkumarvs
-    - malba
-    - malik-altaf
-    - malston
-    - mamachanko
-    - Manifaust
-    - manno
-    - MarcPaquette
-    - mariash
-    - markstokan
-    - markthemarkest
-    - Markus-Ehrnsperger
-    - martyspiewak
-    - matt-royal
-    - mattcui
-    - mattmcneeney
-    - mauromorales
-    - maximilien
-    - mcwumbly
-    - menicosia
-    - MerricdeLauney
-    - metatype
-    - metric-store-ci
-    - mfine30
-    - mgibson1121
-    - michaelklishin
-    - miguelverissimo
-    - mihaibuzgau
-    - MirahImage
-    - mjgutermuth
-    - mjj209
-    - mkjelland
-    - mklanjsek
-    - mkocher
-    - mkuratczyk
-    - MMisoch
-    - mnitchev
-    - MoatazBM
-    - modelseer
-    - moggibear
-    - moleske
-    - monadic
-    - monamohebbi
-    - mook-as
-    - mrdavidlaing
-    - mrosecrance
-    - msmykowski
-    - mvach
-    - mvalliath
-    - myeghiazarya
-    - N00BEST
-    - n4wei
-    - nader-ziada
-    - nand2
-    - natalieparellano
-    - navdeep-pama
-    - nebhale
-    - nedenwalker
-    - neil-hickey
-    - nguerette
-    - nhsieh
-    - nickjameswebb
-    - nickstreet
-    - nicregez
-    - nierajsingh
-    - nimakaviani
-    - Nino-K
-    - nkguy
-    - nmaslarski
-    - notrepo05
-    - nouseforaname
-    - nvvalchev
-    - nwmac
-    - objectfox
-    - ograves-pivotal
-    - ohkyle
-    - ojhughes
-    - omerbensaadon
-    - oppegard
-    - OpusDude
-    - ozbasarir
-    - pabloarodas
-    - pabloschuhmacher
-    - paigecalvert
-    - paltanmoy
-    - paulcwarren
-    - pcf-core-services
-    - pcf-core-services-writer
-    - pcfdev-bot
-    - pcfrabbitmq-concourse-ci
-    - perm-ci-bot
-    - PeteLevineA
-    - PeterEltgroth
-    - petergtz
-    - peterhaochen47
-    - petersca
-    - petewall
-    - philippthun
-    - phschon
-    - piachakra
-    - Pivotal-Christopher-Wong
-    - pivotal-david-osullivan
-    - pivotal-lyle-murphy
-    - pivotal-marcela-campo
-    - pivotal-maya-kenedy
-    - pivotal-rd-admins
-    - pivotal-so
-    - pivotal-todd-ritchie
-    - pivotalgeorge
-    - pivotaljohn
-    - piyalibanerjee
-    - pkvatvmware
-    - plowin
-    - pnikonowicz
-    - poconnor1
-    - Pooja-08
-    - pradyutsarma
-    - Proplex
-    - pspinrad
-    - pubtools-docs-helper
-    - pulkit-chandra
-    - PureMunky
-    - pvaramballypivot
-    - pvtl-shane
-    - pws-team-admin-client
-    - pydctw
-    - qibobo
-    - qu1queee
-    - rade
-    - radito3
-    - ragaskar
-    - rahulkj
-    - rainmaker
-    - rajasekharatvmware
-    - rajdeepd
-    - ram-pivot
-    - ramonskie
-    - rboykin
-    - reedr3
-    - reneighbor
-    - rhall-pivotal
-    - rheaton
-    - RiaMahoney
-    - ricardo-vm
-    - richard-cox
-    - RichardJJG
-    - rickfarmer
-    - rizwanreza
-    - rlewis24
-    - rmorgan
-    - rnandi
-    - robdimsdale
-    - robertjsullivan
-    - robmee
-    - rogerluo410
-    - rohitsakala
-    - rohitsharma04
-    - romswo
-    - rosenhouse
-    - roshan-a
-    - routing-ci
-    - rroberts2222
-    - rszumlakowski
-    - runtime-ci
-    - ryanmattcollins
-    - ryanmoran
-    - ryanwittrup
-    - s4heid
-    - salzmannsusan
-    - sampeinado
-    - Samze
-    - sanagaraj-pivotal
-    - satiar
-    - sboyajyan
-    - schaefm-ibm
-    - schubert
-    - sclevine
-    - scothis
-    - scottfrederick
-    - scottietremendous
-    - sebGilR
-    - selzoc
-    - SenatorSupes
-    - services-api-ci
-    - sethboyles
-    - shamus
-    - Shanfan
-    - shanks3012
-    - shaun7pan
-    - silvestre
-    - simonjjones
-    - simonleung8
-    - skibum55
-    - smoser-ibm
-    - snneji
-    - Soha-Albaghdady
-    - sophiewigmore
-    - spaungam
-    - spgreenberg
-    - spikymonkey
-    - squeedee
-    - ssapra
-    - ssisil
-    - st3v
-    - staylor14
-    - stefanlay
-    - stefanley
-    - StefanWutz
-    - strehle
-    - stuart-pollock
-    - suhlig
-    - sujeetv
-    - sunjayBhatia
-    - sunnytoolsmiths
-    - suprajanarasimhan
-    - suraiyasuliman
-    - svennam92
-    - svkrieger
-    - swalchemist
-    - swalner-pivotal
-    - swati1102
-    - swati-nair
-    - sweinstein22
-    - sykesm
-    - syslxg
-    - tack-sap
-    - tamaovmware
-    - tanayk2610
-    - tanglisha
-    - tanzeeb
-    - tarpinian
-    - tas-runtime-bot
-    - tcdowney
-    - teddyking
-    - Tejuvmware
-    - tekul
-    - test-12341234
-    - theghost5800
-    - thepeterstone
-    - thisisnotashwin
-    - thitch97
-    - thomas1206
-    - tinygrasshopper
-    - TisVictress
-    - tjvman
-    - tmegan1
-    - toabctl
-    - tom-collings
-    - tomkennedy513
-    - torsten-sap
-    - totherme
-    - tracker-common
-    - trevormarshall
-    - trisberg
-    - troytop
-    - tylerphelan
-    - tylerschultz
-    - valeriap
-    - vgogate
-    - videlov
-    - vikafed
-    - vinaybheri
-    - viovanov
-    - visargsoneji
-    - vkalapov
-    - voelzmo
-    - wattersjames
-    - wayneadams
-    - WeiQuan0605
-    - weymanf
-    - will-gant
-    - willmadison
-    - xandroc
-    - xiongli
-    - xtreme-andrei-dinin
-    - xtreme-bozhidar-lenchov
-    - xtreme-conor-nosal
-    - xtreme-debbie-chen
-    - xtreme-jason-smith
-    - xtreme-jesse-malone
-    - xtreme-nitin-ravindran
-    - xtreme-sameer-vohra
-    - xtreme-vikram-yadav
-    - xtremerui
-    - yaelharel
-    - yatzek
-    - ystros
-    - yyzjateen
-    - zhang-hua
-    - zhanggbj
-    - zhangtbj
-    - zhongyi-zhang
-    - zrob
-    - zyjiaobj
-    - zzori-theoriginal
+    members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
     members_can_create_repositories: false
     name: Cloud Foundry
     repos:
@@ -693,6 +33,7 @@ orgs:
         description: Auto Scaling for CF Applications
         has_projects: true
       app-autoscaler-ci:
+        archived: true
         description: The CI part of the app-autoscaler project
         has_projects: true
       app-autoscaler-cli-plugin:
@@ -707,6 +48,7 @@ orgs:
         default_branch: main
         has_projects: true
       app-autoscaler-ui:
+        archived: true
         description: A UI project for the Cloud Foundry incubator app-autoscaler
         has_projects: true
       apt-buildpack:
@@ -920,6 +262,9 @@ orgs:
         has_issues: false
         has_projects: true
         private: true
+      bosh-psmodules:
+        description: PowerShell modules for building Windows Stemcells
+        has_projects: false
       bosh-s3cli:
         description: Go CLI for S3
         has_projects: false
@@ -1343,6 +688,13 @@ orgs:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 18.04 LTS
         has_projects: true
+      cflinuxfs4:
+        default_branch: main
+        has_projects: true
+      cflinuxfs4-release:
+        default_branch: main
+        description: Cloud Foundry stack based on Ubuntu 22.04 LTS
+        has_projects: true
       cli:
         allow_merge_commit: false
         description: The official command line client for Cloud Foundry
@@ -1742,6 +1094,7 @@ orgs:
         homepage: http://coreos.com/docs/etcd/
       event-log-release:
         has_projects: true
+        archived: true
       eventhub:
         allow_merge_commit: false
         has_issues: false
@@ -2084,6 +1437,9 @@ orgs:
       korifi-ci:
         default_branch: main
         has_projects: true
+      korifi-website:
+        default_branch: main
+        has_projects: false 
       lager:
         allow_merge_commit: false
         description: An opinionated logger for Go.
@@ -2379,6 +1735,10 @@ orgs:
         allow_merge_commit: false
         description: A service broker that provides an overview of its service instances
           and bindings. Conforms to the Open Service Broker API standard.
+        has_projects: true
+      pcap-release:
+        default_branch: main
+        description: A BOSH release and CLI to enable network analysis for CF app developers
         has_projects: true
       persi-ci:
         has_projects: true
@@ -2777,6 +2137,13 @@ orgs:
         allow_merge_commit: false
         has_issues: false
         has_projects: true
+      terraform-provider-csbpg:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for PostgreSQL
+        has_projects: true
+        has_wiki: false
       test-log-emitter:
         has_projects: true
       test-log-emitter-release:
@@ -2837,6 +2204,11 @@ orgs:
         description: Setup scripts for UAA workstations
         has_projects: true
         private: true
+      upgrade-all-services-cli-plugin:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        has_projects: true
       uptimer:
         default_branch: main
         description: A Cloud Foundry availability measurement tool for eventful times
@@ -3002,14 +2374,12 @@ orgs:
         - joergdw
         - FloThinksPi
         - monamohebbi
-        - andy-paine
         - radito3
         - tjvman
         - MarcPaquette
         - brayanhenao
         - mjgutermuth
         - theghost5800
-        - sweinstein22
         - MerricdeLauney
         - jdgonzaleza
         - pivotal-david-osullivan
@@ -3031,6 +2401,7 @@ orgs:
             - joergdw
             - KevinJCross
             - silvestre
+            - marcinkubica
             privacy: closed
           App Runtime Interfaces WG Buildpacks:
             description: Approvers for the App Runtime Buildpacks area
@@ -3042,27 +2413,62 @@ orgs:
             - pivotal-david-osullivan
             privacy: closed
             repos:
-              binary-buildpack: read
-              brats: read
-              docs-buildpacks: read
-              go-buildpack: read
-              ibm-websphere-liberty-buildpack: read
-              java-buildpack: read
-              java-buildpack-auto-reconfiguration: read
-              java-buildpack-client-certificate-mapper: read
-              java-buildpack-container-customizer: read
-              java-buildpack-dependency-builder: read
-              java-buildpack-memory-calculator: read
-              java-buildpack-metric-writer: read
-              java-buildpack-security-provider: read
-              java-buildpack-support: read
-              java-buildpack-system-test: read
-              java-test-applications: read
-              nodejs-buildpack: read
-              php-buildpack: read
-              python-buildpack: read
-              ruby-buildpack: read
-              staticfile-buildpack: read
+              cflinuxfs3: write
+              cflinuxfs4: write
+              java-buildpack: write
+              java-buildpack-memory-calculator: write
+              java-buildpack-release: write
+              java-buildpack-system-test: write
+              java-buildpack-dependency-builder: write
+              java-buildpack-container-customizer: write
+              java-test-applications: write
+              java-buildpack-support: write
+              java-buildpack-security-provider: write
+              java-buildpack-metric-writer: write
+              java-buildpack-client-certificate-mapper: write
+              java-buildpack-auto-reconfiguration: write
+              ibm-websphere-liberty-buildpack: write
+              nodejs-buildpack: write
+              nodejs-buildpack-release: write
+              php-buildpack: write
+              php-buildpack-release: write
+              ruby-buildpack: write
+              ruby-buildpack-release: write
+              python-buildpack: write
+              python-buildpack-release: write
+              go-buildpack: write
+              go-buildpack-release: write
+              binary-buildpack: write
+              binary-buildpack-release: write
+              dotnet-core-buildpack: write
+              dotnet-core-buildpack-release: write
+              hwc-buildpack: write
+              hwc-buildpack-release: write
+              nginx-buildpack: write
+              nginx-buildpack-release: write
+              staticfile-buildpack: write
+              staticfile-buildpack-release: write
+              r-buildpack: write
+              r-buildpack-release: write
+              apt-buildpack: write
+              docs-buildpacks: write
+              brats: write
+              binary-builder: write
+              buildpack-packager: write
+              buildpackapplifecycle: write
+              buildpacks-ci: write
+              buildpacks-feature-eng-ci: write
+              buildpacks-github-config: write
+              cflinuxfs3-release: write
+              cflinuxfs4-release: write
+              dagger: write
+              example-sidecar-buildpack: write
+              jvmkill: write
+              libbuildpack: write
+              pip-pop: write
+              public-buildpacks-ci-robots: write
+              stack-auditor: write
+              switchblade: write
           App Runtime Interfaces WG CAPI:
             description: Approvers for the App Runtime CAPI area
             maintainers:
@@ -3071,12 +2477,11 @@ orgs:
             - sethboyles
             - FloThinksPi
             - monamohebbi
-            - andy-paine
             - tjvman
             - MarcPaquette
-            - sweinstein22
             - MerricdeLauney
             - dalvarado
+            - moleske
             privacy: closed
             repos:
               capi-bara-tests: write
@@ -3171,6 +2576,7 @@ orgs:
         maintainers:
         - ameowlia
         members:
+        - animatedmax
         - Benjamintf1
         - Gerg
         - acrmp
@@ -3191,7 +2597,6 @@ orgs:
         - plowin
         - reneighbor
         - selzoc
-        - stefanley
         privacy: closed
         teams:
           App Runtime Platform WG leads:
@@ -3418,8 +2823,10 @@ orgs:
           App Runtime Platform WG Docs Reviewers:
             members:
             - geofffranks
+            - animatedmax
           App Runtime Platform WG Docs:
-            members: []
+            members:
+            - animatedmax
             privacy: closed
             repos:
               docs-book-cloudfoundry: write
@@ -3487,6 +2894,7 @@ orgs:
               - reneighbor
               - selzoc
               - MarcPaquette
+              - ctlong
           App Runtime Platform WG Logging and Metrics:
             members:
               - acrmp
@@ -3496,6 +2904,7 @@ orgs:
               - jrussett
               - reneighbor
               - selzoc
+              - ctlong
             privacy: closed
             repos:
               bosh-system-metrics-forwarder-release: write
@@ -3543,7 +2952,6 @@ orgs:
             - plowin
             - reneighbor
             - selzoc
-            - stefanley
             - MarcPaquette
           App Runtime Platform WG Networking:
             members:
@@ -3558,7 +2966,6 @@ orgs:
               - plowin
               - reneighbor
               - selzoc
-              - stefanley
             privacy: closed
             repos:
               cf-networking-helpers: write
@@ -3688,7 +3095,6 @@ orgs:
         - julian-hj
         - danielfor
         - klakin-pivotal
-        - camilalonart
         - nouseforaname
         - malba
         members:
@@ -3767,7 +3173,6 @@ orgs:
             - danielfor
             - klakin-pivotal
             - nouseforaname
-            - camilalonart
             - malba
             privacy: closed
             repos:
@@ -3829,6 +3234,7 @@ orgs:
         - bosh-admin-bot
         privacy: closed
         repos:
+          bbl-state-resource: admin
           bosh: admin
           bosh-acceptance-tests: admin
           bosh-agent: admin
@@ -3837,6 +3243,7 @@ orgs:
           bosh-aws-light-stemcell-builder: admin
           bosh-azure-cpi-release: admin
           bosh-bbl-ci-envs: admin
+          bosh-bootloader: admin
           bosh-cli: admin
           bosh-compiled-releases-index: admin
           bosh-cpi-environments: admin
@@ -3866,9 +3273,11 @@ orgs:
           config-server: admin
           config-server-release: admin
           docs-bosh: admin
+          exemplar-release: admin
           gofileutils: admin
           gosigar: admin
           homebrew-tap: write
+          jumpbox-deployment: admin
           os-conf-release: admin
           socks5-proxy: admin
           syslog-release: admin
@@ -3943,7 +3352,6 @@ orgs:
         - moleske
         - klakin-pivotal
         - nouseforaname
-        - camilalonart
         privacy: closed
         repos:
           bosh-acceptance-tests: write
@@ -4033,28 +3441,15 @@ orgs:
       CF Buildpacks:
         description: ""
         maintainers:
-        - sclevine
-        - TisVictress
+        - ryanmoran
         members:
         - simonjjones
-        - nebhale
-        - ryanmoran
-        - GarimaSharma
         - arjun024
         - dmikusa-pivotal
-        - thitch97
         - cf-buildpacks-eng
-        - robdimsdale
-        - shanks3012
-        - AccraZed
-        - ForestEckhardt
         - brayanhenao
-        - mgibson1121
-        - sophiewigmore
-        - fg-j
         - pivotal-david-osullivan
-        - mvalliath
-        - bhh1893
+        - joshuatcasey
         privacy: closed
         repos:
           apt-buildpack: admin
@@ -4135,6 +3530,7 @@ orgs:
         - MerricdeLauney
         - xandroc
         - klakin-pivotal
+        - rroberts2222
         members:
         - evanfarrar
         - matt-royal
@@ -4803,7 +4199,6 @@ orgs:
         - dprotaso
         - xtremerui
         - xtreme-jason-smith
-        - ryanmattcollins
         - xtreme-vikram-yadav
         privacy: secret
         repos:
@@ -5251,7 +4646,6 @@ orgs:
         - anEXPer
         - paulcwarren
         - pivotal-lyle-murphy
-        - cf-pub-tools
         - pulkit-chandra
         - dpdavis
         - pubtools-docs-helper
@@ -5433,6 +4827,7 @@ orgs:
         - christopherclark
         members:
         - jpalermo
+        - nouseforaname
         - lnguyen
         - ramonskie
         - Benjamintf1
@@ -5804,7 +5199,6 @@ orgs:
         - Pivotal-Christopher-Wong
         - pspinrad
         - nkguy
-        - cf-pub-tools
         - paigecalvert
         - jncd
         - mjgutermuth
@@ -5889,7 +5283,6 @@ orgs:
         - animatedmax
         members:
         - kejadlen
-        - cf-pub-tools
         - ClaudeFaundry
         - pubtools-docs-helper
         privacy: secret
@@ -6222,7 +5615,6 @@ orgs:
         - zrob
         - monamohebbi
         - tjvman
-        - sweinstein22
         - MerricdeLauney
         members:
         - sethboyles
@@ -6360,7 +5752,6 @@ orgs:
         - FlorianNachtigall
         - klakin-pivotal
         - nouseforaname
-        - camilalonart
         - cf-bosh-ci-bot
         - suraiyasuliman
         - anshrupani
@@ -6433,6 +5824,7 @@ orgs:
         - KevinJCross
         - silvestre
         members:
+        - marcinkubica
         - app-autoscaler-ci-bot
         - donacarr
         - mvach
@@ -6446,7 +5838,6 @@ orgs:
           app-autoscaler-release: admin
           app-autoscaler-ui: write
           bosh-compile-action: admin
-          runtime-og-ci-private: write
       cf-frontend bot:
         description: ""
         members:
@@ -6552,12 +5943,14 @@ orgs:
         - blgm
         - pivotal-marcela-campo
         - jimbo459
+        - zucchinidev
         privacy: closed
         repos:
           cloud-service-broker: admin
           csb-brokerpak-aws: admin
           csb-brokerpak-azure: admin
           csb-brokerpak-gcp: admin
+          upgrade-all-services-cli-plugin: admin
       cloudops-ci:
         description: ""
         members:
@@ -6670,7 +6063,6 @@ orgs:
         - philippthun
         - FloThinksPi
         - jochenehret
-        - andy-paine
         - kathap
         - svkrieger
         - johha
@@ -6762,7 +6154,6 @@ orgs:
       pks-bosh-lifecycle:
         description: ""
         members:
-        - SenatorSupes
         - briannebrown
         - ahrtr
         - swalner-pivotal
@@ -7016,17 +6407,6 @@ orgs:
         privacy: secret
         repos:
           bosh-cpi-kb: read
-      toc:
-        description: Technical Oversight Committee
-        maintainers:
-        - dsboulder
-        - loewenstein
-        - LeePorte
-        - stephanme
-        - emalm
-        privacy: closed
-        repos:
-          community: admin
       toolsmiths-bots:
         description: Gitbot and Dreddbot
         members:
