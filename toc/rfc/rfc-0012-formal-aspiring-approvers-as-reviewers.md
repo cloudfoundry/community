@@ -3,8 +3,8 @@
 - Name: Formally track aspiring approvers as reviewers
 - Start Date: 2022-07-05
 - Author(s): @rkoster, @stephanme
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/333
+- Status: Accepted
+- RFC Pull Request: [community#333](https://github.com/cloudfoundry/community/pull/333)
 
 
 ## Summary
