@@ -129,7 +129,13 @@ execution_leads:
   github: rkoster
 - name: Stephan Merker
   github: stephanme
-technical_leads: []
+technical_leads:
+- name: Chris Clark
+  github: christopherclark
+- name: Ram Iyengar
+  github: ramiyengar
+- name: The Linux Foundation
+  github: thelinuxfoundation
 bots: []
 areas:
 - name: CloudFoundry Community

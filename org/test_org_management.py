@@ -311,7 +311,9 @@ class TestOrgGenerator(unittest.TestCase):
 
         o.generate_org_members()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
+        admins = o.org_cfg["orgs"]["cloudfoundry"]["admins"]
         self.assertGreater(len(members), 100)
+        self.assertGreater(len(admins), 7)  # 5 toc members + CFF technical staff
         self.assertIn("cf-bosh-ci-bot", members)
 
         o.generate_teams()
@@ -323,5 +325,6 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
         self.assertIn("cf-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
         self.assertIn("toc", teams)
+        self.assertEquals(5, len(teams["toc"]["maintainers"]))
         self.assertIn("community", teams["toc"]["repos"])
         self.assertIn("wg-leads", teams)
