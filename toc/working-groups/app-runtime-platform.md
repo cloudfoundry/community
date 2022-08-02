@@ -154,12 +154,16 @@ areas:
   - name: Marc Paquette
     github: MarcPaquette
   repositories:
-  - cloudfoundry/diff-exporter
   - cloudfoundry/cert-injector
+  - cloudfoundry/cfbench
   - cloudfoundry/commandrunner
+  - cloudfoundry/concourse-flake-hunter
   - cloudfoundry/cpu-entitlement-admin-plugin
   - cloudfoundry/cpu-entitlement-plugin
+  - cloudfoundry/dependachore
+  - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
+  - cloudfoundry/flightattendant
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
@@ -168,8 +172,9 @@ areas:
   - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
-  - cloudfoundry/garden-windows-ci
   - cloudfoundry/garden-wiki
+  - cloudfoundry/garden-windows-ci
+  - cloudfoundry/garden-windows-tools-release
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
   - cloudfoundry/grootfs
@@ -178,6 +183,9 @@ areas:
   - cloudfoundry/hydrator
   - cloudfoundry/idmapper
   - cloudfoundry/netplugin-shim
+  - cloudfoundry/test-log-emitter
+  - cloudfoundry/test-log-emitter-release
+  - cloudfoundry/vantablackbox-release
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
