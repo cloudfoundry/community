@@ -132,10 +132,6 @@ execution_leads:
 technical_leads:
 - name: Chris Clark
   github: christopherclark
-- name: Justin Halliwill
-  github: halliwilljustin
-- name: Michele Jear
-  github: mjear
 - name: Ram Iyengar
   github: ramiyengar
 - name: The Linux Foundation
