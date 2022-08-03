@@ -55,6 +55,8 @@ areas:
     github: joergdw
   - name: Marcin Kubica
     github: marcinkubica
+  - name: Oliver Mautschke
+    github: olivermautschke
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
