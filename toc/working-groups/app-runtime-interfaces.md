@@ -148,6 +148,8 @@ areas:
     github: johha
   - name: Michael Oleske
     github: moleske
+  - name: Seth Boyles
+    github: sethboyles
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
