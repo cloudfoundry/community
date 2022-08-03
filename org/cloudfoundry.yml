@@ -4620,7 +4620,6 @@ orgs:
         maintainers:
         - dsboulder
         - emalm
-        - mjear
         members:
         - evanfarrar
         - schubert
@@ -5121,11 +5120,6 @@ orgs:
           spring-auto-reconfiguration-cnb: admin
           spring-boot-cnb: admin
           tomcat-cnb: admin
-      License Finder:
-        description: ""
-        maintainers:
-        - mjear
-        privacy: secret
       OSS Review:
         description: ""
         members:
