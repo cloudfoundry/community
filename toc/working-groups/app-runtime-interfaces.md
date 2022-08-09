@@ -42,6 +42,8 @@ technical_leads:
 bots:
 - name: App Autoscaler CI Bot
   github: app-autoscaler-ci-bot
+- name: Cloud Foundry Buildpacks Team Robot
+  github: cf-buildpacks-eng
 areas:
 - name: Autoscaler
   approvers:
