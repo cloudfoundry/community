@@ -39,7 +39,9 @@ execution_leads:
 technical_leads:
 - name: Greg Cobb 
   github: gerg
-bots: []
+bots:
+- name: Cloud Foundry Buildpacks Team Robot
+  github: cf-buildpacks-eng
 areas:
 - name: Autoscaler
   approvers:
