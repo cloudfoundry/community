@@ -39,7 +39,9 @@ execution_leads:
 technical_leads:
 - name: Greg Cobb 
   github: gerg
-bots: []
+bots:
+- name: App Autoscaler CI Bot
+  github: app-autoscaler-ci-bot
 areas:
 - name: Autoscaler
   approvers:
