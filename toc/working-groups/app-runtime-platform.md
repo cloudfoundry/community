@@ -64,6 +64,7 @@ areas:
   - cloudfoundry/auctioneer
   - cloudfoundry/bbs
   - cloudfoundry/benchmarkbbs
+  - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter
@@ -98,19 +99,15 @@ areas:
   - cloudfoundry/eventhub
   - cloudfoundry/executor
   - cloudfoundry/fileserver
-  - cloudfoundry/garden-ci
-  - cloudfoundry/garden-wiki
   - cloudfoundry/grace
   - cloudfoundry/healthcheck
   - cloudfoundry/inigo
   - cloudfoundry/localdriver
   - cloudfoundry/localip
   - cloudfoundry/locket
-  - cloudfoundry/networking-oss-deployments
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
-  - cloudfoundry/routing-team-checklists
   - cloudfoundry/runtimeschema
   - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
@@ -157,12 +154,16 @@ areas:
   - name: Marc Paquette
     github: MarcPaquette
   repositories:
-  - cloudfoundry/diff-exporter
   - cloudfoundry/cert-injector
+  - cloudfoundry/cfbench
   - cloudfoundry/commandrunner
+  - cloudfoundry/concourse-flake-hunter
   - cloudfoundry/cpu-entitlement-admin-plugin
   - cloudfoundry/cpu-entitlement-plugin
+  - cloudfoundry/dependachore
+  - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
+  - cloudfoundry/flightattendant
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
@@ -171,7 +172,9 @@ areas:
   - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
+  - cloudfoundry/garden-wiki
   - cloudfoundry/garden-windows-ci
+  - cloudfoundry/garden-windows-tools-release
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
   - cloudfoundry/grootfs
@@ -180,6 +183,9 @@ areas:
   - cloudfoundry/hydrator
   - cloudfoundry/idmapper
   - cloudfoundry/netplugin-shim
+  - cloudfoundry/test-log-emitter
+  - cloudfoundry/test-log-emitter-release
+  - cloudfoundry/vantablackbox-release
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
@@ -277,6 +283,7 @@ areas:
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
+  - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
@@ -285,6 +292,7 @@ areas:
   - cloudfoundry/routing-info
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
+  - cloudfoundry/routing-team-checklists
   - cloudfoundry/service-metrics-release
   - cloudfoundry/silk
   - cloudfoundry/silk-release

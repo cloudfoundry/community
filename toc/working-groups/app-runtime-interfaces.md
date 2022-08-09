@@ -40,6 +40,8 @@ technical_leads:
 - name: Greg Cobb 
   github: gerg
 bots:
+- name: App Autoscaler CI Bot
+  github: app-autoscaler-ci-bot
 - name: Cloud Foundry Buildpacks Team Robot
   github: cf-buildpacks-eng
 areas:
@@ -114,7 +116,8 @@ areas:
   - cloudfoundry/brats
   - cloudfoundry/binary-builder
   - cloudfoundry/buildpack-packager
-  - cloudfoundry/buildpackapplifecycle
+  - cloudfoundry/buildpacks-envs
+  - cloudfoundry/buildpacks-workstation
   - cloudfoundry/buildpacks-ci
   - cloudfoundry/buildpacks-feature-eng-ci
   - cloudfoundry/buildpacks-github-config
@@ -147,6 +150,10 @@ areas:
     github: monamohebbi
   - name: Johannes Haass
     github: johha
+  - name: Michael Oleske
+    github: moleske
+  - name: Seth Boyles
+    github: sethboyles
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release

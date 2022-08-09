@@ -1,12 +1,7 @@
 ---
 orgs:
   cloudfoundry:
-    admins:
-    - christopherclark
-    - halliwilljustin
-    - mjear
-    - ramiyengar
-    - thelinuxfoundation
+    admins: [] # shall be empty, maintained in TOC.md
     billing_email: ap@cloudfoundry.org
     company: ""
     default_repository_permission: none
@@ -1741,6 +1736,10 @@ orgs:
         description: A service broker that provides an overview of its service instances
           and bindings. Conforms to the Open Service Broker API standard.
         has_projects: true
+      pcap-release:
+        default_branch: main
+        description: A BOSH release and CLI to enable network analysis for CF app developers
+        has_projects: true
       persi-ci:
         has_projects: true
       persistence-load-tests:
@@ -2138,6 +2137,13 @@ orgs:
         allow_merge_commit: false
         has_issues: false
         has_projects: true
+      terraform-provider-csbpg:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for PostgreSQL
+        has_projects: true
+        has_wiki: false
       test-log-emitter:
         has_projects: true
       test-log-emitter-release:
@@ -2475,6 +2481,7 @@ orgs:
             - MarcPaquette
             - MerricdeLauney
             - dalvarado
+            - moleske
             privacy: closed
             repos:
               capi-bara-tests: write
@@ -4613,7 +4620,6 @@ orgs:
         maintainers:
         - dsboulder
         - emalm
-        - mjear
         members:
         - evanfarrar
         - schubert
@@ -5114,11 +5120,6 @@ orgs:
           spring-auto-reconfiguration-cnb: admin
           spring-boot-cnb: admin
           tomcat-cnb: admin
-      License Finder:
-        description: ""
-        maintainers:
-        - mjear
-        privacy: secret
       OSS Review:
         description: ""
         members:
