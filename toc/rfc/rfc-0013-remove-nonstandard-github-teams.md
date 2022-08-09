@@ -3,8 +3,8 @@
 - Name: Remove Non-Standard GitHub Teams
 - Start Date: 2022-04-28
 - Author(s): @gerg
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: [https://github.com/cloudfoundry/community/pull/262](https://github.com/cloudfoundry/community/pull/262)
+- Status: Accepted
+- RFC Pull Request: [community#262](https://github.com/cloudfoundry/community/pull/262)
 
 
 ## Summary
