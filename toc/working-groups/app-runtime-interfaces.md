@@ -44,6 +44,8 @@ bots:
   github: app-autoscaler-ci-bot
 - name: Cloud Foundry Buildpacks Team Robot
   github: cf-buildpacks-eng
+- name: capi-bot
+  github: capi-bot
 areas:
 - name: Autoscaler
   approvers:
