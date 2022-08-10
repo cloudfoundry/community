@@ -65,6 +65,7 @@ areas:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
   - cloudfoundry/app-autoscaler-env-bbl-state
+
 - name: Buildpacks
   approvers:
   - name: Daniel Mikusa
@@ -75,6 +76,8 @@ areas:
     github: arjun024
   - name: Brayan Henao
     github: brayanhenao
+  - name: Ryan Moran
+    github: ryanmoran
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
