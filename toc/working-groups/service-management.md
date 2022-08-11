@@ -47,6 +47,9 @@ areas:
     github: tinygrasshopper
   - name: Andrea Zucchini
     github: zucchinidev
+  bots:
+  - name: Services Enablement bot
+    github: servicesenablement
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
@@ -96,6 +99,9 @@ areas:
     github: fejnartal
   - name: Gareth Smith
     github: totherme
+  bots:
+  - name: Cryogenics CI Bot
+    github: Cryogenics-CI
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
