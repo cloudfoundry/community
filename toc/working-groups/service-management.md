@@ -96,6 +96,8 @@ areas:
     github: fejnartal
   - name: Gareth Smith
     github: totherme
+  - name: Ian Findlay
+    github: ifindlay-cci
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
