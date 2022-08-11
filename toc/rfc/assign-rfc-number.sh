@@ -88,9 +88,9 @@ RFC_ID=$(generate_id)
 echo "> Generated RFC number: ${RFC_ID}"
 
 
-SOURCE_DOC=$(find "${script_dir}" -maxdepth 1 -type f -name 'rfc-draft-*')
+SOURCE_DOC=$(find "${script_dir}" -maxdepth 2 -type f -name 'rfc-draft-*')
 TARGET_DOC=${SOURCE_DOC//rfc-draft/rfc-${RFC_ID}}
-SOURCE_DIR=$(find "${script_dir}" -maxdepth 1 -type d -name 'rfc-draft-*')
+SOURCE_DIR=$(find "${script_dir}" -maxdepth 2 -type d -name 'rfc-draft-*')
 TARGET_DIR=${SOURCE_DIR//rfc-draft/rfc-${RFC_ID}}
 
 echo "> Transforming '${SOURCE_DOC}' into '${TARGET_DOC}'"
