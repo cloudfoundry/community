@@ -47,6 +47,8 @@ areas:
     github: tinygrasshopper
   - name: Andrea Zucchini
     github: zucchinidev
+  - name: Konstantin Semenov
+    github: jhvhs    
   bots:
   - name: Services Enablement bot
     github: servicesenablement
@@ -99,6 +101,8 @@ areas:
     github: fejnartal
   - name: Gareth Smith
     github: totherme
+  - name: Ian Findlay
+    github: ifindlay-cci    
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI
