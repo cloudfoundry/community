@@ -47,6 +47,8 @@ areas:
     github: tinygrasshopper
   - name: Andrea Zucchini
     github: zucchinidev
+  - name: Konstantin Semenov
+    github: jhvhs
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
