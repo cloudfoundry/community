@@ -128,6 +128,10 @@ class OrgGenerator:
         users |= {u["github"] for u in wg["bots"]}
         for area in wg["areas"]:
             users |= {u["github"] for u in area["approvers"]}
+            if "reviewers" in area:
+                users |= {u["github"] for u in area["reviewers"]}
+            if "bots" in area:
+                users |= {u["github"] for u in area["bots"]}
         return users
 
     @staticmethod

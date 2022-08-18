@@ -18,34 +18,34 @@ wg1 = """
 name: WG1 Name
 execution_leads:
 - name: Execution Lead WG1
-  github: execution-lead-1
+  github: execution-lead-wg1
 technical_leads:
 - name: Technical Lead WG1
-  github: technical-lead-1
+  github: technical-lead-wg1
 bots:
 - name: WG1 CI Bot
-  github: bot1
+  github: bot1-wg1
 areas:
 - name: Area 1
   approvers:
-  - github: user1
+  - github: approver1-wg1-a1
     name: User 1
-  - github: user2
+  - github: approver2-wg1-a1-a2
     name: User 2
   repositories:
   - cloudfoundry/repo1
   - cloudfoundry/repo2
 - name: Area 2
   approvers:
-  - github: user2
+  - github: approver2-wg1-a1-a2
     name: User 2
-  - github: user3
+  - github: approver3-wg1-a2
     name: User 3
   reviewers:
-  - github: user4
+  - github: reviewer1-wg1-a2
     name: User 4
   bots:
-  - github: bot2
+  - github: bot2-wg1-a2
     name: WG1 Area2 Bot
   repositories:
   - cloudfoundry/repo3
@@ -56,15 +56,15 @@ wg2 = """
 name: WG2 Name
 execution_leads:
 - name: Execution Lead WG2
-  github: execution-lead-2
+  github: execution-lead-wg2
 technical_leads:
 - name: Technical Lead WG2
-  github: technical-lead-2
+  github: technical-lead-wg2
 bots: []
 areas:
 - name: Area 1
   approvers:
-  - github: user10
+  - github: approver1-wg2-a1
     name: User 10
   repositories:
   - cloudfoundry/repo10
@@ -89,7 +89,7 @@ areas:
 - name: CloudFoundry Community
   approvers:
   - name: User TOC
-    github: user-toc
+    github: approver-toc-a1
   repositories:
   - cloudfoundry/community
 config:
@@ -111,19 +111,22 @@ class TestOrgGenerator(unittest.TestCase):
         o.generate_org_members()
         self.assertListEqual([], o.org_cfg["orgs"]["cloudfoundry"]["members"])
 
-    def test_contributors(self):
+    def test_org_members_contributors(self):
         o = OrgGenerator(contributors=contributors)
         o.generate_org_members()
         self.assertListEqual(["Contributor2", "contributor1"], o.org_cfg["orgs"]["cloudfoundry"]["members"])
 
-    def test_contributors_wg(self):
+    def test_org_members_wg(self):
         o = OrgGenerator(working_groups=[wg1, wg2])
         o.generate_org_members()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
-        self.assertEqual(6 + 3, len(members))
-        self.assertIn("execution-lead-1", members)
-        self.assertIn("user1", members)
-        self.assertIn("user10", members)
+        self.assertEqual(8 + 3, len(members))
+        self.assertIn("execution-lead-wg1", members)
+        self.assertIn("approver1-wg1-a1", members)
+        self.assertIn("reviewer1-wg1-a2", members)
+        self.assertIn("bot1-wg1", members)
+        self.assertIn("bot2-wg1-a2", members)
+        self.assertIn("approver1-wg2-a1", members)
 
     def test_org_admins_cannot_be_org_members(self):
         contributors = """
@@ -161,16 +164,18 @@ class TestOrgGenerator(unittest.TestCase):
     def test_wg_github_users(self):
         wg = yaml.safe_load(wg1)
         users = OrgGenerator._wg_github_users(wg)
-        self.assertEqual(6, len(users))
-        self.assertIn("execution-lead-1", users)
-        self.assertIn("technical-lead-1", users)
-        self.assertIn("user1", users)
-        self.assertIn("bot1", users)
+        self.assertEqual(8, len(users))
+        self.assertIn("execution-lead-wg1", users)
+        self.assertIn("technical-lead-wg1", users)
+        self.assertIn("approver1-wg1-a1", users)
+        self.assertIn("reviewer1-wg1-a2", users)
+        self.assertIn("bot1-wg1", users)
+        self.assertIn("bot2-wg1-a2", users)
 
     def test_wg_github_users_leads(self):
         wg = yaml.safe_load(wg1)
         users = OrgGenerator._wg_github_users_leads(wg)
-        self.assertSetEqual({"execution-lead-1", "technical-lead-1"}, users)
+        self.assertSetEqual({"execution-lead-wg1", "technical-lead-wg1"}, users)
 
     def test_validate_contributors(self):
         OrgGenerator._validate_contributors({"contributors": []})
@@ -235,39 +240,39 @@ class TestOrgGenerator(unittest.TestCase):
         (name, wg_team) = OrgGenerator._generate_wg_teams(_wg1)
 
         self.assertEqual("wg-wg1-name", name)
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], wg_team["maintainers"])
-        self.assertListEqual(["user1", "user2", "user3"], wg_team["members"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], wg_team["maintainers"])
+        self.assertListEqual(["approver1-wg1-a1", "approver2-wg1-a1-a2", "approver3-wg1-a2"], wg_team["members"])
 
         team = wg_team["teams"]["wg-wg1-name-leads"]
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
         self.assertDictEqual({f"repo{i}": "admin" for i in range(1, 5)}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-bots"]
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
-        self.assertListEqual(["bot1"], team["members"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
+        self.assertListEqual(["bot1-wg1"], team["members"])
         self.assertDictEqual({f"repo{i}": "write" for i in range(1, 5)}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-area-1-approvers"]
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
-        self.assertListEqual(["user1", "user2"], team["members"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
+        self.assertListEqual(["approver1-wg1-a1", "approver2-wg1-a1-a2"], team["members"])
         self.assertDictEqual({"repo1": "write", "repo2": "write"}, team["repos"])
 
         self.assertNotIn("wg-wg1-name-area-1-reviewers", wg_team["teams"])
         self.assertNotIn("wg-wg1-name-area-1-bots", wg_team["teams"])
 
         team = wg_team["teams"]["wg-wg1-name-area-2-approvers"]
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
-        self.assertListEqual(["user2", "user3"], team["members"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
+        self.assertListEqual(["approver2-wg1-a1-a2", "approver3-wg1-a2"], team["members"])
         self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-area-2-reviewers"]
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
-        self.assertListEqual(["user4"], team["members"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
+        self.assertListEqual(["reviewer1-wg1-a2"], team["members"])
         self.assertDictEqual({"repo3": "read", "repo4": "read"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-area-2-bots"]
-        self.assertListEqual(["execution-lead-1", "technical-lead-1"], team["maintainers"])
-        self.assertListEqual(["bot2"], team["members"])
+        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
+        self.assertListEqual(["bot2-wg1-a2"], team["members"])
         self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
 
     def test_generate_wg_teams_exclude_non_cf_repos(self):
@@ -275,21 +280,21 @@ class TestOrgGenerator(unittest.TestCase):
         (name, wg_team) = OrgGenerator._generate_wg_teams(_wg2)
 
         self.assertEqual("wg-wg2-name", name)
-        self.assertListEqual(["execution-lead-2", "technical-lead-2"], wg_team["maintainers"])
-        self.assertListEqual(["user10"], wg_team["members"])
+        self.assertListEqual(["execution-lead-wg2", "technical-lead-wg2"], wg_team["maintainers"])
+        self.assertListEqual(["approver1-wg2-a1"], wg_team["members"])
 
         team = wg_team["teams"]["wg-wg2-name-leads"]
-        self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
+        self.assertListEqual(["execution-lead-wg2", "technical-lead-wg2"], team["maintainers"])
         self.assertDictEqual({"repo10": "admin", "repo11": "admin"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg2-name-bots"]
-        self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
+        self.assertListEqual(["execution-lead-wg2", "technical-lead-wg2"], team["maintainers"])
         self.assertListEqual([], team["members"])
         self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg2-name-area-1-approvers"]
-        self.assertListEqual(["execution-lead-2", "technical-lead-2"], team["maintainers"])
-        self.assertListEqual(["user10"], team["members"])
+        self.assertListEqual(["execution-lead-wg2", "technical-lead-wg2"], team["maintainers"])
+        self.assertListEqual(["approver1-wg2-a1"], team["members"])
         self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
 
         self.assertNotIn("wg-wg2-name-area-1-reviewers", wg_team["teams"])
@@ -313,7 +318,7 @@ class TestOrgGenerator(unittest.TestCase):
 
         self.assertEqual("wg-leads", name)
         self.assertNotIn("maintainers", team)
-        self.assertListEqual(["execution-lead-1", "execution-lead-2", "technical-lead-1", "technical-lead-2"], team["members"])
+        self.assertListEqual(["execution-lead-wg1", "execution-lead-wg2", "technical-lead-wg1", "technical-lead-wg2"], team["members"])
         self.assertNotIn("teams", team)
         self.assertDictEqual({"community": "write"}, team["repos"])
 
