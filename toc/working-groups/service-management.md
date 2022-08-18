@@ -48,7 +48,10 @@ areas:
   - name: Andrea Zucchini
     github: zucchinidev
   - name: Konstantin Semenov
-    github: jhvhs
+    github: jhvhs    
+  bots:
+  - name: Services Enablement bot
+    github: servicesenablement
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
@@ -99,7 +102,10 @@ areas:
   - name: Gareth Smith
     github: totherme
   - name: Ian Findlay
-    github: ifindlay-cci
+    github: ifindlay-cci    
+  bots:
+  - name: Cryogenics CI Bot
+    github: Cryogenics-CI
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
