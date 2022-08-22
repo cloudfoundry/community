@@ -110,7 +110,6 @@ areas:
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
-  - cloudfoundry/runtimeschema
   - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
   - cloudfoundry/systemcerts
