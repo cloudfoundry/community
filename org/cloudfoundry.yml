@@ -2390,6 +2390,7 @@ orgs:
         - fejnartal
         - vkalapov
         - dalvarado
+        - noxsingvm
         privacy: closed
         teams:
           App Runtime Interfaces WG Autoscaler:
@@ -3678,6 +3679,7 @@ orgs:
         - ccjaimes
         - gururajsh
         - PeteLevineA
+        - noxsingvm
         privacy: closed
         repos:
           CLAW: admin
@@ -5154,6 +5156,7 @@ orgs:
         - ccjaimes
         - gururajsh
         - PeteLevineA
+        - noxsingvm
         privacy: secret
       PCF BAM:
         description: ""
