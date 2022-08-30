@@ -29,7 +29,9 @@ execution_leads:
 technical_leads:
 - name: Marcela Campo
   github: pivotal-marcela-campo
-bots: []
+bots:
+- name: cf-gitbot
+  github: cf-gitbot
 areas:
 - name: Cloud Service Broker
   approvers:
@@ -43,11 +45,20 @@ areas:
     github: pivotal-marcela-campo
   - name: Jatin Naik
     github: tinygrasshopper
+  - name: Andrea Zucchini
+    github: zucchinidev
+  - name: Konstantin Semenov
+    github: jhvhs    
+  bots:
+  - name: Services Enablement bot
+    github: servicesenablement
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
+  - cloudfoundry/upgrade-all-services-cli-plugin
+  - cloudfoundry/terraform-provider-csbpg
 - name: OSB API
   approvers:
   - name: Sam Gunaratne
@@ -90,6 +101,11 @@ areas:
     github: fejnartal
   - name: Gareth Smith
     github: totherme
+  - name: Ian Findlay
+    github: ifindlay-cci    
+  bots:
+  - name: Cryogenics CI Bot
+    github: Cryogenics-CI
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims

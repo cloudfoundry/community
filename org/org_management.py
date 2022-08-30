@@ -49,30 +49,38 @@ class OrgGenerator:
             OrgGenerator._validate_contributors(contributors_yaml)
             self.contributors = set(contributors_yaml["contributors"])
 
-        # working group charters (including TOC)
+        # working group charters (including TOC), ignore WGs without yaml block
         self.toc = OrgGenerator._read_wg_charter(f"{_SCRIPT_PATH}/../toc/TOC.md")
         for wg_file in glob.glob(f"{_SCRIPT_PATH}/../toc/working-groups/*.md"):
             if not wg_file.endswith("/WORKING-GROUPS.md"):
-                self.working_groups.append(OrgGenerator._read_wg_charter(wg_file))
+                wg = OrgGenerator._read_wg_charter(wg_file)
+                if wg:
+                    self.working_groups.append(wg)
 
     def generate_org_members(self):
         org_members = set(self.org_cfg["orgs"]["cloudfoundry"]["members"])  # just in case, should be empty list
         org_members |= self.contributors
         for wg in self.working_groups:
             org_members |= OrgGenerator._wg_github_users(wg)
-        org_admins = OrgGenerator._wg_github_users(self.toc)
-        org_admins |= set(self.org_cfg["orgs"]["cloudfoundry"]["admins"])
+        org_admins = set(self.org_cfg["orgs"]["cloudfoundry"]["admins"])
+        org_admins |= OrgGenerator._wg_github_users_leads(self.toc)
         org_members = org_members - org_admins
         self.org_cfg["orgs"]["cloudfoundry"]["members"] = sorted(org_members)
+        self.org_cfg["orgs"]["cloudfoundry"]["admins"] = sorted(org_admins)
 
     def generate_teams(self):
-        # overwrites any teams in cloudfoundry.yml that matches a generated team name according to RFC-0005
-        # TODO: TOC and WG leads
+        # overwrites any teams in cloudfoundry.yml that match a generated team name according to RFC-0005
+        # working group teams
         # TODO: enable for all WGs
         for wg in self.working_groups:
             (name, team) = OrgGenerator._generate_wg_teams(wg)
-            if name in ("wg-app-runtime-deployments", "wg-foundational-infrastructure"):
-                self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+            self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+        # toc team
+        (name, team) = OrgGenerator._generate_toc_team(self.toc)
+        self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
+        # wg-leads team
+        (name, team) = OrgGenerator._generate_wg_leads_team(self.working_groups)
+        self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
 
     def write_org_config(self, path: str):
         print(f"Writing org configuration to {path}")
@@ -91,7 +99,7 @@ class OrgGenerator:
             wg_charter = stream.read()
             wg = OrgGenerator._extract_wg_config(wg_charter)
             if not wg:
-                wg = OrgGenerator._empty_wg_config(path)
+                wg = None
                 print("... Ignoring. Missing yaml block with WG definition.")
             return wg
 
@@ -120,6 +128,16 @@ class OrgGenerator:
         users |= {u["github"] for u in wg["bots"]}
         for area in wg["areas"]:
             users |= {u["github"] for u in area["approvers"]}
+            if "reviewers" in area:
+                users |= {u["github"] for u in area["reviewers"]}
+            if "bots" in area:
+                users |= {u["github"] for u in area["bots"]}
+        return users
+
+    @staticmethod
+    def _wg_github_users_leads(wg) -> Set[str]:
+        users = {u["github"] for u in wg["execution_leads"]}
+        users |= {u["github"] for u in wg["technical_leads"]}
         return users
 
     _CONTRIBUTORS_SCHEMA = {
@@ -148,6 +166,8 @@ class OrgGenerator:
                     "properties": {
                         "name": {"type": "string"},
                         "approvers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "reviewers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "bots": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
                         "repositories": {"type": "array", "items": {"type": "string"}},
                     },
                     "required": ["name", "approvers", "repositories"],
@@ -201,6 +221,9 @@ class OrgGenerator:
         jsonschema.validate(cfg, OrgGenerator._GITHUB_ORG_CFG_SCHEMA)
         return cfg
 
+    _CF_ORG_PREFIX = "cloudfoundry/"
+    _CF_ORG_PREFIX_LEN = len(_CF_ORG_PREFIX)
+
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md
     @staticmethod
     def _generate_wg_teams(wg) -> Tuple[str, Dict[str, Any]]:
@@ -208,7 +231,12 @@ class OrgGenerator:
         maintainers = {u["github"] for u in wg["execution_leads"]}
         maintainers |= {u["github"] for u in wg["technical_leads"]}
         approvers = {u["github"] for a in wg["areas"] for u in a["approvers"]}
-        repositories = {r for a in wg["areas"] for r in a["repositories"] if r.startswith("cloudfoundry/")}
+        repositories = {
+            r[OrgGenerator._CF_ORG_PREFIX_LEN :]
+            for a in wg["areas"]
+            for r in a["repositories"]
+            if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+        }
         # WG team and teams for WG areas
         team = {
             "description": f"Leads and approvers for {wg['name']} WG",
@@ -216,32 +244,93 @@ class OrgGenerator:
             "maintainers": sorted(maintainers),
             "members": sorted(approvers - maintainers),
             "teams": {
-                OrgGenerator._kebab_case(f"{name}-{a['name']}"): {
-                    "description": f"Approvers for {wg['name']} WG, {a['name']} area",
+                f"{name}-leads": {
+                    "description": f"Leads for {wg['name']} WG",
                     "privacy": "closed",
                     "maintainers": sorted(maintainers),
-                    "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
-                    "repos": {r: "write" for r in a["repositories"] if r.startswith("cloudfoundry/")},
-                }
-                for a in wg["areas"]
+                    "repos": {r: "admin" for r in repositories},
+                },
+                f"{name}-bots": {
+                    "description": f"Bot accounts for {wg['name']} WG",
+                    "privacy": "closed",
+                    "maintainers": sorted(maintainers),
+                    "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
+                    "repos": {r: "write" for r in repositories},
+                },
             },
         }
-        # WG leads
-        team["teams"][name + "-leads"] = {
-            "description": f"Leads for {wg['name']} WG",
-            "privacy": "closed",
-            "maintainers": sorted(maintainers),
-            "repos": {r: "admin" for r in repositories if r.startswith("cloudfoundry/")},
+        # approvers per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-approvers"): {
+                "description": f"Approvers for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
         }
-        # WG bots
-        team["teams"][name + "-bots"] = {
-            "description": f"Bot accounts for {wg['name']} WG",
-            "privacy": "closed",
-            "maintainers": sorted(maintainers),
-            "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
-            "repos": {r: "write" for r in repositories if r.startswith("cloudfoundry/")},
+        # optional reviewers per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-reviewers"): {
+                "description": f"Reviewers for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["reviewers"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "read" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
+            if "reviewers" in a
+        }
+        # optional bots per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-bots"): {
+                "description": f"Bot accounts for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["bots"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
+            if "bots" in a
         }
         return (name, team)
+
+    @staticmethod
+    def _generate_toc_team(wg) -> Tuple[str, Dict[str, Any]]:
+        # assumption: TOC members are execution_leads
+        repositories = {
+            r[OrgGenerator._CF_ORG_PREFIX_LEN :]
+            for a in wg["areas"]
+            for r in a["repositories"]
+            if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+        }
+        team = {
+            "description": wg["name"],
+            "privacy": "closed",
+            "maintainers": sorted({u["github"] for u in wg["execution_leads"]}),
+            "repos": {r: "admin" for r in repositories},
+        }
+        return ("toc", team)
+
+    @staticmethod
+    def _generate_wg_leads_team(wgs: List[Any]) -> Tuple[str, Dict[str, Any]]:
+        # RFC-0005 lists community repo explicitly (not all TOC repos)
+        repositories = {"community"}  # without cloudfoundry/ prefix
+        members = {u for wg in wgs for u in OrgGenerator._wg_github_users_leads(wg)}
+        team = {
+            "description": "Technical and Execution Leads for all WGs",
+            "privacy": "closed",
+            "members": sorted(members),
+            "repos": {r: "write" for r in repositories},
+        }
+        return ("wg-leads", team)
 
     _KEBAB_CASE_RE = re.compile(r"[\W_]+")
 

@@ -43,11 +43,15 @@ bots:
   github: bosh-admin-bot
 - name: cf-gitbot
   github: cf-gitbot
+- name: runtime-bot
+  github: tas-runtime-bot
 areas:
 - name: Credential Management (Credhub)
   approvers:
   - name: Peter Chen
     github: peterhaochen47
+  - name: Bruce Ricard
+    github: bruce-ricard
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -78,6 +82,8 @@ areas:
   approvers:
   - name: Peter Chen 
     github: peterhaochen47
+  - name: Bruce Ricard
+    github: bruce-ricard
   - name: Markus Strehle
     github: strehle
   repositories:
@@ -118,7 +124,6 @@ areas:
     github: Benjamintf1
   repositories:
   - cloudfoundry/blackbox
-  - cloudfoundry/event-log-release
   - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
@@ -134,6 +139,10 @@ areas:
     github: bgandon
   - name: Felix Riegger
     github: friegger
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Aram Price
+    github: aramprice
   reviewers:
   - name: Matthias Vach
     github: mvach
@@ -184,6 +193,7 @@ areas:
   - cloudfoundry/bosh-google-light-stemcell-builder
   - cloudfoundry/bosh-linux-stemcell-builder
   - cloudfoundry/bosh-openstack-cpi-release
+  - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
   - cloudfoundry/bosh-community-stemcell-ci-infra

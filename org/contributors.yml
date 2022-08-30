@@ -118,7 +118,6 @@ contributors:
 - cf-identity-service
 - cf-infra-bot
 - cf-london
-- cf-pub-tools
 - cf-rabbit-bot
 - cf-rel-int-cf-for-k8s-pr-bot
 - cf-release-notes-bot
@@ -187,6 +186,7 @@ contributors:
 - draganm
 - drich10
 - dsabeti
+- dsboulder
 - dsharp-pivotal
 - dsyer
 - dtillman
@@ -310,6 +310,7 @@ contributors:
 - JordanICollier
 - josephgee
 - joshlong
+- joshuatcasey
 - jpalermo
 - jpatel-pivotal
 - jpmcb
@@ -346,10 +347,12 @@ contributors:
 - kushmerick
 - langered
 - lbarncord
+- leeporte
 - lenapivotal
 - lisamburns
 - LizClaireMorris
 - lnguyen
+- loewenstein
 - loganloganlogan
 - lterminasyan
 - lwoydziak
@@ -534,7 +537,6 @@ contributors:
 - scottietremendous
 - sebGilR
 - selzoc
-- SenatorSupes
 - services-api-ci
 - sethboyles
 - shamus
@@ -573,7 +575,6 @@ contributors:
 - swalner-pivotal
 - swati1102
 - swati-nair
-- sweinstein22
 - sykesm
 - syslxg
 - tack-sap

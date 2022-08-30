@@ -40,7 +40,9 @@ execution_leads:
 technical_leads:
 - name: Amelia Downs
   github: ameowlia
-bots: []
+bots:
+- name: CI bot
+  github: tas-runtime-bot
 areas:
 - name: Diego
   approvers:
@@ -64,6 +66,7 @@ areas:
   - cloudfoundry/auctioneer
   - cloudfoundry/bbs
   - cloudfoundry/benchmarkbbs
+  - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter
@@ -73,6 +76,9 @@ areas:
   - cloudfoundry/clock
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
+  - cloudfoundry/deployments-diego
+  - cloudfoundry/diego-acceptance
+  - cloudfoundry/diego-checkman
   - cloudfoundry/diego-ci
   - cloudfoundry/diego-ci-pools
   - cloudfoundry/diego-design-notes
@@ -105,6 +111,7 @@ areas:
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
   - cloudfoundry/runtimeschema
+  - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
   - cloudfoundry/systemcerts
   - cloudfoundry/tlsconfig
@@ -134,13 +141,31 @@ areas:
     github: kieron-dev
   - name: Mario Nitchev
     github: mnitchev
+  - name: Amin Jamali
+    github: aminjam
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Josh Russett
+    github: jrussett
+  - name: Renee Chu
+    github: reneighbor
+  - name: Maria Shaldybin
+    github: mariash
+  - name: David Sabeti
+    github: dsabeti
+  - name: Marc Paquette
+    github: MarcPaquette
   repositories:
-  - cloudfoundry/diff-exporter
   - cloudfoundry/cert-injector
+  - cloudfoundry/cfbench
   - cloudfoundry/commandrunner
+  - cloudfoundry/concourse-flake-hunter
   - cloudfoundry/cpu-entitlement-admin-plugin
   - cloudfoundry/cpu-entitlement-plugin
+  - cloudfoundry/dependachore
+  - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
+  - cloudfoundry/flightattendant
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
@@ -149,7 +174,9 @@ areas:
   - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
+  - cloudfoundry/garden-wiki
   - cloudfoundry/garden-windows-ci
+  - cloudfoundry/garden-windows-tools-release
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
   - cloudfoundry/grootfs
@@ -158,6 +185,9 @@ areas:
   - cloudfoundry/hydrator
   - cloudfoundry/idmapper
   - cloudfoundry/netplugin-shim
+  - cloudfoundry/test-log-emitter
+  - cloudfoundry/test-log-emitter-release
+  - cloudfoundry/vantablackbox-release
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
@@ -181,6 +211,10 @@ areas:
     github: reneighbor
   - name: Chris Selzo
     github: selzoc
+  - name: Carson Long
+    github: ctlong
+  - name: Matthew Kocher
+    github: mkocher
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/cf-drain-cli
@@ -253,6 +287,7 @@ areas:
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
+  - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
@@ -261,6 +296,7 @@ areas:
   - cloudfoundry/routing-info
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
+  - cloudfoundry/routing-team-checklists
   - cloudfoundry/service-metrics-release
   - cloudfoundry/silk
   - cloudfoundry/silk-release
