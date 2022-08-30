@@ -43,6 +43,8 @@ bots:
   github: bosh-admin-bot
 - name: cf-gitbot
   github: cf-gitbot
+- name: runtime-bot
+  github: tas-runtime-bot
 areas:
 - name: Credential Management (Credhub)
   approvers:
