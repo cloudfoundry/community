@@ -178,6 +178,7 @@ areas:
   - cloudfoundry/capi-workspace
   - cloudfoundry/delayed_job_sequel
   - cloudfoundry/steno
+  - cloudfoundry/runtimeschema
 
 - name: CLI
   approvers:
