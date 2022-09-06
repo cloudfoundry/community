@@ -2287,4 +2287,34 @@ orgs:
       yttk8smatchers:
         default_branch: main
         has_projects: true
-    teams: {} # should be empty, rfc-0013-remove-nonstandard-github-teams.md
+    teams:
+      bosh-stemcell:
+        description: "Team used to manage access to bosh.ci.cloudfoundry.org"
+        maintainers:
+        - dsboulder
+        - rkoster
+        - KaiHofstetter
+        - friegger
+        - christopherclark
+        members:
+        - jpalermo
+        - ragaskar
+        - ystros
+        - mvach
+        - selzoc
+        - lnguyen
+        - cunnie
+        - ramonskie
+        - mrosecrance
+        - bgandon
+        - joergdw
+        - danielfor
+        - FlorianNachtigall
+        - klakin-pivotal
+        - nouseforaname
+        - cf-bosh-ci-bot
+        - suraiyasuliman
+        - anshrupani
+        - aramprice
+        privacy: closed
+        repos: []
