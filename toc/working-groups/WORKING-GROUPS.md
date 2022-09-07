@@ -158,7 +158,7 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/dmikusa-pivotal.png"> | Daniel Mikusa       | VMware  | [@dmikusa-pivotal](https://github.com/dmikusa-pivotal) |
+| <img width="30px" src="https://github.com/dmikusa.png"> | Daniel Mikusa       | VMware  | [@dmikusa](https://github.com/dmikusa) |
 | <img width="30px" src="https://github.com/ekcasey.png"> | Emily Casey       | VMware  | [@ekcasey](https://github.com/ekcasey) |
 | <img width="30px" src="https://github.com/ryanmoran.png"> | Ryan Moran       | VMware  | [@ryanmoran](https://github.com/ryanmoran) |
 
