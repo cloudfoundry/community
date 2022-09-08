@@ -69,7 +69,7 @@ areas:
 - name: Buildpacks
   approvers:
   - name: Daniel Mikusa
-    github: dmikusa-pivotal
+    github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   - name: Arjun Sreedharan
@@ -211,7 +211,7 @@ areas:
 - name: Java Tools
   approvers:
   - name: Daniel Mikusa
-    github: dmikusa-pivotal
+    github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   repositories:
