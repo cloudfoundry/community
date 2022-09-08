@@ -2293,7 +2293,6 @@ orgs:
         maintainers:
         - dsboulder
         - rkoster
-        - KaiHofstetter
         - friegger
         - christopherclark
         members:
@@ -2309,12 +2308,14 @@ orgs:
         - bgandon
         - joergdw
         - danielfor
-        - FlorianNachtigall
         - klakin-pivotal
         - nouseforaname
         - cf-bosh-ci-bot
         - suraiyasuliman
         - anshrupani
+        - mvach
+        - max-soe
+        - ShilpaChandrashekara
         - aramprice
         privacy: closed
         repos: []
