@@ -24,7 +24,7 @@ should be a member of the `cloudfoundry` GitHub org.
 The leads and approvers within a Working Group are best positioned to decide whether an individual has met the minimum contribution criteria to become an official contributor.
 
 A Working Group approver or lead should raise a [PR on the community repository](https://github.com/cloudfoundry/community/pulls) to propose adding a new member to the `cloudfoundry` GitHub org.
-This PR should add the member directly to the [YAML file describing the organization membership](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml), as automation will synchronize the GitHub org membership with the contents of this file periodically. 
+This PR should add the member directly to the file in the [organizational structure directory](https://github.com/cloudfoundry/community/tree/main/org) that contains the list of contributors. Automation will periodically synchronize the GitHub org membership with the files in this directory.
 Only Working Group leads and the TOC will actually have permission to merge these PRs under the planned access control on the community repository.
 
 As removing a member from the `cloudfoundry` GitHub org may have unintended consequences across the organization, the TOC is the body required to approve those removals.
