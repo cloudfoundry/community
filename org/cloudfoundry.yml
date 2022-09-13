@@ -518,19 +518,24 @@ orgs:
       cf-mysql-bootstrap:
         description: Auto-bootstrap errand for cf-mysql-release
         has_projects: true
+        archived: true
       cf-mysql-ci:
         description: Contains Concourse CI scripts and configuration we use to test
           cf-mysql-release
         has_projects: true
+        archived: true
       cf-mysql-cluster-health-logger:
         has_projects: true
+        archived: true
       cf-mysql-deployment:
         default_branch: develop
         has_projects: true
+        archived: true
       cf-mysql-release:
         default_branch: develop
         description: Cloud Foundry MySQL Release
         has_projects: true
+        archived: true
       cf-networking-deployments:
         archived: true
         description: Private manifests and credentials for the Container Networking
@@ -1141,9 +1146,11 @@ orgs:
         description: A lightweight web server written in Golang to check the health
           of a node in a Galera cluster
         has_projects: true
+        archived: true
       galera-init:
         description: Monit ctl script for MariaDB in cf-mysql-release
         has_projects: true
+        archived: true
       garden:
         description: Go Warden
         has_projects: true
@@ -2105,6 +2112,7 @@ orgs:
         description: Golang TCP Proxy
         has_projects: true
         has_wiki: false
+        archived: true
       sync-integration-tests:
         has_projects: true
       syslog-adapter-release:

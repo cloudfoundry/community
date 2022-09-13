@@ -106,18 +106,10 @@ areas:
   - name: Shaan Sapra
     github: ssapra
   repositories:
-  - cloudfoundry/cf-mysql-bootstrap
-  - cloudfoundry/cf-mysql-ci
-  - cloudfoundry/cf-mysql-cluster-health-logger
-  - cloudfoundry/cf-mysql-deployment
-  - cloudfoundry/cf-mysql-release
-  - cloudfoundry/galera-healthcheck
-  - cloudfoundry/galera-init
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
   - cloudfoundry/postgres-release
   - cloudfoundry/pxc-release
-  - cloudfoundry/switchboard
 - name: System Logging and Metrics (rsyslog / event-log)
   approvers:
   - name: Ben Fuller
