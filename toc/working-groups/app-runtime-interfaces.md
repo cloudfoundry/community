@@ -159,6 +159,8 @@ areas:
     github: moleske
   - name: Seth Boyles
     github: sethboyles
+  - name: Sven Krieger
+    github: svkrieger
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
