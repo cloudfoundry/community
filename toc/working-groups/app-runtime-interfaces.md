@@ -151,8 +151,6 @@ areas:
     github: philippthun
   - name: Merric de Launey
     github: MerricdeLauney
-  - name: Mona Mohebbi
-    github: monamohebbi
   - name: Johannes Haass
     github: johha
   - name: Michael Oleske
