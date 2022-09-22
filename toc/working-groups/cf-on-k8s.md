@@ -76,7 +76,6 @@ areas:
   - cloudfoundry/eirini-release
   - cloudfoundry/korifi
   - cloudfoundry/korifi-ci
-areas:
 - name: CF for K8s
   approvers:
   - name: Andrew Wittrock
