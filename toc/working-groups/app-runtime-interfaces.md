@@ -141,8 +141,6 @@ areas:
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Marc Paquette
-    github: MarcPaquette
   - name: Jenna Goldstrich
     github: JenGoldstrich
   - name: Florian Braun
