@@ -143,8 +143,6 @@ areas:
     github: tjvman
   - name: Marc Paquette
     github: MarcPaquette
-  - name: Jenna Goldstrich
-    github: JenGoldstrich
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
