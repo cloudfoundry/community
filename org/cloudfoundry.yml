@@ -1328,10 +1328,6 @@ orgs:
       ibm-websphere-liberty-buildpack:
         description: IBM WebSphere Application Server Liberty Buildpack
         has_projects: true
-      identity-ci:
-        description: where everything else lives
-        has_projects: true
-        private: true
       identity-tools:
         description: 'Cloud Foundry - the open platform as a service project '
         has_projects: true
