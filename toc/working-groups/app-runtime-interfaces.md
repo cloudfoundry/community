@@ -195,6 +195,19 @@ areas:
     github: a-b
   - name: Juan Diego González
     github: jdgonzaleza
+  reviewers:
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Christhian
+    github: ccjaimes
+  - name: Pete Levine
+    github: PeteLevineA
+  - name: Ryker Reed
+    github: reedr3
+  - name: Michael Oleske
+    github: moleske
+  - name: Shwetha Guraraj
+    github: gururajsh
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
