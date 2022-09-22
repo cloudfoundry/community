@@ -161,6 +161,13 @@ areas:
     github: sethboyles
   - name: Sven Krieger
     github: svkrieger
+  reviewers:
+  - name: Joseph Palermo
+    github: jpalermo
+  - name: Alex Rocha
+    github: xandroc
+  - name: David Alvarado
+    github: dalvarado
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
