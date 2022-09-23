@@ -119,6 +119,45 @@ areas:
   - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
+- name: Stemcell Release Engineering (BOSH)
+  approvers:
+  - name: Joseph Palermo
+    github: jpalermo
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Brian Upton
+    github: ystros
+  - name: Matthias Vach
+    github: mvach
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Max Soest
+    github: max-soe
+  - name: Felix Riegger
+    github: friegger
+  - name: Aram Price
+    github: aramprice
+  - name: Shilpa Chandrashekara
+    github: ShilpaChandrashekara
+  - name: Joerg W
+    github: joergdw
+  - name: Ansh Rupani
+    github: anshrupani
+  repositories:
+  - cloudfoundry/bosh-community-stemcell-ci-infra
+  - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
   - name: Joseph Palermo
@@ -188,8 +227,6 @@ areas:
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
-  - cloudfoundry/bosh-community-stemcell-ci-infra
-  - cloudfoundry/bosh-stemcells-ci
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
