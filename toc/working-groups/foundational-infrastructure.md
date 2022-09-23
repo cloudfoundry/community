@@ -149,6 +149,12 @@ areas:
     github: friegger
   - name: Aram Price
     github: aramprice
+  - name: Shilpa Chandrashekara
+    github: ShilpaChandrashekara
+  - name: Joerg W
+    github: joergdw
+  - name: Ansh Rupani
+    github: anshrupani
   repositories:
   - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-stemcells-ci
