@@ -52,6 +52,13 @@ areas:
     github: peterhaochen47
   - name: Bruce Ricard
     github: bruce-ricard
+  reviewers:
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Danny Faught
+    github: swalchemist
+  - name: Alicia Yingling
+    github: Tallicia
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -86,6 +93,13 @@ areas:
     github: bruce-ricard
   - name: Markus Strehle
     github: strehle
+  reviewers:
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Danny Faught
+    github: swalchemist
+  - name: Alicia Yingling
+    github: Tallicia
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
