@@ -103,8 +103,16 @@ areas:
   approvers:
   - name: Andrew Garner 
     github: abg
-  - name: Shaan Sapra
-    github: ssapra
+  - name: Colin Shield
+    github: colins
+  - name: Kyle Ong
+    github: ohkyle
+  - name: Kim Basset
+    github: kimago
+  - name: Kevin Markwardt
+    github: kmarkwardt-vmware
+  - name: Ryan Wittrup
+    github: ryanwittrup
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
