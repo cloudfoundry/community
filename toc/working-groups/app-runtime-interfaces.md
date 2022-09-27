@@ -221,6 +221,8 @@ areas:
   approvers:
   - name: Melinda Jeffs Gutermuth
     github: mjgutermuth
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
   repositories:
   - cloudfoundry/docs-cf-cli
   - cloudfoundry/docs-cloudfoundry-concepts
