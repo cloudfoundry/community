@@ -122,6 +122,8 @@ areas:
   approvers:
   - name: Max Hufnagel
     github: animatedmax
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
