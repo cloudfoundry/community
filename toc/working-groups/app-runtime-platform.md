@@ -192,6 +192,7 @@ areas:
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
+  - cloudfoundry/windows-tools-release
   - cloudfoundry/windows2016fs
   - cloudfoundry/windows2019fs-release
   - cloudfoundry/windowsfs-online-release
