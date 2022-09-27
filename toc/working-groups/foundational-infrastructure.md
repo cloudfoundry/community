@@ -45,6 +45,8 @@ bots:
   github: cf-gitbot
 - name: runtime-bot
   github: tas-runtime-bot
+- name: cf-uaa-ci-bot
+  github: cf-identity
 - name: cf-bosh-ci-bot
   github: cf-bosh-ci-bot
 areas:
