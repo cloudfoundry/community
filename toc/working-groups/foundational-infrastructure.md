@@ -52,7 +52,6 @@ areas:
     github: peterhaochen47
   - name: Bruce Ricard
     github: bruce-ricard
-  reviewers:
   - name: Hongchol Sinn
     github: hsinn0
   - name: Danny Faught
