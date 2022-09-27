@@ -174,6 +174,7 @@ areas:
   - cloudfoundry/capi-k8s-release
   - cloudfoundry/capi-ci
   - cloudfoundry/capi-ci-private
+  - cloudfoundry/capi-env-pool
   - cloudfoundry/cf-performance-tests
   - cloudfoundry/cf-performance-tests-pipeline
   - cloudfoundry/tps
