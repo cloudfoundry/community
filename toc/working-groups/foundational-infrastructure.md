@@ -92,7 +92,6 @@ areas:
     github: bruce-ricard
   - name: Markus Strehle
     github: strehle
-  reviewers:
   - name: Hongchol Sinn
     github: hsinn0
   - name: Danny Faught
