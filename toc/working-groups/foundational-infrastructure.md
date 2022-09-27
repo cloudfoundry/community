@@ -109,10 +109,11 @@ areas:
     github: ohkyle
   - name: Kim Basset
     github: kimago
-  - name: Kevin Markwardt
-    github: kmarkwardt-vmware
+  reviewers:
   - name: Ryan Wittrup
     github: ryanwittrup
+  - name: Kevin Markwardt
+    github: kmarkwardt-vmware
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
