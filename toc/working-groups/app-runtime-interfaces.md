@@ -141,8 +141,6 @@ areas:
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Marc Paquette
-    github: MarcPaquette
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
