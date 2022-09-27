@@ -141,8 +141,6 @@ areas:
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Jenna Goldstrich
-    github: JenGoldstrich
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
@@ -159,6 +157,13 @@ areas:
     github: sethboyles
   - name: Sven Krieger
     github: svkrieger
+  reviewers:
+  - name: Joseph Palermo
+    github: jpalermo
+  - name: Alex Rocha
+    github: xandroc
+  - name: David Alvarado
+    github: dalvarado
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
@@ -167,6 +172,7 @@ areas:
   - cloudfoundry/capi-k8s-release
   - cloudfoundry/capi-ci
   - cloudfoundry/capi-ci-private
+  - cloudfoundry/capi-env-pool
   - cloudfoundry/cf-performance-tests
   - cloudfoundry/cf-performance-tests-pipeline
   - cloudfoundry/tps
@@ -186,6 +192,19 @@ areas:
     github: a-b
   - name: Juan Diego González
     github: jdgonzaleza
+  reviewers:
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Christhian
+    github: ccjaimes
+  - name: Pete Levine
+    github: PeteLevineA
+  - name: Ryker Reed
+    github: reedr3
+  - name: Michael Oleske
+    github: moleske
+  - name: Shwetha Guraraj
+    github: gururajsh
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
@@ -201,6 +220,8 @@ areas:
   approvers:
   - name: Melinda Jeffs Gutermuth
     github: mjgutermuth
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
   repositories:
   - cloudfoundry/docs-cf-cli
   - cloudfoundry/docs-cloudfoundry-concepts

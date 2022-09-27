@@ -2295,35 +2295,4 @@ orgs:
       yttk8smatchers:
         default_branch: main
         has_projects: true
-    teams:
-      bosh-stemcell:
-        description: "Team used to manage access to bosh.ci.cloudfoundry.org"
-        maintainers:
-        - dsboulder
-        - rkoster
-        - friegger
-        - christopherclark
-        members:
-        - jpalermo
-        - ragaskar
-        - ystros
-        - mvach
-        - selzoc
-        - lnguyen
-        - cunnie
-        - ramonskie
-        - mrosecrance
-        - bgandon
-        - joergdw
-        - danielfor
-        - klakin-pivotal
-        - nouseforaname
-        - cf-bosh-ci-bot
-        - suraiyasuliman
-        - anshrupani
-        - mvach
-        - max-soe
-        - ShilpaChandrashekara
-        - aramprice
-        privacy: closed
-        repos: {}
+    teams: {}

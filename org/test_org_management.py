@@ -162,7 +162,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual("WG1 Name", wg["name"])
 
     def test_wg_github_users(self):
-        wg = yaml.safe_load(wg1)
+        wg = OrgGenerator._yaml_load(wg1)
         users = OrgGenerator._wg_github_users(wg)
         self.assertEqual(8, len(users))
         self.assertIn("execution-lead-wg1", users)
@@ -173,13 +173,21 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("bot2-wg1-a2", users)
 
     def test_wg_github_users_leads(self):
-        wg = yaml.safe_load(wg1)
+        wg = OrgGenerator._yaml_load(wg1)
         users = OrgGenerator._wg_github_users_leads(wg)
         self.assertSetEqual({"execution-lead-wg1", "technical-lead-wg1"}, users)
 
+    def test_validate_yaml_unique_keys(self):
+        with self.assertRaises(yaml.MarkedYAMLError):
+            yml = """
+            key: 1
+            key: 2
+            """
+            OrgGenerator._yaml_load(yml)
+
     def test_validate_contributors(self):
         OrgGenerator._validate_contributors({"contributors": []})
-        OrgGenerator._validate_contributors(yaml.safe_load(contributors))
+        OrgGenerator._validate_contributors(OrgGenerator._yaml_load(contributors))
         with self.assertRaises(jsonschema.ValidationError):
             OrgGenerator._validate_contributors({})
         with self.assertRaises(jsonschema.ValidationError):
@@ -187,9 +195,9 @@ class TestOrgGenerator(unittest.TestCase):
 
     def test_validate_wg(self):
         OrgGenerator._validate_wg(OrgGenerator._empty_wg_config("wg"))
-        OrgGenerator._validate_wg(yaml.safe_load(wg1))
-        OrgGenerator._validate_wg(yaml.safe_load(wg2))
-        OrgGenerator._validate_wg(yaml.safe_load(toc))
+        OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg1))
+        OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg2))
+        OrgGenerator._validate_wg(OrgGenerator._yaml_load(toc))
         with self.assertRaises(jsonschema.ValidationError):
             OrgGenerator._validate_wg({})
         with self.assertRaises(jsonschema.ValidationError):
@@ -202,7 +210,7 @@ class TestOrgGenerator(unittest.TestCase):
                   approvers: x
                   repositories: 1
             """
-            OrgGenerator._validate_wg(yaml.safe_load(wg))
+            OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg))
         with self.assertRaises(jsonschema.ValidationError):
             wg = """
                 name: WG1 Name
@@ -214,10 +222,10 @@ class TestOrgGenerator(unittest.TestCase):
                   repositories: []
                   notAllowed: 1
             """
-            OrgGenerator._validate_wg(yaml.safe_load(wg))
+            OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg))
 
     def test_validate_github_org_cfg(self):
-        OrgGenerator._validate_github_org_cfg(yaml.safe_load(org_cfg))
+        OrgGenerator._validate_github_org_cfg(OrgGenerator._yaml_load(org_cfg))
         with self.assertRaises(jsonschema.ValidationError):
             OrgGenerator._validate_github_org_cfg({})
 
@@ -236,7 +244,7 @@ class TestOrgGenerator(unittest.TestCase):
         )
 
     def test_generate_wg_teams(self):
-        _wg1 = yaml.safe_load(wg1)
+        _wg1 = OrgGenerator._yaml_load(wg1)
         (name, wg_team) = OrgGenerator._generate_wg_teams(_wg1)
 
         self.assertEqual("wg-wg1-name", name)
@@ -276,7 +284,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
 
     def test_generate_wg_teams_exclude_non_cf_repos(self):
-        _wg2 = yaml.safe_load(wg2)
+        _wg2 = OrgGenerator._yaml_load(wg2)
         (name, wg_team) = OrgGenerator._generate_wg_teams(_wg2)
 
         self.assertEqual("wg-wg2-name", name)
@@ -301,7 +309,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertNotIn("wg-wg2-name-area-1-bots", wg_team["teams"])
 
     def test_generate_toc_team(self):
-        _toc = yaml.safe_load(toc)
+        _toc = OrgGenerator._yaml_load(toc)
         (name, team) = OrgGenerator._generate_toc_team(_toc)
 
         self.assertEqual("toc", name)
@@ -311,8 +319,8 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertDictEqual({"community": "admin"}, team["repos"])
 
     def test_generate_wg_leads_team(self):
-        _wg1 = yaml.safe_load(wg1)
-        _wg2 = yaml.safe_load(wg2)
+        _wg1 = OrgGenerator._yaml_load(wg1)
+        _wg2 = OrgGenerator._yaml_load(wg2)
 
         (name, team) = OrgGenerator._generate_wg_leads_team([_wg1, _wg2])
 
@@ -327,14 +335,14 @@ class TestOrgGenerator(unittest.TestCase):
         o = OrgGenerator()
         o.load_from_project()
         assert o.toc is not None
-        self.assertEquals("Technical Oversight Committee", o.toc["name"])
+        self.assertEqual("Technical Oversight Committee", o.toc["name"])
         self.assertGreater(len(o.contributors), 100)
         self.assertGreater(len(o.working_groups), 5)
-        self.assertEquals(1, len([wg for wg in o.working_groups if "Deployments" in wg["name"]]))
+        self.assertEqual(1, len([wg for wg in o.working_groups if "Deployments" in wg["name"]]))
         # packeto WG charter has no yaml block
-        self.assertEquals(0, len([wg for wg in o.working_groups if "packeto" in wg["name"].lower()]))
+        self.assertEqual(0, len([wg for wg in o.working_groups if "packeto" in wg["name"].lower()]))
         # no WGs without execution leads
-        self.assertEquals(0, len([wg for wg in o.working_groups if len(wg["execution_leads"]) == 0]))
+        self.assertEqual(0, len([wg for wg in o.working_groups if len(wg["execution_leads"]) == 0]))
 
         o.generate_org_members()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
@@ -352,6 +360,6 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
         self.assertIn("cf-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
         self.assertIn("toc", teams)
-        self.assertEquals(5, len(teams["toc"]["maintainers"]))
+        self.assertEqual(5, len(teams["toc"]["maintainers"]))
         self.assertIn("community", teams["toc"]["repos"])
         self.assertIn("wg-leads", teams)
