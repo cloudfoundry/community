@@ -51,12 +51,16 @@ areas:
     github: acosta11
   - name: Ashwin Krishna
     github: akrishna90
+  - name: Clint Yoshimura
+    github: clintyoshimura
   - name: Danail Branekov
     github: danail-branekov
   - name: Dave Walter
     github: davewalter
   - name: Akira Wong
     github: gnovv
+  - name: Julian Hjortshoj
+    github: julian-hj
   - name: Kieron Browne
     github: kieron-dev
   - name: Matt Royal
@@ -65,8 +69,6 @@ areas:
     github: mnitchev
   - name: Tim Downey
     github: tcdowney
-  - name: Clint Yoshimura
-    github: clintyoshimura
   repositories:
   - cloudfoundry/cf-k8s-secrets
   - cloudfoundry/eirini
