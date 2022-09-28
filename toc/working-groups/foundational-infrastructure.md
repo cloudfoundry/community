@@ -158,8 +158,6 @@ areas:
     github: nouseforaname
   - name: Max Soest
     github: max-soe
-  - name: Felix Riegger
-    github: friegger
   - name: Aram Price
     github: aramprice
   - name: Shilpa Chandrashekara
@@ -181,8 +179,6 @@ areas:
     github: ramonskie
   - name: Benjamin Gandon 
     github: bgandon
-  - name: Felix Riegger
-    github: friegger
   - name: Brian Cunnie
     github: cunnie
   - name: Aram Price
