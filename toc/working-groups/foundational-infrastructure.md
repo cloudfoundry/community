@@ -97,6 +97,7 @@ areas:
     github: hsinn0
   - name: Danny Faught
     github: swalchemist
+  reviewers:
   - name: Alicia Yingling
     github: Tallicia
   repositories:
