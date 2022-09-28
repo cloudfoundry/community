@@ -90,6 +90,8 @@ areas:
     github: bruce-ricard
   - name: Markus Strehle
     github: strehle
+  - name: Florian Tack
+    github: tack-sap
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
