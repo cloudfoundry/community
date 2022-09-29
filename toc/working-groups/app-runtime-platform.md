@@ -270,6 +270,8 @@ areas:
     github: Gerg
   - name: Josh Russett
     github: jrussett
+  - name: Maria Shaldybin
+    github: mariash
   - name: Matthew Kocher
     github: mkocher
   - name: Patrick Lowin
