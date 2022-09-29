@@ -62,6 +62,8 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
+  - name: Maria Shaldybin
+    github: mariash
   - name: Renee Chu
     github: reneighbor
   - name: Chris Selzo
