@@ -248,6 +248,7 @@ areas:
   - cloudfoundry/metric-store-release
   - cloudfoundry/metrics-discovery-release
   - cloudfoundry/noaa
+  - cloudfoundry/service-metrics-release
   - cloudfoundry/sonde-go
   - cloudfoundry/statsd-injector-release
   - cloudfoundry/system-metrics-scraper-release
@@ -303,7 +304,6 @@ areas:
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
   - cloudfoundry/routing-team-checklists
-  - cloudfoundry/service-metrics-release
   - cloudfoundry/silk
   - cloudfoundry/silk-release
 ```
