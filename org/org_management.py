@@ -17,6 +17,19 @@ from typing import Any, Dict, Set, List, Optional, Tuple
 _SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
+# pyyaml silently ignores duplicate keys but they shall be rejected
+# https://yaml.org/spec/1.2.2/ requires unique keys
+class UniqueKeyLoader(yaml.SafeLoader):
+    def construct_mapping(self, node, deep=False):
+        mapping = set()
+        for key_node, _ in node.value:
+            key = self.construct_object(key_node, deep=deep)
+            if key in mapping:
+                raise yaml.MarkedYAMLError(f"Duplicate key {key!r} found.", key_node.start_mark)
+            mapping.add(key)
+        return super().construct_mapping(node, deep)
+
+
 class OrgGenerator:
     # parameters intended for testing only, all params are yaml docs
     def __init__(
@@ -27,15 +40,17 @@ class OrgGenerator:
         working_groups: Optional[List[str]] = None,
     ):
         self.org_cfg = (
-            yaml.safe_load(static_org_cfg) if static_org_cfg else {"orgs": {"cloudfoundry": {"admins": [], "members": [], "teams": {}}}}
+            OrgGenerator._yaml_load(static_org_cfg)
+            if static_org_cfg
+            else {"orgs": {"cloudfoundry": {"admins": [], "members": [], "teams": {}}}}
         )
         OrgGenerator._validate_github_org_cfg(self.org_cfg)
         self.contributors = (
-            set(OrgGenerator._validate_contributors(yaml.safe_load(contributors))["contributors"]) if contributors else set()
+            set(OrgGenerator._validate_contributors(OrgGenerator._yaml_load(contributors))["contributors"]) if contributors else set()
         )
-        self.toc = yaml.safe_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
+        self.toc = OrgGenerator._yaml_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
         OrgGenerator._validate_wg(self.toc)
-        self.working_groups = [OrgGenerator._validate_wg(yaml.safe_load(wg)) for wg in working_groups] if working_groups else []
+        self.working_groups = [OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg)) for wg in working_groups] if working_groups else []
 
     def load_from_project(self):
         path = f"{_SCRIPT_PATH}/cloudfoundry.yml"
@@ -88,9 +103,14 @@ class OrgGenerator:
             return yaml.safe_dump(self.org_cfg, stream)
 
     @staticmethod
+    def _yaml_load(stream):
+        # safe_load + reject unique keys
+        return yaml.load(stream, UniqueKeyLoader)
+
+    @staticmethod
     def _read_yml_file(path: str):
         with open(path, "r") as stream:
-            return yaml.safe_load(stream)
+            return OrgGenerator._yaml_load(stream)
 
     @staticmethod
     def _read_wg_charter(path: str):
@@ -109,7 +129,7 @@ class OrgGenerator:
     def _extract_wg_config(wg_charter: str):
         # extract (first) yaml block
         match = re.search(OrgGenerator._YAML_BLOCK_RE, wg_charter)
-        return OrgGenerator._validate_wg(yaml.safe_load(match.group(1))) if match else None
+        return OrgGenerator._validate_wg(OrgGenerator._yaml_load(match.group(1))) if match else None
 
     @staticmethod
     def _empty_wg_config(name: str):

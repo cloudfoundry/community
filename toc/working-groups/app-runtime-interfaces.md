@@ -141,8 +141,6 @@ areas:
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Marc Paquette
-    github: MarcPaquette
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
@@ -174,6 +172,7 @@ areas:
   - cloudfoundry/capi-k8s-release
   - cloudfoundry/capi-ci
   - cloudfoundry/capi-ci-private
+  - cloudfoundry/capi-env-pool
   - cloudfoundry/cf-performance-tests
   - cloudfoundry/cf-performance-tests-pipeline
   - cloudfoundry/tps
@@ -221,6 +220,8 @@ areas:
   approvers:
   - name: Melinda Jeffs Gutermuth
     github: mjgutermuth
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
   repositories:
   - cloudfoundry/docs-cf-cli
   - cloudfoundry/docs-cloudfoundry-concepts

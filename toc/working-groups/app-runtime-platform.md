@@ -43,6 +43,10 @@ technical_leads:
 bots:
 - name: CI bot
   github: tas-runtime-bot
+- name: Garden-Windows CI Bot
+  github: greenhouse-ci
+- name: Diego Bot
+  github: cf-diego
 areas:
 - name: Diego
   approvers:
@@ -122,6 +126,8 @@ areas:
   approvers:
   - name: Max Hufnagel
     github: animatedmax
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
@@ -190,6 +196,7 @@ areas:
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
+  - cloudfoundry/windows-tools-release
   - cloudfoundry/windows2016fs
   - cloudfoundry/windows2019fs-release
   - cloudfoundry/windowsfs-online-release

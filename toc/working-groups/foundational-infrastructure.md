@@ -45,6 +45,10 @@ bots:
   github: cf-gitbot
 - name: runtime-bot
   github: tas-runtime-bot
+- name: cf-uaa-ci-bot
+  github: cf-identity
+- name: cf-bosh-ci-bot
+  github: cf-bosh-ci-bot
 areas:
 - name: Credential Management (Credhub)
   approvers:
@@ -97,6 +101,8 @@ areas:
     github: hsinn0
   - name: Danny Faught
     github: swalchemist
+  - name: Florian Tack
+    github: tack-sap
   reviewers:
   - name: Alicia Yingling
     github: Tallicia
@@ -117,8 +123,17 @@ areas:
   approvers:
   - name: Andrew Garner 
     github: abg
-  - name: Shaan Sapra
-    github: ssapra
+  - name: Colin Shield
+    github: colins
+  - name: Kyle Ong
+    github: ohkyle
+  - name: Kim Basset
+    github: kimago
+  reviewers:
+  - name: Ryan Wittrup
+    github: ryanwittrup
+  - name: Kevin Markwardt
+    github: kmarkwardt-vmware
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
@@ -133,6 +148,45 @@ areas:
   - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
+- name: Stemcell Release Engineering (BOSH)
+  approvers:
+  - name: Joseph Palermo
+    github: jpalermo
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Brian Upton
+    github: ystros
+  - name: Matthias Vach
+    github: mvach
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Max Soest
+    github: max-soe
+  - name: Felix Riegger
+    github: friegger
+  - name: Aram Price
+    github: aramprice
+  - name: Shilpa Chandrashekara
+    github: ShilpaChandrashekara
+  - name: Joerg W
+    github: joergdw
+  - name: Ansh Rupani
+    github: anshrupani
+  repositories:
+  - cloudfoundry/bosh-community-stemcell-ci-infra
+  - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
   - name: Joseph Palermo
@@ -202,8 +256,6 @@ areas:
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
-  - cloudfoundry/bosh-community-stemcell-ci-infra
-  - cloudfoundry/bosh-stemcells-ci
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
