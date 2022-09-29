@@ -41,12 +41,14 @@ technical_leads:
 - name: Amelia Downs
   github: ameowlia
 bots:
-- name: CI bot
+- name: CI Bot
   github: tas-runtime-bot
 - name: Garden-Windows CI Bot
   github: greenhouse-ci
 - name: Diego Bot
   github: cf-diego
+- name: Garden Bot
+  github: garden-gnome
 areas:
 - name: Diego
   approvers:
