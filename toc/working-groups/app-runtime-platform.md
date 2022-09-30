@@ -239,6 +239,7 @@ areas:
   - cloudfoundry/go-orchestrator
   - cloudfoundry/go-pubsub
   - cloudfoundry/lager
+  - cloudfoundry/log-cache-cli
   - cloudfoundry/log-cache-release
   - cloudfoundry/loggregator-agent-release
   - cloudfoundry/loggregator-api
