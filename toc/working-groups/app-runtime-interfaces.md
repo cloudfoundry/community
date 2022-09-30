@@ -213,6 +213,7 @@ areas:
   - cloudfoundry/claw
   - cloudfoundry/cli-docs-scripts
   - cloudfoundry/cli-workstation
+  - cloudfoundry/cli-private
   - cloudfoundry/jsonry
   - cloudfoundry/ykk
   
