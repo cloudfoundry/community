@@ -199,6 +199,8 @@ areas:
     github: cunnie
   - name: Aram Price
     github: aramprice
+  - name: Konstantin Kiess
+    github: nouseforaname
   reviewers:
   - name: Matthias Vach
     github: mvach
