@@ -143,6 +143,8 @@ areas:
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
+  - name: Carson Long
+    github: ctlong
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/system-metrics-release
