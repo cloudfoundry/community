@@ -2145,6 +2145,13 @@ orgs:
         allow_merge_commit: false
         has_issues: false
         has_projects: true
+      terraform-provider-csbmysql:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for MySQL
+        has_projects: true
+        has_wiki: false        
       terraform-provider-csbpg:
         allow_merge_commit: false
         allow_rebase_merge: false
