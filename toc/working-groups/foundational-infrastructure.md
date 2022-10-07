@@ -49,6 +49,8 @@ bots:
   github: cf-identity
 - name: cf-bosh-ci-bot
   github: cf-bosh-ci-bot
+- name: backup-restore-team-bot
+  github: backup-restore-team-bot
 areas:
 - name: Credential Management (Credhub)
   approvers:
