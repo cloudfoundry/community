@@ -51,6 +51,8 @@ bots:
   github: cf-bosh-ci-bot
 - name: backup-restore-team-bot
   github: backup-restore-team-bot
+- name: Cryogenics-CI
+  github: Cryogenics-CI
 areas:
 - name: Credential Management (Credhub)
   approvers:
