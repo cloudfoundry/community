@@ -190,6 +190,8 @@ areas:
     github: a-b
   - name: Juan Diego González
     github: jdgonzaleza
+  - name: Ryker Reed
+    github: reedr3
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -197,8 +199,6 @@ areas:
     github: ccjaimes
   - name: Pete Levine
     github: PeteLevineA
-  - name: Ryker Reed
-    github: reedr3
   - name: Michael Oleske
     github: moleske
   - name: Shwetha Guraraj
