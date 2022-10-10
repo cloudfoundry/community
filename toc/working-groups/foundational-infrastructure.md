@@ -151,6 +151,7 @@ areas:
     github: ctlong
   repositories:
   - cloudfoundry/blackbox
+  - cloudfoundry/bosh-system-metrics-server-release
   - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
@@ -284,7 +285,6 @@ areas:
   - cloudfoundry/stembuild
   - cloudfoundry/stemcells-alicloud-index
   - cloudfoundry/socks5-proxy
-  - cloudfoundry/bosh-system-metrics-server-release
   - cloudfoundry/tlsconfig
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
