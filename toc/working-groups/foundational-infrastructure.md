@@ -289,7 +289,6 @@ areas:
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
   - cloudfoundry/windows-utilities-tests
-  - cloudfoundry/windows-tools-release
   - cloudfoundry/yagnats
 config:
   github_project_sync:
