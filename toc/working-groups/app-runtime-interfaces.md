@@ -212,6 +212,7 @@ areas:
   - cloudfoundry/cli-docs-scripts
   - cloudfoundry/cli-workstation
   - cloudfoundry/cli-private
+  - cloudfoundry/cli-pools
   - cloudfoundry/jsonry
   - cloudfoundry/ykk
   
