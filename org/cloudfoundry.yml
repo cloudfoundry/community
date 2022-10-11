@@ -2302,4 +2302,39 @@ orgs:
       yttk8smatchers:
         default_branch: main
         has_projects: true
-    teams: {}
+    teams:
+      temp-ari-buildpacks-admins:
+        description: "Temporary team for managing Buildpacks secrets until we have a permanent plan."
+        maintainers:
+        - arjun024
+        - brayanhenao
+        - ryanmoran
+        members: []
+        privacy: closed
+        repos:
+          apt-buildpack: admin
+          binary-buildpack: admin
+          buildpacks-ci: admin
+          dotnet-core-buildpack: admin
+          go-buildpack: admin
+          hwc-buildpack: admin
+          libbuildpack: admin
+          nginx-buildpack: admin
+          nodejs-buildpack: admin
+          python-buildpack: admin
+          r-buildpack: admin
+          ruby-buildpack: admin
+          staticfile-buildpack: admin
+          switchblade: admin
+      temp-ari-cli-admins:
+        description: "Temporary team for managing CLI secrets until we have a permanent plan."
+        maintainers:
+          - a-b
+          - jdgonzaleza
+        members: []
+        privacy: closed
+        repos:
+          claw: admin
+          cli-ci: admin
+          cli-plugin-repo: admin
+          cli: admin
