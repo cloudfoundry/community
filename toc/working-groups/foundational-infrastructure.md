@@ -208,6 +208,8 @@ areas:
     github: aramprice
   - name: Konstantin Kiess
     github: nouseforaname
+  - name: Kenneth Lakin
+    github: klakin-pivotal
   reviewers:
   - name: Matthias Vach
     github: mvach
