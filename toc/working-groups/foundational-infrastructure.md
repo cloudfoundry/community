@@ -208,6 +208,8 @@ areas:
     github: aramprice
   - name: Konstantin Kiess
     github: nouseforaname
+  - name: Rajan Agaskar
+    github: ragaskar
   reviewers:
   - name: Matthias Vach
     github: mvach
