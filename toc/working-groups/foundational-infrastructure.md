@@ -210,6 +210,8 @@ areas:
     github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Kenneth Lakin
+    github: klakin-pivotal
   reviewers:
   - name: Matthias Vach
     github: mvach
