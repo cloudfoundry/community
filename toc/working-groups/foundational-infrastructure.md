@@ -92,7 +92,7 @@ areas:
     github: dlresende
   - name: Fernando Naranjo
     github: fejnartal
-  - name: Gareth Smith 
+  - name: Gareth Smith
     github: totherme
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
@@ -103,7 +103,7 @@ areas:
   - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
-  - name: Peter Chen 
+  - name: Peter Chen
     github: peterhaochen47
   - name: Bruce Ricard
     github: bruce-ricard
@@ -132,7 +132,7 @@ areas:
   - cloudfoundry/uaa-singular
 - name: Integrated Databases (Mysql / Postgres)
   approvers:
-  - name: Andrew Garner 
+  - name: Andrew Garner
     github: abg
   - name: Colin Shield
     github: colins
@@ -207,7 +207,7 @@ areas:
     github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Benjamin Gandon 
+  - name: Benjamin Gandon
     github: bgandon
   - name: Brian Cunnie
     github: cunnie
