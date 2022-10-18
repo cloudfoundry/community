@@ -136,6 +136,7 @@ areas:
   - cloudfoundry/public-buildpacks-ci-robots
   - cloudfoundry/stack-auditor
   - cloudfoundry/switchblade
+  - cloudfoundry/core-deps-ci
 
 - name: CAPI
   approvers:
