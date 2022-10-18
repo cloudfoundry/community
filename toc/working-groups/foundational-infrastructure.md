@@ -54,6 +54,16 @@ bots:
 - name: Cryogenics-CI
   github: Cryogenics-CI
 areas:
+- name: Docs
+  approvers:
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
+  - name: Max Hufnagel
+    github: animatedmax
+  repositories:
+  - cloudfoundry/docs-bbr
+  - cloudfoundry/docs-credhub
+  - cloudfoundry/docs-uaa
 - name: Credential Management (Credhub)
   approvers:
   - name: Peter Chen
@@ -75,7 +85,6 @@ areas:
   - cloudfoundry/credhub-cli
   - cloudfoundry/credhub-ci-locks
   - cloudfoundry/credhub-perf-release
-  - cloudfoundry/docs-credhub
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   approvers:
@@ -91,7 +100,6 @@ areas:
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/disaster-recovery-acceptance-tests
-  - cloudfoundry/docs-bbr
   - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
@@ -114,7 +122,6 @@ areas:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
   - cloudfoundry/cf-uaac
-  - cloudfoundry/docs-uaa
   - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
