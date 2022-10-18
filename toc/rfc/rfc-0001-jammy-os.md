@@ -1,9 +1,9 @@
 # Meta
 [meta]: #meta
 - Name: Move to Jammy Jellyfish (22.04) as the next CF Linux Operating System after Bionic.
-- Start Date: (fill in today's date: 2022-01-01)
+- Start Date: 2022-01-22
 - Author(s): @dsboulder @rkoster
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: https://github.com/cloudfoundry/community/pull/191
 
 ## Summary
