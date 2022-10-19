@@ -29,6 +29,9 @@ The CFF TOC should implement basic branch protection rules for all repositories 
 We propose that protection be applied to all branches matching the expressions `main` or `v[0-9]*`.
 
 On protected branches, we propose the following rules:
-* working group leads, approvers, and bots will be able to push directly to the branch
-* contributors outside of leads, approvers, and bots must raise a pull request before the change can be merged
-* pull requests must have at least 2 approvals, at least 1 of which must come from a working group approver or lead.
+* only bots may push directly to the branch
+* human contributors must make contributions through a regular pull request workflow.
+
+With respect to the approval of pull requests, we propose that the number of approvals required will depend on the number of people in the approver role of a working group:
+* 0 approvals will be required when a working group has 3 or fewer people in the approver rule
+* 1 approval will be required when a working group has 4 or more people in the approver role.
