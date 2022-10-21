@@ -49,6 +49,8 @@ bots:
   github: cf-diego
 - name: Garden Bot
   github: garden-gnome
+- name: Networking CI Bot
+  github: CFN-CI
 areas:
 - name: Diego
   approvers:
