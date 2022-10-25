@@ -114,7 +114,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Forum                      | [Video chat](https://zoom.us/j/98762513821?pwd=dUk1WGZwcXJqR0UxRXQ4NnljcCtydz09)  |
 | Community Meeting Calendar | Every other Wednesday at 11:30 am ET / 8:30 am PT  |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1ULNBEjlrNAgn3ko9y8ZJfwI7mw5-oofYdjl-dhkEoDA/edit)  |
-| Slack Channel              | [&#x23;cf-k8s-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
+| Slack Channel              | [&#x23;korifi-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
