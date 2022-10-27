@@ -296,12 +296,10 @@ areas:
   - cloudfoundry/cf-tcp-router
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/gorouter
-  - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/logging-route-service
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
-  - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
@@ -313,4 +311,21 @@ areas:
   - cloudfoundry/routing-team-checklists
   - cloudfoundry/silk
   - cloudfoundry/silk-release
+
+- name: Networking-Extensions
+  approvers:
+  - name: Alexander Lais
+    github: peanball
+  - name: Dominik Froehlich
+    github: domdom82
+  - name: Maximilian Moehl
+    github: maxmoehl
+  - name: Patrick Lowin
+    github: plowin
+  - name: Tamara Boehm
+    github: b1tamara
+  repositories:
+  - cloudfoundry/haproxy-boshrelease
+  - cloudfoundry/pcap-release
+
 ```
