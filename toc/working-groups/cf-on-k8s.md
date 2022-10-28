@@ -65,8 +65,6 @@ areas:
     github: kieron-dev
   - name: Matt Royal
     github: matt-royal
-  - name: Mario Nitchev
-    github: mnitchev
   - name: Tim Downey
     github: tcdowney
   repositories:
