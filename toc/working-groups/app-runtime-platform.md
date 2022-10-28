@@ -157,8 +157,6 @@ areas:
     github: georgethebeatle
   - name: Kieron Browne
     github: kieron-dev
-  - name: Mario Nitchev
-    github: mnitchev
   - name: Amin Jamali
     github: aminjam
   - name: Geoff Franks
