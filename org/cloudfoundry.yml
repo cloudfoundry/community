@@ -246,7 +246,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-linux-stemcell-builder:
-        default_branch: ubuntu-bionic/master
+        default_branch: ubuntu-jammy/master
         description: 'BOSH Ubuntu Linux stemcells '
         has_projects: false
         has_wiki: false
