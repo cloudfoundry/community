@@ -227,6 +227,11 @@ areas:
     github: ctlong
   - name: Matthew Kocher
     github: mkocher
+  reviewers:
+  - name: Jovan Kostovski
+    github: chombium
+  - name: Felix Hambrecht
+    github: fhambrec
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/cf-drain-cli
