@@ -65,6 +65,7 @@ areas:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
   - cloudfoundry/app-autoscaler-env-bbl-state
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Buildpacks
   approvers:
@@ -137,6 +138,7 @@ areas:
   - cloudfoundry/stack-auditor
   - cloudfoundry/switchblade
   - cloudfoundry/core-deps-ci
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: CAPI
   approvers:
@@ -184,6 +186,7 @@ areas:
   - cloudfoundry/delayed_job_sequel
   - cloudfoundry/steno
   - cloudfoundry/runtimeschema
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: CLI
   approvers:
@@ -216,7 +219,8 @@ areas:
   - cloudfoundry/cli-pools
   - cloudfoundry/jsonry
   - cloudfoundry/ykk
-  
+  - cloudfoundry/app-runtime-interfaces-infrastructure
+
 - name: Docs
   approvers:
   - name: Melinda Jeffs Gutermuth
@@ -229,6 +233,7 @@ areas:
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
   - cloudfoundry/docs-dotnet-core-tutorial
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Java Tools
   approvers:
@@ -238,6 +243,7 @@ areas:
     github: pivotal-david-osullivan
   repositories:
   - cloudfoundry/cf-java-client
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: MultiApps
   approvers:
@@ -265,6 +271,7 @@ areas:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
   - cloudfoundry/multiapps
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Notifications
   approvers:
@@ -279,5 +286,6 @@ areas:
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 ```

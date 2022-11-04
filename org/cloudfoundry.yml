@@ -51,6 +51,10 @@ orgs:
         archived: true
         description: A UI project for the Cloud Foundry incubator app-autoscaler
         has_projects: true
+      app-runtime-interfaces-infrastructure:
+        description: Infrastructure as Code for the App Runtime Interfaces Working Group
+        has_projects: true
+        default_branch: main
       apt-buildpack:
         has_projects: false
         has_wiki: false
