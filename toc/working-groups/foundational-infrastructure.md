@@ -60,6 +60,8 @@ areas:
     github: cshollingsworth
   - name: Max Hufnagel
     github: animatedmax
+  - name: Anita Flegg
+    github: anita-flegg
   repositories:
   - cloudfoundry/docs-bbr
   - cloudfoundry/docs-credhub

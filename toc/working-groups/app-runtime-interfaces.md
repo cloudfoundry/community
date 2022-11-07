@@ -229,6 +229,8 @@ areas:
     github: mjgutermuth
   - name: Chloe Hollingsworth
     github: cshollingsworth
+  - name: Anita Flegg
+    github: anita-flegg
   repositories:
   - cloudfoundry/docs-cf-cli
   - cloudfoundry/docs-cloudfoundry-concepts

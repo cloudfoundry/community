@@ -139,6 +139,8 @@ areas:
     github: animatedmax
   - name: Chloe Hollingsworth
     github: cshollingsworth
+  - name: Anita Flegg
+    github: anita-flegg
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
