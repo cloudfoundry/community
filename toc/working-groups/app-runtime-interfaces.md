@@ -163,6 +163,8 @@ areas:
     github: xandroc
   - name: David Alvarado
     github: dalvarado
+  - name: Katharina Przybill
+    github: kathap
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
