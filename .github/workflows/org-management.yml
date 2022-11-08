@@ -63,7 +63,6 @@ jobs:
             --github-endpoint http://ghproxy:8888
             --required-admins=thelinuxfoundation
             --min-admins=5
-            --maximum-removal-delta=0.8
             --github-app-id=${{ secrets.GH_APP_ID }}
             --github-app-private-key-path=private_key
             --require-self=false
