@@ -26,7 +26,7 @@ When the TOC approved and implemented [RFC 0013](https://github.com/cloudfoundry
 
 The CFF TOC should implement basic branch protection rules for all repositories in an automated manner, and allow working groups to extend them as they see fit. This can be achieved, technically, with [the `branchprotector` tool from `prow` toolset](https://github.com/kubernetes/test-infra/blob/master/prow/cmd/branchprotector/README.md).
 
-We propose that protection be applied to all branches matching the expressions `main` or `v[0-9]*`.
+We propose that protection be applied to all branches matching either the default branch or the expression v`v[0-9]*`.
 
 On protected branches, we propose the following rules:
 * only bots may push directly to the branch
