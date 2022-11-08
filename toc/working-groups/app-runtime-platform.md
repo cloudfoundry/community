@@ -70,6 +70,11 @@ areas:
     github: reneighbor
   - name: Chris Selzo
     github: selzoc
+  reviewers:
+  - name: Plamen Doychev
+    github: PlamenDoychev
+  - name: Vladimir Savchenko
+    github: vlast3k
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -295,6 +300,11 @@ areas:
     github: selzoc
   - name: Stefan Lay
     github: stefanlay
+  reviewers:
+  - name: Plamen Doychev
+    github: PlamenDoychev
+  - name: Vladimir Savchenko
+    github: vlast3k
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
