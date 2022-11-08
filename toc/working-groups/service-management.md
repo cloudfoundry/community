@@ -39,12 +39,8 @@ areas:
     github: blgm
   - name: Felisia Martini
     github: FelisiaM
-  - name: James Norman
-    github: jimbo459
   - name: Marcela Campo
     github: pivotal-marcela-campo
-  - name: Jatin Naik
-    github: tinygrasshopper
   - name: Andrea Zucchini
     github: zucchinidev
   - name: Konstantin Semenov
@@ -62,8 +58,6 @@ areas:
   - cloudfoundry/terraform-provider-csbmysql
 - name: OSB API
   approvers:
-  - name: Sam Gunaratne
-    github: Samze
   - name: Rodrigo Sampaio Vaz
     github: rsampaio
   repositories:
