@@ -219,6 +219,8 @@ areas:
     github: ragaskar
   - name: Kenneth Lakin
     github: klakin-pivotal
+  - name: Daniel Felipe Ochoa
+    github: danielfor
   reviewers:
   - name: Matthias Vach
     github: mvach
