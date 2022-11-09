@@ -115,6 +115,8 @@ areas:
     github: swalchemist
   - name: Florian Tack
     github: tack-sap
+  - name: Torsten Luh
+    github: torsten-sap
   reviewers:
   - name: Alicia Yingling
     github: Tallicia
