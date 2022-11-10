@@ -6,9 +6,9 @@ on:
 
 jobs:
   configs:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: matrix
         run: |
           echo "::set-output name=matrix::$(./org/generate_working_group_projects_sync_config.sh)"
@@ -17,7 +17,7 @@ jobs:
 
   sync_projects:
     needs: configs
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container:
       image: rkoster/github-multi-repo-project-card-sync
 
