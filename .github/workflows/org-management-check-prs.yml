@@ -5,16 +5,15 @@ on:
       - 'org/*'
       - 'toc/TOC.md'
       - 'toc/working-groups/*.md'
-
+      - '.github/workflows/org-management-check-prs.yml'
 jobs:
   org-config-generation-check:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           path: community
       - name: Generate github org configuration

@@ -4,7 +4,7 @@ on:
 
 jobs:  
   generate-peribolos-dump:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     concurrency:
       group: peribolos
     services:
