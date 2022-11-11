@@ -1,0 +1,32 @@
+# TODO: integrate into org-management workflow
+name: 'Apply Branch Protection Rules'
+on:
+  pull_request:
+    paths:
+      - 'org/branchprotection.yml'
+      - '.github/workflows/branch-protection.yml'
+
+jobs:
+  branchprotector:
+    runs-on: ubuntu-latest
+    # ghproxy?
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: community
+      - name: write github private key
+        run: |
+          echo "${GH_PRIVATE_KEY}" > private_key
+          echo "${GH_TOKEN}" > token
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+      - name: branchprotector
+        id: branchprotector
+        uses: docker://gcr.io/k8s-prow/branchprotector
+        with:
+          args: >-
+            --confirm=true
+            --github-app-id=${{ secrets.GH_APP_ID }}
+            --github-app-private-key-path=private_key
+            --config-path=community/org/branchprotection.yml

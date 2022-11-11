@@ -1,0 +1,23 @@
+branch-protection:
+  # protect: false # TODO: or leave better out -> branch protector touches only listed orgs/repos
+  # TODO: allow_force_pushes/allow_deletions needed?
+  orgs:
+    cloudfoundry:
+      # override generated branch protection rules by specifying a project explicitly
+      # see https://github.com/kubernetes-sigs/prow/blob/main/site/content/en/docs/Legacy%20Snapshot/prow/cmd/branchprotector/README.md
+      repos:
+        branchprotection-test:
+          branches:
+            main:
+              protect: true
+              enforce_admins: true
+              allow_force_pushes: false
+              allow_deletions: false
+              required_pull_request_reviews:
+                required_approving_review_count: 1  # 0 seems to be an allowed value
+                dismiss_stale_reviews: true
+                # dismissal_restrictions
+                require_code_owner_reviews: true
+                # how to configure bypassing PRs for bots? Missing in branchprotector
+              # required_status_checks
+              # restrictions: not needed
