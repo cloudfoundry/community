@@ -18,7 +18,7 @@ governing all participation in the Cloud Foundry community
 
 # Technical Community Governance
 
-Changes to these documents require a vote (or consensus) of the Technical Oversight Committee (TOC). 
+Changes to these documents require a vote (or consensus) of the Technical Oversight Committee (TOC).
 
 * [Principles](toc/PRINCIPLES.md) - (Status: INFORMATIONAL) - Core principles that inform the technical 
 governance of the Cloud Foundry community
