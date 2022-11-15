@@ -34,6 +34,8 @@ thinking behind how the TOC should structure the work of the technical community
 
 * [Change Plan](toc/CHANGEPLAN.md) - (Status: WORK IN PROGRESS) - Plan for how to get from the community's current policies and practices to a new desired state
 
+The evolution of the Cloud Foundry Technical Community Governance is explained in this [talk](https://youtu.be/OBKsdVpFfyQ).
+
 ## Working Groups
 
 (STATUS: WORK IN PROGRESS)
