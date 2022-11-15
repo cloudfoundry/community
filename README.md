@@ -35,7 +35,7 @@ The evolution of the Cloud Foundry Technical Community Governance is explained i
 
 ## Working Groups
 
-(STATUS: WORK IN PROGRESS)
+(Status: ACTIVE)
 
 The technical community's activities are structured into working groups by the TOC. For a listing of the
 active working groups, see [WORKING-GROUPS.md](toc/working-groups/WORKING-GROUPS.md).
