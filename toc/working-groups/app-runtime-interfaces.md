@@ -54,13 +54,18 @@ areas:
   - name: Silvestre Zabala
     github: silvestre
   - name: Kevin Cross
-    github: KevinJCross 
+    github: KevinJCross
   - name: Alan Morán
     github: bonzofenix
   - name: Jörg Weisbarth
     github: joergdw
   - name: Marcin Kubica
     github: marcinkubica
+  reviewers:
+  - name: Oliver Mautschke
+    github: OliverMautschke
+  - name: Susanne Salzmann
+    github: salzmannsusan
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
