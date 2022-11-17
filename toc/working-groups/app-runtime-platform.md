@@ -171,6 +171,8 @@ areas:
     github: dsabeti
   - name: Marc Paquette
     github: MarcPaquette
+  - name: Chris Selzo
+    github: selzoc
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/cfbench
