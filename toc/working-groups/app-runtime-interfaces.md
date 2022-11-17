@@ -167,6 +167,8 @@ areas:
     github: dalvarado
   - name: Katharina Przybill
     github: kathap
+  - name: Will Gant
+    github: will-gant
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
