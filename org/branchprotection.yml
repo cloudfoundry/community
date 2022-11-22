@@ -18,6 +18,9 @@ branch-protection:
                 dismiss_stale_reviews: true
                 # dismissal_restrictions
                 require_code_owner_reviews: true
+                bypass_pull_request_allowances:
+                  users: ["beyhan", "stephanme"]
+                  teams: ["toc"]
                 # how to configure bypassing PRs for bots? Missing in branchprotector
               # required_status_checks
               # restrictions: not needed
