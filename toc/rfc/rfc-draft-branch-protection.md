@@ -35,3 +35,5 @@ On protected branches, we propose the following rules:
 With respect to the approval of pull requests, we propose that the number of approvals required will depend on the number of people in the approver role of a working group:
 * 0 approvals will be required when a working group has 3 or fewer people in the approver rule
 * 1 approval will be required when a working group has 4 or more people in the approver role.
+
+The automation should allow to override the standard branch protection per respository using a configuration file maintained in this community repository. This allows working group leads e.g. to reduce the number of required approvals if several approvers are temporarily not available.
