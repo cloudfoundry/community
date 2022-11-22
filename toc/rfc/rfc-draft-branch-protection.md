@@ -29,7 +29,7 @@ The CFF TOC should implement basic branch protection rules for all repositories 
 We propose that protection be applied to all branches matching either the default branch or the expression v`v[0-9]*`.
 
 On protected branches, we propose the following rules:
-* only bots may push directly to the branch
+* only the bots for the Working Group owning the repository and any areas in the Working Group contributing to the repository may push directly to the branch
 * human contributors must make contributions through a regular pull request workflow.
 
 With respect to the approval of pull requests, we propose that the number of approvals required will depend on the number of people in the approver role of a working group:
