@@ -11,7 +11,7 @@
 
 In Q3 2022, the technical oversight committe accepted and implemented [an RFC for the managemnet of Github teams and user access](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0014-github-teams-and-access.md). This unintentionally broke the workflow and branch protection roles of some working groups.
 
-This RFC seeks to address that by defining a baseline of branch protection rules across all repositories under management in the cloufoundry GitHub org.
+This RFC seeks to address that by defining a baseline of branch protection rules across all repositories under management in the cloudfoundry GitHub org.
 
 ## Problem
 
