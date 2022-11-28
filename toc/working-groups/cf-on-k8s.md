@@ -57,8 +57,6 @@ areas:
     github: danail-branekov
   - name: Dave Walter
     github: davewalter
-  - name: Akira Wong
-    github: gnovv
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Kieron Browne
