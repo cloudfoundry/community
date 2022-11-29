@@ -3,8 +3,8 @@
 - Name: Default git branch protection rules
 - Start Date: 2022-10-07
 - Author(s): AP-Hunt, Benjamintf1, rkoster
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/449
+- Status: Accepted
+- RFC Pull Request: [community#449](https://github.com/cloudfoundry/community/pull/449)
 
 
 ## Summary
