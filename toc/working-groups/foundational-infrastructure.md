@@ -144,9 +144,9 @@ areas:
     github: ohkyle
   - name: Kim Basset
     github: kimago
-  reviewers:
   - name: Ryan Wittrup
     github: ryanwittrup
+  reviewers:
   - name: Kevin Markwardt
     github: kmarkwardt-vmware
   repositories:
