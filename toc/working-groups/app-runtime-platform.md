@@ -56,8 +56,6 @@ areas:
   approvers:
   - name: Andrew Crump
     github: acrmp
-  - name: Amin Jamali
-    github: aminjam
   - name: Benjamin Fuller
     github: Benjamintf1
   - name: Geoff Franks
@@ -70,6 +68,8 @@ areas:
     github: reneighbor
   - name: Chris Selzo
     github: selzoc
+  - name: Amin Jamali
+    github: winkingturtle-vmw
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
@@ -157,8 +157,6 @@ areas:
     github: georgethebeatle
   - name: Kieron Browne
     github: kieron-dev
-  - name: Amin Jamali
-    github: aminjam
   - name: Geoff Franks
     github: geofffranks
   - name: Josh Russett
@@ -173,6 +171,8 @@ areas:
     github: MarcPaquette
   - name: Chris Selzo
     github: selzoc
+  - name: Amin Jamali
+    github: winkingturtle-vmw
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/cfbench
@@ -218,8 +218,6 @@ areas:
   approvers:
   - name: Andrew Crump
     github: acrmp
-  - name: Amin Jamali
-    github: aminjam
   - name: Benjamin Fuller
     github: Benjamintf1
   - name: Geoff Franks
@@ -234,6 +232,8 @@ areas:
     github: ctlong
   - name: Matthew Kocher
     github: mkocher
+  - name: Amin Jamali
+    github: winkingturtle-vmw
   reviewers:
   - name: Jovan Kostovski
     github: chombium
@@ -276,8 +276,6 @@ areas:
   approvers:
   - name: Andrew Crump
     github: acrmp
-  - name: Amin Jamali
-    github: aminjam
   - name: Tamara Boehm
     github: b1tamara
   - name: Benjamin Fuller
@@ -304,6 +302,8 @@ areas:
     github: selzoc
   - name: Stefan Lay
     github: stefanlay
+  - name: Amin Jamali
+    github: winkingturtle-vmw
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
