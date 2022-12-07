@@ -225,6 +225,8 @@ areas:
     github: klakin-pivotal
   - name: Daniel Felipe Ochoa
     github: danielfor
+  - name: Brian Upton
+    github: ystros
   reviewers:
   - name: Matthias Vach
     github: mvach
