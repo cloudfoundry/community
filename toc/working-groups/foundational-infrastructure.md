@@ -43,13 +43,42 @@ bots:
   github: bosh-admin-bot
 - name: cf-gitbot
   github: cf-gitbot
+- name: runtime-bot
+  github: tas-runtime-bot
+- name: cf-uaa-ci-bot
+  github: cf-identity
+- name: cf-bosh-ci-bot
+  github: cf-bosh-ci-bot
+- name: backup-restore-team-bot
+  github: backup-restore-team-bot
+- name: Cryogenics-CI
+  github: Cryogenics-CI
 areas:
+- name: Docs
+  approvers:
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
+  - name: Max Hufnagel
+    github: animatedmax
+  - name: Anita Flegg
+    github: anita-flegg
+  repositories:
+  - cloudfoundry/docs-bbr
+  - cloudfoundry/docs-credhub
+  - cloudfoundry/docs-uaa
 - name: Credential Management (Credhub)
   approvers:
   - name: Peter Chen
     github: peterhaochen47
   - name: Bruce Ricard
     github: bruce-ricard
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Danny Faught
+    github: swalchemist
+  reviewers:
+  - name: Alicia Yingling
+    github: Tallicia
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -58,7 +87,6 @@ areas:
   - cloudfoundry/credhub-cli
   - cloudfoundry/credhub-ci-locks
   - cloudfoundry/credhub-perf-release
-  - cloudfoundry/docs-credhub
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   approvers:
@@ -66,7 +94,7 @@ areas:
     github: dlresende
   - name: Fernando Naranjo
     github: fejnartal
-  - name: Gareth Smith 
+  - name: Gareth Smith
     github: totherme
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
@@ -74,21 +102,30 @@ areas:
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/disaster-recovery-acceptance-tests
-  - cloudfoundry/docs-bbr
   - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
-  - name: Peter Chen 
+  - name: Peter Chen
     github: peterhaochen47
   - name: Bruce Ricard
     github: bruce-ricard
   - name: Markus Strehle
     github: strehle
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Danny Faught
+    github: swalchemist
+  - name: Florian Tack
+    github: tack-sap
+  - name: Torsten Luh
+    github: torsten-sap
+  reviewers:
+  - name: Alicia Yingling
+    github: Tallicia
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
   - cloudfoundry/cf-uaac
-  - cloudfoundry/docs-uaa
   - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
@@ -99,32 +136,73 @@ areas:
   - cloudfoundry/uaa-singular
 - name: Integrated Databases (Mysql / Postgres)
   approvers:
-  - name: Andrew Garner 
+  - name: Andrew Garner
     github: abg
-  - name: Shaan Sapra
-    github: ssapra
+  - name: Colin Shield
+    github: colins
+  - name: Kyle Ong
+    github: ohkyle
+  - name: Kim Basset
+    github: kimago
+  - name: Ryan Wittrup
+    github: ryanwittrup
+  reviewers:
+  - name: Kevin Markwardt
+    github: kmarkwardt-vmware
   repositories:
-  - cloudfoundry/cf-mysql-bootstrap
-  - cloudfoundry/cf-mysql-ci
-  - cloudfoundry/cf-mysql-cluster-health-logger
-  - cloudfoundry/cf-mysql-deployment
-  - cloudfoundry/cf-mysql-release
-  - cloudfoundry/galera-healthcheck
-  - cloudfoundry/galera-init
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
   - cloudfoundry/postgres-release
   - cloudfoundry/pxc-release
-  - cloudfoundry/switchboard
 - name: System Logging and Metrics (rsyslog / event-log)
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
+  - name: Carson Long
+    github: ctlong
   repositories:
   - cloudfoundry/blackbox
+  - cloudfoundry/bosh-system-metrics-server-release
   - cloudfoundry/system-metrics-release
   - cloudfoundry/syslog-release
   - cloudfoundry/windows-syslog-release
+- name: Stemcell Release Engineering (BOSH)
+  approvers:
+  - name: Joseph Palermo
+    github: jpalermo
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Brian Upton
+    github: ystros
+  - name: Matthias Vach
+    github: mvach
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Max Soest
+    github: max-soe
+  - name: Aram Price
+    github: aramprice
+  - name: Shilpa Chandrashekara
+    github: ShilpaChandrashekara
+  - name: Joerg W
+    github: joergdw
+  - name: Ansh Rupani
+    github: anshrupani
+  repositories:
+  - cloudfoundry/bosh-community-stemcell-ci-infra
+  - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
   - name: Joseph Palermo
@@ -133,14 +211,23 @@ areas:
     github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Benjamin Gandon 
+  - name: Benjamin Gandon
     github: bgandon
-  - name: Felix Riegger
-    github: friegger
   - name: Brian Cunnie
     github: cunnie
   - name: Aram Price
     github: aramprice
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  reviewers:
+  - name: Matthias Vach
+    github: mvach
   repositories:
   - bosh-io/releases-index
   - bosh-io/releases
@@ -191,8 +278,6 @@ areas:
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
-  - cloudfoundry/bosh-community-stemcell-ci-infra
-  - cloudfoundry/bosh-stemcells-ci
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
@@ -217,12 +302,10 @@ areas:
   - cloudfoundry/stembuild
   - cloudfoundry/stemcells-alicloud-index
   - cloudfoundry/socks5-proxy
-  - cloudfoundry/bosh-system-metrics-server-release
   - cloudfoundry/tlsconfig
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
   - cloudfoundry/windows-utilities-tests
-  - cloudfoundry/windows-tools-release
   - cloudfoundry/yagnats
 config:
   github_project_sync:

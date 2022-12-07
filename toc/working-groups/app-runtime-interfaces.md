@@ -39,7 +39,13 @@ execution_leads:
 technical_leads:
 - name: Greg Cobb 
   github: gerg
-bots: []
+bots:
+- name: App Autoscaler CI Bot
+  github: app-autoscaler-ci-bot
+- name: Cloud Foundry Buildpacks Team Robot
+  github: cf-buildpacks-eng
+- name: capi-bot
+  github: capi-bot
 areas:
 - name: Autoscaler
   approvers:
@@ -48,7 +54,7 @@ areas:
   - name: Silvestre Zabala
     github: silvestre
   - name: Kevin Cross
-    github: KevinJCross 
+    github: KevinJCross
   - name: Alan Morán
     github: bonzofenix
   - name: Jörg Weisbarth
@@ -57,20 +63,27 @@ areas:
     github: marcinkubica
   - name: Oliver Mautschke
     github: olivermautschke
+  reviewers:
+  - name: Susanne Salzmann
+    github: salzmannsusan
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
   - cloudfoundry/app-autoscaler-env-bbl-state
+  - cloudfoundry/app-runtime-interfaces-infrastructure
+
 - name: Buildpacks
   approvers:
   - name: Daniel Mikusa
-    github: dmikusa-pivotal
+    github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   - name: Arjun Sreedharan
     github: arjun024
   - name: Brayan Henao
     github: brayanhenao
+  - name: Ryan Moran
+    github: ryanmoran
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
@@ -129,27 +142,38 @@ areas:
   - cloudfoundry/public-buildpacks-ci-robots
   - cloudfoundry/stack-auditor
   - cloudfoundry/switchblade
+  - cloudfoundry/core-deps-ci
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: CAPI
   approvers:
   - name: Tom Viehman
     github: tjvman
-  - name: Marc Paquette
-    github: MarcPaquette
-  - name: Jenna Goldstrich
-    github: JenGoldstrich
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
     github: philippthun
   - name: Merric de Launey
     github: MerricdeLauney
-  - name: Mona Mohebbi
-    github: monamohebbi
   - name: Johannes Haass
     github: johha
   - name: Michael Oleske
     github: moleske
+  - name: Seth Boyles
+    github: sethboyles
+  - name: Sven Krieger
+    github: svkrieger
+  reviewers:
+  - name: Joseph Palermo
+    github: jpalermo
+  - name: Alex Rocha
+    github: xandroc
+  - name: David Alvarado
+    github: dalvarado
+  - name: Katharina Przybill
+    github: kathap
+  - name: Will Gant
+    github: will-gant
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
@@ -157,6 +181,8 @@ areas:
   - cloudfoundry/capi-bara-tests
   - cloudfoundry/capi-k8s-release
   - cloudfoundry/capi-ci
+  - cloudfoundry/capi-ci-private
+  - cloudfoundry/capi-env-pool
   - cloudfoundry/cf-performance-tests
   - cloudfoundry/cf-performance-tests-pipeline
   - cloudfoundry/tps
@@ -168,6 +194,8 @@ areas:
   - cloudfoundry/capi-workspace
   - cloudfoundry/delayed_job_sequel
   - cloudfoundry/steno
+  - cloudfoundry/runtimeschema
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: CLI
   approvers:
@@ -175,6 +203,19 @@ areas:
     github: a-b
   - name: Juan Diego González
     github: jdgonzaleza
+  - name: Ryker Reed
+    github: reedr3
+  reviewers:
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Christhian
+    github: ccjaimes
+  - name: Pete Levine
+    github: PeteLevineA
+  - name: Michael Oleske
+    github: moleske
+  - name: Shwetha Guraraj
+    github: gururajsh
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
@@ -183,28 +224,37 @@ areas:
   - cloudfoundry/claw
   - cloudfoundry/cli-docs-scripts
   - cloudfoundry/cli-workstation
+  - cloudfoundry/cli-private
+  - cloudfoundry/cli-pools
   - cloudfoundry/jsonry
   - cloudfoundry/ykk
-  
+  - cloudfoundry/app-runtime-interfaces-infrastructure
+
 - name: Docs
   approvers:
   - name: Melinda Jeffs Gutermuth
     github: mjgutermuth
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
+  - name: Anita Flegg
+    github: anita-flegg
   repositories:
   - cloudfoundry/docs-cf-cli
   - cloudfoundry/docs-cloudfoundry-concepts
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
   - cloudfoundry/docs-dotnet-core-tutorial
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Java Tools
   approvers:
   - name: Daniel Mikusa
-    github: dmikusa-pivotal
+    github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   repositories:
   - cloudfoundry/cf-java-client
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: MultiApps
   approvers:
@@ -232,6 +282,7 @@ areas:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
   - cloudfoundry/multiapps
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Notifications
   approvers:
@@ -246,5 +297,6 @@ areas:
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
+  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 ```

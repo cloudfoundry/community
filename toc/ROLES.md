@@ -5,6 +5,8 @@ role grants.
 - [Scope of Technical Contributions](#scope-of-technical-contributions)
 - [Role Summary](#role-summary)
 - [Member](#member)
+- [Contributor](#contributor)
+- [Reviewer](#reviewer)
 - [Approver](#approver)
 - [Working Group Technical Lead](#working-group-technical-lead)
 - [Working Group Execution Lead](#working-group-execution-lead)
@@ -94,8 +96,25 @@ establish sub-working groups. Working groups delegate change approval to Approve
 
   <tr>
   <tr>
-    <td rowspan="2">Approver</td>
+    <td rowspan="2">Reviewer</td>
     <td colspan="4"><i>Inherits from Contributor Role</i></td>
+  </tr>
+  <tr>
+    <td>
+        <p><b>For 1+ repos in an area:</b></p>
+        <p>Provide reviews of PRs</p>
+    </td>
+    <td>
+      <p>Active contributor who wishes to formally work toward the approver role</p>
+    </td>
+    <td><p>Be assigned to review PRs</p></td>
+    <td>GitHub Directory</td>
+  </tr>
+
+  <tr>
+  <tr>
+    <td rowspan="2">Approver</td>
+    <td colspan="4"><i>Inherits from Reviewer Role</i></td>
   </tr>
   <tr>
     <td>
@@ -229,9 +248,29 @@ Contributors who frequently contribute code are expected to proactively perform 
 reviews and work towards becoming an approver for the area that they are active
 in.
 
+## Reviewer
+<i>Includes everything from [Contributor](#contributor)</i>
+
+A reviewer is an active contributor who wishes to formally work toward the approver role.
+
+Reviewers can submit reviews of PRs within a working group area. They may also have PRs within a working group assigned to them.
+
+### Requirements
+
+- Submission of a PR to the appropriate Working Group Charter that adds themselves to the team's yaml definition.
+
+- Approval from two existing Approvers for that Working Group
+
+    - For Working Groups with fewer than 4 approvers, a single Approver review is sufficient.
+  
+
+### Responsibilities and privileges
+
+- Reviewing assigned PRs within the Working Group Area
+
 ## Approver
 
-<i>Includes everything from [Contributor](#contributor)</i>
+<i>Includes everything from [Reviewer](#reviewer)</i>
 
 Approvers are able to both review and approve code contributions. While
 code review is focused on code quality and correctness, approval is focused on

@@ -112,9 +112,9 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | -------------------------- | ---- |
 | Charter                    | [cf-on-k8s.md](./cf-on-k8s.md)  |
 | Forum                      | [Video chat](https://zoom.us/j/98762513821?pwd=dUk1WGZwcXJqR0UxRXQ4NnljcCtydz09)  |
-| Community Meeting Calendar | Every other Tuesday at 11:30 am ET / 8:30 am PT  |
+| Community Meeting Calendar | Every other Wednesday at 11:30 am ET / 8:30 am PT  |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1ULNBEjlrNAgn3ko9y8ZJfwI7mw5-oofYdjl-dhkEoDA/edit)  |
-| Slack Channel              | [&#x23;cf-k8s-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
+| Slack Channel              | [&#x23;korifi-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
@@ -158,7 +158,7 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/dmikusa-pivotal.png"> | Daniel Mikusa       | VMware  | [@dmikusa-pivotal](https://github.com/dmikusa-pivotal) |
+| <img width="30px" src="https://github.com/dmikusa.png"> | Daniel Mikusa       | VMware  | [@dmikusa](https://github.com/dmikusa) |
 | <img width="30px" src="https://github.com/ekcasey.png"> | Emily Casey       | VMware  | [@ekcasey](https://github.com/ekcasey) |
 | <img width="30px" src="https://github.com/ryanmoran.png"> | Ryan Moran       | VMware  | [@ryanmoran](https://github.com/ryanmoran) |
 

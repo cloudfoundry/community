@@ -39,14 +39,15 @@ areas:
     github: blgm
   - name: Felisia Martini
     github: FelisiaM
-  - name: James Norman
-    github: jimbo459
   - name: Marcela Campo
     github: pivotal-marcela-campo
-  - name: Jatin Naik
-    github: tinygrasshopper
   - name: Andrea Zucchini
     github: zucchinidev
+  - name: Konstantin Semenov
+    github: jhvhs    
+  bots:
+  - name: Services Enablement bot
+    github: servicesenablement
   repositories:
   - cloudfoundry/cloud-service-broker
   - cloudfoundry/csb-brokerpak-azure
@@ -54,10 +55,9 @@ areas:
   - cloudfoundry/csb-brokerpak-gcp
   - cloudfoundry/upgrade-all-services-cli-plugin
   - cloudfoundry/terraform-provider-csbpg
+  - cloudfoundry/terraform-provider-csbmysql
 - name: OSB API
   approvers:
-  - name: Sam Gunaratne
-    github: Samze
   - name: Rodrigo Sampaio Vaz
     github: rsampaio
   repositories:
@@ -96,6 +96,11 @@ areas:
     github: fejnartal
   - name: Gareth Smith
     github: totherme
+  - name: Ian Findlay
+    github: ifindlay-cci    
+  bots:
+  - name: Cryogenics CI Bot
+    github: Cryogenics-CI
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims

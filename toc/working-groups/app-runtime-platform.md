@@ -40,7 +40,17 @@ execution_leads:
 technical_leads:
 - name: Amelia Downs
   github: ameowlia
-bots: []
+bots:
+- name: CI Bot
+  github: tas-runtime-bot
+- name: Garden-Windows CI Bot
+  github: greenhouse-ci
+- name: Diego Bot
+  github: cf-diego
+- name: Garden Bot
+  github: garden-gnome
+- name: Networking CI Bot
+  github: CFN-CI
 areas:
 - name: Diego
   approvers:
@@ -54,10 +64,17 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
+  - name: Maria Shaldybin
+    github: mariash
   - name: Renee Chu
     github: reneighbor
   - name: Chris Selzo
     github: selzoc
+  reviewers:
+  - name: Plamen Doychev
+    github: PlamenDoychev
+  - name: Vladimir Savchenko
+    github: vlast3k
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -108,7 +125,6 @@ areas:
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
-  - cloudfoundry/runtimeschema
   - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
   - cloudfoundry/systemcerts
@@ -121,6 +137,10 @@ areas:
   approvers:
   - name: Max Hufnagel
     github: animatedmax
+  - name: Chloe Hollingsworth
+    github: cshollingsworth
+  - name: Anita Flegg
+    github: anita-flegg
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
@@ -137,8 +157,6 @@ areas:
     github: georgethebeatle
   - name: Kieron Browne
     github: kieron-dev
-  - name: Mario Nitchev
-    github: mnitchev
   - name: Amin Jamali
     github: aminjam
   - name: Geoff Franks
@@ -153,6 +171,8 @@ areas:
     github: dsabeti
   - name: Marc Paquette
     github: MarcPaquette
+  - name: Chris Selzo
+    github: selzoc
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/cfbench
@@ -189,6 +209,7 @@ areas:
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
+  - cloudfoundry/windows-tools-release
   - cloudfoundry/windows2016fs
   - cloudfoundry/windows2019fs-release
   - cloudfoundry/windowsfs-online-release
@@ -211,6 +232,13 @@ areas:
     github: selzoc
   - name: Carson Long
     github: ctlong
+  - name: Matthew Kocher
+    github: mkocher
+  reviewers:
+  - name: Jovan Kostovski
+    github: chombium
+  - name: Felix Hambrecht
+    github: fhambrec
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/cf-drain-cli
@@ -227,6 +255,7 @@ areas:
   - cloudfoundry/go-orchestrator
   - cloudfoundry/go-pubsub
   - cloudfoundry/lager
+  - cloudfoundry/log-cache-cli
   - cloudfoundry/log-cache-release
   - cloudfoundry/loggregator-agent-release
   - cloudfoundry/loggregator-api
@@ -238,6 +267,7 @@ areas:
   - cloudfoundry/metric-store-release
   - cloudfoundry/metrics-discovery-release
   - cloudfoundry/noaa
+  - cloudfoundry/service-metrics-release
   - cloudfoundry/sonde-go
   - cloudfoundry/statsd-injector-release
   - cloudfoundry/system-metrics-scraper-release
@@ -248,6 +278,8 @@ areas:
     github: acrmp
   - name: Amin Jamali
     github: aminjam
+  - name: Tamara Boehm
+    github: b1tamara
   - name: Benjamin Fuller
     github: Benjamintf1
   - name: Carson Long
@@ -260,6 +292,8 @@ areas:
     github: Gerg
   - name: Josh Russett
     github: jrussett
+  - name: Maria Shaldybin
+    github: mariash
   - name: Matthew Kocher
     github: mkocher
   - name: Patrick Lowin
@@ -270,6 +304,11 @@ areas:
     github: selzoc
   - name: Stefan Lay
     github: stefanlay
+  reviewers:
+  - name: Plamen Doychev
+    github: PlamenDoychev
+  - name: Vladimir Savchenko
+    github: vlast3k
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
@@ -278,12 +317,10 @@ areas:
   - cloudfoundry/cf-tcp-router
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/gorouter
-  - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/logging-route-service
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/networking-oss-deployments
-  - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
@@ -293,7 +330,23 @@ areas:
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
   - cloudfoundry/routing-team-checklists
-  - cloudfoundry/service-metrics-release
   - cloudfoundry/silk
   - cloudfoundry/silk-release
+
+- name: Networking-Extensions
+  approvers:
+  - name: Alexander Lais
+    github: peanball
+  - name: Dominik Froehlich
+    github: domdom82
+  - name: Maximilian Moehl
+    github: maxmoehl
+  - name: Patrick Lowin
+    github: plowin
+  - name: Tamara Boehm
+    github: b1tamara
+  repositories:
+  - cloudfoundry/haproxy-boshrelease
+  - cloudfoundry/pcap-release
+
 ```

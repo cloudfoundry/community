@@ -17,6 +17,19 @@ from typing import Any, Dict, Set, List, Optional, Tuple
 _SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
+# pyyaml silently ignores duplicate keys but they shall be rejected
+# https://yaml.org/spec/1.2.2/ requires unique keys
+class UniqueKeyLoader(yaml.SafeLoader):
+    def construct_mapping(self, node, deep=False):
+        mapping = set()
+        for key_node, _ in node.value:
+            key = self.construct_object(key_node, deep=deep)
+            if key in mapping:
+                raise yaml.MarkedYAMLError(f"Duplicate key {key!r} found.", key_node.start_mark)
+            mapping.add(key)
+        return super().construct_mapping(node, deep)
+
+
 class OrgGenerator:
     # parameters intended for testing only, all params are yaml docs
     def __init__(
@@ -27,15 +40,17 @@ class OrgGenerator:
         working_groups: Optional[List[str]] = None,
     ):
         self.org_cfg = (
-            yaml.safe_load(static_org_cfg) if static_org_cfg else {"orgs": {"cloudfoundry": {"admins": [], "members": [], "teams": {}}}}
+            OrgGenerator._yaml_load(static_org_cfg)
+            if static_org_cfg
+            else {"orgs": {"cloudfoundry": {"admins": [], "members": [], "teams": {}}}}
         )
         OrgGenerator._validate_github_org_cfg(self.org_cfg)
         self.contributors = (
-            set(OrgGenerator._validate_contributors(yaml.safe_load(contributors))["contributors"]) if contributors else set()
+            set(OrgGenerator._validate_contributors(OrgGenerator._yaml_load(contributors))["contributors"]) if contributors else set()
         )
-        self.toc = yaml.safe_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
+        self.toc = OrgGenerator._yaml_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
         OrgGenerator._validate_wg(self.toc)
-        self.working_groups = [OrgGenerator._validate_wg(yaml.safe_load(wg)) for wg in working_groups] if working_groups else []
+        self.working_groups = [OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg)) for wg in working_groups] if working_groups else []
 
     def load_from_project(self):
         path = f"{_SCRIPT_PATH}/cloudfoundry.yml"
@@ -88,9 +103,14 @@ class OrgGenerator:
             return yaml.safe_dump(self.org_cfg, stream)
 
     @staticmethod
+    def _yaml_load(stream):
+        # safe_load + reject unique keys
+        return yaml.load(stream, UniqueKeyLoader)
+
+    @staticmethod
     def _read_yml_file(path: str):
         with open(path, "r") as stream:
-            return yaml.safe_load(stream)
+            return OrgGenerator._yaml_load(stream)
 
     @staticmethod
     def _read_wg_charter(path: str):
@@ -109,7 +129,7 @@ class OrgGenerator:
     def _extract_wg_config(wg_charter: str):
         # extract (first) yaml block
         match = re.search(OrgGenerator._YAML_BLOCK_RE, wg_charter)
-        return OrgGenerator._validate_wg(yaml.safe_load(match.group(1))) if match else None
+        return OrgGenerator._validate_wg(OrgGenerator._yaml_load(match.group(1))) if match else None
 
     @staticmethod
     def _empty_wg_config(name: str):
@@ -128,6 +148,10 @@ class OrgGenerator:
         users |= {u["github"] for u in wg["bots"]}
         for area in wg["areas"]:
             users |= {u["github"] for u in area["approvers"]}
+            if "reviewers" in area:
+                users |= {u["github"] for u in area["reviewers"]}
+            if "bots" in area:
+                users |= {u["github"] for u in area["bots"]}
         return users
 
     @staticmethod
@@ -162,6 +186,8 @@ class OrgGenerator:
                     "properties": {
                         "name": {"type": "string"},
                         "approvers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "reviewers": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
+                        "bots": {"type": "array", "items": {"$ref": "#/$defs/githubUser"}},
                         "repositories": {"type": "array", "items": {"type": "string"}},
                     },
                     "required": ["name", "approvers", "repositories"],
@@ -238,34 +264,61 @@ class OrgGenerator:
             "maintainers": sorted(maintainers),
             "members": sorted(approvers - maintainers),
             "teams": {
-                OrgGenerator._kebab_case(f"{name}-{a['name']}-approvers"): {
-                    "description": f"Approvers for {wg['name']} WG, {a['name']} area",
+                f"{name}-leads": {
+                    "description": f"Leads for {wg['name']} WG",
                     "privacy": "closed",
                     "maintainers": sorted(maintainers),
-                    "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
-                    "repos": {
-                        r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write"
-                        for r in a["repositories"]
-                        if r.startswith(OrgGenerator._CF_ORG_PREFIX)
-                    },
-                }
-                for a in wg["areas"]
+                    "repos": {r: "admin" for r in repositories},
+                },
+                f"{name}-bots": {
+                    "description": f"Bot accounts for {wg['name']} WG",
+                    "privacy": "closed",
+                    "maintainers": sorted(maintainers),
+                    "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
+                    "repos": {r: "write" for r in repositories},
+                },
             },
         }
-        # WG leads
-        team["teams"][name + "-leads"] = {
-            "description": f"Leads for {wg['name']} WG",
-            "privacy": "closed",
-            "maintainers": sorted(maintainers),
-            "repos": {r: "admin" for r in repositories},
+        # approvers per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-approvers"): {
+                "description": f"Approvers for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["approvers"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
         }
-        # WG bots
-        team["teams"][name + "-bots"] = {
-            "description": f"Bot accounts for {wg['name']} WG",
-            "privacy": "closed",
-            "maintainers": sorted(maintainers),
-            "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
-            "repos": {r: "write" for r in repositories},
+        # optional reviewers per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-reviewers"): {
+                "description": f"Reviewers for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["reviewers"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "read" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
+            if "reviewers" in a
+        }
+        # optional bots per area
+        team["teams"] |= {
+            OrgGenerator._kebab_case(f"{name}-{a['name']}-bots"): {
+                "description": f"Bot accounts for {wg['name']} WG, {a['name']} area",
+                "privacy": "closed",
+                "maintainers": sorted(maintainers),
+                "members": sorted({u["github"] for u in a["bots"]} - maintainers),
+                "repos": {
+                    r[OrgGenerator._CF_ORG_PREFIX_LEN :]: "write" for r in a["repositories"] if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+                },
+            }
+            for a in wg["areas"]
+            if "bots" in a
         }
         return (name, team)
 
