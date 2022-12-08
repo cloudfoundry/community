@@ -61,9 +61,9 @@ areas:
     github: joergdw
   - name: Marcin Kubica
     github: marcinkubica
-  reviewers:
   - name: Oliver Mautschke
-    github: OliverMautschke
+    github: olivermautschke
+  reviewers:
   - name: Susanne Salzmann
     github: salzmannsusan
   repositories:
