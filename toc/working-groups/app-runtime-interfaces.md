@@ -239,6 +239,7 @@ areas:
   - name: Anita Flegg
     github: anita-flegg
   repositories:
+  - cloudfoundry/docs-buildpacks
   - cloudfoundry/docs-cf-cli
   - cloudfoundry/docs-cloudfoundry-concepts
   - cloudfoundry/docs-dev-guide
