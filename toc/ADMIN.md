@@ -1,7 +1,7 @@
 ## Charter
 
 The staff of the Cloud Foundry Foundation (a directed fund of the Linux Foundation) and staff of other relevant Linux Foundation departments
-maintain the following repositories in the cloudfoundry GitHub organization.
+maintain the following repositories.
 
 
 ## Scope
