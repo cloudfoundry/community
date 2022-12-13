@@ -232,8 +232,6 @@ areas:
 
 - name: Docs
   approvers:
-  - name: Melinda Jeffs Gutermuth
-    github: mjgutermuth
   - name: Chloe Hollingsworth
     github: cshollingsworth
   - name: Anita Flegg
