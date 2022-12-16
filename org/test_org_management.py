@@ -338,6 +338,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual("Technical Oversight Committee", o.toc["name"])
         self.assertGreater(len(o.contributors), 100)
         self.assertGreater(len(o.working_groups), 5)
+        self.assertEqual(1, len([wg for wg in o.working_groups if "Admin" in wg["name"]]))
         self.assertEqual(1, len([wg for wg in o.working_groups if "Deployments" in wg["name"]]))
         # packeto WG charter has no yaml block
         self.assertEqual(0, len([wg for wg in o.working_groups if "packeto" in wg["name"].lower()]))

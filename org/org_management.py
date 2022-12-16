@@ -64,9 +64,11 @@ class OrgGenerator:
             OrgGenerator._validate_contributors(contributors_yaml)
             self.contributors = set(contributors_yaml["contributors"])
 
-        # working group charters (including TOC), ignore WGs without yaml block
+        # working group charters (including TOC and ADMIN), ignore WGs without yaml block
         self.toc = OrgGenerator._read_wg_charter(f"{_SCRIPT_PATH}/../toc/TOC.md")
-        for wg_file in glob.glob(f"{_SCRIPT_PATH}/../toc/working-groups/*.md"):
+        wg_files = glob.glob(f"{_SCRIPT_PATH}/../toc/working-groups/*.md")
+        wg_files += glob.glob(f"{_SCRIPT_PATH}/../toc/ADMIN.md")
+        for wg_file in wg_files:
             if not wg_file.endswith("/WORKING-GROUPS.md"):
                 wg = OrgGenerator._read_wg_charter(wg_file)
                 if wg:

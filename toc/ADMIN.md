@@ -23,6 +23,7 @@ execution_leads:
   github: christopherclark
 - name: Ram Iyengar
   github: ramiyengar
+technical_leads: []
 bots: []
 areas:
 - name: Admin
