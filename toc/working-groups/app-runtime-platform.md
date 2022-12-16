@@ -317,6 +317,7 @@ areas:
   - cloudfoundry/cf-tcp-router
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/gorouter
+  - cloudfoundry/healthchecker
   - cloudfoundry/logging-route-service
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
