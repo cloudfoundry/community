@@ -53,7 +53,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | -- |
 | Charter                    | [app-runtime-deployments.md](./app-runtime-deployments.md) |
-| Forum                      | TBD |
+| Forum                      | [Video chat](https://zoom.us/j/97528090021?pwd=TWU4c0NEMlRvUVAxMjRwMGtpSUhTQT09) |
 | Community Meeting Calendar | [Monthly on the second Thursday at 4:30pm – 5:30pm UTC](https://calendar.google.com/event?action=TEMPLATE&tmeid=MHBqNGxmM24xbmE4NmE3MjBmbzUzN2xxbHFfMjAyMjA1MTJUMTYzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL) / [Monthly on the fourth Thursday at 4:30pm - 5:30pm UTC](https://calendar.google.com/event?action=TEMPLATE&tmeid=N2loZWdqb3VnOWhjcjVybWs5bGg2bzEydHNfMjAyMjA1MjZUMTUzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL) |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1lBOSKMWYb1y2d0YcUmIHe0JX7lc5qcLFO6sa-gp9N_g) |
 | Slack Channel              | [&#x23;wg-app-runtime-deployments](https://cloudfoundry.slack.com/archives/C033ALST37V) |
