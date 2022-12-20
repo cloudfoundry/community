@@ -5,6 +5,7 @@ The projects, teams and org membership in github org 'cloudfoundry' are maintain
 - [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml) - static org configuration and projects
 - [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml) - list of [Contributors](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md#contributor)
 - [TOC.md](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md) - projects owned by the TOC (specified in yaml block)
+- [ADMIN.md](https://github.com/cloudfoundry/community/blob/main/toc/ADMIN.md) - special WG for maintaining administrative repositories owned by CFF staff
 - [Working Group Charters](https://github.com/cloudfoundry/community/tree/main/toc/working-groups) - projects owned by working groups (specified in yaml block)
 
 Once approved and merged, the github action [org-management.yml](https://github.com/cloudfoundry/community/actions/workflows/org-management.yml) compiles a resulting cloudfoundry org configuration from the files mentioned above and applies it with [peribolos](https://github.com/kubernetes/test-infra/tree/master/prow/cmd/peribolos).
