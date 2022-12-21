@@ -13,7 +13,7 @@ added to the
 [shared CFF calendar](https://calendar.google.com/calendar/u/0/embed?src=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78@group.calendar.google.com)
 WG leads should have access to be able to create and update events on this
 calendar, and should invite cf-dev@lists.cloudfoundry.org to working group
-meetings.
+meetings. The meetings will be recorded and the recordings will be available in the [Cloud Foundry YouTube channel](https://www.youtube.com/@CloudFoundryFoundation). Please check the different [playlists](https://www.youtube.com/@CloudFoundryFoundation/playlists) available per WG in the YouTube channel.
 
 ### Calendar import
 
