@@ -95,7 +95,7 @@ areas:
   - cloudfoundry/diego-acceptance
   - cloudfoundry/diego-checkman
   - cloudfoundry/diego-ci
-  - cloudfoundry/diego-ci-pools
+  - cloudfoundry/runtime-ci-pools
   - cloudfoundry/diego-design-notes
   - cloudfoundry/diego-dockerfiles
   - cloudfoundry/diego-logging-client
@@ -317,7 +317,7 @@ areas:
   - cloudfoundry/cf-tcp-router
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/gorouter
-  - cloudfoundry/healthchecker
+  - cloudfoundry/healthchecker-release
   - cloudfoundry/logging-route-service
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
