@@ -1,12 +1,12 @@
 Most community activity is organized into _working groups_.
 
-Working groups follow the [contributing](../CONTRIBUTING.md) guidelines although
+Working groups follow the [contributing](../../CONTRIBUTING.md) guidelines although
 each of these groups may operate a little differently depending on their needs
 and workflow.
 
-When the need arises, a new working group can be created. See the
-[working group processes](../mechanics/WORKING-GROUP-PROCESSES.md) for working
-group proposal and creation procedures.
+When the need arises, a new working group can be created or an existing one can be dissolved. There is no process
+around this at the moment and would fall back to a general decision by the TOC to accept or remove a proposed charter document for a WG.
+In the case of a WG getting dissolved, the TOC and the remaining WGs would have to decide which repos owned by the WG would go to other WGs and which would be archived or transferred to TOC or to administrative control.
 
 Additionally, all working groups should hold regular meetings, which should be
 added to the
