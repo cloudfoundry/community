@@ -84,6 +84,8 @@ areas:
     github: brayanhenao
   - name: Ryan Moran
     github: ryanmoran
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
