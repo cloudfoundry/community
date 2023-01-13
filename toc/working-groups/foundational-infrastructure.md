@@ -62,6 +62,8 @@ areas:
     github: animatedmax
   - name: Anita Flegg
     github: anita-flegg
+  - name: Samia Nneji
+    github: snneji
   repositories:
   - cloudfoundry/docs-bbr
   - cloudfoundry/docs-credhub

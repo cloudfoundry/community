@@ -141,6 +141,8 @@ areas:
     github: cshollingsworth
   - name: Anita Flegg
     github: anita-flegg
+  - name: Samia Nneji
+    github: snneji
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
