@@ -1,26 +1,21 @@
+# doc: https://docs.prow.k8s.io/docs/components/optional/branchprotector/
+# https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md
 branch-protection:
-  # protect: false # TODO: or leave better out -> branch protector touches only listed orgs/repos
-  # TODO: allow_force_pushes/allow_deletions needed?
   orgs:
     cloudfoundry:
-      # override generated branch protection rules by specifying a project explicitly
-      # see https://github.com/kubernetes-sigs/prow/blob/main/site/content/en/docs/Legacy%20Snapshot/prow/cmd/branchprotector/README.md
       repos:
+        # example repo configured as if the project would belong to ARD WG, area CF Deployment
+        # automation would generate repo/branch config for all repos belonging to a WG unless an explicit configuration exists here 
         branchprotection-test:
-          branches:
-            main:
-              protect: true
-              enforce_admins: true
-              allow_force_pushes: false
-              allow_deletions: false
-              required_pull_request_reviews:
-                required_approving_review_count: 1  # 0 seems to be an allowed value
-                dismiss_stale_reviews: true
-                # dismissal_restrictions
-                require_code_owner_reviews: true
-                bypass_pull_request_allowances:
-                  users: ["beyhan", "stephanme"]
-                  teams: ["toc"]
-                # how to configure bypassing PRs for bots? Missing in branchprotector
-              # required_status_checks
-              # restrictions: not needed
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true  # needed to allow branches w/o branch protection
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1 # area has >=4 approvers
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-deployments-bots"] # no area bots configured
+          include: [ "main", "v[0-9]*"]
