@@ -86,6 +86,8 @@ areas:
     github: ryanmoran
   - name: Sophie Wigmore
     github: sophiewigmore
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
