@@ -168,8 +168,6 @@ areas:
   - name: Sven Krieger
     github: svkrieger
   reviewers:
-  - name: Joseph Palermo
-    github: jpalermo
   - name: Alex Rocha
     github: xandroc
   - name: David Alvarado
