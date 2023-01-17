@@ -84,6 +84,8 @@ areas:
     github: brayanhenao
   - name: Ryan Moran
     github: ryanmoran
+  - name: Sophie Wigmore
+    github: sophiewigmore
   - name: Forest Eckhardt
     github: ForestEckhardt
   repositories:
