@@ -143,6 +143,8 @@ areas:
     github: anita-flegg
   - name: Samia Nneji
     github: snneji
+  - name: Ben Klein
+    github: fifthposition
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
