@@ -64,6 +64,8 @@ areas:
     github: anita-flegg
   - name: Samia Nneji
     github: snneji
+  - name: Ben Klein
+    github: fifthposition
   repositories:
   - cloudfoundry/docs-bbr
   - cloudfoundry/docs-credhub
