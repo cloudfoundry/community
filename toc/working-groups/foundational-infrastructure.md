@@ -231,29 +231,12 @@ areas:
   - name: Matthias Vach
     github: mvach
   repositories:
-  - bosh-io/releases-index
-  - bosh-io/releases
-  - bosh-io/stemcells-core-index
-  - bosh-io/stemcells-cpi-index
-  - bosh-io/stemcells-legacy-index
-  - bosh-io/stemcells-softlayer-index
-  - bosh-io/stemcells-windows-index
-  - bosh-io/web
-  - bosh-io/worker
-  - bosh-packages/cf-cli-release
-  - bosh-packages/golang-release
-  - bosh-packages/java-release
-  - bosh-packages/nginx-release
-  - bosh-packages/python-release
-  - bosh-packages/ruby-release
   - cloudfoundry/bbl-state-resource
-  - cloudfoundry/bosh-alicloud-light-stemcell-builder
-  - cloudfoundry/bosh-cpi-certification
-  - cloudfoundry/bosh-windows-acceptance-tests
-  - cloudfoundry/bosh-windows-stemcell-builder
+  - cloudfoundry/bosh
   - cloudfoundry/bosh-acceptance-tests
-  - cloudfoundry/bosh-agent-index
   - cloudfoundry/bosh-agent
+  - cloudfoundry/bosh-agent-index
+  - cloudfoundry/bosh-alicloud-light-stemcell-builder
   - cloudfoundry/bosh-aws-cpi-release
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
@@ -262,21 +245,37 @@ areas:
   - cloudfoundry/bosh-cli
   - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-compiled-releases-index
+  - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-cpi-environments
   - cloudfoundry/bosh-cpi-go
   - cloudfoundry/bosh-cpi-kb
   - cloudfoundry/bosh-cpi-ruby
   - cloudfoundry/bosh-davcli
-  - cloudfoundry/bosh-deployment-resource
   - cloudfoundry/bosh-deployment
+  - cloudfoundry/bosh-deployment-resource
   - cloudfoundry/bosh-dns-aliases-release
   - cloudfoundry/bosh-dns-release
   - cloudfoundry/bosh-docker-cpi-release
   - cloudfoundry/bosh-gcscli
   - cloudfoundry/bosh-google-cpi-release
   - cloudfoundry/bosh-google-light-stemcell-builder
+  - cloudfoundry/bosh-io-releases
+  - cloudfoundry/bosh-io-releases-index
+  - cloudfoundry/bosh-io-stemcells-core-index
+  - cloudfoundry/bosh-io-stemcells-cpi-index
+  - cloudfoundry/bosh-io-stemcells-legacy-index
+  - cloudfoundry/bosh-io-stemcells-softlayer-index
+  - cloudfoundry/bosh-io-stemcells-windows-index
+  - cloudfoundry/bosh-io-web
+  - cloudfoundry/bosh-io-worker
   - cloudfoundry/bosh-linux-stemcell-builder
   - cloudfoundry/bosh-openstack-cpi-release
+  - cloudfoundry/bosh-package-cf-cli-release
+  - cloudfoundry/bosh-package-golang-release
+  - cloudfoundry/bosh-package-java-release
+  - cloudfoundry/bosh-package-nginx-release
+  - cloudfoundry/bosh-package-python-release
+  - cloudfoundry/bosh-package-ruby-release
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-softlayer-cpi-release
@@ -284,12 +283,13 @@ areas:
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
   - cloudfoundry/bosh-warden-cpi-release
+  - cloudfoundry/bosh-windows-acceptance-tests
+  - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bosh-workstation
-  - cloudfoundry/bosh
   - cloudfoundry/bpm-release
   - cloudfoundry/bsdtar
-  - cloudfoundry/config-server-release
   - cloudfoundry/config-server
+  - cloudfoundry/config-server-release
   - cloudfoundry/docs-bosh
   - cloudfoundry/exemplar-release
   - cloudfoundry/go-socks5
@@ -301,9 +301,9 @@ areas:
   - cloudfoundry/resolvconf-manager
   - cloudfoundry/resolvconf-manager-index
   - cloudfoundry/sample-windows-bosh-release
+  - cloudfoundry/socks5-proxy
   - cloudfoundry/stembuild
   - cloudfoundry/stemcells-alicloud-index
-  - cloudfoundry/socks5-proxy
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
   - cloudfoundry/windows-utilities-tests

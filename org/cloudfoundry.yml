@@ -249,6 +249,67 @@ orgs:
         description: Builds light stemcells for GCP from a "full" bosh stemcell
         has_projects: false
         has_wiki: false
+      bosh-io-releases-index:
+        description: Index of all release assets
+        default_branch: main
+        has_projects: false
+      bosh-io-releases:
+        description: List of releases tracked by bosh.io
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-core-index:
+        description: Stemcell index produced by BOSH core team
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-cpi-index:
+        description: Stemcell index for light stemcells (AWS, GCP, Oracle, ...)
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-legacy-index:
+        description: bosh-hub combined stemcell index
+        default_branch: main
+        has_projects: false
+        archived: true
+      bosh-io-stemcells-softlayer-index:
+        description: Stemcell index produced by Softlayer CPI team
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-windows-index:
+        description: Stemcell index produced by BOSH Windows team
+        default_branch: main
+        has_projects: false
+      bosh-io-web:
+        description: Web frontend for https://bosh.io
+        default_branch: main
+        has_projects: false
+      bosh-io-worker:
+        description: Worker for pulling in bosh.io assets
+        default_branch: main
+        has_projects: false
+      bosh-package-cf-cli-release:
+        description: BOSH release of Cloud Foundry CLI
+        default_branch: main
+        has_projects: false
+      bosh-package-golang-release:
+        description: Golang release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-java-release:
+        description: Java release for OpenJDK for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-nginx-release:
+        description: Nginx release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-python-release:
+        description: Python release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-ruby-release:
+        description: Ruby release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
       bosh-linux-stemcell-builder:
         default_branch: ubuntu-jammy/master
         description: 'BOSH Ubuntu Linux stemcells '
