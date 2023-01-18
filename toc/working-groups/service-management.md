@@ -53,6 +53,7 @@ areas:
   - cloudfoundry/csb-brokerpak-azure
   - cloudfoundry/csb-brokerpak-aws
   - cloudfoundry/csb-brokerpak-gcp
+  - cloudfoundry/jdbctestapp
   - cloudfoundry/upgrade-all-services-cli-plugin
   - cloudfoundry/terraform-provider-csbpg
   - cloudfoundry/terraform-provider-csbmysql
