@@ -145,6 +145,8 @@ areas:
     github: snneji
   - name: Ben Klein
     github: fifthposition
+  - name: Ajayan Borys
+    github: HenryBorys
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin

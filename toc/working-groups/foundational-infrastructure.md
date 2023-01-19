@@ -7,17 +7,17 @@ Provide infrastructure automation and core capabilities shared across CF project
 
 ## Goals
 
-* Operators have a multi-cloud deployment system that can deploy Cloud Foundry onto VMs with a strong 
+* Operators have a multi-cloud deployment system that can deploy Cloud Foundry onto VMs with a strong
   set of day 2 operator features.
 * Provide a flexible identity/authentication and credential management system for use within BOSH and Cloud Foundry.
-* Maintain a set of databases, required for the self-contained deployment and operation of BOSH and Cloud Foundry. 
+* Maintain a set of databases, required for the self-contained deployment and operation of BOSH and Cloud Foundry.
 
 ## Scope
 
 * Maintain public roadmaps for BOSH, UAA, and Credhub
 * Operate https://bosh.io
 * Provide the community with a multi-cloud reference deployment of the BOSH Director
-* Package up all infrastructure related components as BOSH releases 
+* Package up all infrastructure related components as BOSH releases
 
 ## Non-Goals
 
@@ -66,6 +66,8 @@ areas:
     github: snneji
   - name: Ben Klein
     github: fifthposition
+  - name: Ajayan Borys
+    github: HenryBorys
   repositories:
   - cloudfoundry/docs-bbr
   - cloudfoundry/docs-credhub
