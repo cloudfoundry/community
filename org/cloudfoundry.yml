@@ -1418,6 +1418,13 @@ orgs:
       jdbc-cnb:
         archived: true
         has_projects: true
+      jdbctestapp:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: A Spring Boot app for testing JDBC connectivity in general and TLS in particular
+        has_projects: true
+        has_wiki: false
       jmx-cnb:
         archived: true
         has_projects: true
