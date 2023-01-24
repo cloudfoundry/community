@@ -75,6 +75,8 @@ areas:
     github: PlamenDoychev
   - name: Vladimir Savchenko
     github: vlast3k
+  - name: Marc Paquette
+    github: MarcPaquette
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
