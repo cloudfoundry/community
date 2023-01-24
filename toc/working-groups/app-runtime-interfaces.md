@@ -35,10 +35,10 @@ Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifi
 ```yaml
 name: App Runtime Interfaces
 execution_leads:
-- name: Greg Cobb 
+- name: Greg Cobb
   github: gerg
 technical_leads:
-- name: Greg Cobb 
+- name: Greg Cobb
   github: gerg
 bots:
 - name: App Autoscaler CI Bot
@@ -243,6 +243,8 @@ areas:
     github: snneji
   - name: Ben Klein
     github: fifthposition
+  - name: Ajayan Borys
+    github: HenryBorys
   repositories:
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/docs-cf-cli
