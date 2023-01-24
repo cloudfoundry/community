@@ -69,6 +69,7 @@ areas:
   - github: shaun7pan
     name: Shaun Pan
   repositories:
+  - cloudfoundry/app-runtime-deployments-infrastructure
   - cloudfoundry/cf-acceptance-tests
   - cloudfoundry/cf-deployment
   - cloudfoundry/cf-deployment-concourse-tasks
