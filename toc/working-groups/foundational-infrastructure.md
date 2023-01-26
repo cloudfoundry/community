@@ -38,6 +38,8 @@ technical_leads:
   github: rkoster
 - name: Beyhan Veli
   github: beyhan
+- name: Joseph Palermo
+  github: jpalermo
 bots:
 - name: bosh-admin-bot
   github: bosh-admin-bot
@@ -174,8 +176,6 @@ areas:
   - cloudfoundry/windows-syslog-release
 - name: Stemcell Release Engineering (BOSH)
   approvers:
-  - name: Joseph Palermo
-    github: jpalermo
   - name: Rajan Agaskar
     github: ragaskar
   - name: Brian Upton
