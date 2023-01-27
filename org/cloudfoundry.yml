@@ -36,6 +36,7 @@ orgs:
         archived: true
         description: The CI part of the app-autoscaler project
         has_projects: true
+        private: true
       app-autoscaler-cli-plugin:
         default_branch: main
         description: CF CLI Plugin for the App AutoScaler
