@@ -263,6 +263,7 @@ areas:
   - cloudfoundry/bosh-aws-cpi-release
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
+  - cloudfoundry/bosh-azure-storage-cli
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
