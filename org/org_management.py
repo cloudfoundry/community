@@ -38,11 +38,12 @@ class OrgGenerator:
         contributors: Optional[str] = None,
         toc: Optional[str] = None,
         working_groups: Optional[List[str]] = None,
+        branch_protection: Optional[str] = None,
     ):
         self.org_cfg = (
             OrgGenerator._yaml_load(static_org_cfg)
             if static_org_cfg
-            else {"orgs": {"cloudfoundry": {"admins": [], "members": [], "teams": {}}}}
+            else {"orgs": {"cloudfoundry": {"admins": [], "members": [], "teams": {}, "repos": {}}}}
         )
         OrgGenerator._validate_github_org_cfg(self.org_cfg)
         self.contributors = (
@@ -51,6 +52,12 @@ class OrgGenerator:
         self.toc = OrgGenerator._yaml_load(toc) if toc else OrgGenerator._empty_wg_config("TOC")
         OrgGenerator._validate_wg(self.toc)
         self.working_groups = [OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg)) for wg in working_groups] if working_groups else []
+        self.branch_protection = (
+            OrgGenerator._yaml_load(branch_protection)
+            if branch_protection
+            else {"branch-protection": {"orgs": {"cloudfoundry": {"repos": {}}}}}
+        )
+        OrgGenerator._validate_branch_protection(self.branch_protection)
 
     def load_from_project(self):
         path = f"{_SCRIPT_PATH}/cloudfoundry.yml"
@@ -63,6 +70,10 @@ class OrgGenerator:
             contributors_yaml = OrgGenerator._read_yml_file(path)
             OrgGenerator._validate_contributors(contributors_yaml)
             self.contributors = set(contributors_yaml["contributors"])
+
+        path = f"{_SCRIPT_PATH}/branchprotection.yml"
+        print(f"Reading branch protection configuration from {path}")
+        self.branch_protection = OrgGenerator._validate_branch_protection(OrgGenerator._read_yml_file(path))
 
         # working group charters (including TOC and ADMIN), ignore WGs without yaml block
         self.toc = OrgGenerator._read_wg_charter(f"{_SCRIPT_PATH}/../toc/TOC.md")
@@ -88,7 +99,6 @@ class OrgGenerator:
     def generate_teams(self):
         # overwrites any teams in cloudfoundry.yml that match a generated team name according to RFC-0005
         # working group teams
-        # TODO: enable for all WGs
         for wg in self.working_groups:
             (name, team) = OrgGenerator._generate_wg_teams(wg)
             self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
@@ -99,10 +109,26 @@ class OrgGenerator:
         (name, team) = OrgGenerator._generate_wg_leads_team(self.working_groups)
         self.org_cfg["orgs"]["cloudfoundry"]["teams"][name] = team
 
+    def generate_branch_protection(self):
+        # basis is static config in self.branch_protection which is never overwritten
+        # generate RFC0015 branch protection rules for every WG+TOC that opted in
+        branch_protection_repos = self.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
+        for wg in self.working_groups + [self.toc]:
+            if wg.get("config", {}).get("generate_rfc0015_branch_protection_rules", False):  # config is optional
+                repo_rules = self._generate_wb_branch_protection(wg)
+                for repo in repo_rules:
+                    if repo not in branch_protection_repos:
+                        branch_protection_repos[repo] = repo_rules[repo]
+
     def write_org_config(self, path: str):
         print(f"Writing org configuration to {path}")
         with open(path, "w") as stream:
             return yaml.safe_dump(self.org_cfg, stream)
+
+    def write_branch_protection(self, path: str):
+        print(f"Writing branch protection to {path}")
+        with open(path, "w") as stream:
+            return yaml.safe_dump(self.branch_protection, stream)
 
     @staticmethod
     def _yaml_load(stream):
@@ -229,7 +255,7 @@ class OrgGenerator:
                             "members": {"type": "array", "items": {"type": "string"}},
                             "teams": {"type": "object"},
                         },
-                        "required": ["admins", "members", "teams"],
+                        "required": ["admins", "members", "teams", "repos"],
                     },
                 },
                 "required": ["cloudfoundry"],
@@ -241,6 +267,38 @@ class OrgGenerator:
     @staticmethod
     def _validate_github_org_cfg(cfg):
         jsonschema.validate(cfg, OrgGenerator._GITHUB_ORG_CFG_SCHEMA)
+        return cfg
+
+    # schema for referenced fields only, not for complete config
+    _BRANCH_PROTECTION_SCHEMA = {
+        "type": "object",
+        "properties": {
+            "branch-protection": {
+                "type": "object",
+                "properties": {
+                    "orgs": {
+                        "type": "object",
+                        "properties": {
+                            "cloudfoundry": {
+                                "type": "object",
+                                "properties": {
+                                    "repos": {"type": "object"},
+                                },
+                                "required": ["repos"],
+                            },
+                        },
+                        "required": ["cloudfoundry"],
+                    },
+                },
+                "required": ["orgs"],
+            },
+        },
+        "required": ["branch-protection"],
+    }
+
+    @staticmethod
+    def _validate_branch_protection(cfg):
+        jsonschema.validate(cfg, OrgGenerator._BRANCH_PROTECTION_SCHEMA)
         return cfg
 
     _CF_ORG_PREFIX = "cloudfoundry/"
@@ -354,6 +412,60 @@ class OrgGenerator:
         }
         return ("wg-leads", team)
 
+    # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md
+    # returns hash with branch protection rules per repo
+    def _generate_wb_branch_protection(self, wg) -> Dict[str, Any]:
+        # count approvers per repo over all WG areas, TODO: repos shared between WGs?
+        repos = {
+            r[OrgGenerator._CF_ORG_PREFIX_LEN :]
+            for a in wg["areas"]
+            for r in a["repositories"]
+            if r.startswith(OrgGenerator._CF_ORG_PREFIX)
+        }
+        wg_name = f"wg-{wg['name']}"
+        wg_bots = OrgGenerator._kebab_case(f"{wg_name}-bots")
+        return {
+            repo: {
+                "protect": True,
+                "enforce_admins": True,
+                "allow_force_pushes": False,
+                "allow_deletions": False,
+                "allow_disabled_policies": True,  # needed to allow branches w/o branch protection
+                "include": [self._get_default_branch(repo), "v[0-9]*"],
+                "required_pull_request_reviews": {
+                    "dismiss_stale_reviews": True,
+                    "require_code_owner_reviews": True,
+                    "required_approving_review_count": 0
+                    if len(
+                        {
+                            u["github"]
+                            for a in wg["areas"]
+                            if OrgGenerator._CF_ORG_PREFIX + repo in a["repositories"]
+                            for u in a["approvers"]
+                        }
+                    )
+                    < 4
+                    else 1,
+                    "bypass_pull_request_allowances": {
+                        "teams": [wg_bots]  # wg bot team
+                        + [
+                            OrgGenerator._kebab_case(f"{wg_name}-{a['name']}-bots")
+                            for a in wg["areas"]
+                            if OrgGenerator._CF_ORG_PREFIX + repo in a["repositories"] and "bots" in a and len(a["bots"]) > 0
+                        ]  # area bot teams
+                    },
+                },
+            }
+            for repo in repos
+        }
+
+    def _get_default_branch(self, repo: str) -> str:
+        # https://github.com/organizations/cloudfoundry/settings/repository-defaults - Repository default branch = main (for new repos)
+        # But in cloudfoundry.yml: all repos w/o default_branch use master (data was generated by peribolos)
+        # https://github.com/kubernetes/test-infra/blob/master/prow/config/org/org.go#L173
+        # Looks like trouble ahead. Should not create new repos w/o default_branch setting.
+        return self.org_cfg["orgs"]["cloudfoundry"]["repos"].get(repo, {}).get("default_branch", "master")
+
     _KEBAB_CASE_RE = re.compile(r"[\W_]+")
 
     @staticmethod
@@ -366,6 +478,9 @@ class OrgGenerator:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Cloud Foundry Org Generator")
     parser.add_argument("-o", "--out", default="cloudfoundry.out.yml", help="output file for generated org configuration")
+    parser.add_argument(
+        "-b", "--branchprotection", default="branchprotection.out.yml", help="output file for generated branch protection rules"
+    )
     args = parser.parse_args()
 
     print("Generating cloudfoundry org configuration.")
@@ -373,4 +488,6 @@ if __name__ == "__main__":
     generator.load_from_project()
     generator.generate_org_members()
     generator.generate_teams()
+    generator.generate_branch_protection()
     generator.write_org_config(args.out)
+    generator.write_branch_protection(args.branchprotection)

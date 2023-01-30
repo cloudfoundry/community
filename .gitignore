@@ -4,4 +4,5 @@ toc/elections/2021/private.csv
 .vscode
 __pycache__
 cloudfoundry.out.yml
+branchprotection.out.yml
 /.idea
