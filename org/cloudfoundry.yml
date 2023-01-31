@@ -796,6 +796,10 @@ orgs:
         description: Example BOSH release for config server
         has_projects: true
         homepage: https://github.com/cloudfoundry/config-server
+      concourse-infra-for-gke:
+        description: This repo holds the deployment templates used to deploy a CF community Concourse instance and supporting infra structure
+        default_branch: main
+        has_projects: true
       consuladapter:
         allow_merge_commit: false
         description: Consul client adapter and test cluster runner
