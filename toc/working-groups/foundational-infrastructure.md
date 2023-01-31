@@ -206,6 +206,8 @@ areas:
     github: joergdw
   - name: Ansh Rupani
     github: anshrupani
+  - name: Chris Selzo
+    github: selzoc
   repositories:
   - cloudfoundry/concourse-infra-for-gke
   - cloudfoundry/bosh-stemcells-ci
@@ -231,6 +233,8 @@ areas:
     github: danielfor
   - name: Brian Upton
     github: ystros
+  - name: Chris Selzo
+    github: selzoc
   reviewers:
   - name: Matthias Vach
     github: mvach
