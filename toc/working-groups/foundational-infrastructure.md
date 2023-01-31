@@ -207,7 +207,7 @@ areas:
   - name: Ansh Rupani
     github: anshrupani
   repositories:
-  - cloudfoundry/bosh-community-stemcell-ci-infra
+  - cloudfoundry/concourse-infra-for-gke
   - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
