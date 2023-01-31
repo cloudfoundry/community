@@ -168,6 +168,10 @@ orgs:
         description: BOSH Azure CPI
         has_projects: true
         has_wiki: false
+      bosh-azure-storage-cli:
+        description: Go CLI for Azure storage
+        has_projects: true
+        default_branch: main
       bosh-backup-and-restore:
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
