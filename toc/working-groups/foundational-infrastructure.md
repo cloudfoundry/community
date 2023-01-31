@@ -211,8 +211,6 @@ areas:
   - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
-  - name: Joseph Palermo
-    github: jpalermo
   - name: Long Nguyen
     github: lnguyen
   - name: Ramon Makkelie
