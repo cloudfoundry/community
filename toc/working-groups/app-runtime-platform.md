@@ -43,8 +43,6 @@ technical_leads:
 bots:
 - name: CI Bot
   github: tas-runtime-bot
-- name: Garden-Windows CI Bot
-  github: greenhouse-ci
 - name: Diego Bot
   github: cf-diego
 - name: Garden Bot
