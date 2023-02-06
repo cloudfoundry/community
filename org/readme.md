@@ -47,7 +47,6 @@ branch-protection:
   orgs:
     cloudfoundry:
       repos:
-        # example repo configured as if the project would belong to ARD WG, area CF Deployment
         # automation generates config for all repos belonging to a WG unless an explicit configuration exists in branchprotection.yml
         <projectname>:
           protect: true
