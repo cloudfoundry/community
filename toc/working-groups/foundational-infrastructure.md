@@ -168,6 +168,9 @@ areas:
     github: Benjamintf1
   - name: Carson Long
     github: ctlong
+  reviewers:
+  - name: Rebecca Roberts
+    github: rroberts2222
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
