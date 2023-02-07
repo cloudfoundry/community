@@ -43,10 +43,6 @@ technical_leads:
 bots:
 - name: CI Bot
   github: tas-runtime-bot
-- name: Diego Bot
-  github: cf-diego
-- name: Garden Bot
-  github: garden-gnome
 - name: Networking CI Bot
   github: CFN-CI
 areas:
