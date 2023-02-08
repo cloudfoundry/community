@@ -138,7 +138,6 @@ areas:
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
   - cloudfoundry/uaa-cli
-  - cloudfoundry/uaa-k8s-release
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular

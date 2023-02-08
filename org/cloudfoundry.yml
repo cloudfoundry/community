@@ -426,6 +426,7 @@ orgs:
         default_branch: main
         has_projects: true
       capi-k8s-release:
+        archived: true
         default_branch: main
         description: The CF API parts of cloudfoundry/cf-for-k8s
         has_projects: true
@@ -486,13 +487,16 @@ orgs:
         description: CF CLI plugin to create syslog drains
         has_projects: true
       cf-for-k8s:
+        archived: true
         default_branch: develop
         description: The open source deployment manifest for Cloud Foundry on Kubernetes
         has_projects: true
       cf-for-k8s-docs:
+        archived: true
         default_branch: main
         has_projects: true
       cf-for-k8s-metric-examples:
+        archived: true
         has_projects: true
       cf-identity-acceptance-tests-release:
         has_projects: true
@@ -506,19 +510,24 @@ orgs:
         default_branch: main
         has_projects: true
       cf-k8s-logging:
+        archived: true
         default_branch: main
         has_projects: true
       cf-k8s-logging-fluent:
+        archived: true
         default_branch: main
         has_projects: true
       cf-k8s-networking:
+        archived: true
         default_branch: develop
         description: building a cloud foundry without gorouter....
         has_projects: false
         has_wiki: false
       cf-k8s-networking-scaling:
+        archived: true
         has_projects: true
       cf-k8s-prometheus:
+        archived: true
         default_branch: main
         has_projects: true
       cf-k8s-secrets:
@@ -575,6 +584,7 @@ orgs:
         has_projects: true
         has_wiki: false
       cf-on-k8s-integration:
+        archived: true
         default_branch: main
         has_projects: true
       cf-performance-tests:
@@ -1619,6 +1629,7 @@ orgs:
         has_projects: true
         has_wiki: false
       metric-proxy:
+        archived: true
         default_branch: main
         description: Translates Kubelet metrics into the log-cache API
         has_projects: true
@@ -2223,6 +2234,7 @@ orgs:
         has_projects: true
         private: true
       uaa-k8s-release:
+        archived: true
         default_branch: main
         has_projects: true
       uaa-key-rotator:

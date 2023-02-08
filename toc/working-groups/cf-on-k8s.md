@@ -74,19 +74,5 @@ areas:
   - cloudfoundry/eirini-release
   - cloudfoundry/korifi
   - cloudfoundry/korifi-ci
-- name: CF for K8s
-  approvers:
-  - name: Andrew Wittrock
-    github: Birdrock
-  - name: Dave Walter
-    github: davewalter
-  repositories:
-  - cloudfoundry/capi-k8s-release
-  - cloudfoundry/cf-for-k8s
-  - cloudfoundry/cf-for-k8s-docs
-  - cloudfoundry/cf-k8s-logging
-  - cloudfoundry/cf-k8s-networking
-  - cloudfoundry/metric-proxy
-  - cloudfoundry/uaa-k8s-release
   - cloudfoundry/yttk8smatchers
 ```
