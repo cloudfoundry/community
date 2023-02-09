@@ -70,6 +70,8 @@ areas:
     github: fifthposition
   - name: Ajayan Borys
     github: HenryBorys
+  - name: Bob Graczyk
+    github: bobbygeeze
   repositories:
   - cloudfoundry/docs-bbr
   - cloudfoundry/docs-credhub
