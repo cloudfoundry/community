@@ -196,9 +196,6 @@ orgs:
         description: BOSH CLI v2+
         has_projects: false
         has_wiki: false
-      bosh-community-stemcell-ci-infra:
-        default_branch: main
-        has_projects: true
       bosh-compile-action:
         default_branch: main
         has_projects: true
