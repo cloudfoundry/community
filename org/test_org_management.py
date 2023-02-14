@@ -12,6 +12,11 @@ orgs:
     members:
     - member1
     teams: {}
+    repos:
+      repo1:
+        default_branch: main
+      repo3:
+        default_branch: defbranch
 """
 
 wg1 = """
@@ -72,6 +77,70 @@ areas:
   - non-cloudfoundry/repo12
 """
 
+# for testing branch protection, different number of approvers, repos in multiple areas
+wg3 = """
+name: WG3 Name
+execution_leads:
+- name: Execution Lead WG3
+  github: execution-lead-wg3
+technical_leads:
+- name: Technical Lead WG3
+  github: technical-lead-wg3
+bots: []
+areas:
+- name: Area 1
+  approvers: []
+  repositories:
+  - cloudfoundry/repo1
+  - cloudfoundry/repo2
+  - non-cloudfoundry/repo12
+- name: Area 2
+  approvers:
+  - github: u1
+    name: User 1
+  - github: u2
+    name: User 2
+  repositories:
+  - cloudfoundry/repo2
+  - cloudfoundry/repo3
+- name: Area 3
+  approvers:
+  - github: u3
+    name: User 3
+  - github: u4
+    name: User 4
+  repositories:
+  - cloudfoundry/repo3
+  - cloudfoundry/repo4
+- name: Area 4
+  approvers:
+  - github: u1
+    name: User 1
+  - github: u2
+    name: User 2
+  - github: u3
+    name: User 3
+  - github: u4
+    name: User 4
+  repositories:
+  - cloudfoundry/repo4
+  - cloudfoundry/repo5
+- name: Area 5
+  approvers:
+  - github: u1
+    name: User 1
+  - github: u2
+    name: User 2
+  repositories:
+  - cloudfoundry/repo2
+  - cloudfoundry/repo5
+  bots:
+  - github: bot-wg1-a5
+    name: WG3 Area5 Bot
+config:
+  generate_rfc0015_branch_protection_rules: true
+"""
+
 toc = """
 name: Technical Oversight Committee
 execution_leads:
@@ -93,6 +162,7 @@ areas:
   repositories:
   - cloudfoundry/community
 config:
+  generate_rfc0015_branch_protection_rules: true
   github_project_sync:
     mapping:
       cloudfoundry: 31
@@ -102,6 +172,15 @@ contributors = """
 contributors:
 - contributor1
 - Contributor2
+"""
+
+branch_protection = """
+branch-protection:
+  orgs:
+    cloudfoundry:
+      repos:
+        repo1:
+          protect: true
 """
 
 
@@ -330,6 +409,63 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertNotIn("teams", team)
         self.assertDictEqual({"community": "write"}, team["repos"])
 
+    def test_validate_branch_protection(self):
+        OrgGenerator._validate_branch_protection(OrgGenerator._yaml_load(branch_protection))
+        with self.assertRaises(jsonschema.ValidationError):
+            OrgGenerator._validate_branch_protection({})
+
+    def test_get_default_branch(self):
+        o = OrgGenerator(static_org_cfg=org_cfg)
+        self.assertEqual("main", o._get_default_branch("repo1"))
+        self.assertEqual("defbranch", o._get_default_branch("repo3"))
+        # trouble ahead: new repos get main as default branch (github config)
+        # peribolos assumes master as default branch, at least when reading repo config
+        self.assertEqual("master", o._get_default_branch("repo5"))
+        self.assertEqual("master", o._get_default_branch("unknown"))
+
+    def test_generate_wg_branch_protection(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, branch_protection=branch_protection)
+        _wg1 = OrgGenerator._yaml_load(wg1)
+        repos_bp = o._generate_wb_branch_protection(_wg1)
+        self.assertEqual(4, len(repos_bp))
+        self.assertSetEqual({"repo1", "repo2", "repo3", "repo4"}, set(repos_bp.keys()))
+        pr_reviews = repos_bp["repo1"]["required_pull_request_reviews"]
+        self.assertEqual(0, pr_reviews["required_approving_review_count"])
+        self.assertListEqual(["wg-wg1-name-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+        self.assertListEqual(["main", "v[0-9]*"], repos_bp["repo1"]["include"])
+        # other default branch
+        self.assertListEqual(["defbranch", "v[0-9]*"], repos_bp["repo3"]["include"])
+
+        _wg3 = OrgGenerator._yaml_load(wg3)
+        repos_bp = o._generate_wb_branch_protection(_wg3)
+        self.assertEqual(5, len(repos_bp))
+        pr_reviews = repos_bp["repo1"]["required_pull_request_reviews"]
+        self.assertEqual(0, pr_reviews["required_approving_review_count"])
+        self.assertListEqual(["wg-wg3-name-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+        pr_reviews = repos_bp["repo2"]["required_pull_request_reviews"]
+        self.assertEqual(0, pr_reviews["required_approving_review_count"])
+        self.assertListEqual(["wg-wg3-name-bots", "wg-wg3-name-area-5-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+        pr_reviews = repos_bp["repo3"]["required_pull_request_reviews"]
+        self.assertEqual(1, pr_reviews["required_approving_review_count"])
+        self.assertListEqual(["wg-wg3-name-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+        pr_reviews = repos_bp["repo4"]["required_pull_request_reviews"]
+        self.assertEqual(1, pr_reviews["required_approving_review_count"])
+        self.assertListEqual(["wg-wg3-name-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+        pr_reviews = repos_bp["repo5"]["required_pull_request_reviews"]
+        self.assertEqual(1, pr_reviews["required_approving_review_count"])
+        self.assertListEqual(["wg-wg3-name-bots", "wg-wg3-name-area-5-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+
+    def test_generate_branch_protection(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1, wg2, wg3], branch_protection=branch_protection)
+        o.generate_branch_protection()
+        bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
+        # TOC and wg3 opted in, wg1 and wg2 not
+        # note: repo1..4 are shared between wg1 (opt out) and wg3 (opt in) - wg3 wins
+        self.assertSetEqual({f"repo{i}" for i in range(1, 6)} | {"community"}, set(bp_repos.keys()))
+        # repo1 has static config that wins over generated branch protection rules
+        self.assertTrue(bp_repos["repo1"]["protect"])
+        self.assertNotIn("required_pull_request_reviews", bp_repos["repo1"])
+
     # integration test, depends on data in this repo which may change
     def test_cf_org(self):
         o = OrgGenerator()
@@ -344,6 +480,8 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual(0, len([wg for wg in o.working_groups if "packeto" in wg["name"].lower()]))
         # no WGs without execution leads
         self.assertEqual(0, len([wg for wg in o.working_groups if len(wg["execution_leads"]) == 0]))
+        # branch protection
+        self.assertIn("cloudfoundry", o.branch_protection["branch-protection"]["orgs"])
 
         o.generate_org_members()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
@@ -364,3 +502,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual(5, len(teams["toc"]["maintainers"]))
         self.assertIn("community", teams["toc"]["repos"])
         self.assertIn("wg-leads", teams)
+
+        o.generate_branch_protection()
+        bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
+        self.assertGreaterEqual(len(bp_repos), 1)  # TODO update after some WGs opted in
