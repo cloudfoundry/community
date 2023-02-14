@@ -17,7 +17,7 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 - Provide the community with regular releases of the CF API, clients and higher-level CF API related services.
 - Maintain public roadmaps for the CF API and the CF cli. Ensure a wise balance between stable APIs and clients, feature enhancements and deprecations.
-- Provide a CF API suitable for the different CF deployment scenarios: from small to very large foundations, VM- and k8s-based, support for major IaaS providers.
+- Provide a CF API suitable for the different CF deployment scenarios: from small to very large foundations, VM-based, support for major IaaS providers.
 - Provide the community with pipelines and test suites to validate functionality, compatibility and performance of the CF API.
 - Provide the community with technical API documentation, end user documentation and operator documentation.
 - Collaborate with the other Working Groups and evolve the cf-push experience.
@@ -182,7 +182,6 @@ areas:
   - cloudfoundry/capi-release
   - cloudfoundry/capi-dockerfiles
   - cloudfoundry/capi-bara-tests
-  - cloudfoundry/capi-k8s-release
   - cloudfoundry/capi-ci
   - cloudfoundry/capi-ci-private
   - cloudfoundry/capi-env-pool
