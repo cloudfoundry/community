@@ -272,7 +272,6 @@ areas:
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
-  - cloudfoundry/bosh-community-stemcell-ci-infra
   - cloudfoundry/bosh-compiled-releases-index
   - cloudfoundry/bosh-cpi-environments
   - cloudfoundry/bosh-cpi-go
