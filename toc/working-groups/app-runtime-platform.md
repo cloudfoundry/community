@@ -236,6 +236,8 @@ areas:
     github: mkocher
   - name: Amin Jamali
     github: winkingturtle-vmw
+  - name: Rebecca Roberts
+    github: rroberts2222
   reviewers:
   - name: Jovan Kostovski
     github: chombium
