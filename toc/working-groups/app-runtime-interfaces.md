@@ -89,6 +89,8 @@ areas:
     github: sophiewigmore
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Victoria Campbell
+    github: tisvictress
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
