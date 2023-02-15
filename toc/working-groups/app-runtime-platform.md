@@ -71,6 +71,8 @@ areas:
     github: vlast3k
   - name: Marc Paquette
     github: MarcPaquette
+  - name: David Sabeti
+    github: dsabeti
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -321,6 +323,8 @@ areas:
     github: vlast3k
   - name: Marc Paquette
     github: MarcPaquette
+  - name: David Sabeti
+    github: dsabeti
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
