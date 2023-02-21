@@ -861,6 +861,7 @@ orgs:
         has_projects: true
       deployments-diego:
         allow_merge_commit: false
+        archived: true
         description: Configuration files for deployments owned and managed by the
           CF Diego team.
         has_projects: true
@@ -908,6 +909,7 @@ orgs:
         private: true
       diego-ci:
         allow_merge_commit: false
+        archived: true
         description: Scripts and tools to run Diego's CI builds on Concourse.
         has_projects: true
       diego-ci-pools:
