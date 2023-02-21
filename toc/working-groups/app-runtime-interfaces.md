@@ -147,7 +147,6 @@ areas:
   - cloudfoundry/libbuildpack
   - cloudfoundry/pip-pop
   - cloudfoundry/public-buildpacks-ci-robots
-  - cloudfoundry/stack-auditor
   - cloudfoundry/switchblade
   - cloudfoundry/core-deps-ci
   - cloudfoundry/app-runtime-interfaces-infrastructure
@@ -232,6 +231,7 @@ areas:
   - cloudfoundry/cli-pools
   - cloudfoundry/jsonry
   - cloudfoundry/ykk
+  - cloudfoundry/stack-auditor
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Docs
