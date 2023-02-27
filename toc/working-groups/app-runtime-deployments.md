@@ -41,8 +41,10 @@ technical_leads:
 - name: Jochen Ehret
   github: jochenehret
 bots:
-- name: cf-gitbot
-  github: cf-gitbot
+- name: cf-rel-int-cf-deployment-release-bot
+  github: cf-rel-int-cf-deployment-release-bot
+- name: cf-rel-int-status-bot
+  github: cf-rel-int-status-bot
 areas:
 - name: CF Deployment
   approvers:
