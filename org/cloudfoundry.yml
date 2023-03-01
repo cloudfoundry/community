@@ -2325,6 +2325,7 @@ orgs:
           libbuildpack: admin
           nginx-buildpack: admin
           nodejs-buildpack: admin
+          php-buildpack: admin
           python-buildpack: admin
           r-buildpack: admin
           ruby-buildpack: admin
