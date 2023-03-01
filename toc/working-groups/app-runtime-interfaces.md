@@ -91,6 +91,8 @@ areas:
     github: ForestEckhardt
   - name: Victoria Campbell
     github: tisvictress
+  - name: Timothy Hitchener
+    github: thitch97
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
