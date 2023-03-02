@@ -187,6 +187,7 @@ areas:
   - cloudfoundry/dependachore
   - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
+  - cloudfoundry/filelock
   - cloudfoundry/flightattendant
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
@@ -251,7 +252,6 @@ areas:
   - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
   - cloudfoundry/dropsonde-protocol-js
-  - cloudfoundry/filelock
   - cloudfoundry/go-batching
   - cloudfoundry/go-diodes
   - cloudfoundry/go-envstruct
