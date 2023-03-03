@@ -56,8 +56,6 @@ areas:
     github: silvestre
   - name: Jörg Weisbarth
     github: joergdw
-  - name: Marcin Kubica
-    github: marcinkubica
   - name: Oliver Mautschke
     github: olivermautschke
   reviewers:
