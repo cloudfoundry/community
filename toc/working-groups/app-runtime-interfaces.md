@@ -54,8 +54,6 @@ areas:
     github: asalan316
   - name: Silvestre Zabala
     github: silvestre
-  - name: Alan Morán
-    github: bonzofenix
   - name: Jörg Weisbarth
     github: joergdw
   - name: Marcin Kubica
