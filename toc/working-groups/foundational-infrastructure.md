@@ -53,6 +53,8 @@ bots:
   github: cf-bosh-ci-bot
 - name: Cryogenics-CI
   github: Cryogenics-CI
+- name: bbr-ci
+  github: bbr-ci
 areas:
 - name: Docs
   approvers:
@@ -110,6 +112,7 @@ areas:
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
+  - cloudfoundry/homebrew-tap
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
