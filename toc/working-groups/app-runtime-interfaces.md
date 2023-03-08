@@ -225,8 +225,6 @@ areas:
     github: moleske
   - name: Shwetha Guraraj
     github: gururajsh
-  - name: Kelly OHara
-    github: kohara88
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
@@ -256,6 +254,8 @@ areas:
     github: HenryBorys
   - name: Bob Graczyk
     github: bobbygeeze
+  - name: Kelly OHara
+    github: kohara88
   repositories:
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/docs-cf-cli

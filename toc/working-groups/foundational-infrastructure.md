@@ -72,6 +72,8 @@ areas:
     github: HenryBorys
   - name: Bob Graczyk
     github: bobbygeeze
+  - name: Kelly OHara
+    github: kohara88
   repositories:
   - cloudfoundry/docs-bbr
   - cloudfoundry/docs-credhub
@@ -88,8 +90,7 @@ areas:
     github: swalchemist
   - name: Alicia Yingling
     github: Tallicia
-  - name: Kelly OHara
-    github: kohara88
+
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub

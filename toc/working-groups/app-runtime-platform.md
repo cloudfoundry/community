@@ -71,8 +71,6 @@ areas:
     github: vlast3k
   - name: Marc Paquette
     github: MarcPaquette
-  - name: Kelly OHara
-    github: kohara88
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -147,6 +145,8 @@ areas:
     github: HenryBorys
   - name: Bob Graczyk
     github: bobbygeeze
+  - name: Kelly OHara
+    github: kohara88
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
