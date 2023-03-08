@@ -199,6 +199,7 @@ areas:
   - cloudfoundry/blobstore_url_signer
   - cloudfoundry/capi-workspace
   - cloudfoundry/delayed_job_sequel
+  - cloudfoundry/stack-auditor
   - cloudfoundry/steno
   - cloudfoundry/runtimeschema
   - cloudfoundry/app-runtime-interfaces-infrastructure
@@ -233,6 +234,7 @@ areas:
   - cloudfoundry/cli-private
   - cloudfoundry/cli-pools
   - cloudfoundry/jsonry
+  - cloudfoundry/stack-auditor
   - cloudfoundry/ykk
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
