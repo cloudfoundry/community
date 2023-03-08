@@ -223,6 +223,8 @@ areas:
     github: moleske
   - name: Shwetha Guraraj
     github: gururajsh
+  - name: Kelly OHara
+    github: kohara88
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n

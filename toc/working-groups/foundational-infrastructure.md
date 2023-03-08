@@ -88,6 +88,8 @@ areas:
     github: swalchemist
   - name: Alicia Yingling
     github: Tallicia
+  - name: Kelly OHara
+    github: kohara88
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
