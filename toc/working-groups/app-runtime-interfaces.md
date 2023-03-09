@@ -181,6 +181,8 @@ areas:
     github: kathap
   - name: Will Gant
     github: will-gant
+  - name: Evan Farrar
+    github: evanfarrar
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
