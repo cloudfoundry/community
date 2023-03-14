@@ -132,7 +132,6 @@ areas:
     github: tack-sap
   - name: Torsten Luh
     github: torsten-sap
-  reviewers:
   - name: Alicia Yingling
     github: Tallicia
   repositories:
