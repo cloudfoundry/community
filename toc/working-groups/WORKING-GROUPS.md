@@ -172,8 +172,8 @@ The GitHub repos this WG manages in the `cloudfoundry` and `cloudfoundry-incubat
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [service-management.md](./service-management.md)  |
-| Forum                      | [Video chat](https://zoom.us/j/96135973215?pwd=NzQrRk1tbXlTQnZEVmRNZlluSm50QT0)  |
-| Community Meeting Calendar | Every other Thursday at 11 am UTC  |
+| Forum                      | [Video chat](https://zoom.us/j/96135973215?pwd=NzQrRk1tbXlTQnZEVmRNZlluSm50QT09)  |
+| Community Meeting Calendar | Monthly on the first Tuesday at 10:30 UK / 11:30 CET/ 16 IST / Monthly on the second Tuesday at 11:30 ET/ 16:30 UK |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1pVepAY0IxA9zz6imyMNnZeCM_mUkxzk1Dd1PDClmkWE/view)  |
 | Slack Channels             | [&#x23;wg-service-management](https://cloudfoundry.slack.com/archives/C02TXDMPSUS)|
 
