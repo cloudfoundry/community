@@ -115,6 +115,7 @@ areas:
   - cloudfoundry/grace
   - cloudfoundry/healthcheck
   - cloudfoundry/inigo
+  - cloudfoundry/lager
   - cloudfoundry/localdriver
   - cloudfoundry/localip
   - cloudfoundry/locket
@@ -262,7 +263,6 @@ areas:
   - cloudfoundry/go-metric-registry
   - cloudfoundry/go-orchestrator
   - cloudfoundry/go-pubsub
-  - cloudfoundry/lager
   - cloudfoundry/log-cache-cli
   - cloudfoundry/log-cache-release
   - cloudfoundry/loggregator-agent-release
