@@ -19,6 +19,8 @@ branch-protection:
             bypass_pull_request_allowances:
               teams: ["wg-app-runtime-deployments-bots"] # no area bots configured
           include: [ "main", "v[0-9]*"]
+        cf-relint-ci-semver:
+          protect: false
         relint-ci-pools:
           protect: false
         relint-envs:
