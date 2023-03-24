@@ -41,6 +41,8 @@ technical_leads:
 - name: Jochen Ehret
   github: jochenehret
 bots:
+- name: ard-wg-gitbot
+  github: ard-wg-gitbot
 - name: cf-gitbot
   github: cf-gitbot
 - name: cf-rel-int-cf-deployment-release-bot
