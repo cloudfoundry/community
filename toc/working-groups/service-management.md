@@ -93,12 +93,16 @@ areas:
   approvers:
   - name: Diego Lemos
     github: dlresende
-  - name: fnaranjo
+  - name: Fernando Naranjo
     github: fejnartal
   - name: Gareth Smith
     github: totherme
-  - name: Ian Findlay
-    github: ifindlay-cci    
+  - name: George Blue
+    github: blgm
+  - name: Iain Findlay
+    github: ifindlay-cci
+  - name: Konstantin Kiess
+    github: nouseforaname
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI
