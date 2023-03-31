@@ -108,6 +108,12 @@ areas:
     github: fejnartal
   - name: Gareth Smith
     github: totherme
+  - name: George Blue
+    github: blgm
+  - name: Iain Findlay
+    github: ifindlay-cci
+  - name: Konstantin Kiess
+    github: nouseforaname
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
