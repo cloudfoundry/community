@@ -191,6 +191,13 @@ orgs:
           of your choice.
         has_projects: false
         has_wiki: false
+      bosh-bootloader-ci-envs:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        default_branch: main
+        description: state files for bbl ci environments
+        has_projects: false
+        has_wiki: false
       bosh-cli:
         default_branch: main
         description: BOSH CLI v2+
@@ -1477,7 +1484,7 @@ orgs:
         has_projects: true
       korifi-website:
         default_branch: main
-        has_projects: false 
+        has_projects: false
       lager:
         allow_merge_commit: false
         description: An opinionated logger for Go.
@@ -2185,7 +2192,7 @@ orgs:
         default_branch: main
         description: Terraform provider to manage Cloud Service Broker bindings for MySQL
         has_projects: true
-        has_wiki: false        
+        has_wiki: false
       terraform-provider-csbpg:
         allow_merge_commit: false
         allow_rebase_merge: false
