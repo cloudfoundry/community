@@ -198,6 +198,7 @@ orgs:
         description: state files for bbl ci environments
         has_projects: false
         has_wiki: false
+        private: true
       bosh-cli:
         default_branch: main
         description: BOSH CLI v2+
