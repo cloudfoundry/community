@@ -87,6 +87,8 @@ areas:
     github: tisvictress
   - name: Timothy Hitchener
     github: thitch97
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
