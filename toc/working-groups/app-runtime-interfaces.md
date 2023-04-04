@@ -301,6 +301,9 @@ areas:
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Notifications
+  bots:
+  - name: VMware notifications release bot
+    github: cf-frontend
   approvers:
   - name: David Stevenson
     github: dsboulder
@@ -310,6 +313,8 @@ areas:
     github: dlresende
   - name: Fernando Naranjo
     github: fejnartal
+  - name: Ryker Reed
+    github: reedr3
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
