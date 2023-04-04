@@ -280,6 +280,7 @@ areas:
   - cloudfoundry/bosh-azure-storage-cli
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
+  - cloudfoundry/bosh-bootloader-ci-envs
   - cloudfoundry/bosh-cli
   - cloudfoundry/bosh-compiled-releases-index
   - cloudfoundry/bosh-cpi-environments
