@@ -307,14 +307,6 @@ areas:
   approvers:
   - name: David Stevenson
     github: dsboulder
-  - name: Gareth Smith
-    github: totherme
-  - name: Diego Lemos
-    github: dlresende
-  - name: Fernando Naranjo
-    github: fejnartal
-  - name: Ryker Reed
-    github: reedr3
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
