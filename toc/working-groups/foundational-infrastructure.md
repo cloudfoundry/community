@@ -114,6 +114,8 @@ areas:
     github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
+  - name: Gary liu
+    github: syslxg
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
