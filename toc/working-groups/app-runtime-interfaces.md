@@ -253,6 +253,8 @@ areas:
     github: bobbygeeze
   - name: Kelly OHara
     github: kohara88
+  - name: Jason Andrew
+    github: VMWare-JasonAndrew 
   repositories:
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/docs-cf-cli
