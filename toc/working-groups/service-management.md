@@ -45,6 +45,8 @@ areas:
     github: zucchinidev
   - name: Konstantin Semenov
     github: jhvhs    
+  - name: Fernando Naranjo
+    github: fnaranjo-vmw        
   bots:
   - name: Services Enablement bot
     github: servicesenablement
