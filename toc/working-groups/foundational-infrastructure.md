@@ -140,6 +140,9 @@ areas:
     github: torsten-sap
   - name: Alicia Yingling
     github: Tallicia
+  reviewers:
+  - name: Adrian Hoelz
+    github: adrianhoelzl-sap
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
