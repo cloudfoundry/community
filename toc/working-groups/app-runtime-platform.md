@@ -148,6 +148,8 @@ areas:
     github: bobbygeeze
   - name: Kelly OHara
     github: kohara88
+  - name: Jason Andrew
+    github: VMWare-JasonAndrew 
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
