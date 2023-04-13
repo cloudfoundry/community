@@ -89,6 +89,9 @@ areas:
     github: thitch97
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  reviewers:
+  - name: Anthony Dahanne
+    github: anthonydahanne
   repositories:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs4
@@ -270,6 +273,9 @@ areas:
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
+  reviewers:
+  - name: Anthony Dahanne
+    github: anthonydahanne  
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
