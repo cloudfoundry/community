@@ -18,7 +18,7 @@ branch-protection:
             required_approving_review_count: 1 # area has >=4 approvers
             bypass_pull_request_allowances:
               teams: ["wg-app-runtime-deployments-bots"] # no area bots configured
-          include: [ "main", "v[0-9]*"]
+          include: [ "^main$", "^v[0-9]*$"]
         cf-relint-ci-semver:
           protect: false
         relint-ci-pools:
