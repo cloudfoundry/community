@@ -60,7 +60,7 @@ branch-protection:
             required_approving_review_count: 0 (if project has <=3 approvers) or 1 (if project has >=4 approvers)
             bypass_pull_request_allowances:
               teams: [<WG and WG area bot teams>]
-          include: [ "<default branch>", "v[0-9]*"]
+          include: [ "^<default branch>$", "^v[0-9]*$"]  # note the surrounding ^...$ to avoid matching branches containing 'main' or 'v'
 ```
 
 Limitations:
