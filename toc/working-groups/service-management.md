@@ -105,6 +105,8 @@ areas:
     github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
+  - name: Gary Liu
+    github: syslxg
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI
