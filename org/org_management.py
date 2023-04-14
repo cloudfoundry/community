@@ -431,7 +431,7 @@ class OrgGenerator:
                 "allow_force_pushes": False,
                 "allow_deletions": False,
                 "allow_disabled_policies": True,  # needed to allow branches w/o branch protection
-                "include": [self._get_default_branch(repo), "v[0-9]*"],
+                "include": [f"^{self._get_default_branch(repo)}$", "^v[0-9]*$"],
                 "required_pull_request_reviews": {
                     "dismiss_stale_reviews": True,
                     "require_code_owner_reviews": True,

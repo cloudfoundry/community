@@ -432,9 +432,9 @@ class TestOrgGenerator(unittest.TestCase):
         pr_reviews = repos_bp["repo1"]["required_pull_request_reviews"]
         self.assertEqual(0, pr_reviews["required_approving_review_count"])
         self.assertListEqual(["wg-wg1-name-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
-        self.assertListEqual(["main", "v[0-9]*"], repos_bp["repo1"]["include"])
+        self.assertListEqual(["^main$", "^v[0-9]*$"], repos_bp["repo1"]["include"])
         # other default branch
-        self.assertListEqual(["defbranch", "v[0-9]*"], repos_bp["repo3"]["include"])
+        self.assertListEqual(["^defbranch$", "^v[0-9]*$"], repos_bp["repo3"]["include"])
 
         _wg3 = OrgGenerator._yaml_load(wg3)
         repos_bp = o._generate_wb_branch_protection(_wg3)
@@ -497,7 +497,7 @@ class TestOrgGenerator(unittest.TestCase):
             "cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment-approvers"]["repos"]
         )
         self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
-        self.assertIn("cf-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
+        self.assertIn("ard-wg-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
         self.assertIn("toc", teams)
         self.assertEqual(5, len(teams["toc"]["maintainers"]))
         self.assertIn("community", teams["toc"]["repos"])
