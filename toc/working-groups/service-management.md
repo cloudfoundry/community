@@ -115,7 +115,6 @@ areas:
   - cloudfoundry/goshims
   - cloudfoundry/mapfs
   - cloudfoundry/mapfs-release
-  - cloudfoundry/migrate_mysql_to_credhub
   - cloudfoundry/nfsv3driver
   - cloudfoundry/nfsbroker
   - cloudfoundry/nfs-volume-release

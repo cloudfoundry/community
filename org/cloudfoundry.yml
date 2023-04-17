@@ -1664,6 +1664,7 @@ orgs:
       migrate_mysql_to_credhub:
         description: A go tool to migrate broker data from mysql to credhub
         has_projects: true
+        archived: true
       minimal-env:
         has_projects: true
         private: true
