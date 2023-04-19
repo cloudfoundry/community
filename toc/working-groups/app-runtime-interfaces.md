@@ -67,91 +67,209 @@ areas:
   - cloudfoundry/app-autoscaler-env-bbl-state
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
-- name: Buildpacks
+- name: Buildpacks Docs
+  approvers:
+  - name: Ryan Moran
+    github: ryanmoran
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Victoria Campbell
+    github: TisVictress
+  repositories:
+  - cloudfoundry/docs-buildpacks
+  - cloudfoundry/example-sidecar-buildpack
+
+- name: Buildpacks Go
+  approvers:
+  - name: Ryan Moran
+    github: ryanmoran
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  repositories:
+  - cloudfoundry/go-buildpack
+  - cloudfoundry/go-buildpack-release
+
+- name: Buildpacks Java
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Brayan Henao
-    github: brayanhenao
-  - name: Ryan Moran
-    github: ryanmoran
-  - name: Sophie Wigmore
-    github: sophiewigmore
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Victoria Campbell
-    github: tisvictress
-  - name: Timothy Hitchener
-    github: thitch97
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
   repositories:
-  - cloudfoundry/cflinuxfs3
-  - cloudfoundry/cflinuxfs4
-  - cloudfoundry/java-buildpack
-  - cloudfoundry/java-buildpack-memory-calculator
-  - cloudfoundry/java-buildpack-release
-  - cloudfoundry/java-buildpack-system-test
-  - cloudfoundry/java-buildpack-dependency-builder
-  - cloudfoundry/java-buildpack-container-customizer
-  - cloudfoundry/java-test-applications
-  - cloudfoundry/java-buildpack-support
-  - cloudfoundry/java-buildpack-security-provider
-  - cloudfoundry/java-buildpack-metric-writer
-  - cloudfoundry/java-buildpack-client-certificate-mapper
-  - cloudfoundry/java-buildpack-auto-reconfiguration
   - cloudfoundry/ibm-websphere-liberty-buildpack
-  - cloudfoundry/nodejs-buildpack
-  - cloudfoundry/nodejs-buildpack-release
-  - cloudfoundry/php-buildpack
-  - cloudfoundry/php-buildpack-release
-  - cloudfoundry/ruby-buildpack
-  - cloudfoundry/ruby-buildpack-release
-  - cloudfoundry/python-buildpack
-  - cloudfoundry/python-buildpack-release
-  - cloudfoundry/go-buildpack
-  - cloudfoundry/go-buildpack-release
-  - cloudfoundry/binary-buildpack
-  - cloudfoundry/binary-buildpack-release
+  - cloudfoundry/java-buildpack
+  - cloudfoundry/java-buildpack-auto-reconfiguration
+  - cloudfoundry/java-buildpack-client-certificate-mapper
+  - cloudfoundry/java-buildpack-container-customizer
+  - cloudfoundry/java-buildpack-dependency-builder
+  - cloudfoundry/java-buildpack-memory-calculator
+  - cloudfoundry/java-buildpack-metric-writer
+  - cloudfoundry/java-buildpack-release
+  - cloudfoundry/java-buildpack-security-provider
+  - cloudfoundry/java-buildpack-support
+  - cloudfoundry/java-buildpack-system-test
+  - cloudfoundry/java-test-applications
+  - cloudfoundry/jvmkill
+
+- name: Buildpacks .Net Core
+  approvers:
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  repositories:
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
+
+- name: Buildpacks .NET Framework
+  approvers:
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  - name: Victoria Campbell
+    github: TisVictress
+  repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
+
+- name: Buildpacks Node.js
+  approvers:
+  - name: Ryan Moran
+    github: ryanmoran
+  - name: Tim Hitchener
+    github: thitch97
+  - name: Victoria Campbell
+    github: TisVictress
+  repositories:
+  - cloudfoundry/nodejs-buildpack
+  - cloudfoundry/nodejs-buildpack-release
+
+- name: Buildpacks PHP
+  approvers:
+  - name: Tim Hitchener
+    github: thitch97
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  repositories:
+  - cloudfoundry/php-buildpack
+  - cloudfoundry/php-buildpack-release
+
+- name: Buildpacks Python
+  approvers:
+  - name: Tim Hitchener
+    github: thitch97
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  repositories:
+  - cloudfoundry/pip-pop
+  - cloudfoundry/python-buildpack
+  - cloudfoundry/python-buildpack-release
+
+- name: Buildpacks R
+  approvers:
+  - name: Tim Hitchener
+    github: thitch97
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  repositories:
+  - cloudfoundry/r-buildpack
+  - cloudfoundry/r-buildpack-release
+
+- name: Buildpacks Ruby
+  approvers:
+  - name: Ryan Moran
+    github: ryanmoran
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  repositories:
+  - cloudfoundry/ruby-buildpack
+  - cloudfoundry/ruby-buildpack-release
+
+- name: Buildpacks Stacks
+  approvers:
+  - name: Brayan Henao
+    github: brayanhenao
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  repositories:
+  - cloudfoundry/cflinuxfs3
+  - cloudfoundry/cflinuxfs3-release
+  - cloudfoundry/cflinuxfs4
+  - cloudfoundry/cflinuxfs4-release
+  - cloudfoundry/stack-auditor
+
+- name: Buildpacks Tooling
+  approvers:
+  - name: Ryan Moran
+    github: ryanmoran
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  repositories:
+  - cloudfoundry/binary-builder
+  - cloudfoundry/brats
+  - cloudfoundry/buildpack-packager
+  - cloudfoundry/buildpacks-ci
+  - cloudfoundry/buildpacks-envs
+  - cloudfoundry/buildpacks-feature-eng-ci
+  - cloudfoundry/buildpacks-github-config
+  - cloudfoundry/buildpacks-workstation
+  - cloudfoundry/core-deps-ci
+  - cloudfoundry/dagger
+  - cloudfoundry/libbuildpack
+  - cloudfoundry/public-buildpacks-ci-robots
+  - cloudfoundry/switchblade
+
+- name: Buildpacks Utilities
+  approvers:
+  - name: Ryan Moran
+    github: ryanmoran
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Daniel Mikusa
+    github: dmikusa
+  - name: Tim Hitchener
+    github: thitch97
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: David O'Sullivan
+    github: pivotal-david-osullivan
+  reviewers:
+  - name: Anthony Dahanne
+    github: anthonydahanne
+  repositories:
+  - cloudfoundry/apt-buildpack
+  - cloudfoundry/binary-buildpack
+  - cloudfoundry/binary-buildpack-release
+
+- name: Buildpacks Web Servers
+  approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Tim Hitchener
+    github: thitch97
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Victoria Campbell
+    github: tisvictress
+  repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
   - cloudfoundry/staticfile-buildpack
   - cloudfoundry/staticfile-buildpack-release
-  - cloudfoundry/r-buildpack
-  - cloudfoundry/r-buildpack-release
-  - cloudfoundry/apt-buildpack
-  - cloudfoundry/docs-buildpacks
-  - cloudfoundry/brats
-  - cloudfoundry/binary-builder
-  - cloudfoundry/buildpack-packager
-  - cloudfoundry/buildpacks-envs
-  - cloudfoundry/buildpacks-workstation
-  - cloudfoundry/buildpacks-ci
-  - cloudfoundry/buildpacks-feature-eng-ci
-  - cloudfoundry/buildpacks-github-config
-  - cloudfoundry/cflinuxfs3-release
-  - cloudfoundry/cflinuxfs4-release
-  - cloudfoundry/dagger
-  - cloudfoundry/example-sidecar-buildpack
-  - cloudfoundry/jvmkill
-  - cloudfoundry/libbuildpack
-  - cloudfoundry/pip-pop
-  - cloudfoundry/public-buildpacks-ci-robots
-  - cloudfoundry/stack-auditor
-  - cloudfoundry/switchblade
-  - cloudfoundry/core-deps-ci
-  - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: CAPI
   approvers:
