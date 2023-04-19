@@ -116,6 +116,8 @@ areas:
     github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
+  - name: Konstantin Semenov
+    github: jhvhs
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
