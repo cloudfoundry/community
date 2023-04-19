@@ -107,6 +107,8 @@ areas:
     github: nouseforaname
   - name: Gary Liu
     github: syslxg
+  - name: Konstantin Semenov
+    github: jhvhs
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI
