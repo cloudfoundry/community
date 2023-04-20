@@ -14,7 +14,7 @@ This RFC addresses that by proposing a backwards compatible `cflinuxfs4` stack a
 
 ## Problem
 
-The CF stack contains Ruby and Python versions coming from the Ubuntu version the stack is based on. The Ruby and the Python versions included in Ubuntu are quite old and usually have their end of life (EOF) before the corresponding EOF of the Ubuntu version they are included in. The EOF of the CF stack is usually defined by the EOF of the Ubuntu version it’s based on. That means for certain time of period the CF stack is delivered with unmaintained Ruby and Python versions. This is a security issue and needs to be addressed but removing those runtimes from the stack is a backwards incompatible change because of:
+The CF stack contains Ruby and Python versions coming from the Ubuntu version the stack is based on. The Ruby and the Python versions included in Ubuntu are quite old and usually have their end of life (EOL) before the corresponding EOL of the Ubuntu version they are included in. The EOL of the CF stack is usually defined by the EOL of the Ubuntu version it’s based on. That means for certain time of period the CF stack is delivered with unmaintained Ruby and Python versions. This is a security issue and needs to be addressed but removing those runtimes from the stack is a backwards incompatible change because of:
 
 * Some of the available buildpacks’ implementations require Ruby or Python. That is why those buildpacks must adopt and bring their own Ruby or Python version, which means that there is a compatibility dependency between the `cflinuxfs4` stack and those buildpacks. This needs to be considered by CF application developers and we know from experience that such changes require a lot of time to be executed. There are even CF users pinning their buildpack versions which could be an issue in this case.
 
@@ -22,7 +22,7 @@ The CF stack contains Ruby and Python versions coming from the Ubuntu version th
 
 ## Proposal
 
-The CFF community will provide two flavours of the `cflinuxfs4` stack one without Ruby and Python and one with those runtimes as backwards compatible option. The two flavours of `cflinuxfs4` will be supported until the EOF of `cflinuxfs4`. In the following sections the flavour without Ruby and Python is called `cflinuxfs4` and the one with `cflinuxfs4-compat`.
+The CFF community will provide two flavours of the `cflinuxfs4` stack one without Ruby and Python and one with those runtimes as backwards compatible option. The two flavours of `cflinuxfs4` will be supported until the EOL of `cflinuxfs4`. In the following sections the flavour without Ruby and Python is called `cflinuxfs4` and the one with `cflinuxfs4-compat`.
 
 ### Creation
 
