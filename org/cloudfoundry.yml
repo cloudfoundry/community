@@ -1927,6 +1927,10 @@ orgs:
       routing-ci:
         archived: true
         has_projects: true
+      routing-concourse:
+        default_branch: main
+        description: Concourse CI for CF Routing Components
+        has_projects: true
       routing-datadog-config:
         has_projects: true
         private: true

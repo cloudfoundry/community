@@ -339,6 +339,7 @@ areas:
   - cloudfoundry/routing-acceptance-tests
   - cloudfoundry/routing-api
   - cloudfoundry/routing-api-cli
+  - cloudfoundry/routing-concourse
   - cloudfoundry/routing-info
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
