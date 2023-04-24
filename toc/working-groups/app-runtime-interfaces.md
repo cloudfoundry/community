@@ -156,6 +156,8 @@ areas:
     github: thitch97
   - name: Sophie Wigmore
     github: sophiewigmore
+  - name: Arjun Sreedharan
+    github: arjun024
   repositories:
   - cloudfoundry/php-buildpack
   - cloudfoundry/php-buildpack-release
