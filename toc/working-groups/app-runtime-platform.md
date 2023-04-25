@@ -64,6 +64,8 @@ areas:
     github: selzoc
   - name: Amin Jamali
     github: winkingturtle-vmw
+  - name: David Sabeti
+    github: dsabeti
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
@@ -71,8 +73,6 @@ areas:
     github: vlast3k
   - name: Marc Paquette
     github: MarcPaquette
-  - name: David Sabeti
-    github: dsabeti
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -316,6 +316,8 @@ areas:
     github: stefanlay
   - name: Amin Jamali
     github: winkingturtle-vmw
+  - name: David Sabeti
+    github: dsabeti
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
@@ -323,8 +325,6 @@ areas:
     github: vlast3k
   - name: Marc Paquette
     github: MarcPaquette
-  - name: David Sabeti
-    github: dsabeti
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
