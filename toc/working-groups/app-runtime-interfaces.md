@@ -207,6 +207,7 @@ areas:
   - cloudfoundry/cflinuxfs3
   - cloudfoundry/cflinuxfs3-release
   - cloudfoundry/cflinuxfs4
+  - cloudfoundry/cflinuxfs4-compat-release
   - cloudfoundry/cflinuxfs4-release
   - cloudfoundry/stack-auditor
 

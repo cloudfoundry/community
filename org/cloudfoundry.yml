@@ -724,6 +724,10 @@ orgs:
       cflinuxfs4:
         default_branch: main
         has_projects: true
+      cflinuxfs4-compat-release:
+        default_branch: main
+        description: Cloud Foundry compatibility stack with Ruby and Python based on Ubuntu 22.04 LTS
+        has_projects: true
       cflinuxfs4-release:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 22.04 LTS
