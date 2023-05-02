@@ -83,7 +83,6 @@ areas:
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter
-  - cloudfoundry/cf-volume-services-acceptance-tests
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock

@@ -128,6 +128,7 @@ areas:
   - cloudfoundry/smb-volume-release
   - cloudfoundry/volume-mount-options
   - cloudfoundry/volumedriver
+  - cloudfoundry/cf-volume-services-acceptance-tests
 config:
   github_project_sync:
     mapping:
