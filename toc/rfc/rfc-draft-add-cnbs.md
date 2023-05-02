@@ -13,11 +13,10 @@
 buildpacks, are the current generation of buildpacks, and offer some
 improvements over the v2 buildpacks that CF Deployment currently uses. The
 Cloud Foundry Foundation already has an implementation of Cloud Native
-Buildpacks via the [Korifi](https://www.cloudfoundry.org/technology/korifi/)
-project, however these CNBs are not currently integrated with core CF
-Deployment.
+Buildpacks via the [Paketo](https://paketo.io/) project, however these CNBs are
+not currently integrated with core CF Deployment.
 
-This RFC proposes adding CNB support to Cloud Foundry and including the Korifi
+This RFC proposes adding CNB support to Cloud Foundry and including the Paketo
 buildpacks in CF Deployment.
 
 ## Problem
@@ -65,7 +64,8 @@ Cloud Foundry with OCI images, container registries, etc.
     1. [Java Native Buildpack](https://github.com/paketo-buildpacks/java-native-image)
     1. Easier buildpack customization/composition
 1. Increase cohesion and application portability between CF Deployment and
-   Korifi, via mutual Paketo integration
+   [Korifi](https://www.cloudfoundry.org/technology/korifi/), via mutual Paketo
+   integration
 1. Increase user base for the CNB lifecycle and Paketo buildpacks
 1. Open the door for eventual deprecation of the v2 buildpacks, reducing
    maintenance costs (v2 buildpack deprecation is NOT included in this RFC)
