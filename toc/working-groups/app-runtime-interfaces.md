@@ -299,8 +299,6 @@ areas:
     github: dalvarado
   - name: Katharina Przybill
     github: kathap
-  - name: Will Gant
-    github: will-gant
   - name: Evan Farrar
     github: evanfarrar
   repositories:
