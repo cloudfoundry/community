@@ -152,7 +152,7 @@ A `cnb-shim-builder` repository will be added to the Application Runtime
 Interfaces working group. This repository will contain the tooling necessary
 for converting existing Paketo buildpacks into shimmed CNBs.
 
-The shimmed buildpacks will be experimental bosh releases, belonging to the
+The shimmed buildpacks will be experimental BOSH releases, belonging to the
 Application Runtime Interfaces working group. The proposed list of buildpacks
 is as follows (in rough priority order):
 1. `java_native_cnb_release`
@@ -171,8 +171,8 @@ is as follows (in rough priority order):
 It is not required to shim all buildpacks during phase 1 of this project.
 Depending on the effort to shim buildpacks and other factors, it may make sense
 to move to native CNB support before all Paketo buildpacks are shimmed. During
-phase 2, the above bosh release repositories will be converted to unshimmed
-bosh releases of the corresponding Paketo buildpacks.
+phase 2, the above BOSH release repositories will be converted to unshimmed
+BOSH releases of the corresponding Paketo buildpacks.
 
 The CNBs will initially be opt-in for CF Deployment operators via an
 experimental ops file. Once the buildpacks have reached a suitable level of
@@ -186,7 +186,7 @@ ease development and adoption. Paketo provides [multiple stacks](https://paketo.
 that are compatible with the Paketo buildpacks. There is an opportunity to
 adopt some or all of the Paketo stacks into CF Deployment, in addition to the
 buildpacks. The Paketo buildpacks have greater cohesion with the Paketo
-buildpacks than with `cflinuxfs4`, and the Paketo "base" and "tiny" stacks could
+stacks than with `cflinuxfs4`, and the Paketo "base" and "tiny" stacks could
 offer security-conscious CF Deployment users stacks with fewer native
 dependencies than are currently included with `cflinuxfs4`. This RFC does not
 cover the adoption of additional stacks into CF Deployment, but it does open
