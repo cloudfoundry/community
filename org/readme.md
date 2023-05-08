@@ -63,6 +63,12 @@ branch-protection:
           include: [ "^<default branch>$", "^v[0-9]*$"]  # note the surrounding ^...$ to avoid matching branches containing 'main' or 'v'
 ```
 
+Best Practices:
+- Replace github deploy keys by working group bot users. Branch protection rules enforce PRs for commits with deploy keys (enforce_admins=true).
+- Ensure that all bot users are members of the working group bots team or working group area bots team.
+- Remove all direct repository users in 'Settings > Collaborators and teams'. Repository access shall be governed by the generated teams only.
+- You may exclude repos w/o source code (e.g. bbl config and state, semver). See [branchprotection.yml](https://github.com/cloudfoundry/community/blob/main/org/branchprotection.yml) for examples.
+
 Limitations:
 - The branchprotector doesn't support wildcards for branch rules. I.e. every version branch gets its own rule.
 - The branchprotector doesn't delete unneeded branch protection rules e.g. when a version branch got deleted.
