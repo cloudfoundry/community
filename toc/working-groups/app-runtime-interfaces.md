@@ -303,6 +303,8 @@ areas:
     github: will-gant
   - name: Evan Farrar
     github: evanfarrar
+  - name: Daniel Felipe Ochoa
+    github: danielfor
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
