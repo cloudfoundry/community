@@ -305,6 +305,8 @@ areas:
     github: evanfarrar
   - name: Daniel Felipe Ochoa
     github: danielfor
+  - name: Shwetha Gururaj
+    github: gururajsh
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
