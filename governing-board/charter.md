@@ -2,7 +2,7 @@ The Cloud Foundry Foundation Charter
 
 The Linux Foundation
 
-Effective May 5, 2021
+Effective May 1, 2023
 
 
 #### 1)	Mission and Scope of the Cloud Foundry Foundation.  
@@ -15,11 +15,11 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 #### 2)	Membership.
 
--   a)	The CFF will be composed of Platinum, Gold, Silver and Associate Members (each, a “Member” and, collectively, the “Members”) in Good Standing. All Members must be current corporate members of the LF (at any level) to participate in the CFF as a member. All participants in the CFF, enjoy the privileges and undertake the obligations described in this Charter, as from time to time amended by the Governing Board with the approval of the LF. During the term of their membership, all members will comply with all such policies as the LF Board of Directors and/or the CFF may adopt with notice to members.
+-   a)	The CFF will be composed of Platinum, Silver and Associate Members (each, a “Member” and, collectively, the “Members”) in Good Standing. All Members must be current corporate members of the LF (at any level) to participate in the CFF as a member. All participants in the CFF, enjoy the privileges and undertake the obligations described in this Charter, as from time to time amended by the Governing Board with the approval of the LF. During the term of their membership, all members will comply with all such policies as the LF Board of Directors and/or the CFF may adopt with notice to members.
 
 -   b)	Platinum Members will be entitled to appoint a representative to the Governing Board and receive the most prominent placement in any listing of members.
 
--   c)	Gold Members, acting as a class, will be entitled to annually elect two representatives to the Governing Board (each a “Gold Member Representative”). The Governing Board determines the election process.
+-   c)	Each Silver Member will be entitled to annually nominate a representative for a Silver Member representative seat (the “Silver Member Representative”) on the Governing Board. The Governing Board will determines the nomination process and when nominations will be held. The Governing Board will select one Silver Member Representative from among the nominees based on objective criteria. Unless otherwise determined by the Governing Board, the Silver Member Representative will serve a term of one year or until their resignation or replacement.
 
 -   d)	The Associate Member category of membership is limited to Associate Members of The Linux Foundation. The Governing Board may set additional criteria for joining the CFF as an Associate Member. If the Associate Member is a membership organization, Associate Membership in the CFF does not confer any benefits or rights to the members of the Associate Member. 
 
@@ -35,13 +35,13 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   i)	one representative appointed by each Platinum Member;
 
-    -   ii)	the elected Gold Member Representatives; and
+    -   ii)	one Silver Member Representative selected as defined in Section 2.c; and
 
-    -   iii)	the TOC Chair
+    -   iii) the TOC Chair
 
--   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate for a membership class election, a representative on the Governing Board.  No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate for Membership class election more than one representative for the Governing Board, or (ii) have more than two representatives on the Governing Board. 
+-   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate, a representative on the Governing Board.  No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate more than one representative for the Governing Board, or (ii) have more than one voting representatives on the Governing Board. 
 
-    -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the TOC Chair on the Governing Board.
+    -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the TOC Chair on the Governing Board, however in this case the TOC Chair would sit on the Governing Board in a non-voting role.
 
 -   c)	Conduct of Meetings
 
@@ -81,7 +81,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   ix)	establish and maintain an Individual Supporter program for individuals to show their support for the Cloud Foundry Foundation and its projects.
 
-    -   x)	approve procedures for the nomination and election of any representative of the Gold Members to the Governing Board and any Officer or other positions created by the Governing Board; and
+    -   x)	approve procedures for the nomination and election of any representative of the Silver Members to the Governing Board and any Officer or other positions created by the Governing Board; and
 
     -   xi)	vote on all decisions or matters coming before the Governing Board.
 
