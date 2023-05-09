@@ -380,6 +380,7 @@ orgs:
         has_wiki: false
         private: true
       buildpacks-feature-eng-ci:
+        archived: true
         has_projects: false
         has_wiki: false
       buildpacks-github-config:
@@ -825,6 +826,7 @@ orgs:
         has_issues: false
         has_projects: true
       core-deps-ci:
+        archived: true
         default_branch: main
         has_projects: false
         has_wiki: false
