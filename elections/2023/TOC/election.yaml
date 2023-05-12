@@ -1,7 +1,7 @@
 name: 2023 CFF Technical Oversight Committee election
 organization: Cloud Foundry Foundation
-start_datetime: 2022-06-01 06:59:00 # 11:59 pm PDT, 02 Jun 2022
-end_datetime: 2022-06-16 06:59:00 # 11:59 pm PDT, 17 Jun 2022
+start_datetime: 2023-06-01 06:59:00 # 11:59 pm PDT, 02 Jun 2022
+end_datetime: 2023-06-16 06:59:00 # 11:59 pm PDT, 17 Jun 2022
 no_winners: 3
 allow_no_opinion: True
 delete_after: True
@@ -17,4 +17,4 @@ election_officers:
 - stephanme
 eligibility: Members of the Cloud Foundry organization with 25 or more contributions in the last year may vote.  See [the voter eligibility section](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md#community-eligibility-to-vote-in-toc-elections) for more information.
 exception_description: If you feel you are eligible to vote but are not represented in the list of voters, please request an exception to allow you to vote via the Elekto application.
-exceptions_due: 2022-06-14 06:59:00 # 11:59 pm PT, 14 Jun 2023
+exceptions_due: 2023-06-14 06:59:00 # 11:59 pm PT, 14 Jun 2023
