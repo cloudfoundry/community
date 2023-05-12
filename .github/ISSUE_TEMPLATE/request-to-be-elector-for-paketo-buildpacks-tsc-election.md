@@ -3,7 +3,7 @@ name: Request to be elector for Paketo Buildpacks TSC election
 about: Requests for community members to be added as electors for a Paketo Buildpacks
   TSC election cycle.
 title: Request to be elector for Paketo Buildpacks TSC election
-labels: ''
+labels: election
 assignees: ''
 
 ---
