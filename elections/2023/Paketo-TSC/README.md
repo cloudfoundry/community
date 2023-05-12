@@ -30,7 +30,7 @@ eligible to serve on the TSC, you can self nominate! If you want to nominate som
 well! 
 
 
-You can nominate someone for the TSC by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-tsc-candidate-nomination.md&title=Paketo-TSC+Candidate+Nomination+for+%5BPerson+Name%5D). 
+You can nominate someone for the TSC by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-tsc-candidate-nomination.md&title=Paketo+Buildpacks+TSC+Candidate+Nomination+for+%5BPerson+Name%5D). 
 
 
 The deadline is June 1nd to be nominated (and for the nominee to indicate acceptance).
@@ -60,7 +60,7 @@ Service](https://civs1.civs.us/) requires.
 
 If Elekto fails to recognize you as eligible to vote in this election even though you believe you
 should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2023---Paketo-TSC/exception) or [via an issue on the
-community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-paketo-tsc-election.md&title=Request+to+be+an+elector+for+Paketo-TSC+election).
+community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-paketo-buildpacks-tsc-election.md&title=Request+to+be+an+elector+for+Paketo-TSC+election).
 
 Once the official election period starts, you will be able to rank the candidates in your preferred
 order and submit your ballot. You may set a password on your ballot, which is required to change
