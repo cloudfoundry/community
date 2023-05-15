@@ -61,6 +61,8 @@ areas:
   reviewers:
   - name: Susanne Salzmann
     github: salzmannsusan
+  - name: Anubhav Gupta
+    github: anubhav-gupta1
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
