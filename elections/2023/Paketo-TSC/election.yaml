@@ -1,7 +1,7 @@
 name: 2023 Paketo Buildpacks Technical Steering Committee election
 organization: Cloud Foundry Foundation
-start_datetime: 2023-06-01 06:59:00 # 11:59 pm PDT, 02 Jun 2022
-end_datetime: 2023-06-16 06:59:00 # 11:59 pm PDT, 17 Jun 2022
+start_datetime: 2023-06-02 06:59:00 # 11:59 pm PDT, 01 Jun 2023
+end_datetime: 2023-06-17 06:59:00 # 11:59 pm PDT, 16 Jun 2023
 no_winners: 2
 allow_no_opinion: True
 delete_after: True
