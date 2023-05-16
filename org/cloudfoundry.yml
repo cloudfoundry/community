@@ -1816,6 +1816,7 @@ orgs:
         archived: true
         has_projects: true
       pip-pop:
+        archived: true
         has_projects: true
       platform-certification:
         description: 'Tooling for eventual use in CF platform certification '
