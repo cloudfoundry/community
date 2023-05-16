@@ -128,6 +128,7 @@ areas:
   - cloudfoundry/vizzini
   - cloudfoundry/volman
   - cloudfoundry/workpool
+  - cloudfoundry/wg-app-platform-runtime-ci
 
 - name: Docs
   approvers:

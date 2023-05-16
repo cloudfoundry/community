@@ -941,11 +941,6 @@ orgs:
       diego-checkman:
         has_projects: true
         private: true
-      diego-ci:
-        allow_merge_commit: false
-        archived: true
-        description: Scripts and tools to run Diego's CI builds on Concourse.
-        has_projects: true
       diego-ci-pools:
         allow_merge_commit: false
         description: Lock pools for Diego CI
@@ -2303,6 +2298,8 @@ orgs:
       volume-mount-options:
         has_projects: true
       volumedriver:
+        has_projects: true
+      wg-app-platform-runtime-ci:
         has_projects: true
       winc:
         default_branch: develop
