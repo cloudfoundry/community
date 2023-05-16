@@ -169,7 +169,6 @@ areas:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   repositories:
-  - cloudfoundry/pip-pop
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
 
