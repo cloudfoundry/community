@@ -61,6 +61,8 @@ for user identity and authentication, which better matches how members interact 
 Foundry community on a day-to-day basis than the email identity that the [Condorcet Internet Voting
 Service](https://civs1.civs.us/) requires.
 
+Any individual who has contributed to CFF projects or technical working groups in the twelve months prior to the election is eligible to vote in the TOC election. Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, participating in mailing list discussions and participating in working groups.
+
 If Elekto fails to recognize you as eligible to vote in this election even though you believe you
 should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2023---TOC/exception) or [via an issue on the
 community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-toc-election.md&title=Request+to+be+an+elector+for+TOC+election).
