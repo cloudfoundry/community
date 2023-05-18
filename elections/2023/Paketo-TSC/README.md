@@ -29,7 +29,7 @@ eligible to serve on the committee, you can self-nominate. If you want to nomina
 well. 
 
 
-You can nominate someone for the Steering Committee by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-sc-candidate-nomination.md&title=Paketo+Buildpacks+SC+Candidate+Nomination+for+%5BPerson+Name%5D). 
+You can nominate someone for the Steering Committee by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-sc-candidate-nomination.md&title=Paketo+Buildpacks+Steering+Committee+Candidate+Nomination+for+%5BPerson+Name%5D). 
 
 
 The deadline is June 1nd to be nominated (and for the nominee to indicate acceptance).
@@ -61,7 +61,7 @@ As stated in the Paketo [Steering Committee documentation](https://github.com/pa
 
 If Elekto fails to recognize you as eligible to vote in this election even though you believe you
 should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2023---Paketo-SC/exception) or [via an issue on the
-community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-paketo-buildpacks-sc-election.md&title=Request+to+be+an+elector+for+Paketo-SC+election).
+community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-paketo-buildpacks-sc-election.md&title=Request+to+be+an+elector+for+Paketo+Steering+Committee+election).
 
 Once the official election period starts, you will be able to rank the candidates in your preferred
 order and submit your ballot. You may set a password on your ballot, which is required to change
