@@ -20,4 +20,4 @@ election_officers:
 - stephanme
 eligibility: Members of the Cloud Foundry organization with 25 or more contributions in the last year may vote.  See [the voter eligibility section](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md#community-eligibility-to-vote-in-toc-elections) for more information.
 exception_description: If you feel you are eligible to vote but are not represented in the list of voters, please request an exception to allow you to vote via the Elekto application.
-exceptions_due: 2023-06-14 06:59:00 # 11:59 pm PT, 13 Jun 2023
+exception_due: 2023-06-14 06:59:00 # 11:59 pm PT, 13 Jun 2023
