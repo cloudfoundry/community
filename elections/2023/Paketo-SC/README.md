@@ -56,7 +56,7 @@ for user identity and authentication, which better matches how members interact 
 Foundry community on a day-to-day basis than the email identity that the [Condorcet Internet Voting
 Service](https://civs1.civs.us/) requires.
 
-As stated in the Paketo [Steering Committee documentation](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md), Any individual who has contributed to Paketo Buildpacks in the twelve months prior to the election is eligible to vote in the Steering Committee election. Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, participating in mailing list discussions and participating in working groups.
+As stated in the Paketo [Steering Committee documentation](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md), any individual who has contributed to Paketo Buildpacks in the twelve months prior to the election is eligible to vote in the Steering Committee election. Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, participating in mailing list discussions and participating in working groups.
 
 If Elekto fails to recognize you as eligible to vote in this election even though you believe you
 should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2023---Paketo-SC/exception) or [via an issue on the
