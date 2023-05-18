@@ -1,13 +1,12 @@
-# 2023 Paketo Buildpacks TSC Election Guide
+# 2023 Paketo Buildpacks Steering Committee Election Guide
 
 
 ## Overview
 
-
 Each year, the Paketo Buildpacks technical community holds an election for open seats on the 
-Technical Steering Committee (TSC).
+Steering Committee. 
 
-This guide exists to serve as a guide to this year's election process.
+This guide exists to serve as a guide to this year's election process. For more information on the Paketo Buildpack Steering Committee, [please read this](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md).
 
 
 ## Schedule
@@ -25,12 +24,12 @@ This guide exists to serve as a guide to this year's election process.
 ### Nominations
 
 
-Every eligible voter can nominate candidates for the TSC, and we encourage you to do so. If you are 
-eligible to serve on the TSC, you can self nominate! If you want to nominate someone else, do so as 
-well! 
+Every eligible voter can nominate candidates for the Steering Committee, and we encourage you to do so. If you are 
+eligible to serve on the committee, you can self-nominate. If you want to nominate someone else, do so as 
+well. 
 
 
-You can nominate someone for the TSC by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-tsc-candidate-nomination.md&title=Paketo+Buildpacks+TSC+Candidate+Nomination+for+%5BPerson+Name%5D). 
+You can nominate someone for the Steering Committee by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-sc-candidate-nomination.md&title=Paketo+Buildpacks+SC+Candidate+Nomination+for+%5BPerson+Name%5D). 
 
 
 The deadline is June 1nd to be nominated (and for the nominee to indicate acceptance).
@@ -43,7 +42,7 @@ to accept the nomination prior to submitting the nomination issue.
 ### Confirming Nominee Eligibility
 
 
-Once a nomination is received, the CFF staff will contact the nominee to confirm acceptance
+Once a nomination is received, the CFF staff or existing Steering Committee will contact the nominee to confirm acceptance
 of the nomination. If the nominee accepts, they will be added to the list of nominees at the bottom
 of this file. The nomination issue will be closed, noting if the nominee accepted or declined the 
 nomination.
@@ -52,7 +51,7 @@ nomination.
 ## Voting Process
 
 
-The 2023 Paketo Buildpacks TSC election will be conducted using a [CFF-managed instance](https://elections.cloudfoundry.org) of [Elekto](https://elekto.dev), a CNCF infrastructure project
+The 2023 Paketo Buildpacks Steering Committee election will be conducted using a [CFF-managed instance](https://elections.cloudfoundry.org) of [Elekto](https://elekto.dev), a CNCF infrastructure project
 that implements Condorcet ranked-choice voting using the Schulze method. Elekto relies on GitHub
 for user identity and authentication, which better matches how members interact with the Cloud
 Foundry community on a day-to-day basis than the email identity that the [Condorcet Internet Voting
@@ -61,8 +60,8 @@ Service](https://civs1.civs.us/) requires.
 As stated in the Paketo [Steering Committee documentation](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md), Any individual who has contributed to Paketo Buildpacks in the twelve months prior to the election is eligible to vote in the Steering Committee election. Contributions include, but are not limited to, opening PRs, reviewing and commenting on PRs, opening and commenting on issues, writing design docs, commenting on design docs, participating in mailing list discussions and participating in working groups.
 
 If Elekto fails to recognize you as eligible to vote in this election even though you believe you
-should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2023---Paketo-TSC/exception) or [via an issue on the
-community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-paketo-buildpacks-tsc-election.md&title=Request+to+be+an+elector+for+Paketo-TSC+election).
+should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2023---Paketo-SC/exception) or [via an issue on the
+community repository](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=request-to-be-elector-for-paketo-buildpacks-sc-election.md&title=Request+to+be+an+elector+for+Paketo-SC+election).
 
 Once the official election period starts, you will be able to rank the candidates in your preferred
 order and submit your ballot. You may set a password on your ballot, which is required to change
