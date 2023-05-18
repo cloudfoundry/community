@@ -3,8 +3,7 @@
 
 ## Overview
 
-Each year, the Paketo Buildpacks technical community holds an election for open seats on the 
-Steering Committee. 
+The role of this inuagural election is to fill three (3) seats on the Paketo Buildpacks Steering Committee. The two nominees who recieve the most votes will serve two (2) year terms, and the nominee who recieves the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years.
 
 This guide exists to serve as a guide to this year's election process. For more information on the Paketo Buildpack Steering Committee, [please read this](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md).
 
@@ -32,7 +31,7 @@ well.
 You can nominate someone for the Steering Committee by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-sc-candidate-nomination.md&title=Paketo+Buildpacks+Steering+Committee+Candidate+Nomination+for+%5BPerson+Name%5D). 
 
 
-The deadline is June 1nd to be nominated (and for the nominee to indicate acceptance).
+The deadline is June 1st to be nominated (and for the nominee to indicate acceptance).
 
 
 It is strongly recommended that you confirm that a nominee is interested and willing
