@@ -1,7 +1,7 @@
 ---
-name: Paketo Buildpacks TSC Candidate Nomination
-about: Paketo Buildpacks TSC Candidate Nomination for Election Cycle
-title: Paketo Buildpacks TSC Candidate Nomination for [Person Name]
+name: Paketo Buildpacks SC Candidate Nomination
+about: Paketo Buildpacks Steering Committee Candidate Nomination for Election Cycle
+title: Paketo Buildpacks Steering Committee Candidate Nomination for [Person Name]
 labels: ''
 assignees: ''
 
