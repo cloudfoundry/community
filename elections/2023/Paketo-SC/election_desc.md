@@ -1,4 +1,4 @@
-The role of this election is to fill the three (3) seats due for election this year on the Paketo Buildpacks Steering Committee. The two nominees who recieve the most votes will serve two (2) year terms, and the nominee who recieves the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years. This is a brief summary of the election; for more details, such as how to become a candidate, [see the README](https://github.com/cloudfoundry/community/tree/main/elections/2023/Paketo#readme).
+The role of this election is to fill the three (3) seats due for election this year on the Paketo Buildpacks Steering Committee. The two nominees who receive the most votes will serve two (2) year terms, and the nominee who receives the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years. This is a brief summary of the election; for more details, such as how to become a candidate, [see the README](https://github.com/cloudfoundry/community/tree/main/elections/2023/Paketo#readme).
 
 ## Eligibility
 
