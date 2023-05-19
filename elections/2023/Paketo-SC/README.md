@@ -3,7 +3,7 @@
 
 ## Overview
 
-The role of this inuagural election is to fill three (3) seats on the Paketo Buildpacks Steering Committee. The two nominees who recieve the most votes will serve two (2) year terms, and the nominee who recieves the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years.
+The role of this inuagural election is to fill three (3) seats on the Paketo Buildpacks Steering Committee. The two nominees who receive the most votes will serve two (2) year terms, and the nominee who receives the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years.
 
 This guide exists to serve as a guide to this year's election process. For more information on the Paketo Buildpack Steering Committee, [please read this](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md).
 
