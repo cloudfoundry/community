@@ -300,6 +300,8 @@ areas:
     github: kathap
   - name: Evan Farrar
     github: evanfarrar
+  - name: Jochen Ehret
+    github: jochenehret
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
