@@ -300,6 +300,10 @@ areas:
     github: kathap
   - name: Evan Farrar
     github: evanfarrar
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  - name: Shwetha Gururaj
+    github: gururajsh
   - name: Jochen Ehret
     github: jochenehret
   repositories:
