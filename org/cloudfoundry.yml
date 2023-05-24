@@ -380,6 +380,7 @@ orgs:
         has_wiki: false
         private: true
       buildpacks-feature-eng-ci:
+        archived: true
         has_projects: false
         has_wiki: false
       buildpacks-github-config:
@@ -825,6 +826,7 @@ orgs:
         has_issues: false
         has_projects: true
       core-deps-ci:
+        archived: true
         default_branch: main
         has_projects: false
         has_wiki: false
@@ -893,6 +895,7 @@ orgs:
         has_projects: true
       deployments-diego:
         allow_merge_commit: false
+        archived: true
         description: Configuration files for deployments owned and managed by the
           CF Diego team.
         has_projects: true
@@ -938,10 +941,6 @@ orgs:
       diego-checkman:
         has_projects: true
         private: true
-      diego-ci:
-        allow_merge_commit: false
-        description: Scripts and tools to run Diego's CI builds on Concourse.
-        has_projects: true
       diego-ci-pools:
         allow_merge_commit: false
         description: Lock pools for Diego CI
@@ -995,7 +994,7 @@ orgs:
         description: Simple canary app to test long-running Diego deployments
         has_projects: true
       diff-exporter:
-        default_branch: develop
+        default_branch: main
         has_projects: true
       disaster-recovery-acceptance-tests:
         default_branch: main
@@ -1320,7 +1319,7 @@ orgs:
         has_projects: true
         has_wiki: false
       groot-windows:
-        default_branch: develop
+        default_branch: main
         description: A Garden image plugin for Windows
         has_projects: true
         has_wiki: false
@@ -1359,7 +1358,7 @@ orgs:
         has_projects: false
         has_wiki: false
       hydrator:
-        default_branch: develop
+        default_branch: main
         has_projects: true
       ibm-websphere-liberty-buildpack:
         description: IBM WebSphere Application Server Liberty Buildpack
@@ -1812,6 +1811,7 @@ orgs:
         archived: true
         has_projects: true
       pip-pop:
+        archived: true
         has_projects: true
       platform-certification:
         description: 'Tooling for eventual use in CF platform certification '
@@ -2299,8 +2299,10 @@ orgs:
         has_projects: true
       volumedriver:
         has_projects: true
+      wg-app-platform-runtime-ci:
+        has_projects: true
       winc:
-        default_branch: develop
+        default_branch: main
         description: CLI tool for spawning and running containers on Windows according
           to the OCI specification
         has_projects: true

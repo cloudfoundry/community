@@ -61,6 +61,8 @@ areas:
   reviewers:
   - name: Susanne Salzmann
     github: salzmannsusan
+  - name: Anubhav Gupta
+    github: anubhav-gupta1
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
@@ -169,7 +171,6 @@ areas:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   repositories:
-  - cloudfoundry/pip-pop
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
 
@@ -227,10 +228,8 @@ areas:
   - cloudfoundry/buildpack-packager
   - cloudfoundry/buildpacks-ci
   - cloudfoundry/buildpacks-envs
-  - cloudfoundry/buildpacks-feature-eng-ci
   - cloudfoundry/buildpacks-github-config
   - cloudfoundry/buildpacks-workstation
-  - cloudfoundry/core-deps-ci
   - cloudfoundry/dagger
   - cloudfoundry/libbuildpack
   - cloudfoundry/public-buildpacks-ci-robots
@@ -299,14 +298,14 @@ areas:
     github: dalvarado
   - name: Katharina Przybill
     github: kathap
-  - name: Will Gant
-    github: will-gant
   - name: Evan Farrar
     github: evanfarrar
   - name: Daniel Felipe Ochoa
     github: danielfor
   - name: Shwetha Gururaj
     github: gururajsh
+  - name: Jochen Ehret
+    github: jochenehret
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release

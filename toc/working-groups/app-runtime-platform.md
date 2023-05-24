@@ -88,10 +88,8 @@ areas:
   - cloudfoundry/clock
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
-  - cloudfoundry/deployments-diego
   - cloudfoundry/diego-acceptance
   - cloudfoundry/diego-checkman
-  - cloudfoundry/diego-ci
   - cloudfoundry/runtime-ci-pools
   - cloudfoundry/diego-design-notes
   - cloudfoundry/diego-dockerfiles
@@ -130,6 +128,7 @@ areas:
   - cloudfoundry/vizzini
   - cloudfoundry/volman
   - cloudfoundry/workpool
+  - cloudfoundry/wg-app-platform-runtime-ci
 
 - name: Docs
   approvers:
