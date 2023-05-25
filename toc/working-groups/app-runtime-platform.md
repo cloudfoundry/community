@@ -66,6 +66,8 @@ areas:
     github: winkingturtle-vmw
   - name: David Sabeti
     github: dsabeti
+  - name: Marc Paquette
+    github: marcpaquette
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
