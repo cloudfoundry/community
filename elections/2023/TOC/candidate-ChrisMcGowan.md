@@ -5,7 +5,7 @@ ID: ChrisMcGowan
 
 info:
 - employer: Cloud.gov
-- slack: ChrisMcGowan
+- slack: cmcgowan
 - github: ChrisMcGowan
 -------------------------------------------------------------
 
