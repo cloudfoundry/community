@@ -78,3 +78,14 @@ The newly elected body will be announced via cf-dev@lists.cloudfoundry.org and m
 
 
 Following the announcement, the voting results and winners will be published.
+
+
+
+## Nominees
+
+
+|    Name    | Organization/Company |  GitHub  | Nomination Statement |
+|:----------:|:--------------------:|:--------:| :-------------------: |
+| Forest Eckhardt | VMware | [@ForestEckhardt](https://github.com/ForestEckhardt) | [#605](https://github.com/cloudfoundry/community/issues/605) |
+| Daniel Mikusa | NA - Independent | [@dmikusa](https://github.com/dmikusa) | [#608](https://github.com/cloudfoundry/community/issues/608)
+| Jan von Löwenstein | SAP SE | [@loewenstein](https://github.com/loewenstein) | [#609](https://github.com/cloudfoundry/community/issues/609) |
