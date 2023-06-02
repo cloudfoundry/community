@@ -4,7 +4,7 @@ name: Jesse Alford
 ID: anEXPer
 
 info:
-- employer: unaffiliated
+- employer: NA - Independent
 - slack: anEXPer
 - github: anEXPer
 -------------------------------------------------------------
