@@ -83,3 +83,15 @@ The newly elected body will be announced via cf-dev@lists.cloudfoundry.org on 20
 
 
 Following the announcement, the voting results and winners will be published.
+
+
+## Nominees
+
+
+|    Name    | Organization/Company |  GitHub  | Nomination Statement |
+|:----------:|:--------------------:|:--------:| :-------------------: |
+| Jesse Alford | NA - Independent | [@anEXPer](https://github.com/anEXPer) | [#612](https://github.com/cloudfoundry/community/issues/612) |
+| Amelia Downs | VMware | [@ameowlia](https://github.com/ameowlia) | [#614](https://github.com/cloudfoundry/community/issues/614)
+| Chris McGowan | Cloud.gov | [@ChrisMcGowan](https://github.com/ChrisMcGowan) | [#613](https://github.com/cloudfoundry/community/issues/613) |
+| Stephan Merker | SAP SE | [@stephanme](https://github.com/stephanme) | [#611](https://github.com/cloudfoundry/community/issues/611) |
+
