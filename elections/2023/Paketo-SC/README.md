@@ -3,7 +3,7 @@
 
 ## Overview
 
-The role of this inuagural election is to fill three (3) seats on the Paketo Buildpacks Steering Committee. The two nominees who recieve the most votes will serve two (2) year terms, and the nominee who recieves the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years.
+The role of this inuagural election is to fill three (3) seats on the Paketo Buildpacks Steering Committee. The two nominees who receive the most votes will serve two (2) year terms, and the nominee who receives the third most votes will serve a one (1) year term. In subsequent elections, all terms will be for two (2) years.
 
 This guide exists to serve as a guide to this year's election process. For more information on the Paketo Buildpack Steering Committee, [please read this](https://github.com/paketo-buildpacks/community/blob/main/STEERING.md).
 
@@ -78,3 +78,14 @@ The newly elected body will be announced via cf-dev@lists.cloudfoundry.org and m
 
 
 Following the announcement, the voting results and winners will be published.
+
+
+
+## Nominees
+
+
+|    Name    | Organization/Company |  GitHub  | Nomination Statement |
+|:----------:|:--------------------:|:--------:| :-------------------: |
+| Forest Eckhardt | VMware | [@ForestEckhardt](https://github.com/ForestEckhardt) | [#605](https://github.com/cloudfoundry/community/issues/605) |
+| Daniel Mikusa | NA - Independent | [@dmikusa](https://github.com/dmikusa) | [#608](https://github.com/cloudfoundry/community/issues/608)
+| Jan von Löwenstein | SAP SE | [@loewenstein](https://github.com/loewenstein) | [#609](https://github.com/cloudfoundry/community/issues/609) |
