@@ -196,9 +196,12 @@ buildpacks are shimmed. In such an event, a follow-on RFC will describe this
 work.
 
 The CNBs will initially be opt-in for CF Deployment operators via an
-experimental ops file. Once the buildpacks have reached a suitable level of
-maturity and stability, they will be added to the default
-set of buildpacks installed as part of CF Deployment.
+experimental ops file. When installed, the Paketo buildpacks will follow a
+different naming convention than the v2 buildpacks (e.g. `paketo_ruby` instead
+of `ruby_buildpack`) and will be installed with a lower detect order than the
+v2 buildpacks. Once the v3 buildpacks have reached a suitable level of maturity
+and stability, they will be added to the default set of buildpacks installed as
+part of CF Deployment.
 
 ### Possible Future Work
 
