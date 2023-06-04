@@ -32,22 +32,19 @@ features that are added to the still-actively-developed v3 buildpacks.
 
 ### Overview
 
-Cloud Foundry integration with CNBs will be executed over at least two phases.
+Cloud Foundry integration with CNBs will be executed over multiple phases.
 
-In the first phase, the Paketo buildpacks will be "shimmed" to work with Cloud
-Foundry's existing v2 buildpack interface. These shimmed Paketo buildpacks will
-be bundled with select [CNB lifecycle](https://github.com/buildpacks/lifecycle)
-binaries and lightweight orchestration binaries. At build time, the Cloud
-Foundry [buildpack lifecycle](https://github.com/cloudfoundry/buildpackapplifecycle)
+In the first phase (the focus of this RFC), the Paketo buildpacks will be
+"shimmed" to work with Cloud Foundry's existing v2 buildpack interface. These
+shimmed Paketo buildpacks will be bundled with select
+[CNB lifecycle](https://github.com/buildpacks/lifecycle) binaries and
+lightweight orchestration binaries. At build time, the Cloud Foundry
+[buildpack lifecycle](https://github.com/cloudfoundry/buildpackapplifecycle)
 will invoke the orchestration binaries, which will map the v2 build process to
 the v3 build process.
 
-In the second phase, unmodified Paketo buildpacks will be natively supported by
-Cloud Foundry. This will be implemented by integrating the buildpack shim logic
-into a Cloud Foundry lifecycle.
-
-Depending on learnings from the first two phases of CNB integration or other
-factors, there may be additional phases of work, however these additional
+Based on learnings from the first phase of CNB integration and other
+factors, there will likely be additional phases of work, however these additional
 phases are not covered by this RFC.
 
 Notably, this proposal does NOT include building or running OCI images on Cloud
@@ -72,7 +69,7 @@ Cloud Foundry with OCI images, container registries, etc.
 
 ### High Level Implementation
 
-In phase one, Cloud Foundry will produce a series of experimental shimmed
+Cloud Foundry will produce a series of experimental shimmed
 buildpacks that include:
 1. A Paketo CNB
 1. Select executables from the CNB lifecycle
@@ -104,9 +101,6 @@ For a proof of concept of shimmed buildpacks, see @ryanmoran's
 externally at first will allow for more rapid iteration, without disrupting the
 core Cloud Foundry runtime.
 
-During phase two, the shim logic will be integrated into the Cloud Foundry
-lifecycle itself, allowing for "native" Paketo buildpack support. The details
-of this integration will be decided once phase one is complete.
 
 ### Shim at Build Time
 
@@ -195,27 +189,49 @@ is as follows (in rough priority order):
 1. `php_cnb_release`
 1. `rust_cnb_release`
 
-It is not required to shim all buildpacks during phase 1 of this project.
-Depending on the effort to shim buildpacks and other factors, it may make sense
-to move to native CNB support before all Paketo buildpacks are shimmed. During
-phase 2, the above BOSH release repositories will be converted to unshimmed
-BOSH releases of the corresponding Paketo buildpacks.
+It is possible that not all buildpacks will be shimmed during the first phase
+of this project. Depending on the effort to shim buildpacks and other factors,
+it may make sense to move to later phases of CNB integration before all Paketo
+buildpacks are shimmed. In such an event, a follow-on RFC will describe this
+work.
 
 The CNBs will initially be opt-in for CF Deployment operators via an
 experimental ops file. Once the buildpacks have reached a suitable level of
-maturity and stability, likely after phase 2, they will be added to the default
+maturity and stability, they will be added to the default
 set of buildpacks installed as part of CF Deployment.
 
-### Stacks
+### Possible Future Work
+
+The following areas are not directly covered by this RFC, but suggest some of
+the possible follow-on work that could be executed on in later phases of Cloud
+Foundry CNB integration.
+
+#### Support Unmodified Paketo Buildpacks
+
+Unmodified (not shimmed) Paketo buildpacks could be natively supported by Cloud
+Foundry. For instance, this could be implemented by integrating the buildpack
+shim logic into a new or existing Cloud Foundry lifecycle. The details of this
+integration should be covered by an additional RFC, once the first phase of CNB
+integration is complete.
+
+#### Build Apps into OCI Images
+
+Instead of outputting droplets from the staging process, Cloud Foundry could
+instead produce OCI images, consistent with other CNB platforms. This change
+would have a number of architectural and operator-impacting implications, and
+would need to be discussed in detail via another RFC.
+
+#### Add Paketo Stacks
 
 Initially, the shimmed Paketo buildpacks will be compatible with `cflinuxfs4` to
-ease development and adoption. Paketo provides [multiple stacks](https://paketo.io/docs/concepts/stacks/#what-paketo-stacks-are-available)
+ease development and adoption. Paketo provides
+[multiple stacks](https://paketo.io/docs/concepts/stacks/#what-paketo-stacks-are-available)
 that are compatible with the Paketo buildpacks. There is an opportunity to
-adopt some or all of the Paketo stacks into CF Deployment, in addition to the
-buildpacks. The Paketo buildpacks have greater cohesion with the Paketo
-stacks than with `cflinuxfs4`, and the Paketo "base" and "tiny" stacks could
-offer security-conscious CF Deployment users stacks with fewer native
-dependencies than are currently included with `cflinuxfs4`. This RFC does not
-cover the adoption of additional stacks into CF Deployment, but it does open
-the door to add these stacks in the future.
+adopt some or all of the Paketo stacks into CF Deployment. The Paketo
+buildpacks have greater cohesion with the Paketo stacks than with `cflinuxfs4`,
+and the Paketo "base" and "tiny" stacks could offer security-conscious CF
+Deployment users stacks with fewer native packages than are currently included
+with `cflinuxfs4`. This RFC does not cover the adoption of additional stacks
+into CF Deployment, but it does open the door to add these stacks in the
+future.
 
