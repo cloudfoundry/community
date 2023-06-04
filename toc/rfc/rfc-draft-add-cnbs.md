@@ -95,8 +95,9 @@ At build time, the procedure will be as follows:
 1. The CNB lifecycle executables will invoke Paketo buildpack executables,
    consistent with the v3 buildpack interface
 1. The Paketo buildpack will build a set of "layer" directories
-1. The shim orchestrator will package the layer directories into a Cloud
-   Foundry droplet and return it back to the Cloud Foundry Lifecycle
+1. The shim orchestrator will package the layer directories and
+   buildpack-generated SBOMs into a Cloud Foundry droplet and return it back to
+   the Cloud Foundry Lifecycle
 
 For a proof of concept of shimmed buildpacks, see @ryanmoran's
 [cfnb](https://github.com/ryanmoran/cfnb) project. Developing the shim
