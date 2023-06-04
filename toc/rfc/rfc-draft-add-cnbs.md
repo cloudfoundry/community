@@ -139,13 +139,39 @@ in how service bindings are consumed by buildpacks. The v3 buildpacks expect
 service bindings to follow the [Kubernetes Service Binding specification](https://github.com/servicebinding/spec),
 which places service binding credentials on the filesystem. Cloud Foundry and
 v2 buildpacks instead use environment variables for service binding
-credentials.
+credentials. The majority of the v2 and v3 buildpacks do not consume service
+bindings, so solving this problem will not block execution for most buildpacks.
+
+At time of writing, there are two viable solutions to integrate the Paketo
+buildpacks with CF Deployment: emulating Kubernetes Service Bindings in Diego
+or updating the Paketo buildpacks to consume Cloud Foundry environment
+variables.
+
+#### Emulating Kubernetes Service Bindings
 
 In order to securely place credentials on the filesystem, Diego will need the
 ability to mount in-memory filesystems (e.g. `tmpfs`) in application
 containers. Once an in-memory filesystem is available, select `VCAP_SERVICES`
 environment variables can be translated into their Kubernetes Service Binding
-equivalents by the shim orchestrator, for consumption by the v3 buildpacks.
+equivalents by the shim orchestrator, for consumption by the Paketo buildpacks.
+
+#### Paketo Buildpacks Consume Environment Variables
+
+There is work in progress for v3 buldpacks using the libcnb package to read
+Cloud Foundry environment variables in addition to Kubernetes Service Bindings
+(see [buildpacks/libcnb#227](https://github.com/buildpacks/libcnb/pull/227)).
+Outside of the Java buildpacks, the Paketo buildpacks do not currently use
+libcnb, so the remaining Paketo buildpacks that consume envionrment variables
+will need to be updated to use libcnb or add equivalent logic. If the Paketo
+buildpacks are updated, then no changes will be needed to the core Cloud
+Foundry runtime.
+
+#### Recommendation
+
+Updating the Paketo buildpacks to consume Cloud Foundry environment variables
+appears to be the easier option. However, given that there are at least two
+viable options for buildpack service binding consumption, this RFC proposes
+making the final decision at implementation time.
 
 ### Governance and Release
 
