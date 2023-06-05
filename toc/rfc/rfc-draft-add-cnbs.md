@@ -10,7 +10,7 @@
 ## Summary
 
 [Cloud Native Buildpacks (CNBs)](https://buildpacks.io/), also known as v3
-buildpacks, are the current generation of buildpacks, and offer some
+buildpacks, are the current generation of buildpacks and offer some
 improvements over the v2 buildpacks that CF Deployment currently uses. The
 Cloud Foundry Foundation already has an implementation of Cloud Native
 Buildpacks via the [Paketo](https://paketo.io/) project, however these CNBs are
@@ -23,7 +23,7 @@ buildpacks in CF Deployment.
 
 The v2 buildpacks are effectively in maintenance mode and do not receive
 substantial new features. By not integrating with v3 buildpacks, Cloud Foundry
-is missing out on new capabilities like application
+is missing out on new capabilities like app
 [SBOM](https://en.wikipedia.org/wiki/Software_supply_chain) generation, new
 buildpacks like the Java Native and Web Servers CNBs, as well as any new
 features that are added to the still-actively-developed v3 buildpacks.
@@ -56,11 +56,11 @@ Cloud Foundry with OCI images, container registries, etc.
 
 1. Align CF Deployment with the main focus of the Buildpacks team
 1. Bring new build capabilities to CF Deployment users, including:
-    1. [Application SBOMs](https://paketo.io/docs/howto/sbom/)
+    1. [App SBOMs](https://paketo.io/docs/howto/sbom/)
     1. [Web Servers Buildpack](https://github.com/paketo-buildpacks/web-servers)
     1. [Java Native Buildpack](https://github.com/paketo-buildpacks/java-native-image)
     1. Easier buildpack customization/composition
-1. Increase cohesion and application portability between CF Deployment and
+1. Increase cohesion and app portability between CF Deployment and
    [Korifi](https://www.cloudfoundry.org/technology/korifi/), via mutual Paketo
    integration
 1. Increase user base for the CNB lifecycle and Paketo buildpacks
@@ -69,8 +69,8 @@ Cloud Foundry with OCI images, container registries, etc.
 
 ### High Level Implementation
 
-Cloud Foundry will produce a series of experimental shimmed
-buildpacks that include:
+Cloud Foundry will produce a series of experimental, shimmed buildpacks that
+include:
 1. A Paketo CNB
 1. Select executables from the CNB lifecycle
 1. Orchestrator executables that conform to the v2 buildpack interface
@@ -86,15 +86,15 @@ $ cf push my-app --buildpack=ruby_cnb
 ```
 
 At build time, the procedure will be as follows:
-1. The Cloud Foundry Buildpack App Lifecycle's Builder will invoke shim
-   orchestrator executables, consistent with the v2 buildpack interface
-1. The shim orchestrator will invoke bundled CNB lifecycle executables
-1. The CNB lifecycle executables will invoke Paketo buildpack executables,
-   consistent with the v3 buildpack interface
-1. The Paketo buildpack will build a set of "layer" directories
+1. The Cloud Foundry Buildpack App Lifecycle's Builder will invoke the shim
+   orchestrator executables, consistent with the v2 buildpack interface.
+1. The shim orchestrator will invoke the bundled CNB lifecycle executables.
+1. The CNB lifecycle executables will invoke the Paketo buildpack executables,
+   consistent with the v3 buildpack interface.
+1. The Paketo buildpack will build a set of "layer" directories.
 1. The shim orchestrator will package the layer directories and
    buildpack-generated SBOMs into a Cloud Foundry droplet and return it back to
-   the Cloud Foundry Lifecycle
+   the Cloud Foundry Lifecycle.
 
 For a proof of concept of shimmed buildpacks, see @ryanmoran's
 [cfnb](https://github.com/ryanmoran/cfnb) project. Developing the shim
@@ -119,7 +119,7 @@ builder.
 
 ### Shim at Run Time
 
-At run time, the Cloud Foundry Buildpack App Lifecycle launcher will invoke the
+At run time, the Cloud Foundry Buildpack App Lifecycle's Launcher will invoke the
 CNB Lifecycle `launcher` executable that was included in the droplet at build
 time. In order to support custom start commands for apps using the CNB
 buildpack shims, the CNB launcher invocation will be prepended to the app start
@@ -144,21 +144,21 @@ variables.
 #### Emulating Kubernetes Service Bindings
 
 In order to securely place credentials on the filesystem, Diego will need the
-ability to mount in-memory filesystems (e.g. `tmpfs`) in application
-containers. Once an in-memory filesystem is available, select `VCAP_SERVICES`
-environment variables can be translated into their Kubernetes Service Binding
-equivalents by the shim orchestrator, for consumption by the Paketo buildpacks.
+ability to mount in-memory filesystems (e.g. `tmpfs`) in app containers. Once
+an in-memory filesystem is available, select `VCAP_SERVICES` environment
+variables can be translated into their Kubernetes Service Binding equivalents
+by the shim orchestrator, for consumption by the Paketo buildpacks.
 
 #### Paketo Buildpacks Consume Environment Variables
 
-There is work in progress for v3 buldpacks using the libcnb package to read
-Cloud Foundry environment variables in addition to Kubernetes Service Bindings
+There is work in progress for CNBs using the `libcnb` package to read Cloud
+Foundry environment variables in addition to Kubernetes Service Bindings
 (see [buildpacks/libcnb#227](https://github.com/buildpacks/libcnb/pull/227)).
 Outside of the Java buildpacks, the Paketo buildpacks do not currently use
-libcnb, so the remaining Paketo buildpacks that consume envionrment variables
-will need to be updated to use libcnb or add equivalent logic. If the Paketo
-buildpacks are updated, then no changes will be needed to the core Cloud
-Foundry runtime.
+`libcnb`, so the remaining Paketo buildpacks that consume service bindings
+will need to be updated to use `libcnb` or add equivalent logic. If the Paketo
+buildpacks are updated with this change, then no changes will be needed to the
+core Cloud Foundry runtime.
 
 #### Recommendation
 
@@ -192,12 +192,12 @@ is as follows (in rough priority order):
 It is possible that not all buildpacks will be shimmed during the first phase
 of this project. Depending on the effort to shim buildpacks and other factors,
 it may make sense to move to later phases of CNB integration before all Paketo
-buildpacks are shimmed. In such an event, a follow-on RFC will describe this
-work.
+buildpacks are shimmed. In such an event, follow-on RFCs will describe
+additional phases of work.
 
 The CNBs will initially be opt-in for CF Deployment operators via an
 experimental ops file. When installed, the Paketo buildpacks will follow a
-different naming convention than the v2 buildpacks (e.g. `paketo_ruby` instead
+different naming convention than the v2 buildpacks (e.g. `ruby_cnb` instead
 of `ruby_buildpack`) and will be installed with a lower detect order than the
 v2 buildpacks. Once the v3 buildpacks have reached a suitable level of maturity
 and stability, they will be added to the default set of buildpacks installed as
@@ -206,12 +206,12 @@ part of CF Deployment.
 ### Possible Future Work
 
 The following areas are not directly covered by this RFC, but suggest some of
-the possible follow-on work that could be executed on in later phases of Cloud
+the possible follow-on work that could be executed in later phases of Cloud
 Foundry CNB integration.
 
 #### Support Unmodified Paketo Buildpacks
 
-Unmodified (not shimmed) Paketo buildpacks could be natively supported by Cloud
+Unmodified (non-shimmed) Paketo buildpacks could be natively supported by Cloud
 Foundry. For instance, this could be implemented by integrating the buildpack
 shim logic into a new or existing Cloud Foundry lifecycle. The details of this
 integration should be covered by an additional RFC, once the first phase of CNB
@@ -233,8 +233,8 @@ that are compatible with the Paketo buildpacks. There is an opportunity to
 adopt some or all of the Paketo stacks into CF Deployment. The Paketo
 buildpacks have greater cohesion with the Paketo stacks than with `cflinuxfs4`,
 and the Paketo "base" and "tiny" stacks could offer security-conscious CF
-Deployment users stacks with fewer native packages than are currently included
-with `cflinuxfs4`. This RFC does not cover the adoption of additional stacks
-into CF Deployment, but it does open the door to add these stacks in the
+Deployment users stacks with far fewer native packages than are currently
+included with `cflinuxfs4`. This RFC does not cover the adoption of additional
+stacks into CF Deployment, but it does open the door to add these stacks in the
 future.
 
