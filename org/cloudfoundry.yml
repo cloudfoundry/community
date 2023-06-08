@@ -2380,7 +2380,7 @@ orgs:
         description: "Temporary team for managing CLI secrets until we have a permanent plan."
         maintainers:
           - a-b
-          - jdgonzaleza
+          - gururajsh
           - reedr3
         members: []
         privacy: closed
