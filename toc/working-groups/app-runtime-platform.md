@@ -192,6 +192,7 @@ areas:
   - cloudfoundry/dependachore
   - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
+  - cloudfoundry/envoy-nginx-release
   - cloudfoundry/filelock
   - cloudfoundry/flightattendant
   - cloudfoundry/garden
@@ -329,7 +330,6 @@ areas:
   - cloudfoundry/cf-networking-release
   - cloudfoundry/cf-routing-test-helpers
   - cloudfoundry/cf-tcp-router
-  - cloudfoundry/envoy-nginx-release
   - cloudfoundry/gorouter
   - cloudfoundry/healthchecker-release
   - cloudfoundry/logging-route-service
