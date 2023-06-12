@@ -45,6 +45,8 @@ bots:
   github: tas-runtime-bot
 - name: Networking CI Bot
   github: CFN-CI
+config:
+  generate_rfc0015_branch_protection_rules: true
 areas:
 - name: Diego
   approvers:
