@@ -2362,10 +2362,11 @@ orgs:
         members: []
         privacy: closed
         repos:
-          cflinuxfs4-compat-release: admin
           apt-buildpack: admin
           binary-buildpack: admin
           buildpacks-ci: admin
+          cflinuxfs4-compat-release: admin
+          cflinuxfs4: admin
           dotnet-core-buildpack: admin
           go-buildpack: admin
           hwc-buildpack: admin
