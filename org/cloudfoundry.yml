@@ -2388,7 +2388,7 @@ orgs:
         members: []
         privacy: closed
         repos:
-          claw: admin
+          CLAW: admin
           cli-ci: admin
           cli-plugin-repo: admin
           cli: admin
