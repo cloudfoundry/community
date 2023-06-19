@@ -18,9 +18,9 @@ Actual votes cast: 67
 
 Complete results of the election, using the Schulze rules for Condorcet completion, are:
 
-Amelia Downs
-Stephan Merker
-Chris McGowan
-Jesse Alford
+* Amelia Downs
+* Stephan Merker
+* Chris McGowan
+* Jesse Alford
 
 Records of all cast ballots are available in [CSV format here](https://github.com/cloudfoundry/community/blob/main/elections/2023/TOC/ballots.csv).
