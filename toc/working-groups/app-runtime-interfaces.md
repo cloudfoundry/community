@@ -354,7 +354,7 @@ areas:
   - cloudfoundry/cli-i18n
   - cloudfoundry/cli-ci
   - cloudfoundry/cli-plugin-repo
-  - cloudfoundry/claw
+  - cloudfoundry/CLAW
   - cloudfoundry/cli-docs-scripts
   - cloudfoundry/cli-workstation
   - cloudfoundry/cli-private
