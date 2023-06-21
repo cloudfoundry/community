@@ -319,6 +319,8 @@ areas:
     github: winkingturtle-vmw
   - name: David Sabeti
     github: dsabeti
+  - name: Maximilian Moehl
+    github: maxmoehl
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
