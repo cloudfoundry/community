@@ -51,3 +51,31 @@ branch-protection:
           protect: false
         docs-running-cf:
           protect: false
+        haproxy-boshrelease:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          include: ["^master$"]
+          required_status_checks: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+        pcap-boshrelease:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          include: ["^main$"]
+          required_status_checks: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
