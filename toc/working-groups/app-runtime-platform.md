@@ -364,6 +364,7 @@ areas:
     github: b1tamara
   repositories:
   - cloudfoundry/haproxy-boshrelease
+  - cloudfoundry/pcap
   - cloudfoundry/pcap-release
 
 ```
