@@ -4,7 +4,7 @@
 - Start Date: 2023-06-26
 - Author(s): @ameowlia, @mariash
 - Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/630
 
 
 ## Summary
