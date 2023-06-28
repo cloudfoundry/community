@@ -67,12 +67,6 @@ areas:
     github: tcdowney
   repositories:
   - cloudfoundry/cf-k8s-secrets
-  - cloudfoundry/eirini
-  - cloudfoundry/eirini-ci
-  - cloudfoundry/eirini-controller
-  - cloudfoundry/eirini-private-config
-  - cloudfoundry/eirini-release
   - cloudfoundry/korifi
   - cloudfoundry/korifi-ci
-  - cloudfoundry/yttk8smatchers
 ```

@@ -1106,19 +1106,24 @@ orgs:
           backend
         has_projects: false
         has_wiki: false
+        archived: true
       eirini-ci:
         description: CI for Eirini
         has_projects: false
         has_wiki: false
         homepage: https://jetson.eirini.cf-app.com
+        archived: true
       eirini-controller:
         has_projects: true
+        archived: true
       eirini-private-config:
         has_projects: false
         private: true
+        archived: true
       eirini-release:
         description: Helm release for Project Eirini
         has_projects: true
+        archived: true
       envoy-nginx-release:
         default_branch: develop
         description: BOSH release for deploying nginx in place of envoy to enable
@@ -2359,6 +2364,7 @@ orgs:
       yttk8smatchers:
         default_branch: main
         has_projects: true
+        archived: true
     teams:
       temp-ari-buildpacks-admins:
         description: "Temporary team for managing Buildpacks secrets until we have a permanent plan."
