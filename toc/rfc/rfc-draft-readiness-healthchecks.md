@@ -71,7 +71,7 @@ applications:
     health-check-invocation-timeout: 2
     health-check-type: http
     timeout: 80
-    readiness-health-check-http-endpoint: /health      # 👈 new property
+    readiness-health-check-http-endpoint: /ready       # 👈 new property
     readiness-health-check-invocation-timeout: 2       # 👈 new property
     readiness-health-check-type: http                  # 👈 new property
 ```
