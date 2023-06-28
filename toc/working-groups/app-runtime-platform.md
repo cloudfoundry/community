@@ -45,6 +45,8 @@ bots:
   github: tas-runtime-bot
 - name: Networking CI Bot
   github: CFN-CI
+- name: CF Logging and Metrics Bot
+  github: cf-logging-metrics-bot
 config:
   generate_rfc0015_branch_protection_rules: true
 areas:
