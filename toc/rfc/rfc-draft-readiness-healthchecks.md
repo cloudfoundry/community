@@ -80,6 +80,7 @@ applications:
 
 The readiness healthcheck data will be apart of the desired LRP object.
 
+```json
 "check_definition": {
     "checks": [
       {
@@ -100,6 +101,7 @@ The readiness healthcheck data will be apart of the desired LRP object.
     ],
     "log_source": ""
   },
+```
 
 
 ### Open Questions
