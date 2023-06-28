@@ -39,6 +39,15 @@ ready" and its route will be removed from gorouter's route table. This new
 readiness healthcheck will give users a healthcheck option that is less drastic
 than the current option.
 
+## Types of readiness healthcheck
+
+Readiness healthcheck can be either "http" or "tcp" type. The format of healthcheck
+type is [similar to liveness
+healthcheck](https://docs.cloudfoundry.org/devguide/deploy-apps/healthchecks.html).
+The "process" healthcheck type will not be supported since it doesn't make sense
+to have "process" readiness healthcheck type. Once any defined process exits AI
+is marked as crashed.
+
 ### Architecture Overview
 This feature will require changes in the following releases
 
