@@ -4,8 +4,8 @@
 - Start Date: 2023-05-01
 - Author: @gerg
 - Contributing Authors: @ryanmoran, @robdimsdale, @dsabeti, @aramprice, @dsboulder
-- Status: Draft
-- RFC Pull Request: #591
+- Status: Accepted
+- RFC Pull Request: [community#591](https://github.com/cloudfoundry/community/pull/591)
 
 ## Summary
 
