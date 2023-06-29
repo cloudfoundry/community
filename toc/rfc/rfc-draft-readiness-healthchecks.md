@@ -10,15 +10,15 @@
 ## Summary
 
 Add a readiness healthcheck option for apps. When the readiness healthcheck
-passes, the app is marked "ready" and the app will be routable. When the
-readiness healthcheck fails, the app is marked as "not ready" and its route will
-be removed from gorouter's route table.
+passes, the app instance (AI) is marked "ready" and the AI will be routable.
+When the readiness healthcheck fails, the AI is marked as "not ready" and its
+route will be removed from gorouter's route table.
 
 ## Problem
 
 With the current implementation of application healthchecks, when the
-application healthcheck detects that an app instance (AI) is unhealthy, then
-Diego will stop the AI, delete the AI, and reschedule a new AI.
+application healthcheck detects that an AI is unhealthy, then Diego will stop
+the AI, delete the AI, and reschedule a new AI.
 
 This is too aggressive from some apps. There could be many reasons why a single
 request could fail, but the app is actually running fine. Additionally, many
@@ -33,11 +33,25 @@ the app should be kept alive, but in a non-routable state.
 We intend to support readiness healthchecks. (This was requested previously in
 this [issue](https://github.com/cloudfoundry/cloud_controller_ng/issues/1706).)
 This would be an additional healthcheck that app developers could configure.
-When the readiness healthcheck passes, the app is marked "ready" and the app
-will be routable. When the readiness healthcheck fails, the app is marked as
-"not ready" and its route will be removed from gorouter's route table.
-This new readiness healthcheck will give users a healthcheck option that is less
-drastic than the current option.
+When the readiness healthcheck passes, the AI is marked "ready" and the AI will
+be routable. When the readiness healthcheck fails, the AI is marked as "not
+ready" and its route will be removed from gorouter's route table. This new
+readiness healthcheck will give users a healthcheck option that is less drastic
+than the current option.
+
+## Types of readiness healthcheck
+
+Readiness healthcheck can be either "http" or "tcp" type. The format of healthcheck
+type is [similar to liveness
+healthcheck](https://docs.cloudfoundry.org/devguide/deploy-apps/healthchecks.html).
+The "process" healthcheck type will not be supported since it doesn't make sense
+to have "process" readiness healthcheck type. Once any defined process exits AI
+is marked as crashed.
+
+## Rolling deploys
+
+Rolling deploys should take into account the AI routable status. Old AI should
+be replaced with the new once new is running and routable.
 
 ### Architecture Overview
 This feature will require changes in the following releases
@@ -52,15 +66,15 @@ This feature will require changes in the following releases
 2. The Diego executor will see these new readiness healthchecks on the desired
    LRP and will run the healthchecker binary in the app container with
    configuration provided.
-3. When the readiness healthcheck succeeds, the container will be marked as
-   "ready". When the readiness healthcheck fails, the container will be marked
+3. When the readiness healthcheck succeeds, the actual LRP will be marked as
+   "ready". When the readiness healthcheck fails, the actual LRP will be marked
    as "not ready".
 4. When the route emitter gets route information, it will inspect if the AI is
    ready or not ready. It will emit registration or unregistration messages as
-   appropriate for the gorouter to consume
+   appropriate for the gorouter to consume.
 
 ### CC Design
-Users will be able to set the healthcheck via the app manifest.
+Users will be able to set the readiness healthcheck via the app manifest.
 
 ```
 applications:
@@ -103,9 +117,22 @@ The readiness healthcheck data will be apart of the desired LRP object.
   },
 ```
 
+### Logging and Metrics
+
+#### App logs
+
+When AI readiness healthcheck succeeds a log line is printed to AI logs:
+"Container became ready". When AI readiness healthcheck fails a log line is
+printed to AI logs: "Container became not ready".
+
+#### App events
+
+When AI readiness healthcheck succeeds a new application event is emitted:
+"app.ready". When AI readiness healthcheck fails a new event is emitted:
+"app.notready".
 
 ### Open Questions
-* What logging and metrics would be helpful for app devs and operators?
+* What metrics would be helpful for app devs and operators?
 
 This work is ongoing. All comments and concerns are welcomed from the community.
 Either add a comment here or reach out in slack in #wg-app-runtime-platform.
