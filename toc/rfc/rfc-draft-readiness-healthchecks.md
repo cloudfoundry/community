@@ -74,7 +74,7 @@ This feature will require changes in the following releases
    appropriate for the gorouter to consume.
 
 ### CC Design
-Users will be able to set the healthcheck via the app manifest.
+Users will be able to set the readiness healthcheck via the app manifest.
 
 ```
 applications:
