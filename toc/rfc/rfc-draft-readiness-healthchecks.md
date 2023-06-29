@@ -48,6 +48,11 @@ The "process" healthcheck type will not be supported since it doesn't make sense
 to have "process" readiness healthcheck type. Once any defined process exits AI
 is marked as crashed.
 
+## Rolling deploys
+
+Rolling deploys should take into account the AI routable status. Old AI should
+be replaced with the new once new is running and routable.
+
 ### Architecture Overview
 This feature will require changes in the following releases
 
@@ -112,14 +117,22 @@ The readiness healthcheck data will be apart of the desired LRP object.
   },
 ```
 
-### Logging
+### Logging and Metrics
+
+#### App logs
 
 When AI readiness healthcheck succeeds a log line is printed to AI logs:
 "Container became ready". When AI readiness healthcheck fails a log line is
 printed to AI logs: "Container became not ready".
 
+#### App events
+
+When AI readiness healthcheck succeeds a new application event is emitted:
+"app.ready". When AI readiness healthcheck fails a new event is emitted:
+"app.notready".
+
 ### Open Questions
-* What metrics or events would be helpful for app devs and operators?
+* What metrics would be helpful for app devs and operators?
 
 This work is ongoing. All comments and concerns are welcomed from the community.
 Either add a comment here or reach out in slack in #wg-app-runtime-platform.
