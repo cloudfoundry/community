@@ -257,6 +257,10 @@ areas:
   reviewers:
   - name: Matthias Vach
     github: mvach
+  - name: Ahmed Hassanin
+    github: a-hassanin
+  - name: Ansh Rupani
+    github: anshrupani
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
