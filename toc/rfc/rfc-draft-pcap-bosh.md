@@ -4,7 +4,7 @@
 - Start Date: 2023-07-06
 - Author(s): @domdom82 @maxmoehl
 - Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/640
 
 
 ## Summary
