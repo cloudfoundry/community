@@ -9,7 +9,7 @@
 
 ## Summary
 
-SAP are developing a BOSH release called [pcap-release](https://github.com/cloudfoundry/pcap-release) which adds network traffic capturing tools to both BOSH deployments and Cloud Foundry applications.
+Members of the [App Runtime Platform WG](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/app-runtime-platform.md) are developing a BOSH release called [pcap-release](https://github.com/cloudfoundry/pcap-release) which adds network traffic capturing tools to both BOSH deployments and Cloud Foundry applications.
 The release was created after an initial discussion was started on the [cf-deployment](https://github.com/cloudfoundry/cf-deployment/issues/980) repository.
 
 Since then, the project has evolved into a BOSH use case and a Cloud Foundry use case. This RFC discusses a proposal to get the BOSH use case integrated with BOSH director and BOSH cli.
@@ -48,12 +48,12 @@ There are several flaws with this architecture that are the result of missing in
 
 - Another benefit would be that users would not have to download the PCAP BOSH CLI separately. 
 
-### Co-locate PCAP AGENT with BOSH AGENT
+### Integrate PCAP AGENT with BOSH AGENT
 
 - This would make network capture a "built-in" feature of BOSH. It removes the need to manually add PCAP AGENT as a job to deployment manifests or configure it as an addon.
 
 ### Co-locate PCAP API with BOSH DIRECTOR
 
-- This would make it very easy for PCAP CLI to find the right endpoint of PCAP API (it would be equal to the current `BOSH_ENVIRONMENT`)
+- This would make it very easy for PCAP CLI to find the right endpoint of PCAP API, likely via the `/info` endpoint of BOSH DIRECTOR.
 - No route-registrar or gorouter would be needed to announce any routes. The endpoint would be implicitly known via the BOSH CLI.
 - Possible caveat: Large network dumps could strangle network bandwidth on BOSH DIRECTOR. Therefore an option to have several PCAP API nodes (load-balanced via BOSH DNS) deployed separately may be considered as an alternative.
