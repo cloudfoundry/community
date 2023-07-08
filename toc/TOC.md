@@ -61,13 +61,13 @@ during the community feedback period at the end of each meeting.
 The members of the TOC are shown below. Membership in the TOC is determined by
 the Cloud Foundry community via an election.
 
-| &nbsp;                                                      | Member                | Company     | Profile                                        | Term Start | Term End |
-| ----------------------------------------------------------- | --------------------- | ----------- | ---------------------------------------------- | ---------- | --------
-| <img width="30px" src="https://github.com/AP-Hunt.png">     | Andy Hunt (TOC Chair) | GOV.UK PaaS | [@AP-Hunt](https://github.com/AP-Hunt)         | 2022-06-22 | 2024     |
-| <img width="30px" src="https://github.com/beyhan.png">      | Beyhan Veli           | SAP         | [@beyhan](https://github.com/beyhan)           | 2022-06-22 | 2024     |
-| <img width="30px" src="https://github.com/emalm.png">       | Eric Malm             | VMware      | [@emalm](https://github.com/emalm)             | 2021-06-17 | 2023     |
-| <img width="30px" src="https://github.com/rkoster.png">     | Ruben Koster          | VMware      | [@rkoster](https://github.com/rkoster)         | 2022-06-22 | 2024     |
-| <img width="30px" src="https://github.com/stephanme.png">   | Stephan Merker        | SAP         | [@stephanme](https://github.com/stephanme)     | 2021-06-17 | 2023     |
+| &nbsp;                                                       | Member                | Company     | Profile                                          | Term Start | Term End |
+| ------------------------------------------------------------ | --------------------- | ----------- | ------------------------------------------------ | ---------- | --------
+| <img width="30px" src="https://github.com/ameowlia.png">     | Amelia Downs          | VMware      | [@ameowlia](https://github.com/ameowlia)         | 2023-06-21 | 2025     |
+| <img width="30px" src="https://github.com/beyhan.png">       | Beyhan Veli           | SAP         | [@beyhan](https://github.com/beyhan)             | 2022-06-22 | 2024     |
+| <img width="30px" src="https://github.com/ChrisMcGowan.png"> | Chris McGowan         | Cloud.gov   | [@ChrisMcGowan](https://github.com/ChrisMcGowan) | 2023-06-21 | 2025     |
+| <img width="30px" src="https://github.com/rkoster.png">      | Ruben Koster          | VMware      | [@rkoster](https://github.com/rkoster)           | 2022-06-22 | 2024     |
+| <img width="30px" src="https://github.com/stephanme.png">    | Stephan Merker        | SAP         | [@stephanme](https://github.com/stephanme)       | 2023-06-21 | 2025     |
 
 
 ## Elections
@@ -119,12 +119,12 @@ under the terms of the [Creative Commons Attribution 4.0 License](https://creati
 ```yaml
 name: Technical Oversight Committee
 execution_leads:
-- name: Andy Hunt
-  github: AP-Hunt
+- name: Amelia Downs
+  github: ameowlia
 - name: Beyhan Veli
   github: beyhan
-- name: Eric Malm
-  github: emalm
+- name: Chris McGowan
+  github: ChrisMcGowan
 - name: Ruben Koster
   github: rkoster
 - name: Stephan Merker
