@@ -56,4 +56,4 @@ There are several flaws with this architecture that are the result of missing in
 
 - This would make it very easy for PCAP CLI to find the right endpoint of PCAP API, likely via the `/info` endpoint of BOSH DIRECTOR.
 - No route-registrar or gorouter would be needed to announce any routes. The endpoint would be implicitly known via the BOSH CLI.
-- Large network dumps could exhaust resources on the BOSH director, therefore an option for a dedicated, horizontally scalable deployment should exist.
+- Large network dumps could exhaust resources on the BOSH director and this approach adds a runtime dependency to the singleton BOSH director, therefore an option for a dedicated, horizontally scalable deployment should exist.
