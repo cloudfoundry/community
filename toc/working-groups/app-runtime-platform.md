@@ -277,15 +277,29 @@ areas:
   - cloudfoundry/loggregator-dotfiles
   - cloudfoundry/loggregator-release
   - cloudfoundry/loggregator-tools
-  - cloudfoundry/metric-store-ci
-  - cloudfoundry/metric-store-dotfiles
-  - cloudfoundry/metric-store-release
   - cloudfoundry/metrics-discovery-release
   - cloudfoundry/noaa
   - cloudfoundry/service-metrics-release
   - cloudfoundry/sonde-go
   - cloudfoundry/statsd-injector-release
   - cloudfoundry/system-metrics-scraper-release
+
+- name: Metric Store
+  approvers:
+  - name: Jeanette Booher
+    github: jbooherl
+  - name: Hovhannes Manukyan
+    github: hmanukyanVMw
+  - name: Gevorg Gevorgyan
+    github: gggevorgyan
+  - name: Meri Yeghiazaryan
+    github: myeghiazarya
+  - name: svcboteos
+    github: svcboteos
+  repositories:
+  - cloudfoundry/metric-store-ci
+  - cloudfoundry/metric-store-release
+  - cloudfoundry/metric-store-dotfiles
 
 - name: Networking
   approvers:
