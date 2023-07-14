@@ -58,7 +58,8 @@ branch-protection:
           allow_deletions: false
           allow_disabled_policies: true
           include: ["^master$"]
-          required_status_checks: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
+          required_status_checks: 
+            contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
@@ -72,7 +73,8 @@ branch-protection:
           allow_deletions: false
           allow_disabled_policies: true
           include: ["^main$"]
-          required_status_checks: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
+          required_status_checks: 
+            contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
