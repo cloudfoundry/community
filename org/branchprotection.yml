@@ -66,7 +66,7 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-app-runtime-platform-bots"]
-        pcap-boshrelease:
+        pcap-release:
           protect: true
           enforce_admins: true
           allow_force_pushes: false
