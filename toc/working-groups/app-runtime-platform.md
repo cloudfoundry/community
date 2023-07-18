@@ -47,6 +47,8 @@ bots:
   github: CFN-CI
 - name: CF Logging and Metrics Bot
   github: cf-logging-metrics-bot
+- name: Metric Store Bot
+  github: svcboteos
 config:
   generate_rfc0015_branch_protection_rules: true
 areas:
@@ -294,8 +296,6 @@ areas:
     github: gggevorgyan
   - name: Meri Yeghiazaryan
     github: myeghiazarya
-  - name: svcboteos
-    github: svcboteos
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
