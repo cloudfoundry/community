@@ -9,7 +9,7 @@
 
 ## Summary
 
-We propose adding an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to every CF-D VM to forward all app and platform metrics on those VMs to external drains. Operators would be able to choose between different protocols and settings provided by the Collector out-of-the-box when inputting their metric destinations.
+Members of the [App Runtime Platform WG](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/app-runtime-platform.md) propose adding an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to every CF-D VM to forward all app and platform metrics on those VMs to external drains. Operators would be able to choose between different protocols and settings provided by the Collector out-of-the-box when inputting their metric destinations.
 
 We believe the Collector deployed in this manner would not only solve our current problem. In the long run we could leverage it for other interesting new functionality with logs and traces, as well as reducing our agent suite footprint.
 
