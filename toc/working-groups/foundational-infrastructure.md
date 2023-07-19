@@ -330,8 +330,6 @@ areas:
   - cloudfoundry/greenhouse-ci
   - cloudfoundry/jumpbox-deployment
   - cloudfoundry/os-conf-release
-  - cloudfoundry/resolvconf-manager
-  - cloudfoundry/resolvconf-manager-index
   - cloudfoundry/sample-windows-bosh-release
   - cloudfoundry/socks5-proxy
   - cloudfoundry/stembuild
