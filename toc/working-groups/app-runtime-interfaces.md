@@ -292,6 +292,8 @@ areas:
   - name: Sven Krieger
     github: svkrieger
   reviewers:
+  - name: Al Berez
+    github: a-b
   - name: Alex Rocha
     github: xandroc
   - name: David Alvarado
