@@ -41,7 +41,7 @@ than the current option.
 
 ## Types of readiness healthcheck
 
-Readiness healthcheck can be either "http" or "tcp" type. The format of healthcheck
+Readiness healthcheck can be either "http" or "port" type. The format of healthcheck
 type is [similar to liveness
 healthcheck](https://docs.cloudfoundry.org/devguide/deploy-apps/healthchecks.html).
 The "process" healthcheck type will not be supported since it doesn't make sense
@@ -90,6 +90,10 @@ applications:
     readiness-health-check-type: http                  # 👈 new property
 ```
 
+New `routable` field in CC API [process stats
+object](https://v3-apidocs.cloudfoundry.org/version/3.141.0/index.html#the-process-stats-object)
+with values `true` or `false` will display the routable status of the process.
+
 ### LRP Design
 
 The readiness healthcheck data will be apart of the desired LRP object.
@@ -117,13 +121,41 @@ The readiness healthcheck data will be apart of the desired LRP object.
   },
 ```
 
+### CLI Changes
+
+The `routable` field of the process stats API object property will be used in
+CF CLI `cf app` output.
+
+```
+     state     routable   since                  cpu    memory          disk         logging            details
+#0   running   yes        2023-06-27T15:07:14Z   0.6%   46.8M of 192M   179M of 1G   0/s of unlimited
+#1   running   no         2023-06-27T15:11:43Z   0.0%   0 of 0          0 of 0       0/s of 0/s
+#2   running   yes        2023-06-27T15:11:43Z   0.0%   0 of 192M       0 of 1G      0/s of 0/s
+```
+
+New CLI options will be added to `cf push` command:
+
+* `--readiness-endpoint` will allows to set the endpoint for http readiness
+  checks.
+* `--readiness-health-check-type` will allows to set the type of the readiness
+  check: "http" or "port".
+
+New CLI commands will be added:
+
+* `get-readiness-health-check` shows the readiness health check performed on an
+  app instance
+* `set-readiness-health-check` updates the readiness health check performed on
+  an app instance
+
 ### Logging and Metrics
 
 #### App logs
 
 When AI readiness healthcheck succeeds a log line is printed to AI logs:
-"Container became ready". When AI readiness healthcheck fails a log line is
-printed to AI logs: "Container became not ready".
+"Container passed the readiness health check. Container marked ready and added
+to route pool". When AI readiness healthcheck fails a log line is printed to AI
+logs: "Container failed the readiness health check. Container marked not ready
+and removed from route pool".
 
 #### App events
 
