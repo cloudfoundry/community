@@ -302,9 +302,7 @@ areas:
   - cloudfoundry/bosh-io-worker
   - cloudfoundry/bosh-linux-stemcell-builder
   - cloudfoundry/bosh-openstack-cpi-release
-  - cloudfoundry/bosh-package-cf-cli-release
   - cloudfoundry/bosh-package-golang-release
-  - cloudfoundry/bosh-package-java-release
   - cloudfoundry/bosh-package-nginx-release
   - cloudfoundry/bosh-package-python-release
   - cloudfoundry/bosh-package-ruby-release

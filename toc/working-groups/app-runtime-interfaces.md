@@ -117,6 +117,7 @@ areas:
   - cloudfoundry/java-buildpack-system-test
   - cloudfoundry/java-test-applications
   - cloudfoundry/jvmkill
+  - cloudfoundry/bosh-package-java-release
 
 - name: Buildpacks .Net Core
   approvers:
@@ -361,6 +362,7 @@ areas:
   - cloudfoundry/cli-workstation
   - cloudfoundry/cli-private
   - cloudfoundry/cli-pools
+  - cloudfoundry/bosh-package-cf-cli-release
   - cloudfoundry/jsonry
   - cloudfoundry/stack-auditor
   - cloudfoundry/ykk
