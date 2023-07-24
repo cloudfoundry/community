@@ -5,7 +5,7 @@ branch-protection:
     cloudfoundry:
       repos:
         # example repo configured as if the project would belong to ARD WG, area CF Deployment
-        # automation would generate repo/branch config for all repos belonging to a WG unless an explicit configuration exists here 
+        # automation would generate repo/branch config for all repos belonging to a WG unless an explicit configuration exists here
         branchprotection-test:
           protect: true
           enforce_admins: true
@@ -58,7 +58,7 @@ branch-protection:
           allow_deletions: false
           allow_disabled_policies: true
           include: ["^master$"]
-          required_status_checks: 
+          required_status_checks:
             contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
           required_pull_request_reviews:
             dismiss_stale_reviews: true
@@ -73,7 +73,7 @@ branch-protection:
           allow_deletions: false
           allow_disabled_policies: true
           include: ["^main$"]
-          required_status_checks: 
+          required_status_checks:
             contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
           required_pull_request_reviews:
             dismiss_stale_reviews: true
@@ -81,3 +81,32 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-app-runtime-platform-bots"]
+
+        # CF-on-K8s
+        korifi-ci:
+          protect: false
+        cf-k8s-secrets:
+          protect: false
+        korifi:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          include: ["^main$"]
+          required_status_checks:
+            contexts:
+              - "api-tests"
+              - "controllers-tests"
+              - "linter"
+              - "job-task-runner-tests"
+              - "kpack-image-builder-tests"
+              - "statefulset-runner-tests"
+              - "tools-tests"
+              - "Concourse / e2e-tests (pull_request)"
+              - "Concourse / e2e-eks-tests (pull_request)"
+              - "EasyCLA"
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
