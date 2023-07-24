@@ -21,7 +21,7 @@ Our agent suite currently provides metrics via a prometheus endpoint. However us
 
 ## Proposal
 
-Diagram link: https://drive.google.com/file/d/193khcTpwObgWMcNt5VOZ68huezp3FLB6/view?usp=sharing
+Diagram link: https://drive.google.com/file/d/1-cuOwPdKokeeNvUoZ4bpcbh60Vv5J5JX/view?usp=sharing
 
 ### OpenTelemetry Collector Add-On
 
@@ -40,9 +40,11 @@ exporters:
       endpoint: otelcol2:4317
 ```
 
-### Metrics Agent
+The BOSH job would register itself with the Forwarder Agent to receive OTLP metrics.
 
-Update the Metrics Agent “/metrics” endpoint to serve all metrics, rather than just metrics from components that do not have a Prom Scraper configuration file.
+### Forwarder Agent
+
+Update the Forwarder Agent to support forwarding metrics to the OpenTelemetry Collector via OTLP.
 
 ### Option to Shut Down the Firehose
 
