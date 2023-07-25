@@ -55,6 +55,8 @@ bots:
   github: Cryogenics-CI
 - name: bbr-ci
   github: bbr-ci
+config:
+  generate_rfc0015_branch_protection_rules: true
 areas:
 - name: Docs
   approvers:
