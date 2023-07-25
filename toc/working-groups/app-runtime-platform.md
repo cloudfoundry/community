@@ -51,6 +51,9 @@ bots:
   github: svcboteos
 config:
   generate_rfc0015_branch_protection_rules: true
+  github_project_sync:
+    mapping:
+      cloudfoundry: 41
 areas:
 - name: Diego
   approvers:
