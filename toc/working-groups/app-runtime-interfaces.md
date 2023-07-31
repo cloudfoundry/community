@@ -441,6 +441,10 @@ areas:
   approvers:
   - name: David Stevenson
     github: dsboulder
+  - name: Al Berez
+    github: a-b
+  - name: Ben Fuller
+    github: Benjamintf1
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
