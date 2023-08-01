@@ -3,8 +3,8 @@
 - Name: Add OTel Collector for aggregate metric egress
 - Start Date: 2023-07-07
 - Author(s): @ctlong, @mkocher, @acrmp, @rroberts2222
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#641](https://github.com/cloudfoundry/community/pull/641)
 
 
 ## Summary
