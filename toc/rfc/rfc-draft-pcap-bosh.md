@@ -11,7 +11,14 @@
 
 Add a feature to BOSH that provides a convenient network capturing mechanism for instances deployed via BOSH and easy streaming of network traffic to the user issuing the capture request.
 
-Capture targets are identified automatically based on metadata in the BOSH Director, i.e. their deployment, instance groups and/or specific instance IDs.
+The main goal of the pcap feature is to allow users (BOSH operator in this case) to easily capture network traffic across multiple VMs by specifying various parameters on the BOSH CLI:
+- BOSH deployment
+- BOSH instance group(s), and optionally instance IDs
+- [pcap-filter](https://www.tcpdump.org/manpages/pcap-filter.7.html) to apply to the captured traffic.
+
+Capture targets and their IP addresses are then identified automatically based on looking up metadata from the BOSH Director using these parameters.
+
+A single, combined stream of capture data is then provided as output and can be written to file or piped into another command.
 
 ## Problem
 
@@ -19,11 +26,28 @@ Distributed, and particularly networked systems are hard to debug. Software deve
 
 Network traffic can be reasonably easily captured via tools such as `tcpdump` on local machines. In order to get a unified view of the network traffic of relevant nodes, those captures need to be retrieved, merged and analysed.
 
-BOSH does not have a user or operator friendly way for resolving targets, or capturing, filtering and merging network traffic.
+BOSH has a great and operator friendly way for resolving instances based on deployment, instance group and instance ID, with each level narrowing down the list of selected instances. Using this information for starting network captures on those selected instances is currently not easily possible.
+
+Finally, even when capturing traffic via e.g. BOSH SSH and retrieving data, the captures still need to be merged. Ideally they would be merged automatically with a single invocation.
+
+```shell
+# capture all gorouter instances
+bosh pcap -w gorouters.pcap -d cf gorouter
+
+# capture HAProxy instance `some-guid-here` in instance group `ha_proxy_z1`
+bosh pcap -w some-guid-here.pcap -d haproxy ha_proxy_z1/some-guid-here
+
+# capture the first NATS server
+bosh pcap -w nats0.pcap -d cf nats/0
+```
 
 ## Proposal
 
 The feature proposed in this RFC has two possible solutions, each of which have their benefits and drawbacks. The solution with the most community support will ultimately be implemented. Motivations, constraints and considerations are highlighted in those respective sections.
+
+> [!IMPORTANT]
+> BOSH supports Windows stemcells, but Windows support has not been considered deeply in either of the proposed solutions.  
+> There are ways forward for both solutions, they were just not assessed in detail yet.
 
 The following solutions are discussed in subsequent sections (linked below):
 1. [Integrate pcap-release with BOSH](#integrate-pcap-release-with-bosh-cli-director-agent)  
@@ -31,7 +55,7 @@ The following solutions are discussed in subsequent sections (linked below):
 2. [Add "pcap-lite", a thin front-end and merge functionality of tcpdump streams](#add-pcap-lite-a-thin-front-end-and-merge-functionality-of-tcpdump-streams)  
    This solution focuses on a convenient minimal solution for the problem statement, but presents a separate code base.
 
-> **Warning**
+> [!NOTE]
 > While this RFC is in review, both options are presented and discussed. A final version of the RFC will highlight the chosen solution and summarise the discarded approach briefly.
 
 ### Use Case Overview
@@ -40,7 +64,7 @@ The following use cases are considered:
 1. Capture data from a target deployment, filtering for:
    - instance groups, and/or
    - instance IDs
-2. Providing detailed [Berkeley Packet Filter (BPF) filters in `libpcap` notation](https://www.tcpdump.org/manpages/pcap-filter.7.html), as used e.g. in [`tcpdump`](https://www.tcpdump.org/manpages/tcpdump.1.html) in a safe manner.
+2. Providing detailed [pcap-filter](https://www.tcpdump.org/manpages/pcap-filter.7.html), as used e.g. in [`tcpdump`](https://www.tcpdump.org/manpages/tcpdump.1.html) in a safe manner.
 3. Concurrent capturing requests from different users or IP addresses  
    This includes support for concurrent captures, but also imposing limits on the desired number of concurrent captures
 4. Filter out traffic between the capturing agent and the target to avoid feedback loops
@@ -85,15 +109,15 @@ By reusing the components from pcap-release, any improvements stemming from the 
 
 The cases from the [Use Case Overview](#use-case-overview) are addressed below:
 
-| # | Use Case                                                           | Comment                                                                                                                                                                                                                                   |
-|---|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1 | Capturing Data from specific instances                             | Instance groups and their instances can be determined by querying the BOSH Director with an appropriate token. When integrated into the bosh-cli, the pcap-client can access the managed token information directly.                      |
-| 2 | Providing BPF Filters                                              | BPF Filters are checked for length to avoid accidental overload or attacks. Other checks can be added centrally.                                                                                                                          |                                                                                                                                         |
-| 3 | Concurrent capturing requests from different users or IP addresses | The `pcap-api` and `pcap-agent` respectively keep track of the number of concurrent captures overall. `pcap-api` keeps track of concurrent captures per client IP. All numbers have configurable limits.                                  |
-| 4 | Filter out traffic between capturing agent and target              | Traffic is filtered out by excluding the IP address(es) of the pcap-api, before forwarding the request to the pcap-agent code.                                                                                                            |
-| 5 | Output of captured data to a local file or stdout                  | `pcap-client` writes the pcap file header and received capture data to a file or configurable stream (e.g. stdout). Additionally, control and status messages are received and can be processed for a better user experience.             |
-| 6 | Clean shutdown and error handling                                  | The messaging protocol of pcap-release foresees clean capture stops, draining of agent with clear indication of what is going on and flushing buffers with captured data after the stop was requested and before the capture is finished. |
-| 7 | Authorized Access                                                  | Access is controlled via BOSH token scope. The BOSH token is validated and checked for a configurable scope, e.g. `bosh_admin`. A limitation is that only token based authentication is currently supported                               |
+| # | Use Case                                                                             | Comment                                                                                                                                                                                                                                   |
+|---|--------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | Capturing Data from specific instances                                               | Instance groups and their instances can be determined by querying the BOSH Director with an appropriate token. When integrated into the bosh-cli, the pcap-client can access the managed token information directly.                      |
+| 2 | Providing [pcap-filter](https://www.tcpdump.org/manpages/pcap-filter.7.html) Filters | Filters are checked for length to avoid accidental overload or attacks. Other checks can be added centrally.                                                                                                                              |                                                                                                                                         |
+| 3 | Concurrent capturing requests from different users or IP addresses                   | The `pcap-api` and `pcap-agent` respectively keep track of the number of concurrent captures overall. `pcap-api` keeps track of concurrent captures per client IP. All numbers have configurable limits.                                  |
+| 4 | Filter out traffic between capturing agent and target                                | Traffic is filtered out by excluding the IP address(es) of the pcap-api, before forwarding the request to the pcap-agent code.                                                                                                            |
+| 5 | Output of captured data to a local file or stdout                                    | `pcap-client` writes the pcap file header and received capture data to a file or configurable stream (e.g. stdout). Additionally, control and status messages are received and can be processed for a better user experience.             |
+| 6 | Clean shutdown and error handling                                                    | The messaging protocol of pcap-release foresees clean capture stops, draining of agent with clear indication of what is going on and flushing buffers with captured data after the stop was requested and before the capture is finished. |
+| 7 | Authorized Access                                                                    | Access is controlled via BOSH token scope. The BOSH token is validated and checked for a configurable scope, e.g. `bosh_admin`. A limitation is that only token based authentication is currently supported                               |
 
 A detailed look at the overall pcap-release messaging protocol can be seen in the [PCAP Release API Specification](https://github.com/cloudfoundry/pcap-release/blob/c9d514d19bd1c54a469e875a58b94fd362391065/docs/api-communication-spec.md)
 
@@ -120,7 +144,10 @@ The largest short-term benefit of integrating pcap-release with BOSH is the incr
 
 The alternative solution is based on the orchestration of existing tools with a small amount of new code.
 
-Akin to the BOSH SSH feature, a BOSH pcap feature is proposed with similar but slightly different workflow. The well-known `tcpdump` tool is launched on each VM via SSH and transmits its data via the SSH channel. In order to handle multiple VMs and merge their captures, multiple SSH sessions to the respective targets are opened in parallel, multiplexed in the bosh-cli and available for writing to disk or an output stream.
+Akin to the *BOSH SSH* feature, a *BOSH pcap* feature is proposed with a similar but slightly different workflow.
+The well-known `tcpdump` tool is launched on each VM via SSH and transmits its data via the SSH channel.
+In order to handle multiple VMs and merge their captures, multiple SSH sessions to the respective targets are opened in parallel, 
+merged into a single stream in the bosh-cli and available for writing to disk or an output stream.
 
 #### Architecture Overview
 
@@ -128,38 +155,34 @@ The architecture of the pcap-lite solution looks as follows:
 
 ![](rfc-draft-pcap-bosh/tcpdump-bosh-pcap-lite.drawio.svg "Architecture Overview for the pcap-lite Solution")
 
-**Figure 2 - Architecture Overview for the pcap-lite Solution**
+*Figure 2 - Architecture Overview for the pcap-lite Solution*
 
 The main benefit of operator convenience over raw use of command line tools requires the following:
 * Automatic determination of VM target addresses via the BOSH Director.
 * A single SSH session can contain multiple streams, one for data, one for process control. The Go SSH library always opens such a "Master Mode" connection.
-* Multiplexing can be done in the BOSH CLI, using a similar mechanism to pcap-release, i.e. by using the `gopacket/gopacket` libraries (and `libpcap` under the hood).
+* Multiplexing can be done in the BOSH CLI, using a similar mechanism to pcap-release, i.e. by using the `github.com/gopacket/gopacket` module (and `libpcap` under the hood).
 
-The largest constraint is that the capturing is done used by tools that must already be available on the target VMs, e.g. `tcpdump` that is available as part of the stemcell.
-
-Support for capturing from [Windows stemcells](https://bosh.io/docs/windows-sample-release/) must be considered further, e.g. by invoking [Npcap](https://npcap.com) instead of `tcpdump`, as suitable replacement for Windows. Please also note that [WinPcap is essentially unsupported](https://npcap.com/vs-winpcap.html). 
+The largest constraint is that the capturing is done used by tools that must already be available on the target VMs, e.g. `tcpdump` that is available as part of the stemcell. That said, `tcpdump` is available on CF stemcells and can be readily invoked by BOSH users via BOSH SSH.
 
 #### Use Cases
 
 The cases from the [Use Case Overview](#use-case-overview) are addressed below:
 
-| # | Use Case                                                           | Comment                                                                                                                                                                                                             |
-|---|--------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1 | Capturing Data from specific instances                             | Instance groups and their instances can be determined by querying the BOSH Director with an appropriate token. The invocation of `tcpdump` can be constructed with appropriate command line arguments.              |
-| 2 | Providing BPF Filters                                              | BPF Filters are checked for length to avoid accidental overload or attacks, and provided to the invocation of `tcpdump` on the respective target VMs.                                                               |                                                                                                                                         |
-| 3 | Concurrent capturing requests from different users or IP addresses | There is no enforced limit for concurrent captures. An accidental overload is possible more easily.                                                                                                                 |
-| 4 | Filter out traffic between capturing agent and target              | Traffic is filtered out by excluding the IP address(es) of the requester. The ports of the SSH connections can be included in the exclusion for more fine-grained control.                                          |
-| 5 | Output of captured data to a local file or stdout                  | The merged pcap data can be redirected to a file or configurable stream (e.g. stdout).                                                                                                                              |
-| 6 | Clean shutdown and error handling                                  | `tcpdump` [accepts signals to control ongoing captures](https://www.tcpdump.org/manpages/tcpdump.1.html). This includes clean shutdown with `SIGINT`/`SIGTERM` and flushing already captured buffers via `SIGUSR2`. |
-| 7 | Authorized Access                                                  | Access authorization can be enforced similar to BOSH SSH. The same SSH keys can be re-used as well.                                                                                                                 |
-
-All of those use cases would need to be re-assessed for Windows based stemcells.
+| # | Use Case                                                                             | Comment                                                                                                                                                                                                             |
+|---|--------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | Capturing Data from specific instances                                               | Instance groups and their instances can be determined by querying the BOSH Director with an appropriate token. The invocation of `tcpdump` can be constructed with appropriate command line arguments.              |
+| 2 | Providing [pcap-filter](https://www.tcpdump.org/manpages/pcap-filter.7.html) Filters | Filters are provided to the invocation of `tcpdump` on the respective target VMs.                                                                                                                                   |                                                                                                                                         |
+| 3 | Concurrent capturing requests from different users or IP addresses                   | There is no enforced limit for concurrent captures. An accidental overload is possible more easily.                                                                                                                 |
+| 4 | Filter out traffic between capturing agent and target                                | Traffic is filtered out by excluding the IP address(es) of the requester. The ports of the SSH connections can be included in the exclusion for more fine-grained control.                                          |
+| 5 | Output of captured data to a local file or stdout                                    | The merged pcap data can be redirected to a file or configurable stream (e.g. stdout).                                                                                                                              |
+| 6 | Clean shutdown and error handling                                                    | `tcpdump` [accepts signals to control ongoing captures](https://www.tcpdump.org/manpages/tcpdump.1.html). This includes clean shutdown with `SIGINT`/`SIGTERM` and flushing already captured buffers via `SIGUSR2`. |
+| 7 | Authorized Access                                                                    | Access authorization can be enforced similar to BOSH SSH. The same SSH keys can be re-used as well.                                                                                                                 |
 
 #### Summary
 
 The "pcap-lite" solution of more advanced orchestration of streamed `tcpdump` based captures via SSH provides a lean alternative to the pcap-release.
 
-Some features are missing or not a extensive as with the pcap-release integration. Most notably, congestion control is missing.
+Some features are missing or not as extensive as with the pcap-release integration. Most notably, congestion control is missing.
 
 For the initial problem described in this RFC, this is a "Minimal Viable Product" that provides the functionality for the support and debugging case and offers great functionality that covers a majority of use cases. 
 
@@ -175,7 +198,7 @@ Main benefits of the pcap-release integration approach are:
 * Extended functionality through bidirectional signalling, including congestion control.
 * Clear signalling of state, errors during communication and status informaiton for the user.
 * Central component with enforceable limits, e.g. in terms of concurrent captures.
-* Portable Go code should support any stemcell (including Windows), for which libpcap is available.
+* Portable Go code and the use of libpcap behind the scenes allows a self-contained solution that does not rely on the availability or execution of external processes.
 
 Drawbacks are the following:
 * More complex solution
@@ -193,7 +216,7 @@ Main benefits of the pcap-lite approach based on tcpdump and SSH are:
 
 Drawbacks are the following:
 * No congestion control
-* Requires other tools for Windows, as `tcpdump` is not available.
+* `tcpdump` must be available on the stemcell and is executed as external process. Considering that the administrator can easily run `tcpdump` via BOSH SSH with the same permissions, this does not pose an increased risk.
 * More complex scenarios that would benefit from a central component will require more work or a different solution.
 
 
