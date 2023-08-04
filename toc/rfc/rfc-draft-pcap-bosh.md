@@ -20,6 +20,14 @@ Capture targets and their IP addresses are then identified automatically based o
 
 A single, combined stream of capture data is then provided as output and can be written to file or piped into another command.
 
+> [!NOTE]
+> This RFC presents and compares two options to solve the stated problem.
+> 
+> The Foundational Infrastructure Working Group has selected [Option 2, "pcap-lite" - network capturing automation via tcpdump and SSH](#2-pcap-lite).
+> 
+> The other option is retained for reference, historical context and the comparative assessment of the two options.
+
+
 ## Problem
 
 Distributed, and particularly networked systems are hard to debug. Software developers and operators are not necessarily the same people, in some cases not even the same companies.
@@ -54,9 +62,6 @@ The following solutions are discussed in subsequent sections (linked below):
    This solution focuses on integrating components that are reusable for other scenarios and ensure long-term availability, use and improvements.
 2. [Add "pcap-lite", a thin front-end and merge functionality of tcpdump streams](#add-pcap-lite-a-thin-front-end-and-merge-functionality-of-tcpdump-streams)  
    This solution focuses on a convenient minimal solution for the problem statement, but presents a separate code base.
-
-> [!NOTE]
-> While this RFC is in review, both options are presented and discussed. A final version of the RFC will highlight the chosen solution and summarise the discarded approach briefly.
 
 ### Use Case Overview
 
