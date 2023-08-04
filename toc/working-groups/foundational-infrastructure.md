@@ -254,9 +254,9 @@ areas:
     github: ystros
   - name: Chris Selzo
     github: selzoc
-  reviewers:
   - name: Matthias Vach
     github: mvach
+  reviewers:
   - name: Ahmed Hassanin
     github: a-hassanin
   - name: Ansh Rupani
