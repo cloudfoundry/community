@@ -308,6 +308,14 @@ areas:
     github: gururajsh
   - name: Jochen Ehret
     github: jochenehret
+  - name: Ryker Reed
+    github: reedr3
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Ben Fuller
+    github: Benjamintf1
+  - name: Cristhian Peña
+    github: ccjaimes
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
