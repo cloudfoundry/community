@@ -369,7 +369,6 @@ areas:
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
   - cloudfoundry/routing-team-checklists
-  - cloudfoundry/silk
   - cloudfoundry/silk-release
 
 - name: Networking-Extensions
