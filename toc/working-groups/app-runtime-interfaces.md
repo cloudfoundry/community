@@ -402,6 +402,8 @@ areas:
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne  
+  - name: Radoslav Tomov
+    github: radoslav-tomov
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
