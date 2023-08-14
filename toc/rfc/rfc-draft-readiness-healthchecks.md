@@ -41,12 +41,9 @@ than the current option.
 
 ## Types of readiness healthcheck
 
-Readiness healthcheck can be either "http" or "port" type. The format of healthcheck
-type is [similar to liveness
-healthcheck](https://docs.cloudfoundry.org/devguide/deploy-apps/healthchecks.html).
-The "process" healthcheck type will not be supported since it doesn't make sense
-to have "process" readiness healthcheck type. Once any defined process exits AI
-is marked as crashed.
+[Similar to liveness healthchecks](https://docs.cloudfoundry.org/devguide/deploy-apps/healthchecks.html), readiness healthcheck can be of type "http", "port", or "process".
+However, when a user selects the "process" healthcheck type, nothing will be passed to the LRP, because once a process exits the AI
+is marked as crashed and Diego will attempt a restart. The default readiness healthcheck type is "process", which is backwards compatible.
 
 ## Rolling deploys
 
@@ -88,6 +85,7 @@ applications:
     readiness-health-check-http-endpoint: /ready       # 👈 new property
     readiness-health-check-invocation-timeout: 2       # 👈 new property
     readiness-health-check-type: http                  # 👈 new property
+    readiness-health-check-interval: 5                 # 👈 new property
 ```
 
 New `routable` field in CC API [process stats
@@ -135,10 +133,12 @@ CF CLI `cf app` output.
 
 New CLI options will be added to `cf push` command:
 
-* `--readiness-endpoint` will allows to set the endpoint for http readiness
+* `--readiness-endpoint` will set the endpoint for http readiness
   checks.
-* `--readiness-health-check-type` will allows to set the type of the readiness
-  check: "http" or "port".
+* `--readiness-health-check-type` will set the type of the readiness
+  check: "http", "port", or "process".
+* `--readiness-health-check-interval` will set the interval of the readiness
+  check. Must be an integer greater than 0."
 
 New CLI commands will be added:
 
