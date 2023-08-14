@@ -291,6 +291,8 @@ areas:
     github: sethboyles
   - name: Sven Krieger
     github: svkrieger
+  - name: Tim Downey
+    github: tcdowney
   reviewers:
   - name: Al Berez
     github: a-b
