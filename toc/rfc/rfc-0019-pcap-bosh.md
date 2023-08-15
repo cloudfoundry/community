@@ -3,8 +3,8 @@
 - Name: Integrate pcap feature into BOSH
 - Start Date: 2023-07-06
 - Author(s): @domdom82 @maxmoehl @peanball
-- Status: Draft
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/640
+- Status: Accepted
+- RFC Pull Request: [community#667](https://github.com/cloudfoundry/community/pull/667)
 
 
 ## Summary
@@ -89,7 +89,7 @@ Based on the [BOSH Component Overview](https://bosh.io/docs/bosh-components/), t
 
 Extensions to the existing diagram are added in green, with callouts highlighting the purpose for each connection.
 
-![](rfc-draft-pcap-bosh/tcpdump-bosh-pcap-release.drawio.svg "Bosh Architecture with Integrated pcap-release")
+![](rfc-0019-pcap-bosh/tcpdump-bosh-pcap-release.drawio.svg "Bosh Architecture with Integrated pcap-release")
 
 *Figure 1 - Bosh Architecture with Integrated pcap-release*
 
@@ -158,7 +158,7 @@ merged into a single stream in the bosh-cli and available for writing to disk or
 
 The architecture of the pcap-lite solution looks as follows:
 
-![](rfc-draft-pcap-bosh/tcpdump-bosh-pcap-lite.drawio.svg "Architecture Overview for the pcap-lite Solution")
+![](rfc-0019-pcap-bosh/tcpdump-bosh-pcap-lite.drawio.svg "Architecture Overview for the pcap-lite Solution")
 
 *Figure 2 - Architecture Overview for the pcap-lite Solution*
 
