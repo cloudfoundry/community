@@ -68,6 +68,8 @@ areas:
     github: snneji
   - name: Ben Klein
     github: fifthposition
+-   name: Lora Boe
+    github: blora
   - name: Ajayan Borys
     github: HenryBorys
   - name: Bob Graczyk
