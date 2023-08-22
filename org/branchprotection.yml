@@ -53,7 +53,7 @@ branch-protection:
           protect: false
         haproxy-boshrelease:
           protect: true
-          enforce_admins: true
+          enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
           allow_disabled_policies: true
@@ -68,7 +68,7 @@ branch-protection:
               teams: ["wg-app-runtime-platform-bots"]
         pcap-release:
           protect: true
-          enforce_admins: true
+          enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
           allow_disabled_policies: true
