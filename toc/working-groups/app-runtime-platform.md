@@ -132,7 +132,6 @@ areas:
   - cloudfoundry/route-emitter
   - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
-  - cloudfoundry/systemcerts
   - cloudfoundry/tlsconfig
   - cloudfoundry/vizzini
   - cloudfoundry/volman
