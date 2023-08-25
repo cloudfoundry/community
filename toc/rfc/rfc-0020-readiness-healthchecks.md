@@ -3,8 +3,8 @@
 - Name: Readiness Healthchecks
 - Start Date: 2023-06-26
 - Author(s): @ameowlia, @mariash
-- Status: Draft
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/630
+- Status: Accepted
+- RFC Pull Request: [community#630](https://github.com/cloudfoundry/community/pull/630)
 
 
 ## Summary
