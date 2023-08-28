@@ -38,6 +38,7 @@ The current working groups are:
 - App Runtime Interfaces
 - App Runtime Platform
 - CF on K8s
+- Docs
 - Foundational Infrastructure
 - Paketo
 - Service Management
@@ -121,6 +122,24 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | <img width="30px" src="https://github.com/georgethebeatle.png"> | Georgi Sabev       | SAP  | [@georgethebeatle](https://github.com/georgethebeatle) |
 | <img width="30px" src="https://github.com/gcapizzi.png"> | Giuseppe Capizzi       | VMware  | [@gcapizzi](https://github.com/gcapizzi) |
 
+
+## Docs
+
+Mission: To document the Cloud Foundry user experience.
+
+The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-docs` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [docs.md](./docs.md)  |
+| Forum                      | [Video chat TBD]()  |
+| Community Meeting Calendar | TBD |
+| Meeting Notes              | [Google Doc TBD]()  |
+| Slack Channel              | [&#x23;cf-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/anita-flegg.png"> | Anita Flegg | VMware  | [@anita-flegg](https://github.com/anita-flegg) |
 
 ## Foundational Infrastructure
 
