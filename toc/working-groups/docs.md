@@ -33,6 +33,7 @@ execution_leads:
 technical_leads:
 - name: Anita Flegg
   github: anita-flegg
+bots: []
 areas:
 - name: Docs
   approvers:
