@@ -33,11 +33,6 @@ execution_leads:
 technical_leads:
 - name: Anita Flegg
   github: anita-flegg
-config:
-  generate_rfc0015_branch_protection_rules: true
-  github_project_sync:
-    mapping:
-      cloudfoundry: 41
 areas:
 - name: Docs
   approvers:
