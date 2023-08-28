@@ -2,7 +2,7 @@
 
 ## Mission
 
-To document the Cloud Foundry user experience.
+To document the Cloud Foundry user experience. To improve and maintain the quality of the docs and keep them updated.
 
 
 ## Goals
@@ -59,7 +59,7 @@ areas:
   - name: Kelly OHara
     github: kohara88
   - name: Jason Andrew
-    github: VMWare-JasonAndrew 
+    github: VMWare-JasonAndrew
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
