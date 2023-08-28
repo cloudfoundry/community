@@ -2,23 +2,22 @@
 
 ## Mission
 
-To document the Cloud Foundry user experience. To improve and maintain the quality of the docs and keep them updated.
-
+To document the Cloud Foundry user experience.
 
 ## Goals
 
-- TBD
-- TBD
-- TBD
+- Make a plan for regular reviews and updates
+- Update and maintain READMEs for all docs repos
+- Update and maintain CF book repo/Table of Contents
+- Update and maintain contribution guidelines
 
 
 ## Scope
 
-- TBD
-- TBD
-- TBD
-
-
+- Merge and edit all doc changes
+- Update with the latest best practices for SEO
+- Remove out-dated information
+- Advise contributors on best practices
 
 ## Non-Goals
 
@@ -27,7 +26,7 @@ To document the Cloud Foundry user experience. To improve and maintain the quali
 ## Roles & Technical Assets
 
 ```yaml
-name: App Runtime Platform
+name: Documentation
 execution_leads:
 - name: Anita Flegg
   github: anita-flegg
@@ -44,8 +43,6 @@ areas:
   approvers:
   - name: Max Hufnagel
     github: animatedmax
-  - name: Chloe Hollingsworth
-    github: cshollingsworth
   - name: Anita Flegg
     github: anita-flegg
   - name: Samia Nneji
@@ -56,10 +53,9 @@ areas:
     github: HenryBorys
   - name: Bob Graczyk
     github: bobbygeeze
-  - name: Kelly OHara
-    github: kohara88
-  - name: Jason Andrew
-    github: VMWare-JasonAndrew
+  - name: Lora Boe
+    github: blora1
+
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
@@ -73,6 +69,7 @@ areas:
   - cloudfoundry/docs-cloudfoundry-concepts
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
+  - cloudfoundry/docs-credhub
   - cloudfoundry/docs-dotnet-core-tutorial
   - cloudfoundry/app-runtime-interfaces-infrastructure
 ```

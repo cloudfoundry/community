@@ -135,7 +135,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Forum                      | [Video chat TBD]()  |
 | Community Meeting Calendar | TBD |
 | Meeting Notes              | [Google Doc TBD]()  |
-| Slack Channel              | [&#x23;cf-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
+| Slack Channel              | [&#x23;cf-docs](https://cloudfoundry.slack.com/archives/C03B0T0D5) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
