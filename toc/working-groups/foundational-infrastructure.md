@@ -56,30 +56,6 @@ bots:
 - name: bbr-ci
   github: bbr-ci
 areas:
-- name: Docs
-  approvers:
-  - name: Chloe Hollingsworth
-    github: cshollingsworth
-  - name: Max Hufnagel
-    github: animatedmax
-  - name: Anita Flegg
-    github: anita-flegg
-  - name: Samia Nneji
-    github: snneji
-  - name: Ben Klein
-    github: fifthposition
-  - name: Ajayan Borys
-    github: HenryBorys
-  - name: Bob Graczyk
-    github: bobbygeeze
-  - name: Kelly OHara
-    github: kohara88
-  - name: Jason Andrew
-    github: VMWare-JasonAndrew 
-  repositories:
-  - cloudfoundry/docs-bbr
-  - cloudfoundry/docs-credhub
-  - cloudfoundry/docs-uaa
 - name: Credential Management (Credhub)
   approvers:
   - name: Peter Chen
