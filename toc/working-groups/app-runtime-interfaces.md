@@ -375,6 +375,7 @@ areas:
   - cloudfoundry/stack-auditor
   - cloudfoundry/ykk
   - cloudfoundry/app-runtime-interfaces-infrastructure
+  - cloudfoundry/bosh-package-cf-cli-release
 
 - name: Java Tools
   approvers:
