@@ -350,6 +350,8 @@ areas:
     github: jdgonzaleza
   - name: Ryker Reed
     github: reedr3
+  - name: Michael Oleske
+    github: moleske
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -357,8 +359,6 @@ areas:
     github: ccjaimes
   - name: Pete Levine
     github: PeteLevineA
-  - name: Michael Oleske
-    github: moleske
   - name: Shwetha Guraraj
     github: gururajsh
   repositories:
