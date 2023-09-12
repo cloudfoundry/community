@@ -253,16 +253,11 @@ in.
 
 A reviewer is an active contributor who wishes to formally work toward the approver role.
 
-Reviewers can submit reviews of PRs within a working group area. They may also have PRs within a working group assigned to them.
+Reviewers can submit reviews of PRs within a Working Group Area. They may also have PRs within a working group assigned to them.
 
 ### Requirements
 
-- Submission of a PR to the appropriate Working Group Charter that adds themselves to the team's yaml definition.
-
-- Approval from two existing Approvers for that Working Group
-
-    - For Working Groups with fewer than 4 approvers, a single Approver review is sufficient.
-  
+- Actively contributing to the relevant Working Group Area(s).
 
 ### Responsibilities and privileges
 
@@ -492,11 +487,11 @@ Last ammended by [RFC-0008 Role Change Process](https://github.com/cloudfoundry/
 they may submit a PR adding themselves to 
 [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
 
-- Two existing Contributors or Approvers must attest that they meet the criteria
-  by reviewing the PR.
+- Two existing Contributors, Reviewers, or Approvers must attest that they meet
+  the criteria by reviewing the PR.
 
-- An existing Contributor or Approver may submit the promotion request on behalf of someone else, but they
-  may not serve as a reviewer.
+- An existing Contributor, Reviewer, or Approver may submit the promotion
+  request on behalf of someone else, but they may not serve as a reviewer.
 
 - A Working Group Lead from any Working Group will merge or close the PR, based
   on the results of the review and their discretion.
@@ -504,21 +499,22 @@ they may submit a PR adding themselves to
 - TOC members may bypass the review process and merge the PR at their
   discretion.
 
-### Promotion to Approver
+### Promotion to Reviewer or Approver
 
-- When a person meets the criteria to be an Approver for a Working Group as defined in
-[Approver Role](#approver),
-they may submit a PR to the appropriate Working Group Charter that adds
-themselves to the team's yaml definition.
+- When a person meets the criteria to be a Reviewer or Approver for a Working
+  Group Area as defined in [Reviewer Role](#reviewer) or [Approver
+  Role](#approver) respectively, they may submit a PR to the appropriate
+  Working Group Charter that adds themselves to the team's yaml definition
+  under the appropriate Area.
 
-- Two existing Approvers for that Working Group must attest that they meet the criteria
-  by reviewing the PR.
+- Two existing Approvers for that Working Group Area must attest that they meet
+  the criteria by reviewing the PR.
 
-- For Working Groups with fewer than 4 approvers, a single Approver review is
-  sufficient.
+- For Working Group Areas with fewer than 4 Approvers, a single Approver review
+  is sufficient.
 
-- An existing Approver may submit the promotion request on behalf of someone else, but they
-  may not serve as a reviewer.
+- An existing Approver may submit the promotion request on behalf of someone
+  else, but they may not serve as a reviewer.
 
 - A Working Group Lead for that Working Group will merge or close the PR, based
   on the results of the review and their discretion.
@@ -532,19 +528,20 @@ themselves to the team's yaml definition.
   removing the appropriate entry from
   [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
 
-- An existing Contributor or Approver may submit the revocation request on
-  behalf of someone else, but the person whose role is being revoked must be
-  given two weeks to refute the revocation.
+- An existing Contributor, Reviewer, or Approver may submit the revocation
+  request on behalf of someone else, but the person whose role is being revoked
+  must be given two weeks to refute the revocation.
 
 - A Working Group Lead from any Working Group will merge or close the PR, at
   their discretion and without review.
 
 - TOC members may merge the PR at their discretion.
 
-### Revoking Approver Role
+### Revoking Reviewer or Approver Role
 
-- People with an Approver role may submit a PR to revoke their role by removing
-  the appropriate entry from the yaml definition in their Working Group's charter.
+- People with a Reviewer or Approver role may submit a PR to revoke their role
+  by removing the appropriate entry from the yaml definition in their Working
+  Group's charter.
 
 - An existing Approver may submit the revocation request on behalf of someone
   else, but the person whose role is being revoked must be given two weeks to
