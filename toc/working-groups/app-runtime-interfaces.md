@@ -350,11 +350,11 @@ areas:
     github: jdgonzaleza
   - name: Ryker Reed
     github: reedr3
+  - name: Christhian
+    github: ccjaimes
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
-  - name: Christhian
-    github: ccjaimes
   - name: Pete Levine
     github: PeteLevineA
   - name: Michael Oleske
