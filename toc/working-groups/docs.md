@@ -15,8 +15,9 @@ To document the Cloud Foundry user experience.
 ## Scope
 
 - Merge and edit all doc changes
-- Update with the latest best practices for SEO
-- Remove out-dated information
+- Update with the latest best practices for SEO and inclusive language
+- Maintain internal consistency of doc style, including Notes and tables, for example
+- Remove out-dated information (ongoing)
 - Advise contributors on best practices
 
 ## Non-Goals
