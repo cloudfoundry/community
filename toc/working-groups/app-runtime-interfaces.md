@@ -349,12 +349,12 @@ areas:
   - name: Juan Diego González
     github: jdgonzaleza
   - name: Ryker Reed
-    github: reedr3
+    github: reedr3 
+  - name: Cristhian
+    github: ccjaimes
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
-  - name: Christhian
-    github: ccjaimes
   - name: Pete Levine
     github: PeteLevineA
   - name: Michael Oleske
