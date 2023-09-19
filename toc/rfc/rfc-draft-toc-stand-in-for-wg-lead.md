@@ -15,8 +15,8 @@ Working Group. When the TOC decideds it is necessary, the TOC MAY make decisions
 ## Problem
 
 Sometimes Working Group Leads go on vacation or get sick and are not available
-to review PRs. This can cause progress on their teams to grind to halt until
-the Working Group lead returns.
+to take actions for their working group. This can cause work in the working group to be blocked until
+the Working Group Lead returns.
 
 ## Proposal
 
