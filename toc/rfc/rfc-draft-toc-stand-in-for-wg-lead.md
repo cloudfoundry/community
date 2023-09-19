@@ -20,6 +20,6 @@ the Working Group Lead returns.
 
 ## Proposal
 
-When the TOC decideds it is necessary, the TOC MAY make decisions in their stead. This
+When the TOC decides it is necessary, the TOC MAY make decisions in their stead. This
 includes approving and merging PRs for their Working Group. All actions MUST
 have the approval of a majority of the TOC members.
