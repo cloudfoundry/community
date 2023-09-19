@@ -10,7 +10,7 @@
 ## Summary
 
 Working Group Leads are in charge of approving and merging PRs for their
-Working Group. When the TOC decideds it is necessary, the TOC MAY make decisions in their stead.
+Working Group. When the TOC decideds it is necessary, the TOC MAY make decisions in their place.
 
 ## Problem
 
