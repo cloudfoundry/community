@@ -1,12 +1,21 @@
 #!/bin/bash
 
+set -e -o pipefail
+
+repo_root=$(dirname "$(cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)")
+
+pushd "${repo_root}/toc/working-groups" >/dev/null
+
 USERNAME=$1
-shift
+shift || true
 WORKING_GROUP="$*"
 
 echo "Parsing working group metadata..."
-TOC_JSON=$(./parsable-working-groups.sh)
-mapfile -t WORKING_GROUPS <<< "$(echo "${TOC_JSON}" | jq -r '.[].name')"
+TOC_JSON=$(${repo_root}/toc/working-groups/parsable-working-groups.sh)
+
+declare -a WORKING_GROUPS
+IFS=$'\n'
+WORKING_GROUPS=($(echo "${TOC_JSON}" | jq -r '.[].name'))
 
 list_working_groups() {
   for wg in "${WORKING_GROUPS[@]}"; do
@@ -82,16 +91,19 @@ find_issues_for_repo() {
 }
 
   usage_checks
+  set -u
 
   echo "Gathering GH events..."
   EVENTS_JSON=$(gh api --paginate "users/${USERNAME}/events?per_page=100")
 
-  mapfile -t areas <<< "$(echo "${TOC_JSON}" | jq --arg wg_name "${wg}" -r '.[] | select(.name == $wg_name) | .areas[].name')"
+  declare -a areas
+  areas=($(echo "${TOC_JSON}" | jq --arg wg_name "${WORKING_GROUP}" -r '.[] | select(.name == $wg_name) | .areas[].name'))
   for area in "${areas[@]}"; do
-    echo "Gathering contributions for the '${wg}: ${area}' area..."
+    echo "Gathering contributions for the '${WORKING_GROUP}: ${area}' area..."
     gist_url=$( (
-    echo "# ${wg}: ${area} Contributions"
-    mapfile -t repos <<< "$(echo "${TOC_JSON}" | jq -r --arg wg_name "${wg}" --arg area "${area}" '.[] | select(.name == $wg_name) | .areas[] | select(.name == $area) | .repositories[]')"
+    echo "# ${WORKING_GROUP}: ${area} Contributions"
+    declare -a repos
+    repos=($(echo "${TOC_JSON}" | jq -r --arg wg_name "${WORKING_GROUP}" --arg area "${area}" '.[] | select(.name == $wg_name) | .areas[] | select(.name == $area) | .repositories[]'))
     echo "### PRs Commented on/Reviewed:"
     for repo in "${repos[@]}"; do
       find_prs_for_repo "${USERNAME}" "${repo}"
@@ -105,6 +117,6 @@ find_issues_for_repo() {
         find_commits_for_repo "${USERNAME}" "${repo}" 
     done | sort -u
     echo
-    ) | gh gist create -d "${USERNAME}'s Possible Contributions to ${wg} - ${area}" -f "${wg} - ${area}.md" - 2>/dev/null)
+    ) | gh gist create -d "${USERNAME}'s Possible Contributions to ${WORKING_GROUP} - ${area}" -f "${wg} - ${area}.md" - 2>/dev/null)
     echo "Contributions have been summarized at ${gist_url}"
   done
