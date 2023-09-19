@@ -20,8 +20,9 @@ We are maintaining code that no one is using and has a viable alternative.
 ## Proposal
 
 - Today - Mark [metrics-discovery-release](https://github.com/cloudfoundry/metrics-discovery-release) repo as deprecated
-- In One Month - Remove metrics agent from cf-deployment
-- Accept a PR to move metrics-agent to an ops file in CF-deployment, if a community member needs Metrics Agent and would like a ops file.
+- In One Month
+   * Accept a PR to move metrics-agent to an ops file in CF-deployment, if a community member needs Metrics Agent and would like a ops file.
+   * Remove metrics agent from cf-deployment
 - In Three Months - Stop cutting new releases of metrics agent
 
 
