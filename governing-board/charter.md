@@ -2,7 +2,7 @@ The Cloud Foundry Foundation Charter
 
 The Linux Foundation
 
-Effective May 1, 2023
+Effective September 15, 2023
 
 
 #### 1)	Mission and Scope of the Cloud Foundry Foundation.  
@@ -221,8 +221,10 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 -   f)  TOC Member Resignations or Removal
 
     -   i) In the case where a TOC member resigns or is removed from the TOC by the Governing Board, the remaining members of the TOC will determine whether the vacant seat either will remain vacant until the next annual election cycle, or will be filled by using the results of the latest election.
-    
-    -   ii) When making this decision, the remaining members of the TOC should consider whether too much time has elapsed since the latest election cycle for its results to represent the community adequately.
+
+    -   ii) In the case where a TOC member was an employee of a governmental agency at the time of their election to the TOC, that governmental agency may appoint a similarly qualified replacement TOC member to fulfill the remainder of that TOC member’s term if that member changes employers or moves to a different internal role. This replacement member must meet community qualifications for a TOC nomination and/or receive an exemption from the TOC to fulfill the remainder of that term. If the appointed replacement member does not fulfill their TOC obligations, the TOC majority can request the Governing Board to remove that person, and as such any governmental agency interests in that seat are removed.
+
+    -   iii) When making this decision, the remaining members of the TOC should consider whether too much time has elapsed since the latest election cycle for its results to represent the community adequately.
 
 ####    8)	Voting
 
