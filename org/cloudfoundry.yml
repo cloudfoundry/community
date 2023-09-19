@@ -312,6 +312,7 @@ orgs:
         description: Java release for OpenJDK for use with `bosh vendor-package`
         default_branch: main
         has_projects: false
+        archived: true
       bosh-package-nginx-release:
         description: Nginx release for use with `bosh vendor-package`
         default_branch: main
