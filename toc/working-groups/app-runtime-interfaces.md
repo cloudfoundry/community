@@ -414,6 +414,8 @@ areas:
     github: vkalapov
   - name: Nikolay Valchev
     github: nvvalchev
+  - name: Vasil Bogdanov
+    github: VRBogdanov
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
