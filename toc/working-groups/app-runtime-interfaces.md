@@ -408,8 +408,6 @@ areas:
     github: ddonchev
   - name: Ikasarov
     github: ikasarov
-  - name: Abil Dermendzhiev
-    github: abdermendz
   - name: Velizar Kalapov
     github: vkalapov
   - name: Nikolay Valchev
