@@ -3,8 +3,8 @@
 - Name: TOC Can Stand in for Working Group Leads
 - Start Date: 2023-08-28
 - Author(s): Amelia Downs
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/676
+- Status: Accepted
+- RFC Pull Request: [community#676](https://github.com/cloudfoundry/community/pull/676)
 
 
 ## Summary
