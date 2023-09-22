@@ -313,13 +313,13 @@ areas:
     github: dsabeti
   - name: Maximilian Moehl
     github: maxmoehl
+  - name: Marc Paquette
+    github: MarcPaquette
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
   - name: Vladimir Savchenko
     github: vlast3k
-  - name: Marc Paquette
-    github: MarcPaquette
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
