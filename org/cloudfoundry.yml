@@ -2473,3 +2473,20 @@ orgs:
           cli-ci: admin
           cli-plugin-repo: admin
           cli: admin
+      temp-multiapps-admins:
+        description: "Temporary team for managing MultiApps secrets until we have a permanent plan."
+        maintainers:
+          - IvanBorislavovDimitrov
+          - theghost5800
+          - boyan-velinov
+          - radito3
+          - ikasarov
+          - vkalapov
+          - VRBogdanov
+        members: []
+        privacy: closed
+        repos:
+          multiapps: admin
+          multiapps-controller: admin
+          multiapps-cli-plugin: admin
+
