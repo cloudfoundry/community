@@ -123,6 +123,8 @@ areas:
   reviewers:
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
+  - name: Klaus Kiefer
+    github: klaus-sap
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
