@@ -229,9 +229,9 @@ areas:
     github: winkingturtle-vmw
   - name: Rebecca Roberts
     github: rroberts2222
-  reviewers:
   - name: Jovan Kostovski
     github: chombium
+  reviewers:
   - name: Felix Hambrecht
     github: fhambrec
   repositories:
