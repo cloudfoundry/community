@@ -120,9 +120,9 @@ areas:
     github: torsten-sap
   - name: Alicia Yingling
     github: Tallicia
-  reviewers:
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
+  reviewers:
   - name: Klaus Kiefer
     github: klaus-sap
   repositories:
