@@ -148,9 +148,9 @@ areas:
     github: kimago
   - name: Ryan Wittrup
     github: ryanwittrup
-  reviewers:
   - name: Kevin Markwardt
     github: kmarkwardt-vmware
+  reviewers:
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
