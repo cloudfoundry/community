@@ -1434,6 +1434,7 @@ orgs:
         description: where everything else lives
         has_projects: true
         private: true
+        archived: true
       identity-tools:
         description: 'Cloud Foundry - the open platform as a service project '
         has_projects: true
