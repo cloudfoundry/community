@@ -779,9 +779,11 @@ orgs:
         archived: true
         has_projects: true
       cflinuxfs3:
+        archived: true
         default_branch: main
         has_projects: true
       cflinuxfs3-release:
+        archived: true
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 18.04 LTS
         has_projects: true
