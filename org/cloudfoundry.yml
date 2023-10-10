@@ -550,6 +550,7 @@ orgs:
         default_branch: main
         has_projects: true
       cf-drain-cli:
+        archived: true
         allow_merge_commit: false
         default_branch: main
         description: CF CLI plugin to create syslog drains

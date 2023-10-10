@@ -236,7 +236,6 @@ areas:
     github: fhambrec
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
-  - cloudfoundry/cf-drain-cli
   - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
   - cloudfoundry/dropsonde-protocol-js
