@@ -37,7 +37,7 @@ document, both Lead roles are sponsored by the TOC.
 
 * Any current approvers for the affected Working Group MAY 'vote' by commenting
   "+1" or "-1" on the PR. More than 75% of the votes from current Working Group
-  approvers MUST vote for the promotion in order for the PR to be merged.
+  approvers MUST vote "+1" for the promotion in order for the PR to be merged.
 
 ### Revoking Lead Role
 * A Lead MAY revoke their own role by submiting and merging their own PR to
