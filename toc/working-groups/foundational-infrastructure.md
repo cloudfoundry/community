@@ -150,7 +150,7 @@ areas:
     github: ryanwittrup
   - name: Kevin Markwardt
     github: kmarkwardt-vmware
-  reviewers:
+  reviewers: []
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
