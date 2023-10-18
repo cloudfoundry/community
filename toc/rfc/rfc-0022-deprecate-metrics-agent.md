@@ -3,8 +3,8 @@
 - Name: Deprecated Metrics Agent
 - Start Date: 2023-09-12
 - Author(s): @mkocher @rroberts2222
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#682](https://github.com/cloudfoundry/community/pull/682)
 
 ## Summary
 
