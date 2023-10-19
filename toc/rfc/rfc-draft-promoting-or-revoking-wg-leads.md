@@ -13,7 +13,7 @@ Working Groups.
 
 ## Problem
 
-Currently there is no defined process for how to promoting or remove Tech Leads
+Currently there is no defined process for how to promote or remove Tech Leads
 or Execution Leads for Working Groups. This process should be defined.
 
 ## Proposal
