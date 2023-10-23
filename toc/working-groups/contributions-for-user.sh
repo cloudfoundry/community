@@ -100,6 +100,7 @@ find_issues_for_repo() {
   areas=($(echo "${TOC_JSON}" | jq --arg wg_name "${WORKING_GROUP}" -r '.[] | select(.name == $wg_name) | .areas[].name'))
   for area in "${areas[@]}"; do
     echo "Gathering contributions for the '${WORKING_GROUP}: ${area}' area..."
+    uri_safe_file=$(echo "${wg} - ${area}.md" | jq  -sRr '@uri')
     gist_url=$( (
     echo "# ${WORKING_GROUP}: ${area} Contributions"
     declare -a repos
@@ -117,6 +118,6 @@ find_issues_for_repo() {
         find_commits_for_repo "${USERNAME}" "${repo}" 
     done | sort -u
     echo
-    ) | gh gist create -d "${USERNAME}'s Possible Contributions to ${WORKING_GROUP} - ${area}" -f "${wg} - ${area}.md" - 2>/dev/null)
+    ) | gh gist create -d "${USERNAME}'s Possible Contributions to ${WORKING_GROUP} - ${area}" -f "${uri_safe_file}" - 2>/dev/null)
     echo "Contributions have been summarized at ${gist_url}"
   done
