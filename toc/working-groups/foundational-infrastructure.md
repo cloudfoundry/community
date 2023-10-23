@@ -132,6 +132,7 @@ areas:
   - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
+  - cloudfoundry/go-uaa
   - cloudfoundry/uaa-cli
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
