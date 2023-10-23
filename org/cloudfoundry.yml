@@ -1355,6 +1355,9 @@ orgs:
         description: SOCKS5 server in Golang
         has_issues: false
         has_projects: true
+      go-uaa:
+        description: API for UAA written in Go
+        has_projects: true
       gofileutils:
         archived: true
         description: A collection of go packages to simplify working with files.
