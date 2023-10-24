@@ -50,7 +50,7 @@ Without being too prescriptive, the desired outcome would be some sort of snapsh
 
 ### App Runtime Deployments WG
 
-Once initial confidence has been gained by validating the FIPS stemcell against the BOSH director it is time to validate against cf-deployment. Just like with the BOSH director, an automation should be set up to run the CATS test suite against a Cloud Foundry environment which uses the FIPS stemcell from the private foundation bucket. Issues discovered by this validation should be distributed to the related CF components. It is their responsibility to address them. If CF components want to have faster feedback on FIPS issues they can add their own validation.
+Once initial confidence has been gained by validating the FIPS stemcell against the BOSH director it is time to validate against cf-deployment. Just like with the BOSH director, an automation should be set up to run the CATS test suite against a Cloud Foundry environment which uses the FIPS stemcell from the private foundation bucket. Currently, cf-deployment is validated on AWS and GCP. The WG can decide whether they execute the FIPS validation on AWS or/and GCP. Validation on Azure is out of scope for now to reduce efforts and costs. If there is reasons to have validation on Azure this should be discussed with the App Runtime Deployments WG. Issues discovered by the validation should be distributed to the related CF components. It is their responsibility to address them. If CF components want to have faster feedback on FIPS issues they can add their own validation.
 
 
 
