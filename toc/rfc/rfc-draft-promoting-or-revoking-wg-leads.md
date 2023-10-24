@@ -32,7 +32,7 @@ document, both Lead roles are sponsored by the TOC.
 
 * The TOC MUST approve the PR before it can be merged.
 
-* At least one current Lead for the affected Working Group MUST approve the PR
+* At least one current Lead for the affected Working Group SHOULD approve the PR
   before it can be merged.
 
 * Any current approvers for the affected Working Group MAY 'vote' by commenting
