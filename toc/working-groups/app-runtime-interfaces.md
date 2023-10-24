@@ -425,6 +425,8 @@ areas:
   approvers:
   - name: David Stevenson
     github: dsboulder
+  - name: Evan Farrar
+    github: evanfarrar
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
