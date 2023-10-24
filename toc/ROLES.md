@@ -300,6 +300,12 @@ approver in an OWNERS file:
    - A technical discussion is a thread on slack or in GitHub that requires knowledge of the codebase. The following are examples of technical discussions that will be considered: resolving interrupts in slack, or commenting on proposals. Technical discussions are counted per-thread, not per-message.
    - The WG lead has final say if an issue, PR, or discussion is considered substantial.
 
+The [contributions-for-user.sh script](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/contributions-for-user.sh) can be used to help gather information from GitHub related to Issues, PRs, and code contributions. It requires the `gh` CLI, and for users to authenticate with credentials allowing Gist creation:
+
+```
+./working-groups/contributions-for-user.sh <github username> <working group name>
+```
+
 - Nominated by a WG lead (with no objections from other leads).
 
 ### Responsibilities and privileges
