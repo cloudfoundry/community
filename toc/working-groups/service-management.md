@@ -59,6 +59,7 @@ areas:
   - cloudfoundry/upgrade-all-services-cli-plugin
   - cloudfoundry/terraform-provider-csbpg
   - cloudfoundry/terraform-provider-csbmysql
+  - cloudfoundry/terraform-provider-csbsqlserver
 - name: OSB API
   approvers:
   - name: Rodrigo Sampaio Vaz
