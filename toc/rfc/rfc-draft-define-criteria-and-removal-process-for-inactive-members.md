@@ -29,3 +29,6 @@ The period to analyze should be the last 12 months and following criteria should
 ### Remove the membership to the Cloud Foundry Github Organization
 
 If the inactivity criteria are fulfilled for a member they should be removed from the Cloud Foundry Github organization. Any automation, approver or TOC member may submit a PR to remove the member from the Cloud Foundry Github organization. The person whose membership is being removed must be given two weeks to refute the removal. The working group lead to which the member belongs or TOC in case the member doesn't belong to any working group must make the final decision to remove the membership by merging the PR.
+
+#### Initial cleanup
+As described in the problem section of this RFC there are many inactive members in the Cloud Foundry Github organization. Therefore, for the initial cleanup we should have an exception to create a bulk PR with all inactive members. Having PRs for every user will be very high effort because there are several hundreds of inactive users currently.
