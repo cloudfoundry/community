@@ -3,8 +3,8 @@
 - Name: CF components support FIPS certified stemcells
 - Start Date: 2023-10-17
 - Author(s): @beyhan
-- Status: Draft
-- RFC Pull Request: TBD
+- Status: Accepted
+- RFC Pull Request: [community#705](https://github.com/cloudfoundry/community/pull/705)
 
 
 ## Summary
