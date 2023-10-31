@@ -3,8 +3,8 @@
 - Name: Promoting and Revoking Working Group Leads
 - Start Date: 2023-10-11
 - Author(s): @ameowlia
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/704
+- Status: Accepted
+- RFC Pull Request: [community#704](https://github.com/cloudfoundry/community/pull/704)
 
 ## Summary
 
