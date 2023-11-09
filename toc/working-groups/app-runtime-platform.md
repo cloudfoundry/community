@@ -256,6 +256,7 @@ areas:
   - cloudfoundry/loggregator-tools
   - cloudfoundry/metrics-discovery-release
   - cloudfoundry/noaa
+  - cloudfoundry/otel-collector-release
   - cloudfoundry/service-metrics-release
   - cloudfoundry/sonde-go
   - cloudfoundry/statsd-injector-release
