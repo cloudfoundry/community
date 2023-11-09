@@ -291,6 +291,8 @@ areas:
     github: svkrieger
   - name: Tim Downey
     github: tcdowney
+  - name: Katharina Przybill
+    github: kathap
   reviewers:
   - name: Al Berez
     github: a-b
@@ -298,8 +300,6 @@ areas:
     github: xandroc
   - name: David Alvarado
     github: dalvarado
-  - name: Katharina Przybill
-    github: kathap
   - name: Evan Farrar
     github: evanfarrar
   - name: Daniel Felipe Ochoa
