@@ -1855,6 +1855,9 @@ orgs:
         description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18
           in Vancouver '
         has_projects: true
+      otel-collector-release:
+        description: BOSH release for the OpenTelemetry Collector
+        has_projects: false
       overview-broker:
         allow_merge_commit: false
         description: A service broker that provides an overview of its service instances
