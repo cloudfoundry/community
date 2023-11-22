@@ -3,8 +3,8 @@
 - Name: Define Criteria and Process to Remove Inactive Cloud Foundry Github Members
 - Start Date: 2023-10-25
 - Author(s): @beyhan
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#707](https://github.com/cloudfoundry/community/pull/707)
 
 ## Summary
 
