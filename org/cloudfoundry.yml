@@ -312,6 +312,7 @@ orgs:
         description: Java release for OpenJDK for use with `bosh vendor-package`
         default_branch: main
         has_projects: false
+        archived: true
       bosh-package-nginx-release:
         description: Nginx release for use with `bosh vendor-package`
         default_branch: main
@@ -549,6 +550,7 @@ orgs:
         default_branch: main
         has_projects: true
       cf-drain-cli:
+        archived: true
         allow_merge_commit: false
         default_branch: main
         description: CF CLI plugin to create syslog drains
@@ -777,9 +779,11 @@ orgs:
         archived: true
         has_projects: true
       cflinuxfs3:
+        archived: true
         default_branch: main
         has_projects: true
       cflinuxfs3-release:
+        archived: true
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 18.04 LTS
         has_projects: true
@@ -1351,6 +1355,9 @@ orgs:
         description: SOCKS5 server in Golang
         has_issues: false
         has_projects: true
+      go-uaa:
+        description: API for UAA written in Go
+        has_projects: true
       gofileutils:
         archived: true
         description: A collection of go packages to simplify working with files.
@@ -1433,6 +1440,7 @@ orgs:
         description: where everything else lives
         has_projects: true
         private: true
+        archived: true
       identity-tools:
         description: 'Cloud Foundry - the open platform as a service project '
         has_projects: true
@@ -1847,6 +1855,9 @@ orgs:
         description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18
           in Vancouver '
         has_projects: true
+      otel-collector-release:
+        description: BOSH release for the OpenTelemetry Collector
+        has_projects: false
       overview-broker:
         allow_merge_commit: false
         description: A service broker that provides an overview of its service instances
@@ -1900,7 +1911,7 @@ orgs:
         has_projects: true
         private: true
       postgres-release:
-        default_branch: develop
+        default_branch: main
         description: BOSH release for PostgreSQL
         has_projects: true
       procfile-cnb:
@@ -2141,6 +2152,7 @@ orgs:
         has_projects: true
         private: true
       silk:
+        archived: true
         allow_merge_commit: false
         default_branch: main
         description: a network fabric for containers.  inspired by flannel, designed
@@ -2264,6 +2276,7 @@ orgs:
         default_branch: main
         has_projects: true
       systemcerts:
+        archived: true
         allow_merge_commit: false
         has_issues: false
         has_projects: true
@@ -2272,6 +2285,13 @@ orgs:
         allow_rebase_merge: false
         default_branch: main
         description: Terraform provider to manage Cloud Service Broker bindings for MySQL
+        has_projects: true
+        has_wiki: false
+      terraform-provider-csbsqlserver:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for SQL Server
         has_projects: true
         has_wiki: false
       terraform-provider-csbpg:
@@ -2462,6 +2482,7 @@ orgs:
           - a-b
           - gururajsh
           - reedr3
+          - ccjaimes
         members: []
         privacy: closed
         repos:
@@ -2469,3 +2490,20 @@ orgs:
           cli-ci: admin
           cli-plugin-repo: admin
           cli: admin
+      temp-multiapps-admins:
+        description: "Temporary team for managing MultiApps secrets until we have a permanent plan."
+        maintainers:
+          - IvanBorislavovDimitrov
+          - theghost5800
+          - boyan-velinov
+          - radito3
+          - ikasarov
+          - vkalapov
+          - VRBogdanov
+        members: []
+        privacy: closed
+        repos:
+          multiapps: admin
+          multiapps-controller: admin
+          multiapps-cli-plugin: admin
+

@@ -132,38 +132,11 @@ areas:
   - cloudfoundry/route-emitter
   - cloudfoundry/runtime-credentials
   - cloudfoundry/sample-http-app
-  - cloudfoundry/systemcerts
   - cloudfoundry/tlsconfig
   - cloudfoundry/vizzini
   - cloudfoundry/volman
   - cloudfoundry/workpool
   - cloudfoundry/wg-app-platform-runtime-ci
-
-- name: Docs
-  approvers:
-  - name: Max Hufnagel
-    github: animatedmax
-  - name: Chloe Hollingsworth
-    github: cshollingsworth
-  - name: Anita Flegg
-    github: anita-flegg
-  - name: Samia Nneji
-    github: snneji
-  - name: Ben Klein
-    github: fifthposition
-  - name: Ajayan Borys
-    github: HenryBorys
-  - name: Bob Graczyk
-    github: bobbygeeze
-  - name: Kelly OHara
-    github: kohara88
-  - name: Jason Andrew
-    github: VMWare-JasonAndrew 
-  repositories:
-  - cloudfoundry/docs-book-cloudfoundry
-  - cloudfoundry/docs-cf-admin
-  - cloudfoundry/docs-loggregator
-  - cloudfoundry/docs-running-cf
 
 - name: Garden Containers
   approvers:
@@ -256,14 +229,13 @@ areas:
     github: winkingturtle-vmw
   - name: Rebecca Roberts
     github: rroberts2222
-  reviewers:
   - name: Jovan Kostovski
     github: chombium
+  reviewers:
   - name: Felix Hambrecht
     github: fhambrec
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
-  - cloudfoundry/cf-drain-cli
   - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
   - cloudfoundry/dropsonde-protocol-js
@@ -284,6 +256,7 @@ areas:
   - cloudfoundry/loggregator-tools
   - cloudfoundry/metrics-discovery-release
   - cloudfoundry/noaa
+  - cloudfoundry/otel-collector-release
   - cloudfoundry/service-metrics-release
   - cloudfoundry/sonde-go
   - cloudfoundry/statsd-injector-release
@@ -340,13 +313,13 @@ areas:
     github: dsabeti
   - name: Maximilian Moehl
     github: maxmoehl
+  - name: Marc Paquette
+    github: MarcPaquette
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
   - name: Vladimir Savchenko
     github: vlast3k
-  - name: Marc Paquette
-    github: MarcPaquette
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
@@ -369,7 +342,6 @@ areas:
   - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
   - cloudfoundry/routing-team-checklists
-  - cloudfoundry/silk
   - cloudfoundry/silk-release
 
 - name: Networking-Extensions

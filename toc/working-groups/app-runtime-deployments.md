@@ -45,6 +45,9 @@ bots:
   github: ard-wg-gitbot
 areas:
 - name: CF Deployment
+  reviewers:
+  - github: dimivel
+    name: Dimitar Velinov
   approvers:
   - github: davewalter
     name: Dave Walter

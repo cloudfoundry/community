@@ -30,11 +30,11 @@ Bring the ease and simplicity of the Cloud Foundry developer experience to Kuber
 ```yaml
 name: CF on K8s
 execution_leads:
-- name: Giuseppe Capizzi
-  github: gcapizzi
+- name: Andrew Wittrock
+  github: Birdrock
 technical_leads:
-- name: Giuseppe Capizzi
-  github: gcapizzi
+- name: Dave Walter
+  github: davewalter
 - name: Georgi Sabev
   github: georgethebeatle
 bots:
@@ -47,8 +47,6 @@ config:
 areas:
 - name: Korifi
   approvers:
-  - name: Andrew Wittrock
-    github: Birdrock
   - name: Andrew Costa
     github: acosta11
   - name: Ashwin Krishna
@@ -57,8 +55,8 @@ areas:
     github: clintyoshimura
   - name: Danail Branekov
     github: danail-branekov
-  - name: Dave Walter
-    github: davewalter
+  - name: Giuseppe Capizzi
+    github: gcapizzi
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Kieron Browne

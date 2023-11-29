@@ -205,8 +205,6 @@ areas:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   repositories:
-  - cloudfoundry/cflinuxfs3
-  - cloudfoundry/cflinuxfs3-release
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
   - cloudfoundry/cflinuxfs4-release
@@ -291,6 +289,10 @@ areas:
     github: sethboyles
   - name: Sven Krieger
     github: svkrieger
+  - name: Tim Downey
+    github: tcdowney
+  - name: Katharina Przybill
+    github: kathap
   reviewers:
   - name: Al Berez
     github: a-b
@@ -298,8 +300,6 @@ areas:
     github: xandroc
   - name: David Alvarado
     github: dalvarado
-  - name: Katharina Przybill
-    github: kathap
   - name: Evan Farrar
     github: evanfarrar
   - name: Daniel Felipe Ochoa
@@ -308,6 +308,14 @@ areas:
     github: gururajsh
   - name: Jochen Ehret
     github: jochenehret
+  - name: Ryker Reed
+    github: reedr3
+  - name: George Gelashvili
+    github: pivotalgeorge
+  - name: Ben Fuller
+    github: Benjamintf1
+  - name: Cristhian Peña
+    github: ccjaimes
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
@@ -339,12 +347,12 @@ areas:
   - name: Juan Diego González
     github: jdgonzaleza
   - name: Ryker Reed
-    github: reedr3
+    github: reedr3 
+  - name: Cristhian
+    github: ccjaimes
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
-  - name: Christhian
-    github: ccjaimes
   - name: Pete Levine
     github: PeteLevineA
   - name: Michael Oleske
@@ -365,33 +373,7 @@ areas:
   - cloudfoundry/stack-auditor
   - cloudfoundry/ykk
   - cloudfoundry/app-runtime-interfaces-infrastructure
-
-- name: Docs
-  approvers:
-  - name: Chloe Hollingsworth
-    github: cshollingsworth
-  - name: Anita Flegg
-    github: anita-flegg
-  - name: Samia Nneji
-    github: snneji
-  - name: Ben Klein
-    github: fifthposition
-  - name: Ajayan Borys
-    github: HenryBorys
-  - name: Bob Graczyk
-    github: bobbygeeze
-  - name: Kelly OHara
-    github: kohara88
-  - name: Jason Andrew
-    github: VMWare-JasonAndrew 
-  repositories:
-  - cloudfoundry/docs-buildpacks
-  - cloudfoundry/docs-cf-cli
-  - cloudfoundry/docs-cloudfoundry-concepts
-  - cloudfoundry/docs-dev-guide
-  - cloudfoundry/docs-services
-  - cloudfoundry/docs-dotnet-core-tutorial
-  - cloudfoundry/app-runtime-interfaces-infrastructure
+  - cloudfoundry/bosh-package-cf-cli-release
 
 - name: Java Tools
   approvers:
@@ -402,6 +384,8 @@ areas:
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne  
+  - name: Radoslav Tomov
+    github: radoslav-tomov
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
@@ -422,12 +406,12 @@ areas:
     github: ddonchev
   - name: Ikasarov
     github: ikasarov
-  - name: Abil Dermendzhiev
-    github: abdermendz
   - name: Velizar Kalapov
     github: vkalapov
   - name: Nikolay Valchev
     github: nvvalchev
+  - name: Vasil Bogdanov
+    github: VRBogdanov
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
@@ -445,6 +429,8 @@ areas:
     github: a-b
   - name: Ben Fuller
     github: Benjamintf1
+  - name: Evan Farrar
+    github: evanfarrar
   repositories:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications

@@ -56,30 +56,6 @@ bots:
 - name: bbr-ci
   github: bbr-ci
 areas:
-- name: Docs
-  approvers:
-  - name: Chloe Hollingsworth
-    github: cshollingsworth
-  - name: Max Hufnagel
-    github: animatedmax
-  - name: Anita Flegg
-    github: anita-flegg
-  - name: Samia Nneji
-    github: snneji
-  - name: Ben Klein
-    github: fifthposition
-  - name: Ajayan Borys
-    github: HenryBorys
-  - name: Bob Graczyk
-    github: bobbygeeze
-  - name: Kelly OHara
-    github: kohara88
-  - name: Jason Andrew
-    github: VMWare-JasonAndrew 
-  repositories:
-  - cloudfoundry/docs-bbr
-  - cloudfoundry/docs-credhub
-  - cloudfoundry/docs-uaa
 - name: Credential Management (Credhub)
   approvers:
   - name: Peter Chen
@@ -144,9 +120,11 @@ areas:
     github: torsten-sap
   - name: Alicia Yingling
     github: Tallicia
-  reviewers:
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
+  reviewers:
+  - name: Klaus Kiefer
+    github: klaus-sap
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
@@ -154,6 +132,7 @@ areas:
   - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
+  - cloudfoundry/go-uaa
   - cloudfoundry/uaa-cli
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
@@ -170,9 +149,9 @@ areas:
     github: kimago
   - name: Ryan Wittrup
     github: ryanwittrup
-  reviewers:
   - name: Kevin Markwardt
     github: kmarkwardt-vmware
+  reviewers: []
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
@@ -254,9 +233,9 @@ areas:
     github: ystros
   - name: Chris Selzo
     github: selzoc
-  reviewers:
   - name: Matthias Vach
     github: mvach
+  reviewers:
   - name: Ahmed Hassanin
     github: a-hassanin
   - name: Ansh Rupani
@@ -302,9 +281,7 @@ areas:
   - cloudfoundry/bosh-io-worker
   - cloudfoundry/bosh-linux-stemcell-builder
   - cloudfoundry/bosh-openstack-cpi-release
-  - cloudfoundry/bosh-package-cf-cli-release
   - cloudfoundry/bosh-package-golang-release
-  - cloudfoundry/bosh-package-java-release
   - cloudfoundry/bosh-package-nginx-release
   - cloudfoundry/bosh-package-python-release
   - cloudfoundry/bosh-package-ruby-release
