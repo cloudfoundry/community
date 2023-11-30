@@ -207,7 +207,7 @@ areas:
   - name: Chris Selzo
     github: selzoc
   repositories:
-  - cloudfoundry/concourse-infra-for-gke
+  - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
