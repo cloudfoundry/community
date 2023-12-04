@@ -347,7 +347,9 @@ areas:
   - name: Juan Diego González
     github: jdgonzaleza
   - name: Ryker Reed
-    github: reedr3 
+    github: reedr3
+  - name: Michael Oleske
+    github: moleske
   - name: Cristhian
     github: ccjaimes
   reviewers:
@@ -355,8 +357,6 @@ areas:
     github: pivotalgeorge
   - name: Pete Levine
     github: PeteLevineA
-  - name: Michael Oleske
-    github: moleske
   - name: Shwetha Guraraj
     github: gururajsh
   repositories:
