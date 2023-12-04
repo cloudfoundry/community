@@ -122,7 +122,6 @@ areas:
     github: Tallicia
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
-  reviewers:
   - name: Klaus Kiefer
     github: klaus-sap
   repositories:
