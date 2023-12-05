@@ -162,9 +162,8 @@ and removed from route pool".
 When the liveness healthchecks fail, it results in the following audit events:
 `audit.app.process.crash` and `audit.app.process.rescheduling`.
 
-Similarly, when AI readiness healthcheck succeeds a new application event should be emitted:
-`audit.app.process.ready`. And when AI readiness healthcheck fails a new event should be emitted:
-`audit.app.process.notready`.
+Similarly, when an AI readiness healthcheck succeeds an `audit.app.process.ready` event should be emitted.
+And when an AI readiness healthcheck fails an `audit.app.process.notready` event should be emitted.
 
 ### Open Questions
 * What metrics would be helpful for app devs and operators?
