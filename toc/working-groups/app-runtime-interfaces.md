@@ -99,6 +99,8 @@ areas:
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
+  - name: Kevin Ortega (IBM)
+    github: kevin-ortega
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
