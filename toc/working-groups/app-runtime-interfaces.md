@@ -352,6 +352,8 @@ areas:
     github: moleske
   - name: Cristhian
     github: ccjaimes
+  - name: George Blue
+    github: blgm
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
