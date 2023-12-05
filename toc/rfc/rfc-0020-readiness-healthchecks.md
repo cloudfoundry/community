@@ -157,7 +157,7 @@ to route pool". When AI readiness healthcheck fails a log line is printed to AI
 logs: "Container failed the readiness health check. Container marked not ready
 and removed from route pool".
 
-#### App Audit events
+#### App Audit Events
 
 When the liveness healthchecks fail, it results in the following audit events:
 `audit.app.process.crash` and `audit.app.process.rescheduling`.
