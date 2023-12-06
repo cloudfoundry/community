@@ -77,11 +77,11 @@ areas:
     github: dsabeti
   - name: Marc Paquette
     github: marcpaquette
+  - name: Vladimir Savchenko
+    github: vlast3k
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
-  - name: Vladimir Savchenko
-    github: vlast3k
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -315,11 +315,11 @@ areas:
     github: maxmoehl
   - name: Marc Paquette
     github: MarcPaquette
+  - name: Vladimir Savchenko
+    github: vlast3k
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
-  - name: Vladimir Savchenko
-    github: vlast3k
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
