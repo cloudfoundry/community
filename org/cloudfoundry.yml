@@ -2479,3 +2479,20 @@ orgs:
           haproxy-boshrelease: admin
           pcap-release: admin
           pcap: admin
+      temp-sm-csb-bots-admins:
+        description: "Temporary team to allow for bots driven dependency bumps until we implement another strategy"
+        maintainers:
+          - pivotal-marcela-campo
+        members:
+          - servicesenablement
+        privacy: closed
+        repos:
+          cloud-service-broker: admin
+          csb-brokerpak-azure: admin
+          csb-brokerpak-aws: admin
+          csb-brokerpak-gcp: admin
+          jdbctestapp: admin
+          upgrade-all-services-cli-plugin: admin
+          terraform-provider-csbpg: admin
+          terraform-provider-csbmysql: admin
+          terraform-provider-csbsqlserver: admin
