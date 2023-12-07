@@ -1860,6 +1860,7 @@ orgs:
           in Vancouver '
         has_projects: true
       otel-collector-release:
+        default_branch: main
         description: BOSH release for the OpenTelemetry Collector
         has_projects: false
       overview-broker:
