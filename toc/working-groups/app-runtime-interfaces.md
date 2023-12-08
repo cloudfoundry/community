@@ -354,6 +354,8 @@ areas:
     github: moleske
   - name: Cristhian
     github: ccjaimes
+  - name: Shwetha Gururaj
+    github: gururajsh
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
