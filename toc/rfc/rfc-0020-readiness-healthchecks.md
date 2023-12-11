@@ -159,8 +159,7 @@ and removed from route pool".
 
 #### App Audit Events
 
-When the liveness healthchecks fail, it results in the following audit events:
-`audit.app.process.crash` and `audit.app.process.rescheduling`.
+When a liveness healthcheck fails, it results in the `audit.app.process.crash` audit event.
 
 Similarly, when an AI readiness healthcheck succeeds an `audit.app.process.ready` event should be emitted.
 And when an AI readiness healthcheck fails an `audit.app.process.notready` event should be emitted.
