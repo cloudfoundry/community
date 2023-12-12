@@ -37,6 +37,8 @@ name: App Runtime Platform
 execution_leads:
 - name: Amelia Downs
   github: ameowlia
+- name: Eric Malm
+  github: emalm
 technical_leads:
 - name: Amelia Downs
   github: ameowlia
