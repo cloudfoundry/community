@@ -2,9 +2,12 @@ import requests
 import argparse
 import datetime
 import json
+import yaml
+import os
 
 from org_management import OrgGenerator
 
+_SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 class InactiveUserHandler:
     def __init__(
@@ -78,29 +81,43 @@ class InactiveUserHandler:
 
         return inactive_users
 
-    def create_github_deletion_issue(self, users_to_delete):
+    def _load_yaml_file(self, path):
+         with open(path, "r") as stream:
+             return yaml.safe_load(stream)
+
+    def _write_yaml_file(self, path, data):
+        with open(path, "w") as f:
+            yaml.dump(data, f)
+
+
+    def delete_inactive_contributors(self, users_to_delete):
+        path = f"{_SCRIPT_PATH}/contributors.yml"
+        contributors_yaml = self._load_yaml_file(path)
+        for user in users_to_delete:
+            updated_contributors = list(filter(lambda item: item!=user, contributors_yaml['contributors']))
+            contributors_yaml['contributors'] = updated_contributors
+        self._write_yaml_file(path, contributors_yaml)
+
+    def add_inactive_users_output(self, users_to_delete):
         rfc = 'https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0025-define-criteria-and-removal-process-for-inactive-members.md'
         rfc_revocation_rules = 'https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0025-define-criteria-and-removal-process-for-inactive-members.md#remove-the-membership-to-the-cloud-foundry-github-organization'
-        title = "Inactive users to be deleted"
         users_as_list = "\n".join(str(s) for s in users_to_delete)
-        body = f"Acording to the rolues for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n" \
-               f"{users_as_list}\nPer the [revocation policy in the RFC]({rfc_revocation_rules}), users have two weeks to refute this revocation, if they wish."
-        issue = {'title': title,
-                 'body': body}
-        repository_url = f"https://api.github.com/repos/{self.github_repo_owner}/{self.github_repo}/issues"
-        request = requests.post(repository_url, json.dumps(issue), headers=self._get_request_headrs())
-        return self._process_request_result(request)
+        out_value = f"Acording to the rolues for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n" \
+                    f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have two weeks to refute this revocation, if they wish."
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as env:
+            print(f'inactive_users_pr_description={out_value}', file=env)
+        print(f"inactive_users_value is {out_value}")
 
 
 if __name__ == "__main__":
-    one_years_before = (datetime.datetime.now() - datetime.timedelta(days=365)).strftime('%Y-%m-%dT%H:%M:%SZ')
+    one_year_back = (datetime.datetime.now() - datetime.timedelta(days=365)).strftime('%Y-%m-%dT%H:%M:%SZ')
 
     parser = argparse.ArgumentParser(description="Cloud Foundry Org Inactive User Handler")
     parser.add_argument("-goid", "--githuborgid", default="O_kgDOAAl8sg", help="Cloud Foundry Github org ID")
     parser.add_argument("-go", "--githuborg", default="cloudfoundry", help="Cloud Foundry Github org name")
     parser.add_argument("-gr", "--githubrepo", default="community", help="Cloud Foundry Github community repository")
     parser.add_argument("-gro", "--githubrepoowner", default="cloudfoundry", help="Cloud Foundry Github community repository owner")
-    parser.add_argument("-sd", "--sincedate", default=one_years_before, help="Since when the activity should be analyze. Date forma in '%Y-%m-%dT%H:%M:%SZ'")
+    parser.add_argument("-sd", "--sincedate", default=one_year_back, help="Since when the activity should be analyze. Date forma in '%Y-%m-%dT%H:%M:%SZ'")
     parser.add_argument("-gt", "--githubtoken", default="", help="Github API access token")
     args = parser.parse_args()
 
@@ -115,7 +132,9 @@ if __name__ == "__main__":
 
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
-    userHandler.create_github_deletion_issue(users_to_delete)
+    if users_to_delete:
+        userHandler.delete_inactive_contributors(users_to_delete)
+        userHandler.add_inactive_users_output(users_to_delete)
 
     inactive_users_with_role = community_members_with_role.intersection(inactive_users)
     print(f"Inactive users with role length is {len(inactive_users_with_role)} and users are {inactive_users_with_role}")
