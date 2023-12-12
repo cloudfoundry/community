@@ -252,6 +252,7 @@ areas:
   - cloudfoundry/bosh-azure-cpi-release
   - cloudfoundry/bosh-azure-storage-cli
   - cloudfoundry/bosh-ali-storage-cli
+  - cloudfoundry/bosh-apt-resources
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-bootloader-ci-envs

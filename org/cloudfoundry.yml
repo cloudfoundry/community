@@ -176,6 +176,10 @@ orgs:
         description: Go CLI for Alibaba storage
         has_projects: true
         default_branch: main
+      bosh-apt-resources:
+        description: Builds debian packages for public bosh apt repository
+        has_projects: false
+        has_wiki: false
       bosh-backup-and-restore:
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
