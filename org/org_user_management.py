@@ -99,7 +99,7 @@ class InactiveUserHandler:
         contributors_yaml["contributors"] = [c for c in contributors_yaml["contributors"] if c not in users_to_delete]
         self._write_yaml_file(path, contributors_yaml)
 
-    def add_inactive_users_output(self, users_to_delete):
+    def get_inactive_users_msg(self, users_to_delete):
         rfc = (
             "https://github.com/cloudfoundry/community/blob/main/toc/rfc/"
             "rfc-0025-define-criteria-and-removal-process-for-inactive-members.md"
@@ -109,14 +109,11 @@ class InactiveUserHandler:
             "criteria-and-removal-process-for-inactive-members.md#remove-the-membership-to-the-cloud-foundry-github-organization"
         )
         users_as_list = "\n".join(str(s) for s in users_to_delete)
-        out_value = (
+        return (
             f"According to the rolues for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
             f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have"
             " two weeks to refute this revocation, if they wish."
         )
-        with open(os.environ["GITHUB_OUTPUT"], "a") as env:
-            print(f"inactive_users_pr_description={out_value}", file=env)
-        print(f"inactive_users_value is {out_value}")
 
 
 if __name__ == "__main__":
@@ -129,6 +126,7 @@ if __name__ == "__main__":
     parser.add_argument("-gro", "--githubrepoowner", default="cloudfoundry", help="Cloud Foundry Github community repository owner")
     parser.add_argument("-sd", "--sincedate", default=one_year_back, help="Since when to analyze in format '%Y-%m-%dT%H:%M:%SZ'")
     parser.add_argument("-gt", "--githubtoken", default="", help="Github API access token")
+    parser.add_argument("-dr", "--dryrun", default=False, help="Dry run execution")
     args = parser.parse_args()
 
     print("Get information about community users")
@@ -144,9 +142,14 @@ if __name__ == "__main__":
 
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
-    if users_to_delete:
+    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete)
+    if args.dryrun:
+        print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
+        print(f"Following users will be deleted: {inactive_users}")
+    elif users_to_delete:
         userHandler.delete_inactive_contributors(users_to_delete)
-        userHandler.add_inactive_users_output(users_to_delete)
+        with open(os.environ["GITHUB_OUTPUT"], "a") as env:
+            print(f"inactive_users_pr_description={inactive_users_msg}", file=env)
 
     inactive_users_with_role = community_members_with_role.intersection(inactive_users)
     print(f"Inactive users with role length is {len(inactive_users_with_role)} and users are {inactive_users_with_role}")
