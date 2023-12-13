@@ -73,6 +73,11 @@ Limitations:
 - The branchprotector doesn't support wildcards for branch rules. I.e. every version branch gets its own rule.
 - The branchprotector doesn't delete unneeded branch protection rules e.g. when a version branch got deleted.
 
+### Inactive User Management
+Inactive users according to the criteria defined in
+[rfc-0025-define-criteria-and-removal-process-for-inactive-members](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0025-define-criteria-and-removal-process-for-inactive-members.md) are identified by an automation which opens a pull-request to delete those.
+
+
 ## Development
 
 Requires Python 3.9.
