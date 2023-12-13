@@ -2515,4 +2515,14 @@ orgs:
           multiapps: admin
           multiapps-controller: admin
           multiapps-cli-plugin: admin
-
+      temp-arp-networking-admins:
+        description: "Temporary team for managing GitHub integrations for automation/concourse."
+        maintainers:
+          - plowin
+          - domdom82
+        members: []
+        privacy: closed
+        repos:
+          haproxy-boshrelease: admin
+          pcap-release: admin
+          pcap: admin
