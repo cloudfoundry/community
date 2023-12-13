@@ -13,15 +13,11 @@ class InactiveUserHandler:
     def __init__(
         self,
         github_org: [str],
-        github_repo: [str],
-        github_repo_owner: [str],
         github_org_id: [str],
         activity_date: [str],
         github_token: [str],
     ):
         self.github_org = github_org
-        self.github_repo = github_repo
-        self.github_repo_owner = github_repo_owner
         self.github_org_id = github_org_id
         self.activity_date = activity_date
         self.github_token = github_token
@@ -122,8 +118,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Cloud Foundry Org Inactive User Handler")
     parser.add_argument("-goid", "--githuborgid", default="O_kgDOAAl8sg", help="Cloud Foundry Github org ID")
     parser.add_argument("-go", "--githuborg", default="cloudfoundry", help="Cloud Foundry Github org name")
-    parser.add_argument("-gr", "--githubrepo", default="community", help="Cloud Foundry Github community repository")
-    parser.add_argument("-gro", "--githubrepoowner", default="cloudfoundry", help="Cloud Foundry Github community repository owner")
     parser.add_argument("-sd", "--sincedate", default=one_year_back, help="Since when to analyze in format '%Y-%m-%dT%H:%M:%SZ'")
     parser.add_argument("-gt", "--githubtoken", default="", help="Github API access token")
     parser.add_argument("-dr", "--dryrun", default=False, help="Dry run execution")
@@ -135,9 +129,7 @@ if __name__ == "__main__":
     community_members_with_role = generator.get_community_members_with_role()
 
     print("Analyzing Cloud Foundry org user activity.")
-    userHandler = InactiveUserHandler(
-        args.githuborg, args.githubrepo, args.githubrepoowner, args.githuborgid, args.sincedate, args.githubtoken
-    )
+    userHandler = InactiveUserHandler(args.githuborg, args.githuborgid, args.sincedate, args.githubtoken)
     inactive_users = userHandler.get_inactive_users()
 
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
