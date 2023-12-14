@@ -95,7 +95,7 @@ class InactiveUserHandler:
         contributors_yaml["contributors"] = [c for c in contributors_yaml["contributors"] if c not in users_to_delete]
         self._write_yaml_file(path, contributors_yaml)
 
-    def get_inactive_users_msg(self, users_to_delete):
+    def get_inactive_users_msg(self, users_to_delete, tagusers):
         rfc = (
             "https://github.com/cloudfoundry/community/blob/main/toc/rfc/"
             "rfc-0025-define-criteria-and-removal-process-for-inactive-members.md"
@@ -104,12 +104,17 @@ class InactiveUserHandler:
             "https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0025-define-"
             "criteria-and-removal-process-for-inactive-members.md#remove-the-membership-to-the-cloud-foundry-github-organization"
         )
-        users_as_list = "\n".join(str(s) for s in users_to_delete)
+        user_tagging_prefix = "@" if tagusers else ""
+        users_as_list = "\n".join(str(user_tagging_prefix + s) for s in users_to_delete)
         return (
             f"According to the rolues for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
             f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have"
             " two weeks to refute this revocation, if they wish."
         )
+
+    @staticmethod
+    def _get_bool_env_var(env_var_name, default):
+        return os.getenv(env_var_name, default).lower() == "true"
 
 
 if __name__ == "__main__":
@@ -118,9 +123,22 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Cloud Foundry Org Inactive User Handler")
     parser.add_argument("-goid", "--githuborgid", default="O_kgDOAAl8sg", help="Cloud Foundry Github org ID")
     parser.add_argument("-go", "--githuborg", default="cloudfoundry", help="Cloud Foundry Github org name")
-    parser.add_argument("-sd", "--sincedate", default=one_year_back, help="Since when to analyze in format '%Y-%m-%dT%H:%M:%SZ'")
-    parser.add_argument("-gt", "--githubtoken", default="", help="Github API access token")
-    parser.add_argument("-dr", "--dryrun", default=False, help="Dry run execution")
+    parser.add_argument("-sd", "--sincedate", default=one_year_back, help="Since when to analyze in format 'Y-m-dTH:M:SZ'")
+    parser.add_argument(
+        "-gt", "--githubtoken", default=os.environ.get("GH_TOKEN"), help="Github API access token. Supported also as env var 'GH_TOKEN'"
+    )
+    parser.add_argument(
+        "-dr",
+        "--dryrun",
+        default=InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"),
+        help="Dry run execution. Supported also as env var 'INACTIVE_USER_MANAGEMENT_DRY_RUN'",
+    )
+    parser.add_argument(
+        "-tu",
+        "--tagusers",
+        default=InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "True"),
+        help="Tag users to be notified. Supported also as env var 'INACTIVE_USER_MANAGEMENT_TAG_USERS'",
+    )
     args = parser.parse_args()
 
     print("Get information about community users")
@@ -134,7 +152,7 @@ if __name__ == "__main__":
 
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
-    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete)
+    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, args.tagusers)
     if args.dryrun:
         print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
         print(f"Following users will be deleted: {inactive_users}")
