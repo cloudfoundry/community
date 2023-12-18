@@ -130,13 +130,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "-dr",
         "--dryrun",
-        default=InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"),
+        action="store_true",
         help="Dry run execution. Supported also as env var 'INACTIVE_USER_MANAGEMENT_DRY_RUN'",
     )
     parser.add_argument(
         "-tu",
         "--tagusers",
-        default=InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "True"),
+        action="store_true",
         help="Tag users to be notified. Supported also as env var 'INACTIVE_USER_MANAGEMENT_TAG_USERS'",
     )
     args = parser.parse_args()
@@ -152,8 +152,9 @@ if __name__ == "__main__":
 
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
-    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, args.tagusers)
-    if args.dryrun:
+    tagusers = args.tagusers or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "False")
+    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, tagusers)
+    if args.dryrun or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"):
         print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
         print(f"Following users will be deleted: {inactive_users}")
     elif users_to_delete:

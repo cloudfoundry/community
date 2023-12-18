@@ -3,6 +3,7 @@ name: 'Delete Inactive Users in Github Organization'
 on:
   schedule:
   - cron: '0 0 1 * *'
+  workflow_dispatch:
 
 jobs:
   org-config-generation-check:
