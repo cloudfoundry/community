@@ -3,6 +3,7 @@ import argparse
 import datetime
 import yaml
 import os
+import uuid
 
 from org_management import OrgGenerator
 
@@ -160,7 +161,9 @@ if __name__ == "__main__":
     elif users_to_delete:
         userHandler.delete_inactive_contributors(users_to_delete)
         with open(os.environ["GITHUB_OUTPUT"], "a") as env:
-            print(f"inactive_users_pr_description={inactive_users_msg}", file=env)
+            separator = uuid.uuid1()
+            step_output_name = "inactive_users_pr_description"
+            print(f"{step_output_name}<<{separator}\n{inactive_users_msg}\n{separator}", file=env)
 
     inactive_users_with_role = community_members_with_role.intersection(inactive_users)
     print(f"Inactive users with role length is {len(inactive_users_with_role)} and users are {inactive_users_with_role}")
