@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "test-add-inactive-user-removal-automation"
+      - "add-inactive-user-removal-automation"
 
 jobs:
   org-config-generation-check:
