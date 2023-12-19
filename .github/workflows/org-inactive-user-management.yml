@@ -4,6 +4,9 @@ on:
   schedule:
   - cron: '0 0 1 * *'
   workflow_dispatch:
+  push:
+    branches:
+      - "test-add-inactive-user-removal-automation"
 
 jobs:
   org-config-generation-check:
