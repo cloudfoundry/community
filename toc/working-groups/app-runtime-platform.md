@@ -270,6 +270,8 @@ areas:
   approvers:
   - name: Jeanette Booher
     github: jbooherl
+  - name: Pranay Raj
+    github: rpranay1
   - name: Hovhannes Manukyan
     github: hmanukyanVMw
   - name: Gevorg Gevorgyan
