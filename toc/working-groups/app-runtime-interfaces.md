@@ -416,6 +416,8 @@ areas:
     github: nvvalchev
   - name: Vasil Bogdanov
     github: VRBogdanov
+  - name: Yavor Uzunov
+    github: Yavor16
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
