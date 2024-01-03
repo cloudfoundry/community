@@ -667,6 +667,10 @@ orgs:
       cf-performance-tests:
         default_branch: main
         has_projects: true
+      cf-performance-tests-release:
+        description: BOSH errand for running cf-performance-tests
+        default_branch: main
+        has_projects: true
       cf-performance-tests-pipeline:
         default_branch: main
         has_projects: true
