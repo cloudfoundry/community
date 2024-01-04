@@ -71,8 +71,6 @@ areas:
 
 - name: Buildpacks Docs
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Victoria Campbell
@@ -83,8 +81,8 @@ areas:
 
 - name: Buildpacks Go
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
@@ -144,8 +142,8 @@ areas:
 
 - name: Buildpacks Node.js
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Tim Hitchener
     github: thitch97
   - name: Victoria Campbell
@@ -188,8 +186,8 @@ areas:
 
 - name: Buildpacks Ruby
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Sophie Wigmore
     github: sophiewigmore
   - name: Rob Dimsdale-Zucker
@@ -214,8 +212,8 @@ areas:
 
 - name: Buildpacks Tooling
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Sophie Wigmore
@@ -237,8 +235,6 @@ areas:
 
 - name: Buildpacks Utilities
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
   - name: Arjun Sreedharan
     github: arjun024
   - name: Daniel Mikusa
