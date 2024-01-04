@@ -328,6 +328,7 @@ areas:
   - cloudfoundry/capi-env-pool
   - cloudfoundry/capi-team-checklists
   - cloudfoundry/cf-performance-tests
+  - cloudfoundry/cf-performance-tests-release
   - cloudfoundry/cf-performance-tests-pipeline
   - cloudfoundry/tps
   - cloudfoundry/cc-uploader
