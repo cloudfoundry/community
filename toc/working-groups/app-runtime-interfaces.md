@@ -63,6 +63,8 @@ areas:
     github: salzmannsusan
   - name: Sumit Kulhadia
     github: kulhadia
+  - name: Josua Geiger
+    github: geigerj0
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
