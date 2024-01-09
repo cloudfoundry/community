@@ -272,6 +272,44 @@ areas:
   approvers:
   - name: Jeanette Booher
     github: jbooherl
+  - name: Aditya Choudhary
+    github: aditya267vmware
+  - name: Chaitanya Krishna Mullangi
+    github: chaitanyamullangi
+  - name: Dibyajyoti Mohapatra
+    github: dibya1947
+  - name: Kanika Bathla
+    github: kabathla
+  - name: Karthik Seshadri
+    github: karthikseshadri
+  - name: Mervin Nirmal John M W
+    github: jmervinnirma
+  - name: Mohammed Thavaf A R
+    github: m-thavaf
+  - name: Mukesh Khicher
+    github: mukeshkhicher-br
+  - name: Nakul Ogale
+    github: nakulogale-cb
+  - name: Pranay Raj
+    github: rpranay1
+  - name: Puja Kumari
+    github: kpujadev
+  - name: Radhakrishnan Devarajan
+    github: radhavmwtnz
+  - name: Saloni Shah
+    github: saloni-sshah
+  - name: Sanand Dange
+    github: dsanand22
+  - name: Shefali Dubey
+    github: dubeyshefali
+  - name: Shrisha Chandrashekar
+    github: shrisha-c
+  - name: Siddartha Laxman Karibhimanvar
+    github: siddarthalk
+  - name: Srinivas Sunka
+    github: ssunka
+  - name: Sudharsan G V
+    github: sg038444
   - name: Hovhannes Manukyan
     github: hmanukyanVMw
   - name: Gevorg Gevorgyan
