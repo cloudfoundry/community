@@ -1000,10 +1000,6 @@ orgs:
       diego-checkman:
         has_projects: true
         private: true
-      diego-ci-pools:
-        allow_merge_commit: false
-        description: Lock pools for Diego CI
-        has_projects: true
       diego-design-notes:
         description: Diego Architectural Design Musings and Explications
         has_projects: true
@@ -1391,6 +1387,10 @@ orgs:
       healthcheck:
         description: Common healthcheck for buildpacks and docker
         has_issues: false
+        has_projects: true
+      healthchecker-release:
+        description: 'A BOSH release for vendoring the healtchecker BOSH package'
+        has_issues: true
         has_projects: true
       homebrew-tap:
         description: Cloud Foundry Homebrew packages
@@ -2023,6 +2023,10 @@ orgs:
       runtime-ci:
         default_branch: main
         has_projects: true
+      runtime-ci-pools:
+        description: Lock pools for the runtime CI
+        has_projects: true
+        has_issues: false
       runtime-credentials:
         has_projects: true
         private: true
