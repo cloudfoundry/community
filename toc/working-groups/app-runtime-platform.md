@@ -272,12 +272,6 @@ areas:
   approvers:
   - name: Jeanette Booher
     github: jbooherl
-  - name: Hovhannes Manukyan
-    github: hmanukyanVMw
-  - name: Gevorg Gevorgyan
-    github: gggevorgyan
-  - name: Meri Yeghiazaryan
-    github: myeghiazarya
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
