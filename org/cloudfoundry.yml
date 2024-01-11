@@ -1266,6 +1266,7 @@ orgs:
         private: true
       garden-windows-ci:
         has_projects: true
+        archived: true
       garden-windows-tools-release:
         has_projects: true
       git-release-notes:
