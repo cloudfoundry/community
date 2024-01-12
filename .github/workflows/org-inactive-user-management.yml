@@ -26,6 +26,7 @@ jobs:
           python community/org/org_user_management.py
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          INACTIVE_USER_MANAGEMENT_TAG_USERS: ${{ secrets.INACTIVE_USER_MANAGEMENT_TAG_USERS }}
       - name: Create Pull Request
         if: ${{ steps.uds.outputs.inactive_users_pr_description }}
         uses: peter-evans/create-pull-request@v4
