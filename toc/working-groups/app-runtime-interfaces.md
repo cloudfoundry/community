@@ -35,8 +35,8 @@ Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifi
 ```yaml
 name: App Runtime Interfaces
 execution_leads:
-- name: Greg Cobb
-  github: gerg
+- name: Stephan Merker
+  github: stephanme
 technical_leads:
 - name: Greg Cobb
   github: gerg
