@@ -67,7 +67,7 @@ areas:
     github: joshuatcasey
   - name: David O'Sullivan
     github: pivotal-david-osullivan
-  reviewers:
+  reviewers: []
 - name: Builders
   approvers:
   - name: Forest Eckhardt
@@ -248,14 +248,26 @@ areas:
     github: genevieve
 - name: Rust
   approvers:
-  reviewers:
-- name: Stacks
-  approvers:
   - name: Daniel Mikusa
     github: dmikusa
   - name: Forest Eckhardt
     github: ForestEckhardt
+  reviewers: []
+- name: Stacks
+  approvers:
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  - name: Brayan Henao
+    github: brayanhenao
   reviewers:
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Jerico Pena
+    github: jericop
+  - name: Frankie G-J
+    github: fg-j
 - name: Tooling
   approvers:
   - name: Forest Eckhardt

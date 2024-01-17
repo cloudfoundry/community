@@ -1,5 +1,6 @@
 contributors:
 - a-b
+- a-hassanin
 - a-peek4
 - a-shan
 - a-sudarsanan
@@ -20,6 +21,7 @@ contributors:
 - addytripathi
 - aditya267vmware
 - adobley
+- adrianhoelzl-sap
 - aduffeck
 - advpetc
 - aemengo
@@ -48,11 +50,11 @@ contributors:
 - animatedmax
 - ankeesler
 - anoopjb
-- anthonydahanne
-- antonina-kyoseva
 - ansd
 - ansergit
 - anshrupani
+- anthonydahanne
+- antonina-kyoseva
 - app-autoscaler-ci-bot
 - APShirley
 - aqan213
@@ -65,7 +67,6 @@ contributors:
 - atwoosnam
 - avade
 - awmartin
-- a-hassanin
 - bbr-ci
 - bclozel
 - beckermarc
@@ -97,6 +98,7 @@ contributors:
 - bsoroushian
 - bwinter
 - C-Otto
+- c0d1ngm0nk3y
 - cagiti
 - caijj
 - camilalonart
@@ -206,6 +208,7 @@ contributors:
 - ekcasey
 - elsony
 - emalm
+- emmjohnson
 - EngineerBetterCI
 - erabil
 - ericbottard
@@ -237,6 +240,7 @@ contributors:
 - gbandres98
 - gcapizzi
 - gdankov
+- genevieve
 - geofffranks
 - georgethebeatle
 - georgi-lozev
@@ -258,8 +262,10 @@ contributors:
 - HeavyWombat
 - heidmotron
 - hemarsai
+- HenryBorys
 - herrjulz
 - heyjcollins
+- hibell
 - hmanukyanVMw
 - hnandiwada
 - hoegaarden
@@ -282,13 +288,14 @@ contributors:
 - james-masson
 - jamieklassen
 - jamiemonserrate
-- jandubois 
+- jandubois
 - jaristiz
 - jbooherl
 - jchenry
 - jdeppe-pivotal
 - jdgonzaleza
 - jeff-hobbs
+- jericop
 - jerrybelmonte
 - jessepye
 - jgawor
@@ -334,8 +341,8 @@ contributors:
 - kcboyle
 - KeepAustinWired
 - kejadlen
-- KevinJCross
 - kevin-ortega
+- KevinJCross
 - Kiemes
 - kieron-dev
 - kimago
@@ -343,6 +350,7 @@ contributors:
 - klakin-pivotal
 - klapkov
 - KlapTrap
+- klaus-sap
 - kmarkwardt-vmware
 - knm3000
 - kohara88
@@ -405,6 +413,7 @@ contributors:
 - MMisoch
 - MoatazBM
 - modelseer
+- modulo11
 - moggibear
 - moleske
 - monadic
@@ -452,6 +461,8 @@ contributors:
 - pabloarodas
 - pabloschuhmacher
 - paigecalvert
+- paketo-bot
+- paketo-bot-reviewer
 - paltanmoy
 - paulcwarren
 - pcf-core-services
@@ -465,6 +476,7 @@ contributors:
 - peterhaochen47
 - petersca
 - petewall
+- phil9909
 - philippthun
 - phschon
 - piachakra
@@ -499,6 +511,7 @@ contributors:
 - rade
 - radhavmwtnz
 - radito3
+- radoslav-tomov
 - ragaskar
 - rahulkj
 - rainmaker
@@ -562,8 +575,8 @@ contributors:
 - silvestre
 - simonjjones
 - simonleung8
-- skibum55
 - skhushboo-vm
+- skibum55
 - smoser-ibm
 - snneji
 - Soha-Albaghdady
@@ -591,17 +604,17 @@ contributors:
 - svkrieger
 - swalchemist
 - swalner-pivotal
-- swati1102
 - swati-nair
+- swati1102
 - sykesm
 - syslxg
 - tack-sap
+- Tallicia
 - tamaovmware
 - tanayk2610
 - tanglisha
 - tanzeeb
 - tanzu-backstage-bot
-- Tallicia
 - tas-runtime-bot
 - tcdowney
 - teddyking
@@ -639,6 +652,7 @@ contributors:
 - vkalapov
 - VMWare-JasonAndrew
 - voelzmo
+- VRBogdanov
 - wattersjames
 - wayneadams
 - WeiQuan0605
@@ -658,6 +672,7 @@ contributors:
 - xtremerui
 - yaelharel
 - yatzek
+- Yavor16
 - ystros
 - yyzjateen
 - zhang-hua
@@ -668,9 +683,3 @@ contributors:
 - zucchinidev
 - zyjiaobj
 - zzori-theoriginal
-- HenryBorys
-- adrianhoelzl-sap
-- radoslav-tomov
-- VRBogdanov
-- klaus-sap
-- Yavor16
