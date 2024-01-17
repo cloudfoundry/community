@@ -68,6 +68,7 @@ areas:
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   reviewers: []
+  repositories: []
 - name: Builders
   approvers:
   - name: Forest Eckhardt
@@ -83,6 +84,7 @@ areas:
     github: jericop
   - name: Sophie Wigmore
     github: sophiewigmore
+  repositories: []
 - name: Content
   approvers:
   - name: Forest Eckhardt
@@ -100,6 +102,7 @@ areas:
     github: robdimsdale
   - name: Sophie Wigmore
     github: sophiewigmore
+  repositories: []
 - name: Dependencies
   approvers:
   - name: Rob Dimsdale-Zucker
@@ -117,6 +120,7 @@ areas:
     github: ForestEckhardt
   - name: Joshua Casey
     github: joshuatcasey
+  repositories: []
 - name: Dotnet Core
   approvers:
   - name: Forest Eckhardt
@@ -130,6 +134,7 @@ areas:
     github: thitch97
   - name: Joshua Casey
     github: joshuatcasey
+  repositories: []
 - name: Go
   approvers:
   - name: Forest Eckhardt
@@ -147,6 +152,7 @@ areas:
     github: sophiewigmore
   - name: Victoria Campbell
     github: TisVictress
+  repositories: []
 - name: Java
   approvers:
   - name: Daniel Mikusa
@@ -164,6 +170,7 @@ areas:
     github: kevin-ortega
   - name: Hank Ibell
     github: hibell
+  repositories: []
 - name: NodeJS
   approvers:
   - name: Tim Hitchener
@@ -189,6 +196,7 @@ areas:
     github: fg-j
   - name: Emily Johnson
     github: emmjohnson
+  repositories: []
 - name: PHP
   approvers:
   - name: Sophie Wigmore
@@ -208,6 +216,7 @@ areas:
     github: TisVictress
   - name: Joshua Casey
     github: joshuatcasey
+  repositories: []
 - name: Python
   approvers:
   - name: Arjun Sreedharan
@@ -229,6 +238,7 @@ areas:
     github: TisVictress
   - name: Emily Johnson
     github: emmjohnson
+  repositories: []
 - name: Ruby
   approvers:
   - name: Arjun Sreedharan
@@ -246,6 +256,7 @@ areas:
     github: fg-j
   - name: Genevieve L'Esperance
     github: genevieve
+  repositories: []
 - name: Rust
   approvers:
   - name: Daniel Mikusa
@@ -253,6 +264,7 @@ areas:
   - name: Forest Eckhardt
     github: ForestEckhardt
   reviewers: []
+  repositories: []
 - name: Stacks
   approvers:
   - name: Rob Dimsdale-Zucker
@@ -268,6 +280,7 @@ areas:
     github: jericop
   - name: Frankie G-J
     github: fg-j
+  repositories: []
 - name: Tooling
   approvers:
   - name: Forest Eckhardt
@@ -285,6 +298,7 @@ areas:
     github: thitch97
   - name: Philipp Stehle
     github: phil9909
+  repositories: []
 - name: Utilities
   approvers:
   - name: Arjun Sreedharan
@@ -304,6 +318,7 @@ areas:
     github: fg-j
   - name: Emily Johnson
     github: emmjohnson
+  repositories: []
 - name: Web Servers
   approvers:
   - name: Arjun Sreedharan
@@ -321,4 +336,5 @@ areas:
     github: sophiewigmore
   - name: Frankie G-J
     github: fg-j
+  repositories: []
 ```
