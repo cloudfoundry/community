@@ -192,7 +192,6 @@ areas:
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
   - cloudfoundry/garden-wiki
-  - cloudfoundry/garden-windows-ci
   - cloudfoundry/garden-windows-tools-release
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
