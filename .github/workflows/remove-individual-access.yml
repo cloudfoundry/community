@@ -6,7 +6,6 @@ on:
   schedule:
   - cron: '0 */1 * * *'
 
-permissions: read-all
 jobs:
   remove-individual-access-to-repos:
     runs-on: ubuntu-latest
@@ -16,7 +15,7 @@ jobs:
           path: community
       - name: Generate github org configuration
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           set -e
           set -o pipefail
