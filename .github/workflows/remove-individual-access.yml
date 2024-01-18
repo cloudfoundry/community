@@ -20,7 +20,6 @@ jobs:
           set -e
           set -o pipefail
 
-          gh api "repos/${repo}"
           community/org/generate_working_group_projects_sync_config.sh | jq -r .[].repositories[].name | grep -E "^cloudfoundry/" | while read -r repo; do
               gh api "repos/${repo}/collaborators?affiliation=direct" | jq -r .[].login | while read -r user; do
                   echo "remove ${user} from ${repo}"
