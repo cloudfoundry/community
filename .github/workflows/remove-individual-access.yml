@@ -20,7 +20,7 @@ jobs:
           set -e
           set -o pipefail
 
-          ./community/toc/working-groups/parsable-working-groups.sh | jq -r .[].areas[].repositories[] | grep -E '^cloudfoundry/' | while read -r repo; do
+          ./community/toc/working-groups/parsable-working-groups.sh | jq -r .[].areas[].repositories[] | while read -r repo; do
               gh api "repos/${repo}/collaborators?affiliation=direct" | jq -r .[].login | while read -r user; do
                   echo "remove ${user} from ${repo}"
                   # gh api -X delete "/repos/${repo}/collaborators/${user}"
