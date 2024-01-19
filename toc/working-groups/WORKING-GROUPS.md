@@ -81,6 +81,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | &nbsp;                                                   | Leads            | Company | Profile                                  |
 | -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
 | <img width="30px" src="https://github.com/Gerg.png"> | Greg Cobb     | VMware  | [@Gerg](https://github.com/Gerg) |
+| <img width="30px" src="https://github.com/stephanme.png"> | Stephan Merker     | SAP  | [@stephanme](https://github.com/stephanme) |
 
 
 ## App Runtime Platform
