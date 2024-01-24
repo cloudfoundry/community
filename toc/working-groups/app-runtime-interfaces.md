@@ -47,6 +47,8 @@ bots:
   github: cf-buildpacks-eng
 - name: capi-bot
   github: capi-bot
+- name: ARI WG Git Bot
+  github: ari-wg-gitbot
 areas:
 - name: Autoscaler
   approvers:
