@@ -12,10 +12,10 @@ jobs:
   org-config-generation-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: community
       - name: Clean inactive github org users
@@ -29,7 +29,7 @@ jobs:
           INACTIVE_USER_MANAGEMENT_TAG_USERS: ${{ secrets.INACTIVE_USER_MANAGEMENT_TAG_USERS }}
       - name: Create Pull Request
         if: ${{ steps.uds.outputs.inactive_users_pr_description }}
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           path: community
           add-paths: org/contributors.yml

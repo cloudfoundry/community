@@ -28,16 +28,16 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: community
       - name: Generate github org configuration
@@ -90,16 +90,16 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: community
       - name: Generate github org configuration
