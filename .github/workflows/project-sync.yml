@@ -8,7 +8,7 @@ jobs:
   configs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: matrix
         run: |
           echo "::set-output name=matrix::$(./org/generate_working_group_projects_sync_config.sh)"
