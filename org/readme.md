@@ -73,6 +73,11 @@ Limitations:
 - The branchprotector doesn't support wildcards for branch rules. I.e. every version branch gets its own rule.
 - The branchprotector doesn't delete unneeded branch protection rules e.g. when a version branch got deleted.
 
+### Inactive User Management
+Inactive users according to the criteria defined in
+[rfc-0025-define-criteria-and-removal-process-for-inactive-members](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0025-define-criteria-and-removal-process-for-inactive-members.md) are identified by an automation which opens a pull-request to delete those.
+
+
 ## Development
 
 Requires Python 3.9.
@@ -82,6 +87,7 @@ How to run locally:
 cd ./org
 pip install -r requirements.txt
 python -m org_management --help
+python -m org_user_management --help
 ```
 
 Usage:
@@ -96,6 +102,28 @@ optional arguments:
   -o OUT, --out OUT     output file for generated org configuration
   -b BRANCHPROTECTION, --branchprotection BRANCHPROTECTION
                         output file for generated branch protection rules
+```
+
+```
+python -m org_user_management --help
+usage: org_user_management.py [-h] [-goid GITHUBORGID] [-go GITHUBORG] [-sd SINCEDATE] [-gt GITHUBTOKEN] [-dr DRYRUN] [-tu TAGUSERS]
+
+Cloud Foundry Org Inactive User Handler
+
+options:
+  -h, --help            show this help message and exit
+  -goid GITHUBORGID, --githuborgid GITHUBORGID
+                        Cloud Foundry Github org ID
+  -go GITHUBORG, --githuborg GITHUBORG
+                        Cloud Foundry Github org name
+  -sd SINCEDATE, --sincedate SINCEDATE
+                        Since when to analyze in format 'Y-m-dTH:M:SZ'
+  -gt GITHUBTOKEN, --githubtoken GITHUBTOKEN
+                        Github API access token. Supported also as env var 'GH_TOKEN'
+  -dr DRYRUN, --dryrun DRYRUN
+                        Dry run execution. Supported also as env var 'INACTIVE_USER_MANAGEMENT_DRY_RUN'
+  -tu TAGUSERS, --tagusers TAGUSERS
+                        Tag users to be notified. Supported also as env var 'INACTIVE_USER_MANAGEMENT_TAG_USERS'
 ```
 
 How to run tests:

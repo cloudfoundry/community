@@ -67,17 +67,14 @@ orgs:
         archived: true
         has_projects: true
       archiver:
-        allow_merge_commit: false
         description: Utilities for extracting and compressing tgz and zip files.
         has_issues: false
         has_projects: true
       auction:
-        allow_merge_commit: false
         description: Auction encodes Diego's long-running-process distribution algorithm
         has_issues: false
         has_projects: true
       auctioneer:
-        allow_merge_commit: false
         description: Runs diego auctions
         has_issues: false
         has_projects: true
@@ -94,12 +91,10 @@ orgs:
         description: a concourse resource for manipulating bbl states
         has_projects: true
       bbs:
-        allow_merge_commit: false
         description: Internal API to access the database for Diego.
         has_issues: false
         has_projects: true
       benchmarkbbs:
-        allow_merge_commit: false
         description: Diego BBS Benchmark
         has_issues: false
         has_projects: true
@@ -172,6 +167,14 @@ orgs:
         description: Go CLI for Azure storage
         has_projects: true
         default_branch: main
+      bosh-ali-storage-cli:
+        description: Go CLI for Alibaba storage
+        has_projects: true
+        default_branch: main
+      bosh-apt-resources:
+        description: Builds debian packages for public bosh apt repository
+        has_projects: false
+        has_wiki: false
       bosh-backup-and-restore:
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
@@ -457,12 +460,10 @@ orgs:
         has_projects: true
         private: true
       bytefmt:
-        allow_merge_commit: false
         description: Human readable byte formatter
         has_issues: false
         has_projects: true
       cacheddownloader:
-        allow_merge_commit: false
         description: A cached HTTP blob downloader
         has_issues: false
         has_projects: true
@@ -527,7 +528,6 @@ orgs:
         default_branch: main
         has_projects: true
       certsplitter:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       cf-acceptance-tests:
@@ -636,7 +636,6 @@ orgs:
         has_wiki: false
         private: true
       cf-networking-helpers:
-        allow_merge_commit: false
         default_branch: main
         description: Shared libraries for the CF Networking team
         has_projects: false
@@ -647,7 +646,6 @@ orgs:
           area of CF
         has_projects: true
       cf-networking-release:
-        allow_merge_commit: false
         default_branch: develop
         description: Container Networking for CloudFoundry
         has_projects: true
@@ -659,6 +657,10 @@ orgs:
       cf-performance-tests:
         default_branch: main
         has_projects: true
+      cf-performance-tests-release:
+        description: BOSH errand for running cf-performance-tests
+        default_branch: main
+        has_projects: true
       cf-performance-tests-pipeline:
         default_branch: main
         has_projects: true
@@ -666,7 +668,6 @@ orgs:
         default_branch: main
         has_projects: true
       cf-routing-test-helpers:
-        allow_merge_commit: false
         default_branch: main
         has_projects: true
       cf-slackin:
@@ -681,7 +682,6 @@ orgs:
         default_branch: main
         has_projects: true
       cf-tcp-router:
-        allow_merge_commit: false
         default_branch: main
         description: TCP Router repository for Cloud Foundry
         has_projects: true
@@ -750,7 +750,6 @@ orgs:
       cfcd-prep:
         has_projects: true
       cfdot:
-        allow_merge_commit: false
         description: A command-line tool to interact with a Cloud Foundry Diego deployment.
         has_issues: false
         has_projects: true
@@ -767,7 +766,6 @@ orgs:
         has_projects: true
         private: true
       cfhttp:
-        allow_merge_commit: false
         description: Wrapper for official go http package
         has_issues: false
         has_projects: true
@@ -831,7 +829,6 @@ orgs:
         has_projects: true
         has_wiki: false
       clock:
-        allow_merge_commit: false
         default_branch: main
         description: time provider & rich fake for Go
         has_issues: false
@@ -886,7 +883,6 @@ orgs:
         default_branch: main
         has_projects: true
       consuladapter:
-        allow_merge_commit: false
         description: Consul client adapter and test cluster runner
         has_issues: false
         has_projects: true
@@ -949,7 +945,6 @@ orgs:
         archived: true
         has_projects: true
       debugserver:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       delayed_job_sequel:
@@ -999,31 +994,23 @@ orgs:
         has_projects: true
         private: true
       diego-acceptance:
-        allow_merge_commit: false
         description: Diego PM acceptance notes and tools
         has_projects: true
         private: true
       diego-checkman:
         has_projects: true
         private: true
-      diego-ci-pools:
-        allow_merge_commit: false
-        description: Lock pools for Diego CI
-        has_projects: true
       diego-design-notes:
         description: Diego Architectural Design Musings and Explications
         has_projects: true
       diego-dockerfiles:
-        allow_merge_commit: false
         has_issues: false
         has_projects: false
         has_wiki: false
       diego-logging-client:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       diego-notes:
-        allow_merge_commit: false
         description: Diego Notes
         has_projects: true
       diego-perf-release:
@@ -1031,12 +1018,10 @@ orgs:
           a Diego(+Runtime) deployment
         has_projects: true
       diego-release:
-        allow_merge_commit: false
         default_branch: develop
         description: BOSH Release for Diego
         has_projects: true
       diego-ssh:
-        allow_merge_commit: false
         description: Access Diego containers with ssh
         has_issues: false
         has_projects: true
@@ -1044,7 +1029,6 @@ orgs:
         description: Diego Stress Tests
         has_projects: true
       diego-team:
-        allow_merge_commit: false
         description: Checklists for the Diego team
         has_projects: true
         private: true
@@ -1071,11 +1055,9 @@ orgs:
       docker_driver_integration_tests:
         has_projects: true
       dockerapplifecycle:
-        allow_merge_commit: false
         description: Code that runs inside of containers, for docker-based apps
         has_projects: true
       dockerdriver:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       docs-bbr:
@@ -1159,11 +1141,9 @@ orgs:
         has_projects: true
         private: true
       durationjson:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       ecrhelper:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       eirini:
@@ -1206,13 +1186,11 @@ orgs:
         has_projects: true
         archived: true
       eventhub:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       example-sidecar-buildpack:
         has_projects: true
       executor:
-        allow_merge_commit: false
         description: thy will be done
         has_issues: false
         has_projects: true
@@ -1226,7 +1204,6 @@ orgs:
       filelock:
         has_projects: true
       fileserver:
-        allow_merge_commit: false
         description: 'Bob Loblaw''s file server '
         has_issues: false
         has_projects: true
@@ -1266,6 +1243,7 @@ orgs:
         has_projects: true
       garden-dockerfiles:
         has_projects: true
+        archived: true
       garden-dotfiles:
         has_projects: true
       garden-dotfiles-archived:
@@ -1285,6 +1263,7 @@ orgs:
         private: true
       garden-windows-ci:
         has_projects: true
+        archived: true
       garden-windows-tools-release:
         has_projects: true
       git-release-notes:
@@ -1367,7 +1346,6 @@ orgs:
         archived: true
         has_projects: true
       gorouter:
-        allow_merge_commit: false
         default_branch: main
         description: CF Router
         has_projects: true
@@ -1409,9 +1387,12 @@ orgs:
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
       healthcheck:
-        allow_merge_commit: false
         description: Common healthcheck for buildpacks and docker
         has_issues: false
+        has_projects: true
+      healthchecker-release:
+        description: 'A BOSH release for vendoring the healtchecker BOSH package'
+        has_issues: true
         has_projects: true
       homebrew-tap:
         description: Cloud Foundry Homebrew packages
@@ -1458,7 +1439,6 @@ orgs:
         has_wiki: false
         private: true
       inigo:
-        allow_merge_commit: false
         description: diego integration tests
         has_issues: false
         has_projects: true
@@ -1564,7 +1544,6 @@ orgs:
         default_branch: main
         has_projects: false
       lager:
-        allow_merge_commit: false
         description: An opinionated logger for Go.
         has_projects: true
       lamb-ci-tools:
@@ -1597,15 +1576,12 @@ orgs:
         archived: true
         has_projects: true
       localdriver:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       localip:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       locket:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       log-cache:
@@ -1763,13 +1739,11 @@ orgs:
       mysql-monitoring-release:
         has_projects: true
       nats-release:
-        allow_merge_commit: false
         default_branch: develop
         has_projects: true
       netplugin-shim:
         has_projects: true
       networking-oss-deployments:
-        allow_merge_commit: false
         default_branch: main
         description: bbl state store for networking oss deployments
         has_projects: true
@@ -1840,7 +1814,6 @@ orgs:
         archived: true
         has_projects: true
       operationq:
-        allow_merge_commit: false
         description: processes multiple queues in parallel
         has_issues: false
         has_projects: true
@@ -1856,6 +1829,7 @@ orgs:
           in Vancouver '
         has_projects: true
       otel-collector-release:
+        default_branch: main
         description: BOSH release for the OpenTelemetry Collector
         has_projects: false
       overview-broker:
@@ -1975,7 +1949,6 @@ orgs:
         has_projects: true
         private: true
       rep:
-        allow_merge_commit: false
         description: Representative bids on tasks and schedules them on an associated
           Executor
         has_issues: false
@@ -1987,28 +1960,23 @@ orgs:
         has_projects: true
         archived: true
       route-emitter:
-        allow_merge_commit: false
         description: Registers and unregisters processes running on executors with
           the gorouter
         has_issues: false
         has_projects: true
       route-registrar:
-        allow_merge_commit: false
         default_branch: main
         description: A standalone executable written in golang that continuously broadcasts
           a route using NATS to the CF router.
         has_projects: true
       routing-acceptance-tests:
-        allow_merge_commit: false
         default_branch: main
         has_projects: true
       routing-api:
-        allow_merge_commit: false
         default_branch: main
         has_projects: false
         has_wiki: false
       routing-api-cli:
-        allow_merge_commit: false
         default_branch: main
         has_projects: true
       routing-ci:
@@ -2022,18 +1990,15 @@ orgs:
         has_projects: true
         private: true
       routing-info:
-        allow_merge_commit: false
         default_branch: main
         description: Routing information helpers for CF / Diego
         has_projects: true
       routing-perf-release:
-        allow_merge_commit: false
         default_branch: main
         description: A BOSH release for routing performance tests
         has_projects: false
         has_wiki: false
       routing-release:
-        allow_merge_commit: false
         default_branch: develop
         description: This is the BOSH release for cloud foundry routers
         has_projects: true
@@ -2060,6 +2025,10 @@ orgs:
       runtime-ci:
         default_branch: main
         has_projects: true
+      runtime-ci-pools:
+        description: Lock pools for the runtime CI
+        has_projects: true
+        has_issues: false
       runtime-credentials:
         has_projects: true
         private: true
@@ -2159,7 +2128,6 @@ orgs:
           for Cloud Foundry.
         has_projects: true
       silk-release:
-        allow_merge_commit: false
         default_branch: develop
         description: Silk - CNI plugin BOSH release for Cloud Foundry
         has_projects: true
@@ -2306,7 +2274,6 @@ orgs:
       test-log-emitter-release:
         has_projects: true
       tlsconfig:
-        allow_merge_commit: false
         description: build tls configurations
         has_projects: false
         has_wiki: false
@@ -2377,18 +2344,17 @@ orgs:
       usn-resource:
         has_projects: true
       vantablackbox-release:
+        archived: true
         has_projects: true
       vcap-common:
         archived: true
         has_projects: true
         has_wiki: false
       vizzini:
-        allow_merge_commit: false
         description: 'Vizzini: Inconceivable Tests'
         has_issues: false
         has_projects: true
       volman:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       volume-mount-options:
@@ -2435,7 +2401,6 @@ orgs:
         default_branch: develop
         has_projects: true
       workpool:
-        allow_merge_commit: false
         has_issues: false
         has_projects: true
       yagnats:
@@ -2454,7 +2419,6 @@ orgs:
         maintainers:
         - arjun024
         - brayanhenao
-        - ryanmoran
         - sophiewigmore
         members: []
         privacy: closed
@@ -2506,4 +2470,31 @@ orgs:
           multiapps: admin
           multiapps-controller: admin
           multiapps-cli-plugin: admin
-
+      temp-arp-networking-admins:
+        description: "Temporary team for managing GitHub integrations for automation/concourse."
+        maintainers:
+          - plowin
+          - domdom82
+        members: []
+        privacy: closed
+        repos:
+          haproxy-boshrelease: admin
+          pcap-release: admin
+          pcap: admin
+      temp-sm-csb-bots-admins:
+        description: "Temporary team to allow for bots driven dependency bumps until we implement another strategy"
+        maintainers:
+          - pivotal-marcela-campo
+        members:
+          - servicesenablement
+        privacy: closed
+        repos:
+          cloud-service-broker: admin
+          csb-brokerpak-azure: admin
+          csb-brokerpak-aws: admin
+          csb-brokerpak-gcp: admin
+          jdbctestapp: admin
+          upgrade-all-services-cli-plugin: admin
+          terraform-provider-csbpg: admin
+          terraform-provider-csbmysql: admin
+          terraform-provider-csbsqlserver: admin

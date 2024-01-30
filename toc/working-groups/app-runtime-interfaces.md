@@ -35,8 +35,8 @@ Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifi
 ```yaml
 name: App Runtime Interfaces
 execution_leads:
-- name: Greg Cobb
-  github: gerg
+- name: Stephan Merker
+  github: stephanme
 technical_leads:
 - name: Greg Cobb
   github: gerg
@@ -47,6 +47,8 @@ bots:
   github: cf-buildpacks-eng
 - name: capi-bot
   github: capi-bot
+- name: ARI WG Git Bot
+  github: ari-wg-gitbot
 areas:
 - name: Autoscaler
   approvers:
@@ -61,8 +63,10 @@ areas:
   reviewers:
   - name: Susanne Salzmann
     github: salzmannsusan
-  - name: Anubhav Gupta
-    github: anubhav-gupta1
+  - name: Sumit Kulhadia
+    github: kulhadia
+  - name: Josua Geiger
+    github: geigerj0
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
@@ -71,8 +75,6 @@ areas:
 
 - name: Buildpacks Docs
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Victoria Campbell
@@ -83,8 +85,8 @@ areas:
 
 - name: Buildpacks Go
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
@@ -99,6 +101,8 @@ areas:
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
+  - name: Kevin Ortega (IBM)
+    github: kevin-ortega
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
@@ -142,8 +146,8 @@ areas:
 
 - name: Buildpacks Node.js
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Tim Hitchener
     github: thitch97
   - name: Victoria Campbell
@@ -186,8 +190,8 @@ areas:
 
 - name: Buildpacks Ruby
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Sophie Wigmore
     github: sophiewigmore
   - name: Rob Dimsdale-Zucker
@@ -212,8 +216,8 @@ areas:
 
 - name: Buildpacks Tooling
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
+  - name: Brayan Henao
+    github: brayanhenao
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Sophie Wigmore
@@ -235,8 +239,6 @@ areas:
 
 - name: Buildpacks Utilities
   approvers:
-  - name: Ryan Moran
-    github: ryanmoran
   - name: Arjun Sreedharan
     github: arjun024
   - name: Daniel Mikusa
@@ -326,6 +328,7 @@ areas:
   - cloudfoundry/capi-env-pool
   - cloudfoundry/capi-team-checklists
   - cloudfoundry/cf-performance-tests
+  - cloudfoundry/cf-performance-tests-release
   - cloudfoundry/cf-performance-tests-pipeline
   - cloudfoundry/tps
   - cloudfoundry/cc-uploader
@@ -354,6 +357,8 @@ areas:
     github: ccjaimes
   - name: George Blue
     github: blgm
+  - name: Shwetha Gururaj
+    github: gururajsh
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -414,6 +419,8 @@ areas:
     github: nvvalchev
   - name: Vasil Bogdanov
     github: VRBogdanov
+  - name: Yavor Uzunov
+    github: Yavor16
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin

@@ -37,6 +37,8 @@ name: App Runtime Platform
 execution_leads:
 - name: Amelia Downs
   github: ameowlia
+- name: Eric Malm
+  github: emalm
 technical_leads:
 - name: Amelia Downs
   github: ameowlia
@@ -49,6 +51,8 @@ bots:
   github: cf-logging-metrics-bot
 - name: Metric Store Bot
   github: svcboteos
+- name: Cryogenics CI bot
+  github: Cryogenics-CI
 config:
   generate_rfc0015_branch_protection_rules: true
   github_project_sync:
@@ -61,6 +65,8 @@ areas:
     github: acrmp
   - name: Benjamin Fuller
     github: Benjamintf1
+  - name: Brandon Roberson
+    github: ebroberson
   - name: Geoff Franks
     github: geofffranks
   - name: Josh Russett
@@ -77,11 +83,11 @@ areas:
     github: dsabeti
   - name: Marc Paquette
     github: marcpaquette
+  - name: Vladimir Savchenko
+    github: vlast3k
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
-  - name: Vladimir Savchenko
-    github: vlast3k
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -180,13 +186,11 @@ areas:
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
-  - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-dotfiles
   - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
   - cloudfoundry/garden-wiki
-  - cloudfoundry/garden-windows-ci
   - cloudfoundry/garden-windows-tools-release
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
@@ -198,7 +202,6 @@ areas:
   - cloudfoundry/netplugin-shim
   - cloudfoundry/test-log-emitter
   - cloudfoundry/test-log-emitter-release
-  - cloudfoundry/vantablackbox-release
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
@@ -266,6 +269,44 @@ areas:
   approvers:
   - name: Jeanette Booher
     github: jbooherl
+  - name: Aditya Choudhary
+    github: aditya267vmware
+  - name: Chaitanya Krishna Mullangi
+    github: chaitanyamullangi
+  - name: Dibyajyoti Mohapatra
+    github: dibya1947
+  - name: Kanika Bathla
+    github: kabathla
+  - name: Karthik Seshadri
+    github: karthikseshadri
+  - name: Mervin Nirmal John M W
+    github: jmervinnirma
+  - name: Mohammed Thavaf A R
+    github: m-thavaf
+  - name: Mukesh Khicher
+    github: mukeshkhicher-br
+  - name: Nakul Ogale
+    github: nakulogale-cb
+  - name: Pranay Raj
+    github: rpranay1
+  - name: Puja Kumari
+    github: kpujadev
+  - name: Radhakrishnan Devarajan
+    github: radhavmwtnz
+  - name: Saloni Shah
+    github: saloni-sshah
+  - name: Sanand Dange
+    github: dsanand22
+  - name: Shefali Dubey
+    github: dubeyshefali
+  - name: Shrisha Chandrashekar
+    github: shrisha-c
+  - name: Siddartha Laxman Karibhimanvar
+    github: siddarthalk
+  - name: Srinivas Sunka
+    github: ssunka
+  - name: Sudharsan G V
+    github: sg038444
   - name: Hovhannes Manukyan
     github: hmanukyanVMw
   - name: Gevorg Gevorgyan
@@ -285,6 +326,8 @@ areas:
     github: b1tamara
   - name: Benjamin Fuller
     github: Benjamintf1
+  - name: Brandon Roberson
+    github: ebroberson
   - name: Carson Long
     github: ctlong
   - name: Dominik Froehlich
@@ -315,11 +358,11 @@ areas:
     github: maxmoehl
   - name: Marc Paquette
     github: MarcPaquette
+  - name: Vladimir Savchenko
+    github: vlast3k
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
-  - name: Vladimir Savchenko
-    github: vlast3k
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding

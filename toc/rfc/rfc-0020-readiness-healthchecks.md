@@ -157,11 +157,12 @@ to route pool". When AI readiness healthcheck fails a log line is printed to AI
 logs: "Container failed the readiness health check. Container marked not ready
 and removed from route pool".
 
-#### App events
+#### App Audit Events
 
-When AI readiness healthcheck succeeds a new application event is emitted:
-"app.ready". When AI readiness healthcheck fails a new event is emitted:
-"app.notready".
+When a liveness healthcheck fails, it results in the `audit.app.process.crash` audit event.
+
+Similarly, when an AI readiness healthcheck succeeds an `audit.app.process.ready` event should be emitted.
+And when an AI readiness healthcheck fails an `audit.app.process.notready` event should be emitted.
 
 ### Open Questions
 * What metrics would be helpful for app devs and operators?

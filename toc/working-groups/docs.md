@@ -48,10 +48,6 @@ areas:
     github: fifthposition
   - name: Ajayan Borys
     github: HenryBorys
-  - name: Bob Graczyk
-    github: bobbygeeze
-  - name: Lora Boe
-    github: blora1
 
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
