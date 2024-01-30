@@ -186,7 +186,6 @@ areas:
   - cloudfoundry/garden
   - cloudfoundry/garden-ci
   - cloudfoundry/garden-ci-artifacts-release
-  - cloudfoundry/garden-dockerfiles
   - cloudfoundry/garden-dotfiles
   - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
