@@ -203,7 +203,6 @@ areas:
   - cloudfoundry/netplugin-shim
   - cloudfoundry/test-log-emitter
   - cloudfoundry/test-log-emitter-release
-  - cloudfoundry/vantablackbox-release
   - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-regression-tests
