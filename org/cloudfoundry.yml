@@ -2470,6 +2470,19 @@ orgs:
           multiapps: admin
           multiapps-controller: admin
           multiapps-cli-plugin: admin
+      temp-autoscaler-admins:
+        description: "Temporary team for managing autoscaler secrets until we have a permanent plan."
+        maintainers:
+        - asalan316
+        - silvestre
+        - joergdw
+        - olivermautschke
+        members: []
+        privacy: closed
+        repos:
+          app-autoscaler-release: admin
+          app-autoscaler-cli-plugin: admin
+          app-runtime-interfaces-infrastructure: admin
       temp-arp-networking-admins:
         description: "Temporary team for managing GitHub integrations for automation/concourse."
         maintainers:
