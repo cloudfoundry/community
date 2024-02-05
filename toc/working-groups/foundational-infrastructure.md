@@ -55,6 +55,8 @@ bots:
   github: Cryogenics-CI
 - name: bbr-ci
   github: bbr-ci
+- name: mysql-ci
+  github: pcf-core-services-writer
 areas:
 - name: Credential Management (Credhub)
   approvers:
