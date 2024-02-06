@@ -363,6 +363,8 @@ areas:
     github: PeteLevineA
   - name: Shwetha Guraraj
     github: gururajsh
+  - name: Hema Ranganathan
+    github: hemarsai
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
