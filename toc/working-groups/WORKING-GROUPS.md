@@ -73,14 +73,15 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [app-runtime-interfaces.md](./app-runtime-interfaces.md)  |
-| Forum                      | TBD  |
-| Community Meeting Calendar | TBD  |
-| Meeting Notes              | TBD  |
-| Slack Channel              | TBD  |
+| Forum                      | [Zoom](https://zoom.us/j/91942841881?pwd=V0Z1RWE0NmIwN0xwdTdUNlVhczhPZz09)   |
+| Community Meeting Calendar | [Monthly on the 4th Tuesday at 9:00 US Pacific](https://www.google.com/calendar/event?eid=NjhscXR0anFmZDhpN2VwMXJjc3I5ZHBnNW5fMjAyNDAxMjNUMTcwMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&ctz=America/New_York)  |
+| Meeting Notes              | [ARI Meeting Notes](https://docs.google.com/document/d/1wP21mVwaoZw45eU2YoDJg6KbvYJuD5ATrrhSY6_yHmM/edit?usp=sharing)  |
+| Slack Channel              | [&#x23;wg-app-runtime-interfaces](https://cloudfoundry.slack.com/archives/C02HNDJB31R)  |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                  |
 | -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
 | <img width="30px" src="https://github.com/Gerg.png"> | Greg Cobb     | VMware  | [@Gerg](https://github.com/Gerg) |
+| <img width="30px" src="https://github.com/stephanme.png"> | Stephan Merker     | SAP  | [@stephanme](https://github.com/stephanme) |
 
 
 ## App Runtime Platform

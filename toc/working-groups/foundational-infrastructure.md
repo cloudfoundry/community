@@ -55,6 +55,8 @@ bots:
   github: Cryogenics-CI
 - name: bbr-ci
   github: bbr-ci
+- name: mysql-ci
+  github: pcf-core-services-writer
 areas:
 - name: Credential Management (Credhub)
   approvers:
@@ -122,7 +124,6 @@ areas:
     github: Tallicia
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
-  reviewers:
   - name: Klaus Kiefer
     github: klaus-sap
   repositories:

@@ -35,8 +35,8 @@ Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifi
 ```yaml
 name: App Runtime Interfaces
 execution_leads:
-- name: Greg Cobb
-  github: gerg
+- name: Stephan Merker
+  github: stephanme
 technical_leads:
 - name: Greg Cobb
   github: gerg
@@ -47,6 +47,8 @@ bots:
   github: cf-buildpacks-eng
 - name: capi-bot
   github: capi-bot
+- name: ARI WG Git Bot
+  github: ari-wg-gitbot
 areas:
 - name: Autoscaler
   approvers:
@@ -63,6 +65,8 @@ areas:
     github: salzmannsusan
   - name: Sumit Kulhadia
     github: kulhadia
+  - name: Josua Geiger
+    github: geigerj0
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
@@ -351,6 +355,8 @@ areas:
     github: moleske
   - name: Cristhian
     github: ccjaimes
+  - name: George Blue
+    github: blgm
   - name: Shwetha Gururaj
     github: gururajsh
   reviewers:

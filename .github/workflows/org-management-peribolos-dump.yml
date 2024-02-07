@@ -19,13 +19,13 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # full clone so a PR can be created if needed
           path: community
@@ -44,7 +44,7 @@ jobs:
           # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
           args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/org/cloudfoundry.yml"
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           path: community
           add-paths: org/cloudfoundry.yml

@@ -85,6 +85,15 @@ class OrgGenerator:
                 if wg:
                     self.working_groups.append(wg)
 
+    def get_contributors(self) -> Set[str]:
+        return set(self.contributors)
+
+    def get_community_members_with_role(self) -> Set[str]:
+        result = set(self.toc)
+        for wg in self.working_groups:
+            result |= OrgGenerator._wg_github_users(wg)
+        return result
+
     def generate_org_members(self):
         org_members = set(self.org_cfg["orgs"]["cloudfoundry"]["members"])  # just in case, should be empty list
         org_members |= self.contributors

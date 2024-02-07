@@ -1,0 +1,39 @@
+name: 'Delete Inactive Users in Github Organization'
+
+on:
+  schedule:
+  - cron: '0 0 1 * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - "add-inactive-user-removal-automation"
+
+jobs:
+  org-config-generation-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+      - uses: actions/checkout@v4
+        with:
+          path: community
+      - name: Clean inactive github org users
+        id: uds
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r community/org/requirements.txt
+          python community/org/org_user_management.py
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          INACTIVE_USER_MANAGEMENT_TAG_USERS: ${{ secrets.INACTIVE_USER_MANAGEMENT_TAG_USERS }}
+      - name: Create Pull Request
+        if: ${{ steps.uds.outputs.inactive_users_pr_description }}
+        uses: peter-evans/create-pull-request@v5
+        with:
+          path: community
+          add-paths: org/contributors.yml
+          commit-message: Delete inactive users
+          branch: delete-inactive-users
+          title: 'Inactive users to be deleted'
+          body: ${{ steps.uds.outputs.inactive_users_pr_description }}
