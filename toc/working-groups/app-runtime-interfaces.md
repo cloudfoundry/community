@@ -60,9 +60,9 @@ areas:
     github: joergdw
   - name: Oliver Mautschke
     github: olivermautschke
-  reviewers:
   - name: Susanne Salzmann
     github: salzmannsusan
+  reviewers:
   - name: Sumit Kulhadia
     github: kulhadia
   - name: Josua Geiger
