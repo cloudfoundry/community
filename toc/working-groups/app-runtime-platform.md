@@ -307,12 +307,6 @@ areas:
     github: ssunka
   - name: Sudharsan G V
     github: sg038444
-  - name: Hovhannes Manukyan
-    github: hmanukyanVMw
-  - name: Gevorg Gevorgyan
-    github: gggevorgyan
-  - name: Meri Yeghiazaryan
-    github: myeghiazarya
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
