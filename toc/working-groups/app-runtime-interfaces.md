@@ -62,9 +62,9 @@ areas:
     github: olivermautschke
   - name: Josua Geiger
     github: geigerj0
-  reviewers:
   - name: Susanne Salzmann
     github: salzmannsusan
+  reviewers:
   - name: Sumit Kulhadia
     github: kulhadia
   repositories:
