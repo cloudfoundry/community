@@ -49,6 +49,8 @@ bots:
   github: capi-bot
 - name: ARI WG Git Bot
   github: ari-wg-gitbot
+- name: CF CLI Eng
+  github: cf-cli-eng
 areas:
 - name: Autoscaler
   approvers:
