@@ -2513,3 +2513,11 @@ orgs:
           terraform-provider-csbpg: admin
           terraform-provider-csbmysql: admin
           terraform-provider-csbsqlserver: admin
+      temp-ibm-liberty-admins:
+        description: "Temporary team for managing ibm-websphere-liberty-buildpack until we have a permanent plan."
+        maintainers:
+        - kevin-ortega
+        members: []
+        privacy: closed
+        repos:
+          ibm-websphere-liberty-buildpack: admin          
