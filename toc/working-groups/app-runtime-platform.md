@@ -148,12 +148,8 @@ areas:
   approvers:
   - name: Danail Branekov
     github: danail-branekov
-  - name: Giuseppe Capizzi
-    github: gcapizzi
   - name: George
     github: georgethebeatle
-  - name: Kieron Browne
-    github: kieron-dev
   - name: Geoff Franks
     github: geofffranks
   - name: Josh Russett

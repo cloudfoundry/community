@@ -118,10 +118,11 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1ULNBEjlrNAgn3ko9y8ZJfwI7mw5-oofYdjl-dhkEoDA/edit)  |
 | Slack Channel              | [&#x23;korifi-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
 
-| &nbsp;                                                   | Leads            | Company | Profile                                 |
-| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/georgethebeatle.png"> | Georgi Sabev       | SAP  | [@georgethebeatle](https://github.com/georgethebeatle) |
-| <img width="30px" src="https://github.com/gcapizzi.png"> | Giuseppe Capizzi       | VMware  | [@gcapizzi](https://github.com/gcapizzi) |
+| &nbsp;                                                          | Leads           | Company | Profile                                                |
+| --------------------------------------------------------------- | --------------- | ------- | ------------------------------------------------------ |
+| <img width="30px" src="https://github.com/georgethebeatle.png"> | Georgi Sabev    | SAP     | [@georgethebeatle](https://github.com/georgethebeatle) |
+| <img width="30px" src="https://github.com/Birdrock.png">        | Andrew Wittrock | VMware  | [@Birdrock](https://github.com/Birdrock)               |
+| <img width="30px" src="https://github.com/davewalter.png">      | Dave Walter     | VMware  | [@davewalter](https://github.com/davewalter)           |
 
 
 ## Docs
