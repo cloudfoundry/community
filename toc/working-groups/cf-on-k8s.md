@@ -55,12 +55,8 @@ areas:
     github: clintyoshimura
   - name: Danail Branekov
     github: danail-branekov
-  - name: Giuseppe Capizzi
-    github: gcapizzi
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Kieron Browne
-    github: kieron-dev
   - name: Matt Royal
     github: matt-royal
   - name: Tim Downey
