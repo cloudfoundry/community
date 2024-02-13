@@ -303,7 +303,7 @@ approver in an OWNERS file:
 The [contributions-for-user.sh script](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/contributions-for-user.sh) can be used to help gather information from GitHub related to Issues, PRs, and code contributions. It requires the `gh` CLI, and for users to authenticate with credentials allowing Gist creation:
 
 ```
-./working-groups/contributions-for-user.sh <github username> <working group name>
+./toc/working-groups/contributions-for-user.sh <github username> <working group name>
 ```
 
 - Nominated by a WG lead (with no objections from other leads).
