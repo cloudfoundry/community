@@ -49,8 +49,6 @@ bots:
   github: capi-bot
 - name: ARI WG Git Bot
   github: ari-wg-gitbot
-- name: CF CLI Eng
-  github: cf-cli-eng
 areas:
 - name: Autoscaler
   approvers:
@@ -368,6 +366,9 @@ areas:
     github: PeteLevineA
   - name: Shwetha Guraraj
     github: gururajsh
+  bots:
+  - name: CF CLI Eng
+    github: cf-cli-eng
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
