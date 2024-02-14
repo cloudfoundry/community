@@ -366,6 +366,9 @@ areas:
     github: PeteLevineA
   - name: Shwetha Guraraj
     github: gururajsh
+  bots:
+  - name: CF CLI Eng
+    github: cf-cli-eng
   repositories:
   - cloudfoundry/cli
   - cloudfoundry/cli-i18n
