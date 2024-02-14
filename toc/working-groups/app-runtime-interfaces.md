@@ -45,8 +45,6 @@ bots:
   github: app-autoscaler-ci-bot
 - name: Cloud Foundry Buildpacks Team Robot
   github: cf-buildpacks-eng
-- name: capi-bot
-  github: capi-bot
 - name: ARI WG Git Bot
   github: ari-wg-gitbot
 areas:
@@ -318,6 +316,9 @@ areas:
     github: Benjamintf1
   - name: Cristhian Peña
     github: ccjaimes
+  bots:
+  - name: capi-bot
+    github: capi-bot
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
