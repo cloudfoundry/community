@@ -43,6 +43,8 @@ technical_leads:
 bots:
 - name: bosh-admin-bot
   github: bosh-admin-bot
+- name: bosh-windows-ci
+  github: bosh-windows-ci
 - name: cf-gitbot
   github: cf-gitbot
 - name: runtime-bot
