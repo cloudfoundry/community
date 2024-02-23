@@ -350,6 +350,8 @@ areas:
     github: MarcPaquette
   - name: Vladimir Savchenko
     github: vlast3k
+  - name: Alexander Lais
+    github: peanball
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
