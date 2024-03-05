@@ -293,6 +293,8 @@ areas:
     github: tcdowney
   - name: Katharina Przybill
     github: kathap
+  - name: Ben Fuller
+    github: Benjamintf1
   reviewers:
   - name: Al Berez
     github: a-b
@@ -312,8 +314,6 @@ areas:
     github: reedr3
   - name: George Gelashvili
     github: pivotalgeorge
-  - name: Ben Fuller
-    github: Benjamintf1
   - name: Cristhian Peña
     github: ccjaimes
   bots:
