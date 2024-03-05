@@ -109,7 +109,7 @@ class InactiveUserHandler:
         user_tagging_prefix = "@" if tagusers else ""
         users_as_list = "\n".join(str(user_tagging_prefix + s) for s in users_to_delete)
         return (
-            f"According to the rolues for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
+            f"According to the rules for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
             f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have"
             " two weeks to refute this revocation, if they wish."
         )
