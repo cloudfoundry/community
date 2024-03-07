@@ -85,9 +85,11 @@ areas:
     github: marcpaquette
   - name: Vladimir Savchenko
     github: vlast3k
-  reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
+  reviewers:
+  - name: Konstantin Lapkov
+    github: klapkov
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -350,9 +352,11 @@ areas:
     github: MarcPaquette
   - name: Vladimir Savchenko
     github: vlast3k
-  reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
+  reviewers:
+  - name: Konstantin Lapkov
+    github: klapkov
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
