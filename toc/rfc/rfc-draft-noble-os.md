@@ -22,7 +22,7 @@ The current Operating System for CF is Jammy Jellyfish (22.04), which has the en
 
 ## Proposal
 
-The CFF community should not skip the Noble Numbat (24.04) release and work on publishing a stemcell line based on it, starting in March or April of 2024. The Slack channel [bosh-noble](https://cloudfoundry.slack.com/archives/C06HTDT78N9) should be used for communication around this effort.
+The CFF community should not skip the Noble Numbat (24.04) release and work on publishing a stemcell line based on it, starting in March or April of 2024. This means that until the end of planned support for Jammy two stemcell lines (Jammy and Noble) will be supported, which can affect the tests and validations of the CF components. The CF components should take the responsibility to decide what kind of tests and validation makes sense for the two stemcell lines. The Slack channel [bosh-noble](https://cloudfoundry.slack.com/archives/C06HTDT78N9) should be used for communication around this effort.
 
 ## Workstreams
 
@@ -40,8 +40,8 @@ The Foundational Infrastructure Working Group is responsible for making new stem
 - After successful validation in the community publish 1.x GA stemcell version on [bosh.io](http://bosh.io)
 
 
-The end of planned support for Jammy Jellyfish (22.04) is 06.2027. That is why for Noble Numbat we can take some time to look into topics from the [wish list](https://github.com/cloudfoundry/bosh-linux-stemcell-builder/milestone/1). The RFC suggests targeting a beta stemcell available for the end of Q3 2024, which could be used by the App Runtime Deployment for validation.
+The end of planned support for Jammy Jellyfish (22.04) is 06.2027. That is why for Noble Numbat we can take some time to look into topics from the [wish list](https://github.com/cloudfoundry/bosh-linux-stemcell-builder/milestone/1). The RFC suggests targeting a beta stemcell available for the end of Q3 2024, which could be used by the App Runtime Deployment for validation. The FI WG will implement the same release validation for Noble like the one existing currently for Jammy.
 
 ### App Runtime Deployments WG
 
-Once initial confidence has been gained by validating the Noble Numbat stemcell against the BOSH director it is time to validate against cf-deployment. Just like with the BOSH director, an automation should be set up to run the CATS test suite against a Cloud Foundry environment which uses the beta 0.x version of the Noble Numbat stemcell provided by the FI WG. GCP will be used as the initial validation environment but if required validation on AWS could be added. Issues discovered by this validation should be distributed to the related CF components. It is their responsibility to address them. If CF components want to have faster feedback on Noble Numbat issues they can add their own validation. When the cf-deployment is successful the FI WG will release the 1.x GA version of the Noble Numbat stemcell.
+Once initial confidence has been gained by validating the Noble Numbat stemcell against the BOSH director it is time to validate against cf-deployment. A simular validation like the one existing for Jammy stemcell should be set up for Noble which will use the beta 0.x version of the stemcell provided by the FI WG. GCP will be used as the initial validation environment but if required validation on AWS could be added. Issues discovered by this validation should be distributed to the related CF components. It is their responsibility to address them. If CF components want to have faster feedback on Noble Numbat issues they can add their own validation. When the cf-deployment validation of Noble is successful the FI WG will release the 1.x GA version of the Noble Numbat stemcell. The Noble Numbat validation in cf-deployment will be kept also after the 1.x GA release.
