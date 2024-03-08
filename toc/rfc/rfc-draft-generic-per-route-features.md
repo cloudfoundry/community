@@ -104,8 +104,8 @@ To-Do:
 
 ### Specifying Features
 
-It's the responsibility of the App Runtime Platform Working Group (ARD-WG) to specify new
-features based on what is specified in this RFC. When a new feature is proposed the ARD-WG uses
+It's the responsibility of the App Runtime Platform Working Group (ARP-WG) to specify new
+features based on what is specified in this RFC. When a new feature is proposed the ARP-WG uses
 the process it would use for any new feature to decide whether and how it should be implemented. It
 MAY involve other working groups in the process.
 
