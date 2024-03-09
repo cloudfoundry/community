@@ -85,7 +85,6 @@ areas:
     github: marcpaquette
   - name: Vladimir Savchenko
     github: vlast3k
-  reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
   repositories:
@@ -352,7 +351,6 @@ areas:
     github: vlast3k
   - name: Alexander Lais
     github: peanball
-  reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
   repositories:
