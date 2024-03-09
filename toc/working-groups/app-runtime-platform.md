@@ -87,6 +87,9 @@ areas:
     github: vlast3k
   - name: Plamen Doychev
     github: PlamenDoychev
+  reviewers:
+  - name: Konstantin Lapkov
+    github: klapkov
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -353,6 +356,9 @@ areas:
     github: peanball
   - name: Plamen Doychev
     github: PlamenDoychev
+  reviewers:
+  - name: Konstantin Lapkov
+    github: klapkov
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
