@@ -88,6 +88,8 @@ areas:
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
+  - name: Konstantin Lapkov
+    github: klapkov
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -355,6 +357,8 @@ areas:
   reviewers:
   - name: Plamen Doychev
     github: PlamenDoychev
+  - name: Konstantin Lapkov
+    github: klapkov
   repositories:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
