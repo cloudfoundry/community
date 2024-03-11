@@ -36,8 +36,8 @@ The following constraints apply (types are as specified in [RFC 8259](https://rf
 
 #### CLI
 
-Support for a generic map MUST be added to the manifest. There MAY be either individual command line
-flags or a single flag which supports generic key-value pairs for the `map-route` sub-command.
+There MAY be either individual command line flags or a single flag which supports generic key-value
+pairs for the `map-route` sub-command.
 
 #### Cloud Controller
 
@@ -46,6 +46,25 @@ MUST implement per-field validations as features of the map are specified. The r
 rejected with an appropriate error message if the provided map is invalid and MUST be passed on
 as-is otherwise. The API also MUST store the map as a generic key-value map to ensure changes to
 the map do not require a change to the database schema.
+
+Support for a generic map MUST be added to the manifest. The updated routes section in a manifest
+MAY look like this:
+
+```yml
+version: 1
+applications:
+- name: test
+  routes:
+  - route: example.com
+    options:
+      loadbalancing-algorithm: round-robin
+      connection-limit: 15
+      session-cookie: FOOBAR
+      trim-path: true
+  - route: www.example.com/foo
+    protocol: http2
+  - route: tcp-example.com:1234
+```
 
 Implementation details:
 * Add a new field to the [route model](https://github.com/cloudfoundry/cloud_controller_ng/blob/main/app/models/runtime/route.rb).
