@@ -124,9 +124,6 @@ not final):
 }
 ```
 
-To-Do:
-* Can we somehow report errors from gorouter back to the user?
-
 ### Specifying Features
 
 It's the responsibility of the App Runtime Platform Working Group (ARP-WG) to specify new features
@@ -145,9 +142,6 @@ per-route features:
 - Option to trim path mapping on request (i.e. an app mapped to `/some-path/` receiving a request
   `GET /some-path/books` will see the request as `GET /books` if the `trim-path` option is set,
   instead of the full path)
-
-To-Do:
-* Collect more feedback and extend the list.
 
 All of these options are already (or could easily be made) configurable for the entire CF
 installation. Changing them will almost certainly break existing scenarios which is why we are
