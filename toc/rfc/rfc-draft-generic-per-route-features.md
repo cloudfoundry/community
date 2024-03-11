@@ -76,6 +76,11 @@ The diego components MUST add support for the new field specified by the API and
 contents as-is without modification or, if the field exceeds technical limitations, MUST raise an
 error.
 
+### Route-Registrar
+
+Route-registrar MUST offer the new features in its config as they are added to the other
+components.
+
 #### Gorouter
 
 Gorouter MUST accept the new field and parse its contents. If the map cannot be parsed it MUST
