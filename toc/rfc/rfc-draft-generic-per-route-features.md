@@ -85,7 +85,10 @@ components.
 
 Gorouter MUST accept the new field and parse its contents. If the map cannot be parsed it MUST
 be ignored. If individual key-value pairs are invalid those MUST be ignored and other key-value
-pairs MUST still be parsed and acted upon.
+pairs MUST still be parsed and acted upon. For any option which could not be parsed gorouter MUST
+NOT fail but fall back to the value provided in the gorouter config. When encountering an invalid
+option gorouter MUST log the error at least once, the log SHOULD indicate what it tried to parse,
+why it failed and which value will come into effect.
 
 It MAY be decided to implement one feature as part of this RFC which would be implemented together
 with the generic logic for supporting the new map.
