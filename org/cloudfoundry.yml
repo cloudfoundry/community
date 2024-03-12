@@ -1295,6 +1295,10 @@ orgs:
         allow_rebase_merge: false
         default_branch: main
         has_projects: true
+      go-cfclient:
+        default_branch: main
+        description: Golang client lib for Cloud Foundry
+        has_projects: true
       go-cnb:
         archived: true
         has_projects: true

@@ -401,6 +401,15 @@ areas:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
+- name: Go Tools
+  approvers:
+  - name: Shawn Neal
+    github: sneal
+  - name: Caleb Washburn
+    github: calebwashburn
+  repositories:
+  - cloudfoundry/go-cfclient
+
 - name: MultiApps
   approvers:
   - name: Alexander Tsvetkov
