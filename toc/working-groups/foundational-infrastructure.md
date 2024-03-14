@@ -238,9 +238,9 @@ areas:
     github: selzoc
   - name: Matthias Vach
     github: mvach
-  reviewers:
   - name: Ahmed Hassanin
     github: a-hassanin
+  reviewers:
   - name: Ansh Rupani
     github: anshrupani
   repositories:
