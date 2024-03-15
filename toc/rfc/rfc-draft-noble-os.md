@@ -22,7 +22,7 @@ The current Operating System for CF is Jammy Jellyfish (22.04), which has the en
 
 ## Proposal
 
-The CFF community should not skip the Noble Numbat (24.04) release and work on publishing a stemcell line based on it, starting in March or April of 2024. This means that until the end of planned support for Jammy two stemcell lines (Jammy and Noble) will be supported, which can affect the tests and validations of the CF components. The CF components should take the responsibility to decide what kind of tests and validation makes sense for the two stemcell lines. The Slack channel [bosh-noble](https://cloudfoundry.slack.com/archives/C06HTDT78N9) should be used for communication around this effort.
+The CFF community should not skip the Noble Numbat (24.04) release. The CFF community should start work on publishing a stemcell line based on Noble Numbat starting in March or April of 2024. This means that until the end of planned support for Jammy two stemcell lines (Jammy and Noble) will be supported, which can affect the tests and validations of the CF components. The CF components should take the responsibility to decide what kind of tests and validation makes sense for the two stemcell lines. The Slack channel [bosh-noble](https://cloudfoundry.slack.com/archives/C06HTDT78N9) should be used for communication around this effort.
 
 ## Workstreams
 
