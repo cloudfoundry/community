@@ -238,6 +238,8 @@ areas:
     github: selzoc
   - name: Matthias Vach
     github: mvach
+  - name: He Guimin
+    github: xiaozhu36
   reviewers:
   - name: Ahmed Hassanin
     github: a-hassanin
