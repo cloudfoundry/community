@@ -320,6 +320,12 @@ areas:
   - cloudfoundry/windows-utilities-release
   - cloudfoundry/windows-utilities-tests
   - cloudfoundry/yagnats
+- name: Ali Cloud VM deployment lifecycle (BOSH)
+  approvers:
+  - name: He Guimin
+    github: xiaozhu36
+  repositories:
+  - cloudfoundry/bosh-alicloud-cpi-release
 config:
   github_project_sync:
     mapping:
