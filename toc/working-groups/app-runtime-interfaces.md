@@ -458,4 +458,6 @@ areas:
   - cloudfoundry/notifications
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
+config:
+  generate_rfc0015_branch_protection_rules: true
 ```
