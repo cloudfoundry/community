@@ -167,6 +167,10 @@ orgs:
         description: Go CLI for Azure storage
         has_projects: true
         default_branch: main
+      bosh-alicloud-cpi-release:
+        description: BOSH Alibaba CPI
+        has_projects: true
+        default_branch: main
       bosh-ali-storage-cli:
         description: Go CLI for Alibaba storage
         has_projects: true
