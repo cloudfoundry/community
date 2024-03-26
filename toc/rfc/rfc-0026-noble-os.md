@@ -4,8 +4,8 @@
 - Start Date: 2024-03-01
 - Author: @beyhan
 - Contributing Authors: @rkoster, @jochenehret
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#789](https://github.com/cloudfoundry/community/pull/789)
 
 
 ## Summary
