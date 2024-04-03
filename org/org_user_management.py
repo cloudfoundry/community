@@ -111,7 +111,9 @@ class InactiveUserHandler:
         return (
             f"According to the rules for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
             f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have"
-            " two weeks to refute this revocation, if they wish."
+            " two weeks to refute this revocation, if they wish by commenting on this pull-request\n"
+            "and open a new pull-request to be re-added as contributor after this one is merged.\n"
+            "As alternative if you are active in a working group you could apply for a role in that working group."
         )
 
     @staticmethod
