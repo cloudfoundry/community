@@ -326,6 +326,24 @@ areas:
     github: xiaozhu36
   repositories:
   - cloudfoundry/bosh-alicloud-cpi-release
+- name: Prometheus (Bosh)
+  approvers:
+    - name: Benjamin Guttmann
+      github: benjaminguttmann-avtq
+    - name: Ferran Rodenas
+      github: frodenas
+    - name: Gilles Miraillet
+      github: gmllt
+    - name: Mario Di Miceli
+      github: mdimiceli
+  repositories:
+    - cloudfoundry/bosh_exporter
+    - cloudfoundry/cf_exporter
+    - cloudfoundry/firehose_exporter
+    - cloudfoundry/node-exporter-boshrelease
+    - cloudfoundry/prometheus-boshrelease
+
+
 config:
   github_project_sync:
     mapping:
