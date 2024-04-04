@@ -35,8 +35,8 @@ The following constraints apply (types are as specified in [RFC 8259](https://rf
 
 #### CLI
 
-There MAY be either individual command line flags or a single flag which supports generic key-value
-pairs for the `map-route` sub-command.
+There SHOULD be a single flag which supports generic key-value pairs for the `map-route`
+sub-command. The flag should accept a JSON structure like the `-c` argument of `cf create-service`.
 
 #### Cloud Controller
 
