@@ -135,11 +135,16 @@ areas:
   - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
-  - cloudfoundry/go-uaa
   - cloudfoundry/uaa-cli
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
+- name: Identity and Auth (UAA) Go Client
+  approvers:
+  - name: Joe Fitzgerald
+    github: joefitzgerald
+  repositories:
+  - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
   approvers:
   - name: Andrew Garner
