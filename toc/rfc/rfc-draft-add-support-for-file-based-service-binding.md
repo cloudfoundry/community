@@ -81,7 +81,7 @@ action := &models.RunAction{
 
 ### App Runtime Interfaces WG
 
-Cloud Controller should be extended with an App Feature to activate the new file base Service Binding option. If the file-based service binding feature is active the Cloud Controller should generate a Run action, which configures the `VCAP_SERVICES` content to be stored as tmpfs file in the application container instead of environment variable.
+Cloud Controller should be extended with an App Feature to activate the new file base Service Binding option. If the file-based service binding feature is active the Cloud Controller should generate a Run action, which configures the Service Bindings to be stored as tmpfs file(s) in the application container instead of `VCAP_SERVICES` environment variable.
 
 Additionally, the suggest limit for the size should be implemented.
 
