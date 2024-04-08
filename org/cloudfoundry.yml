@@ -170,7 +170,7 @@ orgs:
       bosh-alicloud-cpi-release:
         description: BOSH Alibaba CPI
         has_projects: true
-        default_branch: main
+        default_branch: master
       bosh-ali-storage-cli:
         description: Go CLI for Alibaba storage
         has_projects: true
