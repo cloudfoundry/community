@@ -26,7 +26,7 @@ The CFF community should implement an alternative approach for service binding i
 - Already today CF uses `tmpfs` for [Instance Identity Credentials](https://docs.cloudfoundry.org/devguide/deploy-apps/instance-identity.html) which are rotated without restarting the application every `24h` by default
 
 The two approaches should be supported in parallel. Users should be able to select which approach Cloud Controller should use to deliver the binding information. Applications with binding information >`130KB` have to go with the file option and adopt it. There are two alternatives regarding service binding file organization:
-1. The VCAP_SERVICES content is stored in a file which location is specified via the VCAP_SERVICES_FILE_PATH env var in the same format as the VCAP_SERVICES environment variable
+1. The `VCAP_SERVICES` content is stored in a file which location is specified via the `VCAP_SERVICES_FILE_PATH` env var in the same format as the `VCAP_SERVICES` environment variable
    * Advantages:
       * Less disruptive for applications consuming the `VCAP_SERVICES` env var
       * Less implementation effort for the Cloud Controller
