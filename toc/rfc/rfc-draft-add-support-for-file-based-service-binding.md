@@ -25,8 +25,7 @@ The CFF community should implement an alternative approach for service binding i
 - The file size limit can be controlled by the CF platform
 - Already today CF uses `tmpfs` for [Instance Identity Credentials](https://docs.cloudfoundry.org/devguide/deploy-apps/instance-identity.html) which are rotated without restarting the application every `24h` by default
 
-The two approaches should be supported in parallel. Users should be able to select which approach Cloud Controller should use to deliver the binding information.
-There are two alternatives regarding service binding file organization:
+The two approaches should be supported in parallel. Users should be able to select which approach Cloud Controller should use to deliver the binding information. Applications with binding information >`130KB` have to go with the file option and adopt it. There are two alternatives regarding service binding file organization:
 1. The VCAP_SERVICES content is stored in a file which location is specified via the VCAP_SERVICES_FILE_PATH env var in the same format as the VCAP_SERVICES environment variable
    * Advantages:
       * Less disruptive for applications consuming the `VCAP_SERVICES` env var
@@ -39,7 +38,6 @@ There are two alternatives regarding service binding file organization:
       * Moving application between CF or K8s deployments will be easier
    * Disadvantages
       * Higher implementation efforts for the Cloud Controller
-      * Applications with binding information >`130KB` have to go with the file option and adopt it
 
 
 The 2) alternatives offers more than just addressing the issue of this RFC. It suggests an option to evolve the CF platform towards a different service binding specification defined by the Cloud Native community. This means higher implementation efforts for the CF platform and application developers, but possible benefits from the Cloud Native community. This RFC has a light preference for the 2) alternative because of the listed advantages but the feedback of the CF community is wanted here.
