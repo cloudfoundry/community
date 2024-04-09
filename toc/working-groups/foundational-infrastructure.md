@@ -249,12 +249,10 @@ areas:
   - cloudfoundry/bosh-acceptance-tests
   - cloudfoundry/bosh-agent
   - cloudfoundry/bosh-agent-index
-  - cloudfoundry/bosh-alicloud-light-stemcell-builder
   - cloudfoundry/bosh-aws-cpi-release
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
   - cloudfoundry/bosh-azure-storage-cli
-  - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/bosh-apt-resources
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
@@ -315,7 +313,6 @@ areas:
   - cloudfoundry/sample-windows-bosh-release
   - cloudfoundry/socks5-proxy
   - cloudfoundry/stembuild
-  - cloudfoundry/stemcells-alicloud-index
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
   - cloudfoundry/windows-utilities-tests
@@ -326,6 +323,10 @@ areas:
     github: xiaozhu36
   repositories:
   - cloudfoundry/bosh-alicloud-cpi-release
+  - cloudfoundry/bosh-alicloud-light-stemcell-builder
+  - cloudfoundry/bosh-ali-storage-cli
+  - cloudfoundry/stemcells-alicloud-index
+
 - name: Prometheus (Bosh)
   approvers:
     - name: Benjamin Guttmann
@@ -342,7 +343,6 @@ areas:
     - cloudfoundry/firehose_exporter
     - cloudfoundry/node-exporter-boshrelease
     - cloudfoundry/prometheus-boshrelease
-
 
 config:
   github_project_sync:
