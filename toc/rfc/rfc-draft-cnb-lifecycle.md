@@ -78,7 +78,7 @@ Introduce a new type of lifecycle type which indicates that Cloud Native Buildpa
 {
   "type": "cnb",
   "data": {
-    "buildpacks": ["gcr.io/paketo-buildpacks/java"],
+    "buildpacks": ["docker://gcr.io/paketo-buildpacks/java"],
     "stack": "cflinuxfs4"
   }
 }
@@ -88,29 +88,28 @@ Both, building and running an app will be based on the configured stack. If no s
 
 #### CF CLI
 
-New flag `–[no-]cnb` will be introduced to the `cf push` command. The flag can not be combined with any ` --docker-*` commands. When the flag is set, CF CLI must set the lifecycle type to `cnb`.
+New flag `–-lifecycle [buildpack|docker|cnb]` will be introduced to the `cf push` command.
 
 #### App Manifest
 
-New property `cnb: true|false` will be added to the App manifest.
+New property `lifecycle: buildpack|docker|cnb` will be added to the App manifest. It will default to `lifecycle: buildpack`. Using `docker-*` properties implies `lifecycle: docker`.
+The buildpack URL must start with one of the following schemas: `docker://`, `http://` or `https://`.
 
 ```yaml
 ---
 applications:
   - name: test-app
     instances: 1
-    cnb: true
+    lifecycle: cnb
     buildpacks:
-      - gcr.io/paketo-buildpacks/java
+      - docker://gcr.io/paketo-buildpacks/java
 ```
-
-The `cnb` property cannot be present together with any of the `docker-*` properties. When the flag is set to `true`, the CF CLI must set the lifecycle type to `cnb`.
 
 Both changes (CLI and manifest) were chosen because they are simple (from a user perspective), easy to implement and remove, if CNBs will become the standard lifecycle in future.
 
 ### Alternative APIs
 
-- Instead of a binary switch, introduce a `buildpack-type` (`v2`/`v3` or `cf`/`cnb` or `classic`/`cnb`) to distinguish between different lifecycles
+- Instead of a lifecycle type switch, introduce a `buildpack-type` (`v2`/`v3` or `cf`/`cnb` or `classic`/`cnb`) to distinguish between different lifecycles.
 
 #### Diego Release
 
