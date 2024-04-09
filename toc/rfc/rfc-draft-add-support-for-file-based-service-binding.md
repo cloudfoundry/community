@@ -3,6 +3,7 @@
 - Name: Add Support for File based Service Binding Information
 - Start Date: 2024-03-11
 - Author(s): @beyhan
+- Contributing Authors: @stephanme, @loewenstein
 - Status: Draft
 - RFC Pull Request: (fill in with PR link after you submit it)
 
