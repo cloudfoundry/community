@@ -41,8 +41,6 @@ technical_leads:
 - name: Greg Cobb
   github: gerg
 bots:
-- name: App Autoscaler CI Bot
-  github: app-autoscaler-ci-bot
 - name: Cloud Foundry Buildpacks Team Robot
   github: cf-buildpacks-eng
 - name: ARI WG Git Bot
@@ -65,6 +63,9 @@ areas:
   reviewers:
   - name: Sumit Kulhadia
     github: kulhadia
+  bots:
+  - name: App Autoscaler CI Bot
+    github: app-autoscaler-ci-bot
   repositories:
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
