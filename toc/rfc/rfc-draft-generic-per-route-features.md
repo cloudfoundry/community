@@ -73,7 +73,11 @@ routes:
 * [`GET /v3/apps/:guid/routes`](https://v3-apidocs.cloudfoundry.org/version/3.159.0/index.html#list-routes-for-an-app)
 * [`PATCH /v3/routes/:guid`](https://v3-apidocs.cloudfoundry.org/version/3.159.0/index.html#update-a-route)
 
-Implementation details:
+The overall goal MUST be to implement the new fields in a way that fits in with the current
+behavior of the cloud controller API. It is up to the maintainers / implementers to decide on the
+exact behavior.
+
+Implementation pointers:
 * Add a new field to the [route model](https://github.com/cloudfoundry/cloud_controller_ng/blob/main/app/models/runtime/route.rb).
 * Add validation to the [route validator](https://github.com/cloudfoundry/cloud_controller_ng/blob/e719d017ea4625397a97c2c14352ebdee66febe9/lib/cloud_controller/route_validator.rb#L2).
 * Use a mechanism similar to the [droplet](https://github.com/cloudfoundry/cloud_controller_ng/blob/e719d017ea4625397a97c2c14352ebdee66febe9/app/models/runtime/droplet_model.rb#L47-L48) to store the encoded map.
