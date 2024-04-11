@@ -158,7 +158,7 @@ Options:
 - Require custom credentials configuration e.g.
 
 ```bash
-CNB_REGISTRY_CREDS='{"registry":{"user":"password"}}' cf push ...
+CNB_REGISTRY_CREDS='{"registry.io":{"user":"password"}}' cf push ...
 ```
 
 ```json
