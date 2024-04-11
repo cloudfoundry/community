@@ -132,3 +132,46 @@ This RFC enables only the use of custom buildpacks. CNBs could be added as syste
 #### Better SBoM Support
 
 This RFC already introduces some SBoM capabilities offered by CNBs. Yet, it is not complete (runtime OS information is missing) and buried in the layers of the droplet. This could be further improved in future.
+
+### Open Questions
+
+#### Pulling Buildpacks from private registries
+
+Options:
+
+- Require environment variable with docker config content.
+
+```json
+{
+  "auths": {
+    "https://index.docker.io/v1/": {
+      "auth": "dXNlcjpwYXNzd29yZA=="
+    },
+    "quay.io": {
+      "auth": "dXNlcjpwYXNzd29yZA=="
+    }
+  }
+}
+```
+
+- Require environment variable pointing to docker config file. CF CLI must parse the file and invoke helpers if needed for required registries.
+- Require custom credentials configuration e.g.
+
+```bash
+CNB_REGISTRY_CREDS='{"registry":{"user":"password"}}' cf push ...
+```
+
+```json
+{
+  "type": "cnb",
+  "data": {
+    "buildpacks": ["docker://gcr.io/paketo-buildpacks/java"],
+    "stack": "cflinuxfs4",
+    "credentials": {
+      "registry.io": {
+        "user": "password"
+      }
+    }
+  }
+}
+```
