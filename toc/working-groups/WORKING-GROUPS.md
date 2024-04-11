@@ -152,9 +152,9 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [foundational-infrastructure.md](./foundational-infrastructure.md)  |
-| Forum                      | [Video chat](https://zoom.us/j/92400700135?pwd=MTZONUlRdGQxTmMveDVlMVYvRTFIZz09)  |
+| Forum                      | [Video chat](https://zoom.us/j/98797398641?pwd=VWhBRkVhZkJnS3lEWStoYjZMWnd2Zz09)  |
 | Community Meeting Calendar | Weekly on Thursdays at 10:30 am ET / 7:30 am PT  |
-| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1pLKTANki82JsCqPr4DE8vu4je_omA20eH96CUuRW_8Q)  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1zj6uetnHJjdavmwEmbQA-6oVuijFc3u3UVQ7ip74988/edit)  |
 | Slack Channels              | [&#x23;bosh](https://cloudfoundry.slack.com/archives/C02HPPYQ2) &middot; [&#x23;credhub](https://cloudfoundry.slack.com/archives/C3EN0BFC0) &middot; [&#x23;uaa](https://cloudfoundry.slack.com/archives/C03FXANBV) &middot; [&#x23;mysql-galera](https://cloudfoundry.slack.com/archives/C7NDVQ55Z) &middot; [&#x23;postgres-release](https://cloudfoundry.slack.com/archives/C3CR3GC1F) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
