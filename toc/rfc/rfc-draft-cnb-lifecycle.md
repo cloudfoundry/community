@@ -137,6 +137,8 @@ This RFC already introduces some SBoM capabilities offered by CNBs. Yet, it is n
 
 #### Pulling Buildpacks from private registries
 
+Cloud Foundry currently supports only a single set of credentials together with a single docker image being passed as part of a `cf push --docker`. However, with Cloud Native Buildpacks multiple images, from multiple registries, using different credentials is possible. Deducting the registry from the passed Cloud Native Buildpacks is not possible e.g. when they are consumed from unauthenticated (e.g. DockerHub) and authenticated registries.
+
 Options:
 
 - Require environment variable with docker config content.
@@ -144,10 +146,7 @@ Options:
 ```json
 {
   "auths": {
-    "https://index.docker.io/v1/": {
-      "auth": "dXNlcjpwYXNzd29yZA=="
-    },
-    "quay.io": {
+    "registry.io": {
       "auth": "dXNlcjpwYXNzd29yZA=="
     }
   }
