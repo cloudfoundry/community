@@ -106,12 +106,20 @@ class InactiveUserHandler:
             "https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0025-define-"
             "criteria-and-removal-process-for-inactive-members.md#remove-the-membership-to-the-cloud-foundry-github-organization"
         )
+
+        rfc_promotion_rules = (
+            "https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md#proposal"
+        )
+
         user_tagging_prefix = "@" if tagusers else ""
         users_as_list = "\n".join(str(user_tagging_prefix + s) for s in users_to_delete)
         return (
             f"According to the rules for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
             f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have"
-            " two weeks to refute this revocation, if they wish."
+            " two weeks to refute this revocation, if they wish by commenting on this pull-request\n"
+            "and open a new pull-request to be re-added as contributor after this one is merged.\n"
+            f"As alternative, if you are active in a working group please check the [promotion rules]({rfc_promotion_rules})\n"
+            "and if you are eligible and wish apply for a role in that working group."
         )
 
     @staticmethod
