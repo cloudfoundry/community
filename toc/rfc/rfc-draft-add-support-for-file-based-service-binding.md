@@ -94,12 +94,24 @@ The App Features API aren’t supported currently in the CF CLI and [app manifes
 
 ### App Manifest Attributes Proposal
 
+The CF app manifest is [additive](https://v3-apidocs.cloudfoundry.org/#apply-a-manifest-to-a-space) not declarative. That is why if we want to disable app feature flags via the app manifest a status input like `enabled` or `disabled` will be required. Like:
+
 ```
 ---
 applications:
 - name: test-app
   features:
--	file-based-service-bindings
+  -	file-based-service-bindings: true
+```
+or as alternative proposal:
+
+```
+---
+applications:
+- name: test-app
+  features:
+  -	file-based-service-bindings
+    enabled: true
 ```
 
 ### CF CLI new Commands Proposal
