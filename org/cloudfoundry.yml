@@ -2462,6 +2462,7 @@ orgs:
           cli-ci: admin
           cli-plugin-repo: admin
           cli: admin
+          bosh-package-cf-cli-release: admin          
       temp-multiapps-admins:
         description: "Temporary team for managing MultiApps secrets until we have a permanent plan."
         maintainers:
