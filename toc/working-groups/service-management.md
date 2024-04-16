@@ -43,10 +43,8 @@ areas:
     github: pivotal-marcela-campo
   - name: Andrea Zucchini
     github: zucchinidev
-  - name: Konstantin Semenov
-    github: jhvhs    
-  - name: Fernando Naranjo
-    github: fnaranjo-vmw        
+  - name: Iain Findlay
+    github: ifindlay-cci
   bots:
   - name: Services Enablement bot
     github: servicesenablement
