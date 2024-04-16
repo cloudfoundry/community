@@ -135,11 +135,36 @@ areas:
   - cloudfoundry/identity-tools
   - cloudfoundry/omniauth-uaa-oauth2
   - cloudfoundry/uaa
-  - cloudfoundry/go-uaa
   - cloudfoundry/uaa-cli
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
+- name: Identity and Auth (UAA) Go Client
+  approvers:
+  - name: Joe Fitzgerald
+    github: joefitzgerald
+  - name: Peter Chen
+    github: peterhaochen47
+  - name: Bruce Ricard
+    github: bruce-ricard
+  - name: Markus Strehle
+    github: strehle
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Danny Faught
+    github: swalchemist
+  - name: Florian Tack
+    github: tack-sap
+  - name: Torsten Luh
+    github: torsten-sap
+  - name: Alicia Yingling
+    github: Tallicia
+  - name: Adrian Hoelzl
+    github: adrianhoelzl-sap
+  - name: Klaus Kiefer
+    github: klaus-sap
+  repositories:
+  - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
   approvers:
   - name: Andrew Garner
