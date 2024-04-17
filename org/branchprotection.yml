@@ -114,7 +114,7 @@ branch-protection:
         # App-Autoscaler
         app-autoscaler-release:
           protect: true
-          enforce_admins: true
+          enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
           allow_disabled_policies: true
