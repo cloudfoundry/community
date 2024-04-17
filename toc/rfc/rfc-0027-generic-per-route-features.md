@@ -3,8 +3,8 @@
 - Name: Generic Per-Route Features
 - Start Date: 2024-01-08
 - Author(s): @maxmoehl, @domdom82
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#809](https://github.com/cloudfoundry/community/pull/809)
 
 ## Summary
 
