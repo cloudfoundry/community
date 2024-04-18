@@ -53,8 +53,8 @@ during the community feedback period at the end of each meeting.
 | Artifact                   | Link                                                                                                                                                     |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Meeting Schedule | Tuesdays from 10:30 to 11:30 am ET <br>[CF Community Calendar](https://www.cloudfoundry.org/community-calendar/)                                                                                                                     |
-| Meeting Video Chat       | See the coordinates section of the [meeting notes](https://docs.google.com/document/d/1ng8rAcnrCbTm5RVNAKZ_ptqXiwcBIPgC8rbYp6A8lUo/edit#heading=h.dlm4q8auhcx4)                                                                                                                     |
-| Meeting Notes              | [CFF TOC meeting notes](https://docs.google.com/document/d/1ng8rAcnrCbTm5RVNAKZ_ptqXiwcBIPgC8rbYp6A8lUo/edit)                                                                                                                                                |
+| Meeting Video Chat       | See the coordinates section of the [meeting notes](https://docs.google.com/document/d/1qGrDBWBrO8_FrPXmosKD9fa67NPtT4p5NhHKN8ideY0/edit#heading=h.dlm4q8auhcx4)                                                                                                                     |
+| Meeting Notes              | [CFF TOC meeting notes](https://docs.google.com/document/d/1qGrDBWBrO8_FrPXmosKD9fa67NPtT4p5NhHKN8ideY0/edit)                                                                                                                                                |
 
 ## Members
 
