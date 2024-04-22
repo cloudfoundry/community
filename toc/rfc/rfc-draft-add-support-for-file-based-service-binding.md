@@ -110,7 +110,7 @@ or as alternative proposal:
 applications:
 - name: test-app
   features:
-  -	file-based-service-bindings
+  -	name: file-based-service-bindings
     enabled: true
 ```
 
