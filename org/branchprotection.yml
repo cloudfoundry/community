@@ -140,3 +140,17 @@ branch-protection:
           include: [ "^main$" ]
         app-autoscaler-env-bbl-state:
           protect: false
+          
+        # Cloud Controller / CAPI related repos to skip branch protection on
+        cf-performance-tests-pipeline:
+          protect: false
+        capi-ci:
+          protect: false
+        capi-ci-private:
+          protect: false
+        capi-dockerfiles:
+          protect: false
+  
+          
+
+          
