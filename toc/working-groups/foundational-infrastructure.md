@@ -351,6 +351,24 @@ areas:
   - cloudfoundry/bosh-alicloud-light-stemcell-builder
   - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/stemcells-alicloud-index
+
+- name: Prometheus (Bosh)
+  approvers:
+    - name: Benjamin Guttmann
+      github: benjaminguttmann-avtq
+    - name: Ferran Rodenas
+      github: frodenas
+    - name: Gilles Miraillet
+      github: gmllt
+    - name: Mario Di Miceli
+      github: mdimiceli
+  repositories:
+    - cloudfoundry/bosh_exporter
+    - cloudfoundry/cf_exporter
+    - cloudfoundry/firehose_exporter
+    - cloudfoundry/node-exporter-boshrelease
+    - cloudfoundry/prometheus-boshrelease
+
 config:
   github_project_sync:
     mapping:
