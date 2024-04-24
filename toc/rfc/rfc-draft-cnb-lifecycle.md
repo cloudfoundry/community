@@ -55,7 +55,7 @@ Affected cloud controller APIs (all that interact with [lifecycles](https://v3-a
   - Result of the staging process will be a droplet
   - No OCI registry necessary
   - Reuse cflinuxfs4 as rootfs during build and run
-  - No change to how the Cloud Foundry platform provides service binding information
+  - No change to how the Cloud Foundry platform provides service binding information (see [#804](https://github.com/cloudfoundry/community/pull/804) for how this will be covered in a separate RFC)
 
 ### High Level Implementation
 
