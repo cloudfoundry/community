@@ -101,6 +101,7 @@ areas:
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
+  - cloudfoundry/cnbapplifecycle
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
   - cloudfoundry/diego-acceptance
