@@ -866,6 +866,10 @@ orgs:
       cnb2cf:
         archived: true
         has_projects: true
+      cnbapplifecycle:
+        description: Lifecycle to create apps using Cloud Native Buildpacks
+        has_projects: false
+        has_wiki: false
       commandrunner:
         has_projects: true
       community:
