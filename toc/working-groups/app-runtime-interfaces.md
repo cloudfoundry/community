@@ -60,6 +60,8 @@ areas:
     github: geigerj0
   - name: Susanne Salzmann
     github: salzmannsusan
+  - name: Alan Moran
+    github: bonzofenix
   reviewers:
   - name: Sumit Kulhadia
     github: kulhadia
