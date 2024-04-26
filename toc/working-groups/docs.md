@@ -48,6 +48,8 @@ areas:
     github: fifthposition
   - name: Ajayan Borys
     github: HenryBorys
+  - name: Paul Spinrad
+    github: pspinrad
 
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
