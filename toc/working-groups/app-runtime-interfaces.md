@@ -437,6 +437,9 @@ areas:
     github: VRBogdanov
   - name: Yavor Uzunov
     github: Yavor16
+  reviewers:
+  - name: Monika Noeva
+    github: MNoeva
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
