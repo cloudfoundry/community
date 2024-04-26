@@ -2478,7 +2478,7 @@ orgs:
           cli-plugin-repo: admin
           cli: admin
           bosh-package-cf-cli-release: admin
-          cli-private: admin          
+          cli-private: admin
       temp-multiapps-admins:
         description: "Temporary team for managing MultiApps secrets until we have a permanent plan."
         maintainers:
@@ -2501,6 +2501,7 @@ orgs:
         - asalan316
         - silvestre
         - joergdw
+        - bonzofenix
         - olivermautschke
         - geigerj0
         - salzmannsusan
