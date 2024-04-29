@@ -261,6 +261,7 @@ orgs:
         has_wiki: false
       bosh_exporter:
         description: BOSH Prometheus Exporter
+        default_branch: master
         has_projects: false
       bosh-gcscli:
         description: GCS for BOSH
@@ -564,6 +565,7 @@ orgs:
         has_projects: true
       cf_exporter:
         description: Cloud Foundry Prometheus Exporter
+        default_branch: master
         has_projects: false
       cf-for-k8s:
         archived: true
@@ -1213,6 +1215,7 @@ orgs:
         has_projects: true
       firehose_exporter:
         description: Cloud Foundry Firehose Prometheus exporter
+        default_branch: master
         has_projects: false
       filelock:
         has_projects: true
@@ -1794,6 +1797,7 @@ orgs:
         has_projects: true
       node-exporter-boshrelease:
         description: Prometheus Node Exporter BOSH Release
+        default_branch: master
         has_projects: false
       nodejs-buildpack:
         description: Cloud Foundry buildpack for Node.js
@@ -1913,6 +1917,7 @@ orgs:
         has_projects: true
       prometheus-boshrelease:
         description: bosh release for prometheus ecosystem
+        default_branch: master
         has_projects: false
       public-buildpacks-ci-robots:
         default_branch: main
