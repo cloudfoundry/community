@@ -440,6 +440,9 @@ areas:
   reviewers:
   - name: Monika Noeva
     github: MNoeva
+  - name: Stefan Yonkov
+    github: s-yonkov-yonkov
+    
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
