@@ -150,7 +150,53 @@ branch-protection:
           protect: false
         capi-dockerfiles:
           protect: false
-  
-          
 
-          
+        # ARI Buildpacks repos to skip branch protection
+        cloudfoundry/binary-buildpack:
+          protect: false
+        cloudfoundry/dotnet-core-buildpack:
+          protect: false
+        cloudfoundry/go-buildpack:
+          protect: false
+        cloudfoundry/hwc-buildpack:
+          protect: false
+        cloudfoundry/java-buildpack:
+          protect: false
+        cloudfoundry/nginx-buildpack:
+          protect: false
+        cloudfoundry/nodejs-buildpack:
+          protect: false
+        cloudfoundry/php-buildpack:
+          protect: false
+        cloudfoundry/python-buildpack:
+          protect: false
+        cloudfoundry/r-buildpack:
+          protect: false
+        cloudfoundry/ruby-buildpack:
+          protect: false
+        cloudfoundry/staticfile-buildpack:
+          protect: false
+        cloudfoundry/binary-buildpack-release:
+          protect: false
+        cloudfoundry/dotnet-core-buildpack-release:
+          protect: false
+        cloudfoundry/go-buildpack-release:
+          protect: false
+        cloudfoundry/hwc-buildpack-release:
+          protect: false
+        cloudfoundry/java-buildpack-release:
+          protect: false
+        cloudfoundry/nginx-buildpack-release:
+          protect: false
+        cloudfoundry/nodejs-buildpack-release:
+          protect: false
+        cloudfoundry/php-buildpack-release:
+          protect: false
+        cloudfoundry/python-buildpack-release:
+          protect: false
+        cloudfoundry/r-buildpack-release:
+          protect: false
+        cloudfoundry/ruby-buildpack-release:
+          protect: false
+        cloudfoundry/staticfile-buildpack-release:
+          protect: false
