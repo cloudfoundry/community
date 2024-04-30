@@ -3,8 +3,8 @@
 - Name: CF SSH over WebSockets
 - Start Date: 2024-04-08
 - Author(s): @domdom82
-- Status: Draft
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/807
+- Status: Accepted
+- RFC Pull Request: [community#807](https://github.com/cloudfoundry/community/pull/807)
 
 
 ## Summary
@@ -70,7 +70,7 @@ The proposal does not aim to solve security issues of (CF) SSH per se. Tunneling
 
 ### Architecture Changes
 
-![architecture-changes](rfc-draft-ssh-over-ws/cf-ssh-over-websocket.drawio.png)
+![architecture-changes](rfc-0029-ssh-over-ws/cf-ssh-over-websocket.drawio.png)
 
 There are three scenarios:
 
