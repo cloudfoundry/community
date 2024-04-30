@@ -4,8 +4,8 @@
 - Name: Cloud Native Buildpacks Lifecycle
 - Start Date: 2024-03-19
 - Author(s): @c0d1ngm0nk3y, @pbusko, @nicolasbender, @modulo11
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/796
+- Status: Accepted
+- RFC Pull Request: [community#831](https://github.com/cloudfoundry/community/pull/831)
 - Updates: [RFC 0017](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0017-add-cnbs.md)
 
 ## Summary
