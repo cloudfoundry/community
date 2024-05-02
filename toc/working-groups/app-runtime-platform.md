@@ -59,8 +59,8 @@ config:
 areas:
 - name: cnbapplifecycle
   approvers:
-  - name: Patrick Lowin
-    github: plowin
+  - name: Jan von Löwenstein
+    github: loewenstein
   repositories:
   - cloudfoundry/cnbapplifecycle
 - name: Diego
