@@ -59,6 +59,12 @@ config:
     mapping:
       cloudfoundry: 41
 areas:
+- name: cnbapplifecycle
+  approvers:
+  - name: Jan von Löwenstein
+    github: loewenstein
+  repositories:
+  - cloudfoundry/cnbapplifecycle
 - name: Diego
   approvers:
   - name: Andrew Crump
@@ -103,7 +109,6 @@ areas:
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
-  - cloudfoundry/cnbapplifecycle
   - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
   - cloudfoundry/diego-acceptance
