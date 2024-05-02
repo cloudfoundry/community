@@ -363,6 +363,8 @@ areas:
     github: blgm
   - name: Shwetha Gururaj
     github: gururajsh
+  - name: David Alvarado
+    github: dalvarado
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
