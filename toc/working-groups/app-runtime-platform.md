@@ -59,7 +59,7 @@ config:
 areas:
 - name: cnbapplifecycle
   approvers:
-  - name: Jan von Löwenstein
+  - name: Jan von Loewenstein
     github: loewenstein
   repositories:
   - cloudfoundry/cnbapplifecycle
