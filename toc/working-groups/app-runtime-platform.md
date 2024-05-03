@@ -61,6 +61,14 @@ areas:
   approvers:
   - name: Jan von Löwenstein
     github: loewenstein-sap
+  - name: Pavel Busko
+    github: pbusko
+  - name: Johannes Dillmann
+    github: modulo11
+  - name: Ralf Pannemans
+    github: c0d1ngm0nk3y
+  - name: Nicolas Bender
+    github: nicolasbender
   repositories:
   - cloudfoundry/cnbapplifecycle
 - name: Diego
