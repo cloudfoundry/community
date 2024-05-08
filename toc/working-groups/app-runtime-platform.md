@@ -60,7 +60,7 @@ areas:
 - name: cnbapplifecycle
   approvers:
   - name: Jan von Löwenstein
-    github: loewenstein
+    github: loewenstein-sap
   repositories:
   - cloudfoundry/cnbapplifecycle
 - name: Diego
