@@ -44,8 +44,6 @@ areas:
     github: anita-flegg
   - name: Samia Nneji
     github: snneji
-  - name: Ben Klein
-    github: fifthposition
   - name: Ajayan Borys
     github: HenryBorys
   - name: Paul Spinrad
