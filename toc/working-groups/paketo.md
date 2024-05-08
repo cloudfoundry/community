@@ -45,14 +45,14 @@ execution_leads:
 - name: Daniel Mikusa
   github: dmikusa
 - name: Jan von Löwenstein
-  github: loewenstein
+  github: loewenstein-sap
 technical_leads:
 - name: Forest Eckhardt
   github: ForestEckhardt
 - name: Daniel Mikusa
   github: dmikusa
 - name: Jan von Löwenstein
-  github: loewenstein
+  github: loewenstein-sap
 bots:
 - name: paketo-bot
   github: paketo-bot
