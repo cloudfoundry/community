@@ -239,6 +239,8 @@ areas:
   reviewers:
   - name: Felix Hambrecht
     github: fhambrec
+  - name: Glenn Oppegard
+    github: oppegard
   repositories:
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/dropsonde
