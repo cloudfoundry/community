@@ -194,6 +194,8 @@ areas:
   reviewers:
   - name: Rebecca Roberts
     github: rroberts2222
+  - name: Glenn Oppegard
+    github: oppegard
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
