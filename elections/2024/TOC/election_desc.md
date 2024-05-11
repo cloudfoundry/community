@@ -2,7 +2,7 @@ The role of this election is to fill the two (2) seats due for election this yea
 
 ## Eligibility
 
-All contributors with 25 or more contributions to any Cloud Foundry Foundation project over the last year are eligible to vote. You will see either ELIGIBLE or NOT ELIGIBLE at the top of this screen. If Elekto fails to recognize you as eligible to vote in this election even though you believe you should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2024---TOC/exception) or via an issue on the community repository. The deadline for filing exceptions is June 13th, 11:59 pm PT.
+Anyone who has contributed to a Cloud Foundry Foundation project over the last year is eligible to vote. You will see either ELIGIBLE or NOT ELIGIBLE at the top of this screen. If Elekto fails to recognize you as eligible to vote in this election even though you believe you should be, please file a voting exception request [within the Elekto app](https://elections.cloudfoundry.org/app/elections/2024---TOC/exception) or via an issue on the community repository. The deadline for filing exceptions is June 13th, 11:59 pm PT.
 
 ## Schedule
 
