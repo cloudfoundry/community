@@ -10,9 +10,6 @@ Technical Oversight Committee (TOC). The rules governing this election are set i
 for the relevant details).
 
 
-This guide exists to serve as a guide to this year's election process.
-
-
 ## Schedule
 
 - **May 17**: Election is announced and candidate nomination period begins
@@ -79,7 +76,7 @@ aggregate form.
 ## Election Results
 
 
-The newly elected body will be announced via cf-dev@lists.cloudfoundry.org on 20 Jun, 2022.
+The newly elected body will be announced via cf-dev@lists.cloudfoundry.org on 20 Jun, 2024.
 
 
 Following the announcement, the voting results and winners will be published.
