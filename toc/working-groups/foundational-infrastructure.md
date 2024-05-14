@@ -236,6 +236,9 @@ areas:
     github: anshrupani
   - name: Chris Selzo
     github: selzoc
+  reviewers:
+  - name: Nader Ziada
+    github: nader-ziada
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -270,6 +273,8 @@ areas:
   reviewers:
   - name: Ansh Rupani
     github: anshrupani
+  - name: Nader Ziada
+    github: nader-ziada
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
