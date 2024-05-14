@@ -372,6 +372,8 @@ areas:
     github: PeteLevineA
   - name: Shwetha Guraraj
     github: gururajsh
+  - name: Tim Downey
+    github: tcdowney
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
