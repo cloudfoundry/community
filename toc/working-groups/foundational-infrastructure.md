@@ -239,6 +239,8 @@ areas:
   reviewers:
   - name: Greg Meyer
     github: gm2552
+  - name: Nader Ziada
+    github: nader-ziada
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -275,6 +277,8 @@ areas:
     github: anshrupani
   - name: Greg Meyer
     github: gm2552
+  - name: Nader Ziada
+    github: nader-ziada
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
