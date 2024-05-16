@@ -319,6 +319,8 @@ areas:
     github: pivotalgeorge
   - name: Cristhian Peña
     github: ccjaimes
+  - name: Sam Gunaratne
+    github: samze
   bots:
   - name: capi-bot
     github: capi-bot
