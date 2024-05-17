@@ -237,6 +237,8 @@ areas:
   - name: Chris Selzo
     github: selzoc
   reviewers:
+  - name: Greg Meyer
+    github: gm2552
   - name: Nader Ziada
     github: nader-ziada
   repositories:
@@ -273,6 +275,8 @@ areas:
   reviewers:
   - name: Ansh Rupani
     github: anshrupani
+  - name: Greg Meyer
+    github: gm2552
   - name: Nader Ziada
     github: nader-ziada
   repositories:
