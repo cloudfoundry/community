@@ -200,3 +200,10 @@ branch-protection:
           protect: false
         staticfile-buildpack-release:
           protect: false
+        # ARI Stacks (Part of Buildpacks) repos to skip branch protection
+        cflinuxfs4:
+          protect: false
+        cflinuxfs4-release:
+          protect: false
+        buildpacks-envs:
+          protect: false
