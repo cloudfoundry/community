@@ -376,6 +376,8 @@ areas:
     github: gururajsh
   - name: Tim Downey
     github: tcdowney
+  - name: Sam Gunaratne
+    github: samze
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
