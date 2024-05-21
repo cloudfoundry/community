@@ -31,7 +31,7 @@ well.
 You can nominate someone for the Steering Committee by [submitting an issue using this template](https://github.com/cloudfoundry/community/issues/new?assignees=&labels=election&template=paketo-buildpacks-sc-candidate-nomination.md&title=Paketo+Buildpacks+Steering+Committee+Candidate+Nomination+for+%5BPerson+Name%5D). 
 
 
-The deadline is June 3st to be nominated (and for the nominee to indicate acceptance).
+The deadline is June 3rd to be nominated (and for the nominee to indicate acceptance).
 
 
 It is strongly recommended that you confirm that a nominee is interested and willing
