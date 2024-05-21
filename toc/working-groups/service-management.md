@@ -108,9 +108,19 @@ areas:
     github: syslxg
   - name: Konstantin Semenov
     github: jhvhs
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Maria Shaldybin
+    github: mariash
+  - name: Amin Jamali
+    github: winkingturtle-vmw
+  - name: Marc Paquette
+    github: marcpaquette
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI
+  - name: CI Bot
+    github: tas-runtime-bot
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims

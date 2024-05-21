@@ -72,7 +72,9 @@ areas:
     github: swalchemist
   - name: Alicia Yingling
     github: Tallicia
-
+  reviewers:
+  - name: Duane May
+    github: duanemay
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -128,6 +130,9 @@ areas:
     github: adrianhoelzl-sap
   - name: Klaus Kiefer
     github: klaus-sap
+  reviewers:
+    - name: Duane May
+      github: duanemay
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
@@ -163,6 +168,9 @@ areas:
     github: adrianhoelzl-sap
   - name: Klaus Kiefer
     github: klaus-sap
+  reviewers:
+  - name: Duane May
+    github: duanemay
   repositories:
   - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
@@ -194,6 +202,10 @@ areas:
   reviewers:
   - name: Rebecca Roberts
     github: rroberts2222
+  - name: Ausaf Ahmed
+    github: aqstack
+  - name: Glenn Oppegard
+    github: oppegard
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
@@ -234,6 +246,11 @@ areas:
     github: anshrupani
   - name: Chris Selzo
     github: selzoc
+  reviewers:
+  - name: Greg Meyer
+    github: gm2552
+  - name: Nader Ziada
+    github: nader-ziada
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -268,6 +285,10 @@ areas:
   reviewers:
   - name: Ansh Rupani
     github: anshrupani
+  - name: Greg Meyer
+    github: gm2552
+  - name: Nader Ziada
+    github: nader-ziada
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh

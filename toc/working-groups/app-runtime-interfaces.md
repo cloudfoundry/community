@@ -319,6 +319,8 @@ areas:
     github: pivotalgeorge
   - name: Cristhian Peña
     github: ccjaimes
+  - name: Sam Gunaratne
+    github: samze
   bots:
   - name: capi-bot
     github: capi-bot
@@ -372,6 +374,10 @@ areas:
     github: PeteLevineA
   - name: Shwetha Guraraj
     github: gururajsh
+  - name: Tim Downey
+    github: tcdowney
+  - name: Sam Gunaratne
+    github: samze
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
