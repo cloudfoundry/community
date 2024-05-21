@@ -239,6 +239,8 @@ areas:
   reviewers:
   - name: Felix Hambrecht
     github: fhambrec
+  - name: Glenn Oppegard
+    github: oppegard
   - name: Ausaf Ahmed
     github: aqstack
   - name: Andrew Costa
