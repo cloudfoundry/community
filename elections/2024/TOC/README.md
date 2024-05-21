@@ -12,10 +12,10 @@ for the relevant details).
 
 ## Schedule
 
-- **May 17**: Election is announced and candidate nomination period begins
-- **June 5, 5:00 pm PDT**: Candidate nomination period ends
-- **June 5, 11:59 pm PDT**: Election begins
-- **June 17, 11:59 pm PDT**: Election ends
+- **May 22**: Election is announced and candidate nomination period begins
+- **June 7, 5:00 pm PDT**: Candidate nomination period ends
+- **June 7, 11:59 pm PDT**: Election begins
+- **June 18, 11:59 pm PDT**: Election ends
 - **June 20**: Announcement of results
 
 
