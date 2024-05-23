@@ -86,18 +86,36 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   approvers:
+  - name: Alenjandra Lara
+    github: alejandra-lara
+  - name: claire t.
+    github: Spimtav
   - name: Diego Lemos
     github: dlresende
   - name: Gareth Smith
     github: totherme
   - name: George Blue
     github: blgm
+  - name: Harish Yayi
+    github: yharish991
   - name: Iain Findlay
     github: ifindlay-cci
+  - name: Indira Chandrabhatta
+    github: ichandrabhatta
+  - name: Janice Bailey
+    github: bjanice75
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Konstantin Semenov
     github: jhvhs
+  - name: Rui Yang
+    github: xtremerui
+  - name: Rizwan Reza
+    github: rizwanreza
+  - name: Ryan Hall
+    github: rhall-pivotal
+  - name: Wayne Adams
+    github: wayneadams
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
