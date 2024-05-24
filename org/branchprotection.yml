@@ -150,6 +150,8 @@ branch-protection:
           protect: false
         capi-dockerfiles:
           protect: false
+        capi-env-pool:
+          protect: false
 
         # ARI Buildpacks repos to skip branch protection
         binary-buildpack:
