@@ -59,6 +59,8 @@ bots:
   github: bbr-ci
 - name: mysql-ci
   github: pcf-core-services-writer
+- name: tas-operability-bot
+  github: tas-operability-bot
 areas:
 - name: Credential Management (Credhub)
   approvers:
