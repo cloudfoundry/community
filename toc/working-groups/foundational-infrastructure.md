@@ -113,8 +113,6 @@ areas:
     github: totherme
   - name: George Blue
     github: blgm
-  - name: Harish Yayi
-    github: yharish991
   - name: Iain Findlay
     github: ifindlay-cci
   - name: Konstantin Kiess
