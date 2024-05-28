@@ -59,8 +59,6 @@ bots:
   github: bbr-ci
 - name: mysql-ci
   github: pcf-core-services-writer
-- name: tas-operability-bot
-  github: tas-operability-bot
 areas:
 - name: Credential Management (Credhub)
   approvers:
@@ -127,6 +125,9 @@ areas:
   - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
   - cloudfoundry/homebrew-tap
+  bots:
+  - name: tas-operability-bot
+    github: tas-operability-bot
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
