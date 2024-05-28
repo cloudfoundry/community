@@ -94,8 +94,6 @@ areas:
   approvers:
   - name: Diego Lemos
     github: dlresende
-  - name: Fernando Naranjo
-    github: fejnartal
   - name: Gareth Smith
     github: totherme
   - name: George Blue
