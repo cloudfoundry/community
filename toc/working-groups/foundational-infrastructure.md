@@ -85,6 +85,25 @@ areas:
   - cloudfoundry/credhub-perf-release
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
+  reviewers:
+  - name: Alenjandra Lara
+    github: alejandra-lara
+  - name: claire t.
+    github: Spimtav
+  - name: Harish Yayi
+    github: yharish991
+  - name: Indira Chandrabhatta
+    github: ichandrabhatta
+  - name: Janice Bailey
+    github: bjanice75
+  - name: Rui Yang
+    github: xtremerui
+  - name: Rizwan Reza
+    github: rizwanreza
+  - name: Ryan Hall
+    github: rhall-pivotal
+  - name: Wayne Adams
+    github: wayneadams
   approvers:
   - name: Diego Lemos
     github: dlresende
@@ -106,6 +125,9 @@ areas:
   - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
   - cloudfoundry/homebrew-tap
+  bots:
+  - name: tas-operability-bot
+    github: tas-operability-bot
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
