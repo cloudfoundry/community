@@ -2548,3 +2548,18 @@ orgs:
           terraform-provider-csbpg: admin
           terraform-provider-csbmysql: admin
           terraform-provider-csbsqlserver: admin
+      temp-uaa-ci-admins:
+        description: "Temporary team for managing UAA CI"
+        maintainers:
+          - coolgang123
+          - duanemay
+          - iprotsiuk
+        members: [ ]
+        privacy: closed
+        repos:
+          cf-uaac: admin
+          uaa: admin
+          uaa-ci: admin
+          uaa-cli: admin
+          uaa-release: admin
+          uaa-singular: admin
