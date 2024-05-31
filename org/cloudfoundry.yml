@@ -2450,7 +2450,6 @@ orgs:
         description: "Temporary team for managing Buildpacks secrets until we have a permanent plan."
         maintainers:
         - arjun024
-        - brayanhenao
         - sophiewigmore
         members: []
         privacy: closed

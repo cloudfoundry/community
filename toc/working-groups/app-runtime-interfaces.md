@@ -78,16 +78,12 @@ areas:
   approvers:
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: TisVictress
   repositories:
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/example-sidecar-buildpack
 
 - name: Buildpacks Go
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
@@ -139,28 +135,20 @@ areas:
     github: ForestEckhardt
   - name: Sophie Wigmore
     github: sophiewigmore
-  - name: Victoria Campbell
-    github: TisVictress
   repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
 
 - name: Buildpacks Node.js
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
-  - name: Tim Hitchener
-    github: thitch97
-  - name: Victoria Campbell
-    github: TisVictress
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale 
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
 
 - name: Buildpacks PHP
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
   - name: Sophie Wigmore
     github: sophiewigmore
   - name: Arjun Sreedharan
@@ -171,8 +159,6 @@ areas:
 
 - name: Buildpacks Python
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   repositories:
@@ -181,8 +167,6 @@ areas:
 
 - name: Buildpacks R
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   repositories:
@@ -191,8 +175,6 @@ areas:
 
 - name: Buildpacks Ruby
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
   - name: Sophie Wigmore
     github: sophiewigmore
   - name: Rob Dimsdale-Zucker
@@ -203,8 +185,6 @@ areas:
 
 - name: Buildpacks Stacks
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
   - name: Sophie Wigmore
     github: sophiewigmore
   - name: Rob Dimsdale-Zucker
@@ -217,8 +197,6 @@ areas:
 
 - name: Buildpacks Tooling
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Sophie Wigmore
@@ -244,8 +222,6 @@ areas:
     github: arjun024
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: David O'Sullivan
@@ -262,12 +238,8 @@ areas:
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: tisvictress
   repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
