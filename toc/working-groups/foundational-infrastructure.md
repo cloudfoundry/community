@@ -271,6 +271,8 @@ areas:
     github: gm2552
   - name: Nader Ziada
     github: nader-ziada
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -309,6 +311,8 @@ areas:
     github: gm2552
   - name: Nader Ziada
     github: nader-ziada
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
