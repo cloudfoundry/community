@@ -27,22 +27,6 @@ branch-protection:
           protect: false
 
         # App Runtime Platform repos to skip branch protection on
-        diego-acceptance:
-          protect: false
-        diego-checkman:
-          protect: false
-        diego-team:
-          protect: false
-        garden-ci:
-          protect: false
-        garden-wiki:
-          protect: false
-        networking-oss-deployments:
-          protect: false
-        routing-team-checklists:
-          protect: false
-        runtime-credentials:
-          protect: false
         docs-book-cloudfoundry:
           protect: false
         docs-cf-admin:

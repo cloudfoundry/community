@@ -95,6 +95,7 @@ orgs:
         has_issues: false
         has_projects: true
       benchmarkbbs:
+        archived: true
         description: Diego BBS Benchmark
         has_issues: false
         has_projects: true
@@ -720,6 +721,7 @@ orgs:
         description: Repository for Cloud Foundry Application Runtime Proposals
         has_projects: true
       cfbench:
+        archived: true
         has_issues: false
         has_projects: true
       cfcd-broker:
@@ -899,6 +901,7 @@ orgs:
         default_branch: main
         has_projects: true
       consuladapter:
+        archived: true
         description: Consul client adapter and test cluster runner
         has_issues: false
         has_projects: true
@@ -968,6 +971,7 @@ orgs:
         has_issues: false
         has_projects: true
       dependachore:
+        archived: true
         has_projects: true
       deployments-diego:
         allow_merge_commit: false
@@ -1010,16 +1014,20 @@ orgs:
         has_projects: true
         private: true
       diego-acceptance:
+        archived: true
         description: Diego PM acceptance notes and tools
         has_projects: true
         private: true
       diego-checkman:
+        archived: true
         has_projects: true
         private: true
       diego-design-notes:
+        archived: true
         description: Diego Architectural Design Musings and Explications
         has_projects: true
       diego-dockerfiles:
+        archived: true
         has_issues: false
         has_projects: false
         has_wiki: false
@@ -1027,9 +1035,11 @@ orgs:
         has_issues: false
         has_projects: true
       diego-notes:
+        archived: true
         description: Diego Notes
         has_projects: true
       diego-perf-release:
+        archived: true
         description: Used to deploy multiple app-pushers and fezzik-runners for performance-testing
           a Diego(+Runtime) deployment
         has_projects: true
@@ -1042,9 +1052,11 @@ orgs:
         has_issues: false
         has_projects: true
       diego-stress-tests:
+        archived: true
         description: Diego Stress Tests
         has_projects: true
       diego-team:
+        archived: true
         description: Checklists for the Diego team
         has_projects: true
         private: true
@@ -1054,8 +1066,10 @@ orgs:
         has_issues: false
         has_projects: true
       diego-windows-release:
+        archived: true
         has_projects: true
       diegocanaryapp:
+        archived: true
         description: Simple canary app to test long-running Diego deployments
         has_projects: true
       diff-exporter:
@@ -1228,6 +1242,7 @@ orgs:
         has_issues: false
         has_projects: true
       flightattendant:
+        archived: true
         has_projects: true
       flintstone:
         description: Store pipeline credentials and templates.
@@ -1257,16 +1272,20 @@ orgs:
         description: Go Warden
         has_projects: true
       garden-ci:
+        archived: true
         has_projects: true
         private: true
       garden-ci-artifacts-release:
+        archived: true
         has_projects: true
       garden-dockerfiles:
         has_projects: true
         archived: true
       garden-dotfiles:
+        archived: true
         has_projects: true
       garden-dotfiles-archived:
+        archived: true
         has_projects: true
         private: true
       garden-integration-tests:
@@ -1278,6 +1297,7 @@ orgs:
         default_branch: develop
         has_projects: true
       garden-wiki:
+        archived: true
         description: Wiki and checklists for the London Garden team
         has_projects: true
         private: true
@@ -1285,6 +1305,7 @@ orgs:
         has_projects: true
         archived: true
       garden-windows-tools-release:
+        archived: true
         has_projects: true
       git-release-notes:
         archived: true
@@ -1650,6 +1671,7 @@ orgs:
         has_projects: true
         private: true
       logging-route-service:
+        archived: true
         description: A sample route service written in Go.
         has_projects: true
       loggregator:
@@ -1768,6 +1790,7 @@ orgs:
       netplugin-shim:
         has_projects: true
       networking-oss-deployments:
+        archived: true
         default_branch: main
         description: bbl state store for networking oss deployments
         has_projects: true
@@ -2026,6 +2049,7 @@ orgs:
         description: Routing information helpers for CF / Diego
         has_projects: true
       routing-perf-release:
+        archived: true
         default_branch: main
         description: A BOSH release for routing performance tests
         has_projects: false
@@ -2041,6 +2065,7 @@ orgs:
         has_projects: false
         has_wiki: false
       routing-team-checklists:
+        archived: true
         description: A Repository for the CF Routing Team checklists and Wiki
         has_projects: true
         private: true
@@ -2062,6 +2087,7 @@ orgs:
         has_projects: true
         has_issues: false
       runtime-credentials:
+        archived: true
         has_projects: true
         private: true
       runtime-og-ci:
@@ -2080,6 +2106,7 @@ orgs:
         description: Shared golang schema for runtime
         has_projects: true
       sample-http-app:
+        archived: true
         has_projects: true
       sample-service-metrics-release:
         has_projects: true
@@ -2407,6 +2434,7 @@ orgs:
         has_projects: true
         has_wiki: false
       windows-regression-tests:
+        archived: true
         has_projects: true
         has_wiki: false
       windows-syslog-release:

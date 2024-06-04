@@ -107,7 +107,6 @@ areas:
   - cloudfoundry/auction
   - cloudfoundry/auctioneer
   - cloudfoundry/bbs
-  - cloudfoundry/benchmarkbbs
   - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
@@ -115,23 +114,12 @@ areas:
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
-  - cloudfoundry/consuladapter
   - cloudfoundry/debugserver
-  - cloudfoundry/diego-acceptance
-  - cloudfoundry/diego-checkman
   - cloudfoundry/runtime-ci-pools
-  - cloudfoundry/diego-design-notes
-  - cloudfoundry/diego-dockerfiles
   - cloudfoundry/diego-logging-client
-  - cloudfoundry/diego-notes
-  - cloudfoundry/diego-perf-release
   - cloudfoundry/diego-release
   - cloudfoundry/diego-ssh
-  - cloudfoundry/diego-stress-tests
-  - cloudfoundry/diego-team
   - cloudfoundry/diego-upgrade-stability-tests
-  - cloudfoundry/diego-windows-release
-  - cloudfoundry/diegocanaryapp
   - cloudfoundry/docker_driver_integration_tests
   - cloudfoundry/dockerapplifecycle
   - cloudfoundry/dockerdriver
@@ -150,8 +138,6 @@ areas:
   - cloudfoundry/operationq
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
-  - cloudfoundry/runtime-credentials
-  - cloudfoundry/sample-http-app
   - cloudfoundry/tlsconfig
   - cloudfoundry/vizzini
   - cloudfoundry/volman
@@ -182,26 +168,17 @@ areas:
     github: winkingturtle-vmw
   repositories:
   - cloudfoundry/cert-injector
-  - cloudfoundry/cfbench
   - cloudfoundry/commandrunner
-  - cloudfoundry/concourse-flake-hunter
   - cloudfoundry/cpu-entitlement-admin-plugin
   - cloudfoundry/cpu-entitlement-plugin
-  - cloudfoundry/dependachore
   - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/filelock
-  - cloudfoundry/flightattendant
   - cloudfoundry/garden
-  - cloudfoundry/garden-ci
-  - cloudfoundry/garden-ci-artifacts-release
-  - cloudfoundry/garden-dotfiles
   - cloudfoundry/garden-integration-tests
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
-  - cloudfoundry/garden-wiki
-  - cloudfoundry/garden-windows-tools-release
   - cloudfoundry/groot
   - cloudfoundry/groot-windows
   - cloudfoundry/grootfs
@@ -214,7 +191,6 @@ areas:
   - cloudfoundry/test-log-emitter-release
   - cloudfoundry/winc
   - cloudfoundry/winc-release
-  - cloudfoundry/windows-regression-tests
   - cloudfoundry/windows-tools-release
   - cloudfoundry/windows2016fs
   - cloudfoundry/windows2019fs-release
@@ -385,10 +361,8 @@ areas:
   - cloudfoundry/cf-tcp-router
   - cloudfoundry/gorouter
   - cloudfoundry/healthchecker-release
-  - cloudfoundry/logging-route-service
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
-  - cloudfoundry/networking-oss-deployments
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
@@ -396,9 +370,7 @@ areas:
   - cloudfoundry/routing-api-cli
   - cloudfoundry/routing-concourse
   - cloudfoundry/routing-info
-  - cloudfoundry/routing-perf-release
   - cloudfoundry/routing-release
-  - cloudfoundry/routing-team-checklists
   - cloudfoundry/silk-release
 
 - name: Networking-Extensions
