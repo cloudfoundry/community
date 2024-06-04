@@ -73,14 +73,10 @@ areas:
     github: anoopjb
   - name: Jintu Sebastian
     github: jintusebastian
-  - name: Pooja
-    github: Pooja-08
   - name: Swati
     github: swati1102
   - name: Vinayendraswamy Brahmandabheri
     github: vinaybheri    
-  - name: Visarg Soneji
-    github: visargsoneji
   repositories:
   - cloudfoundry/service-fabrik-broker
   - cloudfoundry/service-fabrik-blueprint-app
