@@ -17,11 +17,11 @@ Despite the recent integration of CNBs in the Cloud Foundry platform, the featur
 
 ## Proposal
 
-- Introduce a new `type` column to the [buildpack object](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#the-buildpack-object) with ENUM values `cnb` or `classic`, with `classic` being the default.
-- Add new parameter `type` to the [`POST /v3/buildpacks`](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#create-a-buildpack) API endpoint.
+- Introduce a new `lifecycle` column to the [buildpack object](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#the-buildpack-object) with ENUM values `cnb` or `buildpack`, with `buildpack` being the default.
+- Add new parameter `lifecycle` to the [`POST /v3/buildpacks`](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#create-a-buildpack) API endpoint, with the default value being inferred from the `default_app_lifecycle` setting within the Cloud Controller config.
 - Cloud Native Buildpacks MUST be stored in format of a gzipped OCI tarball. The layout of the tarball is outlined in the [OCI Image Layout Specification](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)
 - Add support for gzipped OCI tarballs when uploading a buildpacks using [`POST /v3/buildpacks/:guid/upload`](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#upload-buildpack-bits) API endpoint
 - `cf push --lifecycle cnb` command without an explicit list of buildpacks MUST perform auto-detection using system Cloud Native Buildpacks based on their priority.
-- `cf push [--lifecycle buildpack]` command without an explicit list of buildpacks MUST continue to perform auto-detection using classical system buildpacks based on their priority.
+- `cf push [--lifecycle buildpack]` command without specifying an explicit list of buildpacks MUST perform auto-detection using the system buildpacks based on their priority. The type of the buildpacks is based on the `default_app_lifecycle` setting within the Cloud Controller config.
 - `cf push --lifecycle cnb -b <system-cnb>` command MUST use only the selected system Cloud Native Buildpack and fail the staging process if the buildpack's detection fails.
-- `cf push -b <system_buildpack>` command MUST use only the selected classical system buildpacks.
+- `cf push -b <system_buildpack>` command MUST use only the selected system buildpacks, using the lifecycle specified by the `default_app_lifecycle` setting within the Cloud Controller config.
