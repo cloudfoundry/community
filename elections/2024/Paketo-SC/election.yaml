@@ -1,7 +1,7 @@
 name: 2024 Paketo Buildpacks Steering Committee election
 organization: Cloud Foundry Foundation
-start_datetime: 2024-06-07 06:59:00 # 11:59 pm PDT, 07 Jun 2024
-end_datetime: 2024-06-18 06:59:00 # 11:59 pm PDT, 18 Jun 2024
+start_datetime: 2024-06-08 06:59:00 # 11:59 pm PDT, 07 Jun 2024
+end_datetime: 2024-06-19 06:59:00 # 11:59 pm PDT, 18 Jun 2024
 no_winners: 1
 allow_no_opinion: True
 delete_after: True
