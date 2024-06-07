@@ -150,9 +150,8 @@ areas:
     github: adrianhoelzl-sap
   - name: Klaus Kiefer
     github: klaus-sap
-  reviewers:
-    - name: Duane May
-      github: duanemay
+  - name: Duane May
+    github: duanemay
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
