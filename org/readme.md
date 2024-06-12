@@ -85,6 +85,8 @@ Requires Python 3.9.
 How to run locally:
 ```
 cd ./org
+python -m venv <path/to/venv>
+source <path/to/venv>/bin/activate
 pip install -r requirements.txt
 python -m org_management --help
 python -m org_user_management --help
@@ -129,6 +131,8 @@ options:
 How to run tests:
 ```
 cd ./org
+python -m venv <path/to/venv>
+source <path/to/venv>/bin/activate
 pip install -r requirements-dev.txt
 python -m flake8
 python -m unittest discover -s .
