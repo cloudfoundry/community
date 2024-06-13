@@ -272,6 +272,8 @@ areas:
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Jamie van Dyke
+    github: fearoffish
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -312,6 +314,8 @@ areas:
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Jamie van Dyke
+    github: fearoffish
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
