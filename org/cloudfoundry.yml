@@ -2584,5 +2584,4 @@ orgs:
           - iprotsiuk
         members: [ ]
         privacy: closed
-        repos:
-          uaa-ci: admin
+        repos: [ ]
