@@ -274,6 +274,8 @@ areas:
     github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Jamie van Dyke
+    github: fearoffish
   - name: Rajath Agasthya
     github: rajathagasthya
   repositories:
@@ -318,6 +320,8 @@ areas:
     github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Jamie van Dyke
+    github: fearoffish
   - name: Rajath Agasthya
     github: rajathagasthya
   repositories:
