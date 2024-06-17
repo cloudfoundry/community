@@ -274,6 +274,8 @@ areas:
     github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Rajath Agasthya
+    github: rajathagasthya
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -316,6 +318,8 @@ areas:
     github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Rajath Agasthya
+    github: rajathagasthya
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
