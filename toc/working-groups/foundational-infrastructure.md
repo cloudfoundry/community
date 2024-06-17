@@ -270,6 +270,8 @@ areas:
     github: gm2552
   - name: Nader Ziada
     github: nader-ziada
+  - name: Ming Xiao
+    github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   repositories:
@@ -310,6 +312,8 @@ areas:
     github: gm2552
   - name: Nader Ziada
     github: nader-ziada
+  - name: Ming Xiao
+    github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   repositories:
