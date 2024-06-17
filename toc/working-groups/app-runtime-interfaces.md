@@ -450,6 +450,9 @@ areas:
     github: MNoeva
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
+  bots:
+  - name: MultiApps Bot
+    github: cf-mta-deploy-bot
     
   repositories:
   - cloudfoundry/multiapps-controller

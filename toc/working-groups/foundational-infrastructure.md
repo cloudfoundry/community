@@ -270,10 +270,14 @@ areas:
     github: gm2552
   - name: Nader Ziada
     github: nader-ziada
+  - name: Ming Xiao
+    github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Jamie van Dyke
     github: fearoffish
+  - name: Rajath Agasthya
+    github: rajathagasthya
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -312,10 +316,14 @@ areas:
     github: gm2552
   - name: Nader Ziada
     github: nader-ziada
+  - name: Ming Xiao
+    github: mingxiao
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Jamie van Dyke
     github: fearoffish
+  - name: Rajath Agasthya
+    github: rajathagasthya
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
