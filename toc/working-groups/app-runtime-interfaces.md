@@ -104,7 +104,6 @@ areas:
     github: pivotal-david-osullivan
   - name: Kevin Ortega (IBM)
     github: kevin-ortega
-  reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
   repositories:
@@ -403,9 +402,9 @@ areas:
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
-  reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne  
+  reviewers:
   - name: Radoslav Tomov
     github: radoslav-tomov
   repositories:
