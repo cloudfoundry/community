@@ -104,6 +104,7 @@ Steps
 3. The TOC merges the PR.
 
 #### Case 5: A Working Group wants to delete a repository that it currently owns.
+⚠️ Deleting a repository will usually be rejected by the TOC. Please consider archiving instead.
 
 Approval requirements
 * The Working Group MUST approve the removal of the repository from the set of repositories that it owns.
