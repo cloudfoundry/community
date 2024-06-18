@@ -137,7 +137,7 @@ Approval requirements
 * The Working Group A and the TOC MUST both approve of the new name for the repository.
 
 Steps
-1. Someone two PRs:
+1. Someone opens two PRs:
    * PR 1: Add the new repo to the [cloudfoundry.yml](../../org/cloudfoundry.yml).
    * PR 2: Rename the repo in the Working Group's yaml. Remove the old repo from the [cloudfoundry.yml](../../org/cloudfoundry.yml).
 The second PR adds the repo to the desired Working Group's yaml. These PRs should link to each other.
