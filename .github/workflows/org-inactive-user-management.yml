@@ -2,7 +2,7 @@ name: 'Delete Inactive Users in Github Organization'
 
 on:
   schedule:
-  - cron: '0 0 1 * *'
+  - cron: '0 0 */32,1-7 * 1'
   workflow_dispatch:
   push:
     branches:
