@@ -206,7 +206,9 @@ areas:
     github: ryanwittrup
   - name: Kevin Markwardt
     github: kmarkwardt-vmware
-  reviewers: []
+  reviewers:
+  - name: Pascal Zimmermann
+    github: ZPascal
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
