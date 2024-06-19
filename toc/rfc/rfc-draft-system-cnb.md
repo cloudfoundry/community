@@ -17,12 +17,12 @@ Despite the recent integration of CNBs in the Cloud Foundry platform, the featur
 
 ## Proposal
 
-- Introduce a new `lifecycle` column to the [buildpack object](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#the-buildpack-object) with ENUM values `cnb` or `buildpack`, with `buildpack` being the default.
-- Add new parameter `lifecycle` to the [`POST /v3/buildpacks`](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#create-a-buildpack) API endpoint, with the default value being inferred from the `default_app_lifecycle` setting within the Cloud Controller config.
+- Make it possible to configure the default application lifecycle with the following options: `buildpack` or `cnb`. The value of this setting will be further reffered to as the *default lifecycle*.
+- Introduce a new `lifecycle` column to the [buildpack object](https://v3-apidocs.cloudfoundry.org/index.html#the-buildpack-object) with ENUM values `cnb` or `buildpack`. If the value is not provided, the default lifecycle MUST be used.
+- Add new parameter `lifecycle` to the [`POST /v3/buildpacks`](https://v3-apidocs.cloudfoundry.org/index.html#create-a-buildpack) API endpoint. If the value is not provided, the default lifecycle MUST be used.
 - Cloud Native Buildpacks MUST be stored in format of a gzipped OCI tarball. The layout of the tarball is outlined in the [OCI Image Layout Specification](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)
-- Add support for gzipped OCI tarballs when uploading a buildpacks using [`POST /v3/buildpacks/:guid/upload`](https://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#upload-buildpack-bits) API endpoint
-- `cf push` command without specifying an explicit list of buildpacks MUST perform auto-detection using the system buildpacks based on their priority. The type of the buildpacks is based on the `default_app_lifecycle` setting within the Cloud Controller config.
-- `cf push --lifecycle cnb` command without an explicit list of buildpacks MUST perform auto-detection using system Cloud Native Buildpacks based on their priority.
-- `cf push --lifecycle buildpack` command without specifying an explicit list of buildpacks MUST perform auto-detection using the classic buildpacks based on their priority.
+- Add support for gzipped OCI tarballs when uploading a buildpacks using [`POST /v3/buildpacks/:guid/upload`](https://v3-apidocs.cloudfoundry.org/index.html#upload-buildpack-bits) API endpoint
+- `cf push` command without specifying an explicit list of buildpacks MUST perform auto-detection using the system buildpacks based on their priority. The type of the buildpacks and the lifecycle are based on the default lifecycle.
+- `cf push --lifecycle buildpack|cnb` command without an explicit list of buildpacks MUST perform auto-detection using the selected lifecycle, based on their priority.
 - `cf push --lifecycle buildpack|cnb -b <system-cnb>` command MUST use only the selected system buildpacks with the lifecycle specified by the `--lifecycle` flag and fail the staging process if the buildpack's detection fails.
-- `cf push -b <system_buildpack>` command MUST use only the selected system buildpacks, using the lifecycle specified by the `default_app_lifecycle` setting within the Cloud Controller config.
+- `cf push -b <system_buildpack>` command MUST use only the selected system buildpacks, using the lifecycle specified by the default lifecycle.
