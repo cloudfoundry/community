@@ -309,9 +309,9 @@ areas:
     github: mvach
   - name: Ahmed Hassanin
     github: a-hassanin
-  reviewers:
   - name: Ansh Rupani
     github: anshrupani
+  reviewers:
   - name: Greg Meyer
     github: gm2552
   - name: Nader Ziada
