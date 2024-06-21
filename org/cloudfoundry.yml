@@ -619,6 +619,10 @@ orgs:
       cf-lite-ci:
         has_projects: true
         private: true
+      cf-lookup-route:
+        default_branch: main
+        description: A plugin for the CF-CLI to quickly identify the application a certain route is pointing to.
+        has_projects: true
       cf-mysql-bootstrap:
         description: Auto-bootstrap errand for cf-mysql-release
         has_projects: true

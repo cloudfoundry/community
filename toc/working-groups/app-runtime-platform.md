@@ -354,6 +354,7 @@ areas:
   - name: Konstantin Lapkov
     github: klapkov
   repositories:
+  - cloudfoundry/cf-lookup-route
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
   - cloudfoundry/cf-networking-release
