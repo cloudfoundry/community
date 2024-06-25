@@ -63,11 +63,9 @@ Approval requirements
 * The TOC MUST approve the addition of the proposed repository to the Working Group's subset.
 
 Steps
-1. Someone opens two PRs. The first PR adds the repo to the [cloudfoundry.yml](../../org/cloudfoundry.yml). The second PR adds the repo to the desired Working Group's yaml. These PRs should link to each other.
-2. The Working Group and TOC both approve both PRs.
-3. The TOC merges the first PR.
-4. Wait for automation to run to create the repo.
-5. The TOC merges the second PR.
+1. Someone opens a PR that: adds the repo to the [cloudfoundry.yml](../../org/cloudfoundry.yml) and adds the repo to the desired Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC merges the PR.
 
 #### Case 2: The TOC wants Working Group A to take ownership of an unclaimed active repository.
 
