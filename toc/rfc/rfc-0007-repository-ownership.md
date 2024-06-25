@@ -135,13 +135,9 @@ Approval requirements
 * The Working Group A and the TOC MUST both approve of the new name for the repository.
 
 Steps
-1. Someone opens two PRs:
-   * PR 1: Add the new repo to the [cloudfoundry.yml](../../org/cloudfoundry.yml).
-   * PR 2: Rename the repo in the Working Group's yaml. Remove the old repo from the [cloudfoundry.yml](../../org/cloudfoundry.yml).
-The second PR adds the repo to the desired Working Group's yaml. These PRs should link to each other.
-3. The Working Group and TOC both approve both PRs.
-4. The TOC merges the first PR.
-5. Wait for automation to run to create the repo.
-6. A github admin copies the old repo contents to the new repo.
-7. The TOC merges the second PR.
-8. A github admin deletes the old repo.
+1. Someone opens a PR that: renames the repo in the [cloudfoundry.yml](../../org/cloudfoundry.yml) and renames the repo in the Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC stops the Github automation.
+4. The TOC merges the PR.
+5. The TOC renames the repo using the Github UI.
+6. The TOC re-enables the Github automation.
