@@ -3,8 +3,8 @@
 - Name: System Cloud Native Buildpacks
 - Start Date: 30.04.2024
 - Author(s): @c0d1ngm0nk3y, @pbusko, @nicolasbender, @modulo11
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#830](https://github.com/cloudfoundry/community/pull/830)
 - Predecessor: https://github.com/cloudfoundry/community/pull/796
 
 ## Summary
