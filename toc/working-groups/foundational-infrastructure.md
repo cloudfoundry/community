@@ -90,12 +90,22 @@ areas:
     github: alejandra-lara
   - name: claire t.
     github: Spimtav
+  - name: Greg Meyer
+    github: gm2552
   - name: Harish Yayi
     github: yharish991
   - name: Indira Chandrabhatta
     github: ichandrabhatta
   - name: Janice Bailey
     github: bjanice75
+  - name: Ming Xiao
+    github: mingxiao
+  - name: Nader Ziada
+    github: nader-ziada
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
+  - name: Rajath Agasthya
+    github: rajathagasthya
   - name: Rui Yang
     github: xtremerui
   - name: Rizwan Reza
@@ -105,6 +115,12 @@ areas:
   - name: Wayne Adams
     github: wayneadams
   approvers:
+  - name: Aram Price
+    github: aramprice
+  - name: Brian Upton
+    github: ystros
+  - name: Chris Selzo
+    github: selzoc
   - name: Diego Lemos
     github: dlresende
   - name: Gareth Smith
@@ -113,10 +129,18 @@ areas:
     github: blgm
   - name: Iain Findlay
     github: ifindlay-cci
+  - name: Kenneth Lakin
+    github: klakin-pivotal
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Konstantin Semenov
     github: jhvhs
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Rajan Agaskar
+    github: ragaskar
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
