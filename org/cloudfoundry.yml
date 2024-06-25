@@ -2585,3 +2585,13 @@ orgs:
         members: [ ]
         privacy: closed
         repos: {}
+      temp-prometheus-exporter-admins:
+        description: "Temporary team for managing cf/ firehose exporter secrets until we have a permanent plan."
+        maintainers:
+          - benjaminguttmann-avtq
+        members: []
+        privacy: closed
+        repos:
+          cf_exporter: admin
+          firehose_exporter: admin
+          bosh_exporter: admin
