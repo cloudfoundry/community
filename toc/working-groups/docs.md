@@ -38,8 +38,6 @@ bots: []
 areas:
 - name: Docs
   approvers:
-  - name: Max Hufnagel
-    github: animatedmax
   - name: Anita Flegg
     github: anita-flegg
   - name: Samia Nneji
