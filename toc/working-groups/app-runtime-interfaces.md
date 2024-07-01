@@ -366,13 +366,13 @@ areas:
     github: gururajsh
   - name: David Alvarado
     github: dalvarado
+  - name: João Pereira
+    github: joaopapereira
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
   - name: Pete Levine
     github: PeteLevineA
-  - name: Shwetha Guraraj
-    github: gururajsh
   - name: Tim Downey
     github: tcdowney
   - name: Sam Gunaratne
