@@ -377,6 +377,8 @@ areas:
     github: tcdowney
   - name: Sam Gunaratne
     github: samze
+  - name: Michael Chinigo
+    github: chinigo
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
