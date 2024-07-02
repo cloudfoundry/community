@@ -377,6 +377,8 @@ areas:
     github: tcdowney
   - name: Sam Gunaratne
     github: samze
+  - name: Greg Weresch
+    github: weresch
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
