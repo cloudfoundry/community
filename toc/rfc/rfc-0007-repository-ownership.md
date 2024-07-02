@@ -55,24 +55,89 @@ The TOC MUST also approve of any proposal to create a new repository within the 
 
 We illustrate several different cases of repository ownership changes and the approvals required for them to proceed:
 
-1. A Working Group wants to create a new repository under their ownership.
-    * The Working Group MUST approve the addition of the proposed repository to the set of repositories that it owns.
-    * The TOC MUST approve the creation of the proposed repository.
-    * The TOC MUST approve the addition of the proposed repository to the Working Group's subset.
+#### Case 1: A Working Group wants to create a new repository under their ownership.
 
-1. The TOC wants Working Group A to take ownership of an unclaimed active repository.
-    * The TOC MUST approve the change in the ownership scope of Working Group A.
-    * Working Group A MUST approve the change to the set of repositories they own.
+Approval requirements
+* The Working Group MUST approve the addition of the proposed repository to the set of repositories that it owns.
+* The TOC MUST approve the creation of the proposed repository.
+* The TOC MUST approve the addition of the proposed repository to the Working Group's subset.
 
-1. Working Group A wants to claim ownership of a repository currently owned by Working Group B.
-    * Both Working Group A and Working Group B MUST approve the change to the sets of repositories they own.
-    * The TOC MUST also approve the transfer of the repository from Working Group B to Working Group A.
+Steps
+1. Someone opens a PR that: adds the repo to the [cloudfoundry.yml](../../org/cloudfoundry.yml) and adds the repo to the desired Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC merges the PR.
 
-1. A Working Group wants to cease maintaining a repository that it currently owns.
-    * The Working Group MUST approve the removal of the repository from the set of repositories that it owns.
-    * The TOC MUST approve the removal of the repository from the Working Group.
-    * In addition, the TOC MUST decide whether to archive the repository or to arrange for another Working Group to own it instead (possibly a newly formed one, if appropriate and if supported by community contributors).
-    * **Note:** In this case, it is unlikely that either the TOC or the CFF staff should own this repository, as it was already owned by some Working Group in the CF community.
+#### Case 2: The TOC wants Working Group A to take ownership of an unclaimed active repository.
 
-1. A Working Group wants to rename a repository that it currently owns.
-    * The Working Group A and the TOC MUST both approve of the new name for the repository.
+Approval requirements
+* The TOC MUST approve the change in the ownership scope of Working Group A.
+* Working Group A MUST approve the change to the set of repositories they own.
+
+Steps
+1. Someone opens a PRs that adds a repo to the desired Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC merges the PR.
+
+
+#### Case 3: Working Group A wants to claim ownership of a repository currently owned by Working Group B.
+
+Approval requirements
+* Both Working Group A and Working Group B MUST approve the change to the sets of repositories they own.
+* The TOC MUST also approve the transfer of the repository from Working Group B to Working Group A.
+
+Steps
+1. Someone opens a PR that moves a repo from Working Group A's yaml to Working Group B's yaml.
+2. Working Group A, Working Group B, and TOC approve the PR.
+3. The TOC merges the PR.
+
+#### Case 4: A Working Group wants to archive a repository that it currently owns.
+
+Approval requirements
+* The Working Group MUST approve the removal of the repository from the set of repositories that it owns.
+* The TOC MUST approve the removal of the repository from the Working Group and the archival.
+
+Steps
+1. Someone opens a PR that: marks the repo as archived in the [cloudfoundry.yml](../../org/cloudfoundry.yml) and that removes the repo from the Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC merges the PR.
+
+#### Case 5: A Working Group wants to delete a repository that it currently owns.
+⚠️ Deleting a repository will usually be rejected by the TOC. Please consider archiving instead.
+
+Approval requirements
+* The Working Group MUST approve the removal of the repository from the set of repositories that it owns.
+* The TOC MUST approve the removal of the repository from the Working Group and the deletion.
+
+Steps
+1. Someone opens a PR that removes the [cloudfoundry.yml](../../org/cloudfoundry.yml) and removes the repo from the Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC merges the PR.
+4. A github admin deletes the repo.
+
+#### Case 6: A Working Group wants to cease maintaining a repository that it currently owns.
+
+Approval requirements
+* The Working Group MUST approve the removal of the repository from the set of repositories that it owns.
+* The TOC MUST approve the removal of the repository from the Working Group.
+* In addition, the TOC MUST decide whether to archive the repository or to arrange for another Working Group to own it instead (possibly a newly formed one, if appropriate and if supported by community contributors).
+* Note: In this case, it is unlikely that either the TOC or the CFF staff should own this repository, as it was already owned by some Working Group in the CF community.
+
+
+Steps
+1. Someone opens a PR that removes the repo from the Working Group's yaml.
+2. The TOC reviews and decides what action to take with the repo. Other PRs might be required for this step.
+3. The Working Group and TOC both approve the PR.
+5. The TOC merges the PR.
+
+#### Case 7: A Working Group wants to rename a repository that it currently owns.
+
+Approval requirements
+* The Working Group A and the TOC MUST both approve of the new name for the repository.
+
+Steps
+1. Someone opens a PR that: renames the repo in the [cloudfoundry.yml](../../org/cloudfoundry.yml) and renames the repo in the Working Group's yaml.
+2. The Working Group and TOC both approve the PR.
+3. The TOC stops the Github automation.
+4. The TOC merges the PR.
+5. The TOC renames the repo using the Github UI.
+6. The TOC re-enables the Github automation.
