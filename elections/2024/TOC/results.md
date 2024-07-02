@@ -1,6 +1,6 @@
 # 2024 CFF Technical Oversight Committee Election Results
 
-Congratulations to uben Koster (VMware) and Beyhan Veli (SAP), who have each been re-elected to two year terms to the Technical Oversight Committee!
+Congratulations to Ruben Koster (VMware) and Beyhan Veli (SAP), who have each been re-elected to two year terms to the Technical Oversight Committee!
 
 ## Details
 
