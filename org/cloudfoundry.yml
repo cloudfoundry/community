@@ -2454,6 +2454,7 @@ orgs:
         has_projects: true
       windows-utilities-tests:
         has_projects: true
+        archived: true
       windows2016fs:
         description: A rootfs for Windows containers in Cloud Foundry
         has_projects: true
