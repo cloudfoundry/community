@@ -422,7 +422,6 @@ areas:
   - cloudfoundry/stembuild
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
-  - cloudfoundry/windows-utilities-tests
   - cloudfoundry/yagnats
 - name: Ali Cloud VM deployment lifecycle (BOSH)
   approvers:
