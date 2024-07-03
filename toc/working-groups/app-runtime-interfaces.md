@@ -297,6 +297,8 @@ areas:
     github: kathap
   - name: Ben Fuller
     github: Benjamintf1
+  - name: Sam Gunaratne
+    github: samze
   reviewers:
   - name: Al Berez
     github: a-b
@@ -318,8 +320,6 @@ areas:
     github: pivotalgeorge
   - name: Cristhian Peña
     github: ccjaimes
-  - name: Sam Gunaratne
-    github: samze
   bots:
   - name: capi-bot
     github: capi-bot
@@ -379,6 +379,8 @@ areas:
     github: samze
   - name: Michael Chinigo
     github: chinigo
+  - name: Greg Weresch
+    github: weresch
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
