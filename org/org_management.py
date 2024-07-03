@@ -88,10 +88,11 @@ class OrgGenerator:
     def get_contributors(self) -> Set[str]:
         return set(self.contributors)
 
-    def get_community_members_with_role(self) -> Set[str]:
-        result = set(self.toc)
+    def get_community_members_with_role_by_wg(self) -> Dict[str, Set[str]]:
+        result = dict()
+        result["toc"] = set(self.toc)
         for wg in self.working_groups:
-            result |= OrgGenerator._wg_github_users(wg)
+            result[wg["name"]] = OrgGenerator._wg_github_users(wg)
         return result
 
     def generate_org_members(self):
