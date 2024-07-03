@@ -377,6 +377,8 @@ areas:
     github: tcdowney
   - name: Sam Gunaratne
     github: samze
+  - name: Michael Chinigo
+    github: chinigo
   - name: Greg Weresch
     github: weresch
   bots:
