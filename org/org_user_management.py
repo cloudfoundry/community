@@ -90,6 +90,13 @@ class InactiveUserHandler:
         with open(path, "w") as f:
             yaml.dump(data, f)
 
+    def _get_inactive_users_msg_for_wgs(self, inactive_users_by_wg, user_tagging_prefix):
+        result = "" if len(inactive_users_by_wg.keys()) == 0 else "\n\nWarning:\n"
+        for wg in inactive_users_by_wg.keys():
+            wg_users_as_list = "\n".join(str(user_tagging_prefix + s) for s in inactive_users_by_wg[wg])
+            result += f'Inactive users of Working Group "{wg}" are: \n{wg_users_as_list}\n'
+        return result
+
     def delete_inactive_contributors(self, users_to_delete):
         path = f"{_SCRIPT_PATH}/contributors.yml"
         contributors_yaml = self._load_yaml_file(path)
@@ -97,7 +104,7 @@ class InactiveUserHandler:
         contributors_yaml["contributors"] = [c for c in contributors_yaml["contributors"] if c.lower() not in users_to_delete_lower]
         self._write_yaml_file(path, contributors_yaml)
 
-    def get_inactive_users_msg(self, users_to_delete, tagusers):
+    def get_inactive_users_msg(self, users_to_delete, inactive_users_by_wg, tagusers):
         rfc = (
             "https://github.com/cloudfoundry/community/blob/main/toc/rfc/"
             "rfc-0025-define-criteria-and-removal-process-for-inactive-members.md"
@@ -107,9 +114,7 @@ class InactiveUserHandler:
             "criteria-and-removal-process-for-inactive-members.md#remove-the-membership-to-the-cloud-foundry-github-organization"
         )
 
-        rfc_promotion_rules = (
-            "https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md#proposal"
-        )
+        rfc_promotion_rules = "https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md#proposal"
 
         user_tagging_prefix = "@" if tagusers else ""
         users_as_list = "\n".join(str(user_tagging_prefix + s) for s in users_to_delete)
@@ -120,7 +125,17 @@ class InactiveUserHandler:
             "and open a new pull-request to be re-added as contributor after this one is merged.\n"
             f"As alternative, if you are active in a working group please check the [promotion rules]({rfc_promotion_rules})\n"
             "and if you are eligible and wish apply for a role in that working group."
+            f"{self._get_inactive_users_msg_for_wgs(inactive_users_by_wg, user_tagging_prefix)}"
         )
+
+    def get_inactive_users_by_wg(self, community_members_with_role_by_wg):
+        result = dict()
+        for wg in community_members_with_role_by_wg.keys():
+            wg_members = community_members_with_role_by_wg[wg]
+            wg_inactive_users = inactive_users.intersection(wg_members)
+            if len(wg_inactive_users) != 0 and wg != "Admin":
+                result[wg] = wg_inactive_users
+        return result
 
     @staticmethod
     def _get_bool_env_var(env_var_name, default):
@@ -154,7 +169,10 @@ if __name__ == "__main__":
     print("Get information about community users")
     generator = OrgGenerator()
     generator.load_from_project()
-    community_members_with_role = generator.get_community_members_with_role()
+    community_members_with_role_by_wg = generator.get_community_members_with_role_by_wg()
+    community_members_with_role = set()
+    for members in community_members_with_role_by_wg.values():
+        community_members_with_role |= set(members)
 
     print("Analyzing Cloud Foundry org user activity.")
     userHandler = InactiveUserHandler(args.githuborg, args.githuborgid, args.sincedate, args.githubtoken)
@@ -163,16 +181,15 @@ if __name__ == "__main__":
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
     tagusers = args.tagusers or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "False")
-    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, tagusers)
+    inactive_users_by_wg = userHandler.get_inactive_users_by_wg(community_members_with_role_by_wg)
+    inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, inactive_users_by_wg, tagusers)
     if args.dryrun or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"):
         print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
         print(f"Following users will be deleted: {inactive_users}")
+        print(f"Inactive users by wg are {inactive_users_by_wg}")
     elif users_to_delete:
         userHandler.delete_inactive_contributors(users_to_delete)
         with open(os.environ["GITHUB_OUTPUT"], "a") as env:
             separator = uuid.uuid1()
             step_output_name = "inactive_users_pr_description"
             print(f"{step_output_name}<<{separator}\n{inactive_users_msg}\n{separator}", file=env)
-
-    inactive_users_with_role = community_members_with_role.intersection(inactive_users)
-    print(f"Inactive users with role length is {len(inactive_users_with_role)} and users are {inactive_users_with_role}")
