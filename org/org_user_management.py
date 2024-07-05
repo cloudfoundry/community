@@ -91,9 +91,9 @@ class InactiveUserHandler:
             yaml.dump(data, f)
 
     def _get_inactive_users_msg_for_wgs(self, inactive_users_by_wg, user_tagging_prefix):
-        result = "" if len(inactive_users_by_wg.keys()) == 0 else "\n\nWarning:\n"
-        for wg in inactive_users_by_wg.keys():
-            wg_users_as_list = "\n".join(str(user_tagging_prefix + s) for s in inactive_users_by_wg[wg])
+        result = "\n\nWarning:\n" if inactive_users_by_wg else ""
+        for wg, users in inactive_users_by_wg.items():
+            wg_users_as_list = "\n".join(str(user_tagging_prefix + s) for s in users)
             result += f'Inactive users of Working Group "{wg}" are: \n{wg_users_as_list}\n'
         return result
 
@@ -121,20 +121,19 @@ class InactiveUserHandler:
         return (
             f"According to the rules for inactivity defined in [RFC-0025]({rfc}) following users will be deleted:\n"
             f"{users_as_list}\nAccording to the [revocation policy in the RFC]({rfc_revocation_rules}), users have"
-            " two weeks to refute this revocation, if they wish by commenting on this pull-request\n"
+            " two weeks to refute this revocation, if they wish by commenting on this pull-request "
             "and open a new pull-request to be re-added as contributor after this one is merged.\n"
-            f"As alternative, if you are active in a working group please check the [promotion rules]({rfc_promotion_rules})\n"
+            f"As alternative, if you are active in a working group please check the [promotion rules]({rfc_promotion_rules}) "
             "and if you are eligible and wish apply for a role in that working group."
             f"{self._get_inactive_users_msg_for_wgs(inactive_users_by_wg, user_tagging_prefix)}"
         )
 
-    def get_inactive_users_by_wg(self, community_members_with_role_by_wg):
+    def get_inactive_users_by_wg(self, inactive_users, community_members_with_role_by_wg):
         result = dict()
-        for wg in community_members_with_role_by_wg.keys():
-            wg_members = community_members_with_role_by_wg[wg]
-            wg_inactive_users = inactive_users.intersection(wg_members)
-            if len(wg_inactive_users) != 0 and wg != "Admin":
-                result[wg] = wg_inactive_users
+        for wg, members in community_members_with_role_by_wg.items():
+            wg_inactive_members = inactive_users.intersection(members)
+            if len(wg_inactive_members) != 0 and wg != "Admin":
+                result[wg] = wg_inactive_members
         return result
 
     @staticmethod
@@ -181,7 +180,7 @@ if __name__ == "__main__":
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
     tagusers = args.tagusers or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "False")
-    inactive_users_by_wg = userHandler.get_inactive_users_by_wg(community_members_with_role_by_wg)
+    inactive_users_by_wg = userHandler.get_inactive_users_by_wg(inactive_users, community_members_with_role_by_wg)
     inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, inactive_users_by_wg, tagusers)
     if args.dryrun or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"):
         print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
