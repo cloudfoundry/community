@@ -140,7 +140,9 @@ branch-protection:
         # CLI
         CLAW:
           protect: false
-          
+        bosh-package-cf-cli-release:
+          protect: false
+
         # ARI Buildpacks repos to skip branch protection
         binary-buildpack:
           protect: false
