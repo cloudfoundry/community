@@ -137,6 +137,10 @@ branch-protection:
         capi-env-pool:
           protect: false
 
+        # CLI
+        bosh-package-cf-cli-release:
+          protect: false
+
         # ARI Buildpacks repos to skip branch protection
         binary-buildpack:
           protect: false
