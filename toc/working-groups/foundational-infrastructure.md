@@ -350,6 +350,8 @@ areas:
     github: fearoffish
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Benjamin Gandon
+    github: bgandon
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
