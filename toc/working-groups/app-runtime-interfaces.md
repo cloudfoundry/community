@@ -340,6 +340,8 @@ areas:
     github: dalvarado
   - name: João Pereira
     github: joaopapereira
+  - name: Sam Gunaratne
+    github: samze
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -347,8 +349,6 @@ areas:
     github: PeteLevineA
   - name: Tim Downey
     github: tcdowney
-  - name: Sam Gunaratne
-    github: samze
   - name: Michael Chinigo
     github: chinigo
   - name: Greg Weresch
