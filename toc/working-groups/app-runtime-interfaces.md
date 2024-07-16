@@ -76,18 +76,28 @@ areas:
 
 - name: Buildpacks Docs
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/example-sidecar-buildpack
 
 - name: Buildpacks Go
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
@@ -120,8 +130,12 @@ areas:
 
 - name: Buildpacks .Net Core
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
   - name: Sophie Wigmore
     github: sophiewigmore
   repositories:
@@ -130,8 +144,12 @@ areas:
 
 - name: Buildpacks .NET Framework
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
   - name: Sophie Wigmore
     github: sophiewigmore
   repositories:
@@ -140,54 +158,84 @@ areas:
 
 - name: Buildpacks Node.js
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
-    github: robdimsdale 
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
 
 - name: Buildpacks PHP
   approvers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Arjun Sreedharan
     github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/php-buildpack
   - cloudfoundry/php-buildpack-release
 
 - name: Buildpacks Python
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
 
 - name: Buildpacks R
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/r-buildpack
   - cloudfoundry/r-buildpack-release
 
 - name: Buildpacks Ruby
   approvers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/ruby-buildpack
   - cloudfoundry/ruby-buildpack-release
 
 - name: Buildpacks Stacks
   approvers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
@@ -196,12 +244,14 @@ areas:
 
 - name: Buildpacks Tooling
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/binary-builder
   - cloudfoundry/brats
@@ -225,6 +275,10 @@ areas:
     github: ForestEckhardt
   - name: David O'Sullivan
     github: pivotal-david-osullivan
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
@@ -239,6 +293,10 @@ areas:
     github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
