@@ -2599,3 +2599,12 @@ orgs:
           cf_exporter: admin
           firehose_exporter: admin
           bosh_exporter: admin
+      temp-ari-capi-admins:
+        description: "Temporary admin team for CAPI"
+        maintainers:
+          - philippthun
+          - johha
+        members: []
+        privacy: closed
+        repos:
+          cloud_controller_ng: admin
