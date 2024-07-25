@@ -291,6 +291,8 @@ areas:
     github: anshrupani
   - name: Chris Selzo
     github: selzoc
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -298,8 +300,6 @@ areas:
     github: nader-ziada
   - name: Ming Xiao
     github: mingxiao
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Jamie van Dyke
     github: fearoffish
   - name: Rajath Agasthya
@@ -337,6 +337,8 @@ areas:
     github: a-hassanin
   - name: Ansh Rupani
     github: anshrupani
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -344,8 +346,6 @@ areas:
     github: nader-ziada
   - name: Ming Xiao
     github: mingxiao
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Jamie van Dyke
     github: fearoffish
   - name: Rajath Agasthya
