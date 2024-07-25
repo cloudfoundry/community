@@ -2483,7 +2483,6 @@ orgs:
         description: "Temporary team for managing Buildpacks secrets until we have a permanent plan."
         maintainers:
         - arjun024
-        - brayanhenao
         - sophiewigmore
         members: []
         privacy: closed
@@ -2600,3 +2599,12 @@ orgs:
           cf_exporter: admin
           firehose_exporter: admin
           bosh_exporter: admin
+      temp-ari-capi-admins:
+        description: "Temporary admin team for CAPI"
+        maintainers:
+          - philippthun
+          - johha
+        members: []
+        privacy: closed
+        repos:
+          cloud_controller_ng: admin

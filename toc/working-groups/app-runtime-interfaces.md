@@ -76,22 +76,28 @@ areas:
 
 - name: Buildpacks Docs
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: TisVictress
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/docs-buildpacks
   - cloudfoundry/example-sidecar-buildpack
 
 - name: Buildpacks Go
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
@@ -124,8 +130,12 @@ areas:
 
 - name: Buildpacks .Net Core
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
   - name: Sophie Wigmore
     github: sophiewigmore
   repositories:
@@ -134,80 +144,98 @@ areas:
 
 - name: Buildpacks .NET Framework
   approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
   - name: Sophie Wigmore
     github: sophiewigmore
-  - name: Victoria Campbell
-    github: TisVictress
   repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
 
 - name: Buildpacks Node.js
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
-  - name: Tim Hitchener
-    github: thitch97
-  - name: Victoria Campbell
-    github: TisVictress
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
 
 - name: Buildpacks PHP
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Arjun Sreedharan
     github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/php-buildpack
   - cloudfoundry/php-buildpack-release
 
 - name: Buildpacks Python
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
 
 - name: Buildpacks R
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/r-buildpack
   - cloudfoundry/r-buildpack-release
 
 - name: Buildpacks Ruby
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
-  - name: Sophie Wigmore
-    github: sophiewigmore
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/ruby-buildpack
   - cloudfoundry/ruby-buildpack-release
 
 - name: Buildpacks Stacks
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
-  - name: Sophie Wigmore
-    github: sophiewigmore
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Forest Eckhardt
+    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
@@ -216,14 +244,14 @@ areas:
 
 - name: Buildpacks Tooling
   approvers:
-  - name: Brayan Henao
-    github: brayanhenao
+  - name: Arjun Sreedharan
+    github: arjun024
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/binary-builder
   - cloudfoundry/brats
@@ -243,12 +271,14 @@ areas:
     github: arjun024
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: David O'Sullivan
     github: pivotal-david-osullivan
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
@@ -261,12 +291,12 @@ areas:
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: tisvictress
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
@@ -297,6 +327,8 @@ areas:
     github: kathap
   - name: Ben Fuller
     github: Benjamintf1
+  - name: Sam Gunaratne
+    github: samze
   reviewers:
   - name: Al Berez
     github: a-b
@@ -318,8 +350,6 @@ areas:
     github: pivotalgeorge
   - name: Cristhian Peña
     github: ccjaimes
-  - name: Sam Gunaratne
-    github: samze
   bots:
   - name: capi-bot
     github: capi-bot
@@ -368,6 +398,8 @@ areas:
     github: dalvarado
   - name: João Pereira
     github: joaopapereira
+  - name: Sam Gunaratne
+    github: samze
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -375,8 +407,10 @@ areas:
     github: PeteLevineA
   - name: Tim Downey
     github: tcdowney
-  - name: Sam Gunaratne
-    github: samze
+  - name: Michael Chinigo
+    github: chinigo
+  - name: Greg Weresch
+    github: weresch
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng

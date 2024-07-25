@@ -33,7 +33,7 @@ The two approaches should be supported in parallel. Users should be able to sele
       * Less implementation effort for the Cloud Controller
    * Disadvantages:
       * Can’t make use of tools and libraries from the Cloud Native community because K8s specifies a different file structure and format for the service binding information
-2. Implement the K8s service binding specification. The environment variable `SERVICE_BINDING_ROOT` defines the location for the service bindings. There is a file per service binding. The name of the file and the format follow the [K8s specification](https://servicebinding.io/):
+2. Implement the K8s service binding specification. The environment variable `SERVICE_BINDING_ROOT` defines the location for the service bindings. The name of the file and the format follow the [K8s specification](https://servicebinding.io/):
    * Advantages:
       * CF community could re-use service binding libraries from the Cloud Native community
       * Moving application between CF or K8s deployments will be easier
@@ -64,7 +64,7 @@ action := &models.RunAction{
       Value: "ENVVALUE",
     },
   },
- Files: []*models.Files{
+ ServiceBindingFiles: []*models.Files{
     {
       Name: "/etc/cf-instance-binding",
       Value: "VALUE",
