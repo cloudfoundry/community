@@ -205,7 +205,7 @@ branch-protection:
           protect: true
           required_status_checks:
             contexts:
-              - "Go / unit (pull_request)"
+              - "unit"
               - "EasyCLA"
           required_pull_request_reviews:
             bypass_pull_request_allowances:
