@@ -27,13 +27,13 @@ contributors:
 - bgandon
 - Birdrock
 - blgm
+- bonzofenix
 - bosh-admin-bot
 - bosh-init-concourse
 - bosh-windows-ci
 - boyan-velinov
 - brayanhenao
 - bruce-ricard
-- bonzofenix
 - c0d1ngm0nk3y
 - ccjaimes
 - cf-bosh-ci-bot
@@ -136,6 +136,7 @@ contributors:
 - metric-store-ci
 - mingxiao
 - mkocher
+- MNoeva
 - modulo11
 - moggibear
 - moleske
@@ -180,6 +181,7 @@ contributors:
 - rpranay1
 - rroberts2222
 - ryanwittrup
+- s-yonkov-yonkov
 - saloni-sshah
 - salzmannsusan
 - samze
@@ -231,7 +233,6 @@ contributors:
 - xtremerui
 - Yavor16
 - ystros
-- zucchinidev
-- MNoeva
+- zabanov-lab
 - ZPascal
-- s-yonkov-yonkov
+- zucchinidev
