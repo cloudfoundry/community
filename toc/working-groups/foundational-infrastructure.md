@@ -293,11 +293,11 @@ areas:
     github: selzoc
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Nader Ziada
+    github: nader-ziada
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Ming Xiao
     github: mingxiao
   - name: Jamie van Dyke
@@ -339,11 +339,11 @@ areas:
     github: anshrupani
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Nader Ziada
+    github: nader-ziada
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Ming Xiao
     github: mingxiao
   - name: Jamie van Dyke
