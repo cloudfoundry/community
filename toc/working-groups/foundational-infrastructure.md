@@ -291,11 +291,11 @@ areas:
     github: anshrupani
   - name: Chris Selzo
     github: selzoc
+  - name: Nader Ziada
+    github: nader-ziada
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Ming Xiao
     github: mingxiao
   - name: Nitin Ravindran
@@ -337,11 +337,11 @@ areas:
     github: a-hassanin
   - name: Ansh Rupani
     github: anshrupani
+  - name: Nader Ziada
+    github: nader-ziada
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Ming Xiao
     github: mingxiao
   - name: Nitin Ravindran
