@@ -62,9 +62,6 @@ areas:
     github: salzmannsusan
   - name: Alan Moran
     github: bonzofenix
-  reviewers:
-  - name: Sumit Kulhadia
-    github: kulhadia
   bots:
   - name: App Autoscaler CI Bot
     github: app-autoscaler-ci-bot
