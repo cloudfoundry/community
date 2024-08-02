@@ -72,6 +72,8 @@ areas:
     github: swalchemist
   - name: Alicia Yingling
     github: Tallicia
+  - name: Prateek Gangwal
+    github: coolgang123
   reviewers:
   - name: Duane May
     github: duanemay
@@ -176,6 +178,8 @@ areas:
     github: klaus-sap
   - name: Duane May
     github: duanemay
+  - name: Prateek Gangwal
+    github: coolgang123
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
