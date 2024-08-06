@@ -391,4 +391,37 @@ areas:
   - cloudfoundry/pcap
   - cloudfoundry/pcap-release
 
+- name: Volume Services
+  approvers:
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Maria Shaldybin
+    github: mariash
+  - name: Amin Jamali
+    github: winkingturtle-vmw
+  - name: Marc Paquette
+    github: marcpaquette
+  bots:
+  - name: Cryogenics CI Bot
+    github: Cryogenics-CI
+  - name: CI Bot
+    github: tas-runtime-bot
+  repositories:
+  - cloudfoundry/existingvolumebroker
+  - cloudfoundry/goshims
+  - cloudfoundry/mapfs
+  - cloudfoundry/mapfs-release
+  - cloudfoundry/migrate_mysql_to_credhub
+  - cloudfoundry/nfsv3driver
+  - cloudfoundry/nfsbroker
+  - cloudfoundry/nfs-volume-release
+  - cloudfoundry/persi-ci
+  - cloudfoundry/service-broker-store
+  - cloudfoundry/smbdriver
+  - cloudfoundry/smbbroker
+  - cloudfoundry/smb-volume-release
+  - cloudfoundry/volume-mount-options
+  - cloudfoundry/volumedriver
+  - cloudfoundry/cf-volume-services-acceptance-tests
+
 ```
