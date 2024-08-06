@@ -385,7 +385,6 @@ areas:
   - cloudfoundry/bosh-docker-cpi-release
   - cloudfoundry/bosh-gcscli
   - cloudfoundry/bosh-google-cpi-release
-  - cloudfoundry/bosh-google-light-stemcell-builder
   - cloudfoundry/bosh-io-releases
   - cloudfoundry/bosh-io-releases-index
   - cloudfoundry/bosh-io-stemcells-core-index

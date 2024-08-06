@@ -275,6 +275,7 @@ orgs:
         description: Builds light stemcells for GCP from a "full" bosh stemcell
         has_projects: false
         has_wiki: false
+        archived: true
       bosh-io-releases-index:
         description: Index of all release assets
         default_branch: main
