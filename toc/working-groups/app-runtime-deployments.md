@@ -53,8 +53,6 @@ areas:
     name: Dave Walter
   - github: ctlong
     name: Carson Long
-  - github: tjvman
-    name: Tom Viehman
   - github: philippthun
     name: Philipp Thun
   - github: johha
@@ -65,12 +63,6 @@ areas:
     name: Aftab Alam
   - github: jimconner
     name: Jim Conner
-  - github: andrewdriver123
-    name: Andrew Driver
-  - github: combor
-    name: Piotr Komborski
-  - github: shaun7pan
-    name: Shaun Pan
   repositories:
   - cloudfoundry/app-runtime-deployments-infrastructure
   - cloudfoundry/cf-acceptance-tests
