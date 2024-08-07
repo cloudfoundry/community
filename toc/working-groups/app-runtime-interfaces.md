@@ -302,8 +302,6 @@ areas:
 
 - name: CAPI
   approvers:
-  - name: Tom Viehman
-    github: tjvman
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
@@ -379,8 +377,6 @@ areas:
   approvers:
   - name: Al Berez
     github: a-b
-  - name: Juan Diego González
-    github: jdgonzaleza
   - name: Ryker Reed
     github: reedr3
   - name: Michael Oleske
@@ -463,14 +459,10 @@ areas:
     github: boyan-velinov
   - name: Rangel Ivanov
     github: radito3
-  - name: Dido
-    github: ddonchev
   - name: Ikasarov
     github: ikasarov
   - name: Velizar Kalapov
     github: vkalapov
-  - name: Nikolay Valchev
-    github: nvvalchev
   - name: Vasil Bogdanov
     github: VRBogdanov
   - name: Yavor Uzunov
@@ -491,9 +483,6 @@ areas:
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Notifications
-  bots:
-  - name: VMware notifications release bot
-    github: cf-frontend
   approvers:
   - name: David Stevenson
     github: dsboulder
