@@ -137,6 +137,10 @@ branch-protection:
         capi-env-pool:
           protect: false
 
+        # CLI
+        CLAW:
+          protect: false
+          
         # ARI Buildpacks repos to skip branch protection
         binary-buildpack:
           protect: false
