@@ -374,7 +374,6 @@ areas:
   - cloudfoundry/steno
   - cloudfoundry/runtimeschema
   - cloudfoundry/app-runtime-interfaces-infrastructure
-  - cloudfoundry/homebrew-tap
 
 - name: CLI
   approvers:
@@ -427,6 +426,7 @@ areas:
   - cloudfoundry/ykk
   - cloudfoundry/app-runtime-interfaces-infrastructure
   - cloudfoundry/bosh-package-cf-cli-release
+  - cloudfoundry/homebrew-tap
 
 - name: Java Tools
   approvers:
