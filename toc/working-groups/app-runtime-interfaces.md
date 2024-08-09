@@ -374,6 +374,7 @@ areas:
   - cloudfoundry/steno
   - cloudfoundry/runtimeschema
   - cloudfoundry/app-runtime-interfaces-infrastructure
+  - cloudfoundry/homebrew-tap
 
 - name: CLI
   approvers:
