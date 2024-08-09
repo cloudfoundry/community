@@ -426,6 +426,7 @@ areas:
   - cloudfoundry/ykk
   - cloudfoundry/app-runtime-interfaces-infrastructure
   - cloudfoundry/bosh-package-cf-cli-release
+  - cloudfoundry/homebrew-tap
 
 - name: Java Tools
   approvers:
