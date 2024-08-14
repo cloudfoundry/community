@@ -1,10 +1,10 @@
 # Meta
 [meta]: #meta
 - Name: User Creation by Org Managers
-- Start Date: (fill in today's date: YYYY-MM-DD)
+- Start Date: 2024-08-13
 - Author(s): stephanme
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: [#946](https://github.com/cloudfoundry/community/pull/946)
 
 
 ## Summary
