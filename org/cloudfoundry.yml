@@ -362,6 +362,10 @@ orgs:
         description: Go CLI for S3
         has_projects: false
         has_wiki: false
+      bosh-shared-ci:
+        description: Concourse CI tasks intended to be used across many different projects
+        has_projects: false
+        has_wiki: false
       bosh-softlayer-cpi-release:
         description: An external BOSH CPI for the SoftLayer cloud written in Golang
         has_projects: true
