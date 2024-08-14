@@ -2312,6 +2312,10 @@ orgs:
         allow_merge_commit: false
         has_issues: false
         has_projects: true
+      terraform-provider-cloudfoundry:
+        default_branch: main
+        description: Terraform provider to manage Cloud Foundry resources using v3 APIs 
+        has_projects: true
       terraform-provider-csbmysql:
         allow_merge_commit: false
         allow_rebase_merge: false
