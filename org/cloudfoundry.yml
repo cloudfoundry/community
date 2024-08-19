@@ -339,7 +339,7 @@ orgs:
         default_branch: main
         has_projects: false
       bosh-linux-stemcell-builder:
-        default_branch: ubuntu-jammy/master
+        default_branch: ubuntu-jammy
         description: 'BOSH Ubuntu Linux stemcells '
         has_projects: false
         has_wiki: false
