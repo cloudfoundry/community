@@ -397,6 +397,8 @@ areas:
     github: joaopapereira
   - name: Sam Gunaratne
     github: samze
+  - name: Greg Weresch
+    github: weresch
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -406,8 +408,6 @@ areas:
     github: tcdowney
   - name: Michael Chinigo
     github: chinigo
-  - name: Greg Weresch
-    github: weresch
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
