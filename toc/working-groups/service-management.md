@@ -45,6 +45,8 @@ areas:
     github: zucchinidev
   - name: Iain Findlay
     github: ifindlay-cci
+  - name: Konstantin Kiess
+    github: nouseforaname
   bots:
   - name: Services Enablement bot
     github: servicesenablement
