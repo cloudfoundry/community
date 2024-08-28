@@ -451,6 +451,21 @@ areas:
   repositories:
   - cloudfoundry/go-cfclient
 
+- name: Terraform Provider Cloudfoundry
+  approvers:
+  - name: Yogesh Purantharan
+    github: pyogesh2
+  - name: Vipin Vijaykumar
+    github: vipinvkmenon
+  - name: Kesavan
+    github: KesavanKing
+  - name: Debaditya Ray 
+    github: Dray56
+  - name: Gourab Mukherjee
+    github: Gourab1998
+  repositories:
+  - cloudfoundry/terraform-provider-cloudfoundry
+
 - name: MultiApps
   approvers:
   - name: Alexander Tsvetkov
