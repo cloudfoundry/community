@@ -326,11 +326,11 @@ areas:
     github: Benjamintf1
   - name: Sam Gunaratne
     github: samze
+  - name: Alex Rocha
+    github: xandroc
   reviewers:
   - name: Al Berez
     github: a-b
-  - name: Alex Rocha
-    github: xandroc
   - name: David Alvarado
     github: dalvarado
   - name: Evan Farrar
