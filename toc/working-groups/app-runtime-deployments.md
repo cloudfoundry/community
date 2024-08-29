@@ -72,6 +72,7 @@ areas:
   - cloudfoundry/cf-smoke-tests
   - cloudfoundry/cf-smoke-tests-release
   - cloudfoundry/cf-test-helpers
+  - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/honeycomb-ginkgo-reporter
   - cloudfoundry/relint-ci-pools
   - cloudfoundry/relint-envs
