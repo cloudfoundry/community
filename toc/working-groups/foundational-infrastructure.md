@@ -148,7 +148,6 @@ areas:
   - cloudfoundry/bosh-backup-and-restore
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
-  - cloudfoundry/disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
   - cloudfoundry/homebrew-tap
   bots:
