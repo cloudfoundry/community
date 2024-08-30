@@ -498,6 +498,9 @@ areas:
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Notifications
+  bots:
+  - name: VMware notifications release bot
+    github: cf-frontend
   approvers:
   - name: David Stevenson
     github: dsboulder
