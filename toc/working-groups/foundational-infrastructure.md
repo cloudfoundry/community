@@ -211,6 +211,8 @@ areas:
   approvers:
   - name: Andrew Garner
     github: abg
+  - name: Colin Shield
+    github: colins
   - name: Kyle Ong
     github: ohkyle
   - name: Kim Basset
@@ -270,6 +272,8 @@ areas:
     github: max-soe
   - name: Aram Price
     github: aramprice
+  - name: Shilpa Chandrashekara
+    github: ShilpaChandrashekara
   - name: Joerg W
     github: joergdw
   - name: Ansh Rupani
