@@ -112,8 +112,6 @@ areas:
     github: xtremerui
   - name: Rizwan Reza
     github: rizwanreza
-  - name: Ryan Hall
-    github: rhall-pivotal
   - name: Wayne Adams
     github: wayneadams
   approvers:
