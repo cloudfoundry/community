@@ -60,6 +60,22 @@ areas:
   - cloudfoundry/summit-hands-on-labs
   - cloudfoundry/summit-training-classes
   - cloudfoundry/training-cert-admin
+  
+- name: Shared
+  approvers:
+  - name: Al Berez
+    github: a-b
+  - name: Shwetha Gururaj
+    github: gururajsh
+  - name: João Pereira
+    github: joaopapereira
+  - name: Sam Gunaratne
+    github: samze
+  bots:
+  - name: CF CLI Eng
+    github: cf-cli-eng
+  repositories:
+  - cloudfoundry/homebrew-tap
 config:
   github_project_sync:
     mapping:
