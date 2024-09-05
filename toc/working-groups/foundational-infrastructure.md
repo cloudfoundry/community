@@ -188,6 +188,29 @@ areas:
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
+- name: Identity and Auth (UAA) CI
+  approvers:
+  - name: Peter Chen
+    github: peterhaochen47
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Duane May
+    github: duanemay
+  - name: Prateek Gangwal
+    github: coolgang123
+  reviewers:
+  - name: Markus Strehle
+    github: strehle
+  - name: Florian Tack
+    github: tack-sap
+  - name: Torsten Luh
+    github: torsten-sap
+  - name: Adrian Hoelzl
+    github: adrianhoelzl-sap
+  - name: Klaus Kiefer
+    github: klaus-sap
+  repositories:
+  - cloudfoundry/uaa-ci
 - name: Identity and Auth (UAA) Go Client
   approvers:
   - name: Joe Fitzgerald
