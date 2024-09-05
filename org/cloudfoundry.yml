@@ -2617,3 +2617,13 @@ orgs:
         privacy: closed
         repos:
           cloud_controller_ng: admin
+      temp-ari-terraform-provider-cloudfoundry-admins:
+        description: "Temporary team for managing terraform-provider-cloudfoundry secrets."
+        maintainers:
+          - pyogesh2
+          - KesavanKing
+          - vipinvkmenon
+        members: []
+        privacy: closed
+        repos:
+          terraform-provider-cloudfoundry: admin
