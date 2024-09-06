@@ -43,20 +43,12 @@ technical_leads:
 bots:
 - name: bosh-admin-bot
   github: bosh-admin-bot
-- name: bosh-windows-ci
-  github: bosh-windows-ci
-- name: cf-gitbot
-  github: cf-gitbot
 - name: runtime-bot
   github: tas-runtime-bot
 - name: cf-uaa-ci-bot
   github: cf-identity
-- name: cf-bosh-ci-bot
-  github: cf-bosh-ci-bot
 - name: Cryogenics-CI
   github: Cryogenics-CI
-- name: bbr-ci
-  github: bbr-ci
 - name: mysql-ci
   github: pcf-core-services-writer
 areas:
@@ -88,8 +80,6 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   reviewers:
-  - name: Alenjandra Lara
-    github: alejandra-lara
   - name: claire t.
     github: Spimtav
   - name: Greg Meyer
@@ -137,8 +127,6 @@ areas:
     github: jhvhs
   - name: Long Nguyen
     github: lnguyen
-  - name: Maya Rosecrance
-    github: mrosecrance
   - name: Rajan Agaskar
     github: ragaskar
   repositories:
@@ -272,8 +260,6 @@ areas:
     github: cunnie
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Maya Rosecrance
-    github: mrosecrance
   - name: Daniel Felipe Ochoa
     github: danielfor
   - name: Kenneth Lakin
