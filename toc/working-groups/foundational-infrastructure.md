@@ -147,7 +147,6 @@ areas:
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
-  - cloudfoundry/homebrew-tap
   bots:
   - name: tas-operability-bot
     github: tas-operability-bot
