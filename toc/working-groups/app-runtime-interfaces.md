@@ -71,20 +71,6 @@ areas:
   - cloudfoundry/app-autoscaler-env-bbl-state
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
-- name: Buildpacks Docs
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
-  repositories:
-  - cloudfoundry/docs-buildpacks
-  - cloudfoundry/example-sidecar-buildpack
-
 - name: Buildpacks Go
   approvers:
   - name: Arjun Sreedharan
@@ -258,6 +244,7 @@ areas:
   - cloudfoundry/buildpacks-github-config
   - cloudfoundry/buildpacks-workstation
   - cloudfoundry/dagger
+  - cloudfoundry/example-sidecar-buildpack
   - cloudfoundry/libbuildpack
   - cloudfoundry/public-buildpacks-ci-robots
   - cloudfoundry/switchblade
