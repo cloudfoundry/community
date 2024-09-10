@@ -2368,6 +2368,10 @@ orgs:
         description: CloudFoundry User Account and Authentication (UAA) Server
         has_projects: true
         has_wiki: false
+      uaa-ci:
+        default_branch: main
+        has_projects: true
+        has_wiki: false
       uaa-cli:
         description: CLI for UAA written in Go
         has_projects: true
