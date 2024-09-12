@@ -2599,10 +2599,12 @@ orgs:
         maintainers:
           - coolgang123
           - duanemay
-          - iprotsiuk
-        members: [ ]
+          - hsinn0
+          - peterhaochen47
+        members: []
         privacy: closed
-        repos: {}
+        repos:
+          uaa-ci: admin
       temp-prometheus-exporter-admins:
         description: "Temporary team for managing cf/ firehose exporter secrets until we have a permanent plan."
         maintainers:
