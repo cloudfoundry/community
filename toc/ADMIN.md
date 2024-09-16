@@ -61,7 +61,7 @@ areas:
   - cloudfoundry/summit-training-classes
   - cloudfoundry/training-cert-admin
   
-- name: Shared
+- name: Homebrew
   approvers:
   - name: Al Berez
     github: a-b
