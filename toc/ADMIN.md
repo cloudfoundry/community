@@ -60,8 +60,8 @@ areas:
   - cloudfoundry/summit-hands-on-labs
   - cloudfoundry/summit-training-classes
   - cloudfoundry/training-cert-admin
-  
-- name: Homebrew
+
+- name: CF Homebrew TAP
   approvers:
   - name: Al Berez
     github: a-b
@@ -71,6 +71,28 @@ areas:
     github: joaopapereira
   - name: Sam Gunaratne
     github: samze
+  - name: Aram Price
+    github: aramprice
+  - name: Brian Upton
+    github: ystros
+  - name: Chris Selzo
+    github: selzoc
+  - name: Diego Lemos
+    github: dlresende
+  - name: George Blue
+    github: blgm
+  - name: Iain Findlay
+    github: ifindlay-cci
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Konstantin Semenov
+    github: jhvhs
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Rajan Agaskar
+    github: ragaskar    
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
