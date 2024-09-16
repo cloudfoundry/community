@@ -120,7 +120,6 @@ areas:
   - cloudfoundry/diego-release
   - cloudfoundry/diego-ssh
   - cloudfoundry/diego-upgrade-stability-tests
-  - cloudfoundry/docker_driver_integration_tests
   - cloudfoundry/dockerapplifecycle
   - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
@@ -409,16 +408,10 @@ areas:
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
-  - cloudfoundry/mapfs
   - cloudfoundry/mapfs-release
   - cloudfoundry/migrate_mysql_to_credhub
-  - cloudfoundry/nfsv3driver
-  - cloudfoundry/nfsbroker
   - cloudfoundry/nfs-volume-release
-  - cloudfoundry/persi-ci
   - cloudfoundry/service-broker-store
-  - cloudfoundry/smbdriver
-  - cloudfoundry/smbbroker
   - cloudfoundry/smb-volume-release
   - cloudfoundry/volume-mount-options
   - cloudfoundry/volumedriver
