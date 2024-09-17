@@ -8,18 +8,16 @@ Provides interfaces for service lifecycle within application platforms and adapt
 
 - Define the service extension API for Cloud Foundry brokered services.
 - Provide a flexible adapter layer to common hyperscaler service providers.
-- Maintain a set of reference volume service brokers and drivers for CF applications to mount stateful data.
 
 ## Scope
 - Lead OSB API.
 - Develop and maintain Cloud Service Brokers for AWS, Azure, and GCP.
-- Maintain volume service adapters for NFS and SMB.
 - Develop and maintain ServiceFabrik, a generic BOSH-based and Docker-container-based service instance manager.
 
 ## Non-Goals
 
 ## Roles & Technical Assets
-Components from the Cloud Service Broker, Open Service Broker API, Service Fabrik, and Volume Services projects.
+Components from the Cloud Service Broker, Open Service Broker API and Service Fabrik.
 
 ```yaml
 name: Service Management
