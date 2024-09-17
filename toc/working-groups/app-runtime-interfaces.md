@@ -30,7 +30,7 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 ## Roles & Technical Assets
 
-Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifications projects.
+Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, Notifications, and Stratos projects.
 
 ```yaml
 name: App Runtime Interfaces
@@ -509,6 +509,28 @@ areas:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
   - cloudfoundry/app-runtime-interfaces-infrastructure
+
+- name: Stratos Console for Cloud Foundry
+   approvers:
+   - name: Kevin Rutten
+     github: krutten
+   - name: Wayne Seguin
+     github: wayneeseguin
+   - name: Norm Abromovitz
+     github: norman-abramovitz
+   - name: Ioannis Tsouvalas
+     github: itsouvalas
+   reviewers:
+   - name: Dr. Xiujiao Gao
+     github: xiujiao
+   - name: Dennis Bell
+     github: dennisjbell
+   - name: Dr. Hu
+     github: haochenhu233
+
+   repositories:
+   - cloudfoundry/stratos
+   - cloudfoundry/stratos-buildpack
 
 config:
   generate_rfc0015_branch_protection_rules: true
