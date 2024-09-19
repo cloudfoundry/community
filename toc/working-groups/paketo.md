@@ -82,8 +82,6 @@ areas:
     github: thitch97
   - name: Jerico Pena
     github: jericop
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories: []
 - name: Content
   approvers:
@@ -100,8 +98,6 @@ areas:
     github: thitch97
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories: []
 - name: Dependencies
   approvers:
@@ -109,8 +105,6 @@ areas:
     github: robdimsdale
   - name: Brayan Henao
     github: brayanhenao
-  - name: Sophie Wigmore
-    github: sophiewigmore
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -125,8 +119,6 @@ areas:
   approvers:
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Sophie Wigmore
-    github: sophiewigmore
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -148,8 +140,6 @@ areas:
     github: thitch97
   - name: Genevieve L'Esperance
     github: genevieve
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Victoria Campbell
     github: TisVictress
   repositories: []
@@ -190,8 +180,6 @@ areas:
     github: c0d1ngm0nk3y
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Frankie G-J
     github: fg-j
   - name: Emily Johnson
@@ -199,8 +187,6 @@ areas:
   repositories: []
 - name: PHP
   approvers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Arjun Sreedharan
     github: arjun024
   - name: Tim Hitchener
@@ -230,8 +216,6 @@ areas:
   - name: Joshua Casey
     github: joshuatcasey
   reviewers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Victoria Campbell
@@ -245,8 +229,6 @@ areas:
     github: arjun024
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   reviewers:
   - name: Tim Hitchener
     github: thitch97
@@ -269,8 +251,6 @@ areas:
   approvers:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Brayan Henao
     github: brayanhenao
   reviewers:
@@ -287,8 +267,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -312,8 +290,6 @@ areas:
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   reviewers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Frankie G-J
     github: fg-j
   - name: Emily Johnson
@@ -332,8 +308,6 @@ areas:
   reviewers:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Frankie G-J
     github: fg-j
   repositories: []
