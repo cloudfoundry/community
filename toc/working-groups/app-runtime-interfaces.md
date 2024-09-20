@@ -79,8 +79,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
@@ -119,8 +117,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
@@ -133,8 +129,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
@@ -147,8 +141,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
@@ -161,8 +153,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/php-buildpack
   - cloudfoundry/php-buildpack-release
@@ -175,8 +165,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
@@ -189,8 +177,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/r-buildpack
   - cloudfoundry/r-buildpack-release
@@ -203,8 +189,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/ruby-buildpack
   - cloudfoundry/ruby-buildpack-release
@@ -217,8 +201,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
@@ -233,8 +215,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/binary-builder
   - cloudfoundry/brats
@@ -261,8 +241,6 @@ areas:
     github: pivotal-david-osullivan
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
@@ -279,8 +257,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
