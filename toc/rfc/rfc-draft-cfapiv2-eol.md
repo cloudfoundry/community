@@ -4,7 +4,7 @@
 - Start Date: 2024-08-08
 - Author(s): stephanme
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: [#941](https://github.com/cloudfoundry/community/pull/941)
 
 
 ## Summary
@@ -28,17 +28,26 @@ There are several issues and efforts with keeping the deprecated CF API v2 as pa
 
 ## Proposal
 
-September 2024 (after accepting this RFC)
-- Add a validation to cf-deployment that runs with disabled CF API v2
-- Define and announce an End of Life date for CF API v2: end of 2025
+Since CF API v2 removal is a fundamental breaking change, the removal is devided into 3 phases of about 1 year each with checkpoints in between that require TOC approval.
 
-Jan 2025
-- Disable CF API v2 in cf-deployment by changing the default for CAPI property [cc.temporary_enable_v2](https://bosh.io/jobs/cloud_controller_ng?source=github.com/cloudfoundry/capi-release&version=1.185.0#p%3dcc.temporary_enable_v2) to false. Operators may still re-enable v2.
+**Phase 1** (starts after accepting this RFC)
+- Announce an End of Life date for CF API v2 (~ mid/end 2026).
+- Engineering work so that all cf-deployment components are built/tested/released with v2 turned off
+- Turn off CF API v2 by default in cf-deployment (set CAPI property [cc.temporary_enable_v2](https://bosh.io/jobs/cloud_controller_ng?source=github.com/cloudfoundry/capi-release&version=1.185.0#p%3dcc.temporary_enable_v2) to false). Operators may still re-enable v2.
 
-Jan 2026
-- CF API v2 reached EOL
-- Remove the option to re-enable CF API v2 in CAPI and cf-deployment
-- Remove CF API v2 implementation from CAPI
+**Checkpoint 1**
+- TOC approval
+
+**Phase 2** (after Checkpoint 1, ~mid/end 2025)
+- Engineering work so that all CFF-controlled clients use v3 by default
+- Window for 3rd-party clients to complete migration to v3
+
+**Checkpoint 2**
+- TOC approval
+
+**Phase 3** (after Checkpoint 2, ~mid/end 2026)
+- Turn CF API v2 permanently off for CAPI/cf-deployment.
+- Engineering work to remove CF API v2 from CAPI.
 
 ### Impact and Consequences
 
