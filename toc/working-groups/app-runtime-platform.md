@@ -166,6 +166,8 @@ areas:
     github: selzoc
   - name: Amin Jamali
     github: winkingturtle-vmw
+  - name: Brandon Roberson
+    github: ebroberson
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
