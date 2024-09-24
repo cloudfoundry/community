@@ -2,7 +2,7 @@
 
 ## Mission
 
-Provides operational components for the CF App Runtime, including those for application build, application execution, ingress and app-to-app routing, and aggregation of application logs and metrics.
+Provides operational components for the CF App Runtime, including those for application build, application execution, ingress and app-to-app routing, volume service adapters, and aggregation of application logs and metrics.
 
 
 ## Goals
@@ -14,7 +14,7 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Scope
 
-- Develop system components that support core CF App Runtime capabilities, including building app artifacts from source code, running artifacts as apps, routing traffic to apps and between apps, and aggregating logs and metrics from applications for end-user consumption.
+- Develop system components that support core CF App Runtime capabilities, including building app artifacts from source code, running artifacts as apps, routing traffic to apps and between apps,  mouting stateful data to apps via volume services, and aggregating logs and metrics from applications for end-user consumption.
 - Maintain public roadmaps for the CF App Runtime component systems above and ensure that system component development matches roadmap intent.
 - Align component development to the priorities of App Runtime end users via collaboration with other Working Groups.
 - Provide community contributors with tooling and reference pipelines needed to build, test, and release App Runtime system components.
@@ -30,7 +30,7 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Roles & Technical Assets
 
-Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Windows Containers projects.
+Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Volume Services, Windows Containers projects.
 
 ```yaml
 name: App Runtime Platform
