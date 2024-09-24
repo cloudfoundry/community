@@ -1093,6 +1093,7 @@ orgs:
         has_projects: true
       docker_driver_integration_tests:
         has_projects: true
+        archived: true
       dockerapplifecycle:
         description: Code that runs inside of containers, for docker-based apps
         has_projects: true
@@ -1734,6 +1735,7 @@ orgs:
         homepage: http://docs.cloudfoundry.org/buildpacks/
       mapfs:
         has_projects: true
+        archived: true
       mapfs-release:
         description: BOSH release with mapfs, allows uid/gid mapping at the path
         has_projects: true
@@ -1815,8 +1817,10 @@ orgs:
         has_projects: true
       nfsbroker:
         has_projects: true
+        archived: true
       nfsv3driver:
         has_projects: true
+        archived: true
       nginx-buildpack:
         description: Cloud Foundry buildpack that provides NGINX
         has_projects: false
@@ -1907,6 +1911,7 @@ orgs:
         has_projects: true
       persi-ci:
         has_projects: true
+        archived: true
       persistence-load-tests:
         has_projects: true
         private: true
@@ -2210,8 +2215,10 @@ orgs:
         has_projects: true
       smbbroker:
         has_projects: true
+        archived: true
       smbdriver:
         has_projects: true
+        archived: true
       socks5-proxy:
         default_branch: main
         description: This is a go library for starting a socks5 proxy server via SSH
