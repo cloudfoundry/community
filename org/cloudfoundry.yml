@@ -2579,7 +2579,8 @@ orgs:
         description: "Temporary team for managing GitHub integrations for automation/concourse."
         maintainers:
           - plowin
-          - domdom82
+          - peanball
+          - Soha-Albaghdady
         members: []
         privacy: closed
         repos:
