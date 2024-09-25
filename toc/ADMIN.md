@@ -96,6 +96,8 @@ areas:
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
+  - name: Credhub CLI
+    github: credhub-ci-bot
   repositories:
   - cloudfoundry/homebrew-tap
 config:
