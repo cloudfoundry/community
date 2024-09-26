@@ -170,8 +170,6 @@ areas:
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
-  - cloudfoundry/cpu-entitlement-admin-plugin
-  - cloudfoundry/cpu-entitlement-plugin
   - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
   - cloudfoundry/envoy-nginx-release

@@ -921,8 +921,10 @@ orgs:
         has_wiki: false
       cpu-entitlement-admin-plugin:
         has_projects: true
+        archived: true
       cpu-entitlement-plugin:
         has_projects: true
+        archived: true
       credhub:
         allow_merge_commit: false
         allow_squash_merge: false
