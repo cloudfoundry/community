@@ -60,6 +60,8 @@ areas:
     github: hsinn0
   - name: Prateek Gangwal
     github: coolgang123
+  - name: Markus Strehle
+    github: strehle
   reviewers:
   - name: Duane May
     github: duanemay
