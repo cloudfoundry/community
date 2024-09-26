@@ -354,6 +354,8 @@ areas:
   reviewers:
   - name: Konstantin Lapkov
     github: klapkov
+  - name: Daria Anton
+    github: Dariquest
   repositories:
   - cloudfoundry/cf-lookup-route
   - cloudfoundry/cf-networking-helpers
@@ -387,6 +389,9 @@ areas:
     github: plowin
   - name: Tamara Boehm
     github: b1tamara
+  reviewers:
+  - name: Daria Anton
+    github: Dariquest 
   repositories:
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/pcap
