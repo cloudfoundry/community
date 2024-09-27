@@ -362,6 +362,8 @@ areas:
     github: klapkov
   - name: Alexander Nicke
     github: a18e
+  - name: M Rizwan Shaik
+    github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
   repositories:
@@ -408,6 +410,8 @@ areas:
     github: klapkov
   - name: Alexander Nicke
     github: a18e
+  - name: M Rizwan Shaik
+    github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
   repositories:
