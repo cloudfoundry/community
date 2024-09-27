@@ -352,10 +352,18 @@ areas:
   - name: Plamen Doychev
     github: PlamenDoychev
   reviewers:
-  - name: Konstantin Lapkov
-    github: klapkov
+  - name: Soha Alboghdady
+    github: Soha-Albaghdady
   - name: Daria Anton
     github: Dariquest
+  - name: Clemens Hoffmann
+    github: hoffmaen
+  - name: Konstantin Lapkov
+    github: klapkov
+  - name: Alexander Nicke
+    github: a18e
+  - name: Michal Tekel
+    github: mtekel
   repositories:
   - cloudfoundry/cf-lookup-route
   - cloudfoundry/cf-networking-helpers
@@ -390,8 +398,18 @@ areas:
   - name: Tamara Boehm
     github: b1tamara
   reviewers:
+  - name: Soha Alboghdady
+    github: Soha-Albaghdady
   - name: Daria Anton
-    github: Dariquest 
+    github: Dariquest
+  - name: Clemens Hoffmann
+    github: hoffmaen
+  - name: Konstantin Lapkov
+    github: klapkov
+  - name: Alexander Nicke
+    github: a18e
+  - name: Michal Tekel
+    github: mtekel
   repositories:
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/pcap
