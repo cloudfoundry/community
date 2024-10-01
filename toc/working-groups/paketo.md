@@ -67,6 +67,8 @@ areas:
     github: joshuatcasey
   - name: David O'Sullivan
     github: pivotal-david-osullivan
+  - name: Anthony Dahanne
+    github: anthonydahanne
   reviewers: []
   repositories: []
 - name: Builders
@@ -75,41 +77,39 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Michael Dawson
+    github: mhdawson
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Jerico Pena
     github: jericop
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories: []
 - name: Content
   approvers:
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: TisVictress
+  - name: Anthony Dahanne
+    github: anthonydahanne
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Tim Hitchener
-    github: thitch97
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories: []
 - name: Dependencies
   approvers:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Brayan Henao
-    github: brayanhenao
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: Joshua Casey
@@ -122,8 +122,6 @@ areas:
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Joshua Casey
     github: joshuatcasey
   repositories: []
@@ -136,12 +134,10 @@ areas:
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Genevieve L'Esperance
     github: genevieve
-  - name: Victoria Campbell
-    github: TisVictress
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories: []
 - name: Java
   approvers:
@@ -156,19 +152,13 @@ areas:
     github: c0d1ngm0nk3y
   - name: Johannes Dillmann
     github: modulo11
-  - name: Kevin Ortega
-    github: kevin-ortega
-  - name: Hank Ibell
-    github: hibell
   repositories: []
 - name: NodeJS
   approvers:
-  - name: Tim Hitchener
-    github: thitch97
-  - name: Brayan Henao
-    github: brayanhenao
-  - name: Victoria Campbell
-    github: TisVictress
+  - name: Michael Dawson
+    github: mhdawson
+  - name: Costas Papastathis
+    github: pacostas
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -180,8 +170,6 @@ areas:
     github: c0d1ngm0nk3y
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Frankie G-J
-    github: fg-j
   - name: Emily Johnson
     github: emmjohnson
   repositories: []
@@ -189,55 +177,39 @@ areas:
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   reviewers:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Frankie G-J
-    github: fg-j
-  - name: Victoria Campbell
-    github: TisVictress
   - name: Joshua Casey
     github: joshuatcasey
   repositories: []
 - name: Python
   approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Brayan Henao
-    github: brayanhenao
   - name: Joshua Casey
     github: joshuatcasey
   reviewers:
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: TisVictress
   - name: Emily Johnson
     github: emmjohnson
+  - name: Arjun Sreedharan
+    github: arjun024
   repositories: []
 - name: Ruby
   approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   reviewers:
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Frankie G-J
-    github: fg-j
   - name: Genevieve L'Esperance
     github: genevieve
+  - name: Arjun Sreedharan
+    github: arjun024
   repositories: []
 - name: Rust
   approvers:
@@ -251,15 +223,13 @@ areas:
   approvers:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Brayan Henao
-    github: brayanhenao
+  - name: Michael Dawson
+    github: mhdawson
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
   - name: Jerico Pena
     github: jericop
-  - name: Frankie G-J
-    github: fg-j
   repositories: []
 - name: Tooling
   approvers:
@@ -272,10 +242,6 @@ areas:
     github: arjun024
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Tim Hitchener
-    github: thitch97
-  - name: Philipp Stehle
-    github: phil9909
   repositories: []
 - name: Utilities
   approvers:
@@ -283,32 +249,26 @@ areas:
     github: arjun024
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   reviewers:
-  - name: Frankie G-J
-    github: fg-j
-  - name: Emily Johnson
-    github: emmjohnson
+  - name: Sophie Wigmore
+    github: sophiewigmore
+  - name: Anthony Dahanne
+    github: anthonydahanne
   repositories: []
 - name: Web Servers
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Tim Hitchener
-    github: thitch97
   - name: Forest Eckhardt
     github: ForestEckhardt
-  - name: Victoria Campbell
-    github: TisVictress
   reviewers:
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Frankie G-J
-    github: fg-j
+  - name: Sophie Wigmore
+    github: sophiewigmore
   repositories: []
 ```
