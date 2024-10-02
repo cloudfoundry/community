@@ -420,6 +420,8 @@ areas:
       github: gmllt
     - name: Mario Di Miceli
       github: mdimiceli
+    - name: Nicolas Herbst
+      github: nmaurer23
   repositories:
     - cloudfoundry/bosh_exporter
     - cloudfoundry/cf_exporter
