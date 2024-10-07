@@ -121,6 +121,8 @@ areas:
     github: jhvhs
   - name: Long Nguyen
     github: lnguyen
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Rajan Agaskar
     github: ragaskar
   repositories:
@@ -234,6 +236,8 @@ areas:
   approvers:
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Matthias Vach
@@ -294,6 +298,8 @@ areas:
     github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Kenneth Lakin
     github: klakin-pivotal
   - name: Daniel Felipe Ochoa
