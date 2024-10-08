@@ -14,9 +14,18 @@ This RFC proposes a new resource to the V3 Cloud Foundry APIs called the `Secret
 
 The Cloud Foundry platform currently prefers for applications to accept configuration through environment variables. Other application platforms, such as Kubernetes, support other mechanisms for providing configuration at runtime [as volume-mounted files](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod). Many modern applications are adopting this file-based configuration approach since these files are not subject to the size limits of environment variables and can be updated without having to recreate the container. This RFC proposes introducing a similar mechanism in order to support these sorts of applications on Cloud Foundry -- without requiring code changes.
 
+### Why can't apps just use user-provided service instances (UPSIs) and service binding files?
+Some apps may have config they want as files provided at runtime that don't naturally fit into the service binding model. For example, if an app relies on a config file that needs to live at a certain path, it may not be able to be updated to find it at another path such as `$SERVICE_BINDING_ROOT`. This is especially the case for commercial off-the-shelf software (COTS).
+
 ## Proposal
 
 We introduce two new resources to the V3 Cloud Foundry APIs: the `Secret` and the `Secret Binding` along with their associated CRUD API endpoints.
+
+### Why a separate `Secret` resource? Why not just store them under apps like environment variables?
+Several reasons here.
+
+1. Secrets may be larger than environment variables. Modeling them separately lets us naturally keep them in a separate database table and even use separate services, like CredHub, to store their contents.
+2. `Secrets` may be shared across multiple apps. For example, if an "app" may actually be several actual Cloud Foundry apps that need to share certain configuration, certificates, or other credentials. By scoping the `Secret` at the `Space` level we can easily support this. Or an app may simply be using the blue-green deployment pattern and be several CF apps for that reason.
 
 ### `Secret` and `Secret Binding` Resources
 The `Secret` will be a `Space`-scoped resource (similar to a `Route` or a `Service Instance`) that can be bound to one or more `Apps` using a `Secret Binding`.
