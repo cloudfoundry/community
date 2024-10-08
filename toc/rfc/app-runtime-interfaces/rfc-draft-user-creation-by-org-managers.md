@@ -54,10 +54,14 @@ CAPI will call the [POST /Users](https://docs.cloudfoundry.org/api/uaa/version/7
 If a role is created by user name and origin (requires feature flag `set_roles_by_username` to be enabled) and the configuration flag `cc.allow_user_creation_by_org_manager` is enabled, the user with the provided name and origin SHALL be created in CF UAA if the users doesn't exist yet in UAA.
 In other words: Role assignment shall succeed even if the user is still unknown to CF UAA. The user is created implicitly similar to `POST /v3/users` by username/origin described above.
 
-### CLI
-
-`cf create-user USERNAME [--origin ORIGIN]` (user creation without specifying a password) SHOULD use the CF API `POST /v3/users` instead of calling CF UAA directly so that Org Managers can create users if configuration flag `cc.allow_user_creation_by_org_manager` is enabled.
-
 ### UAA
 
 No changes required.
+
+## Possible Future Work
+
+Enhance CF CLI to allow user creation as Org Manager if configuration flag `cc.allow_user_creation_by_org_manager` is enabled.
+
+Possible options are:
+- enhance `cf create-user USERNAME [--origin ORIGIN]` (user creation without specifying a password) to try the CF API `POST /v3/users` before calling CF UAA directly so that Org Managers can create users if configuration flag `cc.allow_user_creation_by_org_manager` is enabled
+- add a new command `cf create-shadow-user USERNAME [--origin ORIGIN]` that uses CF API `POST /v3/users` instead of calling CF UAA directly
