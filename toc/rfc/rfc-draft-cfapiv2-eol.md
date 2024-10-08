@@ -28,7 +28,8 @@ There are several issues and efforts with keeping the deprecated CF API v2 as pa
 
 ## Proposal
 
-Since CF API v2 removal is a fundamental breaking change, the removal is devided into 3 phases of about 1 year each with checkpoints in between that require TOC approval.
+Since CF API v2 removal is a fundamental breaking change, the removal is divided into 3 phases of about 1 year each with checkpoints in between that require TOC approval.
+If the TOC does not approve moving to the next phase, the TOC will decide a number of months to extend the current phase. Subsequent phases and the EoL date will be updated accordingly. The TOC will then re-convene after that period to again evaluate if it is appropriate to move to the next phase.
 
 **Phase 1** (starts after accepting this RFC)
 - Announce an End of Life date for CF API v2 (~ mid/end 2026).
