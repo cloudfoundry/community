@@ -231,7 +231,10 @@ The launcher (or something else) will need to be updated to retrieve credentials
 
 ### Other Considerations
 
-#### Maximum Secret size
+#### Not using CredHub
+Although Cloud Foundry comes with CredHub by default, it is not a required component. We could support `value` and `json` type `Secrets` directly in Cloud Controller as a fallback.
+
+#### CredHub Maximum Secret size
 Kubernetes Secrets and ConfigMaps have a [maximum size of 1 MiB](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation). The [maximum size of a CredHub credential is 64Kb](https://docs.cloudfoundry.org/credhub/credential-types.html). If we plan on using CredHub we will need to limit our Secrets to 64KB or get CredHub to increase the limit.
 
 #### (Future) Rotatable Secrets
