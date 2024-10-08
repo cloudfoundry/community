@@ -191,7 +191,7 @@ Work will need to be done to implement `cf create-secret`, `cf bind-secret`, and
 New database tables will need to be created to store `Secrets` and `Secret Bindings` and CRUD APIs will need to be created for these resources. We will also need an API to support viewing a `Secret`'s value.
 
 ### BBS changes
-BBS was recently updated to support `ServiceBindingFiles` as part of RFC 0030. `Secrets` will need either an analogous field (`SecretBindingFiles`?) or we should generalize this to be arbitrary files.
+BBS was recently updated to support `ServiceBindingFiles` as part of RFC 0030. A `Secret`'s value may result in one or more files being created in the `tmpfs` mounted directory defined by the `MountPath` parameter.
 
 ```
 action := &models.RunAction{
@@ -211,9 +211,10 @@ action := &models.RunAction{
       Value: "VALUE",
     },
   },
-  SecretBindingFiles: []*models.Files{
+  Secrets: []*models.Secret{
     {
-      Name: "/etc/conf/",
+      Name: "SECRETNAME",
+      MountPath: "/etc/conf/",
       Value: "credhub-credential-id:<CREDHUB_CREDENTIAL_ID>",
     },
   },
@@ -226,7 +227,7 @@ action := &models.RunAction{
 ```
 
 ### Launcher changes?
-The launcher (or something else) will need to be updated to retrieve credentials from CredHub for `Secret Bindings`. It currently already does this for CredHub references contained within `VCAP_SERVICES` using the app container's instance identity credentials.
+The launcher (or something else) will need to be updated to retrieve credentials from CredHub for `Secret Bindings`. It currently already does this for CredHub references contained within `VCAP_SERVICES` using the app container's instance identity credentials. Is there something other than the launcher that should have this responsibility?
 
 ### Other Considerations
 
