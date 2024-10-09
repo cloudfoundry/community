@@ -8,6 +8,8 @@
 
 ## Summary
 
+**tl;dr** Kubernetes-style Secrets in Cloud Foundry
+
 This RFC proposes a new resource to the V3 Cloud Foundry APIs called the `Secret` that is similar in design and purpose to the Kubernetes [Secret resource](https://kubernetes.io/docs/concepts/configuration/secret/). Cloud Foundry Secrets will support arbitrary data that is stored in [CredHub](https://docs.cloudfoundry.org/credhub/) and made available to apps via `tmpfs` mounted files using the same mechanism as [RFC 0030 - Add Support for File based Service Binding Information](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0030-add-support-for-file-based-service-binding.md).
 
 ## Problem
