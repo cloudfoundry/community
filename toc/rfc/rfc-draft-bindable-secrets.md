@@ -8,31 +8,33 @@
 
 ## Summary
 
-**tl;dr** Kubernetes-style Secrets in Cloud Foundry
+**tl;dr** Kubernetes-style Secrets for Cloud Foundry
 
-This RFC proposes a new resource to the V3 Cloud Foundry APIs called the `Secret` that is similar in design and purpose to the Kubernetes [Secret resource](https://kubernetes.io/docs/concepts/configuration/secret/). Cloud Foundry Secrets will support arbitrary data that is stored in [CredHub](https://docs.cloudfoundry.org/credhub/) and made available to apps via `tmpfs` mounted files using the same mechanism as [RFC 0030 - Add Support for File based Service Binding Information](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0030-add-support-for-file-based-service-binding.md).
+This RFC proposes adding a `secret` resource to the V3 Cloud Foundry API, similar in design and purpose to the Kubernetes [Secret resource](https://kubernetes.io/docs/concepts/configuration/secret/). Cloud Foundry Secrets will store arbitrary data in [CredHub](https://docs.cloudfoundry.org/credhub/) inject it into app containers via `tmpfs`-mounted files at a given path, using the same mechanism as [RFC 0030 - Add Support for File based Service Binding Information](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0030-add-support-for-file-based-service-binding.md).
 
 ## Problem
 
-The Cloud Foundry platform currently prefers for applications to accept configuration through environment variables. Other application platforms, such as Kubernetes, support other mechanisms for providing configuration at runtime [as volume-mounted files](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod). Many modern applications are adopting this file-based configuration approach since these files are not subject to the size limits of environment variables and can be updated without having to recreate the container. This RFC proposes introducing a similar mechanism in order to support these sorts of applications on Cloud Foundry -- without requiring code changes.
+Cloud Foundry currently supports app configuration via environment variables. Other application platforms, such as Kubernetes, support app configuration at runtime [via volume-mounted files](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod). Many apps are adopting this file-based configuration approach, since environment variables have length limits and files can be updated without having to recreate the container. This RFC proposes introducing file-based configuration to support these sorts of apps on Cloud Foundry — without requiring app code changes.
 
-### Why can't apps just use user-provided service instances (UPSIs) and service binding files?
-Some apps may have config they want as files provided at runtime that don't naturally fit into the service binding model. For example, if an app relies on a config file that needs to live at a certain path, it may not be able to be updated to find it at another path such as `$SERVICE_BINDING_ROOT`. This is especially the case for commercial off-the-shelf software (COTS).
+### What About User-Provided Services?
+
+Why can't developers use user-provided service instances (UPSIs) and service bindings for file-based app configuration? Some apps may have file-based config that don't naturally fit into the service binding model. For example, if an app relies on a config file at a certain path, that plath may not be configurable to `$SERVICE_BINDING_ROOT`. This is especially the case for commercial off-the-shelf software (COTS).
 
 ## Proposal
 
-We introduce two new resources to the V3 Cloud Foundry APIs: the `Secret` and the `Secret Binding` along with their associated CRUD API endpoints.
+Add two new resources to the V3 Cloud Foundry API: `secret` and the `secret_binding`, along with associated CRUD API endpoints.
 
-### Why a separate `Secret` resource? Why not just store them under apps like environment variables?
-Several reasons here.
+### Why Top-Level Resources?
+
+Why not represent secrets as sub-resources of apps like environment variables? Two reasons:
 
 1. Secrets may be larger than environment variables. Modeling them separately lets us naturally keep them in a separate database table and even use separate services, like CredHub, to store their contents.
-2. `Secrets` may be shared across multiple apps. For example, if an "app" may actually be several actual Cloud Foundry apps that need to share certain configuration, certificates, or other credentials. By scoping the `Secret` at the `Space` level we can easily support this. Or an app may simply be using the blue-green deployment pattern and be several CF apps for that reason.
+2. Secrets may be shared across multiple apps. For example, a "logical app" may actually be several Cloud Foundry apps resources that need to share certain configuration, certificates, or other credentials. By scoping the `secret` at the `space` level, we can easily support this. Similarly, an app using the blue-green deployment pattern can easily share configuration between versions.
 
-### `Secret` and `Secret Binding` Resources
-The `Secret` will be a `Space`-scoped resource (similar to a `Route` or a `Service Instance`) that can be bound to one or more `Apps` using a `Secret Binding`.
+### `secret` and `secret_binding` Resources
+The `secret` will be a `space`-scoped resource (similar to a `route` or a `service_instance`) that can be bound to one or more `app`s in the `space` using a `secret_binding`.
 
-#### Example `Secret` Object
+#### Example `secret` Object
 
 ```json
 {
@@ -70,9 +72,9 @@ The `Secret` will be a `Space`-scoped resource (similar to a `Route` or a `Servi
 }
 ```
 
-The `type` parameter corresponds with a [CredHub credential type](https://docs.cloudfoundry.org/credhub/credential-types.html). To start we will focus on supporting the `value` and `json` credential types, but can expand to others like the `certificate` type as these may pave the way to future enhancements and use cases.
+The `type` field corresponds with a [CredHub credential type](https://docs.cloudfoundry.org/credhub/credential-types.html). To start, `secret`s will support the `value` and `json` credential types. In the future, this can be expanded to other CredHub-supported types like `certificate`, to support additional use cases.
 
-#### Example `Secret Binding` Object
+#### Example `secret_binding` Object
 
 ```json
 {
@@ -111,9 +113,9 @@ The `type` parameter corresponds with a [CredHub credential type](https://docs.c
 }
 ```
 
-The `mount_path` parameter defines the `tmpfs` directory that will contain files for the `Secret`'s content. If a credential has subkeys (such as a [`json` type credential](https://docs.cloudfoundry.org/api/credhub/version/main/#_find_a_credential_by_id_type_json) or [`certificate` type](https://docs.cloudfoundry.org/api/credhub/version/main/#_find_a_credential_by_id_type_certificate)) then files will be made for each key.
+The `mount_path` field defines the `tmpfs` directory that will contain files for the `secret`'s content. If a credential has subkeys (such as a [`json` type credential](https://docs.cloudfoundry.org/api/credhub/version/main/#_find_a_credential_by_id_type_json) or [`certificate` type](https://docs.cloudfoundry.org/api/credhub/version/main/#_find_a_credential_by_id_type_certificate)), then files will be made for each key.
 
-So for a `json` type credential whose value is:
+For example, consider a `json`-type `secret` with the following `value`:
 
 ```json
 "value": {
@@ -122,19 +124,19 @@ So for a `json` type credential whose value is:
 }
 ```
 
-We would have a file called `application.yml` created under `/etc/my-conf`.
+The above `secret` would mount files named `application.yml` and `secret.txt` at the path configured in the binding.
 
-For a `value` type credential the file would simply take the same name as the `Secret Binding`.
+For a `value`-type `secret`, the file name be the `secret_binding`'s name.
 
-### Creating a `Secret`
+### Creating a `secret`
 
-To create a `Secret` we will introduce a new CLI command: `cf create-secret`.
+To create a `secret`, users will use a new CLI command: `cf create-secret`.
 
 ```console
 cf create-secret SECRET_NAME SECRET_TYPE -p <CREDENTIALS_INLINE_OR_FILE>
 ```
 
-If `SECRET_TYPE` is `value` then contents of `-p` will not be parsed. If `SECRET_TYPE` is `json`, `certificate`, or some other CredHub credential type then the contents of `-p` MUST be valid JSON and may be parsed.
+If `SECRET_TYPE` is `value` then contents of `-p` will not be parsed. If `SECRET_TYPE` is `json`, `certificate`, or some other CredHub credential type, then the contents of `-p` MUST be valid JSON and may be parsed.
 
 This command will ultimately create a `POST` request to `/v3/secrets` that looks like this:
 
@@ -164,8 +166,8 @@ curl "https://api.example.org/v3/secrets" \
   }'
 ```
 
-### Reading a `Secret` and its value
-Users that have permission to view Environment Variables for an App will be able to view `Secret` values within a `Space`. We will introduce a separate endpoint for retrieving these (similar to how app environment variables and service instance credentials are retrieved): `GET /v3/secrets/:guid/value`
+### Reading a `secret` and Its Value
+Users that have permission to view environment variables for an app will be able to view `secret` values within a `space`. We will introduce a separate endpoint for retrieving these (similar to how app environment variables and service instance credentials are retrieved): `GET /v3/secrets/:guid/value`.
 
 ```console
 curl "https://api.example.org/v3/secrets/[guid]/value" \
@@ -177,23 +179,31 @@ curl "https://api.example.org/v3/secrets/[guid]/value" \
 }
 ```
 
-To support this Cloud Controller will need to have both read and write permissions for the `Secret`'s corresponding credential in CredHub.
+To support this, Cloud Controller will need to have both read and write permissions for the `secret`'s corresponding credential in CredHub.
 
-### Creating a `Secret Binding`
-We will introduce a new CLI command to allow users to create `Secret Bindings`: `cf bind-secret`. This will create a `POST` request to `/v3/secret_bindings`.
+### Creating a `secret_binding`
+To create `secret_bindings`, users will use a new CLI command: `cf bind-secret`. This will create a `POST` request to `/v3/secret_bindings`.
 
 ```console
 cf bind-secret APP_NAME SECRET_NAME BINDING_NAME
 ```
 
-### CLI changes
-Work will need to be done to implement `cf create-secret`, `cf bind-secret`, and the associated update/delete commands in the CLI.
+### CLI Changes
+Work will need to be done to implement the following commands:
+- `cf create-secret`
+- `cf bind-secret`
+- `cf secrets`
+- `cf secret`
+- `cf delete-secret`
+- `cf unbind-secret`
 
-### Cloud Controller changes
-New database tables will need to be created to store `Secrets` and `Secret Bindings` and CRUD APIs will need to be created for these resources. We will also need an API to support viewing a `Secret`'s value.
+In addition, modifications may be made to existing CLI commands to surface `secrets` and `secret_bindings`. For example, adding bound `secret`s to `cf app` output.
+
+### Cloud Controller Changes
+New database tables will need to be created to store `secret`s and `secret_binding`s. CRUD APIs will need to be created for these resources. We will also need an API to support viewing a `secret`'s value.
 
 ### BBS changes
-BBS was recently updated to support `ServiceBindingFiles` as part of RFC 0030. A `Secret`'s value may result in one or more files being created in the `tmpfs` mounted directory defined by the `MountPath` parameter.
+BBS was recently updated to support `ServiceBindingFiles` as part of RFC 0030. A `secret`'s value may result in one or more files being created in the `tmpfs` mounted directory defined by the `MountPath` parameter.
 
 ```
 action := &models.RunAction{
@@ -228,18 +238,18 @@ action := &models.RunAction{
 }
 ```
 
-### Launcher changes?
+### Launcher Changes?
 The launcher (or something else) will need to be updated to retrieve credentials from CredHub for `Secret Bindings`. It currently already does this for CredHub references contained within `VCAP_SERVICES` using the app container's instance identity credentials. Is there something other than the launcher that should have this responsibility?
 
 ### Other Considerations
 
-#### Not using CredHub
-Although Cloud Foundry comes with CredHub by default, it is not a required component. We could support `value` and `json` type `Secrets` directly in Cloud Controller as a fallback.
+#### Not Using CredHub
+Although Cloud Foundry comes with CredHub by default, it is not a required component. We could support `value` and `json` type `secret`s directly in Cloud Controller as a fallback.
 
-#### CredHub Maximum Secret size
-Kubernetes Secrets and ConfigMaps have a [maximum size of 1 MiB](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation). The [maximum size of a CredHub credential is 64Kb](https://docs.cloudfoundry.org/credhub/credential-types.html). If we plan on using CredHub we will need to limit our Secrets to 64KB or get CredHub to increase the limit.
+#### CredHub Maximum Secret Size
+Kubernetes Secrets and ConfigMaps have a [maximum size of 1 MiB](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation). The [maximum size of a CredHub credential is 64Kb](https://docs.cloudfoundry.org/credhub/credential-types.html). If we plan on using CredHub, we will need to limit our Secrets to 64KB or increase the CredHub limit.
 
 #### (Future) Rotatable Secrets
-If we make the `*Files` parameters on the `DesiredLRP` mutable fields in BBS then theoretically Cloud Controller could update the `DesiredLRP` when `Secret` contents change and this could be propagated to the container without requiring container recreation.
+If we make the `*Files` parameters on the `DesiredLRP` mutable in BBS, then Cloud Controller could update the `secret`s in the `DesiredLRP`, without requiring container recreation.
 
-For certain CredHub credential types such as `certificate` or `password` we may even be able to expose CredHub credential rotation/[regeneration](https://docs.cloudfoundry.org/api/credhub/version/main/#_regenerate_credentials_endpoint) functionality.
+For certain CredHub credential types such as `certificate` or `password`, we may be able to expose CredHub credential rotation/[regeneration](https://docs.cloudfoundry.org/api/credhub/version/main/#_regenerate_credentials_endpoint) functionality.
