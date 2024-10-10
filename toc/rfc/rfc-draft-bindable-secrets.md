@@ -26,10 +26,7 @@ Add two new resources to the V3 Cloud Foundry API: `secret` and the `secret_bind
 
 ### Why Top-Level Resources?
 
-Why not represent secrets as sub-resources of apps like environment variables? Two reasons:
-
-1. Secrets may be larger than environment variables. Modeling them separately lets us naturally keep them in a separate database table and even use separate services, like CredHub, to store their contents.
-2. Secrets may be shared across multiple apps. For example, a "logical app" may actually be several Cloud Foundry apps resources that need to share certain configuration, certificates, or other credentials. By scoping the `secret` at the `space` level, we can easily support this. Similarly, an app using the blue-green deployment pattern can easily share configuration between versions.
+Why not represent secrets as sub-resources of apps like environment variables? Secrets may be shared across multiple apps. For example, a "logical app" may actually be several Cloud Foundry apps resources that need to share certain configuration, certificates, or other credentials. By scoping the `secret` at the `space` level, we can easily support this. Similarly, an app using the blue-green deployment pattern can easily share configuration between versions.
 
 ### `secret` and `secret_binding` Resources
 The `secret` will be a `space`-scoped resource (similar to a `route` or a `service_instance`) that can be bound to one or more `app`s in the `space` using a `secret_binding`.
@@ -138,7 +135,7 @@ cf create-secret SECRET_NAME SECRET_TYPE -p <CREDENTIALS_INLINE_OR_FILE>
 
 If `SECRET_TYPE` is `value` then contents of `-p` will not be parsed. If `SECRET_TYPE` is `json`, `certificate`, or some other CredHub credential type, then the contents of `-p` MUST be valid JSON and may be parsed.
 
-This command will ultimately create a `POST` request to `/v3/secrets` that looks like this:
+This command will ultimately create a `POST` request to `/v3/secrets`. Example `curl` invocation:
 
 ```console
 curl "https://api.example.org/v3/secrets" \
@@ -240,6 +237,8 @@ action := &models.RunAction{
 
 ### Launcher Changes?
 The launcher (or something else) will need to be updated to retrieve credentials from CredHub for `Secret Bindings`. It currently already does this for CredHub references contained within `VCAP_SERVICES` using the app container's instance identity credentials. Is there something other than the launcher that should have this responsibility?
+
+Alternatively, credentials could be fetched by Cloud Controller (it does this already for Service Keys) and passed through directly to Diego. This has the disadvantage of increasing the size of the DesiredLRP and storing storing the secret contents in Diego's database.
 
 ### Other Considerations
 
