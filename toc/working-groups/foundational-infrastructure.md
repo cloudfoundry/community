@@ -244,6 +244,8 @@ areas:
     github: ystros
   - name: Matthias Vach
     github: mvach
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   - name: Long Nguyen
     github: lnguyen
   - name: Brian Cunnie
@@ -312,6 +314,8 @@ areas:
     github: selzoc
   - name: Matthias Vach
     github: mvach
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   - name: Ahmed Hassanin
     github: a-hassanin
   - name: Ansh Rupani
