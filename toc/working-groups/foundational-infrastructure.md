@@ -432,6 +432,9 @@ areas:
     - cloudfoundry/firehose_exporter
     - cloudfoundry/node-exporter-boshrelease
     - cloudfoundry/prometheus-boshrelease
+  bots:
+    - name: cf-prometheus-ci-bot
+      github: cf-prometheus-ci-bot
 
 config:
   github_project_sync:
