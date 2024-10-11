@@ -29,7 +29,9 @@ The functionality SHALL be gated by a deployment manifest configuration flag and
 
 #### CAPI Release
 
-Introduce a configuration flag `cc.allow_user_creation_by_org_manager` which is disabled by default .
+Introduce a configuration flag `cc.allow_user_creation_by_org_manager` which is disabled by default.
+
+Add configuration for an UAA client that is used for creating the users in UAA on behalf of CAPI, e.g. `uaa.clients.cloud_controller_shadow_user_creation`. The UAA client is required when `cc.allow_user_creation_by_org_manager` is enabled, otherwise optional.
 
 #### POST /v3/users
 
@@ -57,6 +59,10 @@ In other words: Role assignment shall succeed even if the user is still unknown 
 ### UAA
 
 No changes required.
+
+### cf-deployment
+
+Add an [ops file](https://github.com/cloudfoundry/cf-deployment/blob/main/README.md#ops-files) to enable user creation as Org Manager, i.e. the ops file enables `cc.allow_user_creation_by_org_manager` and provisions the UAA client `cloud_controller_shadow_user_creation` with the required scopes.
 
 ## Possible Future Work
 
