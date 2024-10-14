@@ -130,10 +130,15 @@ For a `value`-type `secret`, the file name be the `secret_binding`'s name.
 To create a `secret`, users will use a new CLI command: `cf create-secret`.
 
 ```console
-cf create-secret SECRET_NAME SECRET_TYPE -p <CREDENTIALS_INLINE_OR_FILE>
+cf create-secret SECRET_NAME SECRET_TYPE -p <CREDENTIALS_INLINE>
 ```
 
-If `SECRET_TYPE` is `value` then contents of `-p` will not be parsed. If `SECRET_TYPE` is `json`, `certificate`, or some other CredHub credential type, then the contents of `-p` MUST be valid JSON and may be parsed.
+```console
+cf create-secret SECRET_NAME SECRET_TYPE -f <FILE_PATH_TO_CREDENTIALS_FILE>
+```
+
+* `-p` reads inline/literal credentials, no matter the `SECRET_TYPE`
+* `-f` reads credentials from a file
 
 This command will ultimately create a `POST` request to `/v3/secrets`. Example `curl` invocation:
 
@@ -163,6 +168,38 @@ curl "https://api.example.org/v3/secrets" \
   }'
 ```
 
+### Updating a `secret`
+Users will be able to update a `secret` using similar commands:
+
+```console
+cf update-secret SECRET_NAME SECRET_TYPE -p <CREDENTIALS_INLINE>
+```
+
+```console
+cf update-secret SECRET_NAME SECRET_TYPE -f <FILE_PATH_TO_CREDENTIALS_FILE>
+```
+
+Initially apps will need to be restarted to receive `secret` updates, but eventually we may be able to support updates that don't require a restart.
+The "Update secret" endpoint in the CF API will take a `PATCH` request. Example `curl` invocation:
+
+```console
+curl "https://api.example.org/v3/secrets/[guid]" \
+  -X PATCH \
+  -H "Authorization: bearer [token]" \
+  -H "Content-type: application/json" \
+  -d '{
+    "type": "json",
+    "value": {
+      "application.yml" : "---\napplication:\n ...",
+      "secret.txt": "updated-secret-value"
+    }
+    "metadata": {
+      "annotations": {},
+      "labels": {}
+    }
+  }'
+```
+
 ### Reading a `secret` and Its Value
 Users that have permission to view environment variables for an app will be able to view `secret` values within a `space`. We will introduce a separate endpoint for retrieving these (similar to how app environment variables and service instance credentials are retrieved): `GET /v3/secrets/:guid/value`.
 
@@ -188,6 +225,7 @@ cf bind-secret APP_NAME SECRET_NAME BINDING_NAME
 ### CLI Changes
 Work will need to be done to implement the following commands:
 - `cf create-secret`
+- `cf update-secret`
 - `cf bind-secret`
 - `cf secrets`
 - `cf secret`
