@@ -10,7 +10,7 @@
 
 **tl;dr** Kubernetes-style Secrets for Cloud Foundry
 
-This RFC proposes adding a `secret` resource to the V3 Cloud Foundry API, similar in design and purpose to the Kubernetes [Secret resource](https://kubernetes.io/docs/concepts/configuration/secret/). Cloud Foundry Secrets will store arbitrary data in [CredHub](https://docs.cloudfoundry.org/credhub/) inject it into app containers via `tmpfs`-mounted files at a given path, using the same mechanism as [RFC 0030 - Add Support for File based Service Binding Information](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0030-add-support-for-file-based-service-binding.md).
+This RFC proposes adding a `secret` resource to the V3 Cloud Foundry API, similar in design and purpose to the Kubernetes [Secret resource](https://kubernetes.io/docs/concepts/configuration/secret/). Cloud Foundry Secrets will store arbitrary data as encrypted fields in Cloud Controller's database or (optionally) in [CredHub](https://docs.cloudfoundry.org/credhub/) and inject it into app containers via `tmpfs`-mounted files at a given path, using a mechanism similar  to [RFC 0030 - Add Support for File based Service Binding Information](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0030-add-support-for-file-based-service-binding.md).
 
 ## Problem
 
@@ -39,8 +39,8 @@ The `secret` will be a `space`-scoped resource (similar to a `route` or a `servi
   "created_at": "2020-03-10T15:49:29Z",
   "updated_at": "2020-03-10T15:49:29Z",
   "name": "my-secret",
-  "type": "json",
-  "credhub_credential_id": "b6380fe8-1636-441b-a81f-43d21e3ac5c7",
+  "type": "opaque",
+  "credhub_credential_id": null,
   "relationships": {
     "space": {
       "data": {
@@ -69,7 +69,7 @@ The `secret` will be a `space`-scoped resource (similar to a `route` or a `servi
 }
 ```
 
-The `type` field corresponds with a [CredHub credential type](https://docs.cloudfoundry.org/credhub/credential-types.html). To start, `secret`s will support the `value` and `json` credential types. In the future, this can be expanded to other CredHub-supported types like `certificate`, to support additional use cases.
+A `secret` has a type that identifies its contents. To start we will support the `opaque` credential type (corresponds to the `json` [CredHub credential type](https://docs.cloudfoundry.org/credhub/credential-types.html)) which is designed to hold arbitrary user-defined data. In the future, this can be expanded to support more semantic secret types such as those [supported by Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret/#secret-types) or other CredHub-supported types like `certificate`. `opaque` secrets consist of a JSON object whose keys map to files and values map to file content.
 
 #### Example `secret_binding` Object
 
@@ -78,7 +78,6 @@ The `type` field corresponds with a [CredHub credential type](https://docs.cloud
   "guid": "dde5ad2a-d8f4-44dc-a56f-0452d744f1c3",
   "created_at": "2015-11-13T17:02:56Z",
   "updated_at": "2016-06-08T16:41:26Z",
-  "name": "secret-binding-name",
   "mount_path": "/etc/my-conf/",
   "metadata": {
     "annotations": {},
@@ -110,9 +109,7 @@ The `type` field corresponds with a [CredHub credential type](https://docs.cloud
 }
 ```
 
-The `mount_path` field defines the `tmpfs` directory that will contain files for the `secret`'s content. If a credential has subkeys (such as a [`json` type credential](https://docs.cloudfoundry.org/api/credhub/version/main/#_find_a_credential_by_id_type_json) or [`certificate` type](https://docs.cloudfoundry.org/api/credhub/version/main/#_find_a_credential_by_id_type_certificate)), then files will be made for each key.
-
-For example, consider a `json`-type `secret` with the following `value`:
+The `mount_path` field defines the `tmpfs` directory that will contain files for the `secret`'s content. For example, consider an `opaque`-type `secret` with the following `value`:
 
 ```json
 "value": {
@@ -123,21 +120,20 @@ For example, consider a `json`-type `secret` with the following `value`:
 
 The above `secret` would mount files named `application.yml` and `secret.txt` at the path configured in the binding.
 
-For a `value`-type `secret`, the file name be the `secret_binding`'s name.
-
 ### Creating a `secret`
 
 To create a `secret`, users will use a new CLI command: `cf create-secret`.
 
 ```console
-cf create-secret SECRET_NAME SECRET_TYPE -p <CREDENTIALS_INLINE>
+cf create-secret SECRET_NAME -t opaque -p <CREDENTIALS_INLINE>
 ```
 
 ```console
-cf create-secret SECRET_NAME SECRET_TYPE -f <FILE_PATH_TO_CREDENTIALS_FILE>
+cf create-secret SECRET_NAME -t opaque -f <FILE_PATH_TO_CREDENTIALS_FILE>
 ```
 
-* `-p` reads inline/literal credentials, no matter the `SECRET_TYPE`
+* `-t` the secret `type`, defaults to `opaque`
+* `-p` reads inline/literal credentials
 * `-f` reads credentials from a file
 
 This command will ultimately create a `POST` request to `/v3/secrets`. Example `curl` invocation:
@@ -148,7 +144,7 @@ curl "https://api.example.org/v3/secrets" \
   -H "Authorization: bearer [token]" \
   -H "Content-type: application/json" \
   -d '{
-    "type": "json",
+    "type": "opaque",
     "name": "my-app-secrets",
     "value": {
       "application.yml" : "---\napplication:\n ...",
@@ -188,7 +184,7 @@ curl "https://api.example.org/v3/secrets/[guid]" \
   -H "Authorization: bearer [token]" \
   -H "Content-type: application/json" \
   -d '{
-    "type": "json",
+    "type": "opaque",
     "value": {
       "application.yml" : "---\napplication:\n ...",
       "secret.txt": "updated-secret-value"
@@ -219,7 +215,7 @@ To support this, Cloud Controller will need to have both read and write permissi
 To create `secret_bindings`, users will use a new CLI command: `cf bind-secret`. This will create a `POST` request to `/v3/secret_bindings`.
 
 ```console
-cf bind-secret APP_NAME SECRET_NAME BINDING_NAME
+cf bind-secret APP_NAME SECRET_NAME
 ```
 
 ### CLI Changes
@@ -260,9 +256,14 @@ action := &models.RunAction{
   },
   Secrets: []*models.Secret{
     {
-      Name: "SECRETNAME",
+      Name: "SECRET_NAME",
       MountPath: "/etc/conf/",
       Value: "credhub-credential-id:<CREDHUB_CREDENTIAL_ID>",
+    },
+    {
+      Name: "OTHER_SECRET_NAME",
+      MountPath: "/etc/conf/",
+      Value: "<SECRET_CONTENT_AS_JSON>",
     },
   },
   ResourceLimits: &models.ResourceLimits{
@@ -280,11 +281,11 @@ Alternatively, credentials could be fetched by Cloud Controller (it does this al
 
 ### Other Considerations
 
-#### Not Using CredHub
-Although Cloud Foundry comes with CredHub by default, it is not a required component. We could support `value` and `json` type `secret`s directly in Cloud Controller as a fallback.
 
 #### CredHub Maximum Secret Size
-Kubernetes Secrets and ConfigMaps have a [maximum size of 1 MiB](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation). The [maximum size of a CredHub credential is 64Kb](https://docs.cloudfoundry.org/credhub/credential-types.html). If we plan on using CredHub, we will need to limit our Secrets to 64KB or increase the CredHub limit.
+Kubernetes Secrets and ConfigMaps have a [maximum size of 1 MiB](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation). The [maximum size of a CredHub credential is 64Kb](https://docs.cloudfoundry.org/credhub/credential-types.html). For `secrets` that are stored in CredHub, we will need to limit our Secrets to 64KB or increase the CredHub limit.
+
+For `secrets` that are stored in Cloud Controller we could support an operator configurable limit up to 1 MiB.
 
 #### (Future) Rotatable Secrets
 If we make the `*Files` parameters on the `DesiredLRP` mutable in BBS, then Cloud Controller could update the `secret`s in the `DesiredLRP`, without requiring container recreation.
