@@ -215,7 +215,7 @@ To support this, Cloud Controller will need to have both read and write permissi
 To create `secret_bindings`, users will use a new CLI command: `cf bind-secret`. This will create a `POST` request to `/v3/secret_bindings`.
 
 ```console
-cf bind-secret APP_NAME SECRET_NAME
+cf bind-secret APP_NAME SECRET_NAME MOUNT_PATH
 ```
 
 ### CLI Changes
