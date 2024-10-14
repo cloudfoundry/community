@@ -289,6 +289,8 @@ areas:
     github: samze
   - name: Alex Rocha
     github: xandroc
+  - name: Jochen Ehret
+    github: jochenehret
   reviewers:
   - name: Al Berez
     github: a-b
@@ -300,8 +302,6 @@ areas:
     github: danielfor
   - name: Shwetha Gururaj
     github: gururajsh
-  - name: Jochen Ehret
-    github: jochenehret
   - name: Ryker Reed
     github: reedr3
   - name: George Gelashvili
