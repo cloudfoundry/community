@@ -27,7 +27,7 @@ NOPUSH=${NOPUSH:-}
 #
 
 generate_id() {
-  id="$(find "$script_dir" -maxdepth 2 -type f -exec basename {} \; | sed 's/[^0-9]*//' | sed -E 's|^([[:digit:]]{4})-.*$|\1|' | sort | tail -n 1 | sed 's/^0*//')"
+  id="$(find "$script_dir" -maxdepth 2 -type f -exec basename {} \; | grep -E '^rfc-[0-9]{4}-' | sed 's/[^0-9]*//' | sed -E 's|^([[:digit:]]{4})-.*$|\1|' | sort | tail -n 1 | sed 's/^0*//')"
   ((id++))
   printf "%04d" "${id}"
 }
