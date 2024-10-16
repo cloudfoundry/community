@@ -3,8 +3,8 @@
 - Name: CF API v2 End of Life
 - Start Date: 2024-08-08
 - Author(s): stephanme
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: [#941](https://github.com/cloudfoundry/community/pull/941)
+- Status: Accepted
+- RFC Pull Request: [community#941](https://github.com/cloudfoundry/community/pull/941)
 
 
 ## Summary
