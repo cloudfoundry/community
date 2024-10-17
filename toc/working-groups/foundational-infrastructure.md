@@ -281,6 +281,8 @@ areas:
     github: fearoffish
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Felix Moehler
+    github: fmoehler
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -331,6 +333,8 @@ areas:
     github: rajathagasthya
   - name: Benjamin Gandon
     github: bgandon
+  - name: Felix Moehler
+    github: fmoehler
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
