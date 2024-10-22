@@ -3,8 +3,8 @@
 - Name: User Creation by Org Managers
 - Start Date: 2024-08-13
 - Author(s): stephanme
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: [#946](https://github.com/cloudfoundry/community/pull/946)
+- Status: Accepted
+- RFC Pull Request: [community#1003](https://github.com/cloudfoundry/community/pull/1003)
 
 
 ## Summary
