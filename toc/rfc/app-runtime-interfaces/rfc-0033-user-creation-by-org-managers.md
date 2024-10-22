@@ -4,7 +4,7 @@
 - Start Date: 2024-08-13
 - Author(s): stephanme
 - Status: Accepted
-- RFC Pull Request: [community#1003](https://github.com/cloudfoundry/community/pull/1003)
+- RFC Pull Request: [community#946](https://github.com/cloudfoundry/community/pull/946)
 
 
 ## Summary
