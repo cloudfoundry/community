@@ -92,8 +92,6 @@ areas:
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Rui Yang
     github: xtremerui
   - name: Rizwan Reza
@@ -127,6 +125,8 @@ areas:
     github: mrosecrance
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Rajath Agasthya
+    github: rajathagasthya
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
@@ -272,6 +272,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -279,8 +281,6 @@ areas:
     github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
-  - name: Rajath Agasthya
-    github: rajathagasthya
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -320,6 +320,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -327,8 +329,6 @@ areas:
     github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Benjamin Gandon
     github: bgandon
   repositories:
