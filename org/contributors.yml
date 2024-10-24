@@ -8,7 +8,6 @@ contributors:
 - aditya267vmware
 - adrianhoelzl-sap
 - akrishna90
-- alejandra-lara
 - ameowlia
 - anoopjb
 - anshrupani
@@ -19,7 +18,6 @@ contributors:
 - ard-wg-gitbot
 - arjun024
 - asalan316
-- bbr-ci
 - Benjamintf1
 - beyhan
 - bgandon
@@ -28,13 +26,11 @@ contributors:
 - bonzofenix
 - bosh-admin-bot
 - bosh-init-concourse
-- bosh-windows-ci
 - boyan-velinov
 - brayanhenao
 - bruce-ricard
 - c0d1ngm0nk3y
 - ccjaimes
-- cf-bosh-ci-bot
 - cf-buildpacks-eng
 - cf-cli-eng
 - cf-final-release-election-bot
@@ -57,7 +53,6 @@ contributors:
 - danielfor
 - davewalter
 - dbuchko
-- ddonchev
 - dennisjbell
 - dibya1947
 - dlresende
@@ -97,7 +92,6 @@ contributors:
 - itsouvalas
 - IvanBorislavovDimitrov
 - jbooherl
-- jdgonzaleza
 - jericop
 - jhvhs
 - jimconner
@@ -116,7 +110,6 @@ contributors:
 - kathap
 - KesavanKing
 - kevin-ortega
-- KevinJCross
 - kimago
 - klakin-pivotal
 - klapkov
@@ -150,9 +143,7 @@ contributors:
 - nand2
 - nebhale
 - norman-abramovitz
-- notrepo05
 - nouseforaname
-- nvvalchev
 - ohkyle
 - oliver-heinrich
 - oppegard
@@ -218,7 +209,6 @@ contributors:
 - theghost5800
 - thitch97
 - TisVictress
-- tjvman
 - toabctl
 - torsten-sap
 - totherme
