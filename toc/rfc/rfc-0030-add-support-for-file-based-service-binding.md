@@ -8,7 +8,6 @@
 - RFC Pull Request: [community#804](https://github.com/cloudfoundry/community/pull/804)
 
 
-
 ## Summary
 
 The current contract between the CF platform and applications for service binding information is based on an environment variable. The Linux Kernel defines size limit per environment variable and there are also other limitations with this approach. That is why, CF should add support for an alternative option to provide service binding information which can address the limitations of the current approach.
@@ -18,7 +17,6 @@ The current contract between the CF platform and applications for service bindin
 The CF platform provides service binding Information to hosted applications via the [VCAP_SERVICES environment variable](https://docs.cloudfoundry.org/devguide/services/application-binding.html). There are following challenges with this approach:
 - The environment variable length has a hard limit of `131072` bytes per variable which is controlled by the underlying [Linux kernel](https://github.com/torvalds/linux/blob/master/include/uapi/linux/binfmts.h). The environment variable size is defined by `MAX_ARG_STRLEN`, which is a constant with the value `PAGE_SIZE*32` where page size is `4096` bytes. This means that to change the size limit for the CF platform a recompiled kernel with updated value for `MAX_ARG_STRLEN` is required. This limit could be an issue for applications using many services. If the limit is reached by an application, it will fail to stage as discussed in [this issue](https://github.com/cloudfoundry/garden-runc-release/issues/160).
 - Updates of the service binding Information require restage. This is not optimal for an eventual support of [Binding rotation](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#binding-rotation) specification from the OSBI API spec.
-
 
 ## Proposal
 
@@ -42,7 +40,7 @@ The two approaches should be supported in parallel. Users should be able to sele
 
 The 2) alternatives offers more than just addressing the issue of this RFC. It suggests an option to evolve the CF platform towards a different service binding specification defined by the Cloud Native community. This means higher implementation efforts for the CF platform and application developers, but possible benefits from the Cloud Native community. This RFC has a light preference for the 2) alternative because of the listed advantages but the feedback of the CF community is wanted here.
 
-Additionally, the application environment is stored in the `CCDB` and `BBS DB` that is why we should define a limit for the size of it, which makes it possible to be stored in the according DBs and doesn’t impact the performance of the communication between Cloud Controller and the Diego API. That is why this RFC suggests a limit of `1MB`, which is roughly ten times higher than the current one of 130KB. This is subject for evaluation during the implation of this RFC.
+Additionally, the application environment is stored in the `CCDB` and `BBS DB` that is why we should define a limit for the size of it, which makes it possible to be stored in the according DBs and doesn’t impact the performance of the communication between Cloud Controller and the Diego API. That is why this RFC suggests a limit of `1MB`, which is roughly ten times higher than the current one of 130KB. This is subject for evaluation during the implementation of this RFC.
 
 > [!NOTE]
 > The voting in the CF community selected the option 2). That is why, this RFC focuses on option 2) in the next sections. The voting results are available [here](https://github.com/cloudfoundry/community/pull/804#discussion_r1555938410).
@@ -64,10 +62,10 @@ action := &models.RunAction{
       Value: "ENVVALUE",
     },
   },
- ServiceBindingFiles: []*models.Files{
+ VolumeMountedFiles: []*models.File{
     {
-      Name: "/etc/cf-instance-binding",
-      Value: "VALUE",
+      Path: "/etc/cf-instance-binding",
+      Content: "VALUE",
     },
   },
   ResourceLimits: &models.ResourceLimits{
@@ -82,13 +80,15 @@ action := &models.RunAction{
 
 ### App Runtime Interfaces WG
 
-Cloud Controller should add a new App Feature for activation of the new file-based service binding option. If the file-based service binding feature is active for an application the Cloud Controller should generate a Run action, which configures the service bindings to be stored as tmpfs file(s) in the application container instead of `VCAP_SERVICES` environment variable. Additionally, Cloud Controlle should set the `SERVICE_BINDING_ROOT` environment variable accordingly. The translation from `VCAP_SERVICES` to file based bindings should follow the CNB translation in `libcnb`. The implementation in `libcnb` could be found [here](https://github.com/buildpacks/libcnb/blob/main/platform.go#L199-L2270) and it does following:
+Cloud Controller should add a new App Feature for activation of the new file-based service binding option. If the file-based service binding feature is active for an application the Cloud Controller should generate a Run action, which configures the service bindings to be stored as tmpfs file(s) in the application container instead of `VCAP_SERVICES` environment variable. Additionally, Cloud Controller should set the `SERVICE_BINDING_ROOT` environment variable accordingly. The translation from `VCAP_SERVICES` to file based bindings should follow the CNB translation in `libcnb`. The implementation in `libcnb` could be found [here](https://github.com/buildpacks/libcnb/blob/main/platform.go#L199-L2270) and it does following:
 
 * The `credentials` object is translated into key/value files where key is the file name and value is the file content. If a key in `credentials` has a nested `JSON` value, then the `JSON` is written as the content of the file.
 * The `label` from `VCAP_SERVICES` is translated to `type`.
 * The top-level key from the `VCAP_SERVICES` is translated to `provider`.
 
-The RFC doesn't mention all attributes documented for [VCAP_SERVICES](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#VCAP-SERVICES) but the same approach should be followed for them also. E.g. `syslog_drain_url` should be the file name and the URL the file content. This should be fine with the K8s binding specification because it allows any entry as documented in the [Provisioned Service](https://servicebinding.io/spec/core/1.1.0/#provisioned-service) section.
+The RFC doesn't mention all attributes documented for [VCAP_SERVICES](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#VCAP-SERVICES) but the same approach should be followed for them also. E.g. `plan` should be the file name and the service plan the file content. Attributes with underscore in their names like `binding_guid` should be translated to dashes `binding-guid` to be conform with the supported characters in the K8s file name specification. Translating the `VCAP_SERVICES` attributes in this way should be fine with the K8s binding specification because it allows any entry as documented in the [Provisioned Service](https://servicebinding.io/spec/core/1.1.0/#provisioned-service) section.
+
+Cloud Controller should ensure that each binding has a unique name. In case of name collisions Cloud Controller should provide a meaningful error message. E.g. with the current implementation for `VCAP_SERVICES` it is not possible to create two service instances with the same name or two service bindings with the same name, but it is possible to create a service binding with the name `foobar` from an arbitrary service instance and another service binding without a binding name from a service instance called `foobar`. This would mean that both binding entries end up with `name=foobar`. Switching to file based service bindings in this situation will result into an error from Cloud Controller which is not a backward compatible behaviour but this should be acceptable for an opt-in feature.
 
 Additionally, the suggested limit of `1MB` for the size should be implemented.
 
@@ -109,7 +109,7 @@ The CF app manifest is [additive](https://v3-apidocs.cloudfoundry.org/#apply-a-m
 applications:
 - name: test-app
   features:
-  -	file-based-service-bindings: true
+  - file-based-service-bindings: true
 ```
 or as alternative proposal:
 
@@ -118,7 +118,7 @@ or as alternative proposal:
 applications:
 - name: test-app
   features:
-  -	name: file-based-service-bindings
+  - name: file-based-service-bindings
     enabled: true
 ```
 
@@ -128,4 +128,5 @@ applications:
 - `app-feature-flag`                    Retrieve an individual app feature flag with status
 - `enable-app-feature-flag`             Allow use of an app feature
 - `disable-app-feature-flag`            Disable use of an app feature
+
 
