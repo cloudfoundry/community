@@ -8,9 +8,7 @@ contributors:
 - aditya267vmware
 - adrianhoelzl-sap
 - akrishna90
-- alejandra-lara
 - ameowlia
-- andrewdriver123
 - anoopjb
 - anshrupani
 - anthonydahanne
@@ -20,7 +18,6 @@ contributors:
 - ard-wg-gitbot
 - arjun024
 - asalan316
-- bbr-ci
 - Benjamintf1
 - beyhan
 - bgandon
@@ -29,13 +26,11 @@ contributors:
 - bonzofenix
 - bosh-admin-bot
 - bosh-init-concourse
-- bosh-windows-ci
 - boyan-velinov
 - brayanhenao
 - bruce-ricard
 - c0d1ngm0nk3y
 - ccjaimes
-- cf-bosh-ci-bot
 - cf-buildpacks-eng
 - cf-cli-eng
 - cf-final-release-election-bot
@@ -48,7 +43,6 @@ contributors:
 - chaitanyamullangi
 - clintyoshimura
 - colins
-- combor
 - coolgang123
 - crhntr
 - Cryogenics-CI
@@ -59,7 +53,7 @@ contributors:
 - danielfor
 - davewalter
 - dbuchko
-- ddonchev
+- dennisjbell
 - dibya1947
 - dlresende
 - dmikusa
@@ -68,7 +62,6 @@ contributors:
 - dsabeti
 - dsanand22
 - dsboulder
-- dtimm
 - duanemay
 - dubeyshefali
 - ebroberson
@@ -87,6 +80,7 @@ contributors:
 - gm2552
 - Gourab1998
 - gururajsh
+- haochenhu233
 - HenryBorys
 - hibell
 - hsinn0
@@ -95,9 +89,9 @@ contributors:
 - ijzerman
 - ikasarov
 - iprotsiuk
+- itsouvalas
 - IvanBorislavovDimitrov
 - jbooherl
-- jdgonzaleza
 - jericop
 - jhvhs
 - jimconner
@@ -116,7 +110,6 @@ contributors:
 - kathap
 - KesavanKing
 - kevin-ortega
-- KevinJCross
 - kimago
 - klakin-pivotal
 - klapkov
@@ -126,6 +119,7 @@ contributors:
 - korifi-bot
 - kpujadev
 - krsna-m
+- krutten
 - lnguyen
 - loewenstein-sap
 - m-thavaf
@@ -148,9 +142,8 @@ contributors:
 - nakulogale-cb
 - nand2
 - nebhale
-- notrepo05
+- norman-abramovitz
 - nouseforaname
-- nvvalchev
 - ohkyle
 - oliver-heinrich
 - oppegard
@@ -185,13 +178,13 @@ contributors:
 - saloni-sshah
 - salzmannsusan
 - samze
+- Sascha-Stoj
 - sboyajyan
 - selzoc
 - services-api-ci
 - servicesenablement
 - sethboyles
 - sg038444
-- shaun7pan
 - shilpachandrashekara
 - shrisha-c
 - siddarthalk
@@ -208,7 +201,6 @@ contributors:
 - svkrieger
 - swalchemist
 - swati1102
-- syslxg
 - tack-sap
 - Tallicia
 - tas-runtime-bot
@@ -217,7 +209,6 @@ contributors:
 - theghost5800
 - thitch97
 - TisVictress
-- tjvman
 - toabctl
 - torsten-sap
 - totherme
@@ -225,10 +216,12 @@ contributors:
 - vipinvkmenon
 - vkalapov
 - VRBogdanov
+- wayneeseguin
 - WeiQuan0605
 - weresch
 - winkingturtle-vmw
 - xandroc
+- xiujiao
 - xtreme-conor-nosal
 - xtreme-nitin-ravindran
 - xtremerui

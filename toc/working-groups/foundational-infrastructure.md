@@ -56,16 +56,12 @@ areas:
   approvers:
   - name: Peter Chen
     github: peterhaochen47
-  - name: Bruce Ricard
-    github: bruce-ricard
   - name: Hongchol Sinn
     github: hsinn0
-  - name: Danny Faught
-    github: swalchemist
-  - name: Alicia Yingling
-    github: Tallicia
   - name: Prateek Gangwal
     github: coolgang123
+  - name: Markus Strehle
+    github: strehle
   reviewers:
   - name: Duane May
     github: duanemay
@@ -96,8 +92,6 @@ areas:
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Rui Yang
     github: xtremerui
   - name: Rizwan Reza
@@ -127,15 +121,18 @@ areas:
     github: jhvhs
   - name: Long Nguyen
     github: lnguyen
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Rajath Agasthya
+    github: rajathagasthya
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
-  - cloudfoundry/homebrew-tap
   bots:
   - name: tas-operability-bot
     github: tas-operability-bot
@@ -143,20 +140,14 @@ areas:
   approvers:
   - name: Peter Chen
     github: peterhaochen47
-  - name: Bruce Ricard
-    github: bruce-ricard
   - name: Markus Strehle
     github: strehle
   - name: Hongchol Sinn
     github: hsinn0
-  - name: Danny Faught
-    github: swalchemist
   - name: Florian Tack
     github: tack-sap
   - name: Torsten Luh
     github: torsten-sap
-  - name: Alicia Yingling
-    github: Tallicia
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
   - name: Klaus Kiefer
@@ -176,26 +167,21 @@ areas:
   - cloudfoundry/uaa-key-rotator
   - cloudfoundry/uaa-release
   - cloudfoundry/uaa-singular
+  - cloudfoundry/uaa-ci
 - name: Identity and Auth (UAA) Go Client
   approvers:
   - name: Joe Fitzgerald
     github: joefitzgerald
   - name: Peter Chen
     github: peterhaochen47
-  - name: Bruce Ricard
-    github: bruce-ricard
   - name: Markus Strehle
     github: strehle
   - name: Hongchol Sinn
     github: hsinn0
-  - name: Danny Faught
-    github: swalchemist
   - name: Florian Tack
     github: tack-sap
   - name: Torsten Luh
     github: torsten-sap
-  - name: Alicia Yingling
-    github: Tallicia
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
   - name: Klaus Kiefer
@@ -203,6 +189,8 @@ areas:
   reviewers:
   - name: Duane May
     github: duanemay
+  - name: Prateek Gangwal
+    github: coolgang123
   repositories:
   - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
@@ -250,6 +238,8 @@ areas:
   approvers:
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Matthias Vach
@@ -282,6 +272,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -289,10 +281,10 @@ areas:
     github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Sascha Stojanovic
     github: Sascha-Stoj
+  - name: Felix Moehler
+    github: fmoehler
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -312,6 +304,8 @@ areas:
     github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Kenneth Lakin
     github: klakin-pivotal
   - name: Daniel Felipe Ochoa
@@ -330,6 +324,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -337,12 +333,12 @@ areas:
     github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Benjamin Gandon
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
+  - name: Felix Moehler
+    github: fmoehler
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
@@ -436,12 +432,17 @@ areas:
       github: gmllt
     - name: Mario Di Miceli
       github: mdimiceli
+    - name: Nicolas Herbst
+      github: nmaurer23
   repositories:
     - cloudfoundry/bosh_exporter
     - cloudfoundry/cf_exporter
     - cloudfoundry/firehose_exporter
     - cloudfoundry/node-exporter-boshrelease
     - cloudfoundry/prometheus-boshrelease
+  bots:
+    - name: cf-prometheus-ci-bot
+      github: cf-prometheus-ci-bot
 
 config:
   github_project_sync:

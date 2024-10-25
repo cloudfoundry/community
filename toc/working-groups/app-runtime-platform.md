@@ -2,7 +2,7 @@
 
 ## Mission
 
-Provides operational components for the CF App Runtime, including those for application build, application execution, ingress and app-to-app routing, and aggregation of application logs and metrics.
+Provides operational components for the CF App Runtime, including those for application build, application execution, ingress and app-to-app routing, volume service adapters, and aggregation of application logs and metrics.
 
 
 ## Goals
@@ -14,7 +14,7 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Scope
 
-- Develop system components that support core CF App Runtime capabilities, including building app artifacts from source code, running artifacts as apps, routing traffic to apps and between apps, and aggregating logs and metrics from applications for end-user consumption.
+- Develop system components that support core CF App Runtime capabilities, including building app artifacts from source code, running artifacts as apps, routing traffic to apps and between apps,  mouting stateful data to apps via volume services, and aggregating logs and metrics from applications for end-user consumption.
 - Maintain public roadmaps for the CF App Runtime component systems above and ensure that system component development matches roadmap intent.
 - Align component development to the priorities of App Runtime end users via collaboration with other Working Groups.
 - Provide community contributors with tooling and reference pipelines needed to build, test, and release App Runtime system components.
@@ -30,7 +30,7 @@ Provides operational components for the CF App Runtime, including those for appl
 
 ## Roles & Technical Assets
 
-Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Windows Containers projects.
+Components from the Diego, Garden, HAproxy, Logging and Metrics, Networking, Volume Services, Windows Containers projects.
 
 ```yaml
 name: App Runtime Platform
@@ -120,7 +120,6 @@ areas:
   - cloudfoundry/diego-release
   - cloudfoundry/diego-ssh
   - cloudfoundry/diego-upgrade-stability-tests
-  - cloudfoundry/docker_driver_integration_tests
   - cloudfoundry/dockerapplifecycle
   - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
@@ -166,11 +165,11 @@ areas:
     github: selzoc
   - name: Amin Jamali
     github: winkingturtle-vmw
+  - name: Brandon Roberson
+    github: ebroberson
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
-  - cloudfoundry/cpu-entitlement-admin-plugin
-  - cloudfoundry/cpu-entitlement-plugin
   - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
   - cloudfoundry/envoy-nginx-release
@@ -351,8 +350,20 @@ areas:
   - name: Plamen Doychev
     github: PlamenDoychev
   reviewers:
+  - name: Soha Alboghdady
+    github: Soha-Albaghdady
+  - name: Daria Anton
+    github: Dariquest
+  - name: Clemens Hoffmann
+    github: hoffmaen
   - name: Konstantin Lapkov
     github: klapkov
+  - name: Alexander Nicke
+    github: a18e
+  - name: M Rizwan Shaik
+    github: Mrizwanshaik
+  - name: Michal Tekel
+    github: mtekel
   repositories:
   - cloudfoundry/cf-lookup-route
   - cloudfoundry/cf-networking-helpers
@@ -386,6 +397,21 @@ areas:
     github: plowin
   - name: Tamara Boehm
     github: b1tamara
+  reviewers:
+  - name: Soha Alboghdady
+    github: Soha-Albaghdady
+  - name: Daria Anton
+    github: Dariquest
+  - name: Clemens Hoffmann
+    github: hoffmaen
+  - name: Konstantin Lapkov
+    github: klapkov
+  - name: Alexander Nicke
+    github: a18e
+  - name: M Rizwan Shaik
+    github: Mrizwanshaik
+  - name: Michal Tekel
+    github: mtekel
   repositories:
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/pcap
@@ -409,16 +435,10 @@ areas:
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
-  - cloudfoundry/mapfs
   - cloudfoundry/mapfs-release
   - cloudfoundry/migrate_mysql_to_credhub
-  - cloudfoundry/nfsv3driver
-  - cloudfoundry/nfsbroker
   - cloudfoundry/nfs-volume-release
-  - cloudfoundry/persi-ci
   - cloudfoundry/service-broker-store
-  - cloudfoundry/smbdriver
-  - cloudfoundry/smbbroker
   - cloudfoundry/smb-volume-release
   - cloudfoundry/volume-mount-options
   - cloudfoundry/volumedriver

@@ -178,11 +178,11 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1V1jtZmjpivMsWdoYOrGlaK4exoIezn2r4Lf3XcPxduQ/view)  |
 | Slack Channel              | [&#x23;general](https://paketobuildpacks.slack.com/archives/CU8RVQZ1R) in the [Paketo Slack Workspace](paketobuildpacks.slack.com) |
 
-| &nbsp;                                                   | Leads            | Company | Profile                                 |
-| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/dmikusa.png"> | Daniel Mikusa       | VMware  | [@dmikusa](https://github.com/dmikusa) |
-| <img width="30px" src="https://github.com/ekcasey.png"> | Emily Casey       | VMware  | [@ekcasey](https://github.com/ekcasey) |
-| <img width="30px" src="https://github.com/ryanmoran.png"> | Ryan Moran       | VMware  | [@ryanmoran](https://github.com/ryanmoran) |
+| &nbsp;                                                           | Leads             | Company | Profile                                 |
+| ---------------------------------------------------------------- | ----------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/dmikusa.png">          | Daniel Mikusa     | VMware  | [@dmikusa](https://github.com/dmikusa) |
+| <img width="30px" src="https://github.com/ForestEckhardt.png">   | Forest Eckhardt   | VMware  | [@ForestEckhardt](https://github.com/ForestEckhardt) |
+| <img width="30px" src="https://github.com/loewenstein-sap.png">  | Jan von Löwenstein| SAP     | [@loewenstein-sap](https://github.com/loewenstein-sap) |
 
 
 ## Service Management

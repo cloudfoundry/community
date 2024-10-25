@@ -921,8 +921,10 @@ orgs:
         has_wiki: false
       cpu-entitlement-admin-plugin:
         has_projects: true
+        archived: true
       cpu-entitlement-plugin:
         has_projects: true
+        archived: true
       credhub:
         allow_merge_commit: false
         allow_squash_merge: false
@@ -1093,6 +1095,7 @@ orgs:
         has_projects: true
       docker_driver_integration_tests:
         has_projects: true
+        archived: true
       dockerapplifecycle:
         description: Code that runs inside of containers, for docker-based apps
         has_projects: true
@@ -1340,10 +1343,12 @@ orgs:
           written in Go.
         has_projects: true
         has_wiki: false
+        archived: true
         homepage: https://cloudfoundry.github.io/go-cf-api/
       go-cf-api-release:
         allow_rebase_merge: false
         default_branch: main
+        archived: true
         has_projects: true
       go-cfclient:
         default_branch: main
@@ -1734,6 +1739,7 @@ orgs:
         homepage: http://docs.cloudfoundry.org/buildpacks/
       mapfs:
         has_projects: true
+        archived: true
       mapfs-release:
         description: BOSH release with mapfs, allows uid/gid mapping at the path
         has_projects: true
@@ -1815,8 +1821,10 @@ orgs:
         has_projects: true
       nfsbroker:
         has_projects: true
+        archived: true
       nfsv3driver:
         has_projects: true
+        archived: true
       nginx-buildpack:
         description: Cloud Foundry buildpack that provides NGINX
         has_projects: false
@@ -1907,6 +1915,7 @@ orgs:
         has_projects: true
       persi-ci:
         has_projects: true
+        archived: true
       persistence-load-tests:
         has_projects: true
         private: true
@@ -2210,8 +2219,10 @@ orgs:
         has_projects: true
       smbbroker:
         has_projects: true
+        archived: true
       smbdriver:
         has_projects: true
+        archived: true
       socks5-proxy:
         default_branch: main
         description: This is a go library for starting a socks5 proxy server via SSH
@@ -2262,11 +2273,9 @@ orgs:
       stratos:
         description: 'Stratos: Web-based Management UI for Cloud Foundry and Kubernetes'
         has_projects: true
-        archived: true
       stratos-buildpack:
         description: Custom buildpack Stratos (UI for Cloud Foundry)
         has_projects: true
-        archived: true
       summit-hands-on-labs:
         description: Hands-on Labs for CF Summit Boston '18 and beyond
         has_projects: true
@@ -2368,6 +2377,11 @@ orgs:
         description: CloudFoundry User Account and Authentication (UAA) Server
         has_projects: true
         has_wiki: false
+      uaa-ci:
+        default_branch: main
+        has_projects: true
+        has_wiki: false
+        private: true
       uaa-cli:
         description: CLI for UAA written in Go
         has_projects: true
@@ -2565,7 +2579,8 @@ orgs:
         description: "Temporary team for managing GitHub integrations for automation/concourse."
         maintainers:
           - plowin
-          - domdom82
+          - peanball
+          - Soha-Albaghdady
         members: []
         privacy: closed
         repos:
@@ -2594,10 +2609,12 @@ orgs:
         maintainers:
           - coolgang123
           - duanemay
-          - iprotsiuk
-        members: [ ]
+          - hsinn0
+          - peterhaochen47
+        members: []
         privacy: closed
-        repos: {}
+        repos:
+          uaa-ci: admin
       temp-prometheus-exporter-admins:
         description: "Temporary team for managing cf/ firehose exporter secrets until we have a permanent plan."
         maintainers:
@@ -2617,3 +2634,13 @@ orgs:
         privacy: closed
         repos:
           cloud_controller_ng: admin
+      temp-ari-terraform-provider-cloudfoundry-admins:
+        description: "Temporary team for managing terraform-provider-cloudfoundry secrets."
+        maintainers:
+          - pyogesh2
+          - KesavanKing
+          - vipinvkmenon
+        members: []
+        privacy: closed
+        repos:
+          terraform-provider-cloudfoundry: admin

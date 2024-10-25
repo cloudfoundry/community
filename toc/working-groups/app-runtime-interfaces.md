@@ -30,7 +30,7 @@ Provides APIs for the CF App Runtime and community clients for end users.
 
 ## Roles & Technical Assets
 
-Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, and Notifications projects.
+Components from the App Autoscaler, CAPI, CLI, Java Tools, MultiApps, Notifications, and Stratos projects.
 
 ```yaml
 name: App Runtime Interfaces
@@ -71,20 +71,6 @@ areas:
   - cloudfoundry/app-autoscaler-env-bbl-state
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
-- name: Buildpacks Docs
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
-  repositories:
-  - cloudfoundry/docs-buildpacks
-  - cloudfoundry/example-sidecar-buildpack
-
 - name: Buildpacks Go
   approvers:
   - name: Arjun Sreedharan
@@ -93,8 +79,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
@@ -133,8 +117,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
@@ -147,8 +129,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
@@ -161,8 +141,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
@@ -175,8 +153,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/php-buildpack
   - cloudfoundry/php-buildpack-release
@@ -189,8 +165,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
@@ -203,8 +177,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/r-buildpack
   - cloudfoundry/r-buildpack-release
@@ -217,8 +189,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/ruby-buildpack
   - cloudfoundry/ruby-buildpack-release
@@ -231,8 +201,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
@@ -247,8 +215,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/binary-builder
   - cloudfoundry/brats
@@ -258,6 +224,7 @@ areas:
   - cloudfoundry/buildpacks-github-config
   - cloudfoundry/buildpacks-workstation
   - cloudfoundry/dagger
+  - cloudfoundry/example-sidecar-buildpack
   - cloudfoundry/libbuildpack
   - cloudfoundry/public-buildpacks-ci-robots
   - cloudfoundry/switchblade
@@ -274,8 +241,6 @@ areas:
     github: pivotal-david-osullivan
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
@@ -292,8 +257,6 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
@@ -302,8 +265,6 @@ areas:
 
 - name: CAPI
   approvers:
-  - name: Tom Viehman
-    github: tjvman
   - name: Florian Braun
     github: FloThinksPi
   - name: Philipp Thun
@@ -328,6 +289,8 @@ areas:
     github: samze
   - name: Alex Rocha
     github: xandroc
+  - name: Jochen Ehret
+    github: jochenehret
   reviewers:
   - name: Al Berez
     github: a-b
@@ -339,8 +302,6 @@ areas:
     github: danielfor
   - name: Shwetha Gururaj
     github: gururajsh
-  - name: Jochen Ehret
-    github: jochenehret
   - name: Ryker Reed
     github: reedr3
   - name: George Gelashvili
@@ -365,8 +326,6 @@ areas:
   - cloudfoundry/tps
   - cloudfoundry/cc-uploader
   - cloudfoundry/sync-integration-tests
-  - cloudfoundry/go-cf-api
-  - cloudfoundry/go-cf-api-release
   - cloudfoundry/blobstore_url_signer
   - cloudfoundry/capi-workspace
   - cloudfoundry/delayed_job_sequel
@@ -379,8 +338,6 @@ areas:
   approvers:
   - name: Al Berez
     github: a-b
-  - name: Juan Diego González
-    github: jdgonzaleza
   - name: Ryker Reed
     github: reedr3
   - name: Michael Oleske
@@ -463,6 +420,9 @@ areas:
     github: Dray56
   - name: Gourab Mukherjee
     github: Gourab1998
+  bots:
+  - name: SAP OSPO Bot
+    github: SAP-OSPO-ADMIN
   repositories:
   - cloudfoundry/terraform-provider-cloudfoundry
 
@@ -478,14 +438,10 @@ areas:
     github: boyan-velinov
   - name: Rangel Ivanov
     github: radito3
-  - name: Dido
-    github: ddonchev
   - name: Ikasarov
     github: ikasarov
   - name: Velizar Kalapov
     github: vkalapov
-  - name: Nikolay Valchev
-    github: nvvalchev
   - name: Vasil Bogdanov
     github: VRBogdanov
   - name: Yavor Uzunov
@@ -498,7 +454,7 @@ areas:
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
-    
+
   repositories:
   - cloudfoundry/multiapps-controller
   - cloudfoundry/multiapps-cli-plugin
@@ -522,6 +478,28 @@ areas:
   - cloudfoundry/notifications-release
   - cloudfoundry/notifications
   - cloudfoundry/app-runtime-interfaces-infrastructure
+
+- name: Stratos Console for Cloud Foundry
+  approvers:
+  - name: Kevin Rutten
+    github: krutten
+  - name: Wayne Seguin
+    github: wayneeseguin
+  - name: Norm Abromovitz
+    github: norman-abramovitz
+  - name: Ioannis Tsouvalas
+    github: itsouvalas
+  reviewers:
+  - name: Dr. Xiujiao Gao
+    github: xiujiao
+  - name: Dennis Bell
+    github: dennisjbell
+  - name: Dr. Hu
+    github: haochenhu233
+
+  repositories:
+  - cloudfoundry/stratos
+  - cloudfoundry/stratos-buildpack
 
 config:
   generate_rfc0015_branch_protection_rules: true
