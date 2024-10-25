@@ -281,6 +281,8 @@ areas:
     github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
   repositories:
@@ -333,6 +335,8 @@ areas:
     github: fearoffish
   - name: Benjamin Gandon
     github: bgandon
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
   repositories:
