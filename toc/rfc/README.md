@@ -38,7 +38,7 @@ The [`assign-rfc-number.sh`](assign-rfc-number.sh) script will assign the next R
 
 1. Check out the `main` branch at the RFC PR merge commit.
 1. Change into the `toc/rfc` directory.
-1. Run `./assign-rfc-number.sh`.
+1. Run `./assign-rfc-number.sh <rfc-merge-commit-sha>` where `<rfc-merge-commit-sha>` is the "commit-ish" (commit SHA or commit expression) that resolves to the merge commit of the RFC.
 1. If you had set `NOPUSH=true` when running the script, push the numbering commit to `main`.
 
 Script options, to be set via environment variable (such as `DEBUG=true ./assign-rfc-number.sh`):
@@ -47,7 +47,6 @@ Script options, to be set via environment variable (such as `DEBUG=true ./assign
 * `REPO`: Sets the name of the repository. (Default: `community`)
 * `DEBUG`: Set to a nonzero value to enable script debugging via the `-x` flag in Bash. (Default: unset)
 * `NOPUSH`: Set to a nonzero value not to push the renumbering commit automatically. (Default: unset)
-* `RFC_MERGE_COMMITISH`: Set to a "commit-ish" (commit SHA or commit expression) that resolves to the merge commit of the RFC to number. (Default: `HEAD`)
 
 ## Managing Standards and Processes
 
