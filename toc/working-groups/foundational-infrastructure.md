@@ -86,8 +86,6 @@ areas:
     github: ichandrabhatta
   - name: Janice Bailey
     github: bjanice75
-  - name: Ming Xiao
-    github: mingxiao
   - name: Nader Ziada
     github: nader-ziada
   - name: Nitin Ravindran
@@ -127,6 +125,8 @@ areas:
     github: ragaskar
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
@@ -274,11 +274,11 @@ areas:
     github: nader-ziada
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Ming Xiao
-    github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
   - name: Sascha Stojanovic
@@ -326,11 +326,11 @@ areas:
     github: nader-ziada
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Ming Xiao
-    github: mingxiao
   - name: Jamie van Dyke
     github: fearoffish
   - name: Benjamin Gandon
