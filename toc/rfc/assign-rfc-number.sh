@@ -16,10 +16,15 @@ if [[ "${DEBUG}" ]] ; then
   set -x
 fi
 
+RFC_MERGE_COMMITISH=${1:-}
+if [[ -z "${RFC_MERGE_COMMITISH}" ]] ; then
+  >&2 echo "RFC merge commit SHA is required argument to execute the script. The SHA is needed to identify the RFC PR number."
+  exit 1
+fi
+
 OWNER=${OWNER:-cloudfoundry}
 REPO=${REPO:-community}
 MAIN_BRANCH=${MAIN_BRANCH:-main}
-RFC_MERGE_COMMITISH=${RFC_MERGE_COMMITISH:-HEAD}
 NOPUSH=${NOPUSH:-}
 
 ####
@@ -82,6 +87,7 @@ if [[ "$num_parents" -ne 2 ]]; then
   exit 2
 fi
 
+# lists all pull request HEADs and greps for the second parent of the RFC merge commit which is the RFC PR HEAD to get the PR number
 PR_NUMBER=$(git ls-remote origin 'pull/*/head' | grep -F -f <(git rev-parse "${RFC_MERGE_COMMITISH}^2") | awk -F'/' '{print $3}')
 
 RFC_ID=$(generate_id)
