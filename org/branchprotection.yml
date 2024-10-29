@@ -107,6 +107,7 @@ branch-protection:
             - "EasyCLA"
             - "Create Bosh Release"
             - "Acceptance Tests - Broker_Check"
+            - "Acceptance Tests - MTA"
             - "Build suite=test, mysql=8"
             - "Build suite=test, postgres=12"
             - "Build suite=integration, mysql=8"
@@ -142,7 +143,7 @@ branch-protection:
               teams: ["wg-app-runtime-interfaces-autoscaler-bots"]
           include: [ "^main$" ]
 
-          
+
         # Cloud Controller / CAPI related repos to skip branch protection on
         cf-performance-tests-pipeline:
           protect: false
