@@ -285,6 +285,8 @@ areas:
     github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -339,6 +341,8 @@ areas:
     github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
