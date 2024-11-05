@@ -8,8 +8,7 @@ Cloud Foundry community members use this directory as a common, public forum to 
 
 1. Create a new branch on this repository or on a fork of it.
 1. Copy `rfc-template.md` to `rfc-draft-<my-proposal-title>.md`, where `<my-proposal-title>` is a short identifier for the RFC, and edit the draft RFC document.
-1. If your RFC is relevant for only a single Working Group, please place it in a subdirectory of `toc/rfc` specifically for that working group.
-   1. If that Working Group hosts its RFCs elsewhere, its RFC subdirectory will contain a file called `EXTERNAL.md` that contains a link to that group's RFC repository. In that case, follow that link to create the group-specific RFC in that repository.
+1. If your RFC is relevant for only a single Working Group and that Working Group hosts its RFCs elsewhere, please create a file called `EXTERNAL.md` that contains a link to that group's RFC repository and place it in a subdirectory of `toc/rfc` specifically for that working group. In that case, follow that link to create the group-specific RFC in that repository.
 1. If your RFC includes images, include them in a separate directory named `rfc-draft-<my-proposal-title>` and link to them from the RFC document.
 
 ### Public Discussion Period
