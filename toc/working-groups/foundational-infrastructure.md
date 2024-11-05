@@ -45,6 +45,8 @@ bots:
   github: bosh-admin-bot
 - name: runtime-bot
   github: tas-runtime-bot
+- name: cf-bosh-ci-bot
+  github: cf-bosh-ci-bot
 - name: cf-uaa-ci-bot
   github: cf-identity
 - name: Cryogenics-CI
