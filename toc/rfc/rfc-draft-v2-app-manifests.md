@@ -304,7 +304,13 @@ apps:
 
 ### Future Extensions
 
-#### Wildcards
+What follows are some possible extensions for v2 manifests. These demonstrate
+some of the future capabilities that could be enabled by v2 manifests. They are
+not currently possible with v1 manifests, so they would be new features only
+available with v2 manifests. These extensions are less-developed than the core
+v2 manifest design, and may change significantly, if they are implemented.
+
+#### Merge with Current State
 
 One of the risks of implementing strict determinism for manifests is that app
 developers might inadvertently delete resources in a space that are not present
@@ -329,29 +335,90 @@ _Note: the `(( merge ))` syntax is a
 [spiff](https://github.com/mandelsoft/spiff) joke, and is not intended to be
 final._
 
-#### Add Network Polices
+#### Shared Resources
 
-Currently, it is not possible to configure network polices via app manifests. A
-major reason for this is because network polices are managed by Policy Server,
-not by Cloud Controller. However, manifest support for network polices is an
-[oft-requested
+Some resources can be shared across multiple spaces (currently, routes and
+service instances). Sharing resources is not currently possible via app
+manifests. Since these resources are no longer fully-contained within a space,
+they require configuration split across multiple space-level manifests.
+
+One option could be to add a boolean `shared` node to sharable resources, so
+they are not automatically created in the destination space, but can still be
+bound/mapped/etc to.
+
+Source manifest:
+```yaml
+---
+routes:
+  - url: route.example.com
+    destinations:
+      - app:
+          name: app1
+service_instances:
+  - name: my-service-instance
+    bindings:
+      apps:
+        - name: app1
+    share_to:
+      - org: my-org
+        space: my-space
+```
+
+Destination manifest:
+```yaml
+---
+routes:
+  - url: route.example.com
+    shared: true
+    destinations:
+      - app:
+          name: app1
+service_instances:
+  - name: my-service-instance
+    shared: true
+    bindings:
+      apps:
+        - name: app1
+```
+
+#### Network Policies
+
+Similar to shared resources, container networking policies can span multiple
+spaces. Currently, it is not possible to configure network policies via app
+manifests.
+
+Notably, network polices are managed by Policy Server, not by Cloud Controller,
+so an additional integration will likely need to be built to support network
+policies in manifests.
+
+Manifest support for network policies is an [oft-requested
 feature](https://github.com/cloudfoundry/cloud_controller_ng/issues/1334) and
 will be required for implementing GitOps workflows for apps that use container
 networking.
 
-Example manifest:
+Destination manifest:
 ```yaml
 ---
+routes:
+  - url: destination-app.apps.internal
+    destinations:
+      - app:
+          name: destination-app
 network_policies:
-- source:
-    app:
-      name: app1
-  destination:
-    app:
-      name: app2
-      port: 1234
-  protocol: tcp
+  - destination:
+      app:
+        name: destination-app
+        port_range: 1234-9999
+    source:
+      app:
+        name: source-app
+        org: source-app-org
+        space: source-app-space
+    protocol: tcp
 ```
+
+Network policies will be specified in the destination app's space. No
+configuration will be needed in the source app's space.
 
 #### Add Secrets
 
