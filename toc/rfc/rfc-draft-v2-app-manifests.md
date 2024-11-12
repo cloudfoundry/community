@@ -207,32 +207,58 @@ routes:
       - app:
           name: app1
 service_instances:
-  - name: my-service-instance
-    bindings:
-      apps:
-        - name: app1
-        - name: app2
-      keys:
-        - name: my-service-key
-      parameters:
-        key1: value1
-      metadata:
-        annotations:
-          yam: service binding metadata
+  - name: managed-service-instance
+    service_offering:
+      name: my-service-offering
+    service_plan:
+      name: my-service-plan
+    tags:
+      - my-tag
+    parameters:
+      key1: value1
     metadata:
       annotations:
         carrot: service instance metadata
-  - name: route-service
-    bindings:
-      routes:
-        - url: route.example.com
-  - name: service-with-arbitrary-params
-    bindings:
-      apps:
-        - name: app1
-          parameters:
-            key1: value1
-            key2: value2
+  - name: user-provided-service-instance
+    type: user-provided
+    credentials:
+      my-cred: secret1234
+    syslog_drain:
+      url: example.com/syslog
+    route_service:
+      url: example.com/route
+  - name: route-service-instance
+    service_offering:
+      name: route-service-offering
+    service_plan:
+      name: route-service-plan
+service_bindings:
+  - type: app
+    service_instance:
+      name: managed-service-instance
+    app:
+      name: app1
+    name: my-service-binding-name
+    parameters:
+      key1: value1
+      key2: value2
+    metadata:
+      annotations:
+        yam: service binding metadata
+  - type: app
+    service_instance:
+      name: managed-service-instance
+    app:
+      name: app2
+  - type: key
+    service_instance:
+      name: managed-service-instance
+    name: my-service-key
+  - type: route
+    service_instance:
+      name: route-service-instance
+    route:
+      url: route.example.com/path
 apps:
   - name: app1
     package:
