@@ -336,7 +336,7 @@ not currently possible with v1 manifests, so they would be new features only
 available with v2 manifests. These extensions are less-developed than the core
 v2 manifest design, and may change significantly, if they are implemented.
 
-#### Merge with Current State
+#### Merge State
 
 One of the risks of implementing strict determinism for manifests is that app
 developers might inadvertently delete resources in a space that are not present
@@ -360,6 +360,45 @@ apps:
 _Note: the `(( merge ))` syntax is a
 [spiff](https://github.com/mandelsoft/spiff) joke, and is not intended to be
 final._
+
+#### Droplets
+
+Similar to the `--droplet` flag on `cf push` and the `package.path` node for
+app resources proposed above, there could be a way to upload droplets when
+pushing with a manifest.
+
+Example manifest:
+```yaml
+---
+apps:
+  - name: app1
+    droplet:
+      path: /local/path/to/droplet.tgz
+```
+
+#### Remote Files
+
+In addition to local paths, the manifest could be extended to support remote
+files for packages and droplets. Unlike local file paths, these could be
+handled server-side, which would further enable GitOps workflows. However,
+handling remote files would introduce some of the same access and autentication
+issues faced by docker-lifecycle-app's remote image registries.
+
+Example manifest:
+```yaml
+---
+apps:
+  - name: app1
+    package:
+      path: https://example.com/app_source.tgz
+      access_credentials:
+        - type: basic
+          username: new-user
+          password: new-pass
+        - type: basic
+          username: old-user
+          password: old-pass
+```
 
 #### Shared Resources
 
@@ -446,7 +485,7 @@ network_policies:
 Network policies will be specified in the destination app's space. No
 configuration will be needed in the source app's space.
 
-#### Add Secrets
+#### Secrets
 
 The recently-proposed [secrets
 resource](https://github.com/cloudfoundry/community/pull/994) would also be a
