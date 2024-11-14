@@ -349,6 +349,8 @@ areas:
     github: peanball
   - name: Plamen Doychev
     github: PlamenDoychev
+  - name: Alexander Nicke
+    github: a18e
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -358,8 +360,6 @@ areas:
     github: hoffmaen
   - name: Konstantin Lapkov
     github: klapkov
-  - name: Alexander Nicke
-    github: a18e
   - name: M Rizwan Shaik
     github: Mrizwanshaik
   - name: Michal Tekel
@@ -397,6 +397,8 @@ areas:
     github: plowin
   - name: Tamara Boehm
     github: b1tamara
+  - name: Alexander Nicke
+    github: a18e
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -406,8 +408,6 @@ areas:
     github: hoffmaen
   - name: Konstantin Lapkov
     github: klapkov
-  - name: Alexander Nicke
-    github: a18e
   - name: M Rizwan Shaik
     github: Mrizwanshaik
   - name: Michal Tekel
