@@ -441,6 +441,30 @@ apps:
           password: old-pass
 ```
 
+#### Buildpack Fallback URL
+
+Buildpacks can currently be specified as either admin-installed buildpack names
+or remote urls. Since the set of installed buildpacks can vary between Cloud
+Foundry deployments, it is difficult for manifest authors to know whether they
+should reference a buildpack by name, or if they need to provide a url.
+
+As requested in [this
+issue](https://github.com/cloudfoundry/cloud_controller_ng/issues/1358),
+manifests could allow referencing a buildpack by name, while also specifying a
+url that will be used if the referenced buildpack is not available.
+
+Example manifest:
+```yaml
+---
+apps:
+  - name: app1
+    lifecycle:
+      type: buildpack
+      buildpacks:
+        - name: my_buildpack
+          url: git.example.com/my_buildpack
+```
+
 #### Shared Resources
 
 Some resources can be shared across multiple spaces (currently, routes and
