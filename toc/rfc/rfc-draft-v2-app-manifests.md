@@ -14,7 +14,7 @@ manifests](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attribute
 empower app developers to bulk-configure their apps and persist the
 configuration alongside app code in source control.
 
-This RFC proposes implementing a new major version (v2) of the app manifest
+This RFC proposes implementing a new major version, v2, of the app manifest
 schema. App manifests v2 will add new functionality, ease future Cloud Foundry
 feature development, and enable powerful user workflows. Notably, the v2
 manifest will be
@@ -26,14 +26,16 @@ Kubernetes.
 
 App manifests currently support much, but not all, of the developer-relevant
 configuration available on Cloud Foundry. The existing manifest structure
-impedes supporting new features, since it is heavily app-centric and laden with
+impedes supporting new features because it is heavily app-centric and laden with
 backwards-compatibility-induced complexity.
 
 In addition to issues with the current schema, app manifests are
 inconsistently-declarative, which is a constant source of user confusion. In
 addition, this makes it difficult to implement more advanced developer
-workflows (e.g. [GitOps](https://www.gitops.tech/)), since some resources are
-not deleted when applying manifests.
+workflows (e.g. [GitOps](https://www.gitops.tech/)), since some resources and
+configuration values can not be deleted when applying manifests. For example,
+it is not possible to unset environment variable or delete service bindings by
+applying an app manifest.
 
 ### App Manifests vs Space Manifests
 
@@ -62,15 +64,17 @@ development, but the following should guide those decisions, whenever possible.
 #### Mirror v3 API Design
 
 Resources in the manifest should be named and structured similarly to the v3
-API, to reduce conceptual overhead for app developers and API consumers. This
-has the additional benefit of reducing design overhead when adding new features
-to app manifests, since the API design will serve as a strong foundation.
+API. This will reduce conceptual overhead for app developers and API consumers.
+This has the additional benefit of reducing design overhead when adding new
+features to app manifests, since the API design will serve as a strong
+foundation.
 
 #### Top-Level Resources
 
 Space-level resources should have their own top-level configuration blocks,
-rather than being nested under apps. For example, routes and service instances
-are now top-level nodes, instead of being nested under apps.
+rather than being nested under apps. For example, routes, service instances,
+and service bindings are now top-level nodes, instead of being nested under
+apps.
 
 #### Prefer Extensible Data Types
 
@@ -141,10 +145,16 @@ including:
 1. Enables more powerful workflows for Cloud Foundry app developers (e.g. GitOps)
 
 Declarative app manifests will be a major change to how app manifests are
-applied and will be a barrier to adoption. It will be worth evaluating
-strategies to ease that migration, for instance adding support for "dry runs"
-and rich [manifest
+applied and will be a barrier to adoption. It is worth evaluating strategies to
+ease the migration, for instance adding support for "dry runs" and rich
+[manifest
 diffs](https://v3-apidocs.cloudfoundry.org/version/release-candidate/#generate-a-manifest-for-an-app).
+
+It will also be important to be vigilant about breaking changes going forward;
+declarative manifests can exacerbate the impact of accidental breaking changes.
+Even changes as innocuous as adding a manifest node for an existing API field
+can be a breaking change, since existing manifests will not have the
+corresponding node present.
 
 #### Not Transactional
 
@@ -159,13 +169,14 @@ manifest will NOT be rolled-back in the event of a failure.
 
 1. Add a `GET /v3/space/:guid/manifest` endpoint with a `version` query
    parameter for generating v2 app manifests
-1. Update `POST /v3/spaces/:guid/actions_apply` to accept v2 manifests
+1. Update `POST /v3/spaces/:guid/actions/apply_manifest` to accept v2 manifests
 1. Update `POST /v3/spaces/:guid/manifest_diff` to accept v2 manifests
 
 #### CLI
 
 1. Update `cf push` and `cf apply-manifest` to accept v2 manifests
-1. Add `cf create-space-manifest` command to generate a v2 manifest for a space
+1. Add `cf create-space-manifest` (or equivalent) command to generate a v2
+   manifest for a space
 
 ##### Override Flags
 
@@ -178,7 +189,7 @@ flags (e.g. `--memory`).
 
 To simplify v2 manifest implementation, v2 manifests will not be compatible
 with override flags. There are numerous options to get similar behavior without
-requireing override flags, notably variable interpolation or yaml overlays.
+requiring override flags, notably variable interpolation or yaml overlays.
 Users who wish to continue using override flags can push apps with no manifests
 or with v1 manifests.
 
@@ -375,7 +386,7 @@ What follows are some possible extensions for v2 manifests. These demonstrate
 some of the future capabilities that could be enabled by v2 manifests. They are
 not currently possible with v1 manifests, so they would be new features only
 available with v2 manifests. These extensions are less-developed than the core
-v2 manifest design, and may change significantly, if they are implemented.
+v2 manifest design, and may change significantly prior to implementation.
 
 #### Merge State
 
