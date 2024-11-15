@@ -273,15 +273,17 @@ apps:
       metadata:
         annotations:
           cassava: package metadata
-    buildpacks:
-      - name: ruby_buildpack
-      - name: java_buildpack
-      - url: git.example.com/my_buildpack
+    lifecycle:
+      type: buildpack
+      buildpacks:
+        - name: ruby_buildpack
+        - name: java_buildpack
+        - url: git.example.com/my_buildpack
+      stack:
+        name: cflinuxfs4
     environment_variables:
       VAR1: value1
       VAR2: value2
-    stack:
-      name: cflinuxfs4
     features:
       ssh: true
     metadata:
