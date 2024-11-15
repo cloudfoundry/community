@@ -98,7 +98,7 @@ route: foo.example.com
 #### Keys Use Underscores
 
 Version 1 app manifests use a combination of underscores and hyphens for
-multi-word keys. Schema version 2 keys should only use underscores, to match the
+multi-word keys. Schema version 2 keys should only use underscores, to match
 the v3 API convention.
 
 ### Behavior
@@ -484,6 +484,27 @@ network_policies:
 
 Network policies will be specified in the destination app's space. No
 configuration will be needed in the source app's space.
+
+#### Per-Route Options
+
+The recent [per-route features
+RFC](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0027-generic-per-route-features.md)
+included additions to the manifest.
+
+Example manifest:
+```yaml
+---
+routes:
+  - url: route.example.com/path
+    options:
+      loadbalancing-algorithm: round-robin
+      connection-limit: 15
+      session-cookie: FOOBAR
+      trim-path: true
+```
+
+Note that the options are intentionally arbitrary and opaque to Cloud
+Controller, hence why hyphenated keys are tolerated.
 
 #### Secrets
 
