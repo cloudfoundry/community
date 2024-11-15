@@ -342,6 +342,33 @@ apps:
           memory: 800M
 ```
 
+#### Notable Changes
+
+**Routes**
+- Move `routes` to top-level
+- Route mappings are now "route-centric". The mappings are nested under routes,
+instead of under apps.
+- Add support for routing to non-`web` processes
+- Add support for routing to custom ports
+- Add metadata
+
+**Service Instances**
+- Move `service_instances` to top-level
+- Add support for provisioning/updating service instances (previously, only
+binding to existing service instances was supported)
+
+**Service Bindings**
+- Move `service_bindings` to top-level
+- Add support for route bindings
+- Add support for service keys
+- Add metadata
+
+**Apps**
+- Add `package`, `lifecycle`, `processes.scale`, and `processes.health_checks` to organize nodes
+- Add support for app features
+- Add support for app state
+- Add metadata to apps and nested app subresources
+
 ### Future Extensions
 
 What follows are some possible extensions for v2 manifests. These demonstrate
