@@ -380,24 +380,32 @@ v2 manifest design, and may change significantly, if they are implemented.
 #### Merge State
 
 One of the risks of implementing strict determinism for manifests is that app
-developers might inadvertently delete resources in a space that are not present
-in the manifest. This would a higher risk for spaces where multiple developers
-or teams manage different apps, each with their own manifest.
+developers can inadvertently delete resources in a space. This would especially
+impact spaces where developers manage multiple apps, each with their own
+manifest.
 
 The "correct" way to handle this would be to merge all the app manifests
 upstream, and then apply a single manifest to Cloud Foundry. That said, v2 app
-manifests could potentially offer "wildcards" to intentionally merge the
-applied manifest with existing state.
+manifests could support merging the applied manifest with existing
+state. To manage complexity, merging would only be supported for top-level
+resources, not for configuration of those resources.
 
-For instance, the following manifest would declaratively apply configuration
+For example, the following manifest would declaratively apply configuration
 for the app named `my-app`, but would not affect the configuration of other
-apps in the space.
+apps nor other resources in the space.
 ```yaml
 ---
+routes: (( merge ))
+service_instances: (( merge ))
+service_bindings: (( merge ))
 apps:
 - name: my-app
 - (( merge ))
 ```
+
+Allowing merging would be convenient for creating and updating resources, but
+it does complicate deletion workflows.
+
 _Note: the `(( merge ))` syntax is a
 [spiff](https://github.com/mandelsoft/spiff) joke, and is not intended to be
 final._
