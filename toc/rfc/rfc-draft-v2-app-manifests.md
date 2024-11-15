@@ -285,7 +285,10 @@ apps:
     processes:
       - type: web
         command: start-web.sh
-        disk_quota: 512M
+        scale:
+          disk: 512M
+          instances: 3
+          memory: 500M
         health_checks:
           liveness:
             http_endpoint: /health_check
@@ -294,19 +297,19 @@ apps:
             timeout: 10
           readiness:
             type: port
-        instances: 3
-        memory: 500M
         metadata:
           annotations:
             taro: process metadata
       - type: worker
         command: start-worker.sh
-        disk_quota: 1G
-        health_check:
-          type: process
-          timeout: 15
-        instances: 2
-        memory: 256M
+        scale:
+          disk: 1G
+          instances: 2
+          memory: 256M
+        health_checks:
+          liveness:
+            type: process
+            timeout: 15
   - name: app2
     state: STOPPED
     lifecycle:
@@ -317,15 +320,17 @@ apps:
         username: docker-user-name
     processes:
       - type: web
-        instances: 1
-        memory: 256M
+        scale:
+          instances: 1
+          memory: 256M
     sidecars:
       - name: authenticator
         processes:
           - type: web
           - type: worker
         command: bundle exec run-authenticator
-        memory: 800M
+        scale:
+          memory: 800M
 ```
 
 ### Future Extensions
