@@ -146,6 +146,13 @@ strategies to ease that migration, for instance adding support for "dry runs"
 and rich [manifest
 diffs](https://v3-apidocs.cloudfoundry.org/version/release-candidate/#generate-a-manifest-for-an-app).
 
+#### Not Transactional
+
+Like v1 manifests, applying a v2 manifest will NOT be transactional. The
+configuration specified in the manifest will be applied in a non-deterministic
+order and can fail when partially applied. Changes resulting from applying the
+manifest will NOT be rolled-back in the event of a failure.
+
 ### Scope of Work
 
 #### API
