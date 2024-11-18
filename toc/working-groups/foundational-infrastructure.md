@@ -207,8 +207,6 @@ areas:
     github: kimago
   - name: Ryan Wittrup
     github: ryanwittrup
-  - name: Kevin Markwardt
-    github: kmarkwardt-vmware
   reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
