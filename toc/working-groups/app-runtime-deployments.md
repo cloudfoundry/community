@@ -61,8 +61,6 @@ areas:
     name: Sven Krieger
   - github: iaftab-alam
     name: Aftab Alam
-  - github: jimconner
-    name: Jim Conner
   repositories:
   - cloudfoundry/app-runtime-deployments-infrastructure
   - cloudfoundry/cf-acceptance-tests
