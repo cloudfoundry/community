@@ -390,7 +390,6 @@ areas:
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-shared-ci
-  - cloudfoundry/bosh-softlayer-cpi-release
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
