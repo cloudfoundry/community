@@ -302,6 +302,8 @@ areas:
     github: danielfor
   - name: Shwetha Gururaj
     github: gururajsh
+  - name: Sriram Nookala
+    github: nookala
   - name: Ryker Reed
     github: reedr3
   - name: George Gelashvili
