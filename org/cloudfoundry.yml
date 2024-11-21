@@ -952,6 +952,11 @@ orgs:
         description: CredHub CLI provides a command line interface to interact with
           CredHub servers
         has_projects: true
+      credhub-oss-ci:
+        default_branch: main
+        has_projects: true
+        has_wiki: false
+        private: true
       credhub-perf-release:
         has_projects: true
       csb-brokerpak-aws:
@@ -2615,6 +2620,7 @@ orgs:
         privacy: closed
         repos:
           uaa-ci: admin
+          credhub-oss-ci: admin
       temp-prometheus-exporter-admins:
         description: "Temporary team for managing cf/ firehose exporter secrets until we have a permanent plan."
         maintainers:
