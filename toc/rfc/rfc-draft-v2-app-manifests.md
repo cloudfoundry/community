@@ -591,14 +591,11 @@ Example manifest:
 routes:
   - url: route.example.com/path
     options:
-      loadbalancing-algorithm: round-robin
-      connection-limit: 15
-      session-cookie: FOOBAR
-      trim-path: true
+      loadbalancing_algorithm: round-robin
+      connection_limit: 15
+      session_cookie: FOOBAR
+      trim_path: true
 ```
-
-Note that the options are intentionally arbitrary and opaque to Cloud
-Controller, hence why hyphenated keys are tolerated.
 
 #### Secrets
 
