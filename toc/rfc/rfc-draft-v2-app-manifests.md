@@ -18,7 +18,7 @@ This RFC proposes implementing a new major version, v2, of the app manifest
 schema. App manifests v2 will add new functionality, ease future Cloud Foundry
 feature development, and enable powerful user workflows. Notably, the v2
 manifest will be
-fully-[declarative](https://en.wikipedia.org/wiki/Declarative_programming),
+fully-[declarative](https://blog.nelhage.com/post/declarative-configuration-management/),
 consistent with modern developer expectations and technologies like BOSH and
 Kubernetes.
 
@@ -126,7 +126,7 @@ manifest schema versions.
 Specifying the `version` as `2` will instruct Cloud Foundry to use the v2 app
 manifest schema and behavior described by this RFC.
 
-#### Fully Declarative
+#### Fully Declarative (Pruning)
 
 Version 1 app manifests are currently inconsistently-declarative. For instance,
 removing a buildpack from the `buildpacks` sequence will delete the buildpack
@@ -135,7 +135,7 @@ will NOT unmap the route from the app.
 
 Version 2 app manifests will be fully-declarative; applying a manifest will
 update state in the space to exactly match the manifest, including deleting
-resources.
+resources and destructively updating configuration.
 
 Declaratively applying app manifests will have multiple benefits,
 including:
@@ -155,6 +155,16 @@ declarative manifests can exacerbate the impact of accidental breaking changes.
 Even changes as innocuous as adding a manifest node for an existing API field
 can be a breaking change, since existing manifests will not have the
 corresponding node present.
+
+##### Prior Art
+
+Since this is a major behavioral change for app manifests, here a survey of
+some prior art for declarative configuration for similar products:
+- https://blog.nelhage.com/post/declarative-configuration-management/
+- https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning
+- https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/#alternative-kubectl-apply-f-directory-prune
+- https://dzx.fr/blog/declarative-kubernetes-resource-management/
+- https://github.com/kubernetes/enhancements/tree/master/keps/sig-cli/3659-kubectl-apply-prune
 
 #### Not Transactional
 
