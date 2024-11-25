@@ -74,6 +74,7 @@ areas:
   - cloudfoundry/credhub-api-site
   - cloudfoundry/credhub-cli
   - cloudfoundry/credhub-ci-locks
+  - cloudfoundry/credhub-oss-ci
   - cloudfoundry/credhub-perf-release
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
