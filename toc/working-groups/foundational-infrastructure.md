@@ -227,6 +227,8 @@ areas:
     github: rroberts2222
   - name: Ausaf Ahmed
     github: aqstack
+  - name: Ivan Protsiuk
+    github: iprotsiuk
   - name: Glenn Oppegard
     github: oppegard
   repositories:

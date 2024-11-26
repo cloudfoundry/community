@@ -226,6 +226,8 @@ areas:
     github: oppegard
   - name: Ausaf Ahmed
     github: aqstack
+  - name: Ivan Protsiuk
+    github: iprotsiuk
   - name: Andrew Costa
     github: acosta11
   repositories:
