@@ -347,7 +347,10 @@ apps:
     package:
       docker:
         image: docker-image-repository/docker-image-name
-        username: docker-user-name
+        access_credentials:
+          - type: basic
+            username: docker-user-name
+            password: docker-user-password
     processes:
       - type: web
         scale:
@@ -361,6 +364,24 @@ apps:
         command: bundle exec run-authenticator
         scale:
           memory: 800M
+  - name: app3
+    lifecycle:
+      type: cnb
+      buildpacks:
+        - url: docker://example.org/java-buildpack:latest
+        - url: docker://second-example.org/logging-buildpack:latest
+      access_credentials:
+        - type: basic
+          url: example.org
+          username: my-user
+          password: my-pass
+        - type: token
+          url: second-example.org
+          token: ABCD1234
+      stack:
+        name: cflinuxfs4
+    package:
+      path: /local/path/to/cnb/code
 ```
 
 #### Notable Changes
@@ -389,6 +410,7 @@ binding to existing service instances was supported)
 - Add support for app features
 - Add support for app state
 - Add metadata to apps and nested app subresources
+- Change `docker` (and `cnb`) access credentials to be a list (to enable future credential rotation feature)
 
 ### Future Extensions
 
