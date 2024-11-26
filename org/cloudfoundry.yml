@@ -369,6 +369,7 @@ orgs:
       bosh-softlayer-cpi-release:
         description: An external BOSH CPI for the SoftLayer cloud written in Golang
         has_projects: true
+        archived: true
       bosh-stemcell-resource:
         archived: true
         has_projects: true
