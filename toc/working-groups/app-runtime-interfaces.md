@@ -476,7 +476,6 @@ areas:
     github: evanfarrar
   repositories:
   - cloudfoundry/notifications-release
-  - cloudfoundry/notifications
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
 - name: Stratos Console for Cloud Foundry
