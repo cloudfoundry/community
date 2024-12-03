@@ -269,8 +269,6 @@ areas:
     github: FloThinksPi
   - name: Philipp Thun
     github: philippthun
-  - name: Merric de Launey
-    github: MerricdeLauney
   - name: Johannes Haass
     github: johha
   - name: Michael Oleske
