@@ -102,6 +102,8 @@ areas:
   reviewers:
   - name: Konstantin Lapkov
     github: klapkov
+  - name: Tim Downey
+    github: tcdowney
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -366,6 +368,8 @@ areas:
     github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
+  - name: Tim Downey
+    github: tcdowney
   repositories:
   - cloudfoundry/cf-lookup-route
   - cloudfoundry/cf-networking-helpers
