@@ -159,6 +159,9 @@ areas:
     github: duanemay
   - name: Prateek Gangwal
     github: coolgang123
+  reviewers:
+  - name: Daniel Garnier-Moiroux
+    github: kehrlann
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
