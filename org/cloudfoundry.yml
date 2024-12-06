@@ -412,6 +412,7 @@ orgs:
         description: Get your workstation setup to work on the bosh team
         has_projects: false
         has_wiki: false
+        archived: true
         private: true
       bosh_rackspace_cpi_spike:
         description: An experimental/unsupported/untested CPI for Rackspace
