@@ -399,7 +399,6 @@ areas:
   - cloudfoundry/bosh-warden-cpi-release
   - cloudfoundry/bosh-windows-acceptance-tests
   - cloudfoundry/bosh-windows-stemcell-builder
-  - cloudfoundry/bosh-workstation
   - cloudfoundry/bpm-release
   - cloudfoundry/bsdtar
   - cloudfoundry/config-server
