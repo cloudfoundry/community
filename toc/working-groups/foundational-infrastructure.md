@@ -162,6 +162,8 @@ areas:
   reviewers:
   - name: Daniel Garnier-Moiroux
     github: kehrlann
+  - name: Filip Hanik
+    github: fhanik
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
@@ -197,6 +199,8 @@ areas:
     github: duanemay
   - name: Prateek Gangwal
     github: coolgang123
+  - name: Filip Hanik
+    github: fhanik
   repositories:
   - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
