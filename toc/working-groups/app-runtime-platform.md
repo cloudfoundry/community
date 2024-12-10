@@ -85,8 +85,6 @@ areas:
     github: jrussett
   - name: Maria Shaldybin
     github: mariash
-  - name: Renee Chu
-    github: reneighbor
   - name: Chris Selzo
     github: selzoc
   - name: Amin Jamali
@@ -155,8 +153,6 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
-  - name: Renee Chu
-    github: reneighbor
   - name: Maria Shaldybin
     github: mariash
   - name: David Sabeti
@@ -207,8 +203,6 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
-  - name: Renee Chu
-    github: reneighbor
   - name: Chris Selzo
     github: selzoc
   - name: Carson Long
@@ -333,8 +327,6 @@ areas:
     github: mkocher
   - name: Patrick Lowin
     github: plowin
-  - name: Renee Chu
-    github: reneighbor
   - name: Chris Selzo
     github: selzoc
   - name: Stefan Lay
