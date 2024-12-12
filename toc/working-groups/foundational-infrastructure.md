@@ -67,6 +67,8 @@ areas:
   reviewers:
   - name: Duane May
     github: duanemay
+  - name: Behrouz Soroushian
+    github: bsoroushian
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
