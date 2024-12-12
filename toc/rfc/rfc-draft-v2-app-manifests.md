@@ -4,7 +4,7 @@
 - Start Date: 2024-10-25
 - Author(s): @gerg @tcdowney
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: [community#1019](https://github.com/cloudfoundry/community/pull/1019)
 
 
 ## Summary
