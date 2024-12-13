@@ -11,16 +11,16 @@
 
 [App
 manifests](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html)
-empower app developers to bulk-configure their apps and persist the
+empower app developers to bulk-configure their apps and persist that
 configuration alongside app code in source control.
 
 This RFC proposes implementing a new major version, v2, of the app manifest
 schema. App manifests v2 will add new functionality, ease future Cloud Foundry
 feature development, and enable powerful user workflows. Notably, the v2
 manifest will be
-fully-[declarative](https://blog.nelhage.com/post/declarative-configuration-management/),
-consistent with modern developer expectations and technologies like BOSH and
-Kubernetes.
+consistently-[declarative](https://blog.nelhage.com/post/declarative-configuration-management/),
+consistent with modern developer expectations and technologies like BOSH,
+Terraform, Concourse, and Kubernetes.
 
 ## Problem
 
@@ -34,8 +34,8 @@ inconsistently-declarative, which is a constant source of user confusion. In
 addition, this makes it difficult to implement more advanced developer
 workflows (e.g. [GitOps](https://www.gitops.tech/)), since some resources and
 configuration values can not be deleted when applying manifests. For example,
-it is not possible to unset environment variable or delete service bindings by
-applying an app manifest.
+it is currently not possible to unset environment variable or delete service
+bindings by applying an app manifest.
 
 ### App Manifests vs Space Manifests
 
@@ -116,7 +116,7 @@ value:
 ---
 version: 1
 applications:
-- ...
+  - ...
 ```
 
 The `version` node enables Cloud Foundry to support different structures and
@@ -126,52 +126,71 @@ manifest schema versions.
 Specifying the `version` as `2` will instruct Cloud Foundry to use the v2 app
 manifest schema and behavior described by this RFC.
 
-#### Fully Declarative (Pruning)
-
-Version 1 app manifests are currently inconsistently-declarative. For instance,
-removing a buildpack from the `buildpacks` sequence will delete the buildpack
-from the app configuration, however removing a route from the `routes` sequence
-will NOT unmap the route from the app.
-
-Version 2 app manifests will be fully-declarative; applying a manifest will
-update state in the space to exactly match the manifest, including deleting
-resources and destructively updating configuration.
-
-Declaratively applying app manifests will have multiple benefits,
-including:
-1. Internally-consistent behavior between manifest nodes
-1. Easier onboarding and reduced confusion for users, since declarative
-   configuration is industry-standard (e.g. BOSH, Concourse, Kubernetes)
-1. Enables more powerful workflows for Cloud Foundry app developers (e.g. GitOps)
-
-Declarative app manifests will be a major change to how app manifests are
-applied and will be a barrier to adoption. It is worth evaluating strategies to
-ease the migration, for instance adding support for "dry runs" and rich
-[manifest
-diffs](https://v3-apidocs.cloudfoundry.org/version/release-candidate/#generate-a-manifest-for-an-app).
-
-It will also be important to be vigilant about breaking changes going forward;
-declarative manifests can exacerbate the impact of accidental breaking changes.
-Even changes as innocuous as adding a manifest node for an existing API field
-can be a breaking change, since existing manifests will not have the
-corresponding node present.
-
-##### Prior Art
-
-Since this is a major behavioral change for app manifests, here a survey of
-some prior art for declarative configuration for similar products:
-- https://blog.nelhage.com/post/declarative-configuration-management/
-- https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning
-- https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/#alternative-kubectl-apply-f-directory-prune
-- https://dzx.fr/blog/declarative-kubernetes-resource-management/
-- https://github.com/kubernetes/enhancements/tree/master/keps/sig-cli/3659-kubectl-apply-prune
-
-#### Not Transactional
+#### Non-Transactional
 
 Like v1 manifests, applying a v2 manifest will NOT be transactional. The
 configuration specified in the manifest will be applied in a non-deterministic
 order and can fail when partially applied. Changes resulting from applying the
 manifest will NOT be rolled-back in the event of a failure.
+
+#### Declarative Configuration
+
+Version 1 app manifests are currently inconsistently-declarative. For instance,
+removing a buildpack from the `buildpacks` sequence will delete the buildpack
+from the app configuration, however removing a route from the `routes` sequence
+will NOT unmap the route from the app NOR will it delete the route.
+
+Version 2 app manifests will declaratively apply configuration to resources. By
+default, applying a manifest will update state _for all resources present in
+the manifest_ to exactly match the manifest, including destructively updating
+configuration (e.g unsetting environment variables). 
+
+However, by default applying a v2 manifest will NOT delete top-level resources
+in the space that are not present in the manifest. Deleting resources can be
+costly (e.g. a data service instance), so it will require additional user
+intent, beyond applying a manifest not including that resource.
+
+##### Declarative Resource Deletion
+
+For some advanced use cases, app developers will also want to delete resources
+when applying a manifest. For example, when there is an upstream continuous
+deployment system that assembles complete desired state, builds a space-level
+manifest, and applies it to CF, ideally without requiring any imperative
+commands.
+
+In these cases, developers can opt-in to resource pruning for each top-level
+resource. An example implementation of this could look like:
+
+```yaml
+---
+meta:
+  prune:
+    routes: true
+    apps: true
+    service_instances: false # default
+routes:
+  - url: my.route.biz
+apps:
+  - name: my-app
+```
+
+##### Benefits
+
+Declaratively applying app manifests will have multiple benefits,
+including:
+1. Internally-consistent behavior between manifest nodes
+1. Easier onboarding and reduced confusion for users, since declarative
+   configuration is industry-standard (e.g. BOSH, Terraform, Kubernetes)
+1. Enables more powerful workflows for Cloud Foundry app developers (e.g. GitOps)
+
+##### Prior Art
+
+Since this is a major behavioral change for app manifests, here a survey of
+some prior art for declarative configuration for similar products:
+- https://www.meshcloud.io/en/blog/how-to-implement-declarative-deletion/
+- https://blog.nelhage.com/post/declarative-configuration-management/
+- https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning
+- https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/#alternative-kubectl-apply-f-directory-prune
 
 ### Scope of Work
 
@@ -215,6 +234,12 @@ Some details of the v2 app manifest schema may change during implementation._
 ```yaml
 ---
 version: 2
+meta:
+  prune:
+    routes: true
+    service_instances: false
+    service_bindings: true
+    apps: true
 routes:
   - url: route.example.com/path
     destinations:
@@ -386,6 +411,10 @@ apps:
 
 #### Notable Changes
 
+**Meta**
+- Add `meta` node to configure manifest behavior
+- Add nested `prune` node to configure declarative resource deletion
+
 **Routes**
 - Move `routes` to top-level
 - Route mappings are now "route-centric". The mappings are nested under routes,
@@ -419,39 +448,6 @@ some of the future capabilities that could be enabled by v2 manifests. They are
 not currently possible with v1 manifests, so they would be new features only
 available with v2 manifests. These extensions are less-developed than the core
 v2 manifest design, and may change significantly prior to implementation.
-
-#### Merge State
-
-One of the risks of implementing strict determinism for manifests is that app
-developers can inadvertently delete resources in a space. This would especially
-impact spaces where developers manage multiple apps, each with their own
-manifest.
-
-The "correct" way to handle this would be to merge all the app manifests
-upstream, and then apply a single manifest to Cloud Foundry. That said, v2 app
-manifests could support merging the applied manifest with existing
-state. To manage complexity, merging would only be supported for top-level
-resources, not for configuration of those resources.
-
-For example, the following manifest would declaratively apply configuration
-for the app named `my-app`, but would not affect the configuration of other
-apps nor other resources in the space.
-```yaml
----
-routes: (( merge ))
-service_instances: (( merge ))
-service_bindings: (( merge ))
-apps:
-- name: my-app
-- (( merge ))
-```
-
-Allowing merging would be convenient for creating and updating resources, but
-it does complicate deletion workflows.
-
-_Note: the `(( merge ))` syntax is a
-[spiff](https://github.com/mandelsoft/spiff) joke, and is not intended to be
-final._
 
 #### Droplets
 
