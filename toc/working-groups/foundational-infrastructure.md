@@ -67,6 +67,8 @@ areas:
   reviewers:
   - name: Duane May
     github: duanemay
+  - name: Ajita Jain
+    github: jajita
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
