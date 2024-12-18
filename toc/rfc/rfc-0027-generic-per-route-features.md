@@ -56,7 +56,7 @@ applications:
   routes:
   - route: example.com
     options:
-      loadbalancing-algorithm: round-robin
+      loadbalancing: round-robin
       connection-limit: 15
       session-cookie: FOOBAR
       trim-path: true
@@ -124,7 +124,7 @@ not final):
     "some_key": "some_value"
   },
   "options": {
-    "lb-algo": "least-conn",
+    "loadbalancing": "least-conn",
     "conn-limit": 100,
     "cookie": "my-session-cookie",
     "trim-path": true
