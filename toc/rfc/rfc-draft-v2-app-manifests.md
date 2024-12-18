@@ -609,7 +609,7 @@ Example manifest:
 routes:
   - url: route.example.com/path
     options:
-      loadbalancing_algorithm: round-robin
+      loadbalancing: round-robin
       connection_limit: 15
       session_cookie: FOOBAR
       trim_path: true
