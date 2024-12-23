@@ -233,6 +233,7 @@ areas:
   - name: Andrew Costa
     github: acosta11
   repositories:
+  - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
