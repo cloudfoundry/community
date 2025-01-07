@@ -3,7 +3,7 @@
 - Name: App Manifests v2
 - Start Date: 2024-10-25
 - Author(s): @gerg @tcdowney
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- Status: Accepted
 - RFC Pull Request: [community#1019](https://github.com/cloudfoundry/community/pull/1019)
 
 
