@@ -38,8 +38,6 @@ technical_leads:
 - name: Georgi Sabev
   github: georgethebeatle
 bots:
-- name: eirinici
-  github: eirinici
 - name: korifi-bot
   github: korifi-bot
 config:
@@ -49,16 +47,10 @@ areas:
   approvers:
   - name: Andrew Costa
     github: acosta11
-  - name: Ashwin Krishna
-    github: akrishna90
-  - name: Clint Yoshimura
-    github: clintyoshimura
   - name: Danail Branekov
     github: danail-branekov
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Matt Royal
-    github: matt-royal
   - name: Tim Downey
     github: tcdowney
   repositories:
