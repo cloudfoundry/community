@@ -53,6 +53,8 @@ areas:
     github: julian-hj
   - name: Tim Downey
     github: tcdowney
+  - name: Yusmen Zabanov
+    github: uzabanov
   repositories:
   - cloudfoundry/cf-k8s-secrets
   - cloudfoundry/korifi
