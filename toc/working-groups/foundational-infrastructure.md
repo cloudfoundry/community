@@ -69,6 +69,8 @@ areas:
     github: duanemay
   - name: Joe Eltgroth
     github: joeeltgroth
+  - name: Ajita Jain
+    github: jajita
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub

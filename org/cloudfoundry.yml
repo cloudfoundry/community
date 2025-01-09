@@ -60,6 +60,11 @@ orgs:
         description: Infrastructure as Code for the App Runtime Interfaces Working Group
         has_projects: true
         default_branch: main
+      app-runtime-platform-envs:
+        default_branch: main
+        description: bbl state files for App Runtime Platform Working Group environments
+        has_projects: false
+        private: true
       apt-buildpack:
         has_projects: false
         has_wiki: false
