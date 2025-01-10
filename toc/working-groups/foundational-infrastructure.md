@@ -67,6 +67,8 @@ areas:
   reviewers:
   - name: Duane May
     github: duanemay
+  - name: Joe Eltgroth
+    github: joeeltgroth
   - name: Ajita Jain
     github: jajita
   repositories:
