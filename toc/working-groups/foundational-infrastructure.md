@@ -161,9 +161,9 @@ areas:
     github: duanemay
   - name: Prateek Gangwal
     github: coolgang123
-  reviewers:
   - name: Daniel Garnier-Moiroux
     github: kehrlann
+  reviewers:
   - name: Filip Hanik
     github: fhanik
   repositories:
