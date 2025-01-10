@@ -18,14 +18,6 @@ Provides the Concourse CI/CD platform.
 
 * Require other working groups or projects to use Concourse.
 
-## Working Group Governance Structure
-
-[Working group governance structure](https://github.com/concourse/governance)
-
-## Membership
-
-[Working group membership](https://github.com/concourse/governance/blob/master/teams/maintainers.yml)
-
 ## Roles & Technical Assets
 
 Technical assets for the Concourse working group are contained in the following Github Organizations:
@@ -45,7 +37,7 @@ technical_leads:
 - name: Taylor Silva
   github: taylorsilva
 areas:
-- name: Maintainers
+- name: Core
   approvers:
   - name: Indira
     github: ichandrabhatta

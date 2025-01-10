@@ -223,7 +223,7 @@ Mission: Provides discreet management of security vulnerabilities issues relevan
 | <img width="30px" src="https://github.com/paulcwarren.png"> | Paul Warren       | VMWare  | [@paulcwarren](https://github.com/paulcwarren) |
 
 
-## Working Group Template
+## Concourse
 
 Mission: Provides the Concourse CI/CD platform.
 
