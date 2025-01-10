@@ -288,6 +288,8 @@ areas:
     github: rajathagasthya
   - name: Ming Xiao
     github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -297,8 +299,6 @@ areas:
     github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
-  - name: Benjamin Guttmann
-    github: benjaminguttmann-avtq
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -342,6 +342,8 @@ areas:
     github: rajathagasthya
   - name: Ming Xiao
     github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -353,8 +355,6 @@ areas:
     github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
-  - name: Benjamin Guttmann
-    github: benjaminguttmann-avtq
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
