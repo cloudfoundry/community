@@ -346,6 +346,8 @@ areas:
     github: peanball
   - name: Plamen Doychev
     github: PlamenDoychev
+  - name: Patrick Lowin
+    github: plowin
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -371,9 +373,12 @@ areas:
   - cloudfoundry/cf-routing-test-helpers
   - cloudfoundry/cf-tcp-router
   - cloudfoundry/gorouter
+  - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/healthchecker-release
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
+  - cloudfoundry/pcap
+  - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
   - cloudfoundry/routing-acceptance-tests
@@ -383,38 +388,6 @@ areas:
   - cloudfoundry/routing-info
   - cloudfoundry/routing-release
   - cloudfoundry/silk-release
-
-- name: Networking-Extensions
-  approvers:
-  - name: Alexander Lais
-    github: peanball
-  - name: Dominik Froehlich
-    github: domdom82
-  - name: Maximilian Moehl
-    github: maxmoehl
-  - name: Patrick Lowin
-    github: plowin
-  - name: Tamara Boehm
-    github: b1tamara
-  reviewers:
-  - name: Soha Alboghdady
-    github: Soha-Albaghdady
-  - name: Daria Anton
-    github: Dariquest
-  - name: Clemens Hoffmann
-    github: hoffmaen
-  - name: Konstantin Lapkov
-    github: klapkov
-  - name: Alexander Nicke
-    github: a18e
-  - name: M Rizwan Shaik
-    github: Mrizwanshaik
-  - name: Michal Tekel
-    github: mtekel
-  repositories:
-  - cloudfoundry/haproxy-boshrelease
-  - cloudfoundry/pcap
-  - cloudfoundry/pcap-release
 
 - name: Volume Services
   approvers:
