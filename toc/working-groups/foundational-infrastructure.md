@@ -69,6 +69,10 @@ areas:
     github: duanemay
   - name: Behrouz Soroushian
     github: bsoroushian
+  - name: Joe Eltgroth
+    github: joeeltgroth
+  - name: Ajita Jain
+    github: jajita
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -161,9 +165,9 @@ areas:
     github: duanemay
   - name: Prateek Gangwal
     github: coolgang123
-  reviewers:
   - name: Daniel Garnier-Moiroux
     github: kehrlann
+  reviewers:
   - name: Filip Hanik
     github: fhanik
   repositories:
@@ -288,6 +292,8 @@ areas:
     github: rajathagasthya
   - name: Ming Xiao
     github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -297,8 +303,6 @@ areas:
     github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
-  - name: Benjamin Guttmann
-    github: benjaminguttmann-avtq
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -342,6 +346,8 @@ areas:
     github: rajathagasthya
   - name: Ming Xiao
     github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -353,8 +359,6 @@ areas:
     github: Sascha-Stoj
   - name: Felix Moehler
     github: fmoehler
-  - name: Benjamin Guttmann
-    github: benjaminguttmann-avtq
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh

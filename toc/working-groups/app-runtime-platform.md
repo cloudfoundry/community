@@ -85,8 +85,6 @@ areas:
     github: jrussett
   - name: Maria Shaldybin
     github: mariash
-  - name: Renee Chu
-    github: reneighbor
   - name: Chris Selzo
     github: selzoc
   - name: Amin Jamali
@@ -155,8 +153,6 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
-  - name: Renee Chu
-    github: reneighbor
   - name: Maria Shaldybin
     github: mariash
   - name: David Sabeti
@@ -207,8 +203,6 @@ areas:
     github: geofffranks
   - name: Josh Russett
     github: jrussett
-  - name: Renee Chu
-    github: reneighbor
   - name: Chris Selzo
     github: selzoc
   - name: Carson Long
@@ -233,6 +227,7 @@ areas:
   - name: Andrew Costa
     github: acosta11
   repositories:
+  - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
@@ -333,8 +328,6 @@ areas:
     github: mkocher
   - name: Patrick Lowin
     github: plowin
-  - name: Renee Chu
-    github: reneighbor
   - name: Chris Selzo
     github: selzoc
   - name: Stefan Lay
