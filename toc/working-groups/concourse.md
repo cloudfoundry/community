@@ -24,7 +24,7 @@ Technical assets for the Concourse working group are contained in the following 
 
 * [github.com/concourse](https://github.com/concourse)
 
-```yaml
+```
 name: Concourse
 execution_leads:
 - name: Derek Richard
