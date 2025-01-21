@@ -11,8 +11,8 @@
 
 Adding a repository to the ownership scope of a Working Group, removing a
 repository from its scope, or transferring a repository between Working Groups
-within the `cloudfoundry` GitHub organization requires approval separately from
-each affected Working Group and from the Technical Oversight Committee (TOC).
+requires approval separately from each affected Working Group and from the
+Technical Oversight Committee (TOC).
 
 
 ## Problem
@@ -38,15 +38,15 @@ Groups, and to remove a repository from a Working Group.
 
 ### Ownership model
 
-We can represent the ownership structure of the repositories in the
-`cloudfoundry` GitHub organization as a partition of the set of repositories.
-Each Working Group has a subset of repositories that it owns, and there are
-separate subsets under ownership of the TOC and of the CF Foundation staff,
-respectively. Finally, there are two separate subsets of unmanaged
-repositories: ones that are archived and ones that are active. Since this
-collection of subsets is a partition, the subsets MUST be mutually exclusive
-and comprehensively exhaustive: each repository in the organization is in
-exactly one of these subsets.
+We can represent the ownership structure of the repositories in CFF Managed
+Github Orgs as a partition of the set of repositories. Each Working Group has a
+subset of repositories that it owns, and there are separate subsets under
+ownership of the TOC and of the CF Foundation staff, respectively. Finally,
+there are two separate subsets of unmanaged repositories: ones that are
+archived and ones that are active. Since this collection of subsets is a
+partition, the subsets MUST be mutually exclusive and comprehensively
+exhaustive: each repository in a CFF Managed Github Org is in exactly one of
+these subsets.
 
 The subset of repositories that each Working Group owns MUST be identical to
 the set of repositories listed in its charter description. This set of
@@ -82,19 +82,20 @@ repositories into it.
 ### Ownership changes
 
 A change to repository ownership is a change to the partition of the set of
-repositories in the `cloudfoundry` organization. For a single repository, the
+repositories in CFF Managed Github Organization. For a single repository, the
 possible changes are the addition of a new repository to the one of the subsets
 in the partition, the transfer of an existing repository from one subset to
 another, or the removal of a repository from a subset.
 
 Addition of a repository to the partition corresponds either to creating a new
-repository or transferring an existing repository from another GitHub
-organization.
+repository, transferring an existing repository from another GitHub
+organization, or adding an additional Github Organization to the list of CFF
+Managed Github Organizations.
 
-Removal of a repository corresponds either to transferring it to another GitHub
-organization or to deleting the repository entirely, neither of which should be
-undertaken lightly. The CF community SHOULD ensure that either of these cases
-receives thorough consideration and scrutiny before proceeding.
+Removal of a repository corresponds either to transferring it to a non-CFF
+Managed GitHub Organization or to deleting the repository entirely, neither of
+which should be undertaken lightly. The CF community SHOULD ensure that either
+of these cases receives thorough consideration and scrutiny before proceeding.
 
 Proposed changes to repository ownership SHOULD be submitted for consideration
 as a pull request on the [Cloud Foundry community
@@ -115,8 +116,8 @@ Additionally, if a change affects the subset of repositories that a Working
 Group owns, that Working Group MUST approve the change as well. Approval
 consists of a quorum decision by the leads of the Working Group.
 
-The TOC MUST also approve of any proposal to create a new repository within the
-`cloudfoundry` GitHub organization or to rename an existing repository. 
+The TOC MUST also approve of any proposal to create a new repository within a
+CFF Managed Github Organization or to rename an existing repository. 
 
 We illustrate several different cases of repository ownership changes and the
 approvals required for them to proceed:
