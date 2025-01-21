@@ -55,3 +55,72 @@ There are some existing property validations that may go beyond the scope of thi
 has the ability currently for the deployer to pass in validation rules for certificates. Those rules are then applied against
 a different property entirely. This is probably possible to implement on the bosh director side in a custom certificate validator,
 but it doesn't seem like something that would benefit more than this singular job.
+
+## Timeline
+
+We would like to get feedback on this through the first week or two of February and then implement the functionality on 
+the Bosh Director in the second half of February. A new major release of the director would be released at the end
+of February that has this available to release authors. A new major version of the CLI would have to be released at the
+same time that includes the functionality to package up the `properties_schema.json` file when creating the release.
+
+The `bosh create-env` functionality would probably not follow immediately. As we'll have to duplicate any custom schema
+validations in both places, we'll probably wait for things to settle down a bit, but I could see this work getting
+done in the second half of 2025.
+
+## Examples
+The very simple login_banner job of os-conf release has only a single property:
+```yaml
+properties:
+  login_banner.text:
+    description: Login banner text
+```
+and the schema to validate it as a string:
+```yaml
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "login_banner": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+```
+
+A more complicated example from the gorouter release nats certificate properties. Currently if you specify one, you must specify the other.
+```yaml
+properties:
+  nats.cert_chain:
+    description: Certificate chain used for client authentication to NATS. In PEM format.
+  nats.private_key:
+    description: Private key used for client authentication to NATS. In PEM format.
+```
+schema for just the required aspect of these two properties:
+```yaml
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "nats": {
+      "type": "object",
+      "properties": {
+        "cert_chain": {
+          "type": "string"
+        },
+        "private_key": {
+          "type": "string"
+        }
+      },
+      "dependentRequired": {
+        "cert_chain": ["private_key"],
+        "private_key": ["cert_chain"]
+      }
+    }
+  }
+}
+```
