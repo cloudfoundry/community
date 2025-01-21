@@ -61,7 +61,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Can join CF Slack workspace</p>
         <p>Can take part in community discussions</p>
     </td>
-    <td>GitHub Organization</td>
+    <td>Per GitHub Organization</td>
   </tr>  
 
   <tr>
@@ -75,7 +75,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     <td>
         <p>Can get PRs accepted</p>
     </td>
-    <td>GitHub Organization</td>
+    <td>Per GitHub Organization</td>
   </tr>
 
   <tr>
@@ -88,10 +88,9 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Has made multiple contributions to the project</p>
     </td>
     <td>
-        <p>Member of the GitHub cloudfoundry (and possibly the cloudfoundry-incubator) orgs</p>
-        <p>Member of the Cloud Foundry Slack workspace</p>
+        <p>Member of a CFF GitHub Organization</p>
     </td>
-    <td>GitHub Organization</td>
+    <td>Per GitHub Organization</td>
   </tr>
 
   <tr>
@@ -226,10 +225,10 @@ this is not a requirement.
 
   - Contributing to working group or community discussions.
 
-- Subscribed to
-  [cf-dev@lists.cloudfoundry.org](https://lists.cloudfoundry.org/g/cf-dev).
-
 - Actively contributing to 1 or more areas.
+
+- For Cloud Foundry Contributors: Subscribed to
+  [cf-dev@lists.cloudfoundry.org](https://lists.cloudfoundry.org/g/cf-dev).
 
 ### Responsibilities and privileges
 
