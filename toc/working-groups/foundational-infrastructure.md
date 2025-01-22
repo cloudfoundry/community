@@ -73,6 +73,10 @@ areas:
     github: joeeltgroth
   - name: Ajita Jain
     github: jajita
+  - name: Andrew Costa
+    github: acosta11
+  - name: Greg Cobb
+    github: Gerg
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
