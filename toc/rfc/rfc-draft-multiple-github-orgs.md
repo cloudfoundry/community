@@ -18,7 +18,7 @@ only one Github Organization: cloudfoundry. However, there are currently two
 Github Organizations that the CFF TOC oversees: cloudfoundry and paketo. In the
 near future, we plan to add a third Github Organization: concourse.
 
-We MUST our documentation to reflect how we want to handle multiple Github organizations.
+We MUST update our documentation to reflect how we want to handle multiple Github organizations.
 
 ## Proposal
 
