@@ -232,7 +232,7 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [concourse.md](./concourse.md) |
-| Forum                      | TBD  |
+| Forum                      | [GitHub Discussions](https://github.com/concourse/concourse/discussions)  |
 | Community Meeting Calendar | TBD  |
 | Meeting Notes              | TBD  |
 | Slack Channel              | TBD  |
