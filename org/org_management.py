@@ -444,17 +444,19 @@ class OrgGenerator:
                 "required_pull_request_reviews": {
                     "dismiss_stale_reviews": True,
                     "require_code_owner_reviews": True,
-                    "required_approving_review_count": 0
-                    if len(
-                        {
-                            u["github"]
-                            for a in wg["areas"]
-                            if OrgGenerator._CF_ORG_PREFIX + repo in a["repositories"]
-                            for u in a["approvers"]
-                        }
-                    )
-                    < 4
-                    else 1,
+                    "required_approving_review_count": (
+                        0
+                        if len(
+                            {
+                                u["github"]
+                                for a in wg["areas"]
+                                if OrgGenerator._CF_ORG_PREFIX + repo in a["repositories"]
+                                for u in a["approvers"]
+                            }
+                        )
+                        < 4
+                        else 1
+                    ),
                     "bypass_pull_request_allowances": {
                         "teams": [wg_bots]  # wg bot team
                         + [
