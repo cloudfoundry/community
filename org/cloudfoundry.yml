@@ -2630,7 +2630,7 @@ orgs:
           uaa-ci: admin
           credhub-oss-ci: admin
       temp-prometheus-exporter-admins:
-        description: "Temporary team for managing cf/ firehose exporter secrets until we have a permanent plan."
+        description: "Temporary admin team for Prometheus Repositories."
         maintainers:
           - benjaminguttmann-avtq
         members: []
@@ -2639,6 +2639,8 @@ orgs:
           cf_exporter: admin
           firehose_exporter: admin
           bosh_exporter: admin
+          node-exporter-boshrelease: admin
+          prometheus-boshrelease: admin
       temp-ari-capi-admins:
         description: "Temporary admin team for CAPI"
         maintainers:
