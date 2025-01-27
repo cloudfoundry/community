@@ -85,6 +85,21 @@ class OrgGenerator:
                 if wg:
                     self.working_groups.append(wg)
 
+    # rfc-0007-repository-ownership: a repo can't be owned by multiple WGs
+    def validate_repo_ownership(self) -> bool:
+        valid = True
+        repo_owners = {}
+        for wg in self.working_groups:
+            wg_name = wg["name"]
+            wg_repos = set(r for a in wg["areas"] for r in a["repositories"])
+            for repo in wg_repos:
+                if repo in repo_owners:
+                    print(f"ERROR: Repository {repo} is owned by multiple WGs: {repo_owners[repo]}, {wg_name}")
+                    valid = False
+                else:
+                    repo_owners[repo] = wg_name
+        return valid
+
     def get_contributors(self) -> Set[str]:
         return set(self.contributors)
 
@@ -497,6 +512,9 @@ if __name__ == "__main__":
     print("Generating cloudfoundry org configuration.")
     generator = OrgGenerator()
     generator.load_from_project()
+    if not generator.validate_repo_ownership():
+        # TODO: fail on error
+        print("ERROR: Repository ownership is invalid.")
     generator.generate_org_members()
     generator.generate_teams()
     generator.generate_branch_protection()
