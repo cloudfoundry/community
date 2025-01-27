@@ -388,6 +388,8 @@ areas:
   reviewers:
   - name: Georg Lokowandt
     github: Lokowandtg
+  - name: Daniel Garnier-Moiroux
+    github: kehrlann
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
