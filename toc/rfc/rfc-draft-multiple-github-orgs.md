@@ -4,7 +4,7 @@
 - Start Date: 2025-01-21
 - Author(s): @ameowlia, @rkoster
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1050
 
 ## Summary
 
