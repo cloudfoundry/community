@@ -23,7 +23,6 @@ We MUST update our documentation to reflect how we want to handle multiple Githu
 ## Proposal
 
 ### New Definitions
-
 * *CFF Github Orgs* - This includes ALL Github Organizations that the CFF TOC
   oversees. This currently includes: cloudfoundry and paketo. When we merge
   [the RFC to add
@@ -43,8 +42,14 @@ also contains the CFF TOC org management automation scripts.
 This SHOULD be the place where yaml definitions for all CFF Managed Github orgs
 are stored. To reflect this, the name of the directory SHOULD be renamed to `orgs`.
 
-### Rename `cloudfoundry.yml` to `orgs.yml`
+### Update `contributors.yml` to handle multiple Github Organizations
+Currently the
+[`contributors.yml`](https://github.com/cloudfoundry/community/blob/0caf07e9d93732b40091cdf7c7c616aa18ec07d2/org/contributors.yml)
+file has a list of contributors to the cloudfoundry Github Organization. This
+file SHOULD be updated to be able to handle contributors for each CFF Managed
+Github Org. Each CFF Managed Github Org MUST have its own list of contributors.
 
+### Rename `cloudfoundry.yml` to `orgs.yml`
 Currently
 [cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml)
 contains yaml defining all of the repos in the cloudfoundry Github org. It
