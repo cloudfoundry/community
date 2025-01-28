@@ -8,7 +8,7 @@
 
 ## Summary
 
-CFF documentation and automation MUST be updated to be able to handle multiple
+CFF community documentation and automation MUST be updated to be able to handle multiple
 Github Orgs.
 
 ## Problem
