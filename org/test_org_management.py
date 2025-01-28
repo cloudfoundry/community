@@ -322,6 +322,16 @@ class TestOrgGenerator(unittest.TestCase):
             OrgGenerator._kebab_case("wg-Foundational Infrastructure-Integrated Databases (Mysql / Postgres)-approvers"),
         )
 
+    def test_validate_repo_ownership(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1])
+        self.assertTrue(o.validate_repo_ownership())
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1, wg2])
+        self.assertTrue(o.validate_repo_ownership())
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg3])
+        self.assertTrue(o.validate_repo_ownership())
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1, wg2, wg3])
+        self.assertFalse(o.validate_repo_ownership())
+
     def test_generate_wg_teams(self):
         _wg1 = OrgGenerator._yaml_load(wg1)
         (name, wg_team) = OrgGenerator._generate_wg_teams(_wg1)
@@ -482,6 +492,10 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual(0, len([wg for wg in o.working_groups if len(wg["execution_leads"]) == 0]))
         # branch protection
         self.assertIn("cloudfoundry", o.branch_protection["branch-protection"]["orgs"])
+
+        # ERROR: Repository cloudfoundry/app-runtime-interfaces-infrastructure is owned by multiple WGs:
+        # App Runtime Interfaces, Documentation
+        o.validate_repo_ownership()  # TODO: assertTrue when repo ownership is cleaned up
 
         o.generate_org_members()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
