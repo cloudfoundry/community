@@ -65,27 +65,6 @@ areas:
   repositories:
   - openservicebrokerapi/servicebroker
   - openservicebrokerapi/osb-checker
-- name: Service Fabrik
-  approvers:
-  - name: Abhik Gupta
-    github: abh1kg
-  - name: Anoop Joseph Babu
-    github: anoopjb
-  - name: Jintu Sebastian
-    github: jintusebastian
-  - name: Swati
-    github: swati1102
-  - name: Vinayendraswamy Brahmandabheri
-    github: vinaybheri    
-  repositories:
-  - cloudfoundry/service-fabrik-broker
-  - cloudfoundry/service-fabrik-blueprint-app
-  - cloudfoundry/service-fabrik-boshrelease
-  - cloudfoundry/service-fabrik-backup-restore
-  - cloudfoundry/service-fabrik-blueprint-service
-  - cloudfoundry/service-fabrik-blueprint-boshrelease
-  - cloudfoundry/service-fabrik-cli-plugin
-  - cloudfoundry/service-fabrik-lvm-volume-driver
 config:
   github_project_sync:
     mapping:
