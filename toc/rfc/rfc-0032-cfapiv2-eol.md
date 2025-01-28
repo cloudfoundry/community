@@ -38,7 +38,7 @@ If the TOC does not approve moving to the next phase, the TOC will decide a numb
 
 **Checkpoint 1**
 - [cf-deployment v47.0.0](https://github.com/cloudfoundry/cf-deployment/releases/tag/v47.0.0) ships with disabled CF API v2. It can be re-enabled by operators using [enable-v2-api.yml](https://github.com/cloudfoundry/cf-deployment/blob/main/operations/enable-v2-api.yml).
-- TOC approval documented in PR
+- TOC approval documented in PR [community#1058](https://github.com/cloudfoundry/community/pull/1058)
 
 **Phase 2** (after Checkpoint 1, ~mid/end 2025)
 - Engineering work so that all CFF-controlled clients use v3 by default
