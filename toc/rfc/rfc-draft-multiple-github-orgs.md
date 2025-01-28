@@ -33,6 +33,10 @@ We MUST update our documentation to reflect how we want to handle multiple Githu
   managed via the CFF TOC automation. This currently only includes
   cloudfoundry.
 
+### Working Groups are per CFF Github Org
+Working Groups MUST only contain repos from one CFF Github Org. The org MUST
+be defined in the working group yaml.
+
 ### Rename `org` dir to `orgs`
 Currently the directory
 [org](https://github.com/cloudfoundry/community/tree/main/org) contains yaml
