@@ -61,7 +61,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Can join CF Slack workspace</p>
         <p>Can take part in community discussions</p>
     </td>
-    <td>Per GitHub Organization</td>
+    <td>All CFF Github Organizations</td>
   </tr>  
 
   <tr>
@@ -75,7 +75,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     <td>
         <p>Can get PRs accepted</p>
     </td>
-    <td>Per GitHub Organization</td>
+    <td>All CFF Github Organizations</td>
   </tr>
 
   <tr>
@@ -90,7 +90,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     <td>
         <p>Member of a CFF GitHub Organization</p>
     </td>
-    <td>Per GitHub Organization</td>
+    <td>Per CFF Github Organization</td>
   </tr>
 
   <tr>
