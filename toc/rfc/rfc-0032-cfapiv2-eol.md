@@ -37,7 +37,8 @@ If the TOC does not approve moving to the next phase, the TOC will decide a numb
 - Turn off CF API v2 by default in cf-deployment (set CAPI property [cc.temporary_enable_v2](https://bosh.io/jobs/cloud_controller_ng?source=github.com/cloudfoundry/capi-release&version=1.185.0#p%3dcc.temporary_enable_v2) to false). Operators may still re-enable v2.
 
 **Checkpoint 1**
-- TOC approval
+- [cf-deployment v47.0.0](https://github.com/cloudfoundry/cf-deployment/releases/tag/v47.0.0) ships with disabled CF API v2. It can be re-enabled by operators using [enable-v2-api.yml](https://github.com/cloudfoundry/cf-deployment/blob/main/operations/enable-v2-api.yml).
+- TOC approval documented in PR
 
 **Phase 2** (after Checkpoint 1, ~mid/end 2025)
 - Engineering work so that all CFF-controlled clients use v3 by default
