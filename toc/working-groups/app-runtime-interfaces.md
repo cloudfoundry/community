@@ -79,6 +79,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
@@ -117,6 +119,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
@@ -129,6 +133,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
@@ -141,6 +147,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
@@ -153,6 +161,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/php-buildpack
   - cloudfoundry/php-buildpack-release
@@ -165,6 +175,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
@@ -177,6 +189,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/r-buildpack
   - cloudfoundry/r-buildpack-release
@@ -189,6 +203,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/ruby-buildpack
   - cloudfoundry/ruby-buildpack-release
@@ -201,6 +217,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
@@ -215,6 +233,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/binary-builder
   - cloudfoundry/brats
@@ -241,6 +261,8 @@ areas:
     github: pivotal-david-osullivan
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   reviewers:
   - name: Anthony Dahanne
     github: anthonydahanne
@@ -257,6 +279,8 @@ areas:
     github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
+  - name: Simon Jones
+    github: simonjjones
   repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
