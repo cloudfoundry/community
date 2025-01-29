@@ -422,9 +422,6 @@ areas:
     github: Dray56
   - name: Gourab Mukherjee
     github: Gourab1998
-  bots:
-  - name: SAP OSPO Bot
-    github: SAP-OSPO-ADMIN
   repositories:
   - cloudfoundry/terraform-provider-cloudfoundry
 
