@@ -493,9 +493,7 @@ class TestOrgGenerator(unittest.TestCase):
         # branch protection
         self.assertIn("cloudfoundry", o.branch_protection["branch-protection"]["orgs"])
 
-        # ERROR: Repository cloudfoundry/app-runtime-interfaces-infrastructure is owned by multiple WGs:
-        # App Runtime Interfaces, Documentation
-        o.validate_repo_ownership()  # TODO: assertTrue when repo ownership is cleaned up
+        self.assertTrue(o.validate_repo_ownership())
 
         o.generate_org_members()
         members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
@@ -519,4 +517,4 @@ class TestOrgGenerator(unittest.TestCase):
 
         o.generate_branch_protection()
         bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
-        self.assertGreaterEqual(len(bp_repos), 1)  # TODO update after some WGs opted in
+        self.assertGreaterEqual(len(bp_repos), 3)
