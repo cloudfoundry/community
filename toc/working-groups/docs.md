@@ -60,5 +60,4 @@ areas:
   - cloudfoundry/docs-services
   - cloudfoundry/docs-credhub
   - cloudfoundry/docs-dotnet-core-tutorial
-  - cloudfoundry/app-runtime-interfaces-infrastructure
 ```
