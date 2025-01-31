@@ -48,6 +48,8 @@ areas:
   reviewers:
   - github: dimivel
     name: Dimitar Velinov
+  - github: oliver-heinrich
+    name: Oliver Heinrich
   approvers:
   - github: davewalter
     name: Dave Walter
