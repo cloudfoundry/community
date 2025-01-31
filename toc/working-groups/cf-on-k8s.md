@@ -33,8 +33,6 @@ execution_leads:
 - name: Andrew Wittrock
   github: Birdrock
 technical_leads:
-- name: Dave Walter
-  github: davewalter
 - name: Georgi Sabev
   github: georgethebeatle
 bots:
@@ -49,6 +47,8 @@ areas:
     github: acosta11
   - name: Danail Branekov
     github: danail-branekov
+  - name: Dave Walter
+    github: davewalter
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Tim Downey
