@@ -52,5 +52,47 @@ areas:
     github: IvanChalukov
   - name: Kump3r
     github: Kump3r
-  repositories: []
+  repositories:
+  - concourse/concourse
+  - concourse/concourse-bosh-release
+  - concourse/ci
+  - concourse/docs
+  - concourse/dex
+  - concourse/semver-resource
+  - concourse/houdini
+  - concourse/concourse-bosh-deployment
+  - concourse/registry-image-resource
+  - concourse/hg-resource
+  - concourse/github-release-resource
+  - concourse/bosh-io-stemcell-resource
+  - concourse/docker-image-resource
+  - concourse/rfcs
+  - concourse/blog
+  - concourse/concourse-chart
+  - concourse/mock-resource
+  - concourse/infrastructure
+  - concourse/concourse-docker
+  - concourse/git-resource
+  - concourse/examples
+  - concourse/flag
+  - concourse/s3-resource
+  - concourse/pool-resource
+  - concourse/resource-types-website
+  - concourse/resource-types
+  - concourse/oci-build-task
+  - concourse/time-resource
+  - concourse/bosh-io-release-resource
+  - concourse/retryhttp
+  - concourse/prod
+  - concourse/booklit
+  - concourse/oxygen-mask
+  - concourse/datadog-event-resource
+  - concourse/office-hours #here and below is either archived, or we expect to archive in near the future
+  - concourse/governance
+  - concourse/.github
+  - concourse/hush-house
+  - concourse/tracker-resource
+  - concourse/baggage-claim
+  - concourse/buildroot-images
+  - concourse/concourse-pipeline-resource
 ```
