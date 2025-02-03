@@ -171,7 +171,6 @@ areas:
     github: coolgang123
   - name: Daniel Garnier-Moiroux
     github: kehrlann
-  reviewers:
   - name: Filip Hanik
     github: fhanik
   repositories:
@@ -204,13 +203,13 @@ areas:
     github: adrianhoelzl-sap
   - name: Klaus Kiefer
     github: klaus-sap
+  - name: Filip Hanik
+    github: fhanik
   reviewers:
   - name: Duane May
     github: duanemay
   - name: Prateek Gangwal
     github: coolgang123
-  - name: Filip Hanik
-    github: fhanik
   repositories:
   - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
