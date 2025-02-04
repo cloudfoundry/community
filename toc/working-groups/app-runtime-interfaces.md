@@ -389,6 +389,8 @@ areas:
     github: tcdowney
   - name: Michael Chinigo
     github: chinigo
+  - name: Daria Anton
+    github: Dariquest
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
