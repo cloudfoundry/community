@@ -43,6 +43,7 @@ The current working groups are:
 - Paketo
 - Service Management
 - Vulnerability Management
+- Concourse
 
 
 ## App Runtime Deployments
@@ -220,6 +221,27 @@ Mission: Provides discreet management of security vulnerabilities issues relevan
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/paulcwarren.png"> | Paul Warren       | VMWare  | [@paulcwarren](https://github.com/paulcwarren) |
+
+
+## Concourse
+
+Mission: Provides the Concourse CI/CD platform.
+
+This working group has no repositories in the `cloudfoundry` GitHub organization.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [concourse.md](./concourse.md) |
+| Forum                      | [GitHub Discussions](https://github.com/concourse/concourse/discussions)  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channel              | TBD  |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/drich10.png"> | Derek Richard       | Broadcom  | [@drich10](https://github.com/drich10) |
+| <img width="30px" src="https://github.com/taylorsilva.png"> | Taylor Silva       |   | [@taylorsilva](https://github.com/taylorsilva) |
+
 
 <!--
 ## Working Group Template
