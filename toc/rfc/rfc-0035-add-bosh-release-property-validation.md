@@ -3,7 +3,7 @@
 - Name: Bosh Release Property Validation
 - Start Date: 2024-01-20
 - Author(s): jpalermo
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: [community#1049](https://github.com/cloudfoundry/community/pull/1049)
 
 ## Summary
