@@ -1922,6 +1922,7 @@ orgs:
         default_branch: main
         description: A BOSH release and CLI to enable network analysis for CF app developers
         has_projects: true
+        archived: true
       persi-ci:
         has_projects: true
         archived: true
