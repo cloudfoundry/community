@@ -30,7 +30,7 @@ usage_checks() {
   fi
 
   if gist_url=$(echo "test" | gh gist create -d test -f test - 2>/dev/null); then
-    gh gist delete "${gist_url}" >/dev/null 2>&1
+    gh gist delete "${gist_url}" --yes >/dev/null 2>&1
   else 
     echo 'Please login to GitHub with the `gh` cli using credentials with permissions to create gists' >&2
     exit 1
