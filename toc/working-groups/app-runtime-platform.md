@@ -377,7 +377,6 @@ areas:
   - cloudfoundry/healthchecker-release
   - cloudfoundry/multierror
   - cloudfoundry/nats-release
-  - cloudfoundry/pcap
   - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
