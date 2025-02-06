@@ -46,8 +46,6 @@ bots:
 areas:
 - name: CF Deployment
   reviewers:
-  - github: dimivel
-    name: Dimitar Velinov
   - github: oliver-heinrich
     name: Oliver Heinrich
   approvers:
@@ -63,6 +61,8 @@ areas:
     name: Sven Krieger
   - github: iaftab-alam
     name: Aftab Alam
+  - github: dimivel
+    name: Dimitar Velinov
   repositories:
   - cloudfoundry/app-runtime-deployments-infrastructure
   - cloudfoundry/cf-acceptance-tests
