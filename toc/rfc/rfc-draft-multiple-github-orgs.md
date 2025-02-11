@@ -24,10 +24,7 @@ We MUST update our documentation to reflect how we want to handle multiple Githu
 
 ### New Definitions
 * *CFF Github Orgs* - This includes ALL Github Organizations that the CFF TOC
-  oversees. This currently includes: cloudfoundry and paketo. When we merge
-  [the RFC to add
-  concourse](https://github.com/cloudfoundry/community/pull/1047), then
-  concourse will also be included in this list.
+  oversees. This currently includes: cloudfoundry, concourse and paketo.
 
 * *CFF Managed Github Orgs* - This includes all Github organizations that are
   managed via the CFF TOC automation. This currently only includes
