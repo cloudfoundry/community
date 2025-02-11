@@ -24,30 +24,38 @@ The CFF community should implement an alternative approach for service binding i
 - The file size limit can be controlled by the CF platform
 - Already today CF uses `tmpfs` for [Instance Identity Credentials](https://docs.cloudfoundry.org/devguide/deploy-apps/instance-identity.html) which are rotated without restarting the application every `24h` by default
 
-The two approaches should be supported in parallel. Users should be able to select which approach Cloud Controller should use to deliver the binding information. Applications with binding information >`130KB` have to go with the file option and adopt it. There are two alternatives regarding service binding file organization:
-1. The `VCAP_SERVICES` content is stored in a file which location is specified via the `VCAP_SERVICES_FILE_PATH` env var in the same format as the `VCAP_SERVICES` environment variable
+The two approaches should be supported in parallel, allowing users to select which method Cloud Controller uses to deliver binding information. Applications with binding information exceeding `130KB` must adopt the file-based option. This option supports two alternatives for organizing service binding files:
+
+1. Store the `VCAP_SERVICES` content in a file. The file's location is specified by the `VCAP_SERVICES_FILE_PATH` environment variable, and the content format remains the same as the `VCAP_SERVICES` environment variable.
    * Advantages:
       * Less disruptive for applications consuming the `VCAP_SERVICES` env var
       * Less implementation effort for the Cloud Controller
    * Disadvantages:
       * Can’t make use of tools and libraries from the Cloud Native community because K8s specifies a different file structure and format for the service binding information
-2. Implement the K8s service binding specification. The environment variable `SERVICE_BINDING_ROOT` defines the location for the service bindings. The name of the file and the format follow the [K8s specification](https://servicebinding.io/):
+2. This option is an implementation of the K8s service binding specification. The environment variable `SERVICE_BINDING_ROOT` defines the location for the service bindings. The name of the file and the format follow the [K8s specification](https://servicebinding.io/):
    * Advantages:
       * CF community could re-use service binding libraries from the Cloud Native community
       * Moving application between CF or K8s deployments will be easier
    * Disadvantages
       * Higher implementation efforts for the Cloud Controller
 
-The 2) alternatives offers more than just addressing the issue of this RFC. It suggests an option to evolve the CF platform towards a different service binding specification defined by the Cloud Native community. This means higher implementation efforts for the CF platform and application developers, but possible benefits from the Cloud Native community. This RFC has a light preference for the 2) alternative because of the listed advantages but the feedback of the CF community is wanted here.
+The 2) alternatives offers more than just addressing the issue of this RFC. It suggests an option to evolve the CF platform towards a different service binding specification defined by the Cloud Native community. This means higher implementation efforts for the CF platform and application developers, but possible benefits from the Cloud Native community.
 
 Additionally, the application environment is stored in the `CCDB` and `BBS DB` that is why we should define a limit for the size of it, which makes it possible to be stored in the according DBs and doesn’t impact the performance of the communication between Cloud Controller and the Diego API. That is why this RFC suggests a limit of `1MB`, which is roughly ten times higher than the current one of 130KB. This is subject for evaluation during the implementation of this RFC.
 
 > [!NOTE]
-> The voting in the CF community selected the option 2). That is why, this RFC focuses on option 2) in the next sections. The voting results are available [here](https://github.com/cloudfoundry/community/pull/804#discussion_r1555938410).
+> The [voting](https://github.com/cloudfoundry/community/pull/804#discussion_r1555938410) in the CF community selected option 2). However, after further exploration of the available CF application libraries for processing `VCAP_SERVICES`, we discovered that they cannot support option 2) in a backward-compatible way without requiring changes to application code (details are available in [this discussion](https://github.com/cloudfoundry/cloud_controller_ng/issues/4036#issuecomment-2590015331)).
+
 
 ### Implementation Overview
 
-Cloud Controller should introduce a new app feature for activation of the file-based approach. This means that the [App Features API](https://v3-apidocs.cloudfoundry.org/version/3.159.0/index.html#app-features) could be used here and a new feature flag called “file-based-service-bindings" should be introduced.
+Cloud Controller should introduce app feature flags to activate the file-based approaches. This will utilize the [App Features API](https://v3-apidocs.cloudfoundry.org/version/3.159.0/index.html#app-features). Two new feature flags should be introduced:
+
+* `file-based-vcap-services` for option 1)
+* `service-binding-k8s` for option 2)
+
+These two app feature flags should be mutually exclusive, meaning only one can be active for a single application at any given time.
+
 The [contract](https://github.com/cloudfoundry/bbs/blob/main/doc/actions.md) between Cloud Controller and Diego should be extended so that file name and file content for the application container can be specified. E.g. the run action could look like this when file approach is selected:
 
 ```
@@ -80,7 +88,9 @@ action := &models.RunAction{
 
 ### App Runtime Interfaces WG
 
-Cloud Controller should add a new App Feature for activation of the new file-based service binding option. If the file-based service binding feature is active for an application the Cloud Controller should generate a Run action, which configures the service bindings to be stored as tmpfs file(s) in the application container instead of `VCAP_SERVICES` environment variable. Additionally, Cloud Controller should set the `SERVICE_BINDING_ROOT` environment variable accordingly. The translation from `VCAP_SERVICES` to file based bindings should follow the CNB translation in `libcnb`. The implementation in `libcnb` could be found [here](https://github.com/buildpacks/libcnb/blob/main/platform.go#L199-L2270) and it does following:
+Cloud Controller should add new App Features to activate the file-based service binding options. When file based service bindings feature is active for an application, Cloud Controller should generate a Run action that configures the service bindings to be stored as tmpfs file(s) in the application container instead of using the `VCAP_SERVICES` environment variable. Additionally, Cloud Controller should set the `VCAP_SERVICES_FILE_PATH` environment variable for option 1) or the `SERVICE_BINDING_ROOT` environment variable for option 2).
+
+The translation from `VCAP_SERVICES` to the [K8s specification](https://servicebinding.io/) should follow the CNB translation in `libcnb`. The implementation in `libcnb` can be found [here](https://github.com/buildpacks/libcnb/blob/main/platform.go#L199-L2270) and performs the following steps:
 
 * The `credentials` object is translated into key/value files where key is the file name and value is the file content. If a key in `credentials` has a nested `JSON` value, then the `JSON` is written as the content of the file.
 * The `label` from `VCAP_SERVICES` is translated to `type`.
@@ -109,7 +119,7 @@ The CF app manifest is [additive](https://v3-apidocs.cloudfoundry.org/#apply-a-m
 applications:
 - name: test-app
   features:
-  - file-based-service-bindings: true
+  - service-binding-k8s: true
 ```
 or as alternative proposal:
 
@@ -118,7 +128,7 @@ or as alternative proposal:
 applications:
 - name: test-app
   features:
-  - name: file-based-service-bindings
+  - name: service-binding-k8s
     enabled: true
 ```
 
