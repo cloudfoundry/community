@@ -3,8 +3,8 @@
 - Name: Managing Multiple Github Orgs
 - Start Date: 2025-01-21
 - Author(s): @ameowlia, @rkoster
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1050
+- Status: Accepted
+- RFC Pull Request: [community#1050](https://github.com/cloudfoundry/community/pull/1050)
 
 ## Summary
 
