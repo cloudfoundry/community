@@ -9,7 +9,8 @@
 
 ## Summary
 
-All working groups SHOULD create GitHub teams using the standardized name format.
+All working groups SHOULD create GitHub teams using the standardized name
+format.
 
 Supersedes [rfc-0005-github-teams-and-access](https://github.com/cloudfoundry/community/blob/main/toc/rfc/archived/rfc-0005-github-teams-and-access.md)
 
@@ -24,8 +25,9 @@ We need ways within the community to:
 
 ## Proposal
 
-Every working group SHOULD use GitHub teams within the `cloudfoundry` org to reflect the following groups. The GitHub teams SHOULD be provisioned
-automatically from the yaml blocks in the working group charters.
+Every working group SHOULD use GitHub teams within the necessary CFF Managed
+Github Org to reflect the following groups. The GitHub teams SHOULD be
+provisioned automatically from the yaml blocks in the working group charters.
 
 | Name of Team  | Team Membership  | Permissions  |
 |---|---|---|
@@ -39,5 +41,8 @@ automatically from the yaml blocks in the working group charters.
 | wg-[WORKING-GROUP-NAME]-[AREA-NAME]-bots | Bot accounts for an area within a WG | Write access for all repos in the area |
 
 Where: 
-* `WORKING-GROUP-NAME` is the name of the Working Group, converted to kebab case,
-* `AREA-NAME` is the name of the area, also converted to kebab case, or a suitable short name that identifies it clearly and uniquely within the Working Group.
+* `WORKING-GROUP-NAME` is the name of the Working Group, converted to kebab
+  case,
+* `AREA-NAME` is the name of the area, also converted to kebab case, or a
+  suitable short name that identifies it clearly and uniquely within the
+  Working Group.
