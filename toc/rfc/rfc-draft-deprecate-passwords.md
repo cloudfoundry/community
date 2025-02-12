@@ -22,18 +22,19 @@ An abstract, tl;dr or executive summary of your RFC.
 
 Problem is visible if you run "cf login -h" or "cf auth -h"
 
-WARNING:
-   Providing your password as a command line option is highly discouraged
-   Your password may be visible to others and may be recorded in your shell history
-   Consider using the CF_PASSWORD environment variable instead
+      WARNING:
+         Providing your password as a command line option is highly discouraged
+         Your password may be visible to others and may be recorded in your shell history
+         Consider using the CF_PASSWORD environment variable instead
 
-For user interactive login or principal propagation we support the passcode login a way to omit passwords. For pure technical usages there is token based authentication with private_key_jwt (or later mtls) in client_credentials flows.
+So we warn the users that they should be carefully entering their passwords.
+For user interactive login or principal propagation we support the passcode login a way to omit passwords in cf login. For pure technical usages there is token based authentication with private_key_jwt (or later mtls) in client_credentials flows.
 
 However, there are mixed scenarios, where technical scenarios need a user. Github action is a good example but there could be other scenarios, typically business scenarios, where a user principal propagation should be supported, but there is no user interactive login.
 
 JWT bearer and generic token exchange can solve the problem, but in CF is it not easy to adopt JWT bearer and for the generic token exchange we have no support yet, e.g. https://www.rfc-editor.org/rfc/rfc8693.html .
 
-This issue should collect and solve the problem, step by step.
+The RFC should make you from TOC aware, that we should start with changes in other areas. 
 
 ## Proposal
 
@@ -43,3 +44,5 @@ and
 https://github.com/cloudfoundry/cli/pull/3397
 
 We SHOULD add JWT Bearer, then we SHOULD deprecate the password grant and announce it. After some time we MUST forbid to forward a password within CF tools , e.g. "cf auth".
+
+
