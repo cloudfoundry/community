@@ -432,6 +432,10 @@ orgs:
         description: Buildpack Runtime Acceptance Tests
         has_projects: false
         has_wiki: false
+      brokerapi:
+        description: A Go package for implementing the V2 Open Service Broker API
+        has_projects: false
+        has_wiki: true
       bsdtar:
         has_projects: true
         has_wiki: false
