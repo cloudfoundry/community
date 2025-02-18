@@ -375,7 +375,6 @@ areas:
   - cloudfoundry/gorouter
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/healthchecker-release
-  - cloudfoundry/multierror
   - cloudfoundry/nats-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
