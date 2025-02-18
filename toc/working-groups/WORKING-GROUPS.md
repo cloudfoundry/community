@@ -233,9 +233,10 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | -------------------------- | ---- |
 | Charter                    | [concourse.md](./concourse.md) |
 | Forum                      | [GitHub Discussions](https://github.com/concourse/concourse/discussions)  |
-| Community Meeting Calendar | TBD  |
-| Meeting Notes              | TBD  |
-| Slack Channel              | TBD  |
+| Community Meeting Calendar | Monthly on the second Wednesday at 15:00 UK / 10:00 EST / 17:00 EET  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1KSp7npDEARGbsp5SmB2DHp4VJCEJ0GAqYwv9ixHH2DI/)  |
+| Slack Channel              | [#concourse-ci](https://cloudfoundry.slack.com/archives/C725N9UQ2)  |
+| Discord Channel            | [#cff-working-group](https://discord.gg/MeRxXKW)  |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |

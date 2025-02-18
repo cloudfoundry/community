@@ -58,6 +58,7 @@ areas:
   - cloudfoundry/terraform-provider-csbpg
   - cloudfoundry/terraform-provider-csbmysql
   - cloudfoundry/terraform-provider-csbsqlserver
+  - cloudfoundry/brokerapi
 config:
   github_project_sync:
     mapping:

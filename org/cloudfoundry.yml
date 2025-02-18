@@ -432,6 +432,10 @@ orgs:
         description: Buildpack Runtime Acceptance Tests
         has_projects: false
         has_wiki: false
+      brokerapi:
+        description: A Go package for implementing the V2 Open Service Broker API
+        has_projects: false
+        has_wiki: true
       bsdtar:
         has_projects: true
         has_wiki: false
@@ -1807,6 +1811,7 @@ orgs:
         has_projects: true
       multierror:
         has_projects: true
+        archived: true
       mysql-backup-release:
         has_projects: true
       mysql-monitoring-release:
@@ -1918,14 +1923,11 @@ orgs:
         description: A service broker that provides an overview of its service instances
           and bindings. Conforms to the Open Service Broker API standard.
         has_projects: true
-      pcap:
-        default_branch: main
-        description: Sources to enable network analysis for CF app developers
-        has_projects: true
       pcap-release:
         default_branch: main
         description: A BOSH release and CLI to enable network analysis for CF app developers
         has_projects: true
+        archived: true
       persi-ci:
         has_projects: true
         archived: true
@@ -2638,7 +2640,7 @@ orgs:
           uaa-ci: admin
           credhub-oss-ci: admin
       temp-prometheus-exporter-admins:
-        description: "Temporary team for managing cf/ firehose exporter secrets until we have a permanent plan."
+        description: "Temporary admin team for Prometheus Repositories."
         maintainers:
           - benjaminguttmann-avtq
         members: []
@@ -2647,6 +2649,8 @@ orgs:
           cf_exporter: admin
           firehose_exporter: admin
           bosh_exporter: admin
+          node-exporter-boshrelease: admin
+          prometheus-boshrelease: admin
       temp-ari-capi-admins:
         description: "Temporary admin team for CAPI"
         maintainers:
