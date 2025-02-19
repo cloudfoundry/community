@@ -287,6 +287,14 @@ areas:
   - cloudfoundry/staticfile-buildpack
   - cloudfoundry/staticfile-buildpack-release
 
+- name: OSB API
+  approvers:
+  - name: Rodrigo Sampaio Vaz
+    github: rsampaio
+  repositories:
+  - openservicebrokerapi/servicebroker
+  - openservicebrokerapi/osb-checker
+
 - name: CAPI
   approvers:
   - name: Florian Braun

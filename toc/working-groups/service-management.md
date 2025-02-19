@@ -59,13 +59,6 @@ areas:
   - cloudfoundry/terraform-provider-csbmysql
   - cloudfoundry/terraform-provider-csbsqlserver
   - cloudfoundry/brokerapi
-- name: OSB API
-  approvers:
-  - name: Rodrigo Sampaio Vaz
-    github: rsampaio
-  repositories:
-  - openservicebrokerapi/servicebroker
-  - openservicebrokerapi/osb-checker
 config:
   github_project_sync:
     mapping:
