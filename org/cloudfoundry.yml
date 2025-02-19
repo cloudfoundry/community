@@ -2608,8 +2608,6 @@ orgs:
         privacy: closed
         repos:
           haproxy-boshrelease: admin
-          pcap-release: admin
-          pcap: admin
       temp-sm-csb-bots-admins:
         description: "Temporary team to allow for bots driven dependency bumps until we implement another strategy"
         maintainers:
