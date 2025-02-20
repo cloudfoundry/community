@@ -62,6 +62,8 @@ areas:
     github: hsinn0
   - name: Prateek Gangwal
     github: coolgang123
+  - name: Joe Eltgroth
+    github: joeeltgroth
   - name: Markus Strehle
     github: strehle
   reviewers:
@@ -69,8 +71,6 @@ areas:
     github: duanemay
   - name: Behrouz Soroushian
     github: bsoroushian
-  - name: Joe Eltgroth
-    github: joeeltgroth
   - name: Ajita Jain
     github: jajita
   - name: Andrew Costa
