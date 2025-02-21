@@ -453,8 +453,6 @@ areas:
 
 - name: MultiApps
   approvers:
-  - name: Alexander Tsvetkov
-    github: nictas
   - name: Ivan Dimitrov
     github: IvanBorislavovDimitrov
   - name: Kristian Atanasov
