@@ -7,177 +7,466 @@ Provide infrastructure automation and core capabilities shared across CF project
 
 ## Goals
 
-* Operators have a multi-cloud deployment system that can deploy Cloud Foundry onto VMs with a strong 
+* Operators have a multi-cloud deployment system that can deploy Cloud Foundry onto VMs with a strong
   set of day 2 operator features.
 * Provide a flexible identity/authentication and credential management system for use within BOSH and Cloud Foundry.
-* Maintain a set of databases, required for the self-contained deployment and operation of BOSH and Cloud Foundry. 
+* Maintain a set of databases, required for the self-contained deployment and operation of BOSH and Cloud Foundry.
 
 ## Scope
 
 * Maintain public roadmaps for BOSH, UAA, and Credhub
 * Operate https://bosh.io
 * Provide the community with a multi-cloud reference deployment of the BOSH Director
-* Package up all infrastructure related components as BOSH releases 
+* Package up all infrastructure related components as BOSH releases
 
 ## Non-Goals
 
 * Provide generic operational databases for other use-cases
 * Solve non-CF related identity and credential problems.
 
-## Technical Lead(s):
-- Ruben Koster (@rkoster)
-- Beyhan Veli (@beyhan)
-
-## Execution Lead(s):
-- Ruben Koster (@rkoster)
-
-## Approvers (by Area):
-### VM deployment lifecycle (BOSH)
-- Joseph Palermo (@jpalermo)
-- Long Nguyen (@lnguyen)
-- Ramon Makkelie (@ramonskie)
-- Benjamin Gandon (@bgandon)
-- Kai Hofstetter (@KaiHofstetter)
-- Felix Riegger (@friegger)
-
-### Disaster Recovery (BBR)
-- Diego Lemos (@dlresende)
-- Fernando Naranjo (@fejnartal)
-- Gareth Smith (@totherme)
-
-### Identity and Auth (UAA)
-- Peter Chen (@peterhaochen47)
-- Markus Strehle (@strehle)
-
-### Credential Management (Credhub)
-- Peter Chen (@peterhaochen47)
-
-### Integrated Databases
-- Andrew Garner (@abg)
-- Shaan Sapra (@ssapra)
-
-### System logging and metrics
-- Ben Fuller (@Benjamintf1)
-
-## Technical Assets
+## Roles & Technical Assets
 
 Components from the BOSH, BOSH Backup and Restore, CredHub, MySQL, Postgres, and UAA projects.
 
-### VM deployment lifecycle (BOSH)
-- [bosh-io/releases-index](https://github.com/bosh-io/releases-index)
-- [bosh-io/releases](https://github.com/bosh-io/releases)
-- [bosh-io/stemcells-core-index](https://github.com/bosh-io/stemcells-core-index)
-- [bosh-io/stemcells-cpi-index](https://github.com/bosh-io/stemcells-cpi-index)
-- [bosh-io/stemcells-legacy-index](https://github.com/bosh-io/stemcells-legacy-index)
-- [bosh-io/stemcells-softlayer-index](https://github.com/bosh-io/stemcells-softlayer-index)
-- [bosh-io/stemcells-windows-index](https://github.com/bosh-io/stemcells-windows-index)
-- [bosh-io/web](https://github.com/bosh-io/web)
-- [bosh-io/worker](https://github.com/bosh-io/worker)
-- [bosh-packages/cf-cli-release](https://github.com/bosh-packages/cf-cli-release)
-- [bosh-packages/golang-release](https://github.com/bosh-packages/golang-release)
-- [bosh-packages/java-release](https://github.com/bosh-packages/java-release)
-- [bosh-packages/nginx-release](https://github.com/bosh-packages/nginx-release)
-- [bosh-packages/python-release](https://github.com/bosh-packages/python-release)
-- [bosh-packages/ruby-release](https://github.com/bosh-packages/ruby-release)
-- [cloudfoundry-incubator/bosh-alicloud-light-stemcell-builder](https://github.com/cloudfoundry-incubator/bosh-alicloud-light-stemcell-builder)
-- [cloudfoundry-incubator/bosh-cpi-certification](https://github.com/cloudfoundry-incubator/bosh-cpi-certification)
-- [cloudfoundry-incubator/bosh-windows-acceptance-tests](https://github.com/cloudfoundry-incubator/bosh-windows-acceptance-tests)
-- [cloudfoundry-incubator/bosh-windows-stemcell-builder](https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder)
-- [cloudfoundry-incubator/resolvconf-manager-index](https://github.com/cloudfoundry-incubator/resolvconf-manager-index)
-- [cloudfoundry-incubator/resolvconf-manager](https://github.com/cloudfoundry-incubator/resolvconf-manager)
-- [cloudfoundry-incubator/sample-windows-bosh-release](https://github.com/cloudfoundry-incubator/sample-windows-bosh-release)
-- [cloudfoundry-incubator/stembuild](https://github.com/cloudfoundry-incubator/stembuild)
-- [cloudfoundry-incubator/stemcells-alicloud-index](https://github.com/cloudfoundry-incubator/stemcells-alicloud-index)
-- [cloudfoundry-incubator/windows-utilities-release](https://github.com/cloudfoundry-incubator/windows-utilities-release)
-- [cloudfoundry-incubator/windows-utilities-tests](https://github.com/cloudfoundry-incubator/windows-utilities-tests)
-- [cloudfoundry/bosh-acceptance-tests](https://github.com/cloudfoundry/bosh-acceptance-tests)
-- [cloudfoundry/bosh-agent-index](https://github.com/cloudfoundry/bosh-agent-index)
-- [cloudfoundry/bosh-agent](https://github.com/cloudfoundry/bosh-agent)
-- [cloudfoundry/bosh-aws-cpi-release](https://github.com/cloudfoundry/bosh-aws-cpi-release)
-- [cloudfoundry/bosh-aws-light-stemcell-builder](https://github.com/cloudfoundry/bosh-aws-light-stemcell-builder)
-- [cloudfoundry/bosh-azure-cpi-release](https://github.com/cloudfoundry/bosh-azure-cpi-release)
-- [cloudfoundry/bosh-bbl-ci-envs](https://github.com/cloudfoundry/bosh-bbl-ci-envs)
-- [cloudfoundry/bosh-cli](https://github.com/cloudfoundry/bosh-cli)
-- [cloudfoundry/bosh-community-stemcell-ci-infra](https://github.com/cloudfoundry/bosh-community-stemcell-ci-infra)
-- [cloudfoundry/bosh-compiled-releases-index](https://github.com/cloudfoundry/bosh-compiled-releases-index)
-- [cloudfoundry/bosh-cpi-environments](https://github.com/cloudfoundry/bosh-cpi-environments)
-- [cloudfoundry/bosh-cpi-go](https://github.com/cloudfoundry/bosh-cpi-go)
-- [cloudfoundry/bosh-cpi-kb](https://github.com/cloudfoundry/bosh-cpi-kb)
-- [cloudfoundry/bosh-cpi-ruby](https://github.com/cloudfoundry/bosh-cpi-ruby)
-- [cloudfoundry/bosh-davcli](https://github.com/cloudfoundry/bosh-davcli)
-- [cloudfoundry/bosh-deployment-resource](https://github.com/cloudfoundry/bosh-deployment-resource)
-- [cloudfoundry/bosh-deployment](https://github.com/cloudfoundry/bosh-deployment)
-- [cloudfoundry/bosh-dns-aliases-release](https://github.com/cloudfoundry/bosh-dns-aliases-release)
-- [cloudfoundry/bosh-dns-release](https://github.com/cloudfoundry/bosh-dns-release)
-- [cloudfoundry/bosh-docker-cpi-release](https://github.com/cloudfoundry/bosh-docker-cpi-release)
-- [cloudfoundry/bosh-gcscli](https://github.com/cloudfoundry/bosh-gcscli)
-- [cloudfoundry/bosh-google-cpi-release](https://github.com/cloudfoundry/bosh-google-cpi-release)
-- [cloudfoundry/bosh-google-light-stemcell-builder](https://github.com/cloudfoundry/bosh-google-light-stemcell-builder)
-- [cloudfoundry/bosh-linux-stemcell-builder](https://github.com/cloudfoundry/bosh-linux-stemcell-builder)
-- [cloudfoundry/bosh-openstack-cpi-release](https://github.com/cloudfoundry/bosh-openstack-cpi-release)
-- [cloudfoundry/bosh-s3cli](https://github.com/cloudfoundry/bosh-s3cli)
-- [cloudfoundry/bosh-softlayer-cpi-release](https://github.com/cloudfoundry/bosh-softlayer-cpi-release)
-- [cloudfoundry/bosh-stemcell-ci-infra](https://github.com/cloudfoundry/bosh-stemcell-ci-infra)
-- [cloudfoundry/bosh-stemcells-ci](https://github.com/cloudfoundry/bosh-stemcells-ci)
-- [cloudfoundry/bosh-utils](https://github.com/cloudfoundry/bosh-utils)
-- [cloudfoundry/bosh-virtualbox-cpi-release](https://github.com/cloudfoundry/bosh-virtualbox-cpi-release)
-- [cloudfoundry/bosh-vsphere-cpi-release](https://github.com/cloudfoundry/bosh-vsphere-cpi-release)
-- [cloudfoundry/bosh-warden-cpi-release](https://github.com/cloudfoundry/bosh-warden-cpi-release)
-- [cloudfoundry/bosh-workstation](https://github.com/cloudfoundry/bosh-workstation)
-- [cloudfoundry/bosh](https://github.com/cloudfoundry/bosh)
-- [cloudfoundry/bpm-release](https://github.com/cloudfoundry/bpm-release)
-- [cloudfoundry/bsdtar](https://github.com/cloudfoundry/bsdtar)
-- [cloudfoundry/config-server-release](https://github.com/cloudfoundry/config-server-release)
-- [cloudfoundry/config-server](https://github.com/cloudfoundry/config-server)
-- [cloudfoundry/docs-bosh](https://github.com/cloudfoundry/docs-bosh)
-- [cloudfoundry/gofileutils](https://github.com/cloudfoundry/gofileutils)
-- [cloudfoundry/gosigar](https://github.com/cloudfoundry/gosigar)
-- [cloudfoundry/os-conf-release](https://github.com/cloudfoundry/os-conf-release)
-- [cloudfoundry/socks5-proxy](https://github.com/cloudfoundry/socks5-proxy)
-- [cloudfoundry/tlsconfig](https://github.com/cloudfoundry/tlsconfig)
-- [cloudfoundry/usn-resource](https://github.com/cloudfoundry/usn-resource)
-- [cloudfoundry/yagnats](https://github.com/cloudfoundry/yagnats)
-- [cloudfoundry/windows-tools-release](https://github.com/cloudfoundry/windows-tools-release)
+```yaml
+name: Foundational Infrastructure
+execution_leads:
+- name: Ruben Koster
+  github: rkoster
+technical_leads:
+- name: Ruben Koster
+  github: rkoster
+- name: Beyhan Veli
+  github: beyhan
+- name: Joseph Palermo
+  github: jpalermo
+bots:
+- name: bosh-admin-bot
+  github: bosh-admin-bot
+- name: runtime-bot
+  github: tas-runtime-bot
+- name: cf-bosh-ci-bot
+  github: cf-bosh-ci-bot
+- name: cf-uaa-ci-bot
+  github: cf-identity
+- name: Cryogenics-CI
+  github: Cryogenics-CI
+- name: mysql-ci
+  github: pcf-core-services-writer
+areas:
+- name: Credential Management (Credhub)
+  approvers:
+  - name: Peter Chen
+    github: peterhaochen47
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Prateek Gangwal
+    github: coolgang123
+  - name: Markus Strehle
+    github: strehle
+  reviewers:
+  - name: Duane May
+    github: duanemay
+  - name: Behrouz Soroushian
+    github: bsoroushian
+  - name: Joe Eltgroth
+    github: joeeltgroth
+  - name: Ajita Jain
+    github: jajita
+  - name: Andrew Costa
+    github: acosta11
+  - name: Greg Cobb
+    github: Gerg
+  repositories:
+  - cloudfoundry-incubator/credhub-api-docs
+  - cloudfoundry/credhub
+  - cloudfoundry/credhub-acceptance-tests
+  - cloudfoundry/credhub-api-site
+  - cloudfoundry/credhub-cli
+  - cloudfoundry/credhub-ci-locks
+  - cloudfoundry/credhub-oss-ci
+  - cloudfoundry/credhub-perf-release
+  - cloudfoundry/secure-credentials-broker
+- name: Disaster Recovery (BBR)
+  reviewers:
+  - name: claire t.
+    github: Spimtav
+  - name: Greg Meyer
+    github: gm2552
+  - name: Harish Yayi
+    github: yharish991
+  - name: Indira Chandrabhatta
+    github: ichandrabhatta
+  - name: Janice Bailey
+    github: bjanice75
+  - name: Nader Ziada
+    github: nader-ziada
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
+  - name: Rui Yang
+    github: xtremerui
+  - name: Rizwan Reza
+    github: rizwanreza
+  - name: Wayne Adams
+    github: wayneadams
+  approvers:
+  - name: Aram Price
+    github: aramprice
+  - name: Brian Upton
+    github: ystros
+  - name: Chris Selzo
+    github: selzoc
+  - name: Diego Lemos
+    github: dlresende
+  - name: Gareth Smith
+    github: totherme
+  - name: George Blue
+    github: blgm
+  - name: Iain Findlay
+    github: ifindlay-cci
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Konstantin Semenov
+    github: jhvhs
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Rajath Agasthya
+    github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
+  repositories:
+  - cloudfoundry/backup-and-restore-sdk-release
+  - cloudfoundry/bosh-backup-and-restore
+  - cloudfoundry/bosh-backup-and-restore-test-releases
+  - cloudfoundry/bosh-disaster-recovery-acceptance-tests
+  - cloudfoundry/exemplar-backup-and-restore-release
+  bots:
+  - name: tas-operability-bot
+    github: tas-operability-bot
+- name: Identity and Auth (UAA)
+  approvers:
+  - name: Peter Chen
+    github: peterhaochen47
+  - name: Markus Strehle
+    github: strehle
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Florian Tack
+    github: tack-sap
+  - name: Torsten Luh
+    github: torsten-sap
+  - name: Adrian Hoelzl
+    github: adrianhoelzl-sap
+  - name: Klaus Kiefer
+    github: klaus-sap
+  - name: Duane May
+    github: duanemay
+  - name: Prateek Gangwal
+    github: coolgang123
+  - name: Daniel Garnier-Moiroux
+    github: kehrlann
+  - name: Filip Hanik
+    github: fhanik
+  repositories:
+  - cloudfoundry/cf-identity-acceptance-tests-release
+  - cloudfoundry/cf-uaa-lib
+  - cloudfoundry/cf-uaac
+  - cloudfoundry/identity-tools
+  - cloudfoundry/omniauth-uaa-oauth2
+  - cloudfoundry/uaa
+  - cloudfoundry/uaa-cli
+  - cloudfoundry/uaa-key-rotator
+  - cloudfoundry/uaa-release
+  - cloudfoundry/uaa-singular
+  - cloudfoundry/uaa-ci
+- name: Identity and Auth (UAA) Go Client
+  approvers:
+  - name: Joe Fitzgerald
+    github: joefitzgerald
+  - name: Peter Chen
+    github: peterhaochen47
+  - name: Markus Strehle
+    github: strehle
+  - name: Hongchol Sinn
+    github: hsinn0
+  - name: Florian Tack
+    github: tack-sap
+  - name: Torsten Luh
+    github: torsten-sap
+  - name: Adrian Hoelzl
+    github: adrianhoelzl-sap
+  - name: Klaus Kiefer
+    github: klaus-sap
+  - name: Filip Hanik
+    github: fhanik
+  reviewers:
+  - name: Duane May
+    github: duanemay
+  - name: Prateek Gangwal
+    github: coolgang123
+  repositories:
+  - cloudfoundry/go-uaa
+- name: Integrated Databases (Mysql / Postgres)
+  approvers:
+  - name: Andrew Garner
+    github: abg
+  - name: Colin Shield
+    github: colins
+  - name: Kyle Ong
+    github: ohkyle
+  - name: Kim Basset
+    github: kimago
+  - name: Ryan Wittrup
+    github: ryanwittrup
+  reviewers:
+  - name: Pascal Zimmermann
+    github: ZPascal
+  repositories:
+  - cloudfoundry/mysql-backup-release
+  - cloudfoundry/mysql-monitoring-release
+  - cloudfoundry/postgres-release
+  - cloudfoundry/pxc-release
+- name: System Logging and Metrics (rsyslog / event-log)
+  approvers:
+  - name: Ben Fuller
+    github: Benjamintf1
+  - name: Carson Long
+    github: ctlong
+  reviewers:
+  - name: Rebecca Roberts
+    github: rroberts2222
+  - name: Ausaf Ahmed
+    github: aqstack
+  - name: Ivan Protsiuk
+    github: iprotsiuk
+  - name: Glenn Oppegard
+    github: oppegard
+  repositories:
+  - cloudfoundry/blackbox
+  - cloudfoundry/bosh-system-metrics-server-release
+  - cloudfoundry/system-metrics-release
+  - cloudfoundry/syslog-release
+  - cloudfoundry/windows-syslog-release
+- name: Stemcell Release Engineering (BOSH)
+  approvers:
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Brian Upton
+    github: ystros
+  - name: Matthias Vach
+    github: mvach
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Max Soest
+    github: max-soe
+  - name: Aram Price
+    github: aramprice
+  - name: Shilpa Chandrashekara
+    github: ShilpaChandrashekara
+  - name: Joerg W
+    github: joergdw
+  - name: Ansh Rupani
+    github: anshrupani
+  - name: Chris Selzo
+    github: selzoc
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
+  - name: Nader Ziada
+    github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  reviewers:
+  - name: Greg Meyer
+    github: gm2552
+  - name: Jamie van Dyke
+    github: fearoffish
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
+  - name: Felix Moehler
+    github: fmoehler
+  repositories:
+  - cloudfoundry/concourse-infra-for-fiwg
+  - cloudfoundry/bosh-stemcells-ci
+- name: VM deployment lifecycle (BOSH)
+  approvers:
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Benjamin Gandon
+    github: bgandon
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Aram Price
+    github: aramprice
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Kenneth Lakin
+    github: klakin-pivotal
+  - name: Daniel Felipe Ochoa
+    github: danielfor
+  - name: Brian Upton
+    github: ystros
+  - name: Chris Selzo
+    github: selzoc
+  - name: Matthias Vach
+    github: mvach
+  - name: Ahmed Hassanin
+    github: a-hassanin
+  - name: Ansh Rupani
+    github: anshrupani
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
+  - name: Nader Ziada
+    github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  reviewers:
+  - name: Greg Meyer
+    github: gm2552
+  - name: Jamie van Dyke
+    github: fearoffish
+  - name: Benjamin Gandon
+    github: bgandon
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
+  - name: Felix Moehler
+    github: fmoehler
+  repositories:
+  - cloudfoundry/bbl-state-resource
+  - cloudfoundry/bosh
+  - cloudfoundry/bosh-acceptance-tests
+  - cloudfoundry/bosh-agent
+  - cloudfoundry/bosh-agent-index
+  - cloudfoundry/bosh-aws-cpi-release
+  - cloudfoundry/bosh-aws-light-stemcell-builder
+  - cloudfoundry/bosh-azure-cpi-release
+  - cloudfoundry/bosh-azure-storage-cli
+  - cloudfoundry/bosh-apt-resources
+  - cloudfoundry/bosh-bbl-ci-envs
+  - cloudfoundry/bosh-bootloader
+  - cloudfoundry/bosh-bootloader-ci-envs
+  - cloudfoundry/bosh-cli
+  - cloudfoundry/bosh-compiled-releases-index
+  - cloudfoundry/bosh-cpi-certification
+  - cloudfoundry/bosh-cpi-environments
+  - cloudfoundry/bosh-cpi-go
+  - cloudfoundry/bosh-cpi-kb
+  - cloudfoundry/bosh-cpi-ruby
+  - cloudfoundry/bosh-davcli
+  - cloudfoundry/bosh-deployment
+  - cloudfoundry/bosh-deployment-resource
+  - cloudfoundry/bosh-dns-aliases-release
+  - cloudfoundry/bosh-dns-release
+  - cloudfoundry/bosh-docker-cpi-release
+  - cloudfoundry/bosh-gcscli
+  - cloudfoundry/bosh-google-cpi-release
+  - cloudfoundry/bosh-io-releases
+  - cloudfoundry/bosh-io-releases-index
+  - cloudfoundry/bosh-io-stemcells-core-index
+  - cloudfoundry/bosh-io-stemcells-cpi-index
+  - cloudfoundry/bosh-io-stemcells-legacy-index
+  - cloudfoundry/bosh-io-stemcells-softlayer-index
+  - cloudfoundry/bosh-io-stemcells-windows-index
+  - cloudfoundry/bosh-io-web
+  - cloudfoundry/bosh-io-worker
+  - cloudfoundry/bosh-linux-stemcell-builder
+  - cloudfoundry/bosh-openstack-cpi-release
+  - cloudfoundry/bosh-package-golang-release
+  - cloudfoundry/bosh-package-nginx-release
+  - cloudfoundry/bosh-package-python-release
+  - cloudfoundry/bosh-package-ruby-release
+  - cloudfoundry/bosh-psmodules
+  - cloudfoundry/bosh-s3cli
+  - cloudfoundry/bosh-shared-ci
+  - cloudfoundry/bosh-utils
+  - cloudfoundry/bosh-virtualbox-cpi-release
+  - cloudfoundry/bosh-vsphere-cpi-release
+  - cloudfoundry/bosh-warden-cpi-release
+  - cloudfoundry/bosh-windows-acceptance-tests
+  - cloudfoundry/bosh-windows-stemcell-builder
+  - cloudfoundry/bpm-release
+  - cloudfoundry/bsdtar
+  - cloudfoundry/config-server
+  - cloudfoundry/config-server-release
+  - cloudfoundry/docs-bosh
+  - cloudfoundry/exemplar-release
+  - cloudfoundry/go-socks5
+  - cloudfoundry/gofileutils
+  - cloudfoundry/gosigar
+  - cloudfoundry/greenhouse-ci
+  - cloudfoundry/jumpbox-deployment
+  - cloudfoundry/os-conf-release
+  - cloudfoundry/sample-windows-bosh-release
+  - cloudfoundry/socks5-proxy
+  - cloudfoundry/stembuild
+  - cloudfoundry/usn-resource
+  - cloudfoundry/windows-utilities-release
+  - cloudfoundry/yagnats
+- name: Ali Cloud VM deployment lifecycle (BOSH)
+  approvers:
+  - name: He Guimin
+    github: xiaozhu36
+  repositories:
+  - cloudfoundry/bosh-alicloud-cpi-release
+  - cloudfoundry/bosh-alicloud-light-stemcell-builder
+  - cloudfoundry/bosh-ali-storage-cli
+  - cloudfoundry/stemcells-alicloud-index
 
-### Disaster Recovery (BBR)
-- [cloudfoundry-incubator/bosh-backup-and-restore](https://github.com/cloudfoundry-incubator/bosh-backup-and-restore)
-- [cloudfoundry-incubator/backup-and-restore-sdk-release](https://github.com/cloudfoundry-incubator/backup-and-restore-sdk-release)
-- [cloudfoundry-incubator/bosh-backup-and-restore-test-releases](https://github.com/cloudfoundry-incubator/bosh-backup-and-restore-test-releases)
-- [cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests](https://github.com/cloudfoundry-incubator/bosh-disaster-recovery-acceptance-tests)
-- [cloudfoundry-incubator/disaster-recovery-acceptance-tests](https://github.com/cloudfoundry-incubator/disaster-recovery-acceptance-tests)
-- [cloudfoundry-incubator/exemplar-backup-and-restore-release](https://github.com/cloudfoundry-incubator/exemplar-backup-and-restore-release)
-- [cloudfoundry/docs-bbr](https://github.com/cloudfoundry/docs-bbr)
+- name: Prometheus (Bosh)
+  approvers:
+    - name: Benjamin Guttmann
+      github: benjaminguttmann-avtq
+    - name: Ferran Rodenas
+      github: frodenas
+    - name: Gilles Miraillet
+      github: gmllt
+    - name: Mario Di Miceli
+      github: mdimiceli
+    - name: Nicolas Herbst
+      github: nmaurer23
+  repositories:
+    - cloudfoundry/bosh_exporter
+    - cloudfoundry/cf_exporter
+    - cloudfoundry/firehose_exporter
+    - cloudfoundry/node-exporter-boshrelease
+    - cloudfoundry/prometheus-boshrelease
+  bots:
+    - name: cf-prometheus-ci-bot
+      github: cf-prometheus-ci-bot
 
-### Identity and Auth (UAA)
-- [cloudfoundry/cf-uaa-lib](https://github.com/cloudfoundry/cf-uaa-lib)
-- [cloudfoundry/cf-uaac](https://github.com/cloudfoundry/cf-uaac)
-- [cloudfoundry/omniauth-uaa-oauth2](https://github.com/cloudfoundry/omniauth-uaa-oauth2)
-- [cloudfoundry/uaa-key-rotator](https://github.com/cloudfoundry/uaa-key-rotator)
-- [cloudfoundry/uaa-release](https://github.com/cloudfoundry/uaa-release)
-- [cloudfoundry/uaa-singular](https://github.com/cloudfoundry/uaa-singular)
-- [cloudfoundry/uaa](https://github.com/cloudfoundry/uaa)
-
-### Credential Management (Credhub)
-- [cloudfoundry-incubator/credhub-acceptance-tests](https://github.com/cloudfoundry-incubator/credhub-acceptance-tests)
-- [cloudfoundry-incubator/credhub-api-site](https://github.com/cloudfoundry-incubator/credhub-api-site)
-- [cloudfoundry-incubator/credhub-ci-locks](https://github.com/cloudfoundry-incubator/credhub-ci-locks)
-- [cloudfoundry-incubator/credhub-cli](https://github.com/cloudfoundry-incubator/credhub-cli)
-- [cloudfoundry-incubator/credhub-perf-release](https://github.com/cloudfoundry-incubator/credhub-perf-release)
-- [cloudfoundry-incubator/credhub](https://github.com/cloudfoundry-incubator/credhub)
-- [cloudfoundry/docs-credhub](https://github.com/cloudfoundry/docs-credhub)
-- [cloudfoundry/secure-credentials-broker](https://github.com/cloudfoundry/secure-credentials-broker)
-
-### Integrated Databases
-- [cloudfoundry-incubator/cf-mysql-ci](https://github.com/cloudfoundry-incubator/cf-mysql-ci)
-- [cloudfoundry-incubator/mysql-backup-release](https://github.com/cloudfoundry-incubator/mysql-backup-release)
-- [cloudfoundry-incubator/mysql-monitoring-release](https://github.com/cloudfoundry-incubator/mysql-monitoring-release)
-- [cloudfoundry-incubator/pxc-release](https://github.com/cloudfoundry-incubator/pxc-release)
-- [cloudfoundry/cf-mysql-deployment](https://github.com/cloudfoundry/cf-mysql-deployment)
-- [cloudfoundry/cf-mysql-release](https://github.com/cloudfoundry/cf-mysql-release)
-- [cloudfoundry/galera-init](https://github.com/cloudfoundry/galera-init)
-- [cloudfoundry/postgres-release](https://github.com/cloudfoundry/postgres-release)
-
-### System logging and metrics
-- [cloudfoundry-incubator/event-log-release](https://github.com/cloudfoundry-incubator/event-log-release)
-- [cloudfoundry/syslog-release](https://github.com/cloudfoundry/syslog-release)
-- [cloudfoundry/windows-syslog-release](https://github.com/cloudfoundry/windows-syslog-release)
+config:
+  github_project_sync:
+    mapping:
+      cloudfoundry: 21
+```

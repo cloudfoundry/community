@@ -5,10 +5,13 @@ role grants.
 - [Scope of Technical Contributions](#scope-of-technical-contributions)
 - [Role Summary](#role-summary)
 - [Member](#member)
+- [Contributor](#contributor)
+- [Reviewer](#reviewer)
 - [Approver](#approver)
 - [Working Group Technical Lead](#working-group-technical-lead)
 - [Working Group Execution Lead](#working-group-execution-lead)
 - [Scribe](#scribe)
+- [Promotion and Revocation](#promotion-and-revocation)
 
 See also [notes](#notes) on roles.
 
@@ -58,7 +61,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Can join CF Slack workspace</p>
         <p>Can take part in community discussions</p>
     </td>
-    <td>GitHub Organization</td>
+    <td>All CFF Github Organizations</td>
   </tr>  
 
   <tr>
@@ -72,7 +75,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     <td>
         <p>Can get PRs accepted</p>
     </td>
-    <td>GitHub Organization</td>
+    <td>All CFF Github Organizations</td>
   </tr>
 
   <tr>
@@ -85,16 +88,32 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Has made multiple contributions to the project</p>
     </td>
     <td>
-        <p>Member of the GitHub cloudfoundry (and possibly the cloudfoundry-incubator) orgs</p>
-        <p>Member of the Cloud Foundry Slack workspace</p>
+        <p>Member of a CFF GitHub Organization</p>
     </td>
-    <td>GitHub Organization</td>
+    <td>Per CFF Github Organization</td>
+  </tr>
+
+  <tr>
+  <tr>
+    <td rowspan="2">Reviewer</td>
+    <td colspan="4"><i>Inherits from Contributor Role</i></td>
+  </tr>
+  <tr>
+    <td>
+        <p><b>For 1+ repos in an area:</b></p>
+        <p>Provide reviews of PRs</p>
+    </td>
+    <td>
+      <p>Active contributor who wishes to formally work toward the approver role</p>
+    </td>
+    <td><p>Be assigned to review PRs</p></td>
+    <td>GitHub Directory</td>
   </tr>
 
   <tr>
   <tr>
     <td rowspan="2">Approver</td>
-    <td colspan="4"><i>Inherits from Contributor Role</i></td>
+    <td colspan="4"><i>Inherits from Reviewer Role</i></td>
   </tr>
   <tr>
     <td>
@@ -206,10 +225,10 @@ this is not a requirement.
 
   - Contributing to working group or community discussions.
 
-- Subscribed to
-  [cf-dev@lists.cloudfoundry.org](https://lists.cloudfoundry.org/g/cf-dev).
-
 - Actively contributing to 1 or more areas.
+
+- For Cloud Foundry Contributors: Subscribed to
+  [cf-dev@lists.cloudfoundry.org](https://lists.cloudfoundry.org/g/cf-dev).
 
 ### Responsibilities and privileges
 
@@ -228,9 +247,24 @@ Contributors who frequently contribute code are expected to proactively perform 
 reviews and work towards becoming an approver for the area that they are active
 in.
 
+## Reviewer
+<i>Includes everything from [Contributor](#contributor)</i>
+
+A reviewer is an active contributor who wishes to formally work toward the approver role.
+
+Reviewers can submit reviews of PRs within a Working Group Area. They may also have PRs within a working group assigned to them.
+
+### Requirements
+
+- Actively contributing to the relevant Working Group Area(s).
+
+### Responsibilities and privileges
+
+- Reviewing assigned PRs within the Working Group Area
+
 ## Approver
 
-<i>Includes everything from [Contributor](#contributor)</i>
+<i>Includes everything from [Reviewer](#reviewer)</i>
 
 Approvers are able to both review and approve code contributions. While
 code review is focused on code quality and correctness, approval is focused on
@@ -240,22 +274,36 @@ correctness issues, interactions with other parts of the system, etc. Approver
 status is scoped to a subset of the working group's codebases.
 
 ### Requirements
+Last ammended by [RFC-0006 Approver Requirements](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0006-approver-requirements.md)
 
 The following apply to the part of the codebase for which one would be an
 approver in an OWNERS file:
 
 - Reviewer of the codebase for at least 3 months.
 
-- Primary reviewer for at least 10 substantial PRs to the codebase.
+- Have completed at least 20 of the following
+  - Submitted a substantial PR
+  - Reviewed a substantial PR
+  - Submitted a substantial Issue
+  - Reviewed a substantial Issue
+  - Involved in technical discussion. This includes, but is not limited to, being involved in technical decision making in proposals or resolving interrupts in slack.
 
-  - One path for getting the necessary reviews is to add yourself to the
-    `reviewers` section of the OWNERS file. Note that this does not give you any
-    additional privileges. By having yourself listed in this section in OWNERS
-    file means that you will get PRs assigned to you for code review. Getting
-    added to `reviewers` section is at the discretion of an approver after
-    enough evidence of quality contributions.
+   - One path for getting the necessary reviews is to add yourself to the
+     `reviewers` section of the OWNERS file. Note that this does not give you any
+     additional privileges. By having yourself listed in this section in OWNERS
+     file means that you will get PRs assigned to you for code review. Getting
+     added to `reviewers` section is at the discretion of an approver after
+     enough evidence of quality contributions.
+   - A substantial PR is anything that changes the logic of the code or introduces a complex amount of documentation. The following are examples of substantial PRs: bug fixes, features, large docs changes like creating a new debugging document or new architecture diagram. The following are examples of non-substantial PRs: dependabot PRs or small docs changes like fixing typos or reorganizing content.
+   - A substantial Issue is anything that requires knowledge of the codebase. The following are examples of substantial Issues: feature requests, bug write ups, debugging help requests. The following are examples of non-substantial Issues: minor doc change requests.
+   - A technical discussion is a thread on slack or in GitHub that requires knowledge of the codebase. The following are examples of technical discussions that will be considered: resolving interrupts in slack, or commenting on proposals. Technical discussions are counted per-thread, not per-message.
+   - The WG lead has final say if an issue, PR, or discussion is considered substantial.
 
-- Reviewed at least 30 PRs to the codebase.
+The [contributions-for-user.sh script](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/contributions-for-user.sh) can be used to help gather information from GitHub related to Issues, PRs, and code contributions. It requires the `gh` CLI, and for users to authenticate with credentials allowing Gist creation:
+
+```
+./toc/working-groups/contributions-for-user.sh <github username> <working group name>
+```
 
 - Nominated by a WG lead (with no objections from other leads).
 
@@ -433,6 +481,81 @@ Working Group meetings.
 - Ensure that important information from meetings makes it into the WG notes.
 
 - Post WG recordings to the team drive.
+
+## Promotion and Revocation
+Last ammended by [RFC-0008 Role Change Process](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md)
+
+### Promotion to Contributor
+
+- When a person meets the criteria to be a Contributor as defined in
+[Contributor Role](#contributor),
+they may submit a PR adding themselves to 
+[contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
+
+- Two existing Contributors, Reviewers, or Approvers must attest that they meet
+  the criteria by reviewing the PR.
+
+- An existing Contributor, Reviewer, or Approver may submit the promotion
+  request on behalf of someone else, but they may not serve as a reviewer.
+
+- A Working Group Lead from any Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
+
+- TOC members may bypass the review process and merge the PR at their
+  discretion.
+
+### Promotion to Reviewer or Approver
+
+- When a person meets the criteria to be a Reviewer or Approver for a Working
+  Group Area as defined in [Reviewer Role](#reviewer) or [Approver
+  Role](#approver) respectively, they may submit a PR to the appropriate
+  Working Group Charter that adds themselves to the team's yaml definition
+  under the appropriate Area.
+
+- Two existing Approvers for that Working Group Area must attest that they meet
+  the criteria by reviewing the PR.
+
+- For Working Group Areas with fewer than 4 Approvers, a single Approver review
+  is sufficient.
+
+- An existing Approver may submit the promotion request on behalf of someone
+  else, but they may not serve as a reviewer.
+
+- A Working Group Lead for that Working Group will merge or close the PR, based
+  on the results of the review and their discretion.
+
+- TOC members may bypass the review process and merge the PR at their
+  discretion.
+
+### Revoking Contributor Role
+
+- People with the Contributor role may submit a PR to revoke their role by
+  removing the appropriate entry from
+  [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml).
+
+- An existing Contributor, Reviewer, or Approver may submit the revocation
+  request on behalf of someone else, but the person whose role is being revoked
+  must be given two weeks to refute the revocation.
+
+- A Working Group Lead from any Working Group will merge or close the PR, at
+  their discretion and without review.
+
+- TOC members may merge the PR at their discretion.
+
+### Revoking Reviewer or Approver Role
+
+- People with a Reviewer or Approver role may submit a PR to revoke their role
+  by removing the appropriate entry from the yaml definition in their Working
+  Group's charter.
+
+- An existing Approver may submit the revocation request on behalf of someone
+  else, but the person whose role is being revoked must be given two weeks to
+  refute the revocation.
+
+- A Working Group Lead for that Working Group will merge or close the PR, at
+  their discretion and without review.
+
+- TOC members may merge the PR at their discretion.
 
 # Notes
 

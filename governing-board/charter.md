@@ -2,7 +2,7 @@ The Cloud Foundry Foundation Charter
 
 The Linux Foundation
 
-Effective May 5, 2021
+Effective September 15, 2023
 
 
 #### 1)	Mission and Scope of the Cloud Foundry Foundation.  
@@ -15,11 +15,11 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 #### 2)	Membership.
 
--   a)	The CFF will be composed of Platinum, Gold, Silver and Associate Members (each, a “Member” and, collectively, the “Members”) in Good Standing. All Members must be current corporate members of the LF (at any level) to participate in the CFF as a member. All participants in the CFF, enjoy the privileges and undertake the obligations described in this Charter, as from time to time amended by the Governing Board with the approval of the LF. During the term of their membership, all members will comply with all such policies as the LF Board of Directors and/or the CFF may adopt with notice to members.
+-   a)	The CFF will be composed of Platinum, Silver and Associate Members (each, a “Member” and, collectively, the “Members”) in Good Standing. All Members must be current corporate members of the LF (at any level) to participate in the CFF as a member. All participants in the CFF, enjoy the privileges and undertake the obligations described in this Charter, as from time to time amended by the Governing Board with the approval of the LF. During the term of their membership, all members will comply with all such policies as the LF Board of Directors and/or the CFF may adopt with notice to members.
 
 -   b)	Platinum Members will be entitled to appoint a representative to the Governing Board and receive the most prominent placement in any listing of members.
 
--   c)	Gold Members, acting as a class, will be entitled to annually elect two representatives to the Governing Board (each a “Gold Member Representative”). The Governing Board determines the election process.
+-   c)	Each Silver Member will be entitled to annually nominate a representative for a Silver Member representative seat (the “Silver Member Representative”) on the Governing Board. The Governing Board will determines the nomination process and when nominations will be held. The Governing Board will select one Silver Member Representative from among the nominees based on objective criteria. Unless otherwise determined by the Governing Board, the Silver Member Representative will serve a term of one year or until their resignation or replacement.
 
 -   d)	The Associate Member category of membership is limited to Associate Members of The Linux Foundation. The Governing Board may set additional criteria for joining the CFF as an Associate Member. If the Associate Member is a membership organization, Associate Membership in the CFF does not confer any benefits or rights to the members of the Associate Member. 
 
@@ -35,13 +35,13 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   i)	one representative appointed by each Platinum Member;
 
-    -   ii)	the elected Gold Member Representatives; and
+    -   ii)	one Silver Member Representative selected as defined in Section 2.c; and
 
-    -   iii)	the TOC Chair
+    -   iii) the TOC Chair
 
--   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate for a membership class election, a representative on the Governing Board.  No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate for Membership class election more than one representative for the Governing Board, or (ii) have more than two representatives on the Governing Board. 
+-   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate, a representative on the Governing Board.  No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate more than one representative for the Governing Board, or (ii) have more than one voting representatives on the Governing Board. 
 
-    -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the TOC Chair on the Governing Board.
+    -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the TOC Chair on the Governing Board, however in this case the TOC Chair would sit on the Governing Board in a non-voting role.
 
 -   c)	Conduct of Meetings
 
@@ -53,11 +53,11 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   d)	Officers
 
-    -   i)	The officers (“Officers”) of the CFF as of the first meeting of the Governing Board will be a Chairperson (“Chair”), Executive Director, and a Treasurer.  Additional Officer positions may be created by the Governing Board.
+    -   i) The officers (“Officers”) of the CFF as of the first meeting of the Governing Board will be a Chairperson (“Chair”) and a Treasurer.  Additional Officer positions may be created by the Governing Board.
 
-    -   ii)	The Executive Director of the Directed Fund will be responsible for managing any day-to-day operational decisions of the Directed Fund.
+    -   ii)	The staff of the Directed Fund will be responsible for managing any day-to-day operational decisions of the Directed Fund.
 
-    -   iii)	The Chair will preside over meetings of the Governing Board, will submit minutes for Governing Board approval, and may manage any day-to-day operational decisions of the Directed Fund if the Executive Director is unavailable or the position is unfilled. 
+    -   iii) The Chair will preside over meetings of the Governing Board, will act as liaison for the Governing Board and the staff of the Directed Fund as needed, and may manage any day-to-day operational decisions of the Directed Fund if the staff is unavailable.
 
     -   iv)	The Treasurer will assist in the preparation of budgets for Governing Board approval, monitor expenses against the budget and authorize expenditures approved in the budget.
 
@@ -81,7 +81,7 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   ix)	establish and maintain an Individual Supporter program for individuals to show their support for the Cloud Foundry Foundation and its projects.
 
-    -   x)	approve procedures for the nomination and election of any representative of the Gold Members to the Governing Board and any Officer or other positions created by the Governing Board; and
+    -   x)	approve procedures for the nomination and election of any representative of the Silver Members to the Governing Board and any Officer or other positions created by the Governing Board; and
 
     -   xi)	vote on all decisions or matters coming before the Governing Board.
 
@@ -196,7 +196,9 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1)  Current TOC members, Working Group Leads, and the Cloud Foundry community members who meet requirements, for at least 3 months immediately preceding the voting, for an Approver, a Working Group Technical Lead, or a Working Group Execution Lead as defined in [ROLES.md](https://github.com/cloudfoundry/community/blob/main/toc/ROLES.md).
         
-        -   (2)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
+        -   (2)  If a community member is nominated as a candidate but does not meet these requirements, they may petition the TOC for eligibility. In a case where the TOC declines an eligibility request, the requestor may appeal that decision to the Governing Board.
+
+        -   (3)  Candidates may self-nominate or be nominated by an individual who is qualified as a TOC voter according to Section 7.e).ii) of this Charter.
 
     -   ii) TOC Voter Eligibility
 
@@ -212,13 +214,17 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
         -   (1) If the number of candidates is equal to or less than the number of TOC seats available to be elected, the candidates shall be approved after the nomination period has closed.
         
-        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking on [CIVS](http://civs.cs.cornell.edu/) using the Schulze method.
+        -   (2) If there are more Qualified Nominees than open TOC seats available for election, all eligible votes shall elect the TOC members using a time-limited [Condorcet](https://civs.cs.cornell.edu/rp.html) ranking using the Schulze method.
+
+        -   (3) Elections may be run either via the [Condorcet Internet Voting Service](https://civs1.civs.us/) or via a deployment of [Elekto](https://elekto.dev/) administered by the CFF staff.
 
 -   f)  TOC Member Resignations or Removal
 
     -   i) In the case where a TOC member resigns or is removed from the TOC by the Governing Board, the remaining members of the TOC will determine whether the vacant seat either will remain vacant until the next annual election cycle, or will be filled by using the results of the latest election.
-    
-    -   ii) When making this decision, the remaining members of the TOC should consider whether too much time has elapsed since the latest election cycle for its results to represent the community adequately.
+
+    -   ii) In the case where a TOC member was an employee of a governmental agency at the time of their election to the TOC, that governmental agency may appoint a similarly qualified replacement TOC member to fulfill the remainder of that TOC member’s term if that member changes employers or moves to a different internal role. This replacement member must meet community qualifications for a TOC nomination and/or receive an exemption from the TOC to fulfill the remainder of that term. If the appointed replacement member does not fulfill their TOC obligations, the TOC majority can request the Governing Board to remove that person, and as such any governmental agency interests in that seat are removed.
+
+    -   iii) When making this decision, the remaining members of the TOC should consider whether too much time has elapsed since the latest election cycle for its results to represent the community adequately.
 
 ####    8)	Voting
 

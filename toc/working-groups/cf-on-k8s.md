@@ -25,31 +25,38 @@ Bring the ease and simplicity of the Cloud Foundry developer experience to Kuber
 
 - Provide full compatibility with the existing Cloud Foundry behaviour.
 
-## Proposed Membership
+## Roles & Technical Assets
 
-Technical Leads:
-* @gcapizzi
-* @georgethebeatle
-
-Execution Lead:
-* @gcapizzi
-
-### Approvers
-
-* @Birdrock
-* @acosta11
-* @akrishna90
-* @danail-branekov
-* @davewalter
-* @gnovv
-* @kieron-dev
-* @matt-royal
-* @mnitchev
-* @tcdowney
-
-## Technical Assets
-
-* https://github.com/cloudfoundry/cf-k8s-api
-* https://github.com/cloudfoundry/cf-k8s-controllers
-* https://github.com/cloudfoundry/cf-crd-explorations
-* https://github.com/cloudfoundry-incubator/eirini-controller
+```yaml
+name: CF on K8s
+execution_leads:
+- name: Andrew Wittrock
+  github: Birdrock
+technical_leads:
+- name: Georgi Sabev
+  github: georgethebeatle
+bots:
+- name: korifi-bot
+  github: korifi-bot
+config:
+  generate_rfc0015_branch_protection_rules: true
+areas:
+- name: Korifi
+  approvers:
+  - name: Andrew Costa
+    github: acosta11
+  - name: Danail Branekov
+    github: danail-branekov
+  - name: Dave Walter
+    github: davewalter
+  - name: Julian Hjortshoj
+    github: julian-hj
+  - name: Tim Downey
+    github: tcdowney
+  - name: Yusmen Zabanov
+    github: uzabanov
+  repositories:
+  - cloudfoundry/cf-k8s-secrets
+  - cloudfoundry/korifi
+  - cloudfoundry/korifi-ci
+```
