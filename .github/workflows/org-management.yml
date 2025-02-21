@@ -1,0 +1,126 @@
+name: 'Sync Github Organization Settings'
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'org/*'
+      - 'toc/TOC.md'
+      - 'toc/working-groups/*.md'
+      - '.github/workflows/org-management.yml'
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  peribolos:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: peribolos
+    services:
+      ghproxy:
+        image: rkoster/ghproxy
+        options: >-
+          --mount type=bind,source=/etc/passwd,target=/etc/passwd,readonly
+          --mount type=bind,source=/etc/group,target=/etc/group,readonly
+        ports:
+          - 8888:8888
+        volumes:
+          - ${{ github.workspace }}/ghproxy-cache:/cache
+    steps:
+      - name: ghproxy-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/ghproxy-cache
+          key: ghproxy-cache-${{ github.run_number }}
+          restore-keys: |
+            ghproxy-cache-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+      - uses: actions/checkout@v4
+        with:
+          path: community
+      - name: Generate github org configuration
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r community/org/requirements.txt
+          python community/org/org_management.py -o cloudfoundry.out.yml -b branchprotection.out.yml
+      - name: write github private key
+        run: |
+          echo "${GH_PRIVATE_KEY}" > private_key
+          echo "${GH_TOKEN}" > token
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+      - name: peribolos
+        id: peribolos
+        uses: docker://gcr.io/k8s-prow/peribolos
+        with:
+          entrypoint: /ko-app/peribolos
+          args: >-
+            --confirm=true
+            --github-endpoint http://ghproxy:8888
+            --required-admins=thelinuxfoundation
+            --min-admins=5
+            --github-app-id=${{ secrets.GH_APP_ID }}
+            --github-app-private-key-path=private_key
+            --require-self=false
+            --config-path=cloudfoundry.out.yml
+            --fix-org
+            --fix-org-members
+            --fix-repos
+            --fix-teams
+            --fix-team-members
+            --fix-team-repos
+            --allow-repo-archival
+  branchprotector:
+    needs: peribolos
+    runs-on: ubuntu-latest
+    concurrency:
+      group: peribolos
+    services:
+      ghproxy:
+        image: rkoster/ghproxy
+        options: >-
+          --mount type=bind,source=/etc/passwd,target=/etc/passwd,readonly
+          --mount type=bind,source=/etc/group,target=/etc/group,readonly
+        ports:
+          - 8888:8888
+        volumes:
+          - ${{ github.workspace }}/ghproxy-cache:/cache
+    steps:
+      - name: ghproxy-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/ghproxy-cache
+          key: ghproxy-cache-${{ github.run_number }}
+          restore-keys: |
+            ghproxy-cache-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+      - uses: actions/checkout@v4
+        with:
+          path: community
+      - name: Generate github org configuration
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r community/org/requirements.txt
+          python community/org/org_management.py -o cloudfoundry.out.yml -b branchprotection.out.yml
+      - name: write github private key
+        run: |
+          echo "${GH_PRIVATE_KEY}" > private_key
+          echo "${GH_TOKEN}" > token
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+      - name: branchprotector
+        id: branchprotector
+        uses: docker://gcr.io/k8s-prow/branchprotector
+        with:
+          args: >-
+            --confirm=true
+            --github-endpoint http://ghproxy:8888
+            --github-app-id=${{ secrets.GH_APP_ID }}
+            --github-app-private-key-path=private_key
+            --config-path=branchprotection.out.yml

@@ -1,0 +1,240 @@
+# doc: https://docs.prow.k8s.io/docs/components/optional/branchprotector/
+# https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md
+branch-protection:
+  orgs:
+    cloudfoundry:
+      repos:
+        # example repo configured as if the project would belong to ARD WG, area CF Deployment
+        # automation would generate repo/branch config for all repos belonging to a WG unless an explicit configuration exists here
+        branchprotection-test:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true  # needed to allow branches w/o branch protection
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1 # area has >=4 approvers
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-deployments-bots"] # no area bots configured
+          include: [ "^main$", "^v[0-9]*$"]
+        cf-relint-ci-semver:
+          protect: false
+        relint-ci-pools:
+          protect: false
+        relint-envs:
+          protect: false
+
+        # App Runtime Platform repos to skip branch protection on
+        docs-book-cloudfoundry:
+          protect: false
+        docs-cf-admin:
+          protect: false
+        docs-loggregator:
+          protect: false
+        docs-running-cf:
+          protect: false
+        haproxy-boshrelease:
+          protect: true
+          enforce_admins: false
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          include: ["^master$"]
+          required_status_checks:
+            contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+        pcap-release:
+          protect: true
+          enforce_admins: false
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          include: ["^main$"]
+          required_status_checks:
+            contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+
+        # CF-on-K8s
+        korifi-ci:
+          protect: false
+        cf-k8s-secrets:
+          protect: false
+        korifi:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          include: ["^main$"]
+          required_status_checks:
+            contexts:
+              - "api-tests"
+              - "controllers-tests"
+              - "linter"
+              - "job-task-runner-tests"
+              - "kpack-image-builder-tests"
+              - "statefulset-runner-tests"
+              - "tools-tests"
+              - "Concourse / e2e-tests (pull_request)"
+              - "Concourse / e2e-eks-tests (pull_request)"
+              - "EasyCLA"
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+
+        # App-Autoscaler
+        app-autoscaler-release:
+          protect: true
+          enforce_admins: false
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_status_checks:
+            contexts:
+            - "EasyCLA"
+            - "Create Bosh Release"
+            - "Acceptance Tests - BOSH release / Result"
+            - "Acceptance Tests - MTA / Result"
+            - "Build suite=test, mysql=8"
+            - "Build suite=test, postgres=12"
+            - "Build suite=integration, mysql=8"
+            - "Build suite=integration, postgres=12"
+            - "reviewdog"
+            - "Build suite=integration, postgres=15"
+            - "Build suite=test, postgres=15"
+            - "CodeQL"
+          required_pull_request_reviews:
+            dismiss_stale_reviews: false
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-interfaces-autoscaler-bots"]
+          include: [ "^main$" ]
+        app-autoscaler-env-bbl-state:
+          protect: false
+        app-autoscaler-cli-plugin:
+          protect: true
+          enforce_admins: false
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_status_checks:
+            contexts:
+            - "EasyCLA"
+            - "build"
+          required_pull_request_reviews:
+            dismiss_stale_reviews: false
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-interfaces-autoscaler-bots"]
+          include: [ "^main$" ]
+
+
+        # Cloud Controller / CAPI related repos to skip branch protection on
+        cf-performance-tests-pipeline:
+          protect: false
+        capi-ci:
+          protect: false
+        capi-ci-private:
+          protect: false
+        capi-dockerfiles:
+          protect: false
+        capi-env-pool:
+          protect: false
+
+        # CLI
+        CLAW:
+          protect: false
+        bosh-package-cf-cli-release:
+          protect: false
+
+        # ARI Buildpacks repos to skip branch protection
+        binary-buildpack:
+          protect: false
+        dotnet-core-buildpack:
+          protect: false
+        go-buildpack:
+          protect: false
+        hwc-buildpack:
+          protect: false
+        java-buildpack:
+          protect: false
+        nginx-buildpack:
+          protect: false
+        nodejs-buildpack:
+          protect: false
+        php-buildpack:
+          protect: false
+        python-buildpack:
+          protect: false
+        r-buildpack:
+          protect: false
+        ruby-buildpack:
+          protect: false
+        staticfile-buildpack:
+          protect: false
+        binary-buildpack-release:
+          protect: false
+        dotnet-core-buildpack-release:
+          protect: false
+        go-buildpack-release:
+          protect: false
+        hwc-buildpack-release:
+          protect: false
+        java-buildpack-release:
+          protect: false
+        nginx-buildpack-release:
+          protect: false
+        nodejs-buildpack-release:
+          protect: false
+        php-buildpack-release:
+          protect: false
+        python-buildpack-release:
+          protect: false
+        r-buildpack-release:
+          protect: false
+        ruby-buildpack-release:
+          protect: false
+        staticfile-buildpack-release:
+          protect: false
+        # ARI Stacks (Part of Buildpacks) repos to skip branch protection
+        cflinuxfs4:
+          protect: false
+        cflinuxfs4-release:
+          protect: false
+        cflinuxfs4-compat-release:
+          protect: false
+        buildpacks-envs:
+          protect: false
+
+        cnbapplifecycle:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: true
+          include: ["^main$"]
+          protect: true
+          required_status_checks:
+            contexts:
+              - "unit"
+              - "EasyCLA"
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1

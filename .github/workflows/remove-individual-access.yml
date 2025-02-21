@@ -1,0 +1,28 @@
+name: 'Remove individual access to repos'
+on:
+  push:
+    branches:
+      - main
+  schedule:
+  - cron: '0 */1 * * *'
+
+jobs:
+  remove-individual-access-to-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: community
+      - name: Remove individual access to repos
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          set -e
+          set -o pipefail
+
+          ./community/toc/working-groups/parsable-working-groups.sh | jq -r .[].areas[].repositories[] | grep -E '^cloudfoundry/' | while read -r repo; do
+              gh api "repos/${repo}/collaborators?affiliation=direct" | jq -r .[].login | while read -r user; do
+                  echo "remove ${user} from ${repo}"
+                  gh api -X delete "/repos/${repo}/collaborators/${user}"
+              done
+          done

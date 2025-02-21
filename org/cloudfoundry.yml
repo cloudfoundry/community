@@ -1,0 +1,2670 @@
+---
+orgs:
+  cloudfoundry:
+    admins: [] # shall be empty, maintained in TOC.md
+    billing_email: ap@cloudfoundry.org
+    company: ""
+    default_repository_permission: none
+    description: Cloud Foundry Foundation active projects
+    email: cf-dev@lists.cloudfoundry.org
+    has_organization_projects: true
+    has_repository_projects: true
+    location: Worldwide
+    members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
+    members_can_create_repositories: false
+    name: Cloud Foundry
+    repos:
+      .github:
+        has_projects: true
+      CLAW:
+        description: The CF CLI download redirection web application
+        has_projects: true
+        has_wiki: false
+      admin-tools:
+        has_projects: true
+        private: true
+      api-docs:
+        default_branch: main
+        description: Cloud Controller API Docs
+        has_projects: true
+      app-autoscaler:
+        archived: true
+        default_branch: main
+        description: Auto Scaling for CF Applications
+        has_projects: true
+      app-autoscaler-ci:
+        archived: true
+        description: The CI part of the app-autoscaler project
+        has_projects: true
+        private: true
+      app-autoscaler-cli-plugin:
+        default_branch: main
+        description: CF CLI Plugin for the App AutoScaler
+        has_projects: true
+      app-autoscaler-env-bbl-state:
+        default_branch: main
+        has_projects: true
+        private: true
+      app-autoscaler-release:
+        default_branch: main
+        has_projects: true
+      app-autoscaler-ui:
+        archived: true
+        description: A UI project for the Cloud Foundry incubator app-autoscaler
+        has_projects: true
+      app-runtime-deployments-infrastructure:
+        description: Infrastructure as Code for the App Runtime Deployments Working Group
+        has_projects: true
+        default_branch: main
+      app-runtime-interfaces-infrastructure:
+        description: Infrastructure as Code for the App Runtime Interfaces Working Group
+        has_projects: true
+        default_branch: main
+      app-runtime-platform-envs:
+        default_branch: main
+        description: bbl state files for App Runtime Platform Working Group environments
+        has_projects: false
+        private: true
+      apt-buildpack:
+        has_projects: false
+        has_wiki: false
+      archive-expanding-cnb:
+        archived: true
+        has_projects: true
+      archiver:
+        description: Utilities for extracting and compressing tgz and zip files.
+        has_issues: false
+        has_projects: true
+      auction:
+        description: Auction encodes Diego's long-running-process distribution algorithm
+        has_issues: false
+        has_projects: true
+      auctioneer:
+        description: Runs diego auctions
+        has_issues: false
+        has_projects: true
+      auth-proxy:
+        archived: true
+        has_projects: true
+      azure-application-insights-cnb:
+        archived: true
+        has_projects: true
+      backup-and-restore-sdk-release:
+        default_branch: main
+        has_projects: true
+      bbl-state-resource:
+        description: a concourse resource for manipulating bbl states
+        has_projects: true
+      bbs:
+        description: Internal API to access the database for Diego.
+        has_issues: false
+        has_projects: true
+      benchmarkbbs:
+        archived: true
+        description: Diego BBS Benchmark
+        has_issues: false
+        has_projects: true
+      benchmarklocket:
+        has_projects: true
+        private: true
+      binary-builder:
+        default_branch: main
+        description: Builds binaries against the rootfs of your choice.
+        has_projects: true
+      binary-buildpack:
+        description: Deploy binaries to Cloud Foundry
+        has_projects: false
+        has_wiki: false
+      binary-buildpack-release:
+        description: BOSH release for Binary Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/binary-buildpack-release
+      bits-service-private-config:
+        has_projects: true
+        private: true
+      blackbox:
+        allow_merge_commit: false
+        default_branch: main
+        description: Forward logs from files on windows and linux.
+        has_projects: false
+        has_wiki: false
+      blobstore_url_signer:
+        description: Signed URLs, or your money back!
+        has_projects: true
+      bosh:
+        default_branch: main
+        description: Cloud Foundry BOSH is an open source tool chain for release engineering,
+          deployment and lifecycle management of large scale distributed services.
+        has_projects: false
+        has_wiki: false
+        homepage: https://bosh.io
+      bosh-acceptance-tests:
+        description: ' BATs: BOSH Acceptance Tests'
+        has_projects: false
+        has_wiki: false
+      bosh-agent:
+        default_branch: main
+        description: BOSH Agent runs on each BOSH deployed VM
+        has_projects: true
+        has_wiki: false
+      bosh-agent-index:
+        has_projects: true
+      bosh-alicloud-light-stemcell-builder:
+        description: Builds light stemcells for Alibaba Cloud from a "full" bosh stemcell
+        has_projects: true
+      bosh-aws-cpi-release:
+        description: BOSH AWS CPI
+        has_projects: true
+        has_wiki: false
+      bosh-aws-light-stemcell-builder:
+        description: Builds light stemcells for AWS from a "full" bosh stemcell
+        has_projects: false
+        has_wiki: false
+      bosh-azure-cpi-ci:
+        description: BOSH Azure CPI configuration
+        has_projects: true
+        private: true
+      bosh-azure-cpi-release:
+        description: BOSH Azure CPI
+        has_projects: true
+        has_wiki: false
+      bosh-azure-storage-cli:
+        description: Go CLI for Azure storage
+        has_projects: true
+        default_branch: main
+      bosh-alicloud-cpi-release:
+        description: BOSH Alibaba CPI
+        has_projects: true
+        default_branch: master
+      bosh-ali-storage-cli:
+        description: Go CLI for Alibaba storage
+        has_projects: true
+        default_branch: main
+      bosh-apt-resources:
+        description: Builds debian packages for public bosh apt repository
+        has_projects: false
+        has_wiki: false
+      bosh-backup-and-restore:
+        has_projects: true
+        homepage: https://docs.cloudfoundry.org/bbr
+      bosh-backup-and-restore-test-releases:
+        description: Test Releases for bosh-backup-and-restore
+        has_projects: true
+      bosh-bbl-ci-envs:
+        description: BOSH DNS release CI envs
+        has_projects: false
+        has_wiki: false
+        private: true
+      bosh-bootloader:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        default_branch: main
+        description: Command line utility for standing up a BOSH director on an IAAS
+          of your choice.
+        has_projects: false
+        has_wiki: false
+      bosh-bootloader-ci-envs:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        default_branch: main
+        description: state files for bbl ci environments
+        has_projects: false
+        has_wiki: false
+        private: true
+      bosh-cli:
+        default_branch: main
+        description: BOSH CLI v2+
+        has_projects: false
+        has_wiki: false
+      bosh-compile-action:
+        default_branch: main
+        has_projects: true
+      bosh-compiled-releases-index:
+        has_projects: false
+        has_wiki: false
+      bosh-cpi-certification:
+        has_projects: false
+        has_wiki: false
+      bosh-cpi-environments:
+        has_projects: true
+        has_wiki: false
+        private: true
+      bosh-cpi-go:
+        description: Library for developing BOSH CPIs in Go
+        has_projects: false
+        has_wiki: false
+      bosh-cpi-kb:
+        has_projects: true
+        private: true
+      bosh-cpi-ruby:
+        description: Library for developing BOSH CPIs in Ruby
+        has_projects: true
+        has_wiki: false
+      bosh-davcli:
+        description: Dav CLI for BOSH
+        has_projects: false
+        has_wiki: false
+      bosh-deployment:
+        description: Collection of BOSH manifests referenced by cloudfoundry/docs-bosh
+        has_projects: false
+        has_wiki: false
+      bosh-deployment-resource:
+        has_projects: true
+      bosh-disaster-recovery-acceptance-tests:
+        has_projects: true
+      bosh-dns-aliases-release:
+        description: Misc release to specify additional DNS aliases
+        has_projects: false
+        has_wiki: false
+      bosh-dns-release:
+        description: BOSH DNS release
+        has_projects: false
+        has_wiki: false
+      bosh-docker-cpi-release:
+        description: BOSH Docker CPI
+        has_projects: true
+        has_wiki: false
+      bosh_exporter:
+        description: BOSH Prometheus Exporter
+        default_branch: master
+        has_projects: false
+      bosh-gcscli:
+        description: GCS for BOSH
+        has_projects: false
+        has_wiki: false
+      bosh-google-cpi-release:
+        description: BOSH Google CPI
+        has_projects: true
+      bosh-google-light-stemcell-builder:
+        description: Builds light stemcells for GCP from a "full" bosh stemcell
+        has_projects: false
+        has_wiki: false
+        archived: true
+      bosh-io-releases-index:
+        description: Index of all release assets
+        default_branch: main
+        has_projects: false
+      bosh-io-releases:
+        description: List of releases tracked by bosh.io
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-core-index:
+        description: Stemcell index produced by BOSH core team
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-cpi-index:
+        description: Stemcell index for light stemcells (AWS, GCP, Oracle, ...)
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-legacy-index:
+        description: bosh-hub combined stemcell index
+        default_branch: main
+        has_projects: false
+        archived: true
+      bosh-io-stemcells-softlayer-index:
+        description: Stemcell index produced by Softlayer CPI team
+        default_branch: main
+        has_projects: false
+      bosh-io-stemcells-windows-index:
+        description: Stemcell index produced by BOSH Windows team
+        default_branch: main
+        has_projects: false
+      bosh-io-web:
+        description: Web frontend for https://bosh.io
+        default_branch: main
+        has_projects: false
+      bosh-io-worker:
+        description: Worker for pulling in bosh.io assets
+        default_branch: main
+        has_projects: false
+      bosh-package-cf-cli-release:
+        description: BOSH release of Cloud Foundry CLI
+        default_branch: main
+        has_projects: false
+      bosh-package-golang-release:
+        description: Golang release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-java-release:
+        description: Java release for OpenJDK for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+        archived: true
+      bosh-package-nginx-release:
+        description: Nginx release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-python-release:
+        description: Python release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-package-ruby-release:
+        description: Ruby release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
+      bosh-linux-stemcell-builder:
+        default_branch: ubuntu-jammy
+        description: 'BOSH Ubuntu Linux stemcells '
+        has_projects: false
+        has_wiki: false
+      bosh-openstack-cpi-ci:
+        description: Concourse pipeline to update Let's encrypt certificate
+        has_projects: true
+        private: true
+      bosh-openstack-cpi-release:
+        description: BOSH OpenStack CPI
+        has_projects: true
+        has_wiki: false
+      bosh-openstack-cpi-shared:
+        has_issues: false
+        has_projects: true
+        private: true
+      bosh-psmodules:
+        description: PowerShell modules for building Windows Stemcells
+        has_projects: false
+      bosh-s3cli:
+        description: Go CLI for S3
+        has_projects: false
+        has_wiki: false
+      bosh-shared-ci:
+        description: Concourse CI tasks intended to be used across many different projects
+        has_projects: false
+        has_wiki: false
+      bosh-softlayer-cpi-release:
+        description: An external BOSH CPI for the SoftLayer cloud written in Golang
+        has_projects: true
+        archived: true
+      bosh-stemcell-resource:
+        archived: true
+        has_projects: true
+        private: true
+      bosh-stemcells-ci:
+        has_projects: true
+      bosh-system-metrics-forwarder-release:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      bosh-system-metrics-server-release:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      bosh-utils:
+        description: Generic packages extracted from bosh-agent and bosh-init
+        has_projects: false
+        has_wiki: false
+      bosh-virtualbox-cpi-release:
+        description: BOSH VirtualBox CPI
+        has_projects: false
+        has_wiki: false
+      bosh-vsphere-cpi-release:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        description: BOSH vSphere CPI
+        has_projects: false
+        has_wiki: false
+      bosh-warden-cpi-release:
+        description: BOSH Garden (used to be Warden) CPI
+        has_projects: false
+        has_wiki: false
+      bosh-windows-acceptance-tests:
+        has_projects: true
+      bosh-windows-stemcell-builder:
+        has_projects: true
+      bosh-workstation:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        description: Get your workstation setup to work on the bosh team
+        has_projects: false
+        has_wiki: false
+        archived: true
+        private: true
+      bosh_rackspace_cpi_spike:
+        description: An experimental/unsupported/untested CPI for Rackspace
+        has_projects: true
+        private: true
+      bpm-release:
+        allow_merge_commit: false
+        description: isolated bosh jobs
+        has_projects: false
+        has_wiki: false
+      brats:
+        description: Buildpack Runtime Acceptance Tests
+        has_projects: false
+        has_wiki: false
+      brokerapi:
+        description: A Go package for implementing the V2 Open Service Broker API
+        has_projects: false
+        has_wiki: true
+      bsdtar:
+        has_projects: true
+        has_wiki: false
+      build-system-cnb:
+        archived: true
+        has_projects: true
+      buildpack-acceptance-tests:
+        archived: true
+        has_projects: false
+        has_wiki: false
+      buildpack-checklists:
+        archived: true
+        has_projects: true
+        has_wiki: false
+        private: true
+      buildpack-packager:
+        description: Buildpack Packager
+        has_projects: false
+        has_wiki: false
+      buildpackapplifecycle:
+        description: The bit that takes some bits, mashes them together with other
+          bits, and produces a new bit
+        has_projects: false
+        has_wiki: false
+      buildpacks-ci:
+        description: Concourse CI pipelines for the buildpacks team
+        has_projects: false
+        has_wiki: false
+        homepage: https://buildpacks.ci.cf-app.com
+      buildpacks-envs:
+        has_projects: false
+        has_wiki: false
+        private: true
+      buildpacks-feature-eng-ci:
+        archived: true
+        has_projects: false
+        has_wiki: false
+      buildpacks-github-config:
+        default_branch: main
+        has_projects: false
+        has_wiki: false
+      buildpacks-style-guide:
+        archived: true
+        description: Cloud Foundry Buildpack Team's Style Guide
+        has_projects: true
+      buildpacks-workstation:
+        has_projects: true
+        private: true
+      bytefmt:
+        description: Human readable byte formatter
+        has_issues: false
+        has_projects: true
+      cacheddownloader:
+        description: A cached HTTP blob downloader
+        has_issues: false
+        has_projects: true
+      canibump:
+        archived: true
+        has_projects: true
+      capi-bara-tests:
+        default_branch: main
+        has_projects: true
+      capi-ci:
+        default_branch: main
+        has_projects: true
+      capi-ci-private:
+        default_branch: main
+        has_projects: true
+        private: true
+      capi-datadog:
+        has_projects: true
+        private: true
+      capi-dockerfiles:
+        default_branch: main
+        has_projects: true
+      capi-env-pool:
+        default_branch: main
+        has_projects: true
+        private: true
+      capi-integration-tests:
+        archived: true
+        default_branch: main
+        has_projects: true
+      capi-k8s-release:
+        archived: true
+        default_branch: main
+        description: The CF API parts of cloudfoundry/cf-for-k8s
+        has_projects: true
+      capi-release:
+        default_branch: develop
+        description: Bosh Release for Cloud Controller and friends
+        has_projects: true
+      capi-team-checklists:
+        default_branch: main
+        description: Checklists and wiki for CAPI team
+        has_projects: true
+        private: true
+      capi-workspace:
+        default_branch: main
+        description: Machine setup for CAPI developers
+        has_projects: true
+      cc-api-v3-style-guide:
+        archived: true
+        description: Style Guide for Cloud Controller v3 API
+        has_projects: true
+      cc-uploader:
+        default_branch: main
+        description: CC Bridge component to enable Diego to upload files to Cloud
+          Controller's blobstore
+        has_projects: true
+      cert-injector:
+        has_projects: true
+      certauthority:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      certsplitter:
+        has_issues: false
+        has_projects: true
+      cf-acceptance-tests:
+        default_branch: main
+        description: CF Acceptance tests
+        has_projects: true
+      cf-app-utils-ruby:
+        archived: true
+        description: Helper methods for ruby apps on Cloud Foundry
+        has_projects: true
+      cf-crd-explorations:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-deployment:
+        default_branch: main
+        description: The canonical open source deployment manifest for Cloud Foundry
+        has_projects: true
+      cf-deployment-concourse-tasks:
+        default_branch: main
+        has_projects: true
+      cf-drain-cli:
+        archived: true
+        allow_merge_commit: false
+        default_branch: main
+        description: CF CLI plugin to create syslog drains
+        has_projects: true
+      cf_exporter:
+        description: Cloud Foundry Prometheus Exporter
+        default_branch: master
+        has_projects: false
+      cf-for-k8s:
+        archived: true
+        default_branch: develop
+        description: The open source deployment manifest for Cloud Foundry on Kubernetes
+        has_projects: true
+      cf-for-k8s-docs:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-for-k8s-metric-examples:
+        archived: true
+        has_projects: true
+      cf-identity-acceptance-tests-release:
+        has_projects: true
+      cf-java-client:
+        default_branch: main
+        description: Java Client Library for Cloud Foundry
+        has_projects: false
+        has_wiki: false
+      cf-k8s-api:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-k8s-logging:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-k8s-logging-fluent:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-k8s-networking:
+        archived: true
+        default_branch: develop
+        description: building a cloud foundry without gorouter....
+        has_projects: false
+        has_wiki: false
+      cf-k8s-networking-scaling:
+        archived: true
+        has_projects: true
+      cf-k8s-prometheus:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-k8s-secrets:
+        default_branch: main
+        has_projects: true
+        private: true
+      cf-lite-ci:
+        has_projects: true
+        private: true
+      cf-lookup-route:
+        default_branch: main
+        description: A plugin for the CF-CLI to quickly identify the application a certain route is pointing to.
+        has_projects: true
+      cf-mysql-bootstrap:
+        description: Auto-bootstrap errand for cf-mysql-release
+        has_projects: true
+        archived: true
+      cf-mysql-ci:
+        description: Contains Concourse CI scripts and configuration we use to test
+          cf-mysql-release
+        has_projects: true
+        archived: true
+      cf-mysql-cluster-health-logger:
+        has_projects: true
+        archived: true
+      cf-mysql-deployment:
+        default_branch: develop
+        has_projects: true
+        archived: true
+      cf-mysql-release:
+        default_branch: develop
+        description: Cloud Foundry MySQL Release
+        has_projects: true
+        archived: true
+      cf-networking-deployments:
+        archived: true
+        description: Private manifests and credentials for the Container Networking
+          team
+        has_issues: false
+        has_projects: true
+        has_wiki: false
+        private: true
+      cf-networking-helpers:
+        default_branch: main
+        description: Shared libraries for the CF Networking team
+        has_projects: false
+        has_wiki: false
+      cf-networking-onboarding:
+        default_branch: gh-pages
+        description: Onboarding materials for new contributors in the routing/networking
+          area of CF
+        has_projects: true
+      cf-networking-release:
+        default_branch: develop
+        description: Container Networking for CloudFoundry
+        has_projects: true
+        has_wiki: false
+      cf-on-k8s-integration:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cf-performance-tests:
+        default_branch: main
+        has_projects: true
+      cf-performance-tests-release:
+        description: BOSH errand for running cf-performance-tests
+        default_branch: main
+        has_projects: true
+      cf-performance-tests-pipeline:
+        default_branch: main
+        has_projects: true
+      cf-relint-ci-semver:
+        default_branch: main
+        has_projects: true
+      cf-routing-test-helpers:
+        default_branch: main
+        has_projects: true
+      cf-slackin:
+        has_projects: true
+        private: true
+      cf-smoke-tests:
+        default_branch: main
+        description: Smoke tests for CloudFoundry that are safe to run in a production
+          environment
+        has_projects: true
+      cf-smoke-tests-release:
+        default_branch: main
+        has_projects: true
+      cf-tcp-router:
+        default_branch: main
+        description: TCP Router repository for Cloud Foundry
+        has_projects: true
+      cf-test-helpers:
+        default_branch: main
+        description: Helpers for running tests against Cloud Foundry
+        has_projects: true
+      cf-uaa-lib:
+        description: Ruby client APIs to access the Cloud Foundry User Account and
+          Authentication service
+        has_projects: true
+      cf-uaac:
+        has_projects: true
+      cf-volume-services-acceptance-tests:
+        has_projects: true
+      cf-volume-services-team:
+        has_projects: true
+        private: true
+      cfar-logging-acceptance-tests:
+        archived: true
+        has_projects: true
+      cfar-proposals:
+        archived: true
+        description: Repository for Cloud Foundry Application Runtime Proposals
+        has_projects: true
+      cfbench:
+        archived: true
+        has_issues: false
+        has_projects: true
+      cfcd-broker:
+        default_branch: main
+        description: This service broker to manage infrastructure as part of the Cloud
+          Foundry Certified Developer exam.
+        has_projects: true
+        private: true
+      cfcd-cert-items:
+        has_projects: true
+        private: true
+      cfcd-ci:
+        has_projects: true
+        private: true
+      cfcd-course-content:
+        has_projects: true
+        private: true
+      cfcd-dockerfile:
+        has_projects: true
+        private: true
+      cfcd-exam-info:
+        description: General CFCD-related materials
+        has_projects: true
+        private: true
+      cfcd-facts:
+        has_projects: true
+        private: true
+      cfcd-items:
+        has_projects: true
+        private: true
+      cfcd-mappings:
+        has_projects: true
+        private: true
+      cfcd-mindmaps:
+        has_projects: true
+        private: true
+      cfcd-parser:
+        has_projects: true
+        private: true
+      cfcd-prep:
+        has_projects: true
+      cfdot:
+        description: A command-line tool to interact with a Cloud Foundry Diego deployment.
+        has_issues: false
+        has_projects: true
+      cfdreddbot:
+        archived: true
+        description: This application has been deprecated. It is no longer in use
+        has_projects: true
+        private: true
+      cff-platform-certification:
+        description: Cloud Foundry Platform Certification technical requirements.
+          All changes to the technical requirements document must be approved by the
+          PMC Council, but may be proposed by any member in good standing of the Cloud
+          Foundry Foundation.
+        has_projects: true
+        private: true
+      cfhttp:
+        description: Wrapper for official go http package
+        has_issues: false
+        has_projects: true
+      cflinuxfs2:
+        archived: true
+        description: The official Cloud Foundry app container rootfs
+        has_projects: true
+      cflinuxfs2-release:
+        archived: true
+        has_projects: true
+      cflinuxfs3:
+        archived: true
+        default_branch: main
+        has_projects: true
+      cflinuxfs3-release:
+        archived: true
+        default_branch: main
+        description: Cloud Foundry stack based on Ubuntu 18.04 LTS
+        has_projects: true
+      cflinuxfs4:
+        default_branch: main
+        has_projects: true
+      cflinuxfs4-compat-release:
+        default_branch: main
+        description: Cloud Foundry compatibility stack with Ruby and Python based on Ubuntu 22.04 LTS
+        has_projects: true
+      cflinuxfs4-release:
+        default_branch: main
+        description: Cloud Foundry stack based on Ubuntu 22.04 LTS
+        has_projects: true
+      cli:
+        allow_merge_commit: false
+        description: The official command line client for Cloud Foundry
+        has_projects: true
+        homepage: https://docs.cloudfoundry.org/cf-cli
+      cli-ci:
+        description: The CI repo for the CloudFoundry CLI.
+        has_projects: true
+      cli-docs-scripts:
+        has_projects: true
+        homepage: http://cli.cloudfoundry.org
+      cli-i18n:
+        description: Translations (i18n) for the CF CLI
+        has_projects: true
+        homepage: https://code.cloudfoundry.org/cli
+      cli-plugin-repo:
+        description: Public repository for community created CF CLI plugins.
+        has_projects: false
+        has_wiki: false
+        homepage: https://plugins.cloudfoundry.org
+      cli-pools:
+        description: POOLS!
+        has_projects: true
+        private: true
+      cli-private:
+        description: ssssssh! it's a secret!
+        has_projects: true
+        private: true
+      cli-workstation:
+        description: CF CLI Developer workstation setup/maintenance repository
+        has_projects: true
+        has_wiki: false
+      clock:
+        default_branch: main
+        description: time provider & rich fake for Go
+        has_issues: false
+        has_projects: true
+      cloud-service-broker:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: OSBAPI service broker that uses Terraform to provision and bind
+          services. Derived from https://github.com/GoogleCloudPlatform/gcp-service-broker
+        has_projects: true
+        has_wiki: false
+      cloud_controller_ng:
+        default_branch: main
+        description: Cloud Foundry Cloud Controller
+        has_projects: true
+      cloudfoundry.github.com:
+        has_projects: true
+        private: true
+      cnb-tools:
+        archived: true
+        has_projects: true
+      cnb2cf:
+        archived: true
+        has_projects: true
+      cnbapplifecycle:
+        description: Lifecycle to create apps using Cloud Native Buildpacks
+        has_projects: false
+        has_wiki: false
+      commandrunner:
+        has_projects: true
+      community:
+        default_branch: main
+        description: Governance and contact information for Cloud Foundry
+        has_projects: true
+        has_wiki: false
+      communitydashboard:
+        archived: true
+        has_projects: true
+      compile-extensions:
+        archived: true
+        description: Bash library which provides extra functions and overrides for
+          Cloud Foundry Buildpack compile scripts.
+        has_projects: false
+        has_wiki: false
+      config-server:
+        description: Example config server that integrates with BOSH Director
+        has_projects: false
+        has_wiki: false
+      config-server-release:
+        description: Example BOSH release for config server
+        has_projects: true
+        homepage: https://github.com/cloudfoundry/config-server
+      concourse-infra-for-fiwg:
+        description: This repo holds the deployment tooling used to deploy a Concourse instance for the Foundation Infrastructure Working Group
+        default_branch: main
+        has_projects: true
+      consuladapter:
+        archived: true
+        description: Consul client adapter and test cluster runner
+        has_issues: false
+        has_projects: true
+      core-deps-ci:
+        archived: true
+        default_branch: main
+        has_projects: false
+        has_wiki: false
+      cpu-entitlement-admin-plugin:
+        has_projects: true
+        archived: true
+      cpu-entitlement-plugin:
+        has_projects: true
+        archived: true
+      credhub:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        default_branch: main
+        description: CredHub centralizes and secures credential generation, storage,
+          lifecycle management, and access
+        has_projects: true
+        has_wiki: false
+      credhub-acceptance-tests:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        default_branch: main
+        description: This repo provides acceptance tests for CredHub
+        has_projects: true
+        has_wiki: false
+      credhub-api-site:
+        default_branch: main
+        description: CredHub API documentation site - credhub-api.cfapps.io
+        has_projects: false
+        has_wiki: false
+      credhub-ci-locks:
+        has_projects: true
+      credhub-cli:
+        default_branch: main
+        description: CredHub CLI provides a command line interface to interact with
+          CredHub servers
+        has_projects: true
+      credhub-oss-ci:
+        default_branch: main
+        has_projects: true
+        has_wiki: false
+        private: true
+      credhub-perf-release:
+        has_projects: true
+      csb-brokerpak-aws:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        has_projects: true
+      csb-brokerpak-azure:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        has_projects: true
+      csb-brokerpak-gcp:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        has_projects: true
+      dagger:
+        has_projects: true
+      debug-cnb:
+        archived: true
+        has_projects: true
+      debugserver:
+        has_issues: false
+        has_projects: true
+      delayed_job_sequel:
+        description: Sequel backend for Delayed Job
+        has_issues: false
+        has_projects: true
+      dependachore:
+        archived: true
+        has_projects: true
+      deployments-diego:
+        allow_merge_commit: false
+        archived: true
+        description: Configuration files for deployments owned and managed by the
+          CF Diego team.
+        has_projects: true
+        private: true
+      deployments-loggregator:
+        allow_merge_commit: false
+        archived: true
+        has_projects: true
+        private: true
+      deployments-routing:
+        archived: true
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+        private: true
+      dev-cert:
+        description: CF Developer Certification Exam - Private to all that have signed
+          agreement
+        has_projects: true
+        private: true
+      dev-cert-grading:
+        description: Grading code developed by the Biarca team and to be reviewed
+          by Item Writers
+        has_projects: true
+        private: true
+      developer-training-class-apps:
+        description: Public repo making apps that are used for the developer training
+          course available to students
+        has_projects: true
+      developer-training-class-site:
+        has_projects: true
+      developer-training-course:
+        has_projects: true
+        private: true
+      developer-training-hugo-parser:
+        has_projects: true
+        private: true
+      diego-acceptance:
+        archived: true
+        description: Diego PM acceptance notes and tools
+        has_projects: true
+        private: true
+      diego-checkman:
+        archived: true
+        has_projects: true
+        private: true
+      diego-design-notes:
+        archived: true
+        description: Diego Architectural Design Musings and Explications
+        has_projects: true
+      diego-dockerfiles:
+        archived: true
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      diego-logging-client:
+        has_issues: false
+        has_projects: true
+      diego-notes:
+        archived: true
+        description: Diego Notes
+        has_projects: true
+      diego-perf-release:
+        archived: true
+        description: Used to deploy multiple app-pushers and fezzik-runners for performance-testing
+          a Diego(+Runtime) deployment
+        has_projects: true
+      diego-release:
+        default_branch: develop
+        description: BOSH Release for Diego
+        has_projects: true
+      diego-ssh:
+        description: Access Diego containers with ssh
+        has_issues: false
+        has_projects: true
+      diego-stress-tests:
+        archived: true
+        description: Diego Stress Tests
+        has_projects: true
+      diego-team:
+        archived: true
+        description: Checklists for the Diego team
+        has_projects: true
+        private: true
+      diego-upgrade-stability-tests:
+        allow_merge_commit: false
+        archived: true
+        has_issues: false
+        has_projects: true
+      diego-windows-release:
+        archived: true
+        has_projects: true
+      diegocanaryapp:
+        archived: true
+        description: Simple canary app to test long-running Diego deployments
+        has_projects: true
+      diff-exporter:
+        default_branch: main
+        has_projects: true
+      disaster-recovery-acceptance-tests:
+        default_branch: main
+        description: Acceptance tests for disaster recovery of Cloud Foundry
+        has_projects: true
+      dist-zip-cnb:
+        archived: true
+        has_projects: true
+      docker_driver_integration_tests:
+        has_projects: true
+        archived: true
+      dockerapplifecycle:
+        description: Code that runs inside of containers, for docker-based apps
+        has_projects: true
+      dockerdriver:
+        has_issues: false
+        has_projects: true
+      docs-bbr:
+        has_projects: true
+      docs-book-cloudfoundry:
+        description: The bookbinder repository for open source Cloud Foundry documentation
+        has_projects: true
+      docs-bosh:
+        description: The docs repo for BOSH
+        has_projects: false
+        has_wiki: false
+      docs-buildpacks:
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      docs-cf-admin:
+        description: A place to put documentation about how to operate your Cloud
+          Foundry deployment using the command line tools bosh and cf
+        has_projects: true
+      docs-cf-cli:
+        has_projects: true
+      docs-cfcr:
+        archived: true
+        description: This repo contains the content for the CFCR documentation.
+        has_projects: true
+        homepage: https://docs.cloudfoundry.org/cfcr
+      docs-cloudfoundry-concepts:
+        description: A place for architecture and concept docs
+        has_projects: true
+      docs-credhub:
+        has_projects: true
+      docs-deploying-cf:
+        description: The docs repo for material on deploying Cloud Foundry
+        has_projects: true
+      docs-dev-guide:
+        description: Documentation for application developers who want to deploy their
+          applications to Cloud Foundry
+        has_projects: true
+      docs-dotnet-core-tutorial:
+        has_projects: true
+      docs-loggregator:
+        has_projects: true
+      docs-routing:
+        archived: true
+        has_projects: true
+      docs-running-cf:
+        description: A place for docs related to running, monitoring, and troubleshooting
+          a Cloud Foundry deployment
+        has_projects: true
+      docs-services:
+        description: Documentation on extending Cloud Foundry
+        has_projects: true
+      docs-uaa:
+        has_projects: true
+      dontpanic:
+        description: system data collector for disaster-struck garden vms
+        has_projects: true
+      dotnet-core-buildpack:
+        description: Cloud Foundry buildpack for .NET Core on Linux
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      dotnet-core-buildpack-release:
+        description: BOSH release for .NET Core Buildpack
+        has_projects: false
+        has_wiki: false
+      dotnet-core-cnb:
+        archived: true
+        has_projects: true
+      dropsonde:
+        description: Go library to collect and emit metric and logging data from CF
+          components.
+        has_projects: true
+      dropsonde-protocol:
+        description: Protobuf protocol for dropsonde
+        has_projects: true
+      dropsonde-protocol-js:
+        has_projects: true
+      durandal-env:
+        archived: true
+        has_projects: true
+        private: true
+      durationjson:
+        has_issues: false
+        has_projects: true
+      ecrhelper:
+        has_issues: false
+        has_projects: true
+      eirini:
+        description: Pluggable container orchestration for Cloud Foundry, and a Kubernetes
+          backend
+        has_projects: false
+        has_wiki: false
+        archived: true
+      eirini-ci:
+        description: CI for Eirini
+        has_projects: false
+        has_wiki: false
+        homepage: https://jetson.eirini.cf-app.com
+        archived: true
+      eirini-controller:
+        has_projects: true
+        archived: true
+      eirini-private-config:
+        has_projects: false
+        private: true
+        archived: true
+      eirini-release:
+        description: Helm release for Project Eirini
+        has_projects: true
+        archived: true
+      envoy-nginx-release:
+        default_branch: develop
+        description: BOSH release for deploying nginx in place of envoy to enable
+          route integrity on Windows.
+        has_projects: true
+      etcd:
+        archived: true
+        description: A highly-available key value store for shared configuration and
+          service discovery
+        has_issues: false
+        has_projects: true
+        has_wiki: false
+        homepage: http://coreos.com/docs/etcd/
+      event-log-release:
+        has_projects: true
+        archived: true
+      eventhub:
+        has_issues: false
+        has_projects: true
+      example-sidecar-buildpack:
+        has_projects: true
+      executor:
+        description: thy will be done
+        has_issues: false
+        has_projects: true
+      exemplar-backup-and-restore-release:
+        description: Example release for with backup and restore scripts for bbr
+        has_projects: true
+      exemplar-release:
+        has_projects: true
+      existingvolumebroker:
+        has_projects: true
+      firehose_exporter:
+        description: Cloud Foundry Firehose Prometheus exporter
+        default_branch: master
+        has_projects: false
+      filelock:
+        has_projects: true
+      fileserver:
+        description: 'Bob Loblaw''s file server '
+        has_issues: false
+        has_projects: true
+      flightattendant:
+        archived: true
+        has_projects: true
+      flintstone:
+        description: Store pipeline credentials and templates.
+        has_projects: true
+        private: true
+      fluent-plugin-syslog_rfc5424:
+        default_branch: main
+        has_projects: true
+      fluentbit-loggr-plugin:
+        archived: true
+        description: output plugin for Fluent Bit to send logs to Loggregator
+        has_projects: true
+      foundation:
+        description: Foundation Charter Documents
+        has_projects: true
+        private: true
+      galera-healthcheck:
+        description: A lightweight web server written in Golang to check the health
+          of a node in a Galera cluster
+        has_projects: true
+        archived: true
+      galera-init:
+        description: Monit ctl script for MariaDB in cf-mysql-release
+        has_projects: true
+        archived: true
+      garden:
+        description: Go Warden
+        has_projects: true
+      garden-ci:
+        archived: true
+        has_projects: true
+        private: true
+      garden-ci-artifacts-release:
+        archived: true
+        has_projects: true
+      garden-dockerfiles:
+        has_projects: true
+        archived: true
+      garden-dotfiles:
+        archived: true
+        has_projects: true
+      garden-dotfiles-archived:
+        archived: true
+        has_projects: true
+        private: true
+      garden-integration-tests:
+        description: gits
+        has_projects: true
+      garden-performance-acceptance-tests:
+        has_projects: true
+      garden-runc-release:
+        default_branch: develop
+        has_projects: true
+      garden-wiki:
+        archived: true
+        description: Wiki and checklists for the London Garden team
+        has_projects: true
+        private: true
+      garden-windows-ci:
+        has_projects: true
+        archived: true
+      garden-windows-tools-release:
+        archived: true
+        has_projects: true
+      git-release-notes:
+        archived: true
+        has_projects: true
+      go-batching:
+        description: Batching implements a generic batcher that can be specialized.
+        has_projects: true
+      go-buildpack:
+        description: Cloud Foundry buildpack for the Go Language
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      go-buildpack-release:
+        description: BOSH release for Go Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/go-buildpack-release
+      go-cf-api:
+        allow_rebase_merge: false
+        allow_squash_merge: false
+        default_branch: main
+        description: A proof of concept implementation as an alternative to cloud_controller_ng,
+          written in Go.
+        has_projects: true
+        has_wiki: false
+        archived: true
+        homepage: https://cloudfoundry.github.io/go-cf-api/
+      go-cf-api-release:
+        allow_rebase_merge: false
+        default_branch: main
+        archived: true
+        has_projects: true
+      go-cfclient:
+        default_branch: main
+        description: Golang client lib for Cloud Foundry
+        has_projects: true
+      go-cnb:
+        archived: true
+        has_projects: true
+      go-diodes:
+        allow_merge_commit: false
+        default_branch: main
+        description: Diodes are ring buffers manipulated via atomics.
+        has_projects: true
+      go-envstruct:
+        description: envstruct is a simple library for populating values on structs
+          from environment variables.
+        has_projects: true
+      go-fetcher:
+        has_projects: true
+      go-git-resource:
+        has_projects: true
+      go-log-cache:
+        allow_merge_commit: false
+        default_branch: main
+        description: Go Client Library for Log Cache
+        has_projects: true
+      go-loggregator:
+        allow_merge_commit: false
+        default_branch: main
+        description: Go Client Library for Loggregator
+        has_projects: true
+      go-metric-registry:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      go-orchestrator:
+        has_projects: true
+      go-pubsub:
+        description: Tree based pubsub library for Go.
+        has_projects: true
+      go-socks5:
+        description: SOCKS5 server in Golang
+        has_issues: false
+        has_projects: true
+      go-uaa:
+        description: API for UAA written in Go
+        has_projects: true
+      gofileutils:
+        archived: true
+        description: A collection of go packages to simplify working with files.
+        has_projects: true
+        has_wiki: false
+      google-stackdriver-cnb:
+        archived: true
+        has_projects: true
+      gorouter:
+        default_branch: main
+        description: CF Router
+        has_projects: true
+        has_wiki: false
+      goshims:
+        description: generated real/fake os shim objects for tdd in go
+        has_projects: true
+      gosigar:
+        description: A Golang implementation of the Sigar API
+        has_projects: true
+        has_wiki: false
+      gosteno:
+        archived: true
+        has_projects: true
+        has_wiki: false
+      grace:
+        has_projects: true
+      greenhouse-ci:
+        has_projects: true
+        has_wiki: false
+      groot:
+        has_projects: true
+        has_wiki: false
+      groot-windows:
+        default_branch: main
+        description: A Garden image plugin for Windows
+        has_projects: true
+        has_wiki: false
+      grootfs:
+        description: Garden root file system
+        has_projects: true
+      grootfs-ci-secrets:
+        has_projects: true
+        private: true
+      guardian:
+        description: containers4life
+        has_projects: true
+      haproxy-boshrelease:
+        description: A BOSH release for haproxy (based on cf-release's haproxy job)
+        has_projects: true
+      healthcheck:
+        description: Common healthcheck for buildpacks and docker
+        has_issues: false
+        has_projects: true
+      healthchecker-release:
+        description: 'A BOSH release for vendoring the healtchecker BOSH package'
+        has_issues: true
+        has_projects: true
+      homebrew-tap:
+        description: Cloud Foundry Homebrew packages
+        has_projects: true
+        has_wiki: false
+      honeycomb-ginkgo-reporter:
+        has_projects: true
+      hwc:
+        has_projects: true
+        has_wiki: false
+      hwc-buildpack:
+        description: Cloud Foundry buildpack for Hosted Web Core
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      hwc-buildpack-release:
+        has_projects: false
+        has_wiki: false
+      hydrator:
+        default_branch: main
+        has_projects: true
+      ibm-websphere-liberty-buildpack:
+        description: IBM WebSphere Application Server Liberty Buildpack
+        has_projects: true
+      identity-ci:
+        description: where everything else lives
+        has_projects: true
+        private: true
+        archived: true
+      identity-tools:
+        description: 'Cloud Foundry - the open platform as a service project '
+        has_projects: true
+        has_wiki: false
+      idmapper:
+        has_projects: true
+      infrastructure-ci-bbl-states:
+        has_projects: true
+        private: true
+      infrastructure-ci-deployment-locks:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+        private: true
+      inigo:
+        description: diego integration tests
+        has_issues: false
+        has_projects: true
+      istio-scaling:
+        archived: true
+        has_projects: false
+        has_wiki: false
+      istio-scriptio:
+        default_branch: main
+        has_projects: true
+      java-buildpack:
+        default_branch: main
+        description: Cloud Foundry buildpack for running Java applications
+        has_projects: true
+      java-buildpack-auto-reconfiguration:
+        default_branch: main
+        description: Auto-reconfiguration functionality for the Java Buildpack
+        has_projects: true
+        has_wiki: false
+      java-buildpack-client-certificate-mapper:
+        default_branch: main
+        has_projects: true
+      java-buildpack-container-certificate-trust-store:
+        has_projects: true
+      java-buildpack-container-customizer:
+        default_branch: main
+        has_projects: true
+      java-buildpack-dependency-builder:
+        default_branch: main
+        description: Automated building and publication of Java Buildpack dependency
+          artifacts
+        has_projects: true
+      java-buildpack-memory-calculator:
+        default_branch: main
+        description: Cloud Foundry JVM Memory Calculator
+        has_projects: true
+      java-buildpack-metric-writer:
+        default_branch: main
+        has_projects: true
+      java-buildpack-release:
+        description: BOSH release for Java Buildpack
+        has_projects: true
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/java-buildpack-release
+      java-buildpack-security-provider:
+        default_branch: main
+        has_projects: true
+      java-buildpack-support:
+        default_branch: main
+        description: Supporting functionality for the Java Buildpack
+        has_projects: true
+      java-buildpack-system-test:
+        default_branch: main
+        description: System tests for the Java Buildpack
+        has_projects: true
+      java-cnb:
+        archived: true
+        has_projects: true
+      java-test-applications:
+        default_branch: main
+        description: Applications used for testing the Java buildpack
+        has_projects: true
+      jdbc-cnb:
+        archived: true
+        has_projects: true
+      jdbctestapp:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: A Spring Boot app for testing JDBC connectivity in general and TLS in particular
+        has_projects: true
+        has_wiki: false
+      jmx-cnb:
+        archived: true
+        has_projects: true
+      jsonry:
+        allow_merge_commit: false
+        default_branch: main
+        description: A Go library and notation for converting between a Go struct
+          and JSON
+        has_projects: false
+        has_wiki: false
+        homepage: https://pkg.go.dev/code.cloudfoundry.org/jsonry?tab=doc
+      jumpbox-deployment:
+        description: Deploy single vanilla jumpbox machine with BOSH
+        has_projects: false
+        has_wiki: false
+      jvm-application-cnb:
+        archived: true
+        has_projects: true
+      jvmkill:
+        default_branch: main
+        description: Terminate the JVM when resources are exhausted
+        has_projects: true
+        has_wiki: false
+      korifi:
+        default_branch: main
+        description: Cloud Foundry on Kubernetes
+        has_projects: true
+      korifi-ci:
+        default_branch: main
+        has_projects: true
+      korifi-website:
+        default_branch: main
+        has_projects: false
+      lager:
+        description: An opinionated logger for Go.
+        has_projects: true
+      lamb-ci-tools:
+        has_projects: true
+        private: true
+      lds:
+        has_projects: true
+        private: true
+      leadership-election:
+        archived: true
+        has_projects: true
+      leadership-election-release:
+        archived: true
+        default_branch: develop
+        description: 'Archived: Now a part of https://github.com/cloudfoundry/system-metrics-release'
+        has_projects: true
+      leela-env:
+        archived: true
+        has_projects: true
+        private: true
+      lf-elearning:
+        default_branch: main
+        has_projects: true
+        private: true
+      libbuildpack:
+        description: A library for writing buildpacks
+        has_projects: false
+        has_wiki: false
+      libcfbuildpack:
+        archived: true
+        has_projects: true
+      localdriver:
+        has_issues: false
+        has_projects: true
+      localip:
+        has_issues: false
+        has_projects: true
+      locket:
+        has_issues: false
+        has_projects: true
+      log-cache:
+        archived: true
+        description: 'Archived: Now bundled in https://github.com/cloudfoundry/log-cache-release'
+        has_projects: true
+      log-cache-acceptance-tests:
+        archived: true
+        has_projects: true
+      log-cache-acceptance-tests-release:
+        archived: true
+        has_projects: true
+      log-cache-ci:
+        archived: true
+        has_projects: true
+      log-cache-cli:
+        allow_merge_commit: false
+        default_branch: main
+        description: Better interactions with Cloudfoundry's Log Cache
+        has_projects: false
+      log-cache-deployments:
+        has_projects: true
+        private: true
+      log-cache-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: The BOSH release for Log Cache
+        has_projects: true
+      log-stream-cli:
+        default_branch: develop
+        description: Cloud Foundry CLI plugin to consume logs and metrics from the
+          RLP
+        has_projects: true
+      logging-acceptance-tests:
+        archived: true
+        description: Acceptance tests for Loggregator
+        has_projects: true
+      logging-acceptance-tests-release:
+        archived: true
+        has_projects: true
+      logging-deployment:
+        has_projects: true
+        private: true
+      logging-route-service:
+        archived: true
+        description: A sample route service written in Go.
+        has_projects: true
+      loggregator:
+        archived: true
+        description: 'Archived: Now bundled in https://github.com/cloudfoundry/loggregator-release'
+        has_projects: true
+      loggregator-agent:
+        archived: true
+        description: 'Archived: Now bundled in https://github.com/cloudfoundry/loggregator-agent-release'
+        has_projects: true
+      loggregator-agent-release:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      loggregator-api:
+        allow_merge_commit: false
+        has_projects: true
+      loggregator-ci:
+        archived: true
+        has_projects: true
+      loggregator-ci-old:
+        description: Concourse pipeline and scripts for loggregator
+        has_projects: true
+        private: true
+      loggregator-credentials:
+        has_projects: true
+        private: true
+      loggregator-dotfiles:
+        has_projects: true
+      loggregator-rampup:
+        description: Ramp up for new Loggregator team members
+        has_projects: true
+        private: true
+      loggregator-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: Cloud Native Logging
+        has_projects: true
+      loggregator-tools:
+        has_projects: true
+      loggregator_emitter:
+        archived: true
+        has_projects: true
+      logos:
+        description: stores CF logos
+        has_projects: true
+      machete:
+        archived: true
+        description: Cloud Foundry library for maintaining on-premises buildpacks
+        has_projects: true
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      mapfs:
+        has_projects: true
+        archived: true
+      mapfs-release:
+        description: BOSH release with mapfs, allows uid/gid mapping at the path
+        has_projects: true
+      membrane:
+        archived: true
+        has_projects: true
+        has_wiki: false
+      metric-proxy:
+        archived: true
+        default_branch: main
+        description: Translates Kubelet metrics into the log-cache API
+        has_projects: true
+      metric-store-ci:
+        has_projects: true
+      metric-store-deployments:
+        has_projects: true
+        private: true
+      metric-store-dotfiles:
+        has_projects: true
+      metric-store-rampup:
+        has_projects: true
+        private: true
+      metric-store-release:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        default_branch: develop
+        description: 'Metric Store: A Cloud-Native Time Series Database for Cloud
+          Foundry'
+        has_projects: true
+      metrics-discovery-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: BOSH Release to discover Prometheus-formatted metric endpoints
+          in Cloud Foundry
+        has_projects: true
+      migrate_mysql_to_credhub:
+        description: A go tool to migrate broker data from mysql to credhub
+        has_projects: true
+      minimal-env:
+        has_projects: true
+        private: true
+      multiapps:
+        description: Parsers, validators, persistence and utilities for Multi-Target
+          Application (MTA) models.
+        has_projects: true
+      multiapps-cli-plugin:
+        description: A CLI plugin for Multi-Target Application (MTA) operations in
+          Cloud Foundry
+        has_projects: true
+      multiapps-controller:
+        description: The server side component (controller) for Multi-Target Application
+          (MTA) for Cloud Foundry
+        has_projects: true
+      multierror:
+        has_projects: true
+        archived: true
+      mysql-backup-release:
+        has_projects: true
+      mysql-monitoring-release:
+        has_projects: true
+      nats-release:
+        default_branch: develop
+        has_projects: true
+      netplugin-shim:
+        has_projects: true
+      networking-oss-deployments:
+        archived: true
+        default_branch: main
+        description: bbl state store for networking oss deployments
+        has_projects: true
+        private: true
+      networking-program-checklists:
+        has_projects: true
+        private: true
+      networking-workspace:
+        archived: true
+        description: Machine setup for Cloud Foundry Networking team
+        has_projects: true
+      nfs-volume-release:
+        has_projects: true
+      nfsbroker:
+        has_projects: true
+        archived: true
+      nfsv3driver:
+        has_projects: true
+        archived: true
+      nginx-buildpack:
+        description: Cloud Foundry buildpack that provides NGINX
+        has_projects: false
+        has_wiki: false
+      nginx-buildpack-release:
+        has_projects: false
+        has_wiki: false
+      nicky:
+        has_projects: true
+        private: true
+      noaa:
+        description: NOAA is a client library to consume metric and log messages from
+          Doppler.
+        has_projects: true
+      node-exporter-boshrelease:
+        description: Prometheus Node Exporter BOSH Release
+        default_branch: master
+        has_projects: false
+      nodejs-buildpack:
+        description: Cloud Foundry buildpack for Node.js
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      nodejs-buildpack-release:
+        description: BOSH release for Node.js Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/nodejs-buildpack-release
+      nodejs-cnb:
+        archived: true
+        has_projects: true
+      nodejs-compat-cnb:
+        archived: true
+        has_projects: true
+      noisy-neighbor-nozzle:
+        allow_merge_commit: false
+        archived: true
+        description: A nozzle and CLI tool for identifying high volume log producing
+          applications
+        has_projects: true
+      notifications:
+        description: The notifications service component of Cloud Foundry
+        archived: true
+        has_projects: true
+        has_wiki: false
+      notifications-release:
+        description: A BOSH release that contains the notifications application and
+          an errand to push it
+        has_projects: true
+      omniauth-uaa-oauth2:
+        has_projects: true
+      open-source-licenses:
+        has_projects: true
+        private: true
+      openjdk-cnb:
+        archived: true
+        has_projects: true
+      operationq:
+        description: processes multiple queues in parallel
+        has_issues: false
+        has_projects: true
+      os-conf-release:
+        description: Additional Linux OS configuration release
+        has_projects: false
+        has_wiki: false
+      oss-s3-buckets-stack:
+        has_projects: true
+        private: true
+      oss-summit-class:
+        description: 'Lab assets for Cloud Foundry class at Open Source Summit ''18
+          in Vancouver '
+        has_projects: true
+      otel-collector-release:
+        default_branch: main
+        description: BOSH release for the OpenTelemetry Collector
+        has_projects: false
+      overview-broker:
+        allow_merge_commit: false
+        description: A service broker that provides an overview of its service instances
+          and bindings. Conforms to the Open Service Broker API standard.
+        has_projects: true
+      pcap-release:
+        default_branch: main
+        description: A BOSH release and CLI to enable network analysis for CF app developers
+        has_projects: true
+        archived: true
+      persi-ci:
+        has_projects: true
+        archived: true
+      persistence-load-tests:
+        has_projects: true
+        private: true
+      php-buildpack:
+        description: A Cloud Foundry Buildpack for PHP.
+        has_projects: false
+        has_wiki: false
+      php-buildpack-release:
+        description: BOSH release for PHP Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/php-buildpack-release
+      php-cnb:
+        archived: true
+        has_projects: true
+      php-compat-cnb:
+        archived: true
+        has_projects: true
+      pip-pop:
+        archived: true
+        has_projects: true
+      platform-certification:
+        description: 'Tooling for eventual use in CF platform certification '
+        has_projects: true
+        private: true
+      pmc-notes:
+        archived: true
+        description: Agendas and Notes for Cloud Foundry Project Management Committee
+          Meetings
+        has_projects: true
+      policy_client:
+        description: Policy Client allows Cloud Foundry system components to query
+          the policy server for policies
+        has_projects: true
+      postgres-ci-env:
+        has_projects: true
+        private: true
+      postgres-release:
+        default_branch: main
+        description: BOSH release for PostgreSQL
+        has_projects: true
+      procfile-cnb:
+        archived: true
+        has_projects: true
+      prometheus-boshrelease:
+        description: bosh release for prometheus ecosystem
+        default_branch: master
+        has_projects: false
+      public-buildpacks-ci-robots:
+        default_branch: main
+        has_projects: false
+        has_wiki: false
+      pxc-release:
+        description: 'BOSH release of Percona Xtradb Cluster '
+        has_projects: true
+      python-buildpack:
+        description: Cloud Foundry buildpack for the Python Language
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      python-buildpack-release:
+        description: BOSH release for Python Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/python-buildpack-release
+      python-cnb:
+        archived: true
+        has_projects: true
+      python-compat-cnb:
+        archived: true
+        has_projects: true
+      quarks-private:
+        description: Private repo for Quarks team secrets
+        has_projects: true
+        private: true
+      r-buildpack:
+        description: Cloud Foundry buildpack for R
+        has_projects: false
+        has_wiki: false
+      r-buildpack-release:
+        has_projects: false
+        has_wiki: false
+      rbenv-cookbook:
+        archived: true
+        description: Installs and configures rbenv
+        has_issues: false
+        has_projects: true
+        homepage: http://community.opscode.com/cookbooks/rbenv
+      relint-ci-pools:
+        default_branch: main
+        has_projects: true
+      relint-envs:
+        default_branch: main
+        description: Release Integration team "bbl" environments
+        has_projects: true
+        private: true
+      relint-team:
+        default_branch: main
+        description: Release Integration Team
+        has_projects: true
+        homepage: https://github.com/cloudfoundry/relint-team/wiki
+        private: true
+      relogger:
+        has_projects: true
+        private: true
+      rep:
+        description: Representative bids on tasks and schedules them on an associated
+          Executor
+        has_issues: false
+        has_projects: true
+      resolvconf-manager:
+        has_projects: true
+        archived: true
+      resolvconf-manager-index:
+        has_projects: true
+        archived: true
+      route-emitter:
+        description: Registers and unregisters processes running on executors with
+          the gorouter
+        has_issues: false
+        has_projects: true
+      route-registrar:
+        default_branch: main
+        description: A standalone executable written in golang that continuously broadcasts
+          a route using NATS to the CF router.
+        has_projects: true
+      routing-acceptance-tests:
+        default_branch: main
+        has_projects: true
+      routing-api:
+        default_branch: main
+        has_projects: false
+        has_wiki: false
+      routing-api-cli:
+        default_branch: main
+        has_projects: true
+      routing-ci:
+        archived: true
+        has_projects: true
+      routing-concourse:
+        default_branch: main
+        description: Concourse CI for CF Routing Components
+        has_projects: true
+      routing-datadog-config:
+        has_projects: true
+        private: true
+      routing-info:
+        default_branch: main
+        description: Routing information helpers for CF / Diego
+        has_projects: true
+      routing-perf-release:
+        archived: true
+        default_branch: main
+        description: A BOSH release for routing performance tests
+        has_projects: false
+        has_wiki: false
+      routing-release:
+        default_branch: develop
+        description: This is the BOSH release for cloud foundry routers
+        has_projects: true
+      routing-sample-apps:
+        allow_merge_commit: false
+        allow_squash_merge: false
+        archived: true
+        has_projects: false
+        has_wiki: false
+      routing-team-checklists:
+        archived: true
+        description: A Repository for the CF Routing Team checklists and Wiki
+        has_projects: true
+        private: true
+      ruby-buildpack:
+        description: Cloud Foundry buildpack for Ruby, Sinatra and Rails
+        has_projects: false
+        has_wiki: false
+        homepage: http://docs.cloudfoundry.org/buildpacks/
+      ruby-buildpack-release:
+        description: BOSH release for Ruby Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/ruby-buildpack-release
+      runtime-ci:
+        default_branch: main
+        has_projects: true
+      runtime-ci-pools:
+        description: Lock pools for the runtime CI
+        has_projects: true
+        has_issues: false
+      runtime-credentials:
+        archived: true
+        has_projects: true
+        private: true
+      runtime-og-ci:
+        archived: true
+        has_projects: true
+      runtime-og-ci-private:
+        has_projects: true
+        private: true
+      runtime-team-checklists:
+        has_projects: true
+        private: true
+      runtime1-env:
+        has_projects: true
+        private: true
+      runtimeschema:
+        description: Shared golang schema for runtime
+        has_projects: true
+      sample-http-app:
+        archived: true
+        has_projects: true
+      sample-service-metrics-release:
+        has_projects: true
+        private: true
+      sample-windows-bosh-release:
+        has_projects: true
+        has_wiki: false
+      sapi-env-pool:
+        has_projects: true
+        private: true
+      secure-credentials-broker:
+        has_projects: true
+      security-notices:
+        has_projects: true
+        private: true
+      service-broker-store:
+        has_projects: true
+      service-fabrik-backup-restore:
+        description: Service fabrik's library for backup and restore of service instances
+        has_projects: true
+        archived: true
+      service-fabrik-blueprint-app:
+        description: Service fabrik's blueprint app which is a test app to test the
+          blueprint service
+        has_projects: true
+        archived: true
+      service-fabrik-blueprint-boshrelease:
+        description: A boshrelease for service fabrik's blueprint service that is
+          used to try out service-fabrik broker
+        has_projects: true
+        archived: true
+      service-fabrik-blueprint-service:
+        description: Service fabrik's blueprint service which is a test service to
+          try out service fabrik broker
+        has_projects: true
+        archived: true
+      service-fabrik-boshrelease:
+        description: BOSH release to deploy the Service Fabrik which provisions service
+          instances as Docker containers and BOSH deployments.
+        has_projects: true
+        archived: true
+      service-fabrik-broker:
+        description: Cloud Foundry service broker which provisions service instances
+          as Docker containers and BOSH deployments.
+        has_projects: true
+        archived: true
+      service-fabrik-cli-plugin:
+        description: This is a Cloud Foundry CLI plugin for performing various backup
+          and restore operations on service instances in Cloud Foundry.
+        has_projects: true
+        archived: true
+      service-fabrik-lvm-volume-driver:
+        description: The logical volume driver for service-fabrik's docker based services
+        has_projects: true
+        archived: true
+      service-logs-release:
+        archived: true
+        default_branch: develop
+        description: Bosh job to forward logs from syslog files to Loggregator
+        has_projects: true
+      service-metrics:
+        archived: true
+        description: Send Metrics to Cloud Foundry's Loggregator system
+        has_issues: false
+        has_projects: true
+        homepage: https://docs.pivotal.io/svc-sdk/service-metrics
+      service-metrics-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: 'Service Metrics BOSH Release '
+        has_projects: true
+        homepage: https://docs.pivotal.io/svc-sdk/service-metrics
+      services-api-home:
+        archived: true
+        has_projects: true
+        private: true
+      services-api-meta:
+        archived: true
+        has_projects: true
+        private: true
+      silk:
+        archived: true
+        allow_merge_commit: false
+        default_branch: main
+        description: a network fabric for containers.  inspired by flannel, designed
+          for Cloud Foundry.
+        has_projects: true
+      silk-release:
+        default_branch: develop
+        description: Silk - CNI plugin BOSH release for Cloud Foundry
+        has_projects: true
+      sipid:
+        archived: true
+        has_projects: true
+      slack-interrupt-bot:
+        has_projects: false
+        has_wiki: false
+      smb-volume-release:
+        description: BOSH release with SMB driver and broker
+        has_projects: true
+      smbbroker:
+        has_projects: true
+        archived: true
+      smbdriver:
+        has_projects: true
+        archived: true
+      socks5-proxy:
+        default_branch: main
+        description: This is a go library for starting a socks5 proxy server via SSH
+        has_projects: true
+        homepage: https://cloudfoundry.org
+      sonde-go:
+        description: Go implementation of Cloud Foundry's Dropsonde Protocol
+        has_projects: true
+      spring-auto-reconfiguration-cnb:
+        archived: true
+        has_projects: true
+      spring-boot-cnb:
+        archived: true
+        has_projects: true
+      stack-auditor:
+        description: Stack Auditor is a cf CLI plugin that provides commands for listing
+          apps and their stacks, migrating apps to a new stack, and deleting a stack.
+        has_projects: true
+        homepage: https://docs.cloudfoundry.org/adminguide/stack-auditor.html
+      staticfile-buildpack:
+        description: Deploy static HTML/JS/CSS apps to Cloud Foundry
+        has_projects: false
+        has_wiki: false
+      staticfile-buildpack-release:
+        description: BOSH release for Staticfile Buildpack
+        has_projects: false
+        has_wiki: false
+        homepage: http://bosh.io/releases/github.com/cloudfoundry/staticfile-buildpack-release
+      statsd-injector:
+        archived: true
+        description: Companion component to Metron that receives Statsd and emits
+          Dropsonde to Metron
+        has_projects: true
+      statsd-injector-release:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      stembuild:
+        description: Binary to be used to build BOSH-compatible stemcells for Windows
+          Server 2019 on vSphere.
+        has_projects: true
+      stemcells-alicloud-index:
+        description: Alibaba Cloud Stemcell index produced by Alibaba Cloud team
+        has_projects: true
+      steno:
+        has_projects: true
+        has_wiki: false
+      stratos:
+        description: 'Stratos: Web-based Management UI for Cloud Foundry and Kubernetes'
+        has_projects: true
+      stratos-buildpack:
+        description: Custom buildpack Stratos (UI for Cloud Foundry)
+        has_projects: true
+      summit-hands-on-labs:
+        description: Hands-on Labs for CF Summit Boston '18 and beyond
+        has_projects: true
+      summit-training-classes:
+        description: 'Opensourced content for cloud foundry training classes: zero
+          to hero (beginner), bosh/operator, and microservices'
+        has_projects: true
+      switchblade:
+        default_branch: main
+        has_projects: false
+        has_wiki: false
+      switchboard:
+        description: Golang TCP Proxy
+        has_projects: true
+        has_wiki: false
+        archived: true
+      sync-integration-tests:
+        has_projects: true
+      syslog-adapter-release:
+        has_projects: true
+        private: true
+      syslog-blackbox-release:
+        archived: true
+        has_projects: true
+      syslog-ci-private:
+        allow_merge_commit: false
+        archived: true
+        has_projects: true
+        private: true
+      syslog-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: BOSH release for forwarding logs (either sent to syslog or picked
+          up /var/vcap/sys/log/**/*)
+        has_projects: true
+        has_wiki: false
+      system-metrics-release:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      system-metrics-scraper-release:
+        allow_merge_commit: false
+        default_branch: main
+        has_projects: true
+      systemcerts:
+        archived: true
+        allow_merge_commit: false
+        has_issues: false
+        has_projects: true
+      terraform-provider-cloudfoundry:
+        default_branch: main
+        description: Terraform provider to manage Cloud Foundry resources using v3 APIs 
+        has_projects: true
+      terraform-provider-csbmysql:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for MySQL
+        has_projects: true
+        has_wiki: false
+      terraform-provider-csbsqlserver:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for SQL Server
+        has_projects: true
+        has_wiki: false
+      terraform-provider-csbpg:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for PostgreSQL
+        has_projects: true
+        has_wiki: false
+      test-log-emitter:
+        has_projects: true
+      test-log-emitter-release:
+        has_projects: true
+      tlsconfig:
+        description: build tls configurations
+        has_projects: false
+        has_wiki: false
+      tomcat-cnb:
+        archived: true
+        has_projects: true
+      tps:
+        description: the process status reporter
+        has_projects: true
+      training-cert-admin:
+        has_projects: true
+        private: true
+      tycho-env:
+        archived: true
+        has_projects: true
+        has_wiki: false
+        private: true
+      uaa:
+        default_branch: develop
+        description: CloudFoundry User Account and Authentication (UAA) Server
+        has_projects: true
+        has_wiki: false
+      uaa-ci:
+        default_branch: main
+        has_projects: true
+        has_wiki: false
+        private: true
+      uaa-cli:
+        description: CLI for UAA written in Go
+        has_projects: true
+      uaa-developer-training:
+        has_projects: true
+        private: true
+      uaa-hey:
+        has_projects: true
+        private: true
+      uaa-k8s-release:
+        archived: true
+        default_branch: main
+        has_projects: true
+      uaa-key-rotator:
+        has_projects: true
+      uaa-performance-release:
+        default_branch: develop
+        has_projects: true
+        private: true
+      uaa-release:
+        default_branch: develop
+        description: Bosh Release for the UAA
+        has_projects: true
+      uaa-singular:
+        description: Singular Login for Web Applications
+        has_projects: true
+      uaa-singular-example:
+        has_projects: true
+        private: true
+      uaa-workstation:
+        description: Setup scripts for UAA workstations
+        has_projects: true
+        private: true
+      upgrade-all-services-cli-plugin:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        has_projects: true
+      uptimer:
+        default_branch: main
+        description: A Cloud Foundry availability measurement tool for eventful times
+        has_projects: true
+      urljoiner:
+        archived: true
+        has_projects: true
+      usn-resource:
+        has_projects: true
+      vantablackbox-release:
+        archived: true
+        has_projects: true
+      vcap-common:
+        archived: true
+        has_projects: true
+        has_wiki: false
+      vizzini:
+        description: 'Vizzini: Inconceivable Tests'
+        has_issues: false
+        has_projects: true
+      volman:
+        has_issues: false
+        has_projects: true
+      volume-mount-options:
+        has_projects: true
+      volumedriver:
+        has_projects: true
+      wg-app-platform-runtime-ci:
+        has_projects: true
+      winc:
+        default_branch: main
+        description: CLI tool for spawning and running containers on Windows according
+          to the OCI specification
+        has_projects: true
+        has_wiki: false
+      winc-release:
+        default_branch: develop
+        description: A BOSH release for deploying winc on windows
+        has_projects: true
+        has_wiki: false
+      windows-regression-tests:
+        archived: true
+        has_projects: true
+        has_wiki: false
+      windows-syslog-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: BOSH release for forwarding logs from BOSH jobs on Windows VMs
+        has_projects: true
+      windows-tools-release:
+        description: Contains miscellaneous Windows packages to be BOSH-deployed
+        has_projects: true
+        has_wiki: false
+      windows-utilities-release:
+        has_projects: true
+      windows-utilities-tests:
+        has_projects: true
+        archived: true
+      windows2016fs:
+        description: A rootfs for Windows containers in Cloud Foundry
+        has_projects: true
+        has_wiki: false
+      windows2019fs-release:
+        default_branch: develop
+        has_projects: true
+      windowsfs-online-release:
+        default_branch: develop
+        has_projects: true
+      workpool:
+        has_issues: false
+        has_projects: true
+      yagnats:
+        description: Yet Another Go NATS client
+        has_projects: true
+      ykk:
+        description: reads zips and JAR files with additional prefixed bytes
+        has_projects: true
+      yttk8smatchers:
+        default_branch: main
+        has_projects: true
+        archived: true
+    teams:
+      temp-ari-buildpacks-admins:
+        description: "Temporary team for managing Buildpacks secrets until we have a permanent plan."
+        maintainers:
+        - arjun024
+        - sophiewigmore
+        members: []
+        privacy: closed
+        repos:
+          apt-buildpack: admin
+          binary-buildpack: admin
+          buildpacks-ci: admin
+          cflinuxfs4-compat-release: admin
+          cflinuxfs4: admin
+          dotnet-core-buildpack: admin
+          go-buildpack: admin
+          hwc-buildpack: admin
+          libbuildpack: admin
+          nginx-buildpack: admin
+          nodejs-buildpack: admin
+          php-buildpack: admin
+          python-buildpack: admin
+          r-buildpack: admin
+          ruby-buildpack: admin
+          staticfile-buildpack: admin
+          switchblade: admin
+      temp-ari-cli-admins:
+        description: "Temporary team for managing CLI secrets until we have a permanent plan."
+        maintainers:
+          - a-b
+          - gururajsh
+          - reedr3
+          - ccjaimes
+        members: []
+        privacy: closed
+        repos:
+          CLAW: admin
+          cli-ci: admin
+          cli-plugin-repo: admin
+          cli: admin
+          bosh-package-cf-cli-release: admin
+          cli-private: admin
+      temp-multiapps-admins:
+        description: "Temporary team for managing MultiApps secrets until we have a permanent plan."
+        maintainers:
+          - IvanBorislavovDimitrov
+          - theghost5800
+          - boyan-velinov
+          - radito3
+          - ikasarov
+          - vkalapov
+          - VRBogdanov
+        members: []
+        privacy: closed
+        repos:
+          multiapps: admin
+          multiapps-controller: admin
+          multiapps-cli-plugin: admin
+      temp-ari-autoscaler-admins:
+        description: "Temporary team for managing autoscaler secrets until we have a permanent plan."
+        maintainers:
+        - asalan316
+        - silvestre
+        - joergdw
+        - bonzofenix
+        - olivermautschke
+        - geigerj0
+        - salzmannsusan
+        members: []
+        privacy: closed
+        repos:
+          app-autoscaler-release: admin
+          app-autoscaler-cli-plugin: admin
+          app-runtime-interfaces-infrastructure: admin
+      temp-arp-networking-admins:
+        description: "Temporary team for managing GitHub integrations for automation/concourse."
+        maintainers:
+          - plowin
+          - peanball
+          - Soha-Albaghdady
+        members: []
+        privacy: closed
+        repos:
+          haproxy-boshrelease: admin
+      temp-sm-csb-bots-admins:
+        description: "Temporary team to allow for bots driven dependency bumps until we implement another strategy"
+        maintainers:
+          - pivotal-marcela-campo
+        members:
+          - servicesenablement
+        privacy: closed
+        repos:
+          cloud-service-broker: admin
+          csb-brokerpak-azure: admin
+          csb-brokerpak-aws: admin
+          csb-brokerpak-gcp: admin
+          jdbctestapp: admin
+          upgrade-all-services-cli-plugin: admin
+          terraform-provider-csbpg: admin
+          terraform-provider-csbmysql: admin
+          terraform-provider-csbsqlserver: admin
+      temp-uaa-ci-admins:
+        description: "Temporary team for managing UAA CI"
+        maintainers:
+          - coolgang123
+          - duanemay
+          - hsinn0
+          - peterhaochen47
+        members: []
+        privacy: closed
+        repos:
+          uaa-ci: admin
+          credhub-oss-ci: admin
+      temp-prometheus-exporter-admins:
+        description: "Temporary admin team for Prometheus Repositories."
+        maintainers:
+          - benjaminguttmann-avtq
+        members: []
+        privacy: closed
+        repos:
+          cf_exporter: admin
+          firehose_exporter: admin
+          bosh_exporter: admin
+          node-exporter-boshrelease: admin
+          prometheus-boshrelease: admin
+      temp-ari-capi-admins:
+        description: "Temporary admin team for CAPI"
+        maintainers:
+          - philippthun
+          - johha
+        members: []
+        privacy: closed
+        repos:
+          cloud_controller_ng: admin
+      temp-ari-terraform-provider-cloudfoundry-admins:
+        description: "Temporary team for managing terraform-provider-cloudfoundry secrets."
+        maintainers:
+          - pyogesh2
+          - KesavanKing
+          - vipinvkmenon
+        members: []
+        privacy: closed
+        repos:
+          terraform-provider-cloudfoundry: admin

@@ -1,19 +1,19 @@
 Most community activity is organized into _working groups_.
 
-Working groups follow the [contributing](../CONTRIBUTING.md) guidelines although
+Working groups follow the [contributing](../../CONTRIBUTING.md) guidelines although
 each of these groups may operate a little differently depending on their needs
 and workflow.
 
-When the need arises, a new working group can be created. See the
-[working group processes](../mechanics/WORKING-GROUP-PROCESSES.md) for working
-group proposal and creation procedures.
+When the need arises, a new working group can be created or an existing one can be dissolved. There is no process
+around this at the moment and would fall back to a general decision by the TOC to accept or remove a proposed charter document for a WG.
+In the case of a WG getting dissolved, the TOC and the remaining WGs would have to decide which repos owned by the WG would go to other WGs and which would be archived or transferred to TOC or to administrative control.
 
 Additionally, all working groups should hold regular meetings, which should be
 added to the
 [shared CFF calendar](https://calendar.google.com/calendar/u/0/embed?src=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78@group.calendar.google.com)
 WG leads should have access to be able to create and update events on this
 calendar, and should invite cf-dev@lists.cloudfoundry.org to working group
-meetings.
+meetings. The meetings will be recorded and the recordings will be available in the [Cloud Foundry YouTube channel](https://www.youtube.com/@CloudFoundryFoundation). Please check the different [playlists](https://www.youtube.com/@CloudFoundryFoundation/playlists) available per WG in the YouTube channel.
 
 ### Calendar import
 
@@ -34,11 +34,35 @@ Most working groups manage a subset of repositories in the `cloudfoundry` GitHub
 
 The current working groups are:
 
+- App Runtime Deployments
 - App Runtime Interfaces
 - App Runtime Platform
 - CF on K8s
+- Docs
 - Foundational Infrastructure
 - Paketo
+- Service Management
+- Vulnerability Management
+- Concourse
+
+
+## App Runtime Deployments
+
+Mission: Provide reference deployments of the CF App Runtime to CF community end users, CF community contributors, and CF commercial vendors.
+
+The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-app-runtime-deployments` topic.
+
+| Artifact                   | Link |
+| -------------------------- | -- |
+| Charter                    | [app-runtime-deployments.md](./app-runtime-deployments.md) |
+| Forum                      | [Video chat](https://zoom.us/j/97528090021?pwd=TWU4c0NEMlRvUVAxMjRwMGtpSUhTQT09) |
+| Community Meeting Calendar | [Monthly on the second Thursday at 4:30pm – 5:30pm UTC](https://calendar.google.com/event?action=TEMPLATE&tmeid=MHBqNGxmM24xbmE4NmE3MjBmbzUzN2xxbHFfMjAyMjA1MTJUMTYzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL) / [Monthly on the fourth Thursday at 4:30pm - 5:30pm UTC](https://calendar.google.com/event?action=TEMPLATE&tmeid=N2loZWdqb3VnOWhjcjVybWs5bGg2bzEydHNfMjAyMjA1MjZUMTUzMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL) |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1lBOSKMWYb1y2d0YcUmIHe0JX7lc5qcLFO6sa-gp9N_g) |
+| Slack Channel              | [&#x23;wg-app-runtime-deployments](https://cloudfoundry.slack.com/archives/C033ALST37V) |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                  |
+| -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
+| <img width="30px" src="https://github.com/jochenehret.png"> | Jochen Ehret | SAP | [@jochenehret](https://github.com/jochenehret) |
 
 
 ## App Runtime Interfaces
@@ -50,14 +74,15 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [app-runtime-interfaces.md](./app-runtime-interfaces.md)  |
-| Forum                      | TBD  |
-| Community Meeting Calendar | TBD  |
-| Meeting Notes              | TBD  |
-| Slack Channel              | TBD  |
+| Forum                      | [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/95669503930?password=14bc7d14-48bd-4490-9a84-f5a217d38c69)   |
+| Community Meeting Calendar | [Monthly on the 4th Tuesday at 9:00 US Pacific](https://www.google.com/calendar/event?eid=NjhscXR0anFmZDhpN2VwMXJjc3I5ZHBnNW5fMjAyNDAxMjNUMTcwMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&ctz=America/New_York)  |
+| Meeting Notes              | [ARI Meeting Notes](https://docs.google.com/document/d/1wP21mVwaoZw45eU2YoDJg6KbvYJuD5ATrrhSY6_yHmM/edit?usp=sharing)  |
+| Slack Channel              | [&#x23;wg-app-runtime-interfaces](https://cloudfoundry.slack.com/archives/C02HNDJB31R)  |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                  |
 | -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
 | <img width="30px" src="https://github.com/Gerg.png"> | Greg Cobb     | VMware  | [@Gerg](https://github.com/Gerg) |
+| <img width="30px" src="https://github.com/stephanme.png"> | Stephan Merker     | SAP  | [@stephanme](https://github.com/stephanme) |
 
 
 ## App Runtime Platform
@@ -90,15 +115,34 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | -------------------------- | ---- |
 | Charter                    | [cf-on-k8s.md](./cf-on-k8s.md)  |
 | Forum                      | [Video chat](https://zoom.us/j/98762513821?pwd=dUk1WGZwcXJqR0UxRXQ4NnljcCtydz09)  |
-| Community Meeting Calendar | Every other Tuesday at 11:30 am ET / 8:30 am PT  |
+| Community Meeting Calendar | Every other Wednesday at 11:30 am ET / 8:30 am PT  |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1ULNBEjlrNAgn3ko9y8ZJfwI7mw5-oofYdjl-dhkEoDA/edit)  |
-| Slack Channel              | [&#x23;cf-k8s-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
+| Slack Channel              | [&#x23;korifi-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
+
+| &nbsp;                                                          | Leads           | Company | Profile                                                |
+| --------------------------------------------------------------- | --------------- | ------- | ------------------------------------------------------ |
+| <img width="30px" src="https://github.com/georgethebeatle.png"> | Georgi Sabev    | SAP     | [@georgethebeatle](https://github.com/georgethebeatle) |
+| <img width="30px" src="https://github.com/Birdrock.png">        | Andrew Wittrock | VMware  | [@Birdrock](https://github.com/Birdrock)               |
+| <img width="30px" src="https://github.com/davewalter.png">      | Dave Walter     | VMware  | [@davewalter](https://github.com/davewalter)           |
+
+
+## Docs
+
+Mission: To document the Cloud Foundry user experience.
+
+The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-docs` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [docs.md](./docs.md)  |
+| Forum                      | [Video chat TBD]()  |
+| Community Meeting Calendar | TBD |
+| Meeting Notes              | [Google Doc TBD]()  |
+| Slack Channel              | [&#x23;cf-docs](https://cloudfoundry.slack.com/archives/C03B0T0D5) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/georgethebeatle.png"> | Georgi Sabev       | SAP  | [@georgethebeatle](https://github.com/georgethebeatle) |
-| <img width="30px" src="https://github.com/gcapizzi.png"> | Giuseppe Capizzi       | VMware  | [@gcapizzi](https://github.com/gcapizzi) |
-
+| <img width="30px" src="https://github.com/anita-flegg.png"> | Anita Flegg | VMware  | [@anita-flegg](https://github.com/anita-flegg) |
 
 ## Foundational Infrastructure
 
@@ -109,15 +153,16 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [foundational-infrastructure.md](./foundational-infrastructure.md)  |
-| Forum                      | [Video chat](https://zoom.us/j/92400700135?pwd=MTZONUlRdGQxTmMveDVlMVYvRTFIZz09)  |
+| Forum                      | [Video chat](https://zoom.us/j/98797398641?pwd=VWhBRkVhZkJnS3lEWStoYjZMWnd2Zz09)  |
 | Community Meeting Calendar | Weekly on Thursdays at 10:30 am ET / 7:30 am PT  |
-| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1pLKTANki82JsCqPr4DE8vu4je_omA20eH96CUuRW_8Q)  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1zj6uetnHJjdavmwEmbQA-6oVuijFc3u3UVQ7ip74988/edit)  |
 | Slack Channels              | [&#x23;bosh](https://cloudfoundry.slack.com/archives/C02HPPYQ2) &middot; [&#x23;credhub](https://cloudfoundry.slack.com/archives/C3EN0BFC0) &middot; [&#x23;uaa](https://cloudfoundry.slack.com/archives/C03FXANBV) &middot; [&#x23;mysql-galera](https://cloudfoundry.slack.com/archives/C7NDVQ55Z) &middot; [&#x23;postgres-release](https://cloudfoundry.slack.com/archives/C3CR3GC1F) |
 
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/beyhan.png"> | Beyhan Veli       | SAP  | [@beyhan](https://github.com/beyhan) |
-| <img width="30px" src="https://github.com/rkoster.png"> | Ruben Koster       | VMware  | [@rkoster](https://github.com/rkoster) |
+| <img width="30px" src="https://github.com/rkoster.png"> | Ruben Koster     | VMware  | [@rkoster](https://github.com/rkoster) |
+| <img width="30px" src="https://github.com/jpalermo.png"> | Joseph Palermo  | VMware  | [@jpalermo](https://github.com/jpalermo) |
 
 
 ## Paketo
@@ -134,11 +179,69 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1V1jtZmjpivMsWdoYOrGlaK4exoIezn2r4Lf3XcPxduQ/view)  |
 | Slack Channel              | [&#x23;general](https://paketobuildpacks.slack.com/archives/CU8RVQZ1R) in the [Paketo Slack Workspace](paketobuildpacks.slack.com) |
 
+| &nbsp;                                                           | Leads             | Company | Profile                                 |
+| ---------------------------------------------------------------- | ----------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/dmikusa.png">          | Daniel Mikusa     | VMware  | [@dmikusa](https://github.com/dmikusa) |
+| <img width="30px" src="https://github.com/ForestEckhardt.png">   | Forest Eckhardt   | VMware  | [@ForestEckhardt](https://github.com/ForestEckhardt) |
+| <img width="30px" src="https://github.com/loewenstein-sap.png">  | Jan von Löwenstein| SAP     | [@loewenstein-sap](https://github.com/loewenstein-sap) |
+
+
+## Service Management
+
+Mission: Provides interfaces for service lifecycle within application platforms and adapters to common external service providers.
+
+The GitHub repos this WG manages in the `cloudfoundry` and `cloudfoundry-incubator` GitHub organization are to be labeled with the `cff-wg-service-manangement` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [service-management.md](./service-management.md)  |
+| Forum                      | [Video chat](https://zoom.us/j/96135973215?pwd=NzQrRk1tbXlTQnZEVmRNZlluSm50QT09)  |
+| Community Meeting Calendar | Monthly on the first Tuesday at 10:30 UK / 11:30 CET/ 16 IST / Monthly on the second Tuesday at 11:30 ET/ 16:30 UK |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1pVepAY0IxA9zz6imyMNnZeCM_mUkxzk1Dd1PDClmkWE/view)  |
+| Slack Channels             | [&#x23;wg-service-management](https://cloudfoundry.slack.com/archives/C02TXDMPSUS)|
+
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/dmikusa-pivotal.png"> | Daniel Mikusa       | VMware  | [@dmikusa-pivotal](https://github.com/dmikusa-pivotal) |
-| <img width="30px" src="https://github.com/ekcasey.png"> | Emily Casey       | VMware  | [@ekcasey](https://github.com/ekcasey) |
-| <img width="30px" src="https://github.com/ryanmoran.png"> | Ryan Moran       | VMware  | [@ryanmoran](https://github.com/ryanmoran) |
+| <img width="30px" src="https://github.com/pivotal-marcela-campo.png"> | Marcela Campo       | VMWare  | [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) |
+
+
+## Vulnerability Management
+
+Mission: Provides discreet management of security vulnerabilities issues relevant for active CF projects.
+
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [vulnerability-management.md](./vulnerability-management.md)  |
+| Forum                      | TBD  |
+| Community Meeting Calendar | TBD  |
+| Meeting Notes              | TBD  |
+| Slack Channels             | [&#x23;security](https://cloudfoundry.slack.com/archives/C0DEQSW9W)|
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/paulcwarren.png"> | Paul Warren       | VMWare  | [@paulcwarren](https://github.com/paulcwarren) |
+
+
+## Concourse
+
+Mission: Provides the Concourse CI/CD platform.
+
+This working group has no repositories in the `cloudfoundry` GitHub organization.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [concourse.md](./concourse.md) |
+| Forum                      | [GitHub Discussions](https://github.com/concourse/concourse/discussions)  |
+| Community Meeting Calendar | Monthly on the second Wednesday at 15:00 UK / 10:00 EST / 17:00 EET  |
+| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1KSp7npDEARGbsp5SmB2DHp4VJCEJ0GAqYwv9ixHH2DI/)  |
+| Slack Channel              | [#concourse-ci](https://cloudfoundry.slack.com/archives/C725N9UQ2)  |
+| Discord Channel            | [#cff-working-group](https://discord.gg/MeRxXKW)  |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                 |
+| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
+| <img width="30px" src="https://github.com/drich10.png"> | Derek Richard       | Broadcom  | [@drich10](https://github.com/drich10) |
+| <img width="30px" src="https://github.com/taylorsilva.png"> | Taylor Silva       |   | [@taylorsilva](https://github.com/taylorsilva) |
 
 
 <!--
