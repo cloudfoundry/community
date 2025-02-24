@@ -146,13 +146,34 @@ Finally, some adaptations for the containerized workloads are necessary:
 1. The [environment variables](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#app-system-env) `CF_INSTANCE_IP` and `CF_INSTANCE_INTERNAL_IP` will need IPv6 equivalents, or extension.
 2. Instance identity IDs, i.e. the certificates used by Envoy in the app container, need to support IPv6 addresses. Currently they are issued for the IPv4 address only.
 
-### silk-release
+### Silk
+1. Silk Daemon is responsible for retrieving the network lease for the cell from Silk Controller and providing it to the CNI Plugin.
+   - Enhancement: Add a new configuration property for an IPv6 prefix.
+   - Behavior:
+     - If an IPv6 prefix is provided and the host is IPv6 enabled, Silk Daemon returns both IPv4 and IPv6 networks.
+     - If no IPv6 prefix is provided, the system defaults to IPv4-only behavior.
+2. CNI Plugin is responsible for setting up the network devices on both container and host side. It delegates the IPv4 CIDR from the silk daemon to the IPAM host-local plugin, which allocates addresses from the network.
+   - Enhancements:
+     - Extend the existing logic to support IPv6 address assignment on already created devices.
+     - Configure point-to-point communication, routing tables, and static neighbors (similar to ARP tables in IPv4).
+     - Enable IPv6-specific sysctl security settings.
+     - Store the IPv6 address in the Silk datastore.
+   - Behavior:
+     - The plugin only configures IPv6 if Silk Daemon returns an IPv6 prefix and the host supports IPv6.
+3. CNI Wrapper Plugin currently creates default iptables rules (`netin-*`, `netout-*`, `overlay-*` chains) with default `REJECT` rules and `ALLOW` rules for DNS and "host services." In deployments without vxlan-policy-agent enabled, it also manages iptables egress rules.
+   - Enhancement: Extend it to apply IPv6 firewall rules using ip6tables:
+     - Maintain default REJECT rules for IPv6.
+     - Allow DNS and host service traffic.
+     - Ensure IPv6 egress rules are correctly handled when vxlan-policy-agent is disabled.
+4. VXLAN Policy Agent creates the dynamic iptables rules for ASGs and C2C Policies.
+   - Enhancement: Extend it to support IPv6 ASGs, ensuring that:
+     - Security group rules from Policy Server are properly filtered and applied based on IP version.
+     - The system supports both IPv4-only and dual-stack ASG enforcement.
 
-The CNI plugin needs to be extended to support IPv6 address assignment. Currently, container-facing interfaces are created and assigned an IPv4 address using the host-local IPAM plugin. The required enhancement involves assigning an IPv6 address alongside IPv4 and updating the state files accordingly.
-
-The CNI wrapper plugin must be extended to support IPv6. Currently, it creates default iptables rules (`netin-*`, `netout-*` chains) with default `REJECT` rules and `ALLOW` rules for DNS and "host services." In deployments without vxlan-policy-agent enabled, it also manages iptables egress rules. The enhancement requires adding logic to handle IPv6 rules using ip6tables.
-
-Additionally, the VXLAN Policy Agent must be updated to support IPv6 Address Security Groups (ASGs) received from the Policy Server.
+General Behavior and Compatibility: 
+- The existing IPv4 functionality remains unchanged.
+- If the host supports IPv6 and a prefix is provided to Silk Daemon, additional IPv6 configuration will be applied on top of the current setup.
+- If VXLAN Policy Agent is configured with IPv6 support, dynamic ASGs will also be created as ip6tables rules.
 
 ### Cloud Controller
 
