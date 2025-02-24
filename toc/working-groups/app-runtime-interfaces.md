@@ -471,11 +471,11 @@ areas:
     github: VRBogdanov
   - name: Yavor Uzunov
     github: Yavor16
+  - name: Stefan Yonkov
+    github: s-yonkov-yonkov
   reviewers:
   - name: Monika Noeva
     github: MNoeva
-  - name: Stefan Yonkov
-    github: s-yonkov-yonkov
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
