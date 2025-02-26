@@ -1,7 +1,7 @@
 # Meta
 
-- Name: IPv6 Dual Stack Support for     Cloud Foundry
-- Start Date: 2025-01-22
+- Name: IPv6 Dual Stack Support for Cloud Foundry
+- Start Date: 2025-02-07
 - Author(s): @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, @plamen-bardarov
 - Status: Draft
 - RFC Pull Request: (fill in with PR link after you submit it)
@@ -10,9 +10,9 @@
 
 IPv6 becomes increasingly prevalent on the internet and slowly also in the networks of large customers.
 
-This RFC proposes to add IPv6 support to various Cloud Foundry components in addition to the existing networking in CF to support IPv4, IPv6, or Dual Stack, i.e. IPv4 *and* IPv6 at the same time. The latter is particularly relevant for basic extension and migration of existing CF foundations.
+This RFC proposes to add IPv6 support to various Cloud Foundry components in addition to the existing networking in CF that is based on IPv6. The goal is to support Dual Stack, i.e. IPv4 *and* IPv6 at the same time. This support is particularly relevant for basic extension and migration of existing CF foundations that are based on IPv4 and allow them to also communicate via IPv6.
 
-Furthermore, the goal is to support IPv6 for both ingress and egress traffic, ensuring that Cloud Foundry can handle inbound and outbound network communication using IPv6, further enhancing compatibility and future-proofing the platform.
+Furthermore, the goal is to add support IPv6 (i.e. allow Dual Stack) for both ingress and egress traffic, ensuring that Cloud Foundry can handle inbound and outbound network communication using IPv4 and IPv6, further enhancing compatibility and future-proofing the platform.
 
 ## Problem
 
@@ -35,7 +35,7 @@ The goal is to use IPv6 best practices and benefits to the full extent with the 
 3. Support of dual stack networking, i.e. IPv4 and IPv6 at the same time. This is primarily for a smoother migration because the IPv6 changes can then be additive.
 4. IPv6 is additive to IPv4 functionality
 
-The ultimate future goal would be to move to pure IPv6 communication but is not a current priority and is not covered in this proposal.
+The ultimate future goal would be to allow a configuration based on pure IPv6 communication, i.e. to allow disabling IPv4 entirely. This is not a current priority and is not covered in this proposal. Options to still connect to IPv4 from an IPv6-only cloud foundry foundation at the edges would be via NAT64 and similar technologies.
 
 Backward compatibility is an important topic. Any changes that would change the default behavior should be placed behind appropriate configuration flags and turned off by default. The absence of IPv6 specific configuration must also remain without side effects to existing CF foundations.
 
@@ -136,7 +136,7 @@ This single machine, i.e. a Diego cell, then has sole control over this network 
 
 Network traffic from and to application containers needs to be controlled, also for IPv6:
 
-1. For inter-container communication, Application Security Groups (ASGs) need to support IPv6.
+1. For inter-container communication, Application Security Groups (ASGs) need to add support for IPv6.
 2. When publicly routable addresses (Global Unicast Addresses (GUAs) in IPv6) are assigned to each application container, traffic from outside the foundation needs to be blocked.
 
 BBS, Executor and Garden components need to be extended to support the ICMPv6 protocol for ASGs.
@@ -144,7 +144,7 @@ BBS, Executor and Garden components need to be extended to support the ICMPv6 pr
 Finally, some adaptations for the containerized workloads are necessary:
 
 1. The [environment variables](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#app-system-env) `CF_INSTANCE_IP` and `CF_INSTANCE_INTERNAL_IP` will need IPv6 equivalents, or extension.
-2. Instance identity IDs, i.e. the certificates used by Envoy in the app container, need to support IPv6 addresses. Currently they are issued for the IPv4 address only.
+2. Instance identity IDs, i.e. the certificates used by Envoy in the app container, need to support IPv6 addresses. Currently, they are issued for the IPv4 address only.
 
 ### Silk
 1. Silk Daemon is responsible for retrieving the network lease for the cell from Silk Controller and providing it to the CNI Plugin.
@@ -194,7 +194,7 @@ The Cloud Foundry CLI shows the application workload’s addresses in various pl
 
 Network Policies that are stored in [the policy-server-api which is part of cf-networking-release](https://github.com/cloudfoundry/cf-networking-release/blob/develop/docs/08-policy-server-api.md).
 
-Network policies may reference IP address ranges as destination. Destinations are stored as strings. The underlying IP ranges are also [strings with a start and end address](https://github.com/cloudfoundry/cf-networking-release/blob/aa25a3f96dc21e8a3e25db10f741e4f678c78464/src/code.cloudfoundry.org/policy-server/api/api.go#L37-L49). The data is ultimately serialized JSON that is stored in a database column. As IPv6 addresses are longer than IPv4 addresses, we might need to bump the table size.
+Network policies may reference IP address ranges as destination. Destinations are stored as strings. The underlying IP ranges are also [strings with a start and end address](https://github.com/cloudfoundry/cf-networking-release/blob/aa25a3f96dc21e8a3e25db10f741e4f678c78464/src/code.cloudfoundry.org/policy-server/api/api.go#L37-L49). The data is ultimately serialized JSON that is stored in a database column. As IPv6 addresses are longer than IPv4 addresses, we might need to bump the table size, when IPv6 is added.
 
 ### Routing
 
@@ -214,8 +214,49 @@ For the scope of this RFC, testing and fixes for small unforeseen issues are con
 
 routing-api and tcp-router need to be verified, and if necessary extended, to support IPv6 addresses in addition to IPv4 addresses.
 
+### General IPv6 / Dual Stack Communication Support
+
+Daemons providing endpoints (HTTP(s) or others), shall support listening on IPv4 and IPv6 sockets.
+
+Most fundamental networking libraries used in those already support binding to IPv6 or dual stack socket configurations. Implementation must ensure that a configruation to listen on all protocol versions is possible, e.g. by listening on `::$PORT`.
+
+#### Server Sockets and API Ports
+
+The following components need to be verified (non-exhaustive list. All components that run on IPv6 enabled/Dual Stack stemcells need to support binding to IPv6):
+* Cloud Controller
+* Policy Server
+* UAA
+* Credhub
+* BBS
+* Routing API
+* NATS
+* BOSH
+  * DNS
+  * Director
+  * Agent
+
+Where a listening address can be provided, we need to ensure that IPv6 or dual stack listening configurations can be provided.
+
+#### Client Support
+
+The BOSH CLI and CF CLI must allow connecting via IPv4 and IPv6. The on-disk configuration must support IPv4 and IPv6 addresses, when the endpoints are not defined as DNS names.
+
+## Testing
+
+Besides tests in the respective components, integration tests need to be created that utilize IPv6.
+
+### Cloud Foundry Acceptance Tests (CATs)
+
+Cloud Foundry acceptance tests shall be extended to also exercise IPv6 communication. This can either be specfic new tests, or execution of the test suite in a full IPv6 configuration, in addition to the existing IPv4 configuration.
+
+### bosh-bootstrap (`bbl` environments)
+
+bosh-bootstrap shall be extended to support IPv6 / dual stack configuration.
+
+bosh-bootstrap is used, among other things, for setting up the environments that are running CATs.
+
 ## Other Topics
 
 ### Windows Support
 
-Windows support is currently not in the scope of this RFC.
+Windows support does not require additional requirements or specification in addition to the above. Windows supports IPv6, and IPv6 support is available in the Windows stemcell.
