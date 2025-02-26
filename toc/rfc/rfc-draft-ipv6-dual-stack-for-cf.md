@@ -214,6 +214,12 @@ For the scope of this RFC, testing and fixes for small unforeseen issues are con
 
 routing-api and tcp-router need to be verified, and if necessary extended, to support IPv6 addresses in addition to IPv4 addresses.
 
+### cf-deployment
+
+There shall be an (experimental) opsfile that enables IPv6 / dual stack support. This opsfile shall be updated, as new components add support for dual stack networking.
+
+This opsfile should also be used in a new validation pipeline that tests the current state of cf-deployment with dual stack enabled.
+
 ### General IPv6 / Dual Stack Communication Support
 
 Daemons providing endpoints (HTTP(s) or others), shall support listening on IPv4 and IPv6 sockets.
@@ -254,6 +260,7 @@ Cloud Foundry acceptance tests shall be extended to also exercise IPv6 communica
 bosh-bootstrap shall be extended to support IPv6 / dual stack configuration.
 
 bosh-bootstrap is used, among other things, for setting up the environments that are running CATs.
+
 
 ## Other Topics
 
