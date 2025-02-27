@@ -370,8 +370,6 @@ areas:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
   - cloudfoundry/cf-networking-release
-  - cloudfoundry/cf-routing-test-helpers
-  - cloudfoundry/cf-tcp-router
   - cloudfoundry/gorouter
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/healthchecker-release
@@ -381,9 +379,7 @@ areas:
   - cloudfoundry/pcap-release
   - cloudfoundry/policy_client
   - cloudfoundry/route-registrar
-  - cloudfoundry/routing-acceptance-tests
   - cloudfoundry/routing-api
-  - cloudfoundry/routing-api-cli
   - cloudfoundry/routing-concourse
   - cloudfoundry/routing-info
   - cloudfoundry/routing-release
