@@ -69,11 +69,11 @@ networks:
     subnets:
       - az: z1
         cloud_properties:
-          # assign non-overlapping `/80` cidrs from `range`
-          ipv6_prefix_delegation_size: 80
           security_groups:
             - sg-abcd...
           subnet: subnet-12345
+        # assign non-overlapping `/80` cidrs from `range`
+        ipv6_prefix_delegation_size: 80
         dns:
           - 2001:db8:4e04:D139:0000:0000:0000:0253
         gateway: 2001:db8:4e04:D139:0000:0000:0000:0001
