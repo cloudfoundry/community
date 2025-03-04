@@ -703,6 +703,7 @@ orgs:
       cf-routing-test-helpers:
         default_branch: main
         has_projects: true
+        archived: true
       cf-slackin:
         has_projects: true
         private: true
@@ -718,6 +719,7 @@ orgs:
         default_branch: main
         description: TCP Router repository for Cloud Foundry
         has_projects: true
+        archived: true
       cf-test-helpers:
         default_branch: main
         description: Helpers for running tests against Cloud Foundry
@@ -2060,6 +2062,7 @@ orgs:
       routing-acceptance-tests:
         default_branch: main
         has_projects: true
+        archived: true
       routing-api:
         default_branch: main
         has_projects: false
@@ -2067,6 +2070,7 @@ orgs:
       routing-api-cli:
         default_branch: main
         has_projects: true
+        archived: true
       routing-ci:
         archived: true
         has_projects: true
