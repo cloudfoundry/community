@@ -297,6 +297,8 @@ areas:
     github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
+  - name: Felix Moehler
+    github: fmoehler
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -304,8 +306,6 @@ areas:
     github: fearoffish
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Felix Moehler
-    github: fmoehler
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -351,6 +351,8 @@ areas:
     github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
+  - name: Felix Moehler
+    github: fmoehler
   reviewers:
   - name: Greg Meyer
     github: gm2552
@@ -360,8 +362,6 @@ areas:
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Felix Moehler
-    github: fmoehler
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
