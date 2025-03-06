@@ -90,6 +90,39 @@ The “first” CIDR (2001:db8:4e04:D139:0::/80) is then reserved for “interna
 * `2001:db8:4e04:D139:0002:0000:0000:0000/80`
 * …
 
+Another option would be to define the prefix size in the deployment config E.g. in the networks section.
+
+The cloud config would look like this:
+
+```yaml
+networks:
+  - name: diego_cells_ipv6
+    subnets:
+      - az: z1
+        cloud_properties:
+          security_groups:
+            - sg-abcd...
+          subnet: subnet-12345
+        dns:
+          - 2001:db8:4e04:D139:0000:0000:0000:0253
+        gateway: 2001:db8:4e04:D139:0000:0000:0000:0001
+        range: 2001:db8:4e04:D139:0000:0000:0000:0000/64
+        reserved:
+          - 2001:db8:4e04:D139:0000:0000:0000:0000/80
+```
+
+and in the deployment config we could refer to this network and define the desired ipv6 prefix size there:
+
+```yaml
+instance_groups:
+  name: diego_cell
+  networks:
+    - name: diego_cells_ipv6
+      # assign non-overlapping `/80` cidrs from `range`
+      ipv6_prefix_delegation_size: 80
+
+```
+
 #### BOSH Cloud Provider Interfaces (CPIs)
 
 The Cloud Provider Interfaces abstract the underlying infrastructure and apply the logical configuration defined in BOSH to concrete infrastructure elements. Accordingly, the CPIs must be aware and capable of assigning and managing IPv6 addresses for BOSH managed networks.
