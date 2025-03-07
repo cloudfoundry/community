@@ -227,7 +227,6 @@ areas:
   - name: Andrew Costa
     github: acosta11
   repositories:
-  - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
   - cloudfoundry/dropsonde
   - cloudfoundry/dropsonde-protocol
@@ -338,6 +337,7 @@ areas:
   - name: Tim Downey
     github: tcdowney
   repositories:
+  - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/cf-lookup-route
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
