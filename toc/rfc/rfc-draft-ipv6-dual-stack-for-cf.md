@@ -53,7 +53,8 @@ BOSH is used to provision and configure the VMs that run the components of Cloud
 
 1. Assignment of IPv6 addresses in addition to IPv4, ideally to the same NIC
 2. Assignment of IPv6 CIDR ranges (prefix delegation), e.g. assign a `/80` address, while avoiding overlapping. This is relevant for the use case of address delegation to application workloads hosted on Diego cells.
-
+   In the first iteration, assignment will be of only a single CIDR range (prefix delegation) per VM. This can be extended in the future.
+ 
 #### BOSH Director
 
 Depending on the configuration of the prefix in the cloud config networks section. The Director should:
@@ -122,6 +123,10 @@ instance_groups:
       ipv6_prefix_delegation_size: 80
 
 ```
+
+The preference is to use the deployment-based expression for the prefix size, as it provides better control to the deployment and does not require changes to the cloud config.
+
+Note: Changes to the prefix size must be taken into account during updates carefully, so address ranges remain non-overlapping at all times.
 
 #### BOSH Cloud Provider Interfaces (CPIs)
 
@@ -293,6 +298,11 @@ Cloud Foundry acceptance tests shall be extended to also exercise IPv6 communica
 bosh-bootstrap shall be extended to support IPv6 / dual stack configuration.
 
 bosh-bootstrap is used, among other things, for setting up the environments that are running CATs.
+
+The extensions in bosh-bootstrap include:
+1. Changes to the Terraform configuration to support IPv6 in VPCs and subnets
+2. Use the changes in BOSH to assign IPv6 addresses and CIDR ranges
+3. Setup of a pipeline that exercises CF Deployment with IPv6 enabled within a `bbl` environment.
 
 
 ## Other Topics
