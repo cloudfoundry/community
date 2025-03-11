@@ -3,8 +3,8 @@
 - Name: Deprecate Passwords, Replace it with JWT Bearer Tokens
 - Start Date: 2025-02-12
 - Author(s): strehle
-- Status: Draft 
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1085
+- Status: Accepted
+- RFC Pull Request: [community#1085](https://github.com/cloudfoundry/community/pull/1085)
 
 
 ## Summary
