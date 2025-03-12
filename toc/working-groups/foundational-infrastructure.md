@@ -238,13 +238,13 @@ areas:
     github: Benjamintf1
   - name: Carson Long
     github: ctlong
+  - name: Ivan Protsiuk
+    github: iprotsiuk
   reviewers:
   - name: Rebecca Roberts
     github: rroberts2222
   - name: Ausaf Ahmed
     github: aqstack
-  - name: Ivan Protsiuk
-    github: iprotsiuk
   - name: Glenn Oppegard
     github: oppegard
   repositories:
