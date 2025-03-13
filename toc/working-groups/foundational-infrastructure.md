@@ -205,9 +205,9 @@ areas:
     github: klaus-sap
   - name: Filip Hanik
     github: fhanik
-  reviewers:
   - name: Duane May
     github: duanemay
+  reviewers:
   - name: Prateek Gangwal
     github: coolgang123
   repositories:
