@@ -163,8 +163,6 @@ areas:
     github: torsten-sap
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
-  - name: Klaus Kiefer
-    github: klaus-sap
   - name: Duane May
     github: duanemay
   - name: Prateek Gangwal
@@ -201,8 +199,6 @@ areas:
     github: torsten-sap
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
-  - name: Klaus Kiefer
-    github: klaus-sap
   - name: Filip Hanik
     github: fhanik
   reviewers:
