@@ -27,6 +27,8 @@ branch-protection:
           protect: false
 
         # App Runtime Platform repos to skip branch protection on
+        app-runtime-platform-envs:
+          protect: false
         docs-book-cloudfoundry:
           protect: false
         docs-cf-admin:
