@@ -299,6 +299,8 @@ areas:
     github: benjaminguttmann-avtq
   - name: Felix Moehler
     github: fmoehler
+  - name: Ahmed Hassanin
+    github: a-hassanin
   reviewers:
   - name: Greg Meyer
     github: gm2552
