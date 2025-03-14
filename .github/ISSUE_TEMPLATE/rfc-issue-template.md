@@ -13,7 +13,5 @@ CF-Deployment version:
 CLI version:
 CF Docs:
 
-```[tasklist]
 ### Tasks
-- [ ] ...
-```
+- [ ] TODO: link prs and issues
