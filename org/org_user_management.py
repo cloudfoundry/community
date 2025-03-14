@@ -182,10 +182,10 @@ if __name__ == "__main__":
     tagusers = args.tagusers or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "False")
     inactive_users_by_wg = userHandler.get_inactive_users_by_wg(inactive_users, community_members_with_role_by_wg)
     inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, inactive_users_by_wg, tagusers)
+    print(f"Inactive users by wg are {inactive_users_by_wg}")
     if args.dryrun or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"):
         print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
         print(f"Following users will be deleted: {inactive_users}")
-        print(f"Inactive users by wg are {inactive_users_by_wg}")
     elif users_to_delete:
         userHandler.delete_inactive_contributors(users_to_delete)
         with open(os.environ["GITHUB_OUTPUT"], "a") as env:
