@@ -346,8 +346,6 @@ areas:
     github: peanball
   - name: Plamen Doychev
     github: PlamenDoychev
-  - name: Patrick Lowin
-    github: plowin
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
