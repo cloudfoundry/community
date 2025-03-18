@@ -52,7 +52,7 @@ Github Org. Each CFF Managed Github Org MUST have its own list of contributors.
 
 ### Rename `cloudfoundry.yml` to `orgs.yml`
 Currently
-[cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml)
+[cloudfoundry.yml](https://github.com/cloudfoundry/community/blob/8c7298337a8515d7dfae058b3bd1f88ad0eeaf95/org/cloudfoundry.yml)
 contains yaml defining all of the repos in the cloudfoundry Github org. It
 already has a top level [`orgs`
 key](https://github.com/cloudfoundry/community/blob/8c7298337a8515d7dfae058b3bd1f88ad0eeaf95/org/cloudfoundry.yml#L2).

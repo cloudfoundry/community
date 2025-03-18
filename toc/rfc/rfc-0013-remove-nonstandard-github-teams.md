@@ -20,7 +20,7 @@ These teams grant access to CFF-governed repositories, but are not beholden to
 the CFF's roles and other processes for governing access. In addition, the
 volume of GitHub teams makes it more difficult to manage team access via the
 GitHub UI and intermediary tools like
-[`cloudfoundry.yml`](https://github.com/cloudfoundry/community/blob/main/org/cloudfoundry.yml).
+[`orgs.yml`](https://github.com/cloudfoundry/community/blob/main/orgs/orgs.yml).
 
 Nevertheless, controlling access to Cloud Foundry repositories only by teams defined by CFF technical governance is a substantial change from the previous system of access and team management and in the short term will cause unexpected loss of access to repositories for some contributors and automated development and release processes.
 
