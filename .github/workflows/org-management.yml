@@ -4,7 +4,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'org/*'
+      - 'orgs/*'
       - 'toc/TOC.md'
       - 'toc/working-groups/*.md'
       - '.github/workflows/org-management.yml'
@@ -43,8 +43,8 @@ jobs:
       - name: Generate github org configuration
         run: |
           python -m pip install --upgrade pip
-          pip install -r community/org/requirements.txt
-          python community/org/org_management.py -o cloudfoundry.out.yml -b branchprotection.out.yml
+          pip install -r community/orgs/requirements.txt
+          python community/orgs/org_management.py -o orgs.out.yml -b branchprotection.out.yml
       - name: write github private key
         run: |
           echo "${GH_PRIVATE_KEY}" > private_key
@@ -65,7 +65,7 @@ jobs:
             --github-app-id=${{ secrets.GH_APP_ID }}
             --github-app-private-key-path=private_key
             --require-self=false
-            --config-path=cloudfoundry.out.yml
+            --config-path=orgs.out.yml
             --fix-org
             --fix-org-members
             --fix-repos
@@ -105,8 +105,8 @@ jobs:
       - name: Generate github org configuration
         run: |
           python -m pip install --upgrade pip
-          pip install -r community/org/requirements.txt
-          python community/org/org_management.py -o cloudfoundry.out.yml -b branchprotection.out.yml
+          pip install -r community/orgs/requirements.txt
+          python community/orgs/org_management.py -o orgs.out.yml -b branchprotection.out.yml
       - name: write github private key
         run: |
           echo "${GH_PRIVATE_KEY}" > private_key

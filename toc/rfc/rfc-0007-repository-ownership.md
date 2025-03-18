@@ -133,7 +133,7 @@ Approval requirements
 
 Steps
 1. Someone opens a PR that: adds the repo to the
-   [cloudfoundry.yml](../../org/cloudfoundry.yml) and adds the repo to the
+   [orgs.yml](../../orgs/orgs.yml) and adds the repo to the
    desired Working Group's yaml.
 2. The Working Group and TOC both approve the PR.
 3. The TOC merges the PR.
@@ -174,7 +174,7 @@ Approval requirements
 
 Steps
 1. Someone opens a PR that: marks the repo as archived in the
-   [cloudfoundry.yml](../../org/cloudfoundry.yml) and that removes the repo from
+   [orgs.yml](../../orgs/orgs.yml) and that removes the repo from
    the Working Group's yaml.
 2. The Working Group and TOC both approve the PR.
 3. The TOC merges the PR.
@@ -191,7 +191,7 @@ Approval requirements
 
 Steps
 1. Someone opens a PR that removes the
-   [cloudfoundry.yml](../../org/cloudfoundry.yml) and removes the repo from the
+   [orgs.yml](../../orgs/orgs.yml) and removes the repo from the
    Working Group's yaml.
 2. The Working Group and TOC both approve the PR.
 3. The TOC merges the PR.
@@ -226,7 +226,7 @@ Approval requirements
 
 Steps
 1. Someone opens a PR that: renames the repo in the
-   [cloudfoundry.yml](../../org/cloudfoundry.yml) and renames the repo in the
+   [orgs.yml](../../orgs/orgs.yml) and renames the repo in the
    Working Group's yaml.
 2. The Working Group and TOC both approve the PR.
 3. The TOC stops the Github automation.
