@@ -3,8 +3,8 @@
 - Name: IPv6 Dual Stack Support for Cloud Foundry
 - Start Date: 2025-02-07
 - Author(s): @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, @plamen-bardarov
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#1077](https://github.com/cloudfoundry/community/pull/1077)
 
 ## Summary
 
