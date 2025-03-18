@@ -1152,6 +1152,7 @@ orgs:
       docs-deploying-cf:
         description: The docs repo for material on deploying Cloud Foundry
         has_projects: true
+        archived: false
       docs-dev-guide:
         description: Documentation for application developers who want to deploy their
           applications to Cloud Foundry
