@@ -15,4 +15,3 @@ This is a tracking issue for [RFC<number>](<RFC-link>).
 
 ### Tasks
 - [ ] Link PRs & issues...
-```
