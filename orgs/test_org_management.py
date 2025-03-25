@@ -169,9 +169,11 @@ config:
 """
 
 contributors = """
-contributors:
-- contributor1
-- Contributor2
+orgs:
+  cloudfoundry:
+    contributors:
+    - contributor1
+    - Contributor2
 """
 
 branch_protection = """
@@ -209,10 +211,12 @@ class TestOrgGenerator(unittest.TestCase):
 
     def test_org_admins_cannot_be_org_members(self):
         contributors = """
-          contributors:
-          - contributor1
-          - Contributor2
-          - admin1
+          orgs:
+            cloudfoundry:
+              contributors:
+              - contributor1
+              - Contributor2
+              - admin1
         """
         o = OrgGenerator(static_org_cfg=org_cfg, contributors=contributors)
         o.generate_org_members()
@@ -221,11 +225,13 @@ class TestOrgGenerator(unittest.TestCase):
 
     def test_toc_members_are_org_admins(self):
         contributors = """
-          contributors:
-          - contributor1
-          - Contributor2
-          - toc-member-1
-          - toc-member-2
+          orgs:
+            cloudfoundry:
+              contributors:
+              - contributor1
+              - Contributor2
+              - toc-member-1
+              - toc-member-2
         """
         o = OrgGenerator(toc=toc, contributors=contributors)
         o.generate_org_members()
@@ -265,7 +271,7 @@ class TestOrgGenerator(unittest.TestCase):
             OrgGenerator._yaml_load(yml)
 
     def test_validate_contributors(self):
-        OrgGenerator._validate_contributors({"contributors": []})
+        OrgGenerator._validate_contributors({"orgs": {"cloudfoundry": {"contributors": []}}})
         OrgGenerator._validate_contributors(OrgGenerator._yaml_load(contributors))
         with self.assertRaises(jsonschema.ValidationError):
             OrgGenerator._validate_contributors({})

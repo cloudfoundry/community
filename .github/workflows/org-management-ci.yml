@@ -2,9 +2,9 @@ name: 'Org Automation CI'
 on:
   pull_request:
     paths:
-      - 'org/*.py'
-      - 'org/requirements*'
-      - 'org/pyproject.toml'
+      - 'orgs/*.py'
+      - 'orgs/requirements*'
+      - 'orgs/pyproject.toml'
       - '.github/workflows/org-management-ci.yml'
 jobs:
   org-automation-tests:
@@ -19,13 +19,13 @@ jobs:
       - name: pip install
         run: |
           python -m pip install --upgrade pip
-          pip install -r community/org/requirements.txt
-          pip install -r community/org/requirements-dev.txt
+          pip install -r community/orgs/requirements.txt
+          pip install -r community/orgs/requirements-dev.txt
       - name: flake8 and black
         run: |
-          cd community/org
+          cd community/orgs
           python -m flake8
       - name: unit tests
         run: |
-          cd community/org
+          cd community/orgs
           python -m unittest discover -s .

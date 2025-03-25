@@ -39,7 +39,7 @@ If the inactivity criteria are fulfilled for a member they should be removed fro
 #### Implementation
 
 This process should be fully automated until a pull-request for the removal is created. It should do following:
-1. Find the Github users listed in [contributors.yml](https://github.com/cloudfoundry/community/blob/main/org/contributors.yml) without any working group role
+1. Find the Github users listed in [contributors.yml](https://github.com/cloudfoundry/community/blob/main/orgs/contributors.yml) without any working group role
 2. Find the inactive Github users from 1). We will implement this by ourself or use tools like [inactive-users-action](https://github.com/peter-murray/inactive-users-action/tree/main).
 3. Create a pull-request to remove the user from the Cloud Foundry Github organization
 

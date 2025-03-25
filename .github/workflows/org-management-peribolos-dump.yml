@@ -41,17 +41,17 @@ jobs:
         with:
           entrypoint: /bin/sh
           # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
-          # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > org/cloudfoundry.yml
-          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/org/cloudfoundry.yml"
+          # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > orgs/orgs.yml
+          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/orgs/orgs.yml"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           path: community
-          add-paths: org/cloudfoundry.yml
+          add-paths: orgs/orgs.yml
           commit-message: Run peribolos -dump-full
           branch: peribolos-dump
           draft: true
-          title: 'Sync org/cloudfoundry.yml with reality'
+          title: 'Sync orgs/orgs.yml with reality'
           body: |
             This PR contains a fresh peribolos dump.
             PR is intended for debugging. Don't merge as-is because parts of the cloudfoundry org configuration are generated from WG charters.
