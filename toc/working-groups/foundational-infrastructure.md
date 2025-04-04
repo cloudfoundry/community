@@ -304,6 +304,8 @@ areas:
     github: fearoffish
   - name: Sascha Stojanovic
     github: Sascha-Stoj
+  - name: Julian Hjortshoj
+    github: julian-hj
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -360,6 +362,8 @@ areas:
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
+  - name: Julian Hjortshoj
+    github: julian-hj
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
