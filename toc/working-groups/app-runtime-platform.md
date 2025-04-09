@@ -102,6 +102,8 @@ areas:
     github: klapkov
   - name: Tim Downey
     github: tcdowney
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -165,6 +167,9 @@ areas:
     github: winkingturtle-vmw
   - name: Brandon Roberson
     github: ebroberson
+  reviewers:
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
@@ -226,6 +231,8 @@ areas:
     github: iprotsiuk
   - name: Andrew Costa
     github: acosta11
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
@@ -335,6 +342,8 @@ areas:
     github: mtekel
   - name: Tim Downey
     github: tcdowney
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/cf-lookup-route
@@ -363,6 +372,9 @@ areas:
     github: winkingturtle-vmw
   - name: Marc Paquette
     github: marcpaquette
+  reviewers:
+  - name: Karthick Udayakumar
+    github: kart2bc
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI
