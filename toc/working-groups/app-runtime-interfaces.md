@@ -422,15 +422,15 @@ areas:
   reviewers:
   - name: Georg Lokowandt
     github: Lokowandtg
-  - name: Daniel Garnier-Moiroux
-    github: kehrlann
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   - name: Anthony Dahanne
-    github: anthonydahanne  
+    github: anthonydahanne
+  - name: Daniel Garnier-Moiroux
+    github: kehrlann
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
