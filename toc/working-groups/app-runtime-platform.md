@@ -43,6 +43,8 @@ technical_leads:
 bots:
 - name: CI Bot
   github: tas-runtime-bot
+- name: WG CI Bot
+  github: appruntimeplatform-bot
 - name: Networking CI Bot
   github: CFN-CI
 - name: CF Logging and Metrics Bot
