@@ -21,8 +21,7 @@ With the release of Ubuntu 24.04 LTS (Noble), newer language runtimes, system li
 
 ### Produce a new `cflinuxfs5` stack based on Ubuntu Noble.
 It will be introduced as a parallel stack. `cflinuxfs5` will be validated against supported buildpacks and application workloads.
-The goal is to support both `cflinuxfs4` and `cflinuxfs5` stacks during the transition period.
-`cflinuxfs4` will remain supported until `cflinuxfs5` adoption reaches production stability.
+The goal is to support both cflinuxfs4 and cflinuxfs5 until the end-of-life (EOL) for Jammy(cflinuxfs4).
 
 It will be based on Ubuntu 24.04 LTS (Noble) and follow the same structure, tooling, and release process as the existing `cflinuxfs4` stack process. The production of `cflinuxfs5` belongs to the App Runtime Interfaces Working Group.
 
