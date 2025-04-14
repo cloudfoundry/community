@@ -2,7 +2,7 @@
 [meta]: #meta
 - Name: Introduce cflinuxfs5 Stack Based on Ubuntu Noble (24.04)
 - Start Date: 2025-04-07
-- Author(s): @plamen-bardarov @vpetrinski
+- Author(s): @vpetrinski @plamen-bardarov
 - Status: Draft
 - RFC Pull Request: (fill in with PR link after you submit it)
 
