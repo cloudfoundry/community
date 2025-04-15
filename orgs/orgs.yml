@@ -306,6 +306,7 @@ orgs:
         description: Stemcell index produced by Softlayer CPI team
         default_branch: main
         has_projects: false
+        archived: true
       bosh-io-stemcells-windows-index:
         description: Stemcell index produced by BOSH Windows team
         default_branch: main
