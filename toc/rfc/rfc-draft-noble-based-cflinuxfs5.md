@@ -29,4 +29,17 @@ It will be based on Ubuntu 24.04 LTS (Noble) and follow the same structure, tool
 The creation of a new set of buildpacks that are compatible with `cflinuxfs5`. Each buildpack will be tested against the new `cflinuxfs5` rootfs and updated as needed.
 Buildpacks are expected to support both `cflinuxfs4` and `cflinuxfs5` during the transition.
 Any buildpack-specific incompatibilities with Ubuntu Noble need to be tracked and patched incrementally.
+
+## Workstream 
+### ARD WG workstream proposal:
+
+App Runtime Deployments WG
+The ARD WG will integrate the cflinuxfs5 stack into the cf-deployment project and also validate the new stack. The steps will be similar to the cflinuxfs4 adoption (see cloudfoundry/cf-deployment#989):
+
+- Integrate cflinuxfs5-release into the "update-releases" pipeline to enable automatic version updates
+- Provide an experimental ops file to integrate cflinuxfs5 and the cflinuxfs5 buildpacks (as available)
+- Run CATs against a cflinuxfs5-enabled cf-deployment
+- Promote experimental ops file (or integrate directly into cf-deployment.yml)
+- Make cflinuxfs5 the default stack (-> major cf-d release)
+- The deprecation and removal of cflinuxfs4 will happen at a later time as that stack is being supported for now.
  
