@@ -363,6 +363,7 @@ areas:
   - cloudfoundry/routing-info
   - cloudfoundry/routing-release
   - cloudfoundry/silk-release
+  - cloudfoundry/wg-app-platform-runtime-ci
 
 - name: Volume Services
   approvers:
