@@ -124,8 +124,6 @@ areas:
     github: blgm
   - name: Iain Findlay
     github: ifindlay-cci
-  - name: Kenneth Lakin
-    github: klakin-pivotal
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Konstantin Semenov
@@ -267,8 +265,6 @@ areas:
     github: ramonskie
   - name: Daniel Felipe Ochoa
     github: danielfor
-  - name: Kenneth Lakin
-    github: klakin-pivotal
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Max Soest
@@ -327,8 +323,6 @@ areas:
     github: ragaskar
   - name: Maya Rosecrance
     github: mrosecrance
-  - name: Kenneth Lakin
-    github: klakin-pivotal
   - name: Daniel Felipe Ochoa
     github: danielfor
   - name: Brian Upton
