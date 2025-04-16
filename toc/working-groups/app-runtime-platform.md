@@ -43,6 +43,8 @@ technical_leads:
 bots:
 - name: CI Bot
   github: tas-runtime-bot
+- name: WG CI Bot
+  github: appruntimeplatform-bot
 - name: Networking CI Bot
   github: CFN-CI
 - name: CF Logging and Metrics Bot
@@ -102,6 +104,8 @@ areas:
     github: klapkov
   - name: Tim Downey
     github: tcdowney
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -165,6 +169,9 @@ areas:
     github: winkingturtle-vmw
   - name: Brandon Roberson
     github: ebroberson
+  reviewers:
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
@@ -226,6 +233,8 @@ areas:
     github: iprotsiuk
   - name: Andrew Costa
     github: acosta11
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
@@ -318,6 +327,8 @@ areas:
     github: peanball
   - name: Plamen Doychev
     github: PlamenDoychev
+  - name: Alexander Nicke
+    github: a18e
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -327,14 +338,14 @@ areas:
     github: hoffmaen
   - name: Konstantin Lapkov
     github: klapkov
-  - name: Alexander Nicke
-    github: a18e
   - name: M Rizwan Shaik
     github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
   - name: Tim Downey
     github: tcdowney
+  - name: Karthick Udayakumar
+    github: kart2bc
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/cf-lookup-route
@@ -352,6 +363,7 @@ areas:
   - cloudfoundry/routing-info
   - cloudfoundry/routing-release
   - cloudfoundry/silk-release
+  - cloudfoundry/wg-app-platform-runtime-ci
 
 - name: Volume Services
   approvers:
@@ -363,6 +375,9 @@ areas:
     github: winkingturtle-vmw
   - name: Marc Paquette
     github: marcpaquette
+  reviewers:
+  - name: Karthick Udayakumar
+    github: kart2bc
   bots:
   - name: Cryogenics CI Bot
     github: Cryogenics-CI

@@ -398,7 +398,6 @@ areas:
   - cloudfoundry/bosh-io-stemcells-core-index
   - cloudfoundry/bosh-io-stemcells-cpi-index
   - cloudfoundry/bosh-io-stemcells-legacy-index
-  - cloudfoundry/bosh-io-stemcells-softlayer-index
   - cloudfoundry/bosh-io-stemcells-windows-index
   - cloudfoundry/bosh-io-web
   - cloudfoundry/bosh-io-worker
