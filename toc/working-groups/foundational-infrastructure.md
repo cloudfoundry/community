@@ -377,13 +377,9 @@ areas:
   - cloudfoundry/bosh-apt-resources
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
-  - cloudfoundry/bosh-bootloader-ci-envs
   - cloudfoundry/bosh-cli
-  - cloudfoundry/bosh-compiled-releases-index
   - cloudfoundry/bosh-cpi-certification
-  - cloudfoundry/bosh-cpi-environments
   - cloudfoundry/bosh-cpi-go
-  - cloudfoundry/bosh-cpi-kb
   - cloudfoundry/bosh-cpi-ruby
   - cloudfoundry/bosh-davcli
   - cloudfoundry/bosh-deployment
@@ -433,7 +429,6 @@ areas:
   - cloudfoundry/stembuild
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
-  - cloudfoundry/yagnats
 - name: Ali Cloud VM deployment lifecycle (BOSH)
   approvers:
   - name: He Guimin
