@@ -364,6 +364,8 @@ areas:
     github: Sascha-Stoj
   - name: Julian Hjortshoj
     github: julian-hj
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
