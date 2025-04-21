@@ -278,6 +278,8 @@ areas:
     github: shrisha-c
   - name: Srinivas Sunka
     github: ssunka
+  - name: Carson Long
+    github: ctlong
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
