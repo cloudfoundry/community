@@ -40,4 +40,8 @@ The ARD WG will integrate the cflinuxfs5 stack into the cf-deployment project an
 - Promote experimental ops file (or integrate directly into cf-deployment.yml)
 - Make cflinuxfs5 the default stack (-> major cf-d release)
 - The deprecation and removal of cflinuxfs4 will happen at a later time as that stack is being supported for now.
- 
+
+### Matrix
+| Stack       | CFLinux Base OS     | Supported Stemcells         |
+|-------------|---------------------|------------------------------|
+| cflinuxfs5  | Ubuntu Noble 24.04  | Noble and Jammy (until EOL) |
