@@ -38,8 +38,6 @@ technical_leads:
   github: rkoster
 - name: Beyhan Veli
   github: beyhan
-- name: Joseph Palermo
-  github: jpalermo
 bots:
 - name: bosh-admin-bot
   github: bosh-admin-bot
@@ -124,8 +122,6 @@ areas:
     github: blgm
   - name: Iain Findlay
     github: ifindlay-cci
-  - name: Kenneth Lakin
-    github: klakin-pivotal
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Konstantin Semenov
@@ -267,8 +263,6 @@ areas:
     github: ramonskie
   - name: Daniel Felipe Ochoa
     github: danielfor
-  - name: Kenneth Lakin
-    github: klakin-pivotal
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Max Soest
@@ -329,8 +323,6 @@ areas:
     github: ragaskar
   - name: Maya Rosecrance
     github: mrosecrance
-  - name: Kenneth Lakin
-    github: klakin-pivotal
   - name: Daniel Felipe Ochoa
     github: danielfor
   - name: Brian Upton
@@ -368,6 +360,8 @@ areas:
     github: julian-hj
   - name: Nishad Mathur
     github: alphasite
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
@@ -381,13 +375,9 @@ areas:
   - cloudfoundry/bosh-apt-resources
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
-  - cloudfoundry/bosh-bootloader-ci-envs
   - cloudfoundry/bosh-cli
-  - cloudfoundry/bosh-compiled-releases-index
   - cloudfoundry/bosh-cpi-certification
-  - cloudfoundry/bosh-cpi-environments
   - cloudfoundry/bosh-cpi-go
-  - cloudfoundry/bosh-cpi-kb
   - cloudfoundry/bosh-cpi-ruby
   - cloudfoundry/bosh-davcli
   - cloudfoundry/bosh-deployment
@@ -437,7 +427,6 @@ areas:
   - cloudfoundry/stembuild
   - cloudfoundry/usn-resource
   - cloudfoundry/windows-utilities-release
-  - cloudfoundry/yagnats
 - name: Ali Cloud VM deployment lifecycle (BOSH)
   approvers:
   - name: He Guimin
