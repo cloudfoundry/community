@@ -300,6 +300,8 @@ areas:
     github: Sascha-Stoj
   - name: Julian Hjortshoj
     github: julian-hj
+  - name: Nishad Mathur
+    github: alphasite
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -356,6 +358,8 @@ areas:
     github: Sascha-Stoj
   - name: Julian Hjortshoj
     github: julian-hj
+  - name: Nishad Mathur
+    github: alphasite
   - name: Alexander Lais
     github: peanball
   repositories:
