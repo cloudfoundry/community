@@ -142,7 +142,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Responsible for technical health of their functional area</p>
     </td>
     <td>Sponsored by the technical oversight committee as documented
-        <a href="./mechanics/WORKING-GROUP-PROCESSES.md">here</a>
+        <a href="./rfc/rfc-0024-promoting-or-revoking-wg-leads.md">here</a>
     </td>
     <td>Write permissions on one or more repos allowing issues to be manipulated</td>
     <td>Working Group</td>
@@ -162,7 +162,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Mentor new contributors, project members, and approvers</p>
     </td>
     <td>Sponsored by the technical oversight committee as documented
-        <a href="./mechanics/WORKING-GROUP-PROCESSES.md">here</a>
+        <a href="./rfc/rfc-0024-promoting-or-revoking-wg-leads.md">here</a>
     </td>
     <td>Write permissions on one or more repos allowing issues to be manipulated</td>
     <td>Working Group</td>
