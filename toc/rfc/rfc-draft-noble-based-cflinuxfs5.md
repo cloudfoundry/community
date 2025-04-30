@@ -31,6 +31,9 @@ Buildpacks are expected to support both `cflinuxfs4` and `cflinuxfs5` during the
 Any buildpack-specific incompatibilities with Ubuntu Noble need to be tracked and patched incrementally.
 
 ## Workstream 
+### App Runtime Interfaces WG
+The ARI WG will provide the new `cflinuxfs5` stack and the corresponding buildpacks supporting the new stack. 
+
 ### App Runtime Deployments WG
 The ARD WG will integrate the cflinuxfs5 stack into the cf-deployment project and also validate the new stack. The steps will be similar to the cflinuxfs4 adoption (see cloudfoundry/cf-deployment#989):
 
