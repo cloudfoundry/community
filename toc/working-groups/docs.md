@@ -31,6 +31,10 @@ name: Documentation
 execution_leads:
 - name: Anita Flegg
   github: anita-flegg
+- name: Stuart Clements
+  github: stuclem
+- name: Richard Johnson
+  github: RichardJJG
 technical_leads:
 - name: Anita Flegg
   github: anita-flegg
