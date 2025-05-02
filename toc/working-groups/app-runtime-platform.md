@@ -380,11 +380,6 @@ areas:
   reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
-  bots:
-  - name: Cryogenics CI Bot
-    github: Cryogenics-CI
-  - name: CI Bot
-    github: tas-runtime-bot
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
