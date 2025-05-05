@@ -223,6 +223,8 @@ areas:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
   - cloudfoundry/cflinuxfs4-release
+  - cloudfoundry/cflinuxfs5
+  - cloudfoundry/cflinuxfs5-release
   - cloudfoundry/stack-auditor
 
 - name: Buildpacks Tooling
