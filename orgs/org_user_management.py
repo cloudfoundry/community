@@ -101,7 +101,9 @@ class InactiveUserHandler:
         path = f"{_SCRIPT_PATH}/contributors.yml"
         contributors_yaml = self._load_yaml_file(path)
         users_to_delete_lower = [user.lower() for user in users_to_delete]
-        contributors_yaml["contributors"] = [c for c in contributors_yaml["contributors"] if c.lower() not in users_to_delete_lower]
+        contributors_yaml["orgs"][self.github_org]["contributors"] = [
+            c for c in contributors_yaml["orgs"][self.github_org]["contributors"] if c.lower() not in users_to_delete_lower
+        ]
         self._write_yaml_file(path, contributors_yaml)
 
     def get_inactive_users_msg(self, users_to_delete, inactive_users_by_wg, tagusers):
