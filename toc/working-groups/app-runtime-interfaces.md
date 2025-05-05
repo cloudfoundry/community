@@ -149,6 +149,9 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
+  reviewers:
+  - name: Teodora Nikolova
+    github: tnikolova82
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
@@ -177,6 +180,9 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
+  reviewers:
+  - name: Teodora Nikolova
+    github: tnikolova82
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
