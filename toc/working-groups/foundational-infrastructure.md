@@ -232,6 +232,8 @@ areas:
     github: ctlong
   - name: Ivan Protsiuk
     github: iprotsiuk
+  - name: Jovan Kostovski
+    github: chombium
   reviewers:
   - name: Rebecca Roberts
     github: rroberts2222
