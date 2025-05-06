@@ -8,8 +8,7 @@
 
 ## Summary
 
-Introduce a new stack, `cflinuxfs5`, based on Ubuntu 24.04 LTS (Noble Numbat), to provide an up-to-date root filesystem for application workloads.
-This stack will be added alongside the current `cflinuxfs4` (Jammy-based) stack.
+Introducing a new stack called `cflinuxfs5`, which is based on Ubuntu 24.04 LTS (Noble Numbat) to provide an up-to-date root filesystem for application workloads. It will be added alongside the current `cflinuxfs4` (Jammy-based) stack. Additionally, new flavours of the buildpacks will be created which will support the new `cflinuxfs5` stack.```
 
 ## Problem
 
