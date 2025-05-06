@@ -1432,6 +1432,7 @@ orgs:
         description: CF Router
         has_projects: true
         has_wiki: false
+        archived: true
       goshims:
         description: generated real/fake os shim objects for tdd in go
         has_projects: true
@@ -2064,6 +2065,7 @@ orgs:
         description: A standalone executable written in golang that continuously broadcasts
           a route using NATS to the CF router.
         has_projects: true
+        archived: true
       routing-acceptance-tests:
         default_branch: main
         has_projects: true
