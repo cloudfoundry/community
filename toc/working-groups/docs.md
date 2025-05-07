@@ -59,5 +59,6 @@ areas:
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
   - cloudfoundry/docs-credhub
+  - cloudfoundry/docs-deploying-cf
   - cloudfoundry/docs-dotnet-core-tutorial
 ```
