@@ -205,6 +205,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-bootloader-ci-envs:
+        archived: true
         allow_merge_commit: false
         allow_squash_merge: false
         default_branch: main
@@ -221,12 +222,14 @@ orgs:
         default_branch: main
         has_projects: true
       bosh-compiled-releases-index:
+        archived: true
         has_projects: false
         has_wiki: false
       bosh-cpi-certification:
         has_projects: false
         has_wiki: false
       bosh-cpi-environments:
+        archived: true
         has_projects: true
         has_wiki: false
         private: true
@@ -235,6 +238,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-cpi-kb:
+        archived: true
         has_projects: true
         private: true
       bosh-cpi-ruby:
@@ -1428,6 +1432,7 @@ orgs:
         description: CF Router
         has_projects: true
         has_wiki: false
+        archived: true
       goshims:
         description: generated real/fake os shim objects for tdd in go
         has_projects: true
@@ -2060,6 +2065,7 @@ orgs:
         description: A standalone executable written in golang that continuously broadcasts
           a route using NATS to the CF router.
         has_projects: true
+        archived: true
       routing-acceptance-tests:
         default_branch: main
         has_projects: true
@@ -2520,6 +2526,7 @@ orgs:
         has_issues: false
         has_projects: true
       yagnats:
+        archived: true
         description: Yet Another Go NATS client
         has_projects: true
       ykk:

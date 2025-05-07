@@ -278,6 +278,8 @@ areas:
     github: shrisha-c
   - name: Srinivas Sunka
     github: ssunka
+  - name: Carson Long
+    github: ctlong
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
@@ -352,12 +354,10 @@ areas:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
   - cloudfoundry/cf-networking-release
-  - cloudfoundry/gorouter
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/healthchecker-release
   - cloudfoundry/nats-release
   - cloudfoundry/policy_client
-  - cloudfoundry/route-registrar
   - cloudfoundry/routing-api
   - cloudfoundry/routing-concourse
   - cloudfoundry/routing-info
@@ -378,11 +378,6 @@ areas:
   reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
-  bots:
-  - name: Cryogenics CI Bot
-    github: Cryogenics-CI
-  - name: CI Bot
-    github: tas-runtime-bot
   repositories:
   - cloudfoundry/existingvolumebroker
   - cloudfoundry/goshims
