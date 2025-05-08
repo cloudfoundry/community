@@ -172,6 +172,8 @@ areas:
   reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
+  - name: Tim Downey
+    github: tcdowney
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
@@ -235,6 +237,8 @@ areas:
     github: acosta11
   - name: Karthick Udayakumar
     github: kart2bc
+  - name: Tim Downey
+    github: tcdowney
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
@@ -331,6 +335,8 @@ areas:
     github: PlamenDoychev
   - name: Alexander Nicke
     github: a18e
+  - name: Tim Downey
+    github: tcdowney
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -344,8 +350,6 @@ areas:
     github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
-  - name: Tim Downey
-    github: tcdowney
   - name: Karthick Udayakumar
     github: kart2bc
   repositories:
