@@ -222,6 +222,8 @@ areas:
     github: winkingturtle-vmw
   - name: Rebecca Roberts
     github: rroberts2222
+  - name: Srinivas Sunka
+    github: ssunka
   - name: Jovan Kostovski
     github: chombium
   reviewers:
