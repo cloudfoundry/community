@@ -3,8 +3,8 @@
 - Name: Introduce cflinuxfs5 Stack Based on Ubuntu Noble (24.04)
 - Start Date: 2025-04-07
 - Author(s): @vpetrinski @plamen-bardarov
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#1112](https://github.com/cloudfoundry/community/pull/1112)
 
 ## Summary
 
