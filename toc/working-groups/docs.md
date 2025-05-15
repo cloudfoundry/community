@@ -42,8 +42,6 @@ areas:
     github: anita-flegg
   - name: Samia Nneji
     github: snneji
-  - name: Paul Spinrad
-    github: pspinrad
 
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
