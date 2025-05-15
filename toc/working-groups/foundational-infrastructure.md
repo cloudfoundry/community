@@ -378,6 +378,7 @@ areas:
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
+  - cloudfoundry/bosh-common
   - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-cpi-go
   - cloudfoundry/bosh-cpi-ruby
