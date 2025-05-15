@@ -71,6 +71,9 @@ areas:
     github: c0d1ngm0nk3y
   - name: Nicolas Bender
     github: nicolasbender
+  reviewers:
+  - name: Tom Kennedy
+    github: tomkennedy513
   repositories:
   - cloudfoundry/cnbapplifecycle
 - name: Diego
