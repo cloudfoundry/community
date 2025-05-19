@@ -417,6 +417,7 @@ orgs:
       bosh-windows-acceptance-tests:
         has_projects: true
       bosh-windows-stemcell-builder:
+        default_branch: windows-2019
         has_projects: true
       bosh-workstation:
         allow_merge_commit: false
