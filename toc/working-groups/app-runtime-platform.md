@@ -75,24 +75,16 @@ areas:
   - cloudfoundry/cnbapplifecycle
 - name: Diego
   approvers:
-  - name: Andrew Crump
-    github: acrmp
-  - name: Benjamin Fuller
-    github: Benjamintf1
   - name: Brandon Roberson
     github: ebroberson
   - name: Geoff Franks
     github: geofffranks
-  - name: Josh Russett
-    github: jrussett
   - name: Maria Shaldybin
     github: mariash
   - name: Chris Selzo
     github: selzoc
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: David Sabeti
-    github: dsabeti
   - name: Marc Paquette
     github: marcpaquette
   - name: Vladimir Savchenko
@@ -155,12 +147,8 @@ areas:
     github: georgethebeatle
   - name: Geoff Franks
     github: geofffranks
-  - name: Josh Russett
-    github: jrussett
   - name: Maria Shaldybin
     github: mariash
-  - name: David Sabeti
-    github: dsabeti
   - name: Marc Paquette
     github: MarcPaquette
   - name: Chris Selzo
@@ -172,6 +160,8 @@ areas:
   reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
+  - name: Tim Downey
+    github: tcdowney
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
@@ -202,14 +192,10 @@ areas:
 
 - name: Logging and Metrics
   approvers:
-  - name: Andrew Crump
-    github: acrmp
   - name: Benjamin Fuller
     github: Benjamintf1
   - name: Geoff Franks
     github: geofffranks
-  - name: Josh Russett
-    github: jrussett
   - name: Chris Selzo
     github: selzoc
   - name: Carson Long
@@ -218,8 +204,6 @@ areas:
     github: mkocher
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: Rebecca Roberts
-    github: rroberts2222
   - name: Jovan Kostovski
     github: chombium
   reviewers:
@@ -235,6 +219,8 @@ areas:
     github: acosta11
   - name: Karthick Udayakumar
     github: kart2bc
+  - name: Tim Downey
+    github: tcdowney
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
@@ -270,10 +256,6 @@ areas:
     github: jbooherl
   - name: Chaitanya Krishna Mullangi
     github: chaitanyamullangi
-  - name: Kanika Bathla
-    github: kabathla
-  - name: Saloni Shah
-    github: saloni-sshah
   - name: Shrisha Chandrashekar
     github: shrisha-c
   - name: Srinivas Sunka
@@ -287,12 +269,8 @@ areas:
 
 - name: Networking
   approvers:
-  - name: Andrew Crump
-    github: acrmp
   - name: Tamara Boehm
     github: b1tamara
-  - name: Benjamin Fuller
-    github: Benjamintf1
   - name: Brandon Roberson
     github: ebroberson
   - name: Carson Long
@@ -303,8 +281,6 @@ areas:
     github: geofffranks
   - name: Greg Cobb
     github: Gerg
-  - name: Josh Russett
-    github: jrussett
   - name: Maria Shaldybin
     github: mariash
   - name: Matthew Kocher
@@ -317,8 +293,6 @@ areas:
     github: stefanlay
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: David Sabeti
-    github: dsabeti
   - name: Maximilian Moehl
     github: maxmoehl
   - name: Marc Paquette
@@ -331,6 +305,8 @@ areas:
     github: PlamenDoychev
   - name: Alexander Nicke
     github: a18e
+  - name: Tim Downey
+    github: tcdowney
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -344,8 +320,6 @@ areas:
     github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
-  - name: Tim Downey
-    github: tcdowney
   - name: Karthick Udayakumar
     github: kart2bc
   repositories:
@@ -354,12 +328,10 @@ areas:
   - cloudfoundry/cf-networking-helpers
   - cloudfoundry/cf-networking-onboarding
   - cloudfoundry/cf-networking-release
-  - cloudfoundry/gorouter
   - cloudfoundry/haproxy-boshrelease
   - cloudfoundry/healthchecker-release
   - cloudfoundry/nats-release
   - cloudfoundry/policy_client
-  - cloudfoundry/route-registrar
   - cloudfoundry/routing-api
   - cloudfoundry/routing-concourse
   - cloudfoundry/routing-info

@@ -37,6 +37,71 @@ branch-protection:
           protect: false
         docs-running-cf:
           protect: false
+        go-envstruct:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^master$" ]
+        go-diodes:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^main$" ]
+        go-log-cache:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^main$" ]
+        go-loggregator:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^main$" ]
+        go-metric-registry:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^main$" ]
         haproxy-boshrelease:
           protect: true
           enforce_admins: false
@@ -52,6 +117,45 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-app-runtime-platform-bots"]
+        log-cache-cli:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^main$" ]
+        loggregator-tools:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^master$" ]
+        noaa:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-app-runtime-platform-bots"]
+          include: [ "^master$" ]
         pcap-release:
           protect: true
           enforce_admins: false
@@ -240,3 +344,18 @@ branch-protection:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
             required_approving_review_count: 1
+
+        # Foundational Infrastructure repos to skip branch protection on
+        blackbox:
+          protect: true
+          enforce_admins: true
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: false
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-foundational-infrastructure-bots"]
+          include: [ "^main$" ]

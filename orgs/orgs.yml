@@ -218,6 +218,9 @@ orgs:
         description: BOSH CLI v2+
         has_projects: false
         has_wiki: false
+      bosh-common:
+        default_branch: main
+        has_projects: true
       bosh-compile-action:
         default_branch: main
         has_projects: true
@@ -366,6 +369,8 @@ orgs:
         has_projects: true
         private: true
       bosh-psmodules:
+        archived: true
+        default_branch: windows-2019
         description: PowerShell modules for building Windows Stemcells
         has_projects: false
       bosh-s3cli:
@@ -415,6 +420,7 @@ orgs:
       bosh-windows-acceptance-tests:
         has_projects: true
       bosh-windows-stemcell-builder:
+        default_branch: windows-2019
         has_projects: true
       bosh-workstation:
         allow_merge_commit: false
@@ -829,6 +835,9 @@ orgs:
       cflinuxfs4:
         default_branch: main
         has_projects: true
+      cflinuxfs5:
+        default_branch: main
+        has_projects: true
       cflinuxfs4-compat-release:
         default_branch: main
         description: Cloud Foundry compatibility stack with Ruby and Python based on Ubuntu 22.04 LTS
@@ -836,6 +845,10 @@ orgs:
       cflinuxfs4-release:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 22.04 LTS
+        has_projects: true
+      cflinuxfs5-release:
+        default_branch: main
+        description: Cloud Foundry stack based on Ubuntu 24.04 LTS
         has_projects: true
       cli:
         allow_merge_commit: false
@@ -1432,6 +1445,7 @@ orgs:
         description: CF Router
         has_projects: true
         has_wiki: false
+        archived: true
       goshims:
         description: generated real/fake os shim objects for tdd in go
         has_projects: true
@@ -1446,6 +1460,8 @@ orgs:
       grace:
         has_projects: true
       greenhouse-ci:
+        archived: true
+        default_branch: windows-2019
         has_projects: true
         has_wiki: false
       groot:
@@ -2064,6 +2080,7 @@ orgs:
         description: A standalone executable written in golang that continuously broadcasts
           a route using NATS to the CF router.
         has_projects: true
+        archived: true
       routing-acceptance-tests:
         default_branch: main
         has_projects: true
@@ -2293,6 +2310,8 @@ orgs:
         default_branch: main
         has_projects: true
       stembuild:
+        archived: true
+        default_branch: windows-2019
         description: Binary to be used to build BOSH-compatible stemcells for Windows
           Server 2019 on vSphere.
         has_projects: true

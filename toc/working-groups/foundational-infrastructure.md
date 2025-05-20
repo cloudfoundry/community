@@ -232,6 +232,8 @@ areas:
     github: ctlong
   - name: Ivan Protsiuk
     github: iprotsiuk
+  - name: Jovan Kostovski
+    github: chombium
   reviewers:
   - name: Rebecca Roberts
     github: rroberts2222
@@ -376,6 +378,7 @@ areas:
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
+  - cloudfoundry/bosh-common
   - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-cpi-go
   - cloudfoundry/bosh-cpi-ruby
