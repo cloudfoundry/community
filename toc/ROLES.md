@@ -70,7 +70,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Adheres to code of conduct</p>
     </td>
     <td>
-        <p>Signed CLA (only for PRs).</p>
+        <p>Signed CLA (only for PRs)</p>
     </td>
     <td>
         <p>Can get PRs accepted</p>
