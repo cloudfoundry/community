@@ -494,6 +494,8 @@ areas:
   reviewers:
   - name: Monika Noeva
     github: MNoeva
+  - name: Stoyan Ivanov
+    github: stiv03
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
