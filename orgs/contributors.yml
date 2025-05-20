@@ -6,7 +6,6 @@ orgs:
     - abg
     - acosta11
     - acrmp
-    - aditya267vmware
     - adrianhoelzl-sap
     - ameowlia
     - anshrupani
@@ -45,7 +44,6 @@ orgs:
     - chaitanyamullangi
     - colins
     - coolgang123
-    - crhntr
     - Cryogenics-CI
     - ctlong
     - cunnie
@@ -55,23 +53,19 @@ orgs:
     - danielfor
     - davewalter
     - dennisjbell
-    - dibya1947
     - dlresende
     - dmikusa
     - domdom82
     - Dray56
     - dsabeti
-    - dsanand22
     - dsboulder
     - duanemay
-    - dubeyshefali
     - ebroberson
     - emalm
     - emmjohnson
     - evanfarrar
     - FelisiaM
     - fhanik
-    - fifthposition
     - FloThinksPi
     - ForestEckhardt
     - genevieve
@@ -90,39 +84,33 @@ orgs:
     - iprotsiuk
     - itsouvalas
     - IvanBorislavovDimitrov
+    - ivanovac
     - jbooherl
     - jericop
     - jhvhs
-    - jintusebastian
-    - jmervinnirma
     - joaopapereira
     - jochenehret
     - joefitzgerald
     - joergdw
     - johha
-    - jpalermo
     - jrussett
     - julian-hj
     - kabathla
-    - karthikseshadri
     - kathap
     - kehrlann
     - KesavanKing
     - kevin-ortega
     - kimago
-    - klakin-pivotal
     - klapkov
     - klaus-sap
     - kohara88
     - korifi-bot
-    - kpujadev
     - krsna-m
     - krutten
     - lechner77
     - lnguyen
     - loewenstein-sap
     - Lokowandtg
-    - m-thavaf
     - MarcPaquette
     - mariash
     - max-soe
@@ -134,10 +122,8 @@ orgs:
     - moggibear
     - moleske
     - mrosecrance
-    - mukeshkhicher-br
     - mvach
     - nader-ziada
-    - nakulogale-cb
     - nand2
     - norman-abramovitz
     - nouseforaname
@@ -157,7 +143,6 @@ orgs:
     - pivotalgeorge
     - plowin
     - pyogesh2
-    - radhavmwtnz
     - radito3
     - ragaskar
     - rajathagasthya
@@ -165,7 +150,6 @@ orgs:
     - reedr3
     - rlewis24
     - robdimsdale
-    - rpranay1
     - rroberts2222
     - ryanwittrup
     - s-yonkov-yonkov
@@ -177,10 +161,8 @@ orgs:
     - services-api-ci
     - servicesenablement
     - sethboyles
-    - sg038444
     - shilpachandrashekara
     - shrisha-c
-    - siddarthalk
     - silvestre
     - snneji
     - Soha-Albaghdady
@@ -189,7 +171,9 @@ orgs:
     - sp1goyal
     - ssunka
     - stefanlay
+    - sthielke
     - strehle
+    - stuclem
     - svcboteos
     - svkrieger
     - swalchemist
@@ -199,12 +183,11 @@ orgs:
     - tcdowney
     - ten4o
     - theghost5800
-    - thitch97
-    - TisVictress
+    - tnikolova82
+    - tomkennedy513
     - torsten-sap
     - totherme
     - uzabanov
-    - vinaybheri
     - vipinvkmenon
     - vkalapov
     - VRBogdanov
@@ -225,3 +208,6 @@ orgs:
     - joeeltgroth
     - jajita
     - hamideh-amini-khezrabad
+    - Milena-Encheva
+    - AttilaAlmasi
+    - dtasSap

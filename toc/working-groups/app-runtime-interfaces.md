@@ -149,6 +149,11 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
+  reviewers:
+  - name: Teodora Nikolova
+    github: tnikolova82
+  - name: Tsvetelina Marinova
+    github: ivanovac
   repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
@@ -177,6 +182,11 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
+  reviewers:
+  - name: Teodora Nikolova
+    github: tnikolova82
+  - name: Tsvetelina Marinova
+    github: ivanovac
   repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
@@ -223,6 +233,8 @@ areas:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
   - cloudfoundry/cflinuxfs4-release
+  - cloudfoundry/cflinuxfs5
+  - cloudfoundry/cflinuxfs5-release
   - cloudfoundry/stack-auditor
 
 - name: Buildpacks Tooling
@@ -422,15 +434,15 @@ areas:
   reviewers:
   - name: Georg Lokowandt
     github: Lokowandtg
-  - name: Daniel Garnier-Moiroux
-    github: kehrlann
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
   - name: Anthony Dahanne
-    github: anthonydahanne  
+    github: anthonydahanne
+  - name: Daniel Garnier-Moiroux
+    github: kehrlann
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
