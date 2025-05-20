@@ -300,9 +300,7 @@ areas:
   - cloudfoundry/staticfile-buildpack-release
 
 - name: OSB API
-  approvers:
-  - name: Rodrigo Sampaio Vaz
-    github: rsampaio
+  approvers: []
   repositories:
   - openservicebrokerapi/servicebroker
   - openservicebrokerapi/osb-checker
@@ -336,22 +334,14 @@ areas:
   reviewers:
   - name: Al Berez
     github: a-b
-  - name: David Alvarado
-    github: dalvarado
   - name: Evan Farrar
     github: evanfarrar
-  - name: Daniel Felipe Ochoa
-    github: danielfor
   - name: Shwetha Gururaj
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
-  - name: Ryker Reed
-    github: reedr3
   - name: George Gelashvili
     github: pivotalgeorge
-  - name: Cristhian Peña
-    github: ccjaimes
   bots:
   - name: capi-bot
     github: capi-bot
@@ -382,18 +372,12 @@ areas:
   approvers:
   - name: Al Berez
     github: a-b
-  - name: Ryker Reed
-    github: reedr3
   - name: Michael Oleske
     github: moleske
-  - name: Cristhian
-    github: ccjaimes
   - name: George Blue
     github: blgm
   - name: Shwetha Gururaj
     github: gururajsh
-  - name: David Alvarado
-    github: dalvarado
   - name: João Pereira
     github: joaopapereira
   - name: Sam Gunaratne
@@ -451,8 +435,6 @@ areas:
   approvers:
   - name: Shawn Neal
     github: sneal
-  - name: Caleb Washburn
-    github: calebwashburn
   repositories:
   - cloudfoundry/go-cfclient
 
@@ -509,8 +491,6 @@ areas:
   - name: VMware notifications release bot
     github: cf-frontend
   approvers:
-  - name: David Stevenson
-    github: dsboulder
   - name: Al Berez
     github: a-b
   - name: Ben Fuller
