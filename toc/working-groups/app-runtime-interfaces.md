@@ -462,6 +462,8 @@ areas:
     github: pyogesh2
   - name: Vipin Vijaykumar
     github: vipinvkmenon
+  - name: Christian Lechner
+    github: lechnerc77
   - name: Kesavan
     github: KesavanKing
   - name: Debaditya Ray 
