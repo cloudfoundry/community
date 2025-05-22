@@ -116,16 +116,12 @@ areas:
     github: selzoc
   - name: Diego Lemos
     github: dlresende
-  - name: Gareth Smith
-    github: totherme
   - name: George Blue
     github: blgm
   - name: Iain Findlay
     github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
-  - name: Konstantin Semenov
-    github: jhvhs
   - name: Long Nguyen
     github: lnguyen
   - name: Maya Rosecrance
@@ -210,8 +206,6 @@ areas:
     github: abg
   - name: Colin Shield
     github: colins
-  - name: Kyle Ong
-    github: ohkyle
   - name: Kim Basset
     github: kimago
   - name: Ryan Wittrup
@@ -235,8 +229,6 @@ areas:
   - name: Jovan Kostovski
     github: chombium
   reviewers:
-  - name: Rebecca Roberts
-    github: rroberts2222
   - name: Ausaf Ahmed
     github: aqstack
   - name: Glenn Oppegard
@@ -263,8 +255,6 @@ areas:
     github: cunnie
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Daniel Felipe Ochoa
-    github: danielfor
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Max Soest
@@ -325,8 +315,6 @@ areas:
     github: ragaskar
   - name: Maya Rosecrance
     github: mrosecrance
-  - name: Daniel Felipe Ochoa
-    github: danielfor
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
@@ -444,8 +432,6 @@ areas:
   approvers:
     - name: Benjamin Guttmann
       github: benjaminguttmann-avtq
-    - name: Ferran Rodenas
-      github: frodenas
     - name: Gilles Miraillet
       github: gmllt
     - name: Mario Di Miceli
