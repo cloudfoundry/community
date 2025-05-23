@@ -3,6 +3,6 @@ toc/elections/2021/private.csv
 /.secrets
 .vscode
 __pycache__
-cloudfoundry.out.yml
+orgs.out.yml
 branchprotection.out.yml
 /.idea
