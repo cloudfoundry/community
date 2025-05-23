@@ -86,6 +86,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     <td>Regular active contributor in the community</td>
     <td>
         <p>Has made multiple contributions to the project</p>
+        <p>One approval from any WG Lead or TOC member.</p>
     </td>
     <td>
         <p>Member of a CFF GitHub Organization</p>
@@ -105,6 +106,7 @@ establish sub-working groups. Working groups delegate change approval to Approve
     </td>
     <td>
       <p>Active contributor who wishes to formally work toward the approver role</p>
+      <p>Approval from a Working Group Lead for the area.</p>
     </td>
     <td><p>Be assigned to review PRs</p></td>
     <td>GitHub Directory</td>
@@ -122,7 +124,10 @@ establish sub-working groups. Working groups delegate change approval to Approve
         <p>Approve and merge contributions from other members</p>
         <p>Perform small maintenance tasks, such as debugging test failures</p>
     </td>
-    <td>Highly experienced and active reviewer and contributor to an area</td>
+    <td>
+      <p>Highly experienced and active reviewer and contributor to an area</p>
+      <p>Approval from a Working Group Lead for the area.</p>
+    </td>
     <td>Entry in one or more OWNERS files in GitHub, and write permissions
         on one or more repos allowing PRs to be merged
     </td>
