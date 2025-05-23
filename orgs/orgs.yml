@@ -567,7 +567,7 @@ orgs:
         has_issues: false
         has_projects: true
       cf-acceptance-tests:
-        default_branch: main
+        default_branch: develop
         description: CF Acceptance tests
         has_projects: true
       cf-app-utils-ruby:
