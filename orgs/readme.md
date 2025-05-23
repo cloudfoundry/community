@@ -19,8 +19,9 @@ Once approved and merged, the github action [org-management.yml](https://github.
 Organization members are generated according to [rfc-0002-github-members](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0002-github-members.md) and [rfc-0008-role-change-process](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0008-role-change-process.md):
 - any members specified in [orgs.yml](https://github.com/cloudfoundry/community/blob/main/orgs/orgs.yml) (should be none)
 - all contributors from [contributors.yml](https://github.com/cloudfoundry/community/blob/main/orgs/contributors.yml)
-- all working group leads and approvers specified in the [Working Group Charters](https://github.com/cloudfoundry/community/tree/main/toc/working-groups)
+- all working group leads, approvers, reviewers and bots specified in the [Working Group Charters](https://github.com/cloudfoundry/community/tree/main/toc/working-groups)
 - org admins and TOC members must not be added to org member list
+- WG leads of all github orgs are added as members to the `cloudfoundy` org to get access to the `community` repo
 
 ### Organization Admins
 Organization admins are:
@@ -29,7 +30,7 @@ Organization admins are:
 
 ### Github Teams for Working Group Areas
 Github Teams for the TOC, all Working Group Leads, Working Groups and Working Group Areas are generated according to [rfc-0014-github-teams-and-access.md](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0014-github-teams-and-access.md).
-Repositories listed in the working group yaml block that belong to github organizations other than `cloudfoundry` are ignored.
+Repositories listed in the working group yaml block that belong to github organizations other than the one specified in the working group yaml (default github organization is `cloudfoundy`) are ignored.
 
 ### Branch Protection Rules
 
@@ -86,7 +87,7 @@ Requires Python 3.9.
 
 How to run locally:
 ```
-cd ./org
+cd ./orgs
 python -m venv <path/to/venv>
 source <path/to/venv>/bin/activate
 pip install -r requirements.txt
