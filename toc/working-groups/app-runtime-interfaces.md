@@ -299,12 +299,6 @@ areas:
   - cloudfoundry/staticfile-buildpack
   - cloudfoundry/staticfile-buildpack-release
 
-- name: OSB API
-  approvers: []
-  repositories:
-  - openservicebrokerapi/servicebroker
-  - openservicebrokerapi/osb-checker
-
 - name: CAPI
   approvers:
   - name: Florian Braun
@@ -367,6 +361,8 @@ areas:
   - cloudfoundry/steno
   - cloudfoundry/runtimeschema
   - cloudfoundry/app-runtime-interfaces-infrastructure
+  - openservicebrokerapi/servicebroker
+  - openservicebrokerapi/osb-checker
 
 - name: CLI
   approvers:
