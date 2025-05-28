@@ -36,7 +36,7 @@ jobs:
             ghproxy-cache-
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.13
       - uses: actions/checkout@v4
         with:
           path: community
@@ -98,7 +98,7 @@ jobs:
             ghproxy-cache-
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.13
       - uses: actions/checkout@v4
         with:
           path: community

@@ -83,7 +83,7 @@ Inactive users according to the criteria defined in
 
 ## Development
 
-Requires Python 3.9.
+Requires Python 3.13.
 
 How to run locally:
 ```
