@@ -1,0 +1,18 @@
+name: 2025 Paketo Buildpacks Steering Committee election
+organization: Cloud Foundry Foundation
+start_datetime: 2025-06-12 06:59:00 # 11:59 pm PDT, 12 Jun 2025
+end_datetime: 2025-06-24 06:59:00 # 11:59 pm PDT, 24 Jun 2025
+no_winners: 1
+allow_no_opinion: True
+delete_after: True
+show_candidate_fields:
+- employer
+- github
+- slack
+election_officers:
+- loewenstein-sap
+- christopherclark
+- sgreenberg
+eligibility: Any individual who has contributed to Paketo Buildpacks in the twelve months prior to the election is eligible to vote in the Steering Committee election. Each election cycle, an initial set of voters will be identified through automated reporting. Any individual who has at least 10 measurable contributions in the last 12 months will be automatically added to the eligible voter list.
+exception_description: If you feel you are eligible to vote but are not represented in the list of voters, please request an exception to allow you to vote via the Elekto application.
+exception_due: 2025-06-22 06:59:00 # 11:59 pm PT, 22 Jun 2025
