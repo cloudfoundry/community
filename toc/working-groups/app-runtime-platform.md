@@ -278,8 +278,6 @@ areas:
     github: ebroberson
   - name: Carson Long
     github: ctlong
-  - name: Dominik Froehlich
-    github: domdom82
   - name: Geoff Franks
     github: geofffranks
   - name: Greg Cobb
