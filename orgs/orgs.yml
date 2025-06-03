@@ -1930,6 +1930,10 @@ orgs:
         description: Additional Linux OS configuration release
         has_projects: false
         has_wiki: false
+      osb-checker:
+        default_branch: master
+        description: An automatic checker to verify an Open Service Broker API implementation against the specification
+        has_wiki: false
       oss-s3-buckets-stack:
         has_projects: true
         private: true
@@ -2181,6 +2185,10 @@ orgs:
       security-notices:
         has_projects: true
         private: true
+      servicebroker:
+        default_branch: master
+        description: Open Service Broker API Specification
+        has_wiki: true
       service-broker-store:
         has_projects: true
       service-fabrik-backup-restore:
