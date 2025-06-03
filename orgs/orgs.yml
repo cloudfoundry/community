@@ -2378,7 +2378,7 @@ orgs:
         has_projects: true
       terraform-provider-cloudfoundry:
         default_branch: main
-        description: Terraform provider to manage Cloud Foundry resources using v3 APIs 
+        description: Terraform provider to manage Cloud Foundry resources using v3 APIs
         has_projects: true
       terraform-provider-csbmysql:
         allow_merge_commit: false
@@ -2627,6 +2627,7 @@ orgs:
           app-autoscaler-release: admin
           app-autoscaler-cli-plugin: admin
           app-runtime-interfaces-infrastructure: admin
+          app-autoscaler-env-bbl-state: admin
       temp-arp-networking-admins:
         description: "Temporary team for managing GitHub integrations for automation/concourse."
         maintainers:
