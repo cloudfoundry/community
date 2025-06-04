@@ -1,4 +1,4 @@
-# Foundational Infrastructure: Working Group Charter
+ƒ# Foundational Infrastructure: Working Group Charter
 
 ## Mission
 
@@ -142,6 +142,9 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
+  members:
+  - name: Irene Gonzalez Ruiz
+    github: ireneGonzalezRuiz
   approvers:
   - name: Peter Chen
     github: peterhaochen47
