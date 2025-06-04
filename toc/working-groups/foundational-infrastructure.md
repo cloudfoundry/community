@@ -1,4 +1,4 @@
-ƒ# Foundational Infrastructure: Working Group Charter
+# Foundational Infrastructure: Working Group Charter
 
 ## Mission
 
