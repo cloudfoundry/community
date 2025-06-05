@@ -101,6 +101,8 @@ areas:
     github: tcdowney
   - name: Karthick Udayakumar
     github: kart2bc
+  - name: Plamen Bardarov
+    github: plamen-bardarov
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
