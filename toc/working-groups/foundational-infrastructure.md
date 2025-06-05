@@ -142,6 +142,9 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
+  members:
+  - name: Praveen K Kumar
+    github: praveenkalluri18
   approvers:
   - name: Peter Chen
     github: peterhaochen47
