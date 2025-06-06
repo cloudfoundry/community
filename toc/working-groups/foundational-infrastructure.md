@@ -163,6 +163,8 @@ areas:
     github: kehrlann
   - name: Filip Hanik
     github: fhanik
+  - name: Joe Mahady
+    github: joemahady-comm
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
