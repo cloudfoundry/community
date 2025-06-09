@@ -142,7 +142,7 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
-  members:
+  reviewers:
   - name: Joe Mahady
     github: joemahady-comm
   approvers:
