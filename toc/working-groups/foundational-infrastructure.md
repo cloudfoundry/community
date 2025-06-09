@@ -142,9 +142,6 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
-  members:
-  - name: Irene Gonzalez Ruiz
-    github: ireneGonzalezRuiz
   approvers:
   - name: Peter Chen
     github: peterhaochen47
@@ -166,6 +163,9 @@ areas:
     github: kehrlann
   - name: Filip Hanik
     github: fhanik
+  reviewers:
+  - name: Irene Gonzalez Ruiz
+    github: ireneGonzalezRuiz
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
