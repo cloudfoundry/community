@@ -294,6 +294,8 @@ areas:
     github: julian-hj
   - name: Nishad Mathur
     github: alphasite
+  - name: Clay Kauzlaric
+    github: KauzClay
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -352,6 +354,8 @@ areas:
     github: alphasite
   - name: Alexander Lais
     github: peanball
+  - name: Clay Kauzlaric
+    github: KauzClay
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
