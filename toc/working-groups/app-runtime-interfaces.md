@@ -336,9 +336,6 @@ areas:
     github: nookala
   - name: George Gelashvili
     github: pivotalgeorge
-  bots:
-  - name: capi-bot
-    github: capi-bot
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
