@@ -64,7 +64,7 @@ areas:
     github: joeeltgroth
   - name: Markus Strehle
     github: strehle
-  reviewers:
+ reviewers:
   - name: Duane May
     github: duanemay
   - name: Behrouz Soroushian
@@ -75,6 +75,8 @@ areas:
     github: acosta11
   - name: Greg Cobb
     github: Gerg
+  - name: Daniel Linsley
+    github: dlinsley
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
