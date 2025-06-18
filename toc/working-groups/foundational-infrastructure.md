@@ -64,7 +64,7 @@ areas:
     github: joeeltgroth
   - name: Markus Strehle
     github: strehle
- reviewers:
+  reviewers:
   - name: Duane May
     github: duanemay
   - name: Behrouz Soroushian
