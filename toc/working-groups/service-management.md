@@ -39,12 +39,10 @@ areas:
     github: FelisiaM
   - name: Marcela Campo
     github: pivotal-marcela-campo
-  - name: Andrea Zucchini
-    github: zucchinidev
-  - name: Iain Findlay
-    github: ifindlay-cci
-  - name: Konstantin Kiess
-    github: nouseforaname
+  - name: Ed King
+    github: teddyking
+  - name: Diego Lemos
+    github: dlresende
   bots:
   - name: Services Enablement bot
     github: servicesenablement
