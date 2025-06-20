@@ -2,17 +2,23 @@
 
 set -eu -o pipefail
 
+get_working_group_info_json() {
+  local group=$1
+  echo $(cat ${group} | awk '/^```yaml$/{flag=1;next}/^```$/{flag=0}flag' | yq -o=json '.')
+}
+
 repo_root=$(dirname $(cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd))
 
 pushd $repo_root/toc/working-groups >/dev/null
 
+working_group_info="[]"
+
 for group in $(ls ../*.md | grep -v -e ROLES -e CHANGEPLAN -e PRINCIPLES -e GOVERNANCE); do
-    cat ${group} | awk '/^```yaml$/{flag=1;next}/^```$/{flag=0}flag' | \
-        ruby -rjson -ryaml -e "puts YAML.load(ARGF.read).to_json" 2> /dev/null | jq '[.]'
+     working_group_info=$(echo "${working_group_info}" | jq --argjson value "$(get_working_group_info_json $group)" '. += [ $value ]')
 done
 
 for working_group in $(ls *.md | grep -v -e WORKING-GROUPS -e paketo -e vulnerability -e concourse); do
-      cat ${working_group} | awk '/^```yaml$/{flag=1;next}/^```$/{flag=0}flag' | \
-            ruby -rjson -ryaml -e "puts YAML.load(ARGF.read).to_json" 2> /dev/null | jq '[.]'
+     working_group_info=$(echo "${working_group_info}" | jq --argjson value "$(get_working_group_info_json $working_group)" '. += [ $value ]')
 done
 
+echo $working_group_info

@@ -29,6 +29,16 @@ usage_checks() {
     exit 1
   fi
 
+  if [[ ! -e $(which yq) ]]; then
+    echo 'The `yq` cli (https://github.com/mikefarah/yq) is required for this script' >&2
+    exit 1
+  fi
+
+  if [[ ! -e $(which jq) ]]; then
+      echo 'The `jq` cli (https://github.com/jqlang/jq) is required for this script' >&2
+      exit 1
+  fi
+
   if gist_url=$(echo "test" | gh gist create -d test -f test - 2>/dev/null); then
     gh gist delete "${gist_url}" --yes >/dev/null 2>&1
   else 
@@ -100,7 +110,7 @@ find_issues_for_repo() {
   areas=($(echo "${TOC_JSON}" | jq --arg wg_name "${WORKING_GROUP}" -r '.[] | select(.name == $wg_name) | .areas[].name'))
   for area in "${areas[@]}"; do
     echo "Gathering contributions for the '${WORKING_GROUP}: ${area}' area..."
-    uri_safe_file=$(echo "${wg} - ${area}.md" | jq  -sRr '@uri')
+    uri_safe_file=$(echo "${wg} - ${area}.md" | jq  -sRr '@uri' | sed s/%20/\ /g | sed s/%0A//g | sed s/%2F/and/g)
     gist_url=$( (
     echo "# ${WORKING_GROUP}: ${area} Contributions"
     declare -a repos
