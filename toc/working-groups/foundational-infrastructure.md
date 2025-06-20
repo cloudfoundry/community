@@ -75,6 +75,8 @@ areas:
     github: acosta11
   - name: Greg Cobb
     github: Gerg
+  - name: Daniel Linsley
+    github: dlinsley
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
