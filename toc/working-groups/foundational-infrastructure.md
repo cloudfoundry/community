@@ -403,7 +403,6 @@ areas:
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
   - cloudfoundry/bosh-warden-cpi-release
-  - cloudfoundry/bosh-windows-acceptance-tests
   - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bpm-release
   - cloudfoundry/bsdtar
