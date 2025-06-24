@@ -144,6 +144,9 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
+  reviewers:
+  - name: Joe Mahady
+    github: joemahady-comm
   approvers:
   - name: Peter Chen
     github: peterhaochen47
