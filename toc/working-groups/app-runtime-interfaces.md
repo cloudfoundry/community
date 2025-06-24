@@ -361,8 +361,8 @@ areas:
   - cloudfoundry/steno
   - cloudfoundry/runtimeschema
   - cloudfoundry/app-runtime-interfaces-infrastructure
-  - openservicebrokerapi/servicebroker
-  - openservicebrokerapi/osb-checker
+  - cloudfoundry/servicebroker
+  - cloudfoundry/osb-checker
 
 - name: CLI
   approvers:

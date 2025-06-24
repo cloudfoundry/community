@@ -8,6 +8,7 @@ orgs:
     - acrmp
     - adrianhoelzl-sap
     - agnello-noronha
+    - alchen1218
     - ameowlia
     - anshrupani
     - anthonydahanne
@@ -27,11 +28,9 @@ orgs:
     - bosh-admin-bot
     - bosh-init-concourse
     - boyan-velinov
-    - brayanhenao
     - bruce-ricard
     - bsoroushian
     - c0d1ngm0nk3y
-    - ccjaimes
     - cf-buildpacks-eng
     - cf-bosh-ci-bot
     - cf-cli-eng
@@ -48,10 +47,8 @@ orgs:
     - Cryogenics-CI
     - ctlong
     - cunnie
-    - dalvarado
     - Dariquest
     - danail-branekov
-    - danielfor
     - davewalter
     - dennisjbell
     - dlresende
@@ -59,7 +56,6 @@ orgs:
     - domdom82
     - Dray56
     - dsabeti
-    - dsboulder
     - duanemay
     - ebroberson
     - emalm
@@ -93,12 +89,13 @@ orgs:
     - joaopapereira
     - jochenehret
     - joefitzgerald
+    - joemahady-comm
     - joergdw
     - johha
     - jrussett
     - julian-hj
-    - kabathla
     - kathap
+    - KauzClay
     - kehrlann
     - KesavanKing
     - kevin-ortega
@@ -127,6 +124,7 @@ orgs:
     - mvach
     - nader-ziada
     - nand2
+    - navinms711
     - norman-abramovitz
     - nouseforaname
     - ohkyle
@@ -149,14 +147,11 @@ orgs:
     - ragaskar
     - rajathagasthya
     - ramonskie
-    - reedr3
     - RichardJJG
     - rlewis24
     - robdimsdale
-    - rroberts2222
     - ryanwittrup
     - s-yonkov-yonkov
-    - saloni-sshah
     - salzmannsusan
     - samze
     - Sascha-Stoj
@@ -184,12 +179,12 @@ orgs:
     - Tallicia
     - tas-runtime-bot
     - tcdowney
+    - teddyking
     - ten4o
     - theghost5800
     - tnikolova82
     - tomkennedy513
     - torsten-sap
-    - totherme
     - uzabanov
     - vipinvkmenon
     - vkalapov
@@ -217,3 +212,4 @@ orgs:
     - AttilaAlmasi
     - dtasSap
     - ireneGonzalezRuiz
+    - praveenkalluri18

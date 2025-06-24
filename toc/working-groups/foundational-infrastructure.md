@@ -75,6 +75,8 @@ areas:
     github: acosta11
   - name: Greg Cobb
     github: Gerg
+  - name: Daniel Linsley
+    github: dlinsley
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -142,6 +144,9 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
+  reviewers:
+  - name: Joe Mahady
+    github: joemahady-comm
   approvers:
   - name: Peter Chen
     github: peterhaochen47
@@ -166,6 +171,8 @@ areas:
   reviewers:
   - name: Irene Gonzalez Ruiz
     github: ireneGonzalezRuiz
+  - name: Praveen K Kumar
+    github: praveenkalluri18
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
@@ -297,6 +304,8 @@ areas:
     github: julian-hj
   - name: Nishad Mathur
     github: alphasite
+  - name: Clay Kauzlaric
+    github: KauzClay
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -355,6 +364,8 @@ areas:
     github: alphasite
   - name: Alexander Lais
     github: peanball
+  - name: Clay Kauzlaric
+    github: KauzClay
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
