@@ -168,6 +168,9 @@ areas:
     github: kehrlann
   - name: Filip Hanik
     github: fhanik
+  reviewers:
+  - name: Praveen K Kumar
+    github: praveenkalluri18
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
