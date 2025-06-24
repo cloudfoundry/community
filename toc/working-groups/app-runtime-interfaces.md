@@ -522,7 +522,4 @@ areas:
   repositories:
   - cloudfoundry/stratos
   - cloudfoundry/stratos-buildpack
-
-config:
-  generate_rfc0015_branch_protection_rules: true
 ```
