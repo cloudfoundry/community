@@ -144,9 +144,6 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
-  reviewers:
-  - name: Joe Mahady
-    github: joemahady-comm
   approvers:
   - name: Peter Chen
     github: peterhaochen47
@@ -171,6 +168,8 @@ areas:
   reviewers:
   - name: Praveen K Kumar
     github: praveenkalluri18
+  - name: Joe Mahady
+    github: joemahady-comm
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
