@@ -17,6 +17,19 @@ occur. This RFC proposes improvements in CF to shift this unavailability
 towards lifecycle operations and not actual app downtime - making it a
 more pleasant experience for CF users and operators alike. It also opens up possibilities for CF Users to not rely on the CF Foundations stacks but rather use their own stacks to gain indipendence and release the dependency on the CF Community\'s stack release cadence deliberately.
 
+## Table of Contents
+
+- [Meta](#meta)
+- [Summary](#summary)
+- [Problem](#problem)
+- [Motivation](#motivation)
+- [Proposal](#proposal)
+  - [Improve logical stack management in CF API (cloud_controller_ng)](#improve-logical-stack-management-in-cf-api-cloud_controller_ng)
+  - [Bring your own Stack](#bring-your-own-stack)
+  - [Provide a stack with every ubuntu LTS](#provide-a-stack-with-every-ubuntu-lts)
+- [Future Improvements](#future-improvements)
+  - [Enable org scoped stack management in CF (cloud_controller_ng)](#enable-org-scoped-stack-management-in-cf-cloud_controller_ng)
+
 ## Problem
 
 In the current CF implementation, apps run on so-called Stacks which
