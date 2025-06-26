@@ -97,16 +97,12 @@ areas:
     github: yharish991
   - name: Indira Chandrabhatta
     github: ichandrabhatta
-  - name: Janice Bailey
-    github: bjanice75
   - name: Nader Ziada
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Rui Yang
     github: xtremerui
-  - name: Rizwan Reza
-    github: rizwanreza
   - name: Wayne Adams
     github: wayneadams
   approvers:
