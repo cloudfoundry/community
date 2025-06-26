@@ -212,6 +212,8 @@ areas:
   - name: Jovan Kostovski
     github: chombium
   reviewers:
+  - name: Pascal Zimmermann
+    github: ZPascal
   - name: Felix Hambrecht
     github: fhambrec
   - name: Glenn Oppegard
