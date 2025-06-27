@@ -80,15 +80,15 @@ A possible presentation of deterministic handling can be a ring like:
 - The Gorouter MUST implement a new `EndpointIterator` to calculate hash, based on the provided header 
 - The Gorouter MUST consider consistent hashing 
 - The Gorouter SHOULD locally cache the computed hash values to avoid expensive recalculations for each request for which 
-hash-based routing should be applied
-- The Gorouters SHOULD NOT implement a shared hash cache
+  hash-based routing should be applied
+- Gorouters SHOULD NOT implement a shared hash cache across instances in the same deployment
 - The Gorouter MUST assess the current request load across all application instances mapped to a particular route in order to prevent overload situations
-- The Gorouter MUST update its local hash cache following the registration or deregistration of an endpoint, ensuring minimal rehashing
+- The Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring minimal rehashing
 
 #### Cloud Controller
 - The `loadbalancing` property of the [route object](https://v3-apidocs.cloudfoundry.org/version/3.190.0/index.html#the-route-options-object) MUST be updated to include `hash` as an acceptable value
-- The [route object](https://v3-apidocs.cloudfoundry.org/version/3.190.0/index.html#the-route-options-object) MUST 
-include two new properties, `hash_header` and `hash_balance`, to configure a request header as the hashing key and the balance factor
+- The [route options object](https://v3-apidocs.cloudfoundry.org/version/3.190.0/index.html#the-route-options-object) MUST 
+  include two new properties, `hash_header` and `hash_balance`, to configure a request header as the hashing key and the balance factor
 - The CF API MUST implement the validation of the following requirements:
   - The `hash_header` property is mandatory when load balancing is set to hash
   - The `hash_balance` property is optional when load balancing is set to hash. Leaving out `hash_balance` means the load situation will not be considered
@@ -96,7 +96,7 @@ include two new properties, `hash_header` and `hash_balance`, to configure a req
   - For load balancing algorithms other than hash, the `hash_balance` and `hash_header` properties SHOULD not be set
 
 An example for manifest with these properties: 
-```bash
+```yaml
 version: 1
 applications:
 - name: test
