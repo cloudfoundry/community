@@ -37,3 +37,11 @@ With respect to the approval of pull requests, we propose that the number of app
 * 1 approval will be required when a working group has 4 or more people in the approver role.
 
 The automation should allow to override the standard branch protection per respository using a configuration file maintained in this community repository. This allows working group leads e.g. to reduce the number of required approvals if several approvers are temporarily not available.
+
+## Amendments
+
+### Protection by Default
+
+To improve the security posture of the foundation, the branch protection rules defined in this RFC are applied by default to all repositories of all Working Groups. The previous opt-in mechanism via a flag in Working Group charters is removed.
+
+Working Groups can request exceptions for specific repositories by creating a pull request against `orgs/branchprotection.yml`. The pull request description MUST contain a justification for the exception.
