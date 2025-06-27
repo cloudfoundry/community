@@ -216,6 +216,8 @@ areas:
   reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
+  - name: Andreas Kyrian
+    github: Jobsby
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
