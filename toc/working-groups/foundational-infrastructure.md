@@ -213,7 +213,6 @@ areas:
     github: kimago
   - name: Ryan Wittrup
     github: ryanwittrup
-  reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
   repositories:
