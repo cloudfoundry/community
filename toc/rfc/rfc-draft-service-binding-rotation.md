@@ -50,50 +50,64 @@ The CC should allow multiple service credential bindings per service instance an
 
 ### CF Cloud Controller
 
-The CC should introduce a new CF API `POST /v3/service_credential_bindings/:guid/actions/recreate` which can be used to recreate a service binding and will require following optional parameter:
-| Name       | Type   | Description                                      |
-|------------|--------|--------------------------------------------------|
-| parameters | object | A JSON object that is passed to the service broker|
+#### POST /v3/service_credential_bindings
 
+Shall allow the creation of multiple service credential bindings for the same app and service instance under the following conditions:
+- service credential bindings are of type `app`
+- service instance is a managed service instances
+- service credential binding name is not changed
 
-The result of calling this API is a new service binding with a new guid for the same application and service instance. The initial implementation with the current support of [OSBAPI 2.15](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md) in CC can just create a new service binding and with [OSBAPI 2.17](https://github.com/openservicebrokerapi/servicebroker/blob/v2.17/spec.md) adoption in CC it could use the binding rotation support. `POST /v3/service_credential_bindings/:guid/actions/recreate` is just a shortcut for `POST /v3/service_credential_bindings` which would require to specify the app and service instance references which could be used from the specified service binding  guid in the URL path. Following requirements should applied to this API:
-- It should support only managed service instances and shall fail for user-provided service instances
-- It should also fail for service credential bindings from type key
-- Service binding credentials names remain unique per app but multiple credential bindings to the same service instance can share the same name
+The number of multiple service credential bindings for the same app and service instance should be limited.
 
-The API `GET /v3/service_credential_bindings` should be extended to return all service credential bindings of an application including the recreated ones.
-When creating the service credential binding information like VCAP_SERVICES or file-based one the CC must select the newest one only. This must be based on the `created_at` field from the credential binding.  An application restart or restage as today will be required to activate the new binding.
+#### GET /v3/service_credential_bindings
+
+The API `GET /v3/service_credential_bindings` will return all service credential bindings of an application including multiple bindings to the same service instance.
+
+### Mapping of service credential bindings into application containers
+
+When creating the service credential binding information like VCAP_SERVICES or file-based one the CC must select the newest one per service instance only that is in state `succeeded`. This must be based on the `created_at` and `last_operation.state` fields from the credential binding.
+
+An application restart or restage as today will be required to activate the new binding.
 
 ### CF CLI
 
-The CF CLI should introduce a new flag called `--recreate` for the `bind-service` command. Example:
+Users can create multiple service credential bindings by invoking the `bind-service` command multiple times. Example:
 ```
-cf bind-service myApp myService --recreate
+cf bind-service myApp myService  # initial binding
+cf bind-service myApp myService  # additional binding to the same service instance
 ```
-When the flag `--recreate` is provided the CLI should use the new `POST /v3/service_credential_bindings/:guid/actions/recreate` to recreate the service credential binding. In case there is no service instance binding yet this will fail.
 
-The cleanup of old inactive service binding should be supported by a new CF CLI command:
+`cf unbind-service myApp myService` shall delete all existing service credential bindings for `myApp` to `myService`.
+An additional parameter `cf unbind-service --guid <guid>` should support the deletion of a single service credential binding.
+
+`cf service myService` should list all bindings to apps including their `guid` and `created_at` timestamp. This information is helpful to understand which binding will be mapped into the application container.
+
+The cleanup of old service credential bindings should be supported by a new CF CLI command:
 ```
-cf cleanup-outdated-service-bindings myApp [myService]
+cf cleanup-outdated-service-bindings myApp [myService] [--keep-last 1]
 ```
-The CLI will use the  CF API `GET /v3/service_credential_bindings?app_guids=:guid ` to list the service instance bindings for an application and should delete all old bindings based on the creation date leaving the newest service binding. If no service instance name is provided, the CLI should delete the old bindings of all services currently bound to the application. A full-service binding recreation flow with the CF CLI could look like:
+The CLI will use the  CF API `GET /v3/service_credential_bindings?app_guids=:guid ` to list the service instance bindings for an application and should delete all old bindings based on the creation date leaving the newest service bindings. With the `keep-last` parameter, users can keep the x newest bindings per app and service instance. If no service instance name is provided, the CLI should delete the old bindings of all services currently bound to the application.
+It is in the responsibility of the user to invoke `cf cleanup-outdated-service-bindings myApp` only after a successfully restage/restart of the app, i.e. when old service credential bindings are not used anymore by any app container. 
+
+A full service binding rotation flow with the CF CLI could look like:
 ```
-cf bind-service myApp myService -c {<parameters>} --recreate
-cf bind-service myApp myService2 -c {<parameters>} --recreate
+cf bind-service myApp myService -c {<parameters>}
+cf bind-service myApp myService2 -c {<parameters>}
 cf restage myApp --strategy rolling
 cf cleanup-outdated-service-bindings myApp
 ```
+
 ## Possible Future Work
 
 ### CC adoption of OSBAPI 2.17
 
-The CC could use the service binding rotation functionality introduced with the OSBAPI 2.17 to improve the implementation of the `POST /v3/service_credential_bindings/:guid/actions/recreate` API endpoint.
+The CC could use the service binding rotation functionality introduced with the OSBAPI 2.17 and introduce a dedicated API endpoint for rotation, e.g. `POST /v3/service_credential_bindings/:guid/actions/duplicate` (good naming to be found).
 
 ### Integrate Service Binding Recreation into Rolling Deployment
 
 Here an example how this could look with the CF CLI:
 ```
-Cf restage myApp –strategy rolling-with-binding-rotation
+cf restage myApp –strategy rolling-with-binding-rotation
 ```
 The result should be that all bindings of the application are recreated after a successful restage.
 
