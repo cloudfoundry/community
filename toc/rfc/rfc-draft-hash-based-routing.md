@@ -96,7 +96,7 @@ A possible presentation of deterministic handling can be a ring like:
 - The Gorouter MUST consider consistent hashing
 - The Gorouter SHOULD locally cache the computed hash values to avoid expensive recalculations for each request for
   which hash-based routing should be applied
-- Gorouters SHOULD NOT implement a shared hash cache across instances in the same deployment
+- Gorouters SHOULD NOT implement a distributed shared cache across instances in the same deployment
 - The Gorouter MUST assess the current request load across all application instances mapped to a particular route in
   order to prevent overload situations
 - The Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
@@ -140,7 +140,7 @@ The decision to introduce plain keys was influenced by the following points:
 - Simple to use
 - It allows for easy addition of more load-balancing-related properties if new requirements arise in the future
 - It complies with
-  the [RFC](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0027-generic-per-route-features.md#proposal),
+  the [RFC #0027 that introduced per-route options](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0027-generic-per-route-features.md#proposal),
   which states that the map must use strings as keys and can use numbers, strings, and the literals true and false as
   values
 
