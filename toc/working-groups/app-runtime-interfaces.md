@@ -473,6 +473,8 @@ areas:
     github: MNoeva
   - name: Stoyan Ivanov
     github: stiv03
+  - name: Krasimir Kargov
+    github: karrgov
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
