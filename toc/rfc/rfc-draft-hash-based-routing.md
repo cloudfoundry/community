@@ -144,11 +144,11 @@ The decision to introduce plain keys was influenced by the following points:
   which states that the map must use strings as keys and can use numbers, strings, and the literals true and false as
   values
 
-### No Changes Required
+### Components Where No Changes Are Required
 
 #### CF cli
 
-The [current implementation of route option](https://github.com/cloudfoundry/cli/blob/main/resources/options_resource.go)
+The [current implementation of route option in the CF CLI](https://github.com/cloudfoundry/cli/blob/main/resources/options_resource.go)
 supports the use of `--option KEY=VALUE`, where the key and value are sent directly to CC for validation. Consequently,
 the `create-route`, `update-route`, and `map-route` commands require no modifications, as they already accept the
 proposed properties.
