@@ -27,12 +27,13 @@ An example scenario: users from different tenants send requests to application i
 tenant-specific databases. With the current load balancing algorithms, each tenant eventually creates a connection to
 each application instance, which then creates connection pools to every customer database. As a result, all tenants
 might span up a full mesh, leading to too many open connections to the customer databases, impacting performance. This
-limitation represents a gap in achieving optimal load distribution and can be solved with routing based on a tenant.
+limitation highlights a gap in achieving efficient load distribution, particularly when dealing with limited or
+memory-intensive resources in backend services, and can be addressed through hash-based routing.
 
 ## Proposal
 
-We propose introducing hash-based routing as a load balancing algorithm for use on a per-route basis. This algorithm
-optimizes load distribution and addresses the issues described in the earlier scenario.
+We propose introducing hash-based routing as a load balancing algorithm for use on a per-route basis to address the
+issues described in the earlier scenario.
 
 The approach leverages an HTTP header, which is associated with each incoming request and contains the specific
 identifier. This one is used to compute a hash value, which will serve as the basis for routing decisions.
@@ -172,7 +173,7 @@ The options are raw JSON and will be passed directly to the Gorouter without any
 
 #### Route-Registrar
 
-No use cases are known to implement hash-based routing for the platform-related routes.
+In the scope of this RFC, it is not planned to implement hash-based routing in route-registrar for platform-routes.
 
 ### Diagrams
 
