@@ -164,8 +164,6 @@ areas:
   bots:
   - github: bot-wg1-a5
     name: WG3 Area5 Bot
-config:
-  generate_rfc0015_branch_protection_rules: true
 """
 
 wg4_other_org = """
@@ -206,8 +204,6 @@ areas:
   - cloudfoundry2/repo3
   - cloudfoundry2/repo4
   - cloudfoundry/repo5
-config:
-  generate_rfc0015_branch_protection_rules: true
 """
 
 toc = """
@@ -231,7 +227,6 @@ areas:
   repositories:
   - cloudfoundry/community
 config:
-  generate_rfc0015_branch_protection_rules: true
   github_project_sync:
     mapping:
       cloudfoundry: 31
@@ -732,8 +727,8 @@ class TestOrgGenerator(unittest.TestCase):
         bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
         # TOC and wg3 opted in, wg1 and wg2 not
         # note: repo1..4 are shared between wg1 (opt out) and wg3 (opt in) - wg3 wins
-        self.assertSetEqual({f"repo{i}" for i in range(1, 6)} | {"community"}, set(bp_repos.keys()))
-        # repo1 has static config that wins over generated branch protection rules
+        self.assertSetEqual({f"repo{i}" for i in list(range(1, 6)) + [10, 11]} | {"community"}, set(bp_repos.keys()))
+        # repo1 has static config that wins over generated branch protection rulesp
         self.assertTrue(bp_repos["repo1"]["protect"])
         self.assertNotIn("required_pull_request_reviews", bp_repos["repo1"])
 
@@ -749,7 +744,7 @@ class TestOrgGenerator(unittest.TestCase):
         bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
         # TOC and wg3 opted in, wg1 and wg2 not
         # note: repo1..4 are shared between wg1 (opt out) and wg3 (opt in) - wg3 wins
-        self.assertSetEqual({f"repo{i}" for i in range(1, 6)} | {"community"}, set(bp_repos.keys()))
+        self.assertSetEqual({f"repo{i}" for i in list(range(1, 6)) + [10, 11]} | {"community"}, set(bp_repos.keys()))
         # repo1 has static config that wins over generated branch protection rules
         self.assertTrue(bp_repos["repo1"]["protect"])
         self.assertNotIn("required_pull_request_reviews", bp_repos["repo1"])
