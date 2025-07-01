@@ -2,7 +2,7 @@
 
 [meta]: #meta
 
-- Name: Hash-based routing
+- Name: Implementing a Hash-Based Load Balancing Algorithm for Cloud Foundry (CF) Routing
 - Start Date: 2025-04-07
 - Author(s): b1tamara, Soha-Albaghdady
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
@@ -10,9 +10,12 @@
 
 ## Summary
 
-Cloud Foundry uses round-robin and least-connection algorithms for load balancing between Gorouters and backends. Still,
-they are unsuitable for specific use cases, prompting a proposal to introduce hash-based routing on a per-route basis to
-enhance load distribution in particular scenarios.
+Cloud Foundry uses round-robin and least-connection algorithms for load balancing between Gorouters and backends. While
+effective in many scenarios, these algorithms may not be ideal for certain use cases. Therefore, there is a proposal to
+introduce a hash-based routing on a per-route basis.
+The hash-based load balancing algorithm uses the hash of a request header to make routing decisions, focusing on
+distributing users across instances rather than individual requests, thereby improving load balancing in specific
+scenarios.
 
 ## Motivation
 
@@ -41,15 +44,17 @@ identifier. This one is used to compute a hash value, which will serve as the ba
 In the previously mentioned scenario, the tenant ID acts as the identifier included in the header and serves as the
 basis for hash calculation. This hash value determines the appropriate application instance for each request, ensuring
 that all requests with this identifier are consistently routed to the same instance or might be routed to another
-instance when the instance is saturated. Consequently, this load balancing algorithm effectively minimizes database
-connection overhead and optimizes connection pooling, enhancing efficiency and system performance.
+instance when the instance is saturated. Consequently, the load balancing algorithm effectively directs requests for a
+single tenant to a particular application instance, so that instance can minimize database connection overhead and
+optimize connection pooling, enhancing efficiency and system performance.
 
 ### Requirements
 
 #### Only Application Per-Route Load Balancing
 
-The hash-based load balancing will be configured exclusively as an application per-route option and will not be
-available as a global setting.
+Hash-based load balancing solves a particular load pattern, rather than serving as a general-purpose load balancing
+algorithm. Consequently, it will be configured exclusively as a per-route option for applications and will not be
+offered as a global setting.
 
 #### Minimal rehashing over all Gorouter VMs
 
@@ -63,20 +68,21 @@ application instances.
 
 #### Considering a balance factor
 
-Before routing a request, the current load on each application instance must be evaluated using a balance factor. This
-load is measured by the number of in-flight requests. For example, with a balance factor of 150, no application instance
-should exceed 150% of the average load across all instances. Consequently, requests must be distributed to different
-application instances that are not overloaded.
+Before routing a request, the current load on each application instance must be evaluated using a balance factor. The
+number of in-flight requests measures this load. For example, with a balance factor of 150, no application instance
+should exceed 150% of the average number of in-flight requests across all application instances. Consequently, requests
+must be distributed to different application instances that are not overloaded.
+
 Example:
 
-| Application instance | Current request count | Request count / average load |
-|----------------------|-----------------------|------------------------------|
-| app_instance1        | 10                    | 20%                          |
-| app_instance2        | 50                    | 100%                         |
-| app_instance3        | 90                    | 180%                         |
+| Application instance | Current request count | Request count / average number of in-flight requests |
+|----------------------|-----------------------|------------------------------------------------------|
+| app_instance1        | 10                    | 20%                                                  |
+| app_instance2        | 50                    | 100%                                                 |
+| app_instance3        | 90                    | 180%                                                 |
 
-Based on the average load of 50 requests, new requests to app_instance3 must be distributed to different application
-instances that are not overloaded.
+Based on the average number of 50 requests, the current request count to app_instance3 exceeds the balance factor. As a
+result, new requests to app_instance3 must be distributed to different application instances.
 
 #### Deterministic handling of overflow traffic to the next application instance
 
@@ -94,13 +100,15 @@ A possible presentation of deterministic handling can be a ring like:
 - The Gorouter MUST be extended to take a specific identifier via the request header
 - The Gorouter MUST implement hash calculation, based on the provided header
 - The Gorouter MUST consider consistent hashing
-- The Gorouter SHOULD locally cache the computed hash values to avoid expensive recalculations for each request for
-  which hash-based routing should be applied
-- Gorouters SHOULD NOT implement a distributed shared cache across instances in the same deployment
-- The Gorouter MUST assess the current request load across all application instances mapped to a particular route in
-  order to prevent overload situations
+- The Gorouter SHOULD store the mapping between computed hash values and application instances locally to avoid
+  expensive recalculations for each incoming request
+- Gorouters SHOULD NOT implement a distributed shared cache
+- The Gorouter MUST assess the current number of in-flight requests across all application instances mapped to a
+  particular route to consider overload situations
 - The Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
   minimal rehashing
+
+For a detailed understanding of the workflows on Gorouter's side, please refer to the [activity diagrams](#diagrams).
 
 #### Cloud Controller
 
@@ -161,11 +169,6 @@ cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=
 cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_balance=125
 cf map-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=125
 ```
-
-#### BBS
-
-The route object is maintained as a generic JSON object in the BBS, likely because the BBS doesn't use the route
-information itself. Therefore, it simply accepts and stores the route options provided by the Cloud Controller.
 
 #### Route-Emitter
 
