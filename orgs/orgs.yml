@@ -418,6 +418,8 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-windows-acceptance-tests:
+        archived: true
+        default_branch: windows-2019
         has_projects: true
       bosh-windows-stemcell-builder:
         default_branch: windows-2019
