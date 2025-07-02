@@ -2,16 +2,16 @@
 
 [meta]: #meta
 
-- Name: Implementing a Hash-Based Load Balancing Algorithm for Cloud Foundry (CF) Routing
+- Name: Implementing a Hash-Based Load Balancing Algorithm for CF Routing
 - Start Date: 2025-04-07
 - Author(s): b1tamara, Soha-Albaghdady
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1222
 
 ## Summary
 
 Cloud Foundry uses round-robin and least-connection algorithms for load balancing between Gorouters and backends. While
-effective in many scenarios, these algorithms may not be ideal for certain use cases. Therefore, there is a proposal to
+effective in many scenarios, these algorithms may not be ideal for certain use cases. Therefore, this RFC proposes to
 introduce a hash-based routing on a per-route basis.
 The hash-based load balancing algorithm uses the hash of a request header to make routing decisions, focusing on
 distributing users across instances rather than individual requests, thereby improving load balancing in specific
@@ -154,7 +154,7 @@ The decision to introduce plain keys was influenced by the following points:
 
 ### Components Where No Changes Are Required
 
-#### CF cli
+#### CF CLI
 
 The [current implementation of route option in the CF CLI](https://github.com/cloudfoundry/cli/blob/main/resources/options_resource.go)
 supports the use of `--option KEY=VALUE`, where the key and value are sent directly to CC for validation. Consequently,
