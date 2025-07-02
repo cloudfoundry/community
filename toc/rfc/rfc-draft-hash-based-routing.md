@@ -31,7 +31,9 @@ tenant-specific databases. With the current load balancing algorithms, each tena
 each application instance, which then creates connection pools to every customer database. As a result, all tenants
 might span up a full mesh, leading to too many open connections to the customer databases, impacting performance. This
 limitation highlights a gap in achieving efficient load distribution, particularly when dealing with limited or
-memory-intensive resources in backend services, and can be addressed through hash-based routing.
+memory-intensive resources in backend services, and can be addressed through hash-based routing. In short, hash-based
+routing is an algorithm that facilitates the distribution of requests to application instances by using a stable hash
+derived from request identifiers, such as headers
 
 ## Proposal
 
@@ -60,11 +62,28 @@ offered as a global setting.
 
 Rehashing should be minimized, especially when the number of application instances changes over time.
 
-[Maglev hashing](https://storage.googleapis.com/gweb-research2023-media/pubtools/2904.pdf) can be considered as a
-possible solution.
+For the scenario where a new application instance (e.g. app_instance3) is deployed, Gorouter updates the mapping so that
+it maps part of the hashes to the new instance.
 
-N hashes can be associated with one application instance. The number of hashes is a multiple of the number of
-application instances.
+| Hash  | Application instance(s) before | Application instance(s) after a new instance added |
+|-------|--------------------------------|----------------------------------------------------|
+| Hash1 | app_instance1                  | app_instance1                                      |
+| Hash2 | app_instance1                  | app_instance3                                      |
+| Hash3 | app_instance2                  | app_instance2                                      |
+| ...   | ...                            | ...                                                |
+| HashN | app_instance2                  | app_instance3                                      |
+
+For the scenario that the application has been scaled down, Gorouter updates the mapping immediately after routes
+update, so that it remaps hashes associated with the app_instance3:
+
+| Hash  | Application instance(s) before | Application instance(s) after the app_instance_3 removed |
+|-------|--------------------------------|----------------------------------------------------------|
+| Hash1 | app_instance1                  | app_instance1                                            |
+| Hash2 | app_instance3                  | app_instance1                                            |
+| Hash3 | app_instance2                  | app_instance2                                            |
+| ...   | ...                            | ...                                                      |
+| HashN | app_instance3                  | app_instance2                                            |
+
 
 #### Considering a balance factor
 
@@ -99,7 +118,6 @@ A possible presentation of deterministic handling can be a ring like:
 
 - The Gorouter MUST be extended to take a specific identifier via the request header
 - The Gorouter MUST implement hash calculation, based on the provided header
-- The Gorouter MUST consider consistent hashing
 - The Gorouter SHOULD store the mapping between computed hash values and application instances locally to avoid
   expensive recalculations for each incoming request
 - Gorouters SHOULD NOT implement a distributed shared cache
