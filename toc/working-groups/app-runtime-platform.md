@@ -103,6 +103,8 @@ areas:
     github: kart2bc
   - name: Plamen Bardarov
     github: plamen-bardarov
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -167,6 +169,8 @@ areas:
     github: kart2bc
   - name: Tim Downey
     github: tcdowney
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
