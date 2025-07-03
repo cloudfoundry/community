@@ -285,7 +285,7 @@ areas:
   - name: Geoff Franks
     github: geofffranks
   - name: Greg Cobb
-    github: Gerg
+    github: gerg
   - name: Maria Shaldybin
     github: mariash
   - name: Matthew Kocher
