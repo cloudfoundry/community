@@ -66,8 +66,8 @@ offered as a global setting.
 
 Rehashing should be minimized, especially when the number of application instances changes over time.
 
-For the scenario where a new application instance (e.g. app_instance3) is deployed, Gorouter updates the mapping so that
-it maps part of the hashes to the new instance.
+For the scenario when a new application instance (e.g. app_instance3) is added, Gorouter updates the mapping so that it
+maps part of the hashes to the new instance.
 
 | Hash  | Application instance(s) before | Application instance(s) after a new instance added |
 |-------|--------------------------------|----------------------------------------------------|
@@ -77,8 +77,8 @@ it maps part of the hashes to the new instance.
 | ...   | ...                            | ...                                                |
 | HashN | app_instance2                  | app_instance3                                      |
 
-For the scenario that the application has been scaled down, Gorouter updates the mapping immediately after routes
-update, so that it remaps hashes associated with the app_instance3:
+For the scenario when the application is scaled down, Gorouter updates the mapping immediately after routes update, so
+that it remaps hashes associated with the app_instance3:
 
 | Hash  | Application instance(s) before | Application instance(s) after the app_instance_3 removed |
 |-------|--------------------------------|----------------------------------------------------------|
@@ -91,18 +91,18 @@ update, so that it remaps hashes associated with the app_instance3:
 
 #### Considering a balance factor
 
-Before routing a request, the current load on each application instance must be evaluated using a balance factor. The
-number of in-flight requests measures this load. For example, with a balance factor of 150, no application instance
+Before routing a request, the current load on each application instance must be evaluated using a balance factor. This
+load is measured by the number of in-flight requests. For example, with a balance factor of 150, no application instance
 should exceed 150% of the average number of in-flight requests across all application instances. Consequently, requests
 must be distributed to different application instances that are not overloaded.
 
 Example:
 
-| Application instance | Current request count | Request count / average number of in-flight requests |
-|----------------------|-----------------------|------------------------------------------------------|
-| app_instance1        | 10                    | 20%                                                  |
-| app_instance2        | 50                    | 100%                                                 |
-| app_instance3        | 90                    | 180%                                                 |
+| Application instance | Current request count | Current request count / Average number of in-flight requests |
+|----------------------|-----------------------|--------------------------------------------------------------|
+| app_instance1        | 10                    | 20%                                                          |
+| app_instance2        | 50                    | 100%                                                         |
+| app_instance3        | 90                    | 180%                                                         |
 
 Based on the average number of 50 requests, the current request count to app_instance3 exceeds the balance factor. As a
 result, new requests to app_instance3 must be distributed to different application instances.
@@ -120,14 +120,14 @@ A possible presentation of deterministic handling can be a ring like:
 
 #### Gorouter
 
-- The Gorouter MUST be extended to take a specific identifier via the request header
-- The Gorouter MUST implement hash calculation, based on the provided header
-- The Gorouter SHOULD store the mapping between computed hash values and application instances locally to avoid
+- Gorouter MUST be extended to take a specific identifier via the request header
+- Gorouter MUST implement hash calculation, based on the provided header
+- Gorouter SHOULD store the mapping between computed hash values and application instances locally to avoid
   expensive recalculations for each incoming request
 - Gorouters SHOULD NOT implement a distributed shared cache
-- The Gorouter MUST assess the current number of in-flight requests across all application instances mapped to a
+- Gorouter MUST assess the current number of in-flight requests across all application instances mapped to a
   particular route to consider overload situations
-- The Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
+- Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
   minimal rehashing
 
 For a detailed understanding of the workflows on Gorouter's side, please refer to the [activity diagrams](#diagrams).
