@@ -27,13 +27,17 @@ allows these load balancing algorithms to be configured on the application route
 However, these existing algorithms are not ideal for scenarios that require routing based on specific identifiers.
 
 An example scenario: users from different tenants send requests to application instances that establish connections to
-tenant-specific databases. With the current load balancing algorithms, each tenant eventually creates a connection to
+tenant-specific databases. 
+
+![](rfc-draft-hash-based-routing/problem.drawio.png)
+
+With the current load balancing algorithms, each tenant eventually creates a connection to
 each application instance, which then creates connection pools to every customer database. As a result, all tenants
 might span up a full mesh, leading to too many open connections to the customer databases, impacting performance. This
 limitation highlights a gap in achieving efficient load distribution, particularly when dealing with limited or
 memory-intensive resources in backend services, and can be addressed through hash-based routing. In short, hash-based
 routing is an algorithm that facilitates the distribution of requests to application instances by using a stable hash
-derived from request identifiers, such as headers
+derived from request identifiers, such as headers.
 
 ## Proposal
 
