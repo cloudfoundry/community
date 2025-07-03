@@ -74,7 +74,7 @@ areas:
   - name: Andrew Costa
     github: acosta11
   - name: Greg Cobb
-    github: Gerg
+    github: gerg
   - name: Daniel Linsley
     github: dlinsley
   repositories:
