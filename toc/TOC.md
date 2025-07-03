@@ -124,7 +124,7 @@ execution_leads:
 - name: Chris Weibel
   github: cweibel
 - name: Greg Cobb
-  github: Gerg
+  github: gerg
 - name: Ruben Koster
   github: rkoster
 - name: Stephan Merker
