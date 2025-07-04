@@ -288,8 +288,6 @@ areas:
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Jamie van Dyke
-    github: fearoffish
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Julian Hjortshoj
@@ -344,8 +342,6 @@ areas:
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Jamie van Dyke
-    github: fearoffish
   - name: Benjamin Gandon
     github: bgandon
   - name: Sascha Stojanovic
