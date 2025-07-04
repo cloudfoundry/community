@@ -129,6 +129,7 @@ A possible presentation of deterministic handling can be a ring like:
   particular route to consider overload situations
 - Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
   minimal rehashing
+- Gorouter SHOULD NOT not incur any performance hit when 0 apps use hash routing.
 
 For a detailed understanding of the workflows on Gorouter's side, please refer to the [activity diagrams](#diagrams).
 
