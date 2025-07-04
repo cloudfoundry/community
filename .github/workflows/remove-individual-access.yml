@@ -5,6 +5,9 @@ on:
       - main
   schedule:
   - cron: '0 */1 * * *'
+  # Necessary to test the yq change
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   remove-individual-access-to-repos:
@@ -13,6 +16,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: community
+      - name: Install yq
+        run: sudo wget https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
       - name: Remove individual access to repos
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -23,6 +28,6 @@ jobs:
           ./community/toc/working-groups/parsable-working-groups.sh | jq -r .[].areas[].repositories[] | grep -E '^cloudfoundry/' | while read -r repo; do
               gh api "repos/${repo}/collaborators?affiliation=direct" | jq -r .[].login | while read -r user; do
                   echo "remove ${user} from ${repo}"
-                  gh api -X delete "/repos/${repo}/collaborators/${user}"
+                  # gh api -X delete "/repos/${repo}/collaborators/${user}"
               done
           done
