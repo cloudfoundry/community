@@ -42,8 +42,14 @@ Credential access and management MUST be segmented so that WGs cannot access one
 * Support Issues MUST be shared between the Concourse working group maintainers and the concourse supporters
 
 ### Timeline
-* Concourse team creates the new, shared, instance and migrates itself (2-3 weeks from acceptance of this proposal)
-* Onboard 1 working group to the new instance and refine deployment and operational strategies from initial learnings (2-3 weeks). Shut down the concourse owned by the working group.
+#### Phase 1
+* Concourse team creates the new, shared, instance and migrates itself (4-6 weeks from acceptance of this proposal)
+
+#### Phase 2
+* Onboard 1 working group to the new instance and refine deployment and operational strategies from initial learnings (4-6 weeks).
+* Shut down the concourse owned by the working group.
+
+#### Phase 3
 * Open onboarding to the rest of the working groups and migrate their pipelines. Shut down the concourse owned by the working group(s).
 * Success criteria:
   * 2 or more teams leveraging this instance.
