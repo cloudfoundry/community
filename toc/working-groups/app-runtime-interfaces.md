@@ -215,6 +215,9 @@ areas:
   - cloudfoundry/ruby-buildpack-release
 
 - name: Buildpacks Stacks
+  reviewers:
+  - name: Plamen Bardarov
+    github: plamen-bardarov
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
