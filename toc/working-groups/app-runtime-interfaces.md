@@ -220,9 +220,6 @@ areas:
   - cloudfoundry/ruby-buildpack-release
 
 - name: Buildpacks Stacks
-  reviewers:
-  - name: Plamen Bardarov
-    github: plamen-bardarov
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -232,6 +229,9 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
+  reviewers:
+  - name: Plamen Bardarov
+    github: plamen-bardarov
   repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
