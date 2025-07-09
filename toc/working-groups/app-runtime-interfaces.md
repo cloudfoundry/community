@@ -411,6 +411,8 @@ areas:
   reviewers:
   - name: Georg Lokowandt
     github: Lokowandtg
+  - name: Stefan Yonkov
+    github: s-yonkov-yonkov
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
