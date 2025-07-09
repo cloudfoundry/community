@@ -413,6 +413,8 @@ areas:
     github: Lokowandtg
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
+  - name: Kristian Atanasov
+    github: theghost5800
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
