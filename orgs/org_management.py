@@ -192,18 +192,17 @@ class OrgGenerator:
 
     def generate_branch_protection(self):
         # basis is static config in self.branch_protection which is never overwritten
-        # generate RFC0015 branch protection rules for every WG+TOC that opted in
+        # generate RFC0015 branch protection rules for every WG+TOC by default
         for org in OrgGenerator._MANAGED_ORGS:
             branch_protection_repos = self.branch_protection["branch-protection"]["orgs"][org]["repos"]
             wgs = self.working_groups[org]
             if org == self.toc["org"]:
                 wgs.append(self.toc)
             for wg in wgs:
-                if wg.get("config", {}).get("generate_rfc0015_branch_protection_rules", False):  # config is optional
-                    repo_rules = self._generate_wg_branch_protection(wg)
-                    for repo in repo_rules:
-                        if repo not in branch_protection_repos:
-                            branch_protection_repos[repo] = repo_rules[repo]
+                repo_rules = self._generate_wg_branch_protection(wg)
+                for repo in repo_rules:
+                    if repo not in branch_protection_repos:
+                        branch_protection_repos[repo] = repo_rules[repo]
 
     def write_org_config(self, path: str):
         print(f"Writing org configuration to {path}")

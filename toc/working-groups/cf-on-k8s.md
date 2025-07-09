@@ -38,8 +38,6 @@ technical_leads:
 bots:
 - name: korifi-bot
   github: korifi-bot
-config:
-  generate_rfc0015_branch_protection_rules: true
 areas:
 - name: Korifi
   approvers:
