@@ -408,9 +408,6 @@ areas:
   - cloudfoundry/bosh-package-cf-cli-release
 
 - name: Java Tools
-  reviewers:
-  - name: Georg Lokowandt
-    github: Lokowandtg
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
@@ -420,6 +417,8 @@ areas:
     github: anthonydahanne
   - name: Daniel Garnier-Moiroux
     github: kehrlann
+  - name: Georg Lokowandt
+    github: Lokowandtg
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
