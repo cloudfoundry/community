@@ -407,8 +407,6 @@ areas:
 
 - name: Java Tools
   reviewers:
-  - name: Georg Lokowandt
-    github: Lokowandtg
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
   - name: Kristian Atanasov
@@ -422,6 +420,8 @@ areas:
     github: anthonydahanne
   - name: Daniel Garnier-Moiroux
     github: kehrlann
+  - name: Georg Lokowandt
+    github: Lokowandtg
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
