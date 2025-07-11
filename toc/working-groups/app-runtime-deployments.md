@@ -48,6 +48,8 @@ areas:
   reviewers:
   - github: oliver-heinrich
     name: Oliver Heinrich
+  - github: Milena-Encheva
+    name: Milena Encheva
   approvers:
   - github: davewalter
     name: Dave Walter
