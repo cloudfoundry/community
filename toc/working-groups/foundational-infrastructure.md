@@ -91,8 +91,6 @@ areas:
   reviewers:
   - name: claire t.
     github: Spimtav
-  - name: Greg Meyer
-    github: gm2552
   - name: Harish Yayi
     github: yharish991
   - name: Indira Chandrabhatta
@@ -103,8 +101,6 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Rui Yang
     github: xtremerui
-  - name: Wayne Adams
-    github: wayneadams
   approvers:
   - name: Aram Price
     github: aramprice
@@ -288,8 +284,6 @@ areas:
   - name: Ahmed Hassanin
     github: a-hassanin
   reviewers:
-  - name: Greg Meyer
-    github: gm2552
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Julian Hjortshoj
@@ -342,8 +336,6 @@ areas:
   - name: Felix Moehler
     github: fmoehler
   reviewers:
-  - name: Greg Meyer
-    github: gm2552
   - name: Benjamin Gandon
     github: bgandon
   - name: Sascha Stojanovic
