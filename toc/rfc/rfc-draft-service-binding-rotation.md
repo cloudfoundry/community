@@ -54,10 +54,13 @@ The CC should allow multiple service credential bindings per service instance an
 
 Shall allow the creation of multiple service credential bindings for the same app and service instance under the following conditions:
 - service credential bindings are of type `app`
-- service instance is a managed service instances
+  - bindings of type `key` don't have a reference to an application
+  - multiple service keys for a service instance are already supported
 - service credential binding name is not changed
+  - multiple bindings to the same service instance are intended for credential rotation
+  - VCAP_SERVICES structure doesn't allow multiple bindings to the same service instance so different binding names don't make sense
 
-The number of multiple service credential bindings for the same app and service instance should be limited.
+The number of multiple service credential bindings for the same app and service instance should be limited. The limit prevents a DoS threat and eventually reminds users to clean up old, likely outdated bindings.
 
 #### GET /v3/service_credential_bindings
 
@@ -84,7 +87,7 @@ An additional parameter `cf unbind-service --guid <guid>` should support the del
 
 The cleanup of old service credential bindings should be supported by a new CF CLI command:
 ```
-cf cleanup-outdated-service-bindings myApp [myService] [--keep-last 1]
+cf cleanup-outdated-service-bindings myApp [--service-instance myService] [--keep-last 1]
 ```
 The CLI will use the  CF API `GET /v3/service_credential_bindings?app_guids=:guid ` to list the service instance bindings for an application and should delete all old bindings based on the creation date leaving the newest service bindings. With the `keep-last` parameter, users can keep the x newest bindings per app and service instance. If no service instance name is provided, the CLI should delete the old bindings of all services currently bound to the application.
 It is in the responsibility of the user to invoke `cf cleanup-outdated-service-bindings myApp` only after a successfully restage/restart of the app, i.e. when old service credential bindings are not used anymore by any app container. 
