@@ -92,7 +92,7 @@ that it remaps hashes associated with the app_instance3:
 #### Considering a balance factor
 
 Before routing a request, the current load on each application instance must be evaluated using a balance factor. This
-load is measured by the number of in-flight requests. For example, with a balance factor of 150, no application instance
+load is measured by the number of in-flight requests. For example, with a balance factor of 1.5, no application instance
 should exceed 150% of the average number of in-flight requests across all application instances. Consequently, requests
 must be distributed to different application instances that are not overloaded.
 
@@ -129,7 +129,7 @@ A possible presentation of deterministic handling can be a ring like:
   particular route to consider overload situations
 - Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
   minimal rehashing
-- Gorouter SHOULD NOT not incur any performance hit when 0 apps use hash routing.
+- Gorouter SHOULD NOT incur any performance hit when 0 apps use hash routing.
 
 For a detailed understanding of the workflows on Gorouter's side, please refer to the [activity diagrams](#diagrams).
 
@@ -143,9 +143,9 @@ For a detailed understanding of the workflows on Gorouter's side, please refer t
   and the balance factor
 - It MUST implement the validation of the following requirements:
     - The `hash_header` property is mandatory when load balancing is set to hash
-    - The `hash_balance` property is optional when load balancing is set to hash. Leaving out `hash_balance` means the
-      load situation will not be considered
-    - To account for overload situations, `hash_balance` values should be greater than 110. During the implementation
+    - The `hash_balance` property is optional when load balancing is set to hash. Leaving out `hash_balance` or setting
+      it explicitly to 0 means the load situation will not be considered
+    - To account for overload situations, `hash_balance` values should be greater than 1.1. During the implementation
       phase, the values will be evaluated to identify the best fit for the recommended range
     - For load balancing algorithms other than hash, the `hash_balance` and `hash_header` properties MUST not be set
 
@@ -160,7 +160,7 @@ applications:
         options:
           loadbalancing: hash
           hash_header: tenant-id
-          hash_balance: 125
+          hash_balance: 1.25
       - route: anothertest.example.com
         options:
           loadbalancing: least-connection
@@ -186,11 +186,11 @@ proposed properties.
 Example:
 
 ```bash
-cf create-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=125
-cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=125
+cf create-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=1.25
+cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=1.25
 cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id
-cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_balance=125
-cf map-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=125
+cf update-route MY-APP example.com -n test -o loadbalancing=hash -o hash_balance=1.25
+cf map-route MY-APP example.com -n test -o loadbalancing=hash -o hash_header=tenant-id -o hash_balance=1.25
 ```
 
 #### Route-Emitter
