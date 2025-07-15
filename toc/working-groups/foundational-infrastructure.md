@@ -215,6 +215,7 @@ areas:
     github: ryanwittrup
   - name: Pascal Zimmermann
     github: ZPascal
+  reviewers:
   - name: Andreas Kyrian
     github: Jobsby
   repositories:
