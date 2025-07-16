@@ -60,7 +60,7 @@ on the stack to produce the droplet. This in return means that:
   CAN just be instantiated to become an app instance when combining the droplet
   with the same stack it was built with at execution time
 
-![Current Stack Usage](rfc-0040-enhance-stack-handling/current_stack_usage.png)
+![Current Stack Usage](rfc-0041-provide-custom-stacks-functionality/current_stack_usage.png)
 Pictured in above diagram is how the stack is brought into a CF
 Foundation and used in a CF Foundation. The following problems occur
 when trying to remove/deprecate a stack towards users of a CF
