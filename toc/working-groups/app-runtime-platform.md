@@ -103,6 +103,8 @@ areas:
     github: kart2bc
   - name: Plamen Bardarov
     github: plamen-bardarov
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -167,6 +169,8 @@ areas:
     github: kart2bc
   - name: Tim Downey
     github: tcdowney
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
@@ -212,6 +216,8 @@ areas:
   - name: Jovan Kostovski
     github: chombium
   reviewers:
+  - name: Pascal Zimmermann
+    github: ZPascal
   - name: Felix Hambrecht
     github: fhambrec
   - name: Glenn Oppegard
@@ -280,12 +286,10 @@ areas:
     github: ebroberson
   - name: Carson Long
     github: ctlong
-  - name: Dominik Froehlich
-    github: domdom82
   - name: Geoff Franks
     github: geofffranks
   - name: Greg Cobb
-    github: Gerg
+    github: gerg
   - name: Maria Shaldybin
     github: mariash
   - name: Matthew Kocher

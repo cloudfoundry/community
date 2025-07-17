@@ -336,9 +336,6 @@ areas:
     github: nookala
   - name: George Gelashvili
     github: pivotalgeorge
-  bots:
-  - name: capi-bot
-    github: capi-bot
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
@@ -414,6 +411,10 @@ areas:
   reviewers:
   - name: Georg Lokowandt
     github: Lokowandtg
+  - name: Stefan Yonkov
+    github: s-yonkov-yonkov
+  - name: Kristian Atanasov
+    github: theghost5800
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
@@ -476,6 +477,8 @@ areas:
     github: MNoeva
   - name: Stoyan Ivanov
     github: stiv03
+  - name: Krasimir Kargov
+    github: karrgov
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot

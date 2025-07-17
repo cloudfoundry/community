@@ -74,7 +74,7 @@ areas:
   - name: Andrew Costa
     github: acosta11
   - name: Greg Cobb
-    github: Gerg
+    github: gerg
   - name: Daniel Linsley
     github: dlinsley
   repositories:
@@ -97,16 +97,12 @@ areas:
     github: yharish991
   - name: Indira Chandrabhatta
     github: ichandrabhatta
-  - name: Janice Bailey
-    github: bjanice75
   - name: Nader Ziada
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Rui Yang
     github: xtremerui
-  - name: Rizwan Reza
-    github: rizwanreza
   - name: Wayne Adams
     github: wayneadams
   approvers:
@@ -144,9 +140,6 @@ areas:
   - name: tas-operability-bot
     github: tas-operability-bot
 - name: Identity and Auth (UAA)
-  reviewers:
-  - name: Joe Mahady
-    github: joemahady-comm
   approvers:
   - name: Peter Chen
     github: peterhaochen47
@@ -173,6 +166,8 @@ areas:
     github: ireneGonzalezRuiz
   - name: Praveen K Kumar
     github: praveenkalluri18
+  - name: Joe Mahady
+    github: joemahady-comm
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
@@ -220,9 +215,11 @@ areas:
     github: kimago
   - name: Ryan Wittrup
     github: ryanwittrup
-  reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
+  reviewers:
+  - name: Andreas Kyrian
+    github: Jobsby
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
@@ -296,8 +293,6 @@ areas:
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Jamie van Dyke
-    github: fearoffish
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Julian Hjortshoj
@@ -352,8 +347,6 @@ areas:
   reviewers:
   - name: Greg Meyer
     github: gm2552
-  - name: Jamie van Dyke
-    github: fearoffish
   - name: Benjamin Gandon
     github: bgandon
   - name: Sascha Stojanovic
@@ -413,7 +406,6 @@ areas:
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
   - cloudfoundry/bosh-warden-cpi-release
-  - cloudfoundry/bosh-windows-acceptance-tests
   - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bpm-release
   - cloudfoundry/bsdtar
