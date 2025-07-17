@@ -81,6 +81,4 @@ areas:
   - cloudfoundry/relint-team
   - cloudfoundry/runtime-ci
   - cloudfoundry/uptimer
-config:
-  generate_rfc0015_branch_protection_rules: true
 ```
