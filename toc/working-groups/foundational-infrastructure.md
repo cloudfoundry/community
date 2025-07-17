@@ -162,6 +162,8 @@ areas:
   - name: Filip Hanik
     github: fhanik
   reviewers:
+  - name: Irene Gonzalez Ruiz
+    github: ireneGonzalezRuiz
   - name: Praveen K Kumar
     github: praveenkalluri18
   - name: Joe Mahady
