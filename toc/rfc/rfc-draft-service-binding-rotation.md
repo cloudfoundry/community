@@ -74,11 +74,19 @@ An application restart or restage as today will be required to activate the new 
 
 ### CF CLI
 
-Users can create multiple service credential bindings by invoking the `bind-service` command multiple times. Example:
+Users can create multiple service credential bindings by invoking the `bind-service` command with a `--strategy multiple` option. The default strategy `single` ensures backward compatibility of the `cf bind-service` command.
+
+Example:
 ```
-cf bind-service myApp myService  # initial binding
-cf bind-service myApp myService  # additional binding to the same service instance
+cf bind-service myApp myService  # create initial binding
+cf bind-service myApp myService  # succeeds with message "App myApp is already bound to service instance myService." No secondary binding is added.
+cf bind-service myApp myService --strategy single  # same as previous command, 'single' is the default strategy 
+
+cf bind-service myApp myService --strategy multiple  # adds a secondary binding to the same service instance
+cf bind-service myApp myService --strategy multiple  # adds a third binding to the same service instance
 ```
+
+The exact parameter naming can be finalized at implementation time. A `strategy` parameter allows future extension, e.g. for OSBAPI 2.17 support mention in section "Possible Future Work".
 
 `cf unbind-service myApp myService` shall delete all existing service credential bindings for `myApp` to `myService`.
 An additional parameter `cf unbind-service --guid <guid>` should support the deletion of a single service credential binding.
@@ -89,13 +97,13 @@ The cleanup of old service credential bindings should be supported by a new CF C
 ```
 cf cleanup-outdated-service-bindings myApp [--service-instance myService] [--keep-last 1]
 ```
-The CLI will use the  CF API `GET /v3/service_credential_bindings?app_guids=:guid ` to list the service instance bindings for an application and should delete all old bindings based on the creation date leaving the newest service bindings. With the `keep-last` parameter, users can keep the x newest bindings per app and service instance. If no service instance name is provided, the CLI should delete the old bindings of all services currently bound to the application.
+The CLI will use the  CF API `GET /v3/service_credential_bindings?app_guids=:guid` to list the service instance bindings for an application and should delete all old bindings based on the creation date leaving the newest service bindings. With the `keep-last` parameter, users can keep the x newest bindings per app and service instance. If no service instance name is provided, the CLI should delete the old bindings of all services currently bound to the application.
 It is in the responsibility of the user to invoke `cf cleanup-outdated-service-bindings myApp` only after a successfully restage/restart of the app, i.e. when old service credential bindings are not used anymore by any app container. 
 
 A full service binding rotation flow with the CF CLI could look like:
 ```
-cf bind-service myApp myService -c {<parameters>}
-cf bind-service myApp myService2 -c {<parameters>}
+cf bind-service myApp myService -c {<parameters>} --strategy multiple
+cf bind-service myApp myService2 -c {<parameters>} --strategy multiple
 cf restage myApp --strategy rolling
 cf cleanup-outdated-service-bindings myApp
 ```
