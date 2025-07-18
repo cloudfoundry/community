@@ -26,8 +26,16 @@ allows these load balancing algorithms to be configured on the application route
 
 However, these existing algorithms are not ideal for scenarios that require routing based on specific identifiers.
 
-An example scenario: users from different tenants send requests to application instances that establish connections to
-tenant-specific databases. 
+One use case is optimizing resource management of complex in-memory caches. While 12-factor apps are stateless and can
+retrieve necessary information from backing services, it is often useful to cache data and reduce latency. When a cache
+is limited in size (e.g., Least Recently Used), exposing each app instance to all users may lead to thrashing and lower
+cache efficiency. By "pinning" users to a particular instance, the cache can remain effective. In the event of an
+instance exchange (up or downscaling, evacuation, rolling update), another instance can still provide a response and
+fill its cache without interruption for the user. For most users, subsequent requests can be processed at lower latency
+by utilizing a warm and effective cache.
+
+Another use case: users from different tenants send requests to application instances that establish connections to
+tenant-specific databases.
 
 ![](rfc-draft-hash-based-routing/problem.drawio.png)
 
@@ -42,13 +50,13 @@ derived from request identifiers, such as headers.
 ## Proposal
 
 We propose introducing hash-based routing as a load balancing algorithm for use on a per-route basis to address the
-issues described in the earlier scenario.
+issues described in the earlier use cases.
 
 The approach leverages an HTTP header, which is associated with each incoming request and contains the specific
 identifier. This one is used to compute a hash value, which will serve as the basis for routing decisions.
 
-In the previously mentioned scenario, the tenant ID acts as the identifier included in the header and serves as the
-basis for hash calculation. This hash value determines the appropriate application instance for each request, ensuring
+In the previously mentioned use cases, the specific identifier included in the header can serve as the basis for hash
+calculation. This hash value determines the appropriate application instance for each request, ensuring
 that all requests with this identifier are consistently routed to the same instance or might be routed to another
 instance when the instance is saturated. Consequently, the load balancing algorithm effectively directs requests for a
 single tenant to a particular application instance, so that instance can minimize database connection overhead and
@@ -122,12 +130,12 @@ A possible presentation of deterministic handling can be a ring like:
 
 - Gorouter MUST be extended to take a specific identifier via the request header
 - Gorouter MUST implement hash calculation, based on the provided header
-- Gorouter SHOULD store the mapping between computed hash values and application instances locally to avoid
+- Gorouter MAY store the mapping between computed hash values and application instances locally to avoid
   expensive recalculations for each incoming request
 - Gorouters SHOULD NOT implement a distributed shared cache
 - Gorouter MUST assess the current number of in-flight requests across all application instances mapped to a
   particular route to consider overload situations
-- Gorouter MUST update its local hash table following the registration or deregistration of an endpoint, ensuring
+- Gorouter MAY update its local hash table following the registration or deregistration of an endpoint, ensuring
   minimal rehashing
 - Gorouter SHOULD NOT incur any performance hit when 0 apps use hash routing.
 
