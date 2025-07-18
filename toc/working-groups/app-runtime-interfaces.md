@@ -149,7 +149,6 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
-  reviewers:
   - name: Teodora Nikolova
     github: tnikolova82
   - name: Tsvetelina Marinova
@@ -182,7 +181,6 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
-  reviewers:
   - name: Teodora Nikolova
     github: tnikolova82
   - name: Tsvetelina Marinova
