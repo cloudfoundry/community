@@ -62,8 +62,7 @@ Due to [RFC-39](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-
 ### Usage
 
 The management entry of the stack in the stacks table of the CF API
-cannot be removed as long as apps exist which use it as the apps table
-has a foreign key relationship to the stacks table. The stack thus is
+cannot be removed as long as apps exist which use it as the stack delete has a check in place that looks up usage and prevents the deletion of a stack that is still in use.
 still visible and still usable to all users of a CF Foundation even if
 being insecure, deprecated and SHOULD not be adopted anymore.\
 It is a cumbersome process for the users to migrate their workload to a
