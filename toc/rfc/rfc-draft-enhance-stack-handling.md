@@ -122,14 +122,14 @@ following workflows inside the CF API.
   prominent warning. This brings better awareness than release notes.
 
 - Mark a stack as locked -> prevent using the stack for new apps
-  (existing apps CAN still use the stack and CAN deploy updates). Likely
-  already prevents blue-green deploy scenarios where a rolling update is
-  programmed client side by creating new CF Applications. However all
-  apps SHOULD continue to run.
+  (existing apps CAN still use the stack and CAN deploy updates). This already prevents
+  blue-green deploy scenarios where a rolling update is
+  programmed client side by creating new CF Applications.
+  However all existing apps using a locked stack SHOULD continue to run.
 
 - Mark a stack as disabled -> prevent using the stack for any app
-  staging (existing apps continue to run but you can't update them
-  anymore)
+  staging. Existing apps continue to run but you can't update them
+  anymore. Restarting and scaling of existing apps using the disabled stack is still possible.
 
 This requires the stack table to be extended by additional information
 regarding a stacks state as well as the endpoints to manage/list stacks
