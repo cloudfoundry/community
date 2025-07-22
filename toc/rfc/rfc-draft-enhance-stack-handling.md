@@ -164,19 +164,11 @@ Stack lifecycle management is controlled exclusively by a set of timestamps, not
 This model guarantees that stack usage is consistently enforced based on time, and all state transitions are predictable and transparent.
 It also provides a interface for an operator in which no externally timed api call for a stack state change is required.
 
-To allow a deprecation notice to be printed when a stack is marked as
-deprecated, the CF API MAY add an additional
-[emitprogressaction](https://github.com/cloudfoundry/bbs/blob/main/docs/053-actions.md#emitprogressaction)
-in the LRP [setup
-definition](https://github.com/cloudfoundry/bbs/blob/main/docs/031-defining-lrps.md#setup-optional)
-printing a deprecation notice. This is already available in the [CF API
-Codebase](https://github.com/cloudfoundry/cloud_controller_ng/blob/384b017c2e7cf02a492ccffdb6985348abdbf8bb/spec/diego/action_builder_spec.rb#L109).
+The CF API SHOULD use the provided timestamps to influence the logging and error messages in the following way:
 
-It MAY add a log line with color support to underline the importance of
-the deprecation. It also MAY add the time since when a stack is
-deprecated, when it is going to be locked and also when it is going to
-be disabled. Also restages of apps with a locked stack SHOULD produce
-the deprecation warning.
+- It MAY add a log line into the Staging/Restaging logs of apps with a locked stack. It SHOULD produce the deprecation warning, optionally with color support, to underline the importance of a deprecated stack.
+- It MAY add the time since when a stack is deprecated/locked/disabled/removed to the Staging/Restaging logs.
+- It MAY add the time when future state transitions will happen to the Staging/Restaging logs, so when is going to be locked/disabled/removed.
 
 #### Positive
 
