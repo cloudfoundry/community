@@ -1,6 +1,6 @@
 # Meta
 
-- Name: Provide possibillity to use custom stacks in Cloud Foundry
+- Name: Enhance Stack Handling in Cloud Foundry
 - Start Date: 2025-06-24
 - Author(s): @FloThinksPi
 - Status: Draft
