@@ -153,16 +153,16 @@ logic to influence stack usage:
 - remove_at -> Timestamp after which the stack is removed from the CF
   API. This is a purely informational timestamp just in place to be able to use it in deprecation notices and error messages for better communication towards CF users.
 
-Consequently, this information needs to be used inside the CF API at app
-creation time and staging time to check if a stack CAN be used based on
-the current server time. To be able to be used to create an app object
-the stack MUST be not locked or disabled. To be able to stage an app a
-stack MUST not be disabled. The respective endpoints/controllers in the
-CF API need to be extended with a corresponding check and present
-meaningful error messages in case the conditions to create an app or
-stage an app are not meet. Error messages SHOULD refer to the date times
-and include since when a stack is deprecated, when it got locked or
-disabled to enrich the response to the CF user.
+Stack lifecycle management is controlled exclusively by a set of timestamps, not by an explicit "state" field. The system determines the current state of a stack (active, deprecated, locked, or disabled) by comparing the current server time to these timestamps. This approach ensures that stack usability is automatically and unambiguously defined by time-based transitions.
+
+- State transitions (deprecated_at → locked_at → disabled_at → removed_at) are derived from the configured timestamps.
+- A validation check SHOULD be performed when setting the timestamps to ensure that they are in chronological order( deprecated_at → locked_at → disabled_at → removed_at).
+- There is no explicit `state` field; the state is always computed at runtime from the timestamps.
+- For additional information the operator MAY reuse the existing `description` field in the stacks table to provide additional information about the stack.
+- In case a timestamp is not set, the stack is considered to be in the previous state indefinitely. This SHOULD also be considered in Error and Log messages.
+
+This model guarantees that stack usage is consistently enforced based on time, and all state transitions are predictable and transparent.
+It also provides a interface for an operator in which no externally timed api call for a stack state change is required.
 
 To allow a deprecation notice to be printed when a stack is marked as
 deprecated, the CF API MAY add an additional
