@@ -3,8 +3,8 @@
 - Name: Service Credential Binding Rotation for Applications
 - Start Date: 2025-06-10
 - Authors: @beyhan, @stephanme
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#1198](https://github.com/cloudfoundry/community/pull/1198)
 
 ## Summary
 
