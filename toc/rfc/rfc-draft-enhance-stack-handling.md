@@ -182,6 +182,8 @@ The CF API SHOULD use the provided timestamps to influence the logging and error
 - It deliberately shifts the unavailability of a stack towards
   lifecycle operations and not actual app downtime - making it a more
   pleasant experience for CF users and operators alike.
+  More pleasant for a CF User because an operator that removes a stack does not cause immediate downtime for their apps.
+  More pleasant for a CF Operator because they can follow a staged process to remove a stack without causing immediate downtime for all apps using it.
 
 - Likely a manageable change as just in the app creation/staging
   workflows a check is required and the stack table and endpoints CAN be
