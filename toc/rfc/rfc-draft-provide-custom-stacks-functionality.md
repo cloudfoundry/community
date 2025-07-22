@@ -1,6 +1,6 @@
 # Meta
 
-- Name: Enhance handling of stacks in CF to improve stack removal/migration experience
+- Name: Provide optional Custom Stacks Functionality in Cloud Foundry
 - Start Date: 2025-06-24
 - Author(s): @FloThinksPi
 - Status: Draft
@@ -13,9 +13,11 @@ removing unsupported stacks from an existing and heavily used CF
 Foundation comes with massive problems. Ultimately a stack cannot be
 removed without all depending apps being migrated to a new stack,
 otherwise downtimes of applications that rely on the removed stack will
-occur. This RFC proposes improvements in CF to shift this unavailability
+occur. This RFC-0041 proposes improvements in CF to shift this unavailability
 towards lifecycle operations and not actual app downtime - making it a
-more pleasant experience for CF users and operators alike. It also opens up possibilities for CF Users to not rely on the CF Foundations stacks but rather use their own stacks to gain indipendence and release the dependency on the CF Community\'s stack release cadence deliberately.
+more pleasant experience for CF users and operators alike.
+This RFC proposes a way for CF Users that cannot follow a stack removal process as described in RFC-0041 to take over the responsibility for their stack and run it as a custom stack, while not needing to mimick the CF staging behaviour and building an own docker application to be able to run with a depricated/locked/disabled/removed stack.
+It also opens up possibilities for CF Users to not rely on the CF Foundations stacks but rather use their own stacks to gain independence and release the dependency on the CF Community\'s stack release cadence deliberately on the users choice.
 
 ## Table of Contents
 
