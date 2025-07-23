@@ -150,13 +150,10 @@ logic to influence stack usage:
 - disable_at -> Timestamp after which restaging existing apps with a that
   stack fail
 
-- remove_at -> Timestamp after which the stack is removed from the CF
-  API. This is a purely informational timestamp just in place to be able to use it in deprecation notices and error messages for better communication towards CF users.
+Stack lifecycle management is controlled exclusively by a set of timestamps, not by an explicit "state" field. The system determines the current state of a stack (active, deprecated, locked, or disabled) by comparing the current server time to these timestamps. This approach ensures that stack usability is automatically and unambiguously defined by time-based transitions. Additional information can already be added via the `description` field.
 
-Stack lifecycle management is controlled exclusively by a set of timestamps, not by an explicit "state" field. The system determines the current state of a stack (active, deprecated, locked, or disabled) by comparing the current server time to these timestamps. This approach ensures that stack usability is automatically and unambiguously defined by time-based transitions.
-
-- State transitions (deprecated_at → locked_at → disabled_at → removed_at) are derived from the configured timestamps.
-- A validation check SHOULD be performed when setting the timestamps to ensure that they are in chronological order( deprecated_at → locked_at → disabled_at → removed_at).
+- State transitions (deprecated_at → locked_at → disabled_at) are derived from the configured timestamps.
+- A validation check SHOULD be performed when setting the timestamps to ensure that they are in chronological order( deprecated_at → locked_at → disabled_at).
 - There is no explicit `state` field; the state is always computed at runtime from the timestamps.
 - For additional information the operator MAY reuse the existing `description` field in the stacks table to provide additional information about the stack.
 - In case a timestamp is not set, the stack is considered to be in the previous state indefinitely. This SHOULD also be considered in Error and Log messages.
@@ -167,8 +164,9 @@ It also provides a interface for an operator in which no externally timed api ca
 The CF API SHOULD use the provided timestamps to influence the logging and error messages in the following way:
 
 - It MAY add a log line into the Staging/Restaging logs of apps with a locked stack. It SHOULD produce the deprecation warning, optionally with color support, to underline the importance of a deprecated stack.
-- It MAY add the time since when a stack is deprecated/locked/disabled/removed to the Staging/Restaging logs.
-- It MAY add the time when future state transitions will happen to the Staging/Restaging logs, so when is going to be locked/disabled/removed.
+- It MAY add the time since when a stack is deprecated/locked/disabled to the Staging/Restaging logs.
+- It MAY add the time when future state transitions will happen to the Staging/Restaging logs, so when is going to be locked/disabled.
+- The `description` field MAY be used in addition in Staging/Restaging logs to enable CF Admins to include a custom message in the apps staging logs
 
 #### Positive
 
