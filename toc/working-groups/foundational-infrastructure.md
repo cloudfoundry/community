@@ -368,6 +368,7 @@ areas:
   - cloudfoundry/bosh-azure-storage-cli
   - cloudfoundry/bosh-apt-resources
   - cloudfoundry/bosh-bbl-ci-envs
+  - cloudfoundry/bosh-blobstore-clis
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
   - cloudfoundry/bosh-common

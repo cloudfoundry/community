@@ -196,6 +196,10 @@ orgs:
         has_projects: false
         has_wiki: false
         private: true
+      bosh-blobstore-clis:
+        description: CLIs for interacting with blobstores
+        has_projects: false
+        has_wiki: false
       bosh-bootloader:
         allow_merge_commit: false
         allow_squash_merge: false
