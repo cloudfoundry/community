@@ -74,7 +74,9 @@ areas:
   - name: Andrew Costa
     github: acosta11
   - name: Greg Cobb
-    github: Gerg
+    github: gerg
+  - name: Daniel Linsley
+    github: dlinsley
   repositories:
   - cloudfoundry-incubator/credhub-api-docs
   - cloudfoundry/credhub
@@ -89,24 +91,16 @@ areas:
   reviewers:
   - name: claire t.
     github: Spimtav
-  - name: Greg Meyer
-    github: gm2552
   - name: Harish Yayi
     github: yharish991
   - name: Indira Chandrabhatta
     github: ichandrabhatta
-  - name: Janice Bailey
-    github: bjanice75
   - name: Nader Ziada
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Rui Yang
     github: xtremerui
-  - name: Rizwan Reza
-    github: rizwanreza
-  - name: Wayne Adams
-    github: wayneadams
   approvers:
   - name: Aram Price
     github: aramprice
@@ -116,16 +110,12 @@ areas:
     github: selzoc
   - name: Diego Lemos
     github: dlresende
-  - name: Gareth Smith
-    github: totherme
   - name: George Blue
     github: blgm
   - name: Iain Findlay
     github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
-  - name: Konstantin Semenov
-    github: jhvhs
   - name: Long Nguyen
     github: lnguyen
   - name: Maya Rosecrance
@@ -167,6 +157,13 @@ areas:
     github: kehrlann
   - name: Filip Hanik
     github: fhanik
+  reviewers:
+  - name: Irene Gonzalez Ruiz
+    github: ireneGonzalezRuiz
+  - name: Praveen K Kumar
+    github: praveenkalluri18
+  - name: Joe Mahady
+    github: joemahady-comm
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
@@ -210,15 +207,15 @@ areas:
     github: abg
   - name: Colin Shield
     github: colins
-  - name: Kyle Ong
-    github: ohkyle
   - name: Kim Basset
     github: kimago
   - name: Ryan Wittrup
     github: ryanwittrup
-  reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
+  reviewers:
+  - name: Andreas Kyrian
+    github: Jobsby
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
@@ -235,8 +232,6 @@ areas:
   - name: Jovan Kostovski
     github: chombium
   reviewers:
-  - name: Rebecca Roberts
-    github: rroberts2222
   - name: Ausaf Ahmed
     github: aqstack
   - name: Glenn Oppegard
@@ -263,8 +258,6 @@ areas:
     github: cunnie
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Daniel Felipe Ochoa
-    github: danielfor
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Max Soest
@@ -294,16 +287,14 @@ areas:
   - name: Ahmed Hassanin
     github: a-hassanin
   reviewers:
-  - name: Greg Meyer
-    github: gm2552
-  - name: Jamie van Dyke
-    github: fearoffish
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Nishad Mathur
     github: alphasite
+  - name: Clay Kauzlaric
+    github: KauzClay
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -325,8 +316,6 @@ areas:
     github: ragaskar
   - name: Maya Rosecrance
     github: mrosecrance
-  - name: Daniel Felipe Ochoa
-    github: danielfor
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
@@ -350,10 +339,6 @@ areas:
   - name: Felix Moehler
     github: fmoehler
   reviewers:
-  - name: Greg Meyer
-    github: gm2552
-  - name: Jamie van Dyke
-    github: fearoffish
   - name: Benjamin Gandon
     github: bgandon
   - name: Sascha Stojanovic
@@ -364,6 +349,8 @@ areas:
     github: alphasite
   - name: Alexander Lais
     github: peanball
+  - name: Clay Kauzlaric
+    github: KauzClay
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
@@ -378,6 +365,7 @@ areas:
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
   - cloudfoundry/bosh-cli
+  - cloudfoundry/bosh-common
   - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-cpi-go
   - cloudfoundry/bosh-cpi-ruby
@@ -410,7 +398,6 @@ areas:
   - cloudfoundry/bosh-virtualbox-cpi-release
   - cloudfoundry/bosh-vsphere-cpi-release
   - cloudfoundry/bosh-warden-cpi-release
-  - cloudfoundry/bosh-windows-acceptance-tests
   - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bpm-release
   - cloudfoundry/bsdtar
@@ -443,8 +430,6 @@ areas:
   approvers:
     - name: Benjamin Guttmann
       github: benjaminguttmann-avtq
-    - name: Ferran Rodenas
-      github: frodenas
     - name: Gilles Miraillet
       github: gmllt
     - name: Mario Di Miceli

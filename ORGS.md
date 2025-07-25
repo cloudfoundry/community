@@ -13,5 +13,5 @@ This document describes the set of Github Organizations that are overseen by the
 | Github Organization Name                                  | Is it Managed? |
 |-----------------------------------------------------------|----------------|
 | [cloudfoundry](https://github.com/cloudfoundry)           | Yes            |
+| [openservicebrokerapi](https://github.com/openservicebrokerapi)| No        |
 | [paketo-buildpacks](https://github.com/paketo-buildpacks) | No             |
-

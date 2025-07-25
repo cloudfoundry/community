@@ -48,6 +48,8 @@ areas:
   reviewers:
   - github: oliver-heinrich
     name: Oliver Heinrich
+  - github: Milena-Encheva
+    name: Milena Encheva
   approvers:
   - github: davewalter
     name: Dave Walter
@@ -79,6 +81,4 @@ areas:
   - cloudfoundry/relint-team
   - cloudfoundry/runtime-ci
   - cloudfoundry/uptimer
-config:
-  generate_rfc0015_branch_protection_rules: true
 ```

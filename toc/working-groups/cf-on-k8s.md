@@ -30,23 +30,21 @@ Bring the ease and simplicity of the Cloud Foundry developer experience to Kuber
 ```yaml
 name: CF on K8s
 execution_leads:
-- name: Andrew Wittrock
-  github: Birdrock
-technical_leads:
 - name: Georgi Sabev
   github: georgethebeatle
+technical_leads:
+- name: Danail Branekov
+  github: danail-branekov
 bots:
 - name: korifi-bot
   github: korifi-bot
-config:
-  generate_rfc0015_branch_protection_rules: true
 areas:
 - name: Korifi
   approvers:
   - name: Andrew Costa
     github: acosta11
-  - name: Danail Branekov
-    github: danail-branekov
+  - name: Andrew Wittrock
+    github: Birdrock
   - name: Dave Walter
     github: davewalter
   - name: Julian Hjortshoj

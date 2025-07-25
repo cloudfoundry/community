@@ -13,10 +13,10 @@ _SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 class InactiveUserHandler:
     def __init__(
         self,
-        github_org: [str],
-        github_org_id: [str],
-        activity_date: [str],
-        github_token: [str],
+        github_org: str,
+        github_org_id: str,
+        activity_date: str,
+        github_token: str,
     ):
         self.github_org = github_org
         self.github_org_id = github_org_id
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     print("Get information about community users")
     generator = OrgGenerator()
     generator.load_from_project()
-    community_members_with_role_by_wg = generator.get_community_members_with_role_by_wg()
+    community_members_with_role_by_wg = generator.get_community_members_with_role_by_wg(args.githuborg)
     community_members_with_role = set()
     for members in community_members_with_role_by_wg.values():
         community_members_with_role |= set(members)

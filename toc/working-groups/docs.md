@@ -40,10 +40,8 @@ areas:
   approvers:
   - name: Anita Flegg
     github: anita-flegg
-  - name: Samia Nneji
-    github: snneji
-  - name: Paul Spinrad
-    github: pspinrad
+  - name: Richard Johnson
+    github: RichardJJG
   - name: Stuart Clements
     github: stuclem
   repositories:

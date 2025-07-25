@@ -54,7 +54,6 @@ bots:
 - name: Cryogenics CI bot
   github: Cryogenics-CI
 config:
-  generate_rfc0015_branch_protection_rules: true
   github_project_sync:
     mapping:
       cloudfoundry: 41
@@ -71,28 +70,23 @@ areas:
     github: c0d1ngm0nk3y
   - name: Nicolas Bender
     github: nicolasbender
+  reviewers:
+  - name: Tom Kennedy
+    github: tomkennedy513
   repositories:
   - cloudfoundry/cnbapplifecycle
 - name: Diego
   approvers:
-  - name: Andrew Crump
-    github: acrmp
-  - name: Benjamin Fuller
-    github: Benjamintf1
   - name: Brandon Roberson
     github: ebroberson
   - name: Geoff Franks
     github: geofffranks
-  - name: Josh Russett
-    github: jrussett
   - name: Maria Shaldybin
     github: mariash
   - name: Chris Selzo
     github: selzoc
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: David Sabeti
-    github: dsabeti
   - name: Marc Paquette
     github: marcpaquette
   - name: Vladimir Savchenko
@@ -106,6 +100,10 @@ areas:
     github: tcdowney
   - name: Karthick Udayakumar
     github: kart2bc
+  - name: Plamen Bardarov
+    github: plamen-bardarov
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
@@ -155,12 +153,8 @@ areas:
     github: georgethebeatle
   - name: Geoff Franks
     github: geofffranks
-  - name: Josh Russett
-    github: jrussett
   - name: Maria Shaldybin
     github: mariash
-  - name: David Sabeti
-    github: dsabeti
   - name: Marc Paquette
     github: MarcPaquette
   - name: Chris Selzo
@@ -174,6 +168,8 @@ areas:
     github: kart2bc
   - name: Tim Downey
     github: tcdowney
+  - name: Alexander Lais
+    github: peanball
   repositories:
   - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
@@ -204,14 +200,10 @@ areas:
 
 - name: Logging and Metrics
   approvers:
-  - name: Andrew Crump
-    github: acrmp
   - name: Benjamin Fuller
     github: Benjamintf1
   - name: Geoff Franks
     github: geofffranks
-  - name: Josh Russett
-    github: jrussett
   - name: Chris Selzo
     github: selzoc
   - name: Carson Long
@@ -220,11 +212,11 @@ areas:
     github: mkocher
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: Rebecca Roberts
-    github: rroberts2222
   - name: Jovan Kostovski
     github: chombium
   reviewers:
+  - name: Pascal Zimmermann
+    github: ZPascal
   - name: Felix Hambrecht
     github: fhambrec
   - name: Glenn Oppegard
@@ -274,10 +266,6 @@ areas:
     github: jbooherl
   - name: Chaitanya Krishna Mullangi
     github: chaitanyamullangi
-  - name: Kanika Bathla
-    github: kabathla
-  - name: Saloni Shah
-    github: saloni-sshah
   - name: Shrisha Chandrashekar
     github: shrisha-c
   - name: Srinivas Sunka
@@ -291,24 +279,16 @@ areas:
 
 - name: Networking
   approvers:
-  - name: Andrew Crump
-    github: acrmp
   - name: Tamara Boehm
     github: b1tamara
-  - name: Benjamin Fuller
-    github: Benjamintf1
   - name: Brandon Roberson
     github: ebroberson
   - name: Carson Long
     github: ctlong
-  - name: Dominik Froehlich
-    github: domdom82
   - name: Geoff Franks
     github: geofffranks
   - name: Greg Cobb
-    github: Gerg
-  - name: Josh Russett
-    github: jrussett
+    github: gerg
   - name: Maria Shaldybin
     github: mariash
   - name: Matthew Kocher
@@ -321,8 +301,6 @@ areas:
     github: stefanlay
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: David Sabeti
-    github: dsabeti
   - name: Maximilian Moehl
     github: maxmoehl
   - name: Marc Paquette

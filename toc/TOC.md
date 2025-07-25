@@ -63,11 +63,11 @@ the Cloud Foundry community via an election.
 
 | &nbsp;                                                       | Member                 | Company     | Profile                                          | Term Start | Term End |
 | ------------------------------------------------------------ | -----------------------| ----------- | ------------------------------------------------ | ---------- | --------
-| <img width="30px" src="https://github.com/ameowlia.png">     | Amelia Downs           | VMware      | [@ameowlia](https://github.com/ameowlia)         | 2023-06-21 | 2025     |
-| <img width="30px" src="https://github.com/beyhan.png">       | Beyhan Veli (TOC Chair)| SAP         | [@beyhan](https://github.com/beyhan)             | 2022-06-22 | 2024     |
-| <img width="30px" src="https://github.com/ChrisMcGowan.png"> | Chris McGowan          | Cloud.gov   | [@ChrisMcGowan](https://github.com/ChrisMcGowan) | 2023-06-21 | 2025     |
-| <img width="30px" src="https://github.com/rkoster.png">      | Ruben Koster           | VMware      | [@rkoster](https://github.com/rkoster)           | 2022-06-22 | 2024     |
-| <img width="30px" src="https://github.com/stephanme.png">    | Stephan Merker         | SAP         | [@stephanme](https://github.com/stephanme)       | 2023-06-21 | 2025     |
+| <img width="30px" src="https://github.com/beyhan.png">       | Beyhan Veli (TOC Chair)| SAP         | [@beyhan](https://github.com/beyhan)             | 2024-06-21 | 2026     |
+| <img width="30px" src="https://github.com/Cweibel.png">      | Chris Weibel           | Cloud.gov   | [@cweibel](https://github.com/cweibel)           | 2025-07-01 | 2027     |
+| <img width="30px" src="https://github.com/gerg.png">         | Greg Cobb              | VMware      | [@gerg](https://github.com/Gerg)                 | 2025-07-01 | 2027     |
+| <img width="30px" src="https://github.com/rkoster.png">      | Ruben Koster           | VMware      | [@rkoster](https://github.com/rkoster)           | 2024-06-21 | 2026     |
+| <img width="30px" src="https://github.com/stephanme.png">    | Stephan Merker         | SAP         | [@stephanme](https://github.com/stephanme)       | 2025-07-01 | 2027     |
 
 
 ## Elections
@@ -119,12 +119,12 @@ under the terms of the [Creative Commons Attribution 4.0 License](https://creati
 ```yaml
 name: Technical Oversight Committee
 execution_leads:
-- name: Amelia Downs
-  github: ameowlia
 - name: Beyhan Veli
   github: beyhan
-- name: Chris McGowan
-  github: ChrisMcGowan
+- name: Chris Weibel
+  github: cweibel
+- name: Greg Cobb
+  github: gerg
 - name: Ruben Koster
   github: rkoster
 - name: Stephan Merker
