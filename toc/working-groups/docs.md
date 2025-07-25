@@ -44,7 +44,8 @@ areas:
     github: snneji
   - name: Paul Spinrad
     github: pspinrad
-
+  - name: Stuart Clements
+    github: stuclem
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
