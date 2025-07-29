@@ -4,7 +4,7 @@
 - Start Date: 2025-07-07
 - Author(s): @drich10
 - Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1238
 
 ## Summary
 
