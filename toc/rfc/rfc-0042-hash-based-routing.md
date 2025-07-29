@@ -5,8 +5,8 @@
 - Name: Implementing a Hash-Based Load Balancing Algorithm for CF Routing
 - Start Date: 2025-04-07
 - Author(s): b1tamara, Soha-Albaghdady
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1222
+- Status: Accepted
+- RFC Pull Request: [community#1222](https://github.com/cloudfoundry/community/pull/1222)
 
 ## Summary
 
@@ -37,7 +37,7 @@ by utilizing a warm and effective cache.
 Another use case: users from different tenants send requests to application instances that establish connections to
 tenant-specific databases.
 
-![](rfc-draft-hash-based-routing/problem.drawio.png)
+![](rfc-0042-hash-based-routing/problem.drawio.png)
 
 With the current load balancing algorithms, each tenant eventually creates a connection to
 each application instance, which then creates connection pools to every customer database. As a result, all tenants
@@ -122,7 +122,7 @@ factor. Overflow traffic should always be directed to the same next instance rat
 
 A possible presentation of deterministic handling can be a ring like:
 
-![](rfc-draft-hash-based-routing/HashRing.drawio.png)
+![](rfc-0042-hash-based-routing/HashRing.drawio.png)
 
 ### Required Changes
 
@@ -213,8 +213,8 @@ In the scope of this RFC, it is not planned to implement hash-based routing in r
 
 #### An activity diagram for routing decision for an incoming request
 
-![](rfc-draft-hash-based-routing/ActivityDiagram.drawio.png)
+![](rfc-0042-hash-based-routing/ActivityDiagram.drawio.png)
 
 #### A simplified activity diagram for Gorouter's endpoint registration process
 
-![](rfc-draft-hash-based-routing/EndpointRegistration.drawio.png)
+![](rfc-0042-hash-based-routing/EndpointRegistration.drawio.png)
