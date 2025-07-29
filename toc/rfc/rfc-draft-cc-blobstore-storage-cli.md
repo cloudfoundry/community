@@ -42,15 +42,14 @@ A new area "Storage CLI" shall be added to the Foundational Infrastructure WG in
 
 - create a new "Storage CLI" area
 - add existing approvers of areas "VM deployment lifecycle (BOSH)" (FI) and "CAPI" (ARI) as initial approvers to this new area
+- move the existing 4 bosh storage CLI repos from area "VM deployment lifecycle (BOSH)" into the new area 
 - create a new repository `storage-cli` in this area with the goal to consolidate all existing bosh storage CLIs here
-- copy one existing bosh storage cli into this new repository as starting point (most likely [bosh-azure-storage-cli](https://github.com/cloudfoundry/bosh-azure-storage-cli))
-- setup CI, implement missing commands and configuration parameters
-- continue with the remaining bosh storage CLIs
+- setup CI, consolidate CLIs into the new `storage-cli` repo, implement missing commands and configuration parameters for each IaaS
 
 ### Bosh
 
-- switch from bosh storage cli to new `storage-cli` 
-- eventually archive the old bosh storage CLI repos
+- eventually switch from (old) bosh storage CLIs to consolidated `storage-cli` 
+- finally archive the old bosh storage CLI repos
 
 ### Cloud Controller
 
