@@ -3,8 +3,8 @@
 - Name: Shared Concourse Instance
 - Start Date: 2025-07-07
 - Author(s): @drich10
-- Status: Draft
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1238
+- Status: Accepted
+- RFC Pull Request: [community#1238](https://github.com/cloudfoundry/community/pull/1238)
 
 ## Summary
 
