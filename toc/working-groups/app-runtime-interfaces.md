@@ -4,14 +4,12 @@
 
 Provides APIs for the CF App Runtime and community clients for end users.
 
-
 ## Goals
 
 - End users can build against a stable, reliable, performant and well documented CF API.
 - End users can build against a stable, reliable, performant and well documented higher-level CF API related services.
 - End users can choose from a range of CF API clients according to their needs: cli, UI and client libraries for selected programming languages.
 - Community Contributors and especially the App Runtime Deployments WG can integrate a tested CF API release into the different CF distributions.
-
 
 ## Scope
 
@@ -22,7 +20,6 @@ Provides APIs for the CF App Runtime and community clients for end users.
 - Provide the community with technical API documentation, end user documentation and operator documentation.
 - Collaborate with the other Working Groups and evolve the cf-push experience.
 - Where it is appropriate, integrate higher-level API extensions into CF API directly.
-
 
 ## Non-Goals
 
@@ -358,6 +355,7 @@ areas:
   - cloudfoundry/app-runtime-interfaces-infrastructure
   - cloudfoundry/servicebroker
   - cloudfoundry/osb-checker
+  - cloudfoundry/cf-openapi
 
 - name: CLI
   approvers:

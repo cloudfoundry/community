@@ -645,6 +645,10 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
+      cf-openapi:
+        default_branch: main
+        description: OpenAPI specification for the Cloud Foundry API.
+        has_projects: true
       cf-lite-ci:
         has_projects: true
         private: true
