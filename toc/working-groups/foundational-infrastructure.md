@@ -89,8 +89,6 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   reviewers:
-  - name: claire t.
-    github: Spimtav
   - name: Harish Yayi
     github: yharish991
   - name: Indira Chandrabhatta
@@ -99,8 +97,6 @@ areas:
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Rui Yang
-    github: xtremerui
   approvers:
   - name: Aram Price
     github: aramprice
@@ -178,8 +174,6 @@ areas:
   - cloudfoundry/uaa-ci
 - name: Identity and Auth (UAA) Go Client
   approvers:
-  - name: Joe Fitzgerald
-    github: joefitzgerald
   - name: Peter Chen
     github: peterhaochen47
   - name: Markus Strehle
@@ -205,8 +199,6 @@ areas:
   approvers:
   - name: Andrew Garner
     github: abg
-  - name: Colin Shield
-    github: colins
   - name: Kim Basset
     github: kimago
   - name: Ryan Wittrup
