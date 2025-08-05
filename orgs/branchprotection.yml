@@ -751,6 +751,24 @@ branch-protection:
             require_code_owner_reviews: true
             required_approving_review_count: 1
 
+        homebrew-tap:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: false
+          include:
+          - ^master$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-admin-bots
+              - wg-admin-cf-homebrew-tap-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+
         # Service Management Repos to skip branch protection on
         csb-brokerpak-aws:
           protect: true
@@ -770,14 +788,14 @@ branch-protection:
             bypass_pull_request_allowances:
               teams: ["wg-service-management-cloud-service-broker-bots"]
           include: [ "^main$" ]
-        
+
         csb-brokerpak-gcp:
           protect: true
           enforce_admins: false
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection          
+          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -864,7 +882,7 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-service-management-cloud-service-broker-bots"]
-          include: [ "^main$" ]  
+          include: [ "^main$" ]
 
         terraform-provider-csbmysql:
           protect: true
@@ -883,7 +901,7 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-service-management-cloud-service-broker-bots"]
-          include: [ "^main$" ]  
+          include: [ "^main$" ]
 
         terraform-provider-csbsqlserver:
           protect: true
@@ -902,7 +920,7 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-service-management-cloud-service-broker-bots"]
-          include: [ "^main$" ]  
+          include: [ "^main$" ]
 
         brokerapi:
           protect: true
@@ -921,7 +939,7 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-service-management-cloud-service-broker-bots"]
-          include: [ "^main$" ]    
+          include: [ "^main$" ]
 
         cloud-service-broker:
           protect: true
@@ -940,12 +958,12 @@ branch-protection:
             required_approving_review_count: 1
             bypass_pull_request_allowances:
               teams: ["wg-service-management-cloud-service-broker-bots"]
-          include: [ "^main$" ]  
+          include: [ "^main$" ]
 
         uaa:
          protect: true
          allow_deletions: false
-         allow_disabled_policies: true 
+         allow_disabled_policies: true
          allow_force_pushes: false
          enforce_admins: false
          include:
@@ -962,7 +980,7 @@ branch-protection:
         uaa-release:
          protect: true
          allow_deletions: false
-         allow_disabled_policies: true 
+         allow_disabled_policies: true
          allow_force_pushes: false
          enforce_admins: false
          include:
