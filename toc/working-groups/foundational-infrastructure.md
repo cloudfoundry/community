@@ -360,7 +360,6 @@ areas:
   - cloudfoundry/bosh-aws-cpi-release
   - cloudfoundry/bosh-aws-light-stemcell-builder
   - cloudfoundry/bosh-azure-cpi-release
-  - cloudfoundry/bosh-azure-storage-cli
   - cloudfoundry/bosh-apt-resources
   - cloudfoundry/bosh-bbl-ci-envs
   - cloudfoundry/bosh-bootloader
@@ -375,7 +374,6 @@ areas:
   - cloudfoundry/bosh-dns-aliases-release
   - cloudfoundry/bosh-dns-release
   - cloudfoundry/bosh-docker-cpi-release
-  - cloudfoundry/bosh-gcscli
   - cloudfoundry/bosh-google-cpi-release
   - cloudfoundry/bosh-io-releases
   - cloudfoundry/bosh-io-releases-index
@@ -392,7 +390,6 @@ areas:
   - cloudfoundry/bosh-package-python-release
   - cloudfoundry/bosh-package-ruby-release
   - cloudfoundry/bosh-psmodules
-  - cloudfoundry/bosh-s3cli
   - cloudfoundry/bosh-shared-ci
   - cloudfoundry/bosh-utils
   - cloudfoundry/bosh-virtualbox-cpi-release
@@ -423,7 +420,6 @@ areas:
   repositories:
   - cloudfoundry/bosh-alicloud-cpi-release
   - cloudfoundry/bosh-alicloud-light-stemcell-builder
-  - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/stemcells-alicloud-index
 
 - name: Prometheus (Bosh)
@@ -445,6 +441,101 @@ areas:
   bots:
     - name: cf-prometheus-ci-bot
       github: cf-prometheus-ci-bot
+
+- name: Storage CLI
+  approvers:
+  - name: Long Nguyen
+    github: lnguyen
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Benjamin Gandon
+    github: bgandon
+  - name: Brian Cunnie
+    github: cunnie
+  - name: Aram Price
+    github: aramprice
+  - name: Konstantin Kiess
+    github: nouseforaname
+  - name: Rajan Agaskar
+    github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
+  - name: Brian Upton
+    github: ystros
+  - name: Chris Selzo
+    github: selzoc
+  - name: Matthias Vach
+    github: mvach
+  - name: Ahmed Hassanin
+    github: a-hassanin
+  - name: Ansh Rupani
+    github: anshrupani
+  - name: Nitin Ravindran
+    github: xtreme-nitin-ravindran
+  - name: Nader Ziada
+    github: nader-ziada
+  - name: Rajath Agasthya
+    github: rajathagasthya
+  - name: Ming Xiao
+    github: mingxiao
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  - name: Felix Moehler
+    github: fmoehler
+  - name: He Guimin
+    github: xiaozhu36
+  - name: Florian Braun
+    github: FloThinksPi
+  - name: Philipp Thun
+    github: philippthun
+  - name: Johannes Haass
+    github: johha
+  - name: Michael Oleske
+    github: moleske
+  - name: Seth Boyles
+    github: sethboyles
+  - name: Sven Krieger
+    github: svkrieger
+  - name: Tim Downey
+    github: tcdowney
+  - name: Katharina Przybill
+    github: kathap
+  - name: Ben Fuller
+    github: Benjamintf1
+  - name: Sam Gunaratne
+    github: samze
+  - name: Alex Rocha
+    github: xandroc
+  - name: Jochen Ehret
+    github: jochenehret
+  reviewers:
+  - name: Benjamin Gandon
+    github: bgandon
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
+  - name: Julian Hjortshoj
+    github: julian-hj
+  - name: Nishad Mathur
+    github: alphasite
+  - name: Alexander Lais
+    github: peanball
+  - name: Clay Kauzlaric
+    github: KauzClay
+  - name: Al Berez
+    github: a-b
+  - name: Evan Farrar
+    github: evanfarrar
+  - name: Shwetha Gururaj
+    github: gururajsh
+  - name: Sriram Nookala
+    github: nookala
+  - name: George Gelashvili
+    github: pivotalgeorge
+  repositories:
+  - cloudfoundry/bosh-ali-storage-cli
+  - cloudfoundry/bosh-azure-storage-cli
+  - cloudfoundry/bosh-gcscli
+  - cloudfoundry/bosh-s3cli
 
 config:
   github_project_sync:
