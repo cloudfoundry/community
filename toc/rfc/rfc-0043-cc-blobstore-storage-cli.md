@@ -3,8 +3,8 @@
 - Name: Cloud Controller Blobstore Type: storage-cli
 - Start Date: 2025-07-18
 - Author(s): @johha, @stephanme
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: [community #1253](https://github.com/cloudfoundry/community/pull/1253)
+- Status: Accepted
+- RFC Pull Request: [community#1253](https://github.com/cloudfoundry/community/pull/1253)
 
 
 ## Summary
