@@ -62,9 +62,11 @@ Due to [RFC-39](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-
 ### Usage
 
 The management entry of the stack in the stacks table of the CF API
-cannot be removed as long as apps exist which use it as the stack delete has a check in place that looks up usage and prevents the deletion of a stack that is still in use.
+cannot be removed as long as apps exist which use it as the stack delete
+has a check in place that looks up usage and prevents the deletion of a
+stack that is still in use.
 still visible and still usable to all users of a CF Foundation even if
-being insecure, deprecated and SHOULD not be adopted anymore.\
+being insecure, deprecated and SHOULD not be adopted anymore.
 It is a cumbersome process for the users to migrate their workload to a
 new stack. Оne has to acknowledge that and give users of Cloud Foundry
 time to adapt their workload accordingly without a hard deadline when
@@ -80,18 +82,6 @@ put onto the local filesystem of the Diego cell and every app instance
 preloaded stack in its local filesystem. One thus is not able to stop
 shipping/delivering the outdated, insecure stack anymore without causing
 downtimes to all apps still using it.
-
-### Adoption Timelines
-
-Currently a stack is only shipped ever 4 years skipping one LTS version
-of ubuntu entirely. This creates a situation where the old stack e.g.
-CFLinuxFS3 is flagged as unsecure at roughly the same time the new stack
-CFLinuxFS4 is available. This forces users to adopt it in a very small
-timeframe if they still want to receive security updates for their
-existing workload. In the last migration from CFLinuxFS3 to CFLinuxFS4
-it turned out also the buildpacks need time to adopt -- then the
-customers to the new buildpacks for which the time there was far too
-short.
 
 ## Motivation
 
