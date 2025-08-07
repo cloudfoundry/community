@@ -50,6 +50,8 @@ areas:
     name: Oliver Heinrich
   - github: Milena-Encheva
     name: Milena Encheva
+  - github: hamideh-amini-khezrabad
+    name: Hamideh Amini Khezrabad 
   approvers:
   - github: davewalter
     name: Dave Walter
