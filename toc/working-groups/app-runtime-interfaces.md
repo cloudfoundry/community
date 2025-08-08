@@ -224,7 +224,6 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
-  reviewers:
   - name: Plamen Bardarov
     github: plamen-bardarov
   repositories:
