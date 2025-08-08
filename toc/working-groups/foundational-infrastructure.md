@@ -174,6 +174,8 @@ areas:
   - cloudfoundry/uaa-ci
 - name: Identity and Auth (UAA) Go Client
   approvers:
+  - name: Joe Fitzgerald
+    github: joefitzgerald
   - name: Peter Chen
     github: peterhaochen47
   - name: Markus Strehle
