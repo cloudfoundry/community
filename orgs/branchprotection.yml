@@ -993,3 +993,88 @@ branch-protection:
           dismiss_stale_reviews: true
           require_code_owner_reviews: true
           required_approving_review_count: 1
+
+        credhub:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: false
+          include:
+          - ^main$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-foundational-infrastructure-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+
+        crecredhub-acceptance-tests:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: false
+          include:
+          - ^main$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-foundational-infrastructure-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+
+        credhub-api-site:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: false
+          include:
+          - ^main$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-foundational-infrastructure-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+
+        credhub-cli:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: false
+          include:
+          - ^main$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-foundational-infrastructure-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+
+        credhub-oss-ci:
+          allow_deletions: false
+          allow_disabled_policies: true
+          allow_force_pushes: false
+          enforce_admins: false
+          include:
+          - ^main$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-foundational-infrastructure-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
