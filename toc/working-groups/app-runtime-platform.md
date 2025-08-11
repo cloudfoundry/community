@@ -112,7 +112,6 @@ areas:
   - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
-  - cloudfoundry/certsplitter
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
@@ -171,9 +170,7 @@ areas:
   - name: Alexander Lais
     github: peanball
   repositories:
-  - cloudfoundry/cert-injector
   - cloudfoundry/commandrunner
-  - cloudfoundry/diff-exporter
   - cloudfoundry/dontpanic
   - cloudfoundry/envoy-nginx-release
   - cloudfoundry/filelock
@@ -182,7 +179,6 @@ areas:
   - cloudfoundry/garden-performance-acceptance-tests
   - cloudfoundry/garden-runc-release
   - cloudfoundry/groot
-  - cloudfoundry/groot-windows
   - cloudfoundry/grootfs
   - cloudfoundry/guardian
   - cloudfoundry/hwc
@@ -191,7 +187,6 @@ areas:
   - cloudfoundry/netplugin-shim
   - cloudfoundry/test-log-emitter
   - cloudfoundry/test-log-emitter-release
-  - cloudfoundry/winc
   - cloudfoundry/winc-release
   - cloudfoundry/windows-tools-release
   - cloudfoundry/windows2016fs
