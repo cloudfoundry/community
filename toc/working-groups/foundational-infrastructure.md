@@ -295,6 +295,8 @@ areas:
     github: alphasite
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Ned Petrov
+    github: neddp
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -351,6 +353,8 @@ areas:
     github: peanball
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Ned Petrov
+    github: neddp
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
