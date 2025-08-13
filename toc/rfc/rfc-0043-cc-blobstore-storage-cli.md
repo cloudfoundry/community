@@ -27,6 +27,7 @@ Bosh faced similar issues, as it is also written in Ruby and interacts with blob
 - https://github.com/cloudfoundry/bosh-s3cli
 - https://github.com/cloudfoundry/bosh-gcscli
 - https://github.com/cloudfoundry/bosh-ali-storage-cli
+- https://github.com/cloudfoundry/bosh-davcli
 
 These storage CLIs are implemented in Go and use the respective provider golang SDKs that are well supported for the foreseeable future.
 
