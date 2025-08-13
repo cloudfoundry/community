@@ -368,7 +368,6 @@ areas:
   - cloudfoundry/bosh-cpi-certification
   - cloudfoundry/bosh-cpi-go
   - cloudfoundry/bosh-cpi-ruby
-  - cloudfoundry/bosh-davcli
   - cloudfoundry/bosh-deployment
   - cloudfoundry/bosh-deployment-resource
   - cloudfoundry/bosh-dns-aliases-release
@@ -534,6 +533,7 @@ areas:
   repositories:
   - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/bosh-azure-storage-cli
+  - cloudfoundry/bosh-davcli
   - cloudfoundry/bosh-gcscli
   - cloudfoundry/bosh-s3cli
 
