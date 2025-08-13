@@ -124,6 +124,8 @@ areas:
     github: ragaskar
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Julian Hjortshoj
+    github: julian-hj
   - name: Ming Xiao
     github: mingxiao
   repositories:
@@ -278,6 +280,8 @@ areas:
     github: nader-ziada
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Julian Hjortshoj
+    github: julian-hj
   - name: Ming Xiao
     github: mingxiao
   - name: Benjamin Guttmann
@@ -289,8 +293,6 @@ areas:
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Julian Hjortshoj
-    github: julian-hj
   - name: Nishad Mathur
     github: alphasite
   - name: Clay Kauzlaric
@@ -332,6 +334,8 @@ areas:
     github: nader-ziada
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Julian Hjortshoj
+    github: julian-hj
   - name: Ming Xiao
     github: mingxiao
   - name: Benjamin Guttmann
@@ -343,8 +347,6 @@ areas:
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Julian Hjortshoj
-    github: julian-hj
   - name: Nishad Mathur
     github: alphasite
   - name: Alexander Lais
@@ -475,6 +477,8 @@ areas:
     github: nader-ziada
   - name: Rajath Agasthya
     github: rajathagasthya
+  - name: Julian Hjortshoj
+    github: julian-hj
   - name: Ming Xiao
     github: mingxiao
   - name: Benjamin Guttmann
@@ -512,8 +516,6 @@ areas:
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Julian Hjortshoj
-    github: julian-hj
   - name: Nishad Mathur
     github: alphasite
   - name: Alexander Lais
