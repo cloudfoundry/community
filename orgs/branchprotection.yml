@@ -261,6 +261,8 @@ branch-protection:
           protect: false
         capi-env-pool:
           protect: false
+        cf-openapi:
+          protect: false
 
         # CLI
         CLAW:
