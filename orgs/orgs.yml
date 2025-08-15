@@ -561,6 +561,7 @@ orgs:
         has_projects: true
       cert-injector:
         has_projects: true
+        archived: true
       certauthority:
         allow_merge_commit: false
         default_branch: main
@@ -568,6 +569,7 @@ orgs:
       certsplitter:
         has_issues: false
         has_projects: true
+        archived: true
       cf-acceptance-tests:
         default_branch: develop
         description: CF Acceptance tests
@@ -1128,6 +1130,7 @@ orgs:
       diff-exporter:
         default_branch: main
         has_projects: true
+        archived: true
       disaster-recovery-acceptance-tests:
         default_branch: main
         description: Acceptance tests for disaster recovery of Cloud Foundry
@@ -1478,6 +1481,7 @@ orgs:
         description: A Garden image plugin for Windows
         has_projects: true
         has_wiki: false
+        archived: true
       grootfs:
         description: Garden root file system
         has_projects: true
@@ -2520,6 +2524,7 @@ orgs:
           to the OCI specification
         has_projects: true
         has_wiki: false
+        archived: true
       winc-release:
         default_branch: develop
         description: A BOSH release for deploying winc on windows

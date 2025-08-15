@@ -81,8 +81,6 @@ areas:
     github: dlresende
   - name: George Blue
     github: blgm
-  - name: Iain Findlay
-    github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Konstantin Semenov
@@ -90,7 +88,7 @@ areas:
   - name: Long Nguyen
     github: lnguyen
   - name: Rajan Agaskar
-    github: ragaskar    
+    github: ragaskar
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
