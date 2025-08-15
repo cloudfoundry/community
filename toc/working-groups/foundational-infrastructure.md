@@ -297,6 +297,8 @@ areas:
     github: alphasite
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Ivaylo Ivanov
+    github: ivaylogi98
   - name: Ned Petrov
     github: neddp
   repositories:
@@ -355,6 +357,8 @@ areas:
     github: peanball
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Ivaylo Ivanov
+    github: ivaylogi98
   - name: Ned Petrov
     github: neddp
   repositories:
