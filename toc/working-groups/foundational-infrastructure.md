@@ -112,8 +112,6 @@ areas:
     github: dlresende
   - name: George Blue
     github: blgm
-  - name: Iain Findlay
-    github: ifindlay-cci
   - name: Konstantin Kiess
     github: nouseforaname
   - name: Long Nguyen
