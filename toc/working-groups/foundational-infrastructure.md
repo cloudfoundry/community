@@ -517,6 +517,10 @@ areas:
     github: xandroc
   - name: Jochen Ehret
     github: jochenehret
+  - name: Greg Cobb
+    github: gerg
+  - name: Stephan Merker
+    github: stephanme
   reviewers:
   - name: Benjamin Gandon
     github: bgandon
