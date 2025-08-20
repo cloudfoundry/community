@@ -58,10 +58,36 @@ Such usecases include for example:
 
 ### Phases
 
-**Implementation** - Convert <https://github.com/cloudfoundry-community/capi-openapi-spec> to a repository in the official cloudfoundry organization.Document the CF API V3 using the OpenAPI specification. Also generate a html documentation to replace the current page. Optionally build up, if possible, a validation(integration test) that validates if the OpenAPI spec is in sync with the actual implementation of the CF API V3.
+This RFC proposes a phased approach to mitigate risks and allow for early feedback.
 
-**Checkpoint** - TOC review and approval of the project, ensuring the
-OpenAPI documentation is complete in comparison to the current one and of appropriate quality. Replacement of the current CF API V3 website with representing the OpenAPI spec. Also release the OpenAPI spec for programmatic access to the CF API V3 documentation.
+**Phase 1: Proof of Concept (PoC)**
+
+The initial phase focuses on demonstrating the feasibility and defining the process for creating and maintaining the OpenAPI spec. The goal is to evaluate different approaches for converting the existing implementation into an OpenAPI spec, and to understand how CAPI developers would work with it. One non-trivial endpoint should be implemented completely as part of the PoC.
+
+The PoC MAY be located at <https://github.com/cloudfoundry/cf-openapi> where everyone is invited to try out and contribute different experiments.
+
+Key questions to be answered in this phase:
+
+- How can the initial spec be generated from existing API documentation or source code?
+- What does the development process for updating the spec look like?
+- How can the spec be integrated into the existing CI and CAPI release processes?
+- How can we test the spec against the implementation to ensure they are in sync?
+- If generating the spec from source code, how can metadata like examples and manually written descriptions be maintained within the sources?
+
+**Phase 2: Implementation and Checkpoint**
+
+Based on the findings of the PoC, the next phase is to complete the implementation of the OpenAPI spec for the entire CF API V3.
+
+A checkpoint with the ARI WG is required before proceeding. This checkpoint will evaluate if the spec is complete, usable, and meets the required quality standards.
+The OpenAPI effort should be stopped if the expected spec quality cannot be achieved.
+
+**Phase 3: Rollout and Deprecation**
+
+Once the OpenAPI spec is deemed complete and of good quality, the following steps will be taken:
+
+- The generated HTML documentation will replace the current API documentation website.
+- The OpenAPI spec will be published alongside the existing documentation.
+- The old API documentation will be archived and made available for reference and all older versions that were released before using the openapi spec.
 
 ## Impact and Consequences
 
@@ -88,5 +114,8 @@ due to better enabling of users to transition to the V3 API.
 
 ### Negative
 
-- The CloudFoundry organization will have to invest time and resources
-to document the CF API V3 using the OpenAPI specification and work on two documentation formats in parallel until the OpenAPI is so mature that it can fully replace the existing documentation.
+- The CloudFoundry organization, and specifically the App Runtime Interfaces (ARI) Working Group, will have to invest time and resources to document the CF API V3 using the OpenAPI specification. This will require working on two documentation formats in parallel until the OpenAPI specification is mature enough to fully replace the existing documentation.
+
+## Future Improvements
+
+This RFC focuses on the initial implementation of the OpenAPI specification for the CF API V3. However, there are several potential future improvements that could be explored once the initial implementation is complete. These MAY be explored as part of this RFCs PoC. However no plans are concretely defined to use/support generation based client libraries.
