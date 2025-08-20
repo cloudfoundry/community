@@ -106,57 +106,44 @@ combination is supported. It's not used to check what's actually
 available on diego though.
 
 In this proposal we extend the global stack management and table by
-following workflows inside the CF API.
+introducing a `state` field for each stack. This field will control the
+stack's lifecycle and behavior within the Cloud Foundry platform. An administrator
+will be able to set the state of a stack via the API, triggering different
+behaviors.
 
-- Mark a stack as deprecated -> staging and start process logs a
-  prominent warning. This brings better awareness than release notes.
+The possible states for a stack will be:
 
-- Mark a stack as locked -> prevent using the stack for new apps
-  (existing apps CAN still use the stack and CAN deploy updates). This already prevents
-  blue-green deploy scenarios where a rolling update is
-  programmed client side by creating new CF Applications.
-  However all existing apps using a locked stack SHOULD continue to run.
+- `ACTIVE`: The stack is fully usable. This is the default state for a new stack.
+- `DEPRECATED`: The stack is still usable, but a prominent warning will be logged during staging and starting of applications. This is to inform users about the upcoming removal of the stack.
+- `LOCKED`: The stack cannot be used for new applications. Existing applications using this stack can still be updated, restarted, and scaled. This state is intended to prevent new adoption of the stack.
+- `DISABLED`: The stack cannot be used for staging or restaging any application. Existing applications will continue to run, but they cannot be updated. Restarting and scaling of existing apps using the disabled stack is still possible.
 
-- Mark a stack as disabled -> prevent using the stack for any app
-  staging. Existing apps continue to run but you can't update them
-  anymore. Restarting and scaling of existing apps using the disabled stack is still possible.
+This requires extending the `stacks` table in the database with a `state` column. The API endpoints for managing and listing stacks will also need to be updated to expose and allow modification of this new field. Client libraries and the `cf` CLI should be updated to display the stack's state.
 
-This requires the stack table to be extended by additional information
-regarding a stacks state as well as the endpoints to manage/list stacks
-as well. Additionally, the CLI and client libraries would need adoption
-to be able to present the newly added information to a CF user when
-calling "cf stacks".
+The `state` of the stack will directly influence the behavior of the CF API:
 
-Following Datetimes MAY be saved per stack so this information CAN be
-used in consequent log lines, errors and deprecation notices and for the
-logic to influence stack usage:
+- When an application is staged or restaged, the API will check the state of the used stack.
+- If the state is `DEPRECATED`, a warning message will be added to the logs.
+- If the state is `LOCKED`, staging a *new* application will fail with an error.
+- If the state is `DISABLED`, staging or restaging *any* application will fail with an error.
 
-- deprecate_at -> Timestamp after which the deprecation notice will be
-  printed
+To improve communication with developers, the existing `description` field of a stack will be leveraged. The content of the `description` field should be included in any warning or error message related to the stack's state. This allows operators to provide context, migration guides, or links to further documentation.
 
-- lock_at -> Timestamp after which staging new apps with a that stack
-  fail
+For example, a deprecation warning could look like this:
 
-- disable_at -> Timestamp after which restaging existing apps with a that
-  stack fail
+```
+WARNING: The stack 'cflinuxfs3' is DEPRECATED and will be removed in the future.
+Description: This stack is based on Ubuntu 18.04, which is no longer supported. Please migrate your applications to 'cflinuxfs4'. For more information, see: <link-to-docs>.
+```
 
-Stack lifecycle management is controlled exclusively by a set of timestamps, not by an explicit "state" field. The system determines the current state of a stack (active, deprecated, locked, or disabled) by comparing the current server time to these timestamps. This approach ensures that stack usability is automatically and unambiguously defined by time-based transitions. Additional information can already be added via the `description` field.
+And an error message for a disabled stack:
 
-- State transitions (deprecated_at → locked_at → disabled_at) are derived from the configured timestamps.
-- A validation check SHOULD be performed when setting the timestamps to ensure that they are in chronological order( deprecated_at → locked_at → disabled_at).
-- There is no explicit `state` field; the state is always computed at runtime from the timestamps.
-- For additional information the operator MAY reuse the existing `description` field in the stacks table to provide additional information about the stack.
-- In case a timestamp is not set, the stack is considered to be in the previous state indefinitely. This SHOULD also be considered in Error and Log messages.
+```
+ERROR: Staging failed. The stack 'cflinuxfs3' is DISABLED and can no longer be used for staging.
+Description: This stack is based on Ubuntu 18.04, which is no longer supported. Please migrate your applications to 'cflinuxfs4'. For more information, see: <link-to-docs>.
+```
 
-This model guarantees that stack usage is consistently enforced based on time, and all state transitions are predictable and transparent.
-It also provides a interface for an operator in which no externally timed api call for a stack state change is required.
-
-The CF API SHOULD use the provided timestamps to influence the logging and error messages in the following way:
-
-- It MAY add a log line into the Staging/Restaging logs of apps with a locked stack. It SHOULD produce the deprecation warning, optionally with color support, to underline the importance of a deprecated stack.
-- It MAY add the time since when a stack is deprecated/locked/disabled to the Staging/Restaging logs.
-- It MAY add the time when future state transitions will happen to the Staging/Restaging logs, so when is going to be locked/disabled.
-- The `description` field MAY be used in addition in Staging/Restaging logs to enable CF Admins to include a custom message in the apps staging logs
+This approach provides a clear and explicit way for operators to manage the lifecycle of stacks and communicate changes to users effectively.
 
 #### Positive
 
