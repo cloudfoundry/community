@@ -569,7 +569,7 @@ orgs:
       certsplitter:
         has_issues: false
         has_projects: true
-        archived: true
+        archived: false
       cf-acceptance-tests:
         default_branch: develop
         description: CF Acceptance tests
