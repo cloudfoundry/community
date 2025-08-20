@@ -112,6 +112,7 @@ areas:
   - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
+  - cloudfoundry/certsplitter
   - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
