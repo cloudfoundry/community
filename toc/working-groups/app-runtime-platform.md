@@ -187,8 +187,6 @@ areas:
     github: geofffranks
   - name: Chris Selzo
     github: selzoc
-  - name: Carson Long
-    github: ctlong
   - name: Matthew Kocher
     github: mkocher
   - name: Amin Jamali
@@ -200,12 +198,6 @@ areas:
     github: ZPascal
   - name: Felix Hambrecht
     github: fhambrec
-  - name: Glenn Oppegard
-    github: oppegard
-  - name: Ausaf Ahmed
-    github: aqstack
-  - name: Ivan Protsiuk
-    github: iprotsiuk
   - name: Andrew Costa
     github: acosta11
   - name: Karthick Udayakumar
@@ -245,16 +237,12 @@ areas:
 
 - name: Metric Store
   approvers:
-  - name: Jeanette Booher
-    github: jbooherl
   - name: Chaitanya Krishna Mullangi
     github: chaitanyamullangi
   - name: Shrisha Chandrashekar
     github: shrisha-c
   - name: Srinivas Sunka
     github: ssunka
-  - name: Carson Long
-    github: ctlong
   reviewers:
   - name: Wei Li
     github: weili-broadcom
