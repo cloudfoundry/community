@@ -30,8 +30,6 @@ The refactoring initiative enhances UAA's ability to handle complex authenticati
 
 ### IPv6 Dual-Stack Implementation in Active Development
 
-### IPv6 Dual-Stack Implementation in Active Development
-
 Following the acceptance of RFC-0038: "IPv6 Dual Stack Support for Cloud Foundry", the Foundational Infrastructure Working Group has transitioned from strategic planning to active implementation, with substantial development progress across core BOSH infrastructure components. The community has made significant progress implementing the IPv6 dual-stack architecture, with active pull requests spanning BOSH core infrastructure (PR #2611 for IPv6 prefix allocation), AWS Cloud Provider Interface (PR #181 for multistack networks and prefix support), and comprehensive testing frameworks including dedicated acceptance tests for IPv6 functionality.
 
 The active implementation demonstrates significant progress toward production-ready IPv6 dual-stack support, with coordinated development across BOSH core, cloud provider interfaces, and testing infrastructure ensuring enterprise reliability standards. This transition from RFC acceptance to active implementation showcases the working group's ability to execute on strategic initiatives, positioning Cloud Foundry at the forefront of modern networking standards while maintaining operational continuity for existing deployments.
