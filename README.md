@@ -39,3 +39,11 @@ The evolution of the Cloud Foundry Technical Community Governance is explained i
 
 The technical community's activities are structured into working groups by the TOC. For a listing of the
 active working groups, see [WORKING-GROUPS.md](toc/working-groups/WORKING-GROUPS.md).
+
+### Working Group Activity Reports
+
+Automated working group activity reports are generated quarterly for TOC review. These reports analyze GitHub activity across all repositories managed by each working group and provide strategic insights into development progress.
+
+- **View Reports**: [toc/working-groups/updates/](toc/working-groups/updates/)
+- **Generate Reports**: See [automation documentation](toc/working-groups/updates/README.md)
+- **OpenCode Integration**: Supports automated report generation using [OpenCode Run](https://github.com/sst/opencode)
