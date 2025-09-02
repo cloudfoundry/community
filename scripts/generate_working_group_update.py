@@ -120,12 +120,10 @@ Please follow these steps:
        * Highlight specific contributors and their organizations (avoid WG leads)
        * **Include contributor GitHub profile links**: Use format [Name](https://github.com/username)
        * **Integrate PR/Issue links directly in text**: Link specific work to PRs/issues inline within descriptions
+       * **Include relevant RFCs**: Integrate RFC developments within appropriate initiatives
        * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
        * **Keep paragraphs short**: Maximum 40 words per paragraph for readability
        * Do NOT include separate "Related Work" sections - all links should be integrated into the text
-   - **Community Impact Areas**: Group work by technical themes
-   - **Activity Breakdown**: Include repository-level metrics table
-   - **Recent RFCs**: Relevant governance activities
    - **Looking Forward**: Opportunities for community involvement
 
 7. **Apply Community-Focused Writing Guidelines**
