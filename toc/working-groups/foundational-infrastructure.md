@@ -404,7 +404,6 @@ areas:
   - cloudfoundry/bosh-warden-cpi-release
   - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bpm-release
-  - cloudfoundry/bsdtar
   - cloudfoundry/config-server
   - cloudfoundry/config-server-release
   - cloudfoundry/docs-bosh
