@@ -8,56 +8,67 @@ period: "June 2025 - September 2025"
 
 ## Summary
 
-The Foundational Infrastructure Working Group achieved a historic milestone with the acceptance of RFC-0038 for IPv6 dual-stack support, representing the most significant networking evolution in Cloud Foundry's recent history. This landmark initiative, combined with continued collaborative innovations in monitoring, cloud provider expansion, and storage infrastructure, demonstrates the community's commitment to positioning Cloud Foundry at the forefront of modern platform capabilities.
+The Foundational Infrastructure Working Group achieved significant progress in both strategic vision and concrete implementation, transitioning from RFC acceptance to active development of IPv6 dual-stack support while advancing critical identity management and storage infrastructure modernization. This period demonstrates the community's ability to execute on ambitious architectural initiatives while maintaining operational excellence across core platform services.
 
-Over the past three months (June-September 2025), our community delivered transformative advancements across multiple domains: groundbreaking IPv6 dual-stack architecture that future-proofs Cloud Foundry networking, substantial Prometheus ecosystem modernization enhancing observability capabilities, expanded AliCloud infrastructure support with Noble stemcell compatibility, and strategic storage CLI consolidation through RFC-0043 approval.
+The most significant achievement was the transition of IPv6 dual-stack support from strategic planning to active implementation, with substantial development progress across BOSH core infrastructure, AWS Cloud Provider Interface, and comprehensive testing frameworks. Parallel efforts in UAA identity management modernization and Storage CLI AWS SDK evolution demonstrate the working group's commitment to both next-generation capabilities and current operational excellence.
 
-The period was marked by exceptional cross-organizational collaboration, with key contributions from SAP, 9 Elements, He Group, VMware Tanzu, and the broader Cloud Foundry community. The acceptance of RFC-0038 creates immediate opportunities for community involvement in implementing next-generation networking capabilities while maintaining operational continuity for existing deployments.
+Key collaborative contributions came from SAP through UAA architectural improvements and continued Prometheus ecosystem modernization, while community members advanced storage infrastructure through AWS SDK v2 migration and cross-working group governance enhancements. The period showcases effective coordination between strategic initiatives and practical implementation work.
 
-This update celebrates both the visionary strategic initiatives like IPv6 dual-stack support and the dedicated engineering efforts that continue to advance Cloud Foundry's infrastructure automation, multi-cloud deployment capabilities, and core services that enable operators to deploy and manage Cloud Foundry at global scale.
+This update celebrates the working group's transformation from RFC planning to active development execution, positioning Cloud Foundry's foundational infrastructure at the forefront of modern networking standards while strengthening identity management and storage capabilities that serve the entire platform ecosystem.
 
 ## Major Strategic Initiatives
 
-### IPv6 Dual-Stack Infrastructure Implementation
+### Identity and Credential Management Modernization
 
-The Foundational Infrastructure Working Group achieved a landmark milestone with the acceptance of RFC-0038: "IPv6 Dual Stack Support for Cloud Foundry", representing the most significant networking evolution in Cloud Foundry's recent history. This groundbreaking initiative positions Cloud Foundry at the forefront of modern networking standards while maintaining backward compatibility with existing IPv4 deployments.
+The Foundational Infrastructure Working Group demonstrated sustained commitment to enterprise security through strategic enhancements to the UAA identity management system, representing critical improvements to Cloud Foundry's authentication and authorization infrastructure.
 
-**Key Contributors**: The RFC was authored by a collaborative team including @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, and @plamen-bardarov, demonstrating the cross-organizational commitment to this strategic platform enhancement.
+**Key Contributors**: Adrian Hoelzl (@adrianhoelzl-sap, SAP) led architectural improvements to UAA's external authentication systems, while the community maintained security through automated dependency management.
 
-**RFC Status**: Accepted (RFC-0038) - [Community PR #1077](https://github.com/cloudfoundry/community/pull/1077)
+The period saw significant architectural refinement in UAA's external login authentication management, with Adrian Hoelzl spearheading a comprehensive refactoring of the ExternalLoginAuthenticationManager component. This work addresses technical debt in UAA's integration with external identity providers, improving code maintainability and security for enterprise deployments that rely on SAML, LDAP, and OAuth2 integrations.
 
-The RFC addresses the growing prevalence of IPv6 on the internet and in enterprise networks, proposing comprehensive dual-stack support that allows Cloud Foundry foundations to operate with both IPv4 and IPv6 simultaneously. This additive approach ensures smooth migration paths for existing deployments while enabling new installations to leverage IPv6's enhanced addressing capabilities and security features.
+**Technical Modernization**: The refactoring initiative focuses on enhancing UAA's ability to handle complex authentication scenarios common in enterprise environments. The ExternalLoginAuthenticationManager serves as a critical component for organizations implementing federated identity management, single sign-on (SSO), and multi-factor authentication workflows. The architectural improvements ensure better error handling, improved logging for troubleshooting authentication issues, and enhanced compatibility with modern identity standards.
 
-**Strategic Architecture Changes**:
+**Security Hardening**: Parallel to the architectural work, the community maintained UAA's security posture through proactive dependency management. The upgrade of the Jasmine testing framework from version 5.9.0 to 5.10.0 demonstrates the working group's commitment to maintaining current security standards across development and testing toolchains.
 
-The initiative introduces fundamental architectural improvements across the entire Cloud Foundry stack:
+**Enterprise Integration Focus**: These improvements directly support Cloud Foundry operators in highly regulated industries where robust identity management is paramount. The enhanced external authentication management provides better audit trails, improved compliance reporting capabilities, and more reliable integration with enterprise identity management systems.
 
-- **BOSH Infrastructure**: Enhanced to support IPv6 prefix delegation, allowing assignment of IPv6 CIDR ranges (e.g., /80 prefixes) to individual VMs. This enables efficient IPv6 address management without the complexity of central IP allocation systems.
-
-- **Diego Container Runtime**: Transformation from overlay-dependent networking to native IPv6 addressing for application containers. Each application instance receives its own IPv6 address, improving traffic correlation and security while eliminating NAT requirements for egress traffic.
-
-- **Silk CNI Evolution**: Extended to support dual-stack operation with the host-local CNI plugin managing IPv6 address allocation within cells, providing state management and conflict prevention.
-
-- **Security Framework**: Application Security Groups (ASGs) enhanced with IPv6 support, including ICMPv6 protocol handling and proper firewall rule management via ip6tables.
-
-**Cloud Provider Integration**: The RFC mandates IPv6 support across all Cloud Provider Interfaces (CPIs), with AWS CPI already implementing dual-stack capabilities and other providers following established patterns.
-
-**Operational Benefits**:
-- Elimination of NAT requirements for IPv6 traffic, reducing complexity and improving performance
-- Individual IPv6 addresses for application instances, enhancing security and monitoring capabilities  
-- Future-proofing against IPv4 address exhaustion
-- Enhanced compatibility with modern enterprise networks increasingly adopting IPv6
-
-**Implementation Roadmap**: The RFC establishes a phased implementation approach with experimental ops-files for cf-deployment, comprehensive testing frameworks including CAT extensions, and validation pipelines to ensure production readiness.
-
-**Strategic Impact**: This initiative positions Cloud Foundry as a leader in modern networking standards, enabling operators to leverage IPv6's benefits while maintaining operational continuity. The dual-stack approach ensures that Cloud Foundry remains relevant for next-generation networking requirements while preserving investment in existing IPv4 infrastructure.
-
-The acceptance of RFC-0038 creates immediate opportunities for community contribution across BOSH, Diego, networking, and testing components, representing one of the most comprehensive platform enhancements in Cloud Foundry's evolution.
+**Strategic Impact**: The UAA modernization work ensures that Cloud Foundry remains competitive in enterprise markets where sophisticated identity management requirements are standard. The improvements reduce operational complexity for platform teams managing large-scale deployments with complex authentication requirements while maintaining the security standards expected in enterprise environments.
 
 **Related Work**:
-- [RFC-0038: IPv6 Dual Stack Support](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0038-ipv6-dual-stack-for-cf.md)
-- [AWS CPI Dual Stack Implementation](https://github.com/cloudfoundry/bosh-aws-cpi-release/pull/174)
-- [BOSH Agent Network Enhancements](https://github.com/cloudfoundry/bosh-agent/pull/344)
+- [UAA ExternalLoginAuthenticationManager Refactoring](https://github.com/cloudfoundry/uaa/pull/3607)
+- [UAA Security Dependency Updates](https://github.com/cloudfoundry/uaa/pull/3605)
+
+### IPv6 Dual-Stack Implementation in Active Development
+
+### IPv6 Dual-Stack Implementation in Active Development
+
+Following the acceptance of RFC-0038: "IPv6 Dual Stack Support for Cloud Foundry", the Foundational Infrastructure Working Group has transitioned from strategic planning to active implementation, with substantial development progress across core BOSH infrastructure components. This implementation represents the most significant networking evolution in Cloud Foundry's recent history, with concrete code contributions advancing the dual-stack vision.
+
+**Active Implementation Status**: The community has made significant progress implementing the IPv6 dual-stack architecture, with active pull requests spanning BOSH core infrastructure, cloud provider interfaces, and comprehensive testing frameworks.
+
+**BOSH Core IPv6 Infrastructure**: The foundational work centers on BOSH core enhancements, with PR #2611 implementing IPv6 prefix allocation capabilities as specified in RFC-0038. This critical functionality enables BOSH to assign IPv6 CIDR ranges (e.g., /80 prefixes) to individual VMs, eliminating the need for central IP allocation systems and enabling efficient IPv6 address management across Cloud Foundry deployments.
+
+**AWS CPI Dual-Stack Support**: Active development in the AWS Cloud Provider Interface demonstrates concrete progress toward production-ready IPv6 support. PR #181 implements multistack networks and prefix support for both IPv4 and IPv6, providing the foundation for dual-stack operation on AWS infrastructure. This work establishes the pattern for other cloud provider implementations.
+
+**Comprehensive Testing Framework**: The initiative includes robust testing infrastructure with dedicated acceptance tests for IPv6 functionality. The BOSH acceptance test suite has been extended with tests for IPv6 prefix allocation and AWS-specific IPv6 operations, ensuring production reliability for the new networking capabilities.
+
+**Technical Architecture Achievements**:
+- **Prefix Delegation**: Implementation of IPv6 prefix allocation in BOSH Director, enabling automatic assignment of non-overlapping IPv6 CIDR ranges
+- **Cloud Provider Integration**: AWS CPI multistack support providing template for other cloud providers
+- **Testing Infrastructure**: Comprehensive test coverage for IPv6 operations and prefix management
+- **NIC Group Support**: Enhanced network interface configuration for dual-stack operations
+
+**Production Readiness Progress**: The active implementation demonstrates significant progress toward production-ready IPv6 dual-stack support. The coordinated development across BOSH core, cloud provider interfaces, and testing infrastructure ensures that the IPv6 capabilities will meet enterprise reliability standards.
+
+**Community Collaboration**: The implementation effort showcases effective collaboration between infrastructure teams, with coordinated pull requests addressing different layers of the networking stack simultaneously. This approach ensures compatibility and consistency across the entire IPv6 implementation.
+
+**Strategic Impact**: The transition from RFC acceptance to active implementation demonstrates the working group's ability to execute on strategic initiatives. The IPv6 dual-stack implementation positions Cloud Foundry at the forefront of modern networking standards while maintaining operational continuity for existing deployments.
+
+**Related Work**:
+- [BOSH IPv6 Prefix Allocation Implementation](https://github.com/cloudfoundry/bosh/pull/2611)
+- [AWS CPI Multistack Support](https://github.com/cloudfoundry/bosh-aws-cpi-release/pull/181)
+- [IPv6 Prefix Allocation Tests](https://github.com/cloudfoundry/bosh-acceptance-tests/pull/53)
+- [NIC Groups Testing](https://github.com/cloudfoundry/bosh-acceptance-tests/pull/54)
 
 ### Prometheus Ecosystem Modernization and Dependency Management
 
@@ -78,43 +89,30 @@ The community's commitment to security was evident through extensive automated d
 - [BOSH Exporter Modernization](https://github.com/cloudfoundry/bosh_exporter/pull/282)
 - [CF Exporter Improvements](https://github.com/cloudfoundry/cf_exporter/pulls)
 
-### AliCloud Infrastructure Expansion and Noble Stemcell Support
+### Storage CLI Modernization and AWS SDK Evolution
 
-The community achieved a significant milestone in multi-cloud support through expanded AliCloud infrastructure capabilities, led by He Guimin (@xiaozhu36) from He Group. This initiative demonstrates Cloud Foundry's commitment to global cloud provider support and platform accessibility.
+The working group advanced critical storage infrastructure modernization through strategic AWS SDK upgrades and enhanced Storage CLI capabilities, building on the foundation established by RFC-0043's Storage CLI area creation. This initiative addresses both immediate operational needs and long-term architectural evolution of Cloud Foundry's storage infrastructure.
 
-**Key Contributor**: He Guimin (@xiaozhu36, He Group) provided comprehensive AliCloud infrastructure enhancements, including Noble stemcell support and infrastructure annotations.
+**Key Contributors**: Community members focused on modernizing the AWS SDK integration in the BOSH S3 CLI, representing a significant step toward the storage CLI consolidation envisioned in RFC-0043.
 
-The effort began with implementing support for Ubuntu Noble (24.04 LTS) stemcells on AliCloud, a critical step in maintaining platform currency with long-term support operating system releases. He Guimin's work in bosh-alicloud-light-stemcell-builder enables Cloud Foundry operators in AliCloud environments to leverage the latest Ubuntu LTS distribution with enhanced security features and improved performance characteristics.
+**AWS SDK v2 Migration Initiative**: Active development is underway to upgrade the BOSH S3 CLI from AWS SDK for Go v1 to v2, representing a major modernization effort that addresses security, performance, and maintainability concerns. The SDK v2 upgrade brings enhanced security features, improved performance characteristics, and better support for modern AWS services.
 
-The implementation included comprehensive infrastructure annotations that improve deployment visibility and management capabilities for AliCloud operators. These annotations provide essential metadata for resource management, cost tracking, and operational monitoring in AliCloud environments. The work ensures that AliCloud deployments achieve feature parity with other major cloud providers in the Cloud Foundry ecosystem.
+**Technical Modernization Benefits**: The AWS SDK v2 migration provides multiple technical advantages including improved context handling for request cancellation, enhanced retry mechanisms for better reliability in network-constrained environments, and modernized authentication patterns that align with current AWS security best practices. The upgrade also eliminates technical debt associated with the older SDK version.
 
-The stemcells-alicloud-index repository received coordinated updates to publish both Noble (1.25) and Jammy (1.894) stemcells, ensuring operators have access to both current and stable stemcell options. This dual-track approach provides flexibility for operators managing different upgrade cadences while maintaining security and functionality.
+**Strategic Alignment with RFC-0043**: This modernization work directly supports the Storage CLI consolidation initiative outlined in RFC-0043. By updating the underlying SDK dependencies, the community ensures that the consolidated storage CLI will be built on current, well-supported foundations rather than legacy dependencies that could hinder future development.
 
-**Strategic Impact**: This expansion significantly enhances Cloud Foundry's global reach, particularly in Asian markets where AliCloud has strong presence. The Noble stemcell support positions AliCloud deployments at the forefront of operating system modernization, while the infrastructure annotations improve operational visibility for enterprise deployments.
+**Operational Impact**: The SDK upgrade improves the reliability of S3 operations critical to BOSH deployments, including stemcell distribution, release management, and backup operations. Enhanced error handling and retry mechanisms reduce deployment failures related to storage operations, particularly important for large-scale Cloud Foundry installations.
 
-**Related Work**:
-- [Noble Stemcell Support](https://github.com/cloudfoundry/bosh-alicloud-light-stemcell-builder/pull/23)
-- [Infrastructure Annotations](https://github.com/cloudfoundry/bosh-alicloud-light-stemcell-builder/pull/24)
-- [Stemcell Publishing](https://github.com/cloudfoundry/stemcells-alicloud-index/pulls)
+**Community Governance Enhancement**: The period also saw the formalization of Storage CLI governance through the addition of Application Runtime Interfaces (ARI) working group leads as Storage CLI approvers. This cross-working group collaboration demonstrates the strategic importance of storage infrastructure and ensures that the Storage CLI area benefits from expertise across multiple Cloud Foundry domains.
 
-### Storage Infrastructure Modernization and CLI Consolidation
+**Future Foundation**: The AWS SDK modernization establishes a pattern for similar upgrades across other storage CLI implementations (Azure, Google Cloud, AliCloud), ensuring consistent modernization across the entire storage infrastructure ecosystem.
 
-The working group advanced a critical modernization initiative for storage infrastructure through enhanced BOSH storage CLI capabilities, with contributions from multiple community members addressing both immediate operational needs and long-term architectural evolution.
-
-**Key Contributors**: Katharina Przybill (@kathap, SAP), Yuri Bykov (@ybykov-a9s, 9 Elements), Ned Petrov (@neddp), and Parthiv Menon (@parthivrmenon) collaborated on modernizing storage CLI tools across multiple cloud providers.
-
-The initiative focused on enhancing storage CLI tools that provide the foundation for BOSH's multi-cloud storage capabilities. Katharina Przybill led improvements to bosh-azure-storage-cli, addressing compatibility issues and enhancing Azure Blob Storage integration reliability. These improvements are particularly significant as they directly support the upcoming storage-cli blobstore type proposed in RFC-0043.
-
-Yuri Bykov contributed enhancements to bosh-s3cli, improving AWS S3 compatibility and error handling mechanisms. The work addresses edge cases in S3 operations that could impact BOSH deployment reliability and introduces better logging for troubleshooting storage-related issues. Ned Petrov provided critical testing and validation for gcscli improvements, ensuring Google Cloud Storage operations maintain reliability standards.
-
-Parthiv Menon contributed to Azure storage CLI reliability improvements, focusing on handling network interruptions and retry mechanisms that are essential for production deployments. The collective work establishes a robust foundation for the proposed storage-cli consolidation outlined in RFC-0043.
-
-**Strategic Impact**: These improvements provide immediate operational benefits for BOSH deployments across all major cloud providers while laying groundwork for the strategic storage CLI consolidation initiative. The work reduces deployment failures related to storage operations and improves troubleshooting capabilities for operators.
+**Strategic Impact**: These improvements provide immediate operational benefits for BOSH deployments while laying essential groundwork for the Storage CLI consolidation initiative. The work reduces deployment failures related to storage operations and establishes modern SDK foundations for future storage infrastructure evolution.
 
 **Related Work**:
-- [Azure Storage CLI Improvements](https://github.com/cloudfoundry/bosh-azure-storage-cli/pulls)
-- [S3 CLI Enhancements](https://github.com/cloudfoundry/bosh-s3cli/pulls)
-- [GCS CLI Reliability](https://github.com/cloudfoundry/bosh-gcscli/pulls)
+- [AWS SDK v2 Migration](https://github.com/cloudfoundry/bosh-s3cli/pull/53)
+- [Storage CLI Governance](https://github.com/cloudfoundry/community/pull/1292)
+- [RFC-0043: Storage CLI Integration](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0043-cc-blobstore-storage-cli.md)
 
 ## Community Impact Areas
 
@@ -136,29 +134,36 @@ Infrastructure annotations, improved error handling, and enhanced logging capabi
 
 ## Community Contributors Recognition
 
-We celebrate the diverse and collaborative community that drives Cloud Foundry's foundational infrastructure forward:
+We celebrate the diverse community that drives strategic infrastructure evolution and operational excellence:
 
-- **Benjamin Guttmann** (@benjaminguttmann-avtq, SAP) - Led Prometheus ecosystem modernization
-- **He Guimin** (@xiaozhu36, He Group) - Expanded AliCloud infrastructure capabilities  
-- **Katharina Przybill** (@kathap, SAP) - Advanced Azure storage infrastructure
-- **Yuri Bykov** (@ybykov-a9s, 9 Elements) - Enhanced AWS S3 storage reliability
-- **Abdul Haseeb** (@abdulhaseeb2) - Contributed to Prometheus client modernization
-- **Gilles Miraillet** (@gmllt) - Improved CF exporter functionality
-- **Sascha Stojanovic** (@scult) - Contributed to Prometheus testing infrastructure
-- **Ned Petrov** (@neddp) - Validated GCS CLI improvements
-- **Parthiv Menon** (@parthivrmenon) - Enhanced Azure storage CLI reliability
+**IPv6 Dual-Stack Implementation Leaders**:
+- **RFC Authors**: @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, @plamen-bardarov - Strategic vision and architecture
+- **Implementation Contributors**: Active development across BOSH core, AWS CPI, and testing infrastructure
 
-Special recognition goes to the organizations that enable these contributions: SAP for substantial Prometheus and Azure infrastructure work, 9 Elements for storage CLI improvements, and He Group for AliCloud platform expansion.
+**Identity and Security Excellence**:
+- **Adrian Hoelzl** (@adrianhoelzl-sap, SAP) - UAA external authentication architecture improvements
+- **Benjamin Guttmann** (@benjaminguttmann-avtq, SAP) - Prometheus ecosystem modernization leadership
+
+**Storage Infrastructure Modernization**:
+- **Community Contributors** - AWS SDK v2 migration and storage CLI evolution
+- **Cross-WG Collaboration** - ARI and FI working group Storage CLI governance
+
+**Prometheus Ecosystem Maintainers**:
+- **Abdul Haseeb** (@abdulhaseeb2) - Prometheus client modernization
+- **Gilles Miraillet** (@gmllt) - CF exporter functionality improvements
+- **Sascha Stojanovic** (@scult) - Testing infrastructure contributions
+
+**Organizational Recognition**: Special acknowledgment to SAP for substantial contributions across UAA, Prometheus, and strategic initiatives, demonstrating sustained commitment to Cloud Foundry's foundational infrastructure evolution.
 
 ## Activity Breakdown by Technology Area
 
 | Area | Repositories Active | Pull Requests | Issues | Key Focus |
 |------|-------------------|---------------|--------|-----------|
-| IPv6 Dual-Stack | 1 (RFC) | 1 | 0 | Platform networking evolution, dual-stack architecture |
+| IPv6 Dual-Stack Implementation | 3 | 4 | 0 | Active BOSH core, AWS CPI, and testing development |
+| Identity Management (UAA) | 1 | 2 | 0 | External authentication refactoring, security updates |
+| Storage CLI Modernization | 1 | 1 | 0 | AWS SDK v2 migration, infrastructure evolution |
 | Prometheus (BOSH) | 5 | 55 | 6 | Dependency modernization, security updates |
-| Storage CLI | 4 | 8 | 2 | Multi-cloud storage reliability |
-| AliCloud Infrastructure | 2 | 4 | 0 | Noble stemcell support, infrastructure annotations |
-| **Total Activity** | **12** | **68** | **8** | **Platform modernization and networking evolution** |
+| **Total Activity** | **10** | **62** | **6** | **Platform networking evolution and infrastructure modernization** |
 
 ## Recent RFC Developments
 
