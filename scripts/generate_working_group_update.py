@@ -114,15 +114,15 @@ Please follow these steps:
    **Report Structure:**
    - **Title**: "{wg_name.replace('-', ' ').title()} Working Group Update"
    - **Frontmatter**: Include title, date, and period
-   - **Summary**: High-level overview emphasizing community collaboration and strategic direction
-    - **Major Initiatives**: 
-      * Focus on completed and in-progress strategic work
-      * Highlight specific contributors and their organizations (avoid WG leads)
-      * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
-      * Include related work links after each initiative
-      * Link to relevant PRs, issues, and related work
+   - **Summary**: Single paragraph high-level overview emphasizing community collaboration and strategic direction
+     - **Major Initiatives**: 
+       * Focus on completed and in-progress strategic work
+       * Highlight specific contributors and their organizations (avoid WG leads)
+       * **Include contributor GitHub profile links**: Use format [Name](https://github.com/username)
+       * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
+       * Include related work links after each initiative
+       * Link to relevant PRs, issues, and related work
    - **Community Impact Areas**: Group work by technical themes
-   - **Community Contributors**: Recognize active contributors and organizational diversity
    - **Activity Breakdown**: Include repository-level metrics table
    - **Recent RFCs**: Relevant governance activities
    - **Looking Forward**: Opportunities for community involvement
@@ -140,7 +140,7 @@ Please follow these steps:
 
 **Key Success Criteria:**
 - Major technical achievements are prominently featured with detailed context
-- Non-lead contributors are recognized and celebrated appropriately
+- Non-lead contributors are recognized inline with GitHub profile links: [Name](https://github.com/username)
 - Cross-organizational collaboration is highlighted
 - Strategic themes (IPv6, security, modernization) are clearly articulated
 - Every major initiative includes proper PR/Issue links in both formats: descriptive link + shorthand

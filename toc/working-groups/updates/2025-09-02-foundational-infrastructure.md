@@ -8,19 +8,13 @@ period: "June 2025 - September 2025"
 
 ## Summary
 
-The Foundational Infrastructure Working Group achieved significant progress in both strategic vision and concrete implementation, transitioning from RFC acceptance to active development of IPv6 dual-stack support while advancing critical identity management and storage infrastructure modernization. This period demonstrates the community's ability to execute on ambitious architectural initiatives while maintaining operational excellence across core platform services.
-
-The most significant achievement was the transition of IPv6 dual-stack support from strategic planning to active implementation, with substantial development progress across BOSH core infrastructure, AWS Cloud Provider Interface, and comprehensive testing frameworks. Parallel efforts in UAA identity management modernization and Storage CLI AWS SDK evolution demonstrate the working group's commitment to both next-generation capabilities and current operational excellence.
-
-Key collaborative contributions came from SAP through UAA architectural improvements and continued Prometheus ecosystem modernization, while community members advanced storage infrastructure through AWS SDK v2 migration and cross-working group governance enhancements. The period showcases effective coordination between strategic initiatives and practical implementation work.
-
-This update celebrates the working group's transformation from RFC planning to active development execution, positioning Cloud Foundry's foundational infrastructure at the forefront of modern networking standards while strengthening identity management and storage capabilities that serve the entire platform ecosystem.
+The Foundational Infrastructure Working Group achieved significant progress in both strategic vision and concrete implementation, transitioning from RFC acceptance to active development of IPv6 dual-stack support while advancing critical identity management and storage infrastructure modernization, with key collaborative contributions from [Adrian Hoelzl](https://github.com/adrianhoelzl-sap) (SAP) leading UAA architectural improvements, [Benjamin Guttmann](https://github.com/benjaminguttmann-avtq) (SAP) spearheading Prometheus ecosystem modernization, and community members advancing storage infrastructure through AWS SDK v2 migration and cross-working group governance enhancements that demonstrate the community's ability to execute on ambitious architectural initiatives while maintaining operational excellence across core platform services.
 
 ## Major Strategic Initiatives
 
 ### Identity and Credential Management Modernization
 
-The Foundational Infrastructure Working Group demonstrated sustained commitment to enterprise security through strategic enhancements to the UAA identity management system, representing critical improvements to Cloud Foundry's authentication and authorization infrastructure. Adrian Hoelzl (@adrianhoelzl-sap, SAP) led architectural improvements with a comprehensive refactoring of the ExternalLoginAuthenticationManager component, addressing technical debt in UAA's integration with external identity providers and improving code maintainability for enterprise deployments relying on SAML, LDAP, and OAuth2 integrations.
+The Foundational Infrastructure Working Group demonstrated sustained commitment to enterprise security through strategic enhancements to the UAA identity management system, representing critical improvements to Cloud Foundry's authentication and authorization infrastructure. [Adrian Hoelzl](https://github.com/adrianhoelzl-sap) from SAP led architectural improvements with a comprehensive refactoring of the ExternalLoginAuthenticationManager component, addressing technical debt in UAA's integration with external identity providers and improving code maintainability for enterprise deployments relying on SAML, LDAP, and OAuth2 integrations.
 
 The refactoring initiative enhances UAA's ability to handle complex authentication scenarios common in enterprise environments, providing better error handling, improved logging for troubleshooting authentication issues, and enhanced compatibility with modern identity standards. These improvements directly support Cloud Foundry operators in highly regulated industries where robust identity management is paramount, reducing operational complexity for platform teams managing large-scale deployments while maintaining the security standards expected in enterprise environments.
 
@@ -42,7 +36,7 @@ The active implementation demonstrates significant progress toward production-re
 
 ### Prometheus Ecosystem Modernization and Dependency Management
 
-The Prometheus monitoring infrastructure saw transformative modernization efforts led by community contributors from multiple organizations, representing one of the most significant infrastructure improvements of the period. Benjamin Guttmann (@benjaminguttmann-avtq, SAP) spearheaded dependency updates in prometheus-boshrelease, while Abdul Haseeb led comprehensive modernization in bosh_exporter, updating core Prometheus client libraries from version 1.11.1 to 1.23.0. The community delivered 55 pull requests across five repositories, with 43 automated dependency management updates ensuring security libraries and monitoring dependencies remained current.
+The Prometheus monitoring infrastructure saw transformative modernization efforts led by community contributors from multiple organizations, representing one of the most significant infrastructure improvements of the period. [Benjamin Guttmann](https://github.com/benjaminguttmann-avtq) from SAP spearheaded dependency updates in prometheus-boshrelease, while [Abdul Haseeb](https://github.com/abdulhaseeb2) led comprehensive modernization in bosh_exporter, updating core Prometheus client libraries from version 1.11.1 to 1.23.0. The community delivered 55 pull requests across five repositories, with 43 automated dependency management updates ensuring security libraries and monitoring dependencies remained current.
 
 This modernization effort ensures that Cloud Foundry operators have access to state-of-the-art monitoring capabilities with improved security posture and performance characteristics, eliminating technical debt that could have hindered future platform evolution. The work addresses multiple CVEs, introduces performance improvements benefiting all Cloud Foundry operators using Prometheus, and establishes a foundation for advanced observability features that support enterprise-grade monitoring requirements.
 
@@ -79,29 +73,6 @@ The Prometheus dependency modernization and storage CLI improvements collectivel
 ### Operational Excellence
 
 Infrastructure annotations, improved error handling, and enhanced logging capabilities across multiple components improve the operational experience for Cloud Foundry platform teams. These improvements reduce troubleshooting time and provide better visibility into platform health.
-
-## Community Contributors Recognition
-
-We celebrate the diverse community that drives strategic infrastructure evolution and operational excellence:
-
-**IPv6 Dual-Stack Implementation Leaders**:
-- **RFC Authors**: @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, @plamen-bardarov - Strategic vision and architecture
-- **Implementation Contributors**: Active development across BOSH core, AWS CPI, and testing infrastructure
-
-**Identity and Security Excellence**:
-- **Adrian Hoelzl** (@adrianhoelzl-sap, SAP) - UAA external authentication architecture improvements
-- **Benjamin Guttmann** (@benjaminguttmann-avtq, SAP) - Prometheus ecosystem modernization leadership
-
-**Storage Infrastructure Modernization**:
-- **Community Contributors** - AWS SDK v2 migration and storage CLI evolution
-- **Cross-WG Collaboration** - ARI and FI working group Storage CLI governance
-
-**Prometheus Ecosystem Maintainers**:
-- **Abdul Haseeb** (@abdulhaseeb2) - Prometheus client modernization
-- **Gilles Miraillet** (@gmllt) - CF exporter functionality improvements
-- **Sascha Stojanovic** (@scult) - Testing infrastructure contributions
-
-**Organizational Recognition**: Special acknowledgment to SAP for substantial contributions across UAA, Prometheus, and strategic initiatives, demonstrating sustained commitment to Cloud Foundry's foundational infrastructure evolution.
 
 ## Activity Breakdown by Technology Area
 
