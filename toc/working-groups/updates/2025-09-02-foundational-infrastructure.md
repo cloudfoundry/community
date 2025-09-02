@@ -8,13 +8,56 @@ period: "June 2025 - September 2025"
 
 ## Summary
 
-The Foundational Infrastructure Working Group continues to demonstrate the collaborative spirit of the Cloud Foundry ecosystem through strategic cross-platform modernization initiatives and community-driven innovation. Over the past three months (June-September 2025), our community has delivered significant advancements in monitoring capabilities, cloud provider expansion, storage infrastructure modernization, and governance frameworks that strengthen the foundation for the entire Cloud Foundry platform.
+The Foundational Infrastructure Working Group achieved a historic milestone with the acceptance of RFC-0038 for IPv6 dual-stack support, representing the most significant networking evolution in Cloud Foundry's recent history. This landmark initiative, combined with continued collaborative innovations in monitoring, cloud provider expansion, and storage infrastructure, demonstrates the community's commitment to positioning Cloud Foundry at the forefront of modern platform capabilities.
 
-The period was marked by substantial community collaboration across multiple organizations, with key contributions from SAP, 9 Elements, He Group, VMware Tanzu, and individual community contributors. Notable achievements include major Prometheus ecosystem modernization, expansion of AliCloud infrastructure support, and the approval of groundbreaking RFCs that will shape the future architecture of Cloud Foundry's foundational services.
+Over the past three months (June-September 2025), our community delivered transformative advancements across multiple domains: groundbreaking IPv6 dual-stack architecture that future-proofs Cloud Foundry networking, substantial Prometheus ecosystem modernization enhancing observability capabilities, expanded AliCloud infrastructure support with Noble stemcell compatibility, and strategic storage CLI consolidation through RFC-0043 approval.
 
-This update celebrates the dedication of community contributors who continue to advance Cloud Foundry's infrastructure automation, multi-cloud deployment capabilities, and core services that enable operators to deploy and manage Cloud Foundry at scale.
+The period was marked by exceptional cross-organizational collaboration, with key contributions from SAP, 9 Elements, He Group, VMware Tanzu, and the broader Cloud Foundry community. The acceptance of RFC-0038 creates immediate opportunities for community involvement in implementing next-generation networking capabilities while maintaining operational continuity for existing deployments.
+
+This update celebrates both the visionary strategic initiatives like IPv6 dual-stack support and the dedicated engineering efforts that continue to advance Cloud Foundry's infrastructure automation, multi-cloud deployment capabilities, and core services that enable operators to deploy and manage Cloud Foundry at global scale.
 
 ## Major Strategic Initiatives
+
+### IPv6 Dual-Stack Infrastructure Implementation
+
+The Foundational Infrastructure Working Group achieved a landmark milestone with the acceptance of RFC-0038: "IPv6 Dual Stack Support for Cloud Foundry", representing the most significant networking evolution in Cloud Foundry's recent history. This groundbreaking initiative positions Cloud Foundry at the forefront of modern networking standards while maintaining backward compatibility with existing IPv4 deployments.
+
+**Key Contributors**: The RFC was authored by a collaborative team including @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, and @plamen-bardarov, demonstrating the cross-organizational commitment to this strategic platform enhancement.
+
+**RFC Status**: Accepted (RFC-0038) - [Community PR #1077](https://github.com/cloudfoundry/community/pull/1077)
+
+The RFC addresses the growing prevalence of IPv6 on the internet and in enterprise networks, proposing comprehensive dual-stack support that allows Cloud Foundry foundations to operate with both IPv4 and IPv6 simultaneously. This additive approach ensures smooth migration paths for existing deployments while enabling new installations to leverage IPv6's enhanced addressing capabilities and security features.
+
+**Strategic Architecture Changes**:
+
+The initiative introduces fundamental architectural improvements across the entire Cloud Foundry stack:
+
+- **BOSH Infrastructure**: Enhanced to support IPv6 prefix delegation, allowing assignment of IPv6 CIDR ranges (e.g., /80 prefixes) to individual VMs. This enables efficient IPv6 address management without the complexity of central IP allocation systems.
+
+- **Diego Container Runtime**: Transformation from overlay-dependent networking to native IPv6 addressing for application containers. Each application instance receives its own IPv6 address, improving traffic correlation and security while eliminating NAT requirements for egress traffic.
+
+- **Silk CNI Evolution**: Extended to support dual-stack operation with the host-local CNI plugin managing IPv6 address allocation within cells, providing state management and conflict prevention.
+
+- **Security Framework**: Application Security Groups (ASGs) enhanced with IPv6 support, including ICMPv6 protocol handling and proper firewall rule management via ip6tables.
+
+**Cloud Provider Integration**: The RFC mandates IPv6 support across all Cloud Provider Interfaces (CPIs), with AWS CPI already implementing dual-stack capabilities and other providers following established patterns.
+
+**Operational Benefits**:
+- Elimination of NAT requirements for IPv6 traffic, reducing complexity and improving performance
+- Individual IPv6 addresses for application instances, enhancing security and monitoring capabilities  
+- Future-proofing against IPv4 address exhaustion
+- Enhanced compatibility with modern enterprise networks increasingly adopting IPv6
+
+**Implementation Roadmap**: The RFC establishes a phased implementation approach with experimental ops-files for cf-deployment, comprehensive testing frameworks including CAT extensions, and validation pipelines to ensure production readiness.
+
+**Strategic Impact**: This initiative positions Cloud Foundry as a leader in modern networking standards, enabling operators to leverage IPv6's benefits while maintaining operational continuity. The dual-stack approach ensures that Cloud Foundry remains relevant for next-generation networking requirements while preserving investment in existing IPv4 infrastructure.
+
+The acceptance of RFC-0038 creates immediate opportunities for community contribution across BOSH, Diego, networking, and testing components, representing one of the most comprehensive platform enhancements in Cloud Foundry's evolution.
+
+**Related Work**:
+- [RFC-0038: IPv6 Dual Stack Support](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0038-ipv6-dual-stack-for-cf.md)
+- [AWS CPI Dual Stack Implementation](https://github.com/cloudfoundry/bosh-aws-cpi-release/pull/174)
+- [BOSH Agent Network Enhancements](https://github.com/cloudfoundry/bosh-agent/pull/344)
 
 ### Prometheus Ecosystem Modernization and Dependency Management
 
@@ -111,12 +154,25 @@ Special recognition goes to the organizations that enable these contributions: S
 
 | Area | Repositories Active | Pull Requests | Issues | Key Focus |
 |------|-------------------|---------------|--------|-----------|
+| IPv6 Dual-Stack | 1 (RFC) | 1 | 0 | Platform networking evolution, dual-stack architecture |
 | Prometheus (BOSH) | 5 | 55 | 6 | Dependency modernization, security updates |
 | Storage CLI | 4 | 8 | 2 | Multi-cloud storage reliability |
 | AliCloud Infrastructure | 2 | 4 | 0 | Noble stemcell support, infrastructure annotations |
-| **Total Activity** | **11** | **67** | **8** | **Platform modernization and reliability** |
+| **Total Activity** | **12** | **68** | **8** | **Platform modernization and networking evolution** |
 
 ## Recent RFC Developments
+
+### RFC-0038: IPv6 Dual Stack Support for Cloud Foundry
+
+**Status**: Accepted  
+**Authors**: @peanball, @a-hassanin, @fmoehler, @dimitardimitrov13, @plamen-bardarov
+**RFC Pull Request**: [community#1077](https://github.com/cloudfoundry/community/pull/1077)
+
+This groundbreaking RFC represents the most significant networking evolution in Cloud Foundry's recent history, establishing comprehensive IPv6 dual-stack support across the entire platform. The RFC addresses the growing prevalence of IPv6 in enterprise networks and positions Cloud Foundry at the forefront of modern networking standards.
+
+The proposal introduces fundamental architectural improvements including individual IPv6 addresses for application containers, elimination of NAT requirements for IPv6 traffic, and enhanced security through native addressing. The dual-stack approach ensures smooth migration paths for existing IPv4 deployments while enabling next-generation networking capabilities.
+
+Key technical innovations include BOSH IPv6 prefix delegation, Diego container runtime evolution to native IPv6 addressing, Silk CNI dual-stack operation, and comprehensive Application Security Group IPv6 support. The RFC's acceptance creates immediate opportunities for community contribution across BOSH, Diego, networking, and testing components.
 
 ### RFC-0043: Cloud Controller Blobstore Storage-CLI Integration
 
@@ -137,6 +193,34 @@ This RFC establishes shared Concourse infrastructure for Cloud Foundry working g
 The RFC's focus on credential management using Vault aligns with the working group's expertise in identity and credential management systems, creating opportunities for cross-pollination between Concourse and CredHub teams.
 
 ## Looking Forward: Opportunities for Community Involvement
+
+### IPv6 Dual-Stack Implementation Initiative
+
+The acceptance of RFC-0038 creates immediate and high-impact opportunities for community members to contribute to the most significant networking evolution in Cloud Foundry's history. The implementation requires coordinated work across multiple components:
+
+**BOSH Infrastructure Enhancements**:
+- IPv6 prefix delegation implementation in BOSH Director
+- Cloud Provider Interface (CPI) extensions for AWS, Azure, GCP, and other providers following the AWS dual-stack pattern
+- BOSH Agent enhancements for IPv6 CIDR assignment and network interface configuration
+- Ubuntu Noble stemcell IPv6 enablement and testing
+
+**Diego Container Runtime Evolution**:
+- Silk CNI dual-stack support with host-local IPAM IPv6 integration
+- Application Security Groups (ASGs) extension for IPv6 and ICMPv6 protocol support
+- Container identity certificate enhancements for IPv6 addresses
+- Environment variable extensions for CF_INSTANCE_IP IPv6 equivalents
+
+**Networking and Routing Components**:
+- Gorouter IPv6 endpoint and traffic handling verification
+- TCP-Router and Routing API IPv6 address support
+- Policy Server IPv6 network policy management
+- Application Security Group CLI and API IPv6 configuration support
+
+**Testing and Validation Framework**:
+- Cloud Foundry Acceptance Tests (CATs) IPv6 test suite development
+- bosh-bootstrap (bbl) IPv6/dual-stack environment configuration
+- cf-deployment experimental ops-files and validation pipelines
+- Integration testing across the complete dual-stack workflow
 
 ### Storage CLI Consolidation Initiative
 
