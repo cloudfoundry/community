@@ -121,6 +121,7 @@ Please follow these steps:
        * **Include contributor GitHub profile links**: Use format [Name](https://github.com/username)
        * **Integrate PR/Issue links directly in text**: Link specific work to PRs/issues inline within descriptions
        * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
+       * **Keep paragraphs short**: Maximum 40 words per paragraph for readability
        * Do NOT include separate "Related Work" sections - all links should be integrated into the text
    - **Community Impact Areas**: Group work by technical themes
    - **Activity Breakdown**: Include repository-level metrics table
@@ -136,8 +137,8 @@ Please follow these steps:
    - **Issue Format**: Use both descriptive links AND shorthand format: `[Description](url) - org/repo#number`
    - **Inline Integration**: Integrate all PR/issue links directly into descriptive text, not in separate sections
    - **Community Language**: Use open-source, collaborative terminology rather than business speak
-    - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
-    - **Concise Format**: Each major initiative must be exactly 2 paragraphs for readability
+   - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
+   - **Concise Format**: Each major initiative must be exactly 2 paragraphs, maximum 40 words per paragraph
 
 **Key Success Criteria:**
 - Major technical achievements are prominently featured with detailed context
