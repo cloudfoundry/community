@@ -227,6 +227,8 @@ areas:
     github: kart2bc
   - name: Tim Downey
     github: tcdowney
+  - name: Wei Li
+    github: weili-broadcom
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
@@ -268,6 +270,9 @@ areas:
     github: ssunka
   - name: Carson Long
     github: ctlong
+  reviewers:
+  - name: Wei Li
+    github: weili-broadcom
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release

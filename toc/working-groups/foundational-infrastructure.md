@@ -236,6 +236,8 @@ areas:
     github: aqstack
   - name: Glenn Oppegard
     github: oppegard
+  - name: Wei Li
+    github: weili-broadcom
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
