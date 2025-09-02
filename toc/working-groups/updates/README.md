@@ -1,0 +1,318 @@
+# Cloud Foundry Working Group Community Activity Reports
+
+This directory contains automation tools for generating comprehensive working group community activity reports for the Cloud Foundry Technical Oversight Committee (TOC).
+
+## Overview
+
+The automation system analyzes GitHub activity across all repositories managed by Cloud Foundry working groups and generates standardized quarterly community update reports. It uses the GitHub GraphQL API to extract detailed information about community contributions, collaboration patterns, and ecosystem improvements, then applies intelligent feature detection to identify major community initiatives and beneficial themes.
+
+The focus is on celebrating community contributions, highlighting collaboration, and showing how working group efforts benefit the entire Cloud Foundry ecosystem.
+
+## Quick Start with OpenCode Run
+
+**Prerequisites:**
+- [OpenCode CLI](https://github.com/sst/opencode) installed and configured
+- [GitHub CLI (`gh`)](https://cli.github.com/) installed and authenticated with GitHub
+- Network access to GitHub API
+
+**Generate a report for any working group:**
+
+```bash
+# Simple command that calls OpenCode Run with optimized prompts
+python3 scripts/generate_working_group_update.py foundational-infrastructure
+
+# For a specific date
+python3 scripts/generate_working_group_update.py foundational-infrastructure 2025-08-15
+
+# Alternative: Direct OpenCode Run usage
+opencode run "Generate Cloud Foundry working group report for foundational-infrastructure"
+```
+
+The `generate_working_group_update.py` script automatically:
+- Validates the working group name and date format
+- Constructs the optimal OpenCode Run prompt with specific instructions
+- Executes OpenCode Run with strategic analysis guidance
+- Confirms report generation and provides file location
+
+**Available Working Groups:**
+- `foundational-infrastructure`
+- `app-runtime-platform`
+- `app-runtime-deployments`
+- `app-runtime-interfaces`
+- `cf-on-k8s`
+- `concourse`
+- `docs`
+- `paketo`
+- `service-management`
+- `vulnerability-management`
+
+## Manual Usage
+
+### Using the Integration Script (Recommended)
+
+```bash
+# Generate report for current date
+python3 scripts/generate_working_group_update.py foundational-infrastructure
+
+# Generate report for specific date
+python3 scripts/generate_working_group_update.py foundational-infrastructure 2025-08-15
+
+# See available working groups
+python3 scripts/generate_working_group_update.py --help
+```
+
+This script leverages OpenCode Run's AI capabilities for intelligent analysis and strategic insights.
+
+### Using OpenCode Run Directly
+
+```bash
+# Manual OpenCode Run with custom prompt
+opencode run "Generate Cloud Foundry working group report for foundational-infrastructure"
+```
+
+### Using the Core Analysis Script Directly
+
+```bash
+# Analyze with default 3-month window
+python scripts/extract_wg_activity.py foundational-infrastructure
+
+# Specify custom date range
+python scripts/extract_wg_activity.py foundational-infrastructure 2025-08-15 --months 6
+
+# Generate only data files, skip report
+python scripts/extract_wg_activity.py foundational-infrastructure --no-report
+```
+
+## File Structure
+
+```
+toc/working-groups/
+├── updates/                          # Generated reports  
+│   ├── README.md                    # This documentation
+│   ├── 2025-09-02-foundational-infrastructure.md
+│   ├── 2025-09-15-app-runtime-platform.md
+│   └── ...
+├── foundational-infrastructure.md    # WG charters with YAML frontmatter
+├── app-runtime-platform.md
+└── ...
+
+scripts/
+├── generate_working_group_update.py  # OpenCode Run integration (MAIN INTERFACE)
+├── extract_wg_activity.py           # Core analysis engine (called by integration script)
+└── ...
+
+tmp/                                  # Temporary data files
+├── {wg-name}_activity.json          # Raw GitHub activity data
+└── {wg-name}_features.json          # Analyzed features and themes
+```
+
+## How It Works
+
+### 1. Repository Discovery
+- Reads working group charters with YAML frontmatter:
+  ```yaml
+  ---
+  name: "Foundational Infrastructure"
+  repositories:
+    - cloudfoundry/bosh
+    - cloudfoundry/bosh-deployment
+    - ...
+  ---
+  ```
+- Supports both new frontmatter format and legacy YAML blocks
+
+### 2. GitHub Data Collection
+- Uses GraphQL API for efficient data retrieval
+- Extracts 3-month rolling window of activity by default
+- Collects comprehensive metadata:
+  - Commit messages, authors, timestamps
+  - PR titles, bodies, labels, milestones, comments, reviews
+  - Issue descriptions, labels, comments
+  - Release notes and artifacts
+
+### 3. Feature Analysis
+- **Theme Detection**: 30+ strategic keyword patterns
+  - Security: `security`, `tls`, `ssl`, `certificate`, `encryption`
+  - Infrastructure: `deployment`, `bosh`, `infrastructure`, `scaling`
+  - Networking: `networking`, `dns`, `ipv6`, `connectivity`
+  - Performance: `performance`, `optimization`, `monitoring`
+  - Developer Experience: `developer`, `build`, `ci/cd`, `testing`
+
+- **Cross-Repository Initiative Detection**: Groups related PRs across repositories
+- **Impact Assessment**: Prioritizes based on comments, reviews, labels
+
+### 4. Report Generation
+- **Executive Summary**: High-level metrics and key achievements
+- **Major Initiatives**: 
+  - Completed: Merged PRs with significant impact
+  - In-Flight: Open PRs under active development
+- **Cross-Cutting Themes**: Strategic focus areas with specific examples
+- **Activity Breakdown**: Repository-level metrics table
+- **Looking Ahead**: Trend analysis and future focus areas
+
+## Report Format
+
+Each generated report follows this structure:
+
+```markdown
+---
+title: "Working Group Name Update"
+date: 2025-09-02
+period: "June 02, 2025 - September 02, 2025"
+---
+
+# Working Group Name Update
+
+## Executive Summary
+[High-level overview with key metrics]
+
+## Major Initiatives
+### Completed Initiatives
+[Merged PRs with impact analysis]
+
+### In-Flight Initiatives  
+[Active development efforts]
+
+## Cross-Cutting Themes
+[Strategic focus areas with examples]
+
+## Repository Activity Breakdown
+[Table of metrics by repository]
+
+## Looking Ahead
+[Trend analysis and future priorities]
+```
+
+## Environment Setup
+
+### Required Tools
+- **OpenCode CLI**: [Install from GitHub](https://github.com/sst/opencode)
+- **GitHub CLI (gh)**: [Install from official docs](https://cli.github.com/)
+  - Must be authenticated: `gh auth login`
+  - Used for GitHub GraphQL API access
+
+### Python Dependencies
+```bash
+pip install requests pyyaml python-dateutil
+```
+
+### Authentication
+The scripts use GitHub CLI (`gh`) for API access, which handles authentication automatically once configured:
+
+```bash
+# Authenticate with GitHub (one-time setup)
+gh auth login
+
+# Verify authentication
+gh auth status
+```
+
+No additional environment variables are required when using GitHub CLI.
+
+## Customization
+
+### Adjusting Analysis Window
+```bash
+# 6-month analysis window
+python scripts/extract_wg_activity.py foundational-infrastructure --months 6
+
+# Specific date range
+python scripts/extract_wg_activity.py foundational-infrastructure 2025-08-15 --months 3
+```
+
+### Custom Feature Keywords
+Edit the `feature_keywords` list in `extract_wg_activity.py`:
+
+```python
+feature_keywords = [
+    # Add your domain-specific keywords
+    'custom-feature', 'special-integration', 'new-capability',
+    # ... existing keywords
+]
+```
+
+### Output Customization
+```bash
+# Custom output paths
+python scripts/extract_wg_activity.py foundational-infrastructure \
+    --output /custom/path/activity.json \
+    --features-output /custom/path/features.json \
+    --report-output /custom/path/report.md
+```
+
+## Troubleshooting
+
+### Common Issues
+
+**1. GitHub API Rate Limiting**
+```
+Error: API rate limit exceeded
+```
+- Solution: Ensure `GITHUB_TOKEN` is set with sufficient rate limits
+- GitHub API allows 5,000 requests/hour for authenticated users
+
+**2. Repository Access Issues**
+```
+Error: Repository not found or access denied
+```
+- Solution: Verify token has read access to CloudFoundry organization repositories
+- Check that repository names in working group charters are correct
+
+**3. No Activity Found**
+```
+Warning: Zero activity found for working group
+```
+- Solution: Check date range with `--months` parameter
+- Verify repositories are actively maintained
+- Confirm working group charter has correct repository list
+
+### Debug Mode
+```bash
+# Enable verbose output
+python scripts/extract_wg_activity.py foundational-infrastructure --verbose
+
+# Skip report generation to debug data collection
+python scripts/extract_wg_activity.py foundational-infrastructure --no-report
+```
+
+## Integration Examples
+
+### TOC Meeting Preparation
+```bash
+# Generate reports for all working groups
+for wg in foundational-infrastructure app-runtime-platform paketo; do
+    python scripts/generate_working_group_update.py $wg
+done
+```
+
+### Quarterly Reviews
+```bash
+# Generate historical quarterly report
+python scripts/generate_working_group_update.py foundational-infrastructure 2025-06-30
+```
+
+### Custom Analysis
+```bash
+# 6-month deep dive for annual planning
+python scripts/extract_wg_activity.py foundational-infrastructure --months 6
+cat /tmp/foundational-infrastructure_features.json | jq '.cross_cutting_themes'
+```
+
+## Contributing
+
+To enhance the automation system:
+
+1. **Add New Feature Keywords**: Update `feature_keywords` in `extract_wg_activity.py`
+2. **Improve Theme Grouping**: Modify `theme_groups` in `generate_update_report()`
+3. **Enhance Report Format**: Update the report template in `generate_update_report()`
+4. **Add New Working Groups**: Create charter files with proper YAML frontmatter
+
+## Support
+
+For issues with the automation system:
+- Check existing reports in `toc/working-groups/updates/` for examples
+- Review working group charters for proper YAML frontmatter format
+- Validate GitHub token permissions and rate limits
+- Test with a single repository before running full working group analysis
+
+The automation system is designed to provide consistent, comprehensive reports that help the TOC understand working group progress and strategic focus areas across the entire Cloud Foundry ecosystem.

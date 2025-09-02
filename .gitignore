@@ -5,6 +5,7 @@ __pycache__
 orgs.out.yml
 branchprotection.out.yml
 /.idea
+tmp/
 .venv
 .ruff_cache
 .DS_Store
