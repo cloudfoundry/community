@@ -134,7 +134,9 @@ Please follow these steps:
    - **Focus on Impact**: Prioritize "why this matters" over "what was done"
    - **Technical Depth**: Provide substantial detail about major initiatives
    - **Comprehensive Linking**: Link to specific PRs, issues, and related work throughout
-   - **Issue Format**: Use both descriptive links AND shorthand format: `[Description](url) - org/repo#number`
+   - **Issue Format**: Use descriptive links primarily, with shorthand format: `[Description](url) - org/repo#number`
+   - **No Duplicate Links**: Never link to the same PR/issue twice within the same paragraph
+   - **Prefer Descriptive Links**: Use PR change descriptions as link text rather than repo#PR format
    - **Inline Integration**: Integrate all PR/issue links directly into descriptive text, not in separate sections
    - **Community Language**: Use open-source, collaborative terminology rather than business speak
    - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
@@ -145,7 +147,7 @@ Please follow these steps:
 - Non-lead contributors are recognized inline with GitHub profile links: [Name](https://github.com/username)
 - Cross-organizational collaboration is highlighted
 - Strategic themes (IPv6, security, modernization) are clearly articulated
-- All PR/Issue links are integrated directly into descriptive text using both formats: descriptive link + shorthand
+- All PR/Issue links use descriptive text and avoid duplication within paragraphs
 - Report reads as a celebration of open-source innovation
 - Technical depth demonstrates the working group's strategic impact
 
