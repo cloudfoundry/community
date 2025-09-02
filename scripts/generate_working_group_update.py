@@ -119,9 +119,9 @@ Please follow these steps:
        * Focus on completed and in-progress strategic work
        * Highlight specific contributors and their organizations (avoid WG leads)
        * **Include contributor GitHub profile links**: Use format [Name](https://github.com/username)
+       * **Integrate PR/Issue links directly in text**: Link specific work to PRs/issues inline within descriptions
        * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
-       * Include related work links after each initiative
-       * Link to relevant PRs, issues, and related work
+       * Do NOT include separate "Related Work" sections - all links should be integrated into the text
    - **Community Impact Areas**: Group work by technical themes
    - **Activity Breakdown**: Include repository-level metrics table
    - **Recent RFCs**: Relevant governance activities
@@ -134,6 +134,7 @@ Please follow these steps:
    - **Technical Depth**: Provide substantial detail about major initiatives
    - **Comprehensive Linking**: Link to specific PRs, issues, and related work throughout
    - **Issue Format**: Use both descriptive links AND shorthand format: `[Description](url) - org/repo#number`
+   - **Inline Integration**: Integrate all PR/issue links directly into descriptive text, not in separate sections
    - **Community Language**: Use open-source, collaborative terminology rather than business speak
     - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
     - **Concise Format**: Each major initiative must be exactly 2 paragraphs for readability
@@ -143,7 +144,7 @@ Please follow these steps:
 - Non-lead contributors are recognized inline with GitHub profile links: [Name](https://github.com/username)
 - Cross-organizational collaboration is highlighted
 - Strategic themes (IPv6, security, modernization) are clearly articulated
-- Every major initiative includes proper PR/Issue links in both formats: descriptive link + shorthand
+- All PR/Issue links are integrated directly into descriptive text using both formats: descriptive link + shorthand
 - Report reads as a celebration of open-source innovation
 - Technical depth demonstrates the working group's strategic impact
 
