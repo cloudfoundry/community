@@ -99,11 +99,16 @@ Please follow these steps:
    - **Technology Themes**: Detect patterns like security improvements, infrastructure modernization, IPv6, etc.
    - **Community Impact**: Assess how changes benefit the broader Cloud Foundry ecosystem
 
-4. **Filter RFCs for Working Group Relevance**
+4. **Analyze Existing Report Templates**
+   - Look for existing reports in `toc/working-groups/updates/` to understand format and style
+   - Use the most recent report for the same working group as a template if available
+   - Follow established patterns for structure, tone, and technical depth
+
+5. **Filter RFCs for Working Group Relevance**
    - From the RFC data in the JSON, identify RFCs most relevant to this working group
    - Consider working group labels, keywords related to the WG's scope, and organizational changes
 
-5. **Create Community-Focused Strategic Report**
+6. **Create Community-Focused Strategic Report**
    Generate a markdown report at `toc/working-groups/updates/{target_date}-{wg_name}.md` with:
    
    **Report Structure:**
@@ -122,13 +127,14 @@ Please follow these steps:
    - **Recent RFCs**: Relevant governance activities
    - **Looking Forward**: Opportunities for community involvement
 
-6. **Apply Community-Focused Writing Guidelines**
+7. **Apply Community-Focused Writing Guidelines**
    - **Celebrate Collaboration**: Emphasize how contributors from different organizations work together
    - **Avoid Self-Praise**: Never highlight working group leads when they're giving the update
    - **Focus on Impact**: Prioritize "why this matters" over "what was done"
    - **Technical Depth**: Provide substantial detail about major initiatives
-    - **Comprehensive Linking**: Link to specific PRs, issues, and related work throughout
-    - **Community Language**: Use open-source, collaborative terminology rather than business speak
+   - **Comprehensive Linking**: Link to specific PRs, issues, and related work throughout
+   - **Issue Format**: Use both descriptive links AND shorthand format: `[Description](url) - org/repo#number`
+   - **Community Language**: Use open-source, collaborative terminology rather than business speak
     - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
     - **Concise Format**: Each major initiative must be exactly 2 paragraphs for readability
 
@@ -137,7 +143,7 @@ Please follow these steps:
 - Non-lead contributors are recognized and celebrated appropriately
 - Cross-organizational collaboration is highlighted
 - Strategic themes (IPv6, security, modernization) are clearly articulated
-- Every major initiative includes proper PR/Issue links
+- Every major initiative includes proper PR/Issue links in both formats: descriptive link + shorthand
 - Report reads as a celebration of open-source innovation
 - Technical depth demonstrates the working group's strategic impact
 
