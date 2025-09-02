@@ -79,36 +79,95 @@ def generate_opencode_prompt(wg_name, target_date=None):
     
     prompt = f"""I need to generate a Cloud Foundry working group activity update report for the {wg_name} working group that celebrates community collaboration and strategic initiatives.
 
-Please follow these steps:
+**Raw Activity Data Available:**
+The file `tmp/{wg_name}_activity.json` contains comprehensive GitHub activity data for this working group, extracted for the period ending {target_date}. This JSON file has the following structure:
 
-1. **Extract Raw Activity Data**
-   - Execute: `python3 scripts/extract_wg_activity.py {wg_name} {target_date}`
-   - This will generate a JSON file with raw GitHub activity data at `tmp/{wg_name}_activity.json`
-   - The data includes commits, PRs, issues, releases, and RFCs for all repositories in the working group
+```json
+{{
+  "working_group": "working-group-name",
+  "period_end": "YYYY-MM-DD", 
+  "repositories": [
+    {{
+      "name": "org/repo-name",
+      "commits": [
+        {{
+          "sha": "commit-hash",
+          "author": "username",
+          "date": "YYYY-MM-DD",
+          "message": "commit message",
+          "url": "github-url"
+        }}
+      ],
+      "pull_requests": [
+        {{
+          "number": 123,
+          "title": "PR title",
+          "author": "username", 
+          "state": "open|closed|merged",
+          "created_at": "YYYY-MM-DD",
+          "url": "github-url",
+          "comments": 5
+        }}
+      ],
+      "issues": [
+        {{
+          "number": 456,
+          "title": "Issue title",
+          "author": "username",
+          "state": "open|closed",
+          "created_at": "YYYY-MM-DD", 
+          "url": "github-url",
+          "comments": 3
+        }}
+      ],
+      "releases": [
+        {{
+          "tag_name": "v1.2.3",
+          "name": "Release Name",
+          "published_at": "YYYY-MM-DD",
+          "url": "github-url"
+        }}
+      ]
+    }}
+  ],
+  "rfcs": [
+    {{
+      "number": "rfc-0001",
+      "title": "RFC Title", 
+      "status": "accepted|draft|withdrawn",
+      "authors": ["author1", "author2"],
+      "url": "github-url"
+    }}
+  ]
+}}
+```
+
+**Analysis Instructions:**
+
+ 1. **Analyze Raw Activity Data with jq**
+    - Use `jq` commands to extract and analyze the JSON data from `tmp/{wg_name}_activity.json`
+    - **PRIORITIZE RFC-RELATED ACTIVITY**: Give highest priority to PRs, issues, and commits related to RFCs
+    - Identify major features, cross-repository collaboration, key contributors, and technology themes
+    - Look for patterns in commit messages, PR titles, and issue descriptions that mention RFCs
+    - Find related work spanning multiple repositories, especially RFC implementations
 
 2. **Analyze the Working Group Charter**
    - Read the working group charter from `toc/working-groups/{wg_name}.md`
    - Parse the YAML frontmatter to understand the working group's mission and scope
    - Note the working group leads to avoid highlighting them in the report (no self-praise)
 
-3. **Analyze Raw Activity Data for Strategic Insights**
-   Using the raw JSON data from step 1, analyze and identify:
-   - **Major Features & Initiatives**: Look for PRs with significant impact, multiple comments, or strategic themes
-   - **Cross-Repository Collaboration**: Find related work spanning multiple repositories
-   - **Key Contributors**: Identify active non-lead contributors and their organizations
-   - **Technology Themes**: Detect patterns like security improvements, infrastructure modernization, IPv6, etc.
-   - **Community Impact**: Assess how changes benefit the broader Cloud Foundry ecosystem
-
-4. **Analyze Existing Report Templates**
+3. **Analyze Existing Report Templates**
    - Look for existing reports in `toc/working-groups/updates/` to understand format and style
    - Use the most recent report for the same working group as a template if available
    - Follow established patterns for structure, tone, and technical depth
 
-5. **Filter RFCs for Working Group Relevance**
-   - From the RFC data in the JSON, identify RFCs most relevant to this working group
-   - Consider working group labels, keywords related to the WG's scope, and organizational changes
+ 4. **Filter and Prioritize RFCs for Working Group Relevance**
+    - From the RFC data in the JSON, identify RFCs most relevant to this working group
+    - **MANDATORY**: Include all in-progress RFCs that affect this working group
+    - Consider working group labels, keywords related to the WG's scope, and organizational changes
+    - Give RFC-related PRs and implementation work top priority in the analysis
 
-6. **Create Community-Focused Strategic Report**
+5. **Create Community-Focused Strategic Report**
    Generate a markdown report at `toc/working-groups/updates/{target_date}-{wg_name}.md` with:
    
    **Report Structure:**
@@ -119,13 +178,13 @@ Please follow these steps:
        * Highlight specific contributors and their organizations (avoid WG leads)
        * **Include contributor GitHub profile links**: Use format [Name](https://github.com/username)
        * **Integrate PR/Issue links directly in text**: Link specific work to PRs/issues inline within descriptions
-       * **Include relevant RFCs**: Integrate RFC developments within appropriate initiatives
-       * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
+        * **Include RFC coverage as top priority**: Always mention in-progress RFCs relevant to the working group
+        * **Prioritize RFC-related activity**: Give highest priority to PRs, issues, and commits related to RFCs
+       * **Limit each initiative to exactly 3 paragraphs** for conciseness and focus
        * **Keep paragraphs short**: Maximum 40 words per paragraph for readability
        * Do NOT include separate "Related Work" sections - all links should be integrated into the text
-   - **Looking Forward**: Opportunities for community involvement
 
-7. **Apply Community-Focused Writing Guidelines**
+6. **Apply Community-Focused Writing Guidelines**
    - **Celebrate Collaboration**: Emphasize how contributors from different organizations work together
    - **Avoid Self-Praise**: Never highlight working group leads when they're giving the update
    - **Focus on Impact**: Prioritize "why this matters" over "what was done"
@@ -136,10 +195,12 @@ Please follow these steps:
    - **Prefer Descriptive Links**: Use PR change descriptions as link text rather than repo#PR format
    - **Inline Integration**: Integrate all PR/issue links directly into descriptive text, not in separate sections
    - **Community Language**: Use open-source, collaborative terminology rather than business speak
-   - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
+    - **RFC Priority**: Always include in-progress RFCs and prioritize RFC-related activity highest
    - **Concise Format**: Each major initiative must be exactly 2 paragraphs, maximum 40 words per paragraph
 
 **Key Success Criteria:**
+- **RFC Coverage**: All in-progress RFCs relevant to the working group are prominently featured
+- **RFC Activity Priority**: RFC-related PRs, issues, and commits receive top priority in analysis
 - Major technical achievements are prominently featured with detailed context
 - Non-lead contributors are recognized inline with GitHub profile links: [Name](https://github.com/username)
 - Cross-organizational collaboration is highlighted
@@ -158,6 +219,27 @@ def run_opencode_analysis(wg_name, target_date=None):
         target_date = datetime.now().strftime('%Y-%m-%d')
     
     print(f"Generating working group update for {wg_name} (target date: {target_date})")
+    
+    # First, extract raw activity data
+    print("Extracting raw activity data...")
+    activity_file = Path(f"tmp/{wg_name}_activity.json")
+    activity_file.parent.mkdir(exist_ok=True)
+    
+    try:
+        result = subprocess.run(['python3', 'scripts/extract_wg_activity.py', wg_name, target_date], 
+                              capture_output=True, text=True, check=True)
+        print(f"✅ Raw activity data extracted: {activity_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error extracting activity data: {e}")
+        print(f"stdout: {e.stdout}")
+        print(f"stderr: {e.stderr}")
+        return None
+    
+    # Check if activity file was generated
+    if not activity_file.exists():
+        print(f"Error: Activity file not found at {activity_file}")
+        return None
+    
     print("Running OpenCode analysis...")
     
     prompt = generate_opencode_prompt(wg_name, target_date)
