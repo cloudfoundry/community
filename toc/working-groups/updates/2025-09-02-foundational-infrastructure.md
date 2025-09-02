@@ -1,10 +1,10 @@
-# Foundational Infrastructure Working Group Update
-
 ---
 title: "Foundational Infrastructure Working Group Update"
 date: 2025-09-02
 period: June 4 - September 2, 2025
 ---
+
+# Foundational Infrastructure Working Group Update
 
 ## RFC Implementation: Cloud Controller Storage CLI Integration
 
