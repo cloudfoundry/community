@@ -561,13 +561,41 @@ def get_community_rfcs(since_date):
     
     return rfcs
 
+def find_previous_update_date(wg_name):
+    """Find the most recent update file for the working group and extract its date."""
+    updates_dir = Path("toc/working-groups/updates")
+    if not updates_dir.exists():
+        return None
+    
+    # Look for files matching the pattern: YYYY-MM-DD-{wg_name}.md
+    pattern = f"*-{wg_name}.md"
+    update_files = list(updates_dir.glob(pattern))
+    
+    if not update_files:
+        return None
+    
+    # Sort by filename (which starts with date) to get the most recent
+    latest_file = sorted(update_files)[-1]
+    
+    # Extract date from filename
+    filename = latest_file.name
+    date_match = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
+    if date_match:
+        try:
+            date_str = date_match.group(1)
+            return datetime.strptime(date_str, '%Y-%m-%d')
+        except ValueError:
+            print(f"Warning: Could not parse date from {filename}")
+    
+    return None
+
 def main():
     parser = argparse.ArgumentParser(description='Extract raw working group repository activity data')
     
     # Support both old charter file format and new working group name format
     parser.add_argument('charter_or_wg', help='Path to working group charter file OR working group name (e.g., foundational-infrastructure)')
     parser.add_argument('target_date', nargs='?', help='Target date for report (YYYY-MM-DD, defaults to today)')
-    parser.add_argument('--months', type=int, default=3, help='Number of months to look back (default: 3)')
+    parser.add_argument('--months', type=int, default=3, help='Number of months to look back from target date (default: 3, ignored if previous update found)')
     parser.add_argument('--output', help='Output file for raw activity data (default: tmp/{wg}_activity.json)')
     
     args = parser.parse_args()
@@ -600,8 +628,15 @@ def main():
     else:
         target_date = datetime.now()
     
-    # Calculate date range (using timezone-naive datetime)
-    since_date = target_date.replace(microsecond=0, tzinfo=None) - timedelta(days=args.months * 30)
+    # Determine start date: check for previous updates first, then fallback to months
+    previous_update_date = find_previous_update_date(wg_name)
+    if previous_update_date:
+        since_date = previous_update_date.replace(microsecond=0, tzinfo=None)
+        print(f"Found previous update from {since_date.strftime('%Y-%m-%d')}, using as start date")
+    else:
+        # Calculate date range (using timezone-naive datetime)
+        since_date = target_date.replace(microsecond=0, tzinfo=None) - timedelta(days=args.months * 30)
+        print(f"No previous update found, using {args.months} months lookback")
     
     print(f"Extracting activity data for {wg_name} working group")
     print(f"Fetching activity since {since_date.strftime('%Y-%m-%d %H:%M:%S')}")
