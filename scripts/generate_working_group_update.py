@@ -110,11 +110,12 @@ Please follow these steps:
    - **Title**: "{wg_name.replace('-', ' ').title()} Working Group Update"
    - **Frontmatter**: Include title, date, and period
    - **Summary**: High-level overview emphasizing community collaboration and strategic direction
-   - **Major Initiatives**: 
-     * Focus on completed and in-progress strategic work
-     * Highlight specific contributors and their organizations (avoid WG leads)
-     * Include detailed descriptions (400+ words per major initiative)
-     * Link to relevant PRs, issues, and related work
+    - **Major Initiatives**: 
+      * Focus on completed and in-progress strategic work
+      * Highlight specific contributors and their organizations (avoid WG leads)
+      * **Limit each initiative to exactly 2 paragraphs** for conciseness and focus
+      * Include related work links after each initiative
+      * Link to relevant PRs, issues, and related work
    - **Community Impact Areas**: Group work by technical themes
    - **Community Contributors**: Recognize active contributors and organizational diversity
    - **Activity Breakdown**: Include repository-level metrics table
@@ -126,9 +127,10 @@ Please follow these steps:
    - **Avoid Self-Praise**: Never highlight working group leads when they're giving the update
    - **Focus on Impact**: Prioritize "why this matters" over "what was done"
    - **Technical Depth**: Provide substantial detail about major initiatives
-   - **Comprehensive Linking**: Link to specific PRs, issues, and related work throughout
-   - **Community Language**: Use open-source, collaborative terminology rather than business speak
-   - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
+    - **Comprehensive Linking**: Link to specific PRs, issues, and related work throughout
+    - **Community Language**: Use open-source, collaborative terminology rather than business speak
+    - **Strategic Themes**: Highlight platform-wide improvements and modernization efforts
+    - **Concise Format**: Each major initiative must be exactly 2 paragraphs for readability
 
 **Key Success Criteria:**
 - Major technical achievements are prominently featured with detailed context
