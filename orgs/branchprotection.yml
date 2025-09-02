@@ -25,6 +25,8 @@ branch-protection:
           protect: false
         relint-envs:
           protect: false
+        bosh-apt-resources:
+          protect: false
 
         # App Runtime Platform repos to skip branch protection on
         app-runtime-platform-envs:
