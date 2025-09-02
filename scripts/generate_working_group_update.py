@@ -114,7 +114,6 @@ Please follow these steps:
    **Report Structure:**
    - **Title**: "{wg_name.replace('-', ' ').title()} Working Group Update"
    - **Frontmatter**: Include title, date, and period
-   - **Summary**: Single paragraph high-level overview emphasizing community collaboration and strategic direction
      - **Major Initiatives**: 
        * Focus on completed and in-progress strategic work
        * Highlight specific contributors and their organizations (avoid WG leads)
