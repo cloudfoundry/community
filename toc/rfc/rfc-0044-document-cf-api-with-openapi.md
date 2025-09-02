@@ -3,7 +3,7 @@
 - Name: Documenting the CF API with OpenAPI
 - Start Date: 2025-07-23
 - Author(s): @flothinkspi
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: [community#1256](https://github.com/cloudfoundry/community/pull/1256)
 
 ## Summary
