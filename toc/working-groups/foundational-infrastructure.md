@@ -118,6 +118,8 @@ areas:
     github: lnguyen
   - name: Maya Rosecrance
     github: mrosecrance
+  - name: Nishad Mathur
+    github: alphasite
   - name: Rajan Agaskar
     github: ragaskar
   - name: Rajath Agasthya
@@ -276,6 +278,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
+  - name: Nishad Mathur
+    github: alphasite
   - name: Rajath Agasthya
     github: rajathagasthya
   - name: Julian Hjortshoj
@@ -291,8 +295,6 @@ areas:
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Nishad Mathur
-    github: alphasite
   - name: Clay Kauzlaric
     github: KauzClay
   - name: Ivaylo Ivanov
@@ -334,6 +336,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
+  - name: Nishad Mathur
+    github: alphasite
   - name: Rajath Agasthya
     github: rajathagasthya
   - name: Julian Hjortshoj
@@ -349,8 +353,6 @@ areas:
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Nishad Mathur
-    github: alphasite
   - name: Alexander Lais
     github: peanball
   - name: Clay Kauzlaric
@@ -501,6 +503,8 @@ areas:
     github: johha
   - name: Michael Oleske
     github: moleske
+  - name: Nishad Mathur
+    github: alphasite
   - name: Seth Boyles
     github: sethboyles
   - name: Sven Krieger
@@ -526,8 +530,6 @@ areas:
     github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Nishad Mathur
-    github: alphasite
   - name: Alexander Lais
     github: peanball
   - name: Clay Kauzlaric
