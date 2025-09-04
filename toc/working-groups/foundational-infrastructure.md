@@ -282,11 +282,11 @@ areas:
     github: fmoehler
   - name: Ahmed Hassanin
     github: a-hassanin
+  - name: Clay Kauzlaric
+    github: KauzClay
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Clay Kauzlaric
-    github: KauzClay
   - name: Ivaylo Ivanov
     github: ivaylogi98
   - name: Ned Petrov
@@ -340,6 +340,8 @@ areas:
     github: benjaminguttmann-avtq
   - name: Felix Moehler
     github: fmoehler
+  - name: Clay Kauzlaric
+    github: KauzClay
   reviewers:
   - name: Benjamin Gandon
     github: bgandon
@@ -347,8 +349,6 @@ areas:
     github: Sascha-Stoj
   - name: Alexander Lais
     github: peanball
-  - name: Clay Kauzlaric
-    github: KauzClay
   - name: Ivaylo Ivanov
     github: ivaylogi98
   - name: Ned Petrov
