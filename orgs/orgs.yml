@@ -1520,6 +1520,7 @@ orgs:
         description: diego integration tests
         has_issues: false
         has_projects: true
+        archived: true
       istio-scaling:
         archived: true
         has_projects: false
