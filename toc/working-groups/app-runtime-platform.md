@@ -122,7 +122,6 @@ areas:
   - cloudfoundry/diego-release
   - cloudfoundry/diego-ssh
   - cloudfoundry/diego-upgrade-stability-tests
-  - cloudfoundry/dockerapplifecycle
   - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
   - cloudfoundry/ecrhelper
@@ -131,7 +130,6 @@ areas:
   - cloudfoundry/fileserver
   - cloudfoundry/grace
   - cloudfoundry/healthcheck
-  - cloudfoundry/inigo
   - cloudfoundry/lager
   - cloudfoundry/localdriver
   - cloudfoundry/localip
