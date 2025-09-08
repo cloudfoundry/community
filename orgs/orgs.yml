@@ -1144,6 +1144,7 @@ orgs:
       dockerapplifecycle:
         description: Code that runs inside of containers, for docker-based apps
         has_projects: true
+        archived: true
       dockerdriver:
         has_issues: false
         has_projects: true
