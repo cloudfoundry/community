@@ -107,7 +107,6 @@ areas:
   repositories:
   - cloudfoundry/archiver
   - cloudfoundry/auction
-  - cloudfoundry/auctioneer
   - cloudfoundry/bbs
   - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
@@ -120,14 +119,12 @@ areas:
   - cloudfoundry/runtime-ci-pools
   - cloudfoundry/diego-logging-client
   - cloudfoundry/diego-release
-  - cloudfoundry/diego-ssh
   - cloudfoundry/diego-upgrade-stability-tests
   - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
   - cloudfoundry/ecrhelper
   - cloudfoundry/eventhub
   - cloudfoundry/executor
-  - cloudfoundry/fileserver
   - cloudfoundry/grace
   - cloudfoundry/healthcheck
   - cloudfoundry/lager
@@ -138,8 +135,6 @@ areas:
   - cloudfoundry/rep
   - cloudfoundry/route-emitter
   - cloudfoundry/tlsconfig
-  - cloudfoundry/vizzini
-  - cloudfoundry/volman
   - cloudfoundry/workpool
   - cloudfoundry/wg-app-platform-runtime-ci
 
