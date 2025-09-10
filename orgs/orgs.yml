@@ -80,6 +80,7 @@ orgs:
         has_issues: false
         has_projects: true
       auctioneer:
+        archived: true
         description: Runs diego auctions
         has_issues: false
         has_projects: true
@@ -1103,6 +1104,7 @@ orgs:
         description: BOSH Release for Diego
         has_projects: true
       diego-ssh:
+        archived: true
         description: Access Diego containers with ssh
         has_issues: false
         has_projects: true
@@ -1296,6 +1298,7 @@ orgs:
       filelock:
         has_projects: true
       fileserver:
+        archived: true
         description: 'Bob Loblaw''s file server '
         has_issues: false
         has_projects: true
@@ -2508,10 +2511,12 @@ orgs:
         has_projects: true
         has_wiki: false
       vizzini:
+        archived: true
         description: 'Vizzini: Inconceivable Tests'
         has_issues: false
         has_projects: true
       volman:
+        archived: true
         has_issues: false
         has_projects: true
       volume-mount-options:
