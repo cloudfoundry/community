@@ -28,12 +28,6 @@ there is no possibility for app developers to perform privileged debugging
 actions such as packet captures (tcpdump) within their application
 containers.
 
-When troubleshooting applications, it is common to require elevated
-privileges for operations such as:
-* Dumping network packets to analyze traffic patterns
-* Investigating connectivity issues between application components
-* Debugging network-related performance problems
-
 While [RFC-0019 (pcap-bosh)](rfc-0019-pcap-bosh.md) addresses packet capture
 at the BOSH infrastructure level for operators, there remains a gap for
 application developers who need similar capabilities scoped to their
@@ -46,45 +40,29 @@ containers.
 ## Proposal: Custom Packet Capturing Tool
 
 This RFC proposes implementing a reduced-functionality packet capturing tool
-written in Go using the `gopacket` library. This custom tool would be
-injected into application containers via Diego, similar to how `diego-ssh`
+written in Go using the [gopacket][gopacket] library. This custom tool would be
+injected into application containers via Diego, similar to how [diego-ssh][diego-ssh]
 currently provides SSH access.
 
 ### Key Features
 
-**Reduced Attack Surface**: The custom tool supports only essential packet
-capture operations:
+The tool reduces the attack surface to a minimum by only exposing the options
+which are stricly necessary to capture packets, namely:
 * Specifying a network interface
 * Applying packet filters (pcap-filter format)
 * Setting snapshot length (snaplen)
-* No support for arbitrary code execution or complex operations
 
-**Injection Mechanism**: The tool would be injected via Diego using a mechanism
-similar to `diego-ssh`, ensuring:
-* Consistent deployment across all application instances
-* Proper integration with Cloud Foundry's security model
-* Ability to control access through feature flags
+The tool would be injected via Diego using a mechanism similar to
+[diego-ssh][diego-ssh]. This ensures that the tool is available in all apps
+regardeless of the deployment method and it follows established patterns that
+are already known by maintainers.
 
-**Operator Controls**: 
-* Platform-wide feature flag to enable/disable packet capture functionality
-* Per-application feature flag support for granular control
-* Integration with Cloud Foundry's existing permission model
+The tool has the necessary file capabilities assigned (`CAP_NET_RAW` and
+`CAP_NET_ADMIN`) to be able to capture packets. It remains in the namespaces of
+the application to ensure a vulnerability in the tool does not enable a
+container escape.
 
-**Security Model**:
-* Tool runs with necessary capabilities (`CAP_NET_RAW` and `CAP_NET_ADMIN`)
-  but limited functionality
-* No shell access or ability to execute arbitrary code
-* Scoped to the application's network namespace
-
-### Usage Example
-
-```bash
-# Capture HTTP traffic for myapp
-cf pcap myapp --interface eth0 --filter "tcp port 80" --snaplen 1500
-
-# Capture specific instance with custom filter
-cf pcap myapp --instance 1 --filter "host database.example.com"
-```
+The tool is only accessible if SSH is enabled for the application.
 
 ## Other Options Considered
 
@@ -92,7 +70,7 @@ cf pcap myapp --instance 1 --filter "host database.example.com"
 
 Adding a platform switch to make the `vcap` user a sudoer was considered but
 discarded due to:
-* Significant security risks of providing full root access
+* Significant security risks of providing full root access in the app container.
 * Potential for privilege escalation beyond intended packet capture use
 * Inconsistency with Cloud Foundry's security-first design principles
 
@@ -102,39 +80,40 @@ Setting capabilities on the existing `tcpdump` binary was considered but
 discarded because:
 * `tcpdump` offers functionality to run arbitrary code in its security
   context
-* Demonstrated security vulnerabilities allowing code execution
-* Difficulty in hiding behind feature flags due to unconditional
-  deployment
 * Broader attack surface compared to a purpose-built tool
-
-### Relationship to Existing Solutions
-
-This RFC complements [RFC-0019 (pcap-bosh)](rfc-0019-pcap-bosh.md) by
-addressing different use cases:
-
-* **pcap-bosh**: Infrastructure-level debugging for operators across BOSH
-  deployments
-* **pcap-cf**: Application-level debugging for developers within CF
-  applications
 
 ## Implementation Considerations
 
-#### diego-release: Custom Packet Capturing Tool
+Based on the proposed solution the following sections detail out the changes
+which have to be made to the individual components of Cloud Foundry to implement
+it.
+
+### diego-release: Custom Packet Capturing Tool
 
 A new package will be added to diego-release which implements packet capturing
-in go through the `gopacket` library. The resulting binary will be included in
+in go through the [gopacket][gopacket] library. The resulting binary will be included in
 the various lifecycle archives that are added to the final app container and
 the necessary capabilities (`CAP_NET_RAW` and `CAP_NET_ADMIN`) will be assigned
 to the executable via file capabilities. This allows regular users to gain those
 capabilities when executing the binary.
 
-#### CF CLI: New `pcap` command
+### CF CLI: New `pcap` command
 
 Similar to the `bosh pcap` command a `cf pcap` command will be added. Like its
 predecessor it will connect to the desired instances via SSH and execute the new
 packet capturing tool and stream back the captured packets via stdout. If there
 are multiple streams, the CLI will merge them and write them out to a single
 file in the pcap format.
+
+Usage example:
+
+```bash
+# Capture HTTP traffic for myapp
+cf pcap myapp --interface eth0 --filter "tcp port 80" --snaplen 1500
+
+# Capture specific instance with custom filter
+cf pcap myapp --instance 1 --filter "host database.example.com"
+```
 
 ## References
 
@@ -145,3 +124,6 @@ file in the pcap format.
 * https://github.com/cloudfoundry/pcap-release
 * https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0019-pcap-bosh.md
 * https://github.com/gopacket/gopacket
+
+[gopacket]: https://github.com/gopacket/gopacket
+[diego-ssh]: https://github.com/cloudfoundry/diego-ssh
