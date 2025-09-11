@@ -76,6 +76,7 @@ orgs:
         has_issues: false
         has_projects: true
       auction:
+        archived: true
         description: Auction encodes Diego's long-running-process distribution algorithm
         has_issues: false
         has_projects: true
@@ -806,6 +807,7 @@ orgs:
       cfcd-prep:
         has_projects: true
       cfdot:
+        archived: true
         description: A command-line tool to interact with a Cloud Foundry Diego deployment.
         has_issues: false
         has_projects: true
@@ -1234,6 +1236,7 @@ orgs:
         has_issues: false
         has_projects: true
       ecrhelper:
+        archived: true
         has_issues: false
         has_projects: true
       eirini:
@@ -1499,6 +1502,7 @@ orgs:
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
       healthcheck:
+        archived: true
         description: Common healthcheck for buildpacks and docker
         has_issues: false
         has_projects: true
@@ -1689,6 +1693,7 @@ orgs:
         archived: true
         has_projects: true
       localdriver:
+        archived: true
         has_issues: false
         has_projects: true
       localip:
@@ -1938,6 +1943,7 @@ orgs:
         archived: true
         has_projects: true
       operationq:
+        archived: true
         description: processes multiple queues in parallel
         has_issues: false
         has_projects: true
@@ -2090,6 +2096,7 @@ orgs:
         has_projects: true
         archived: true
       route-emitter:
+        archived: true
         description: Registers and unregisters processes running on executors with
           the gorouter
         has_issues: false
@@ -2566,6 +2573,7 @@ orgs:
         default_branch: develop
         has_projects: true
       workpool:
+        archived: true
         has_issues: false
         has_projects: true
       yagnats:
