@@ -106,13 +106,11 @@ areas:
     github: peanball
   repositories:
   - cloudfoundry/archiver
-  - cloudfoundry/auction
   - cloudfoundry/bbs
   - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter
-  - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
   - cloudfoundry/debugserver
@@ -122,20 +120,14 @@ areas:
   - cloudfoundry/diego-upgrade-stability-tests
   - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
-  - cloudfoundry/ecrhelper
   - cloudfoundry/eventhub
   - cloudfoundry/executor
   - cloudfoundry/grace
-  - cloudfoundry/healthcheck
   - cloudfoundry/lager
-  - cloudfoundry/localdriver
   - cloudfoundry/localip
   - cloudfoundry/locket
-  - cloudfoundry/operationq
   - cloudfoundry/rep
-  - cloudfoundry/route-emitter
   - cloudfoundry/tlsconfig
-  - cloudfoundry/workpool
   - cloudfoundry/wg-app-platform-runtime-ci
 
 - name: Garden Containers
