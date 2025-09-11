@@ -301,6 +301,8 @@ areas:
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
+  - name: Danitsa Kostova
+    github: lunaticomic-vc
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -361,6 +363,8 @@ areas:
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
+  - name: Danitsa Kostova
+    github: lunaticomic-vc
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
