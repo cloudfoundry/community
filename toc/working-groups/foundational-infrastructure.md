@@ -227,17 +227,8 @@ areas:
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
-  - name: Carson Long
-    github: ctlong
-  - name: Ivan Protsiuk
-    github: iprotsiuk
   - name: Jovan Kostovski
     github: chombium
-  reviewers:
-  - name: Ausaf Ahmed
-    github: aqstack
-  - name: Glenn Oppegard
-    github: oppegard
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
