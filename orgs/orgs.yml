@@ -452,6 +452,7 @@ orgs:
         has_projects: false
         has_wiki: true
       bsdtar:
+        archived: true
         has_projects: true
         has_wiki: false
       build-system-cnb:
