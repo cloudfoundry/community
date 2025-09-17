@@ -2,7 +2,7 @@
 [meta]: #meta
 - Name: Integrate pcap feature for Cloud Foundry applications
 - Start Date: 2025-09-10
-- Author(s): @domdom82 @maxmoehl @peanball @ameowlia @mariash
+- Author(s): @maxmoehl @peanball
 - Status: Draft
 - RFC Pull Request: [community#1309](https://github.com/cloudfoundry/community/issues/1309)
 
@@ -23,15 +23,17 @@ reduced-functionality custom tool.
 ## Problem
 
 Application developers frequently need to perform in-depth troubleshooting
-of their applications when deployed via Cloud Foundry buildpacks. Currently,
-there is no possibility for app developers to perform privileged debugging
-actions such as packet captures (tcpdump) within their application
-containers.
+of their applications when deployed via Cloud Foundry buildpacks. Network analysis
+tasks, such as packet captures (tcpdump), connectivity checks and performance
+checks, require elevated privileges as the captured data may be sensitive.
+Currently, there is no possibility for app developers to perform any privileged
+actions within their application containers, which also excludes such network
+analysis tasks.
 
-While [RFC-0019 (pcap-bosh)](rfc-0019-pcap-bosh.md) addresses packet capture
-at the BOSH infrastructure level for operators, there remains a gap for
-application developers who need similar capabilities scoped to their
-individual applications.
+[RFC-0019 (pcap-bosh)](rfc-0019-pcap-bosh.md) addresses packet capture
+at the BOSH infrastructure level for platform operators. Application developers
+and operators, an equally important group of users, need similar capabilities,
+scoped to their individual applications.
 
 The challenge is providing this functionality while maintaining the security
 model of Cloud Foundry, where applications run in isolated, unprivileged
@@ -47,7 +49,7 @@ currently provides SSH access.
 ### Key Features
 
 The tool reduces the attack surface to a minimum by only exposing the options
-which are stricly necessary to capture packets, namely:
+which are strictly necessary to capture packets, namely:
 * Specifying a network interface
 * Applying packet filters (pcap-filter format)
 * Setting snapshot length (snaplen)
@@ -72,7 +74,11 @@ Adding a platform switch to make the `vcap` user a sudoer was considered but
 discarded due to:
 * Significant security risks of providing full root access in the app container.
 * Potential for privilege escalation beyond intended packet capture use
-* Inconsistency with Cloud Foundry's security-first design principles
+* Inconsistency with Cloud Foundry's [security-first design principles][cf-sec]
+
+Even considering that we could configure sudo in a way that the vcap user is
+only allowed to perform verify specific tasks (like running tcpdump) this still
+suffers from potential privilege escalation as explained in the next section.
 
 #### Option 2: `setcap` on `tcpdump` Binary  
 
@@ -105,14 +111,19 @@ packet capturing tool and stream back the captured packets via stdout. If there
 are multiple streams, the CLI will merge them and write them out to a single
 file in the pcap format.
 
-Usage example:
+Examples usages and output:
 
 ```bash
-# Capture HTTP traffic for myapp
-cf pcap myapp --interface eth0 --filter "tcp port 80" --snaplen 1500
-
-# Capture specific instance with custom filter
-cf pcap myapp --instance 1 --filter "host database.example.com"
+$ cf pcap myapp --output capture.pcap --interface eth0 --filter "tcp port 80" --snaplen 1500
+Starting capture on all instances.
+Capturing, press ^C to stop...
+^C
+Saved capture to 'capture.pcap'.
+$ cf pcap myapp -o capture.pcap -i 1 -f "host database.example.com"
+Starting capture on instances: 1.
+Capturing, press ^C to stop...
+^C
+Saved capture to 'capture.pcap'.
 ```
 
 ## References
@@ -127,3 +138,4 @@ cf pcap myapp --instance 1 --filter "host database.example.com"
 
 [gopacket]: https://github.com/gopacket/gopacket
 [diego-ssh]: https://github.com/cloudfoundry/diego-ssh
+[cf-sec]: https://docs.cloudfoundry.org/concepts/security.html
