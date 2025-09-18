@@ -227,17 +227,9 @@ areas:
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
-  - name: Carson Long
-    github: ctlong
-  - name: Ivan Protsiuk
-    github: iprotsiuk
   - name: Jovan Kostovski
     github: chombium
   reviewers:
-  - name: Ausaf Ahmed
-    github: aqstack
-  - name: Glenn Oppegard
-    github: oppegard
   - name: Wei Li
     github: weili-broadcom
   repositories:
