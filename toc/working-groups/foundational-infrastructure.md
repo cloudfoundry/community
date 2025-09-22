@@ -299,6 +299,8 @@ areas:
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
+  - name: Yuri Adam
+    github: yuriadam-sap
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -359,6 +361,8 @@ areas:
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
+  - name: Yuri Adam
+    github: yuriadam-sap
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
