@@ -201,6 +201,8 @@ areas:
   approvers:
   - name: Andrew Garner
     github: abg
+  - name: Colin Shield
+    github: colins
   - name: Kim Basset
     github: kimago
   - name: Ryan Wittrup
