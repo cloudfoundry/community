@@ -41,7 +41,7 @@ class InactiveUserHandler:
         query = """
         {
             organization(login: \"%s\") {
-                membersWithRole(first: 50, after:%s) {
+                membersWithRole(first: 20, after:%s) {
                     pageInfo {
                         hasNextPage
                         endCursor
