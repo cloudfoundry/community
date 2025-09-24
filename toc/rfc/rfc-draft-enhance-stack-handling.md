@@ -16,7 +16,7 @@ otherwise downtimes of applications that rely on the removed stack will
 occur. This RFC proposes improvements in CF to shift this unavailability
 towards lifecycle operations early and not actual app downtime - making it a
 more pleasant experience for CF users and operators alike.
-To mitigate the downsides of this approach, RFC-0041 proposes to provide custom stacks functionality.
+To mitigate the downsides of this approach, the [Custom Stack RFC](https://github.com/cloudfoundry/community/pull/1251) proposes to provide custom stacks functionality.
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ on the stack to produce the droplet. This in return means that:
   CAN just be instantiated to become an app instance when combining the droplet
   with the same stack it was built with at execution time
 
-![Current Stack Usage](rfc-0040-enhance-stack-handling/current_stack_usage.png)
+![Current Stack Usage](rfc-draft-enhance-stack-handling/current_stack_usage.png)
 Pictured in above diagram is how the stack is brought into a CF
 Foundation and used in a CF Foundation. The following problems occur
 when trying to remove/deprecate a stack towards users of a CF
@@ -171,10 +171,10 @@ This approach provides a clear and explicit way for operators to manage the life
 - Blocks workflows of CF users who want to use a stack that is
   deprecated, locked or disabled. This may lead to support tickets and
   complaints from CF users. It only affects lifecycle operations and not creates actual app downtime, but it may still be perceived as a negative operation by some users.
-  To mitigate this and allow users to regain control over lifecycle operations RFC-0041 proposes
+  To mitigate this and allow users to regain control over lifecycle operations the [Custom Stack RFC](https://github.com/cloudfoundry/community/pull/1251) proposes
   to provide custom stacks functionality. This allows CF Foundation operators to respond
   to user requests that need the deprecated stack for a longer time.
-  Users CAN be enabled by RFC-0041 to unblock themselves by taking over ownership
+  Users CAN be enabled by the [Custom Stack RFC](https://github.com/cloudfoundry/community/pull/1251) to unblock themselves by taking over ownership
   of the stack in the case they cannot/don't want to follow the lifecycle of Stacks
   provided by the CF Community.
 
