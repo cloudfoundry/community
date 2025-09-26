@@ -68,7 +68,7 @@ areas:
   - cloudfoundry/app-autoscaler-env-bbl-state
   - cloudfoundry/app-runtime-interfaces-infrastructure
 
-- name: Buildpacks Go
+- name: Buildpacks and Stacks
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -78,12 +78,6 @@ areas:
     github: robdimsdale
   - name: Simon Jones
     github: simonjjones
-  repositories:
-  - cloudfoundry/go-buildpack
-  - cloudfoundry/go-buildpack-release
-
-- name: Buildpacks Java
-  approvers:
   - name: Daniel Mikusa
     github: dmikusa
   - name: David O'Sullivan
@@ -92,7 +86,17 @@ areas:
     github: kevin-ortega
   - name: Anthony Dahanne
     github: anthonydahanne
+  - name: Teodora Nikolova
+    github: tnikolova82
+  - name: Tsvetelina Marinova
+    github: ivanovac
+  - name: Plamen Bardarov
+    github: plamen-bardarov
+  - name: Ramon Makkelie
+    github: ramonskie
   repositories:
+  - cloudfoundry/go-buildpack
+  - cloudfoundry/go-buildpack-release
   - cloudfoundry/ibm-websphere-liberty-buildpack
   - cloudfoundry/java-buildpack
   - cloudfoundry/java-buildpack-auto-reconfiguration
@@ -107,144 +111,24 @@ areas:
   - cloudfoundry/java-buildpack-system-test
   - cloudfoundry/java-test-applications
   - cloudfoundry/jvmkill
-
-- name: Buildpacks .Net Core
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
   - cloudfoundry/dotnet-core-buildpack
   - cloudfoundry/dotnet-core-buildpack-release
-
-- name: Buildpacks .NET Framework
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
   - cloudfoundry/hwc-buildpack
   - cloudfoundry/hwc-buildpack-release
-
-- name: Buildpacks Node.js
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  - name: Teodora Nikolova
-    github: tnikolova82
-  - name: Tsvetelina Marinova
-    github: ivanovac
-  repositories:
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
-
-- name: Buildpacks PHP
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
-  - cloudfoundry/php-buildpack
-  - cloudfoundry/php-buildpack-release
-
-- name: Buildpacks Python
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  - name: Teodora Nikolova
-    github: tnikolova82
-  - name: Tsvetelina Marinova
-    github: ivanovac
-  repositories:
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
-
-- name: Buildpacks R
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
   - cloudfoundry/r-buildpack
   - cloudfoundry/r-buildpack-release
-
-- name: Buildpacks Ruby
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
   - cloudfoundry/ruby-buildpack
   - cloudfoundry/ruby-buildpack-release
-
-- name: Buildpacks Stacks
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  - name: Plamen Bardarov
-    github: plamen-bardarov
-  repositories:
   - cloudfoundry/cflinuxfs4
   - cloudfoundry/cflinuxfs4-compat-release
   - cloudfoundry/cflinuxfs4-release
   - cloudfoundry/cflinuxfs5
   - cloudfoundry/cflinuxfs5-release
   - cloudfoundry/stack-auditor
-
-- name: Buildpacks Tooling
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
   - cloudfoundry/binary-builder
   - cloudfoundry/brats
   - cloudfoundry/buildpack-packager
@@ -257,40 +141,9 @@ areas:
   - cloudfoundry/libbuildpack
   - cloudfoundry/public-buildpacks-ci-robots
   - cloudfoundry/switchblade
-
-- name: Buildpacks Utilities
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Daniel Mikusa
-    github: dmikusa
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: David O'Sullivan
-    github: pivotal-david-osullivan
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  reviewers:
-  - name: Anthony Dahanne
-    github: anthonydahanne
-  repositories:
   - cloudfoundry/apt-buildpack
   - cloudfoundry/binary-buildpack
   - cloudfoundry/binary-buildpack-release
-
-- name: Buildpacks Web Servers
-  approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Simon Jones
-    github: simonjjones
-  repositories:
   - cloudfoundry/nginx-buildpack
   - cloudfoundry/nginx-buildpack-release
   - cloudfoundry/staticfile-buildpack
