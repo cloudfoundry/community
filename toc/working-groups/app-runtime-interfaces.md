@@ -331,8 +331,6 @@ areas:
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
-  - name: George Gelashvili
-    github: pivotalgeorge
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
@@ -373,8 +371,6 @@ areas:
     github: joaopapereira
   - name: Sam Gunaratne
     github: samze
-  - name: Greg Weresch
-    github: weresch
   reviewers:
   - name: George Gelashvili
     github: pivotalgeorge
@@ -382,8 +378,6 @@ areas:
     github: PeteLevineA
   - name: Tim Downey
     github: tcdowney
-  - name: Michael Chinigo
-    github: chinigo
   - name: Daria Anton
     github: Dariquest
   bots:
@@ -461,8 +455,6 @@ areas:
     github: theghost5800
   - name: Boyan Velinov
     github: boyan-velinov
-  - name: Rangel Ivanov
-    github: radito3
   - name: Ikasarov
     github: ikasarov
   - name: Velizar Kalapov
@@ -513,15 +505,11 @@ areas:
     github: wayneeseguin
   - name: Norm Abromovitz
     github: norman-abramovitz
-  - name: Ioannis Tsouvalas
-    github: itsouvalas
   reviewers:
   - name: Dr. Xiujiao Gao
     github: xiujiao
   - name: Dennis Bell
     github: dennisjbell
-  - name: Dr. Hu
-    github: haochenhu233
 
   repositories:
   - cloudfoundry/stratos
