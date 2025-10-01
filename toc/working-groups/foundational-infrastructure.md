@@ -89,10 +89,6 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   reviewers:
-  - name: Harish Yayi
-    github: yharish991
-  - name: Indira Chandrabhatta
-    github: ichandrabhatta
   - name: Nader Ziada
     github: nader-ziada
   - name: Nitin Ravindran
@@ -108,8 +104,6 @@ areas:
     github: dlresende
   - name: George Blue
     github: blgm
-  - name: Konstantin Kiess
-    github: nouseforaname
   - name: Long Nguyen
     github: lnguyen
   - name: Maya Rosecrance
@@ -130,9 +124,6 @@ areas:
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
-  bots:
-  - name: tas-operability-bot
-    github: tas-operability-bot
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
@@ -254,14 +245,8 @@ areas:
     github: mvach
   - name: Long Nguyen
     github: lnguyen
-  - name: Brian Cunnie
-    github: cunnie
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Konstantin Kiess
-    github: nouseforaname
-  - name: Max Soest
-    github: max-soe
   - name: Aram Price
     github: aramprice
   - name: Shilpa Chandrashekara
@@ -310,14 +295,8 @@ areas:
     github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Benjamin Gandon
-    github: bgandon
-  - name: Brian Cunnie
-    github: cunnie
   - name: Aram Price
     github: aramprice
-  - name: Konstantin Kiess
-    github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
   - name: Maya Rosecrance
@@ -349,8 +328,6 @@ areas:
   - name: Felix Moehler
     github: fmoehler
   reviewers:
-  - name: Benjamin Gandon
-    github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Alexander Lais
@@ -458,14 +435,8 @@ areas:
     github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Benjamin Gandon
-    github: bgandon
-  - name: Brian Cunnie
-    github: cunnie
   - name: Aram Price
     github: aramprice
-  - name: Konstantin Kiess
-    github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
   - name: Maya Rosecrance
@@ -527,8 +498,6 @@ areas:
   - name: Stephan Merker
     github: stephanme
   reviewers:
-  - name: Benjamin Gandon
-    github: bgandon
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Alexander Lais
@@ -543,8 +512,6 @@ areas:
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
-  - name: George Gelashvili
-    github: pivotalgeorge
   repositories:
   - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/bosh-azure-storage-cli
