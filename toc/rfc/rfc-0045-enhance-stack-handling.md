@@ -3,7 +3,7 @@
 - Name: Enhance Stack Handling in Cloud Foundry
 - Start Date: 2025-06-24
 - Author(s): @FloThinksPi
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: [community#1220](https://github.com/cloudfoundry/community/pull/1220)
 
 ## Summary
@@ -51,7 +51,7 @@ on the stack to produce the droplet. This in return means that:
   CAN just be instantiated to become an app instance when combining the droplet
   with the same stack it was built with at execution time
 
-![Current Stack Usage](rfc-draft-enhance-stack-handling/current_stack_usage.png)
+![Current Stack Usage](rfc-0045-enhance-stack-handling/current_stack_usage.png)
 Pictured in above diagram is how the stack is brought into a CF
 Foundation and used in a CF Foundation. The following problems occur
 when trying to remove/deprecate a stack towards users of a CF
