@@ -94,6 +94,11 @@ areas:
     github: plamen-bardarov
   - name: Ramon Makkelie
     github: ramonskie
+  bots:
+  - name: Cloud Foundry Buildpacks Team Robot
+    github: cf-buildpacks-eng
+  - name: ARI WG Git Bot
+    github: ari-wg-gitbot
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
