@@ -63,6 +63,7 @@ areas:
   - name: App Autoscaler CI Bot
     github: app-autoscaler-ci-bot
   repositories:
+  - cloudfoundry/app-autoscaler
   - cloudfoundry/app-autoscaler-release
   - cloudfoundry/app-autoscaler-cli-plugin
   - cloudfoundry/app-autoscaler-env-bbl-state
