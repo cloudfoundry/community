@@ -118,8 +118,6 @@ areas:
     github: alphasite
   - name: Rajan Agaskar
     github: ragaskar
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -270,8 +268,6 @@ areas:
     github: nader-ziada
   - name: Nishad Mathur
     github: alphasite
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -330,8 +326,6 @@ areas:
     github: nader-ziada
   - name: Nishad Mathur
     github: alphasite
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -476,8 +470,6 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
