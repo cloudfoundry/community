@@ -368,6 +368,12 @@ areas:
     github: norman-abramovitz
   - name: Ioannis Tsouvalas
     github: itsouvalas
+  - name: Tristan Poland
+    github: tristanpoland
+  - name: Jan Lucca Patzelt
+    github: patzeltj
+  - name: Matthias Folz
+    github: mafolz
   reviewers:
   - name: Dr. Xiujiao Gao
     github: xiujiao
