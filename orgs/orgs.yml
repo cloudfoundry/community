@@ -28,7 +28,7 @@ orgs:
         description: Cloud Controller API Docs
         has_projects: true
       app-autoscaler:
-        archived: true
+        archived: false
         default_branch: main
         description: Auto Scaling for CF Applications
         has_projects: true
