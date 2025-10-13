@@ -117,6 +117,8 @@ areas:
   - cloudfoundry/hwc-buildpack-release
   - cloudfoundry/nodejs-buildpack
   - cloudfoundry/nodejs-buildpack-release
+  - cloudfoundry/php-buildpack
+  - cloudfoundry/php-buildpack-release
   - cloudfoundry/python-buildpack
   - cloudfoundry/python-buildpack-release
   - cloudfoundry/r-buildpack
