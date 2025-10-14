@@ -16,7 +16,7 @@ otherwise downtimes of applications that rely on the removed stack will
 occur. This RFC proposes improvements in CF to shift this unavailability
 towards lifecycle operations and not actual app downtime - making it a
 more pleasant experience for CF users and operators alike.
-This RFC proposes a way for CF Users that cannot follow a stack removal process as described in RFC-0041 to take over the responsibility for their stack and run it as a custom stack, while not needing to mimick the CF staging behaviour and building an own docker application to be able to run with a depricated/locked/disabled/removed stack.
+This RFC proposes a way for CF Users that cannot follow a stack removal process as described in [RFC-0045](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0045-enhance-stack-handling.md) to take over the responsibility for their stack and run it as a custom stack, while not needing to mimick the CF staging behaviour and building an own docker application to be able to run with a depricated/locked/disabled/removed stack.
 It also opens up possibilities for CF Users to not rely on the CF Foundations stacks but rather use their own stacks to gain independence and release the dependency on the CF Community\'s stack release cadence deliberately on the users choice.
 
 ## Table of Contents
@@ -62,13 +62,13 @@ on the stack to produce the droplet. This in return means that:
   CAN just be instantiated to become an app instance when combining the droplet
   with the same stack it was built with at execution time
 
-![Current Stack Usage](rfc-0041-provide-custom-stacks-functionality/current_stack_usage.png)
+![Current Stack Usage](rfc-draft-provide-custom-stacks-functionality/current_stack_usage.png)
 Pictured in above diagram is how the stack is brought into a CF
 Foundation and used in a CF Foundation. The following problems occur
 when trying to remove/deprecate a stack towards users of a CF
 Foundation.
 
-Due to [RFC-39](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0039-noble-based-cflinuxfs5.md), these struggles with the stack become a more pressing issue for CF Foundation operators and users since many still use CFLinuxFS3 and the migration to CFLinuxFS4 is not yet complete for many users. The current stack handling in CF does not allow for a smooth transition and leads to potential downtimes for applications when a stack is removed from the CF Foundation.
+Due to [RFC-0039](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0039-noble-based-cflinuxfs5.md), these struggles with the stack become a more pressing issue for CF Foundation operators and users since many still use CFLinuxFS3 and the migration to CFLinuxFS4 is not yet complete for many users. The current stack handling in CF does not allow for a smooth transition and leads to potential downtimes for applications when a stack is removed from the CF Foundation.
 
 ### Usage
 
@@ -335,7 +335,7 @@ We would allow CF Operators to programatically change the stack of all applicati
 
 #### Positive
 
-- When we would prevent staging with a deprecated/locked/removed stack (RFC-40)
+- When we would prevent staging with a deprecated/locked/removed stack ([RFC-0045](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0045-enhance-stack-handling.md))
   we still CAN offer the user a way forward in his full responsibility
   to be unblocked and to own the whole applications stack end-to-end to
   take their own decisions.
