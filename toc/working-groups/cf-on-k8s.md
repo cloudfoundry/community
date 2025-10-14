@@ -53,6 +53,8 @@ areas:
     github: tcdowney
   - name: Yusmen Zabanov
     github: uzabanov
+  - name: Robert Gogolok
+    github: gogolok
   repositories:
   - cloudfoundry/cf-k8s-secrets
   - cloudfoundry/korifi
