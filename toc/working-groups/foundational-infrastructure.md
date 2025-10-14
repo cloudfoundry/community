@@ -535,6 +535,7 @@ areas:
   - cloudfoundry/bosh-davcli
   - cloudfoundry/bosh-gcscli
   - cloudfoundry/bosh-s3cli
+  - cloudfoundry/storage-cli
 
 config:
   github_project_sync:
