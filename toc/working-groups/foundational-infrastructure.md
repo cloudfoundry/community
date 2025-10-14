@@ -104,6 +104,8 @@ areas:
     github: ystros
   - name: Chris Selzo
     github: selzoc
+  - name: Clay Kauzlaric
+    github: KauzClay
   - name: Diego Lemos
     github: dlresende
   - name: George Blue
@@ -510,6 +512,8 @@ areas:
     github: gerg
   - name: Stephan Merker
     github: stephanme
+  - name: Clay Kauzlaric
+    github: KauzClay
   reviewers:
   - name: Benjamin Gandon
     github: bgandon
@@ -517,8 +521,6 @@ areas:
     github: Sascha-Stoj
   - name: Alexander Lais
     github: peanball
-  - name: Clay Kauzlaric
-    github: KauzClay
   - name: Al Berez
     github: a-b
   - name: Evan Farrar
