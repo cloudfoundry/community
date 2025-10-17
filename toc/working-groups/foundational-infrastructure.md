@@ -276,6 +276,8 @@ areas:
     github: neddp
   - name: Danitsa Kostova
     github: lunaticomic-vc
+  - name: Saumya Dudeja
+    github: dudejas
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -328,6 +330,8 @@ areas:
     github: neddp
   - name: Danitsa Kostova
     github: lunaticomic-vc
+  - name: Saumya Dudeja
+    github: dudejas
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
