@@ -28,7 +28,7 @@ orgs:
         description: Cloud Controller API Docs
         has_projects: true
       app-autoscaler:
-        archived: true
+        archived: false
         default_branch: main
         description: Auto Scaling for CF Applications
         has_projects: true
@@ -76,10 +76,12 @@ orgs:
         has_issues: false
         has_projects: true
       auction:
+        archived: true
         description: Auction encodes Diego's long-running-process distribution algorithm
         has_issues: false
         has_projects: true
       auctioneer:
+        archived: true
         description: Runs diego auctions
         has_issues: false
         has_projects: true
@@ -450,6 +452,7 @@ orgs:
         has_projects: false
         has_wiki: true
       bsdtar:
+        archived: true
         has_projects: true
         has_wiki: false
       build-system-cnb:
@@ -805,6 +808,7 @@ orgs:
       cfcd-prep:
         has_projects: true
       cfdot:
+        archived: true
         description: A command-line tool to interact with a Cloud Foundry Diego deployment.
         has_issues: false
         has_projects: true
@@ -1103,6 +1107,7 @@ orgs:
         description: BOSH Release for Diego
         has_projects: true
       diego-ssh:
+        archived: true
         description: Access Diego containers with ssh
         has_issues: false
         has_projects: true
@@ -1232,6 +1237,7 @@ orgs:
         has_issues: false
         has_projects: true
       ecrhelper:
+        archived: true
         has_issues: false
         has_projects: true
       eirini:
@@ -1296,6 +1302,7 @@ orgs:
       filelock:
         has_projects: true
       fileserver:
+        archived: true
         description: 'Bob Loblaw''s file server '
         has_issues: false
         has_projects: true
@@ -1496,6 +1503,7 @@ orgs:
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
       healthcheck:
+        archived: true
         description: Common healthcheck for buildpacks and docker
         has_issues: false
         has_projects: true
@@ -1686,6 +1694,7 @@ orgs:
         archived: true
         has_projects: true
       localdriver:
+        archived: true
         has_issues: false
         has_projects: true
       localip:
@@ -1935,6 +1944,7 @@ orgs:
         archived: true
         has_projects: true
       operationq:
+        archived: true
         description: processes multiple queues in parallel
         has_issues: false
         has_projects: true
@@ -2087,6 +2097,7 @@ orgs:
         has_projects: true
         archived: true
       route-emitter:
+        archived: true
         description: Registers and unregisters processes running on executors with
           the gorouter
         has_issues: false
@@ -2341,6 +2352,11 @@ orgs:
       steno:
         has_projects: true
         has_wiki: false
+      storage-cli:
+        description: Go CLI for storage access on different IaaS providers
+        default_branch: main
+        has_projects: false
+        has_wiki: false
       stratos:
         description: 'Stratos: Web-based Management UI for Cloud Foundry and Kubernetes'
         has_projects: true
@@ -2508,10 +2524,12 @@ orgs:
         has_projects: true
         has_wiki: false
       vizzini:
+        archived: true
         description: 'Vizzini: Inconceivable Tests'
         has_issues: false
         has_projects: true
       volman:
+        archived: true
         has_issues: false
         has_projects: true
       volume-mount-options:
@@ -2561,6 +2579,7 @@ orgs:
         default_branch: develop
         has_projects: true
       workpool:
+        archived: true
         has_issues: false
         has_projects: true
       yagnats:

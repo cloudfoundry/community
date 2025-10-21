@@ -182,7 +182,7 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | &nbsp;                                                           | Leads             | Company | Profile                                 |
 | ---------------------------------------------------------------- | ----------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/dmikusa.png">          | Daniel Mikusa     | VMware  | [@dmikusa](https://github.com/dmikusa) |
-| <img width="30px" src="https://github.com/ForestEckhardt.png">   | Forest Eckhardt   | VMware  | [@ForestEckhardt](https://github.com/ForestEckhardt) |
+| <img width="30px" src="https://github.com/jericop.png">          | Jerico Pena       | Rapid7  | [@jericop](https://github.com/jericop) |
 | <img width="30px" src="https://github.com/loewenstein-sap.png">  | Jan von Löwenstein| SAP     | [@loewenstein-sap](https://github.com/loewenstein-sap) |
 
 

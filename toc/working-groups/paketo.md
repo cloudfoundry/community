@@ -40,15 +40,15 @@ Technical assets for the Paketo working group are contained in the following Git
 ```yaml
 name: Paketo
 execution_leads:
-- name: Forest Eckhardt
-  github: ForestEckhardt
+- name: Jerico Pena
+  github: jericop
 - name: Daniel Mikusa
   github: dmikusa
 - name: Jan von Löwenstein
   github: loewenstein-sap
 technical_leads:
-- name: Forest Eckhardt
-  github: ForestEckhardt
+- name: Jerico Pena
+  github: jericop
 - name: Daniel Mikusa
   github: dmikusa
 - name: Jan von Löwenstein

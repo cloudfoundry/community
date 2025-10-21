@@ -48,10 +48,6 @@ areas:
   reviewers:
   - github: oliver-heinrich
     name: Oliver Heinrich
-  - github: Milena-Encheva
-    name: Milena Encheva
-  - github: hamideh-amini-khezrabad
-    name: Hamideh Amini Khezrabad 
   approvers:
   - github: davewalter
     name: Dave Walter
@@ -67,6 +63,10 @@ areas:
     name: Aftab Alam
   - github: dimivel
     name: Dimitar Velinov
+  - github: Milena-Encheva
+    name: Milena Encheva
+  - github: hamideh-amini-khezrabad
+    name: Hamideh Amini Khezrabad 
   repositories:
   - cloudfoundry/app-runtime-deployments-infrastructure
   - cloudfoundry/cf-acceptance-tests

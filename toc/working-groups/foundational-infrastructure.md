@@ -89,18 +89,10 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   reviewers:
-  - name: claire t.
-    github: Spimtav
-  - name: Harish Yayi
-    github: yharish991
-  - name: Indira Chandrabhatta
-    github: ichandrabhatta
   - name: Nader Ziada
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Rui Yang
-    github: xtremerui
   approvers:
   - name: Aram Price
     github: aramprice
@@ -108,20 +100,20 @@ areas:
     github: ystros
   - name: Chris Selzo
     github: selzoc
+  - name: Clay Kauzlaric
+    github: KauzClay
   - name: Diego Lemos
     github: dlresende
   - name: George Blue
     github: blgm
-  - name: Konstantin Kiess
-    github: nouseforaname
   - name: Long Nguyen
     github: lnguyen
   - name: Maya Rosecrance
     github: mrosecrance
+  - name: Nishad Mathur
+    github: alphasite
   - name: Rajan Agaskar
     github: ragaskar
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -132,9 +124,6 @@ areas:
   - cloudfoundry/bosh-backup-and-restore-test-releases
   - cloudfoundry/bosh-disaster-recovery-acceptance-tests
   - cloudfoundry/exemplar-backup-and-restore-release
-  bots:
-  - name: tas-operability-bot
-    github: tas-operability-bot
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
@@ -225,17 +214,11 @@ areas:
   approvers:
   - name: Ben Fuller
     github: Benjamintf1
-  - name: Carson Long
-    github: ctlong
-  - name: Ivan Protsiuk
-    github: iprotsiuk
   - name: Jovan Kostovski
     github: chombium
   reviewers:
-  - name: Ausaf Ahmed
-    github: aqstack
-  - name: Glenn Oppegard
-    github: oppegard
+  - name: Wei Li
+    github: weili-broadcom
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
@@ -254,14 +237,8 @@ areas:
     github: mvach
   - name: Long Nguyen
     github: lnguyen
-  - name: Brian Cunnie
-    github: cunnie
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Konstantin Kiess
-    github: nouseforaname
-  - name: Max Soest
-    github: max-soe
   - name: Aram Price
     github: aramprice
   - name: Shilpa Chandrashekara
@@ -276,8 +253,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
-  - name: Rajath Agasthya
-    github: rajathagasthya
+  - name: Nishad Mathur
+    github: alphasite
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -288,19 +265,21 @@ areas:
     github: fmoehler
   - name: Ahmed Hassanin
     github: a-hassanin
+  - name: Clay Kauzlaric
+    github: KauzClay
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
-  - name: Nishad Mathur
-    github: alphasite
-  - name: Clay Kauzlaric
-    github: KauzClay
   - name: Ivaylo Ivanov
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
   - name: Yuri Adam
     github: yuriadam-sap
+  - name: Danitsa Kostova
+    github: lunaticomic-vc
+  - name: Saumya Dudeja
+    github: dudejas
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -310,14 +289,8 @@ areas:
     github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Benjamin Gandon
-    github: bgandon
-  - name: Brian Cunnie
-    github: cunnie
   - name: Aram Price
     github: aramprice
-  - name: Konstantin Kiess
-    github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
   - name: Maya Rosecrance
@@ -336,8 +309,8 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
-  - name: Rajath Agasthya
-    github: rajathagasthya
+  - name: Nishad Mathur
+    github: alphasite
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -346,23 +319,23 @@ areas:
     github: benjaminguttmann-avtq
   - name: Felix Moehler
     github: fmoehler
-  reviewers:
-  - name: Benjamin Gandon
-    github: bgandon
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
-  - name: Nishad Mathur
-    github: alphasite
-  - name: Alexander Lais
-    github: peanball
   - name: Clay Kauzlaric
     github: KauzClay
+  reviewers:
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
+  - name: Alexander Lais
+    github: peanball
   - name: Ivaylo Ivanov
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
   - name: Yuri Adam
     github: yuriadam-sap
+  - name: Danitsa Kostova
+    github: lunaticomic-vc
+  - name: Saumya Dudeja
+    github: dudejas
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
@@ -408,7 +381,6 @@ areas:
   - cloudfoundry/bosh-warden-cpi-release
   - cloudfoundry/bosh-windows-stemcell-builder
   - cloudfoundry/bpm-release
-  - cloudfoundry/bsdtar
   - cloudfoundry/config-server
   - cloudfoundry/config-server-release
   - cloudfoundry/docs-bosh
@@ -459,14 +431,8 @@ areas:
     github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
-  - name: Benjamin Gandon
-    github: bgandon
-  - name: Brian Cunnie
-    github: cunnie
   - name: Aram Price
     github: aramprice
-  - name: Konstantin Kiess
-    github: nouseforaname
   - name: Rajan Agaskar
     github: ragaskar
   - name: Maya Rosecrance
@@ -485,8 +451,6 @@ areas:
     github: xtreme-nitin-ravindran
   - name: Nader Ziada
     github: nader-ziada
-  - name: Rajath Agasthya
-    github: rajathagasthya
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Ming Xiao
@@ -505,6 +469,8 @@ areas:
     github: johha
   - name: Michael Oleske
     github: moleske
+  - name: Nishad Mathur
+    github: alphasite
   - name: Seth Boyles
     github: sethboyles
   - name: Sven Krieger
@@ -525,17 +491,13 @@ areas:
     github: gerg
   - name: Stephan Merker
     github: stephanme
-  reviewers:
-  - name: Benjamin Gandon
-    github: bgandon
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
-  - name: Nishad Mathur
-    github: alphasite
-  - name: Alexander Lais
-    github: peanball
   - name: Clay Kauzlaric
     github: KauzClay
+  reviewers:
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
+  - name: Alexander Lais
+    github: peanball
   - name: Al Berez
     github: a-b
   - name: Evan Farrar
@@ -544,14 +506,13 @@ areas:
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
-  - name: George Gelashvili
-    github: pivotalgeorge
   repositories:
   - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/bosh-azure-storage-cli
   - cloudfoundry/bosh-davcli
   - cloudfoundry/bosh-gcscli
   - cloudfoundry/bosh-s3cli
+  - cloudfoundry/storage-cli
 
 config:
   github_project_sync:

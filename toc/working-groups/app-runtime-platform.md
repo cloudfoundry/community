@@ -106,41 +106,28 @@ areas:
     github: peanball
   repositories:
   - cloudfoundry/archiver
-  - cloudfoundry/auction
-  - cloudfoundry/auctioneer
   - cloudfoundry/bbs
   - cloudfoundry/buildpackapplifecycle
   - cloudfoundry/bytefmt
   - cloudfoundry/cacheddownloader
   - cloudfoundry/certsplitter
-  - cloudfoundry/cfdot
   - cloudfoundry/cfhttp
   - cloudfoundry/clock
   - cloudfoundry/debugserver
   - cloudfoundry/runtime-ci-pools
   - cloudfoundry/diego-logging-client
   - cloudfoundry/diego-release
-  - cloudfoundry/diego-ssh
   - cloudfoundry/diego-upgrade-stability-tests
   - cloudfoundry/dockerdriver
   - cloudfoundry/durationjson
-  - cloudfoundry/ecrhelper
   - cloudfoundry/eventhub
   - cloudfoundry/executor
-  - cloudfoundry/fileserver
   - cloudfoundry/grace
-  - cloudfoundry/healthcheck
   - cloudfoundry/lager
-  - cloudfoundry/localdriver
   - cloudfoundry/localip
   - cloudfoundry/locket
-  - cloudfoundry/operationq
   - cloudfoundry/rep
-  - cloudfoundry/route-emitter
   - cloudfoundry/tlsconfig
-  - cloudfoundry/vizzini
-  - cloudfoundry/volman
-  - cloudfoundry/workpool
   - cloudfoundry/wg-app-platform-runtime-ci
 
 - name: Garden Containers
@@ -200,8 +187,6 @@ areas:
     github: geofffranks
   - name: Chris Selzo
     github: selzoc
-  - name: Carson Long
-    github: ctlong
   - name: Matthew Kocher
     github: mkocher
   - name: Amin Jamali
@@ -213,18 +198,14 @@ areas:
     github: ZPascal
   - name: Felix Hambrecht
     github: fhambrec
-  - name: Glenn Oppegard
-    github: oppegard
-  - name: Ausaf Ahmed
-    github: aqstack
-  - name: Ivan Protsiuk
-    github: iprotsiuk
   - name: Andrew Costa
     github: acosta11
   - name: Karthick Udayakumar
     github: kart2bc
   - name: Tim Downey
     github: tcdowney
+  - name: Wei Li
+    github: weili-broadcom
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
@@ -256,16 +237,15 @@ areas:
 
 - name: Metric Store
   approvers:
-  - name: Jeanette Booher
-    github: jbooherl
   - name: Chaitanya Krishna Mullangi
     github: chaitanyamullangi
   - name: Shrisha Chandrashekar
     github: shrisha-c
   - name: Srinivas Sunka
     github: ssunka
-  - name: Carson Long
-    github: ctlong
+  reviewers:
+  - name: Wei Li
+    github: weili-broadcom
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
