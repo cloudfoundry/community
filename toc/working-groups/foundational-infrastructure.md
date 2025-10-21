@@ -332,6 +332,8 @@ areas:
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
+  - name: Sebastian Heid
+    github: s4heid
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
