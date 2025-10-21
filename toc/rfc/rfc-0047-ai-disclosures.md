@@ -3,8 +3,8 @@
 - Name: Require AI Tooling Disclosures for Contributions
 - Start Date: August 28, 2025
 - Author(s): @gerg
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#1297](https://github.com/cloudfoundry/community/pull/1297)
 
 
 ## Summary
