@@ -319,6 +319,8 @@ areas:
     github: fmoehler
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Sebastian Heid
+    github: s4heid
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
@@ -332,8 +334,6 @@ areas:
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
-  - name: Sebastian Heid
-    github: s4heid
   repositories:
   - cloudfoundry/bbl-state-resource
   - cloudfoundry/bosh
