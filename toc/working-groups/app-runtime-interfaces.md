@@ -42,6 +42,10 @@ bots:
   github: cf-buildpacks-eng
 - name: ARI WG Git Bot
   github: ari-wg-gitbot
+config:
+  github_project_sync:
+    mapping:
+      cloudfoundry: 26
 areas:
 - name: Autoscaler
   approvers:
