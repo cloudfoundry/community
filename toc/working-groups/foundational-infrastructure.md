@@ -274,6 +274,8 @@ areas:
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
+  - name: Yuri Adam
+    github: yuriadam-sap
   - name: Danitsa Kostova
     github: lunaticomic-vc
   - name: Saumya Dudeja
@@ -328,6 +330,8 @@ areas:
     github: ivaylogi98
   - name: Ned Petrov
     github: neddp
+  - name: Yuri Adam
+    github: yuriadam-sap
   - name: Danitsa Kostova
     github: lunaticomic-vc
   - name: Saumya Dudeja
