@@ -321,6 +321,8 @@ areas:
     github: fmoehler
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Sebastian Heid
+    github: s4heid
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
