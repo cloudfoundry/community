@@ -2662,6 +2662,7 @@ orgs:
         members: []
         privacy: closed
         repos:
+          app-autoscaler: admin
           app-autoscaler-release: admin
           app-autoscaler-cli-plugin: admin
           app-runtime-interfaces-infrastructure: admin
