@@ -216,6 +216,8 @@ areas:
     github: Benjamintf1
   - name: Jovan Kostovski
     github: chombium
+  - name: Joris Baum
+    github: jorbaum
   reviewers:
   - name: Wei Li
     github: weili-broadcom
