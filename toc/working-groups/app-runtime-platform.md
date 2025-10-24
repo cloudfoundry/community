@@ -194,6 +194,8 @@ areas:
   - name: Jovan Kostovski
     github: chombium
   reviewers:
+  - name: Joris Baum
+    github: jorbaum
   - name: Pascal Zimmermann
     github: ZPascal
   - name: Felix Hambrecht
