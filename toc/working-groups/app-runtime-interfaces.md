@@ -95,6 +95,9 @@ areas:
     github: plamen-bardarov
   - name: Ramon Makkelie
     github: ramonskie
+  reviewers:
+  - name: Wayne E. Seguin
+    github: wayneeseguin
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
@@ -359,7 +362,7 @@ areas:
   approvers:
   - name: Kevin Rutten
     github: krutten
-  - name: Wayne Seguin
+  - name: Wayne E. Seguin
     github: wayneeseguin
   - name: Norm Abromovitz
     github: norman-abramovitz
