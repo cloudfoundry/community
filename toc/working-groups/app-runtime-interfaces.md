@@ -361,6 +361,8 @@ areas:
     github: wayneeseguin
   - name: Norm Abromovitz
     github: norman-abramovitz
+  - name: Ioannis Tsouvalas
+    github: itsouvalas
   reviewers:
   - name: Dr. Xiujiao Gao
     github: xiujiao
