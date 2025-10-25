@@ -236,6 +236,8 @@ areas:
     github: tcdowney
   - name: Daria Anton
     github: Dariquest
+  - name: João Viegas
+    github: jcvrabo
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
