@@ -103,11 +103,16 @@ the necessary capability `CAP_NET_RAW` will be assigned
 to the executable via file capabilities. This allows regular users to gain those
 capabilities when executing the binary.
 
+The functionality is limited to network capturing with the aforementioned scope
+of selected network interface, filtering expression in pcap-filter format and
+length of captured packets. This reduces the attack surface, compared to
+invoking a full `tcpdump`.
+
 ### CF CLI: New `pcap` command
 
-Similar to the `bosh pcap` command a `cf pcap` command will be added. Like its
-predecessor it will connect to the desired instances via SSH and execute the new
-packet capturing tool and stream back the captured packets via stdout. If there
+Similar to the `bosh pcap` command, a `cf pcap` command will be added. Like its
+counterpart, it will connect to the desired instances via SSH and execute the new
+packet capturing tool and stream back the captured packets via stdout and thus via SSH. If there
 are multiple streams, the CLI will merge them and write them out to a single
 file in the pcap format.
 
