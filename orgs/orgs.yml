@@ -2359,9 +2359,11 @@ orgs:
         has_wiki: false
       stratos:
         description: 'Stratos: Web-based Management UI for Cloud Foundry and Kubernetes'
+        default_branch: deveop
         has_projects: true
       stratos-buildpack:
         description: Custom buildpack Stratos (UI for Cloud Foundry)
+        default_branch: deveop
         has_projects: true
       summit-hands-on-labs:
         description: Hands-on Labs for CF Summit Boston '18 and beyond
