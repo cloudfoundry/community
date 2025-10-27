@@ -10,7 +10,7 @@
 
 Add a feature to Cloud Foundry that provides application developers with the
 ability to perform packet capture (tcpdump) operations within their
-application containers for debugging purposes. This RFC complements 
+application containers for debugging purposes. This RFC complements
 [RFC-0019 (pcap-bosh)](rfc-0019-pcap-bosh.md) by extending packet capture
 capabilities from BOSH-level infrastructure debugging to application-level
 debugging.
@@ -80,7 +80,7 @@ Even considering that we could configure sudo in a way that the vcap user is
 only allowed to perform verify specific tasks (like running tcpdump) this still
 suffers from potential privilege escalation as explained in the next section.
 
-#### Option 2: `setcap` on `tcpdump` Binary  
+#### Option 2: `setcap` on `tcpdump` Binary
 
 Setting capabilities on the existing `tcpdump` binary was considered but
 discarded because:
