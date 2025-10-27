@@ -35,9 +35,16 @@ at the BOSH infrastructure level for platform operators. Application developers
 and operators, an equally important group of users, need similar capabilities,
 scoped to their individual applications.
 
-The challenge is providing this functionality while maintaining the security
-model of Cloud Foundry, where applications run in isolated, unprivileged
-containers.
+While platform traffic can be secured from eavesdropping, e.g. via TLS, access
+to the network traffic in a container will contain sensitive and possibly
+private information. 
+
+Elevated privileges of any kind can easily be misused, and it is paramount that
+the security model of Cloud Foundry remains intact, where applications usually
+run in isolated, unprivileged containers.
+
+Any solution must consider that network capture is a privilege that has to be
+enabled explicitly, not given by default and can be forbidden altogether.
 
 ## Proposal: Custom Packet Capturing Tool
 
@@ -56,7 +63,7 @@ which are strictly necessary to capture packets, namely:
 
 The tool would be injected via Diego using a mechanism similar to
 [diego-ssh][diego-ssh]. This ensures that the tool is available in all apps
-regardeless of the deployment method and it follows established patterns that
+regardless of the deployment method, and it follows established patterns that
 are already known by maintainers.
 
 The tool has the necessary file capability `CAP_NET_RAW` assigned
