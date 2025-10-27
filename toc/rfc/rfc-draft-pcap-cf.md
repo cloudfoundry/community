@@ -59,8 +59,8 @@ The tool would be injected via Diego using a mechanism similar to
 regardeless of the deployment method and it follows established patterns that
 are already known by maintainers.
 
-The tool has the necessary file capabilities assigned (`CAP_NET_RAW` and
-`CAP_NET_ADMIN`) to be able to capture packets. It remains in the namespaces of
+The tool has the necessary file capability `CAP_NET_RAW` assigned
+to be able to capture packets. It remains in the namespaces of
 the application to ensure a vulnerability in the tool does not enable a
 container escape.
 
@@ -99,7 +99,7 @@ it.
 A new package will be added to diego-release which implements packet capturing
 in go through the [gopacket][gopacket] library. The resulting binary will be included in
 the various lifecycle archives that are added to the final app container and
-the necessary capabilities (`CAP_NET_RAW` and `CAP_NET_ADMIN`) will be assigned
+the necessary capability `CAP_NET_RAW` will be assigned
 to the executable via file capabilities. This allows regular users to gain those
 capabilities when executing the binary.
 
