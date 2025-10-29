@@ -98,6 +98,10 @@ areas:
   reviewers:
   - name: Wayne E. Seguin
     github: wayneeseguin
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  - name: Michael Both
+    github: ionphractal
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
