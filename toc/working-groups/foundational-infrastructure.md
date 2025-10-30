@@ -217,6 +217,8 @@ areas:
   - name: Jovan Kostovski
     github: chombium
   reviewers:
+  - name: Joris Baum
+    github: jorbaum
   - name: Wei Li
     github: weili-broadcom
   repositories:
