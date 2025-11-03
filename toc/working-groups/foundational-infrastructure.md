@@ -510,6 +510,8 @@ areas:
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
+  - name: Serdar Özer
+    github: serdarozerr
   repositories:
   - cloudfoundry/bosh-ali-storage-cli
   - cloudfoundry/bosh-azure-storage-cli
