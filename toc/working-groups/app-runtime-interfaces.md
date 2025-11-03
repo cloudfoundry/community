@@ -194,6 +194,8 @@ areas:
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
+  - name: Serdar Özer
+    github: serdarozerr
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
