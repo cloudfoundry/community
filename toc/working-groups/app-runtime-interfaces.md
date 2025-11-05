@@ -307,6 +307,8 @@ areas:
   - name: Gourab Mukherjee
     github: Gourab1998
   reviewers:
+  - name: Anugrah Gupta
+    github: ANUGRAHG
   - name: Bhuvisha N
     github: Bhuvisha03
   repositories:
