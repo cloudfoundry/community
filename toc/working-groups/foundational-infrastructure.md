@@ -47,8 +47,6 @@ bots:
   github: cf-bosh-ci-bot
 - name: cf-uaa-ci-bot
   github: cf-identity
-- name: Cryogenics-CI
-  github: Cryogenics-CI
 - name: mysql-ci
   github: pcf-core-services-writer
 areas:
@@ -108,8 +106,6 @@ areas:
     github: blgm
   - name: Long Nguyen
     github: lnguyen
-  - name: Maya Rosecrance
-    github: mrosecrance
   - name: Nishad Mathur
     github: alphasite
   - name: Rajan Agaskar
@@ -167,8 +163,6 @@ areas:
   - cloudfoundry/uaa-ci
 - name: Identity and Auth (UAA) Go Client
   approvers:
-  - name: Joe Fitzgerald
-    github: joefitzgerald
   - name: Peter Chen
     github: peterhaochen47
   - name: Markus Strehle
@@ -231,12 +225,8 @@ areas:
   approvers:
   - name: Rajan Agaskar
     github: ragaskar
-  - name: Maya Rosecrance
-    github: mrosecrance
   - name: Brian Upton
     github: ystros
-  - name: Matthias Vach
-    github: mvach
   - name: Long Nguyen
     github: lnguyen
   - name: Ramon Makkelie
@@ -295,14 +285,10 @@ areas:
     github: aramprice
   - name: Rajan Agaskar
     github: ragaskar
-  - name: Maya Rosecrance
-    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
     github: selzoc
-  - name: Matthias Vach
-    github: mvach
   - name: Ahmed Hassanin
     github: a-hassanin
   - name: Ansh Rupani
@@ -439,14 +425,10 @@ areas:
     github: aramprice
   - name: Rajan Agaskar
     github: ragaskar
-  - name: Maya Rosecrance
-    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
     github: selzoc
-  - name: Matthias Vach
-    github: mvach
   - name: Ahmed Hassanin
     github: a-hassanin
   - name: Ansh Rupani
