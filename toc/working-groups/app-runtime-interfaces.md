@@ -102,6 +102,8 @@ areas:
     github: benjaminguttmann-avtq
   - name: Michael Both
     github: ionphractal
+  - name: Ivo Radkov
+    github: ivo9999
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
