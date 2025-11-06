@@ -103,7 +103,7 @@ areas:
   - name: Michael Both
     github: ionphractal
   - name: Ivo Radkov
-    github: ivo9999
+    github: ivo1116
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
