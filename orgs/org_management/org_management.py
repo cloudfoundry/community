@@ -35,7 +35,7 @@ class UniqueKeyLoader(yaml.SafeLoader):
 @final
 class OrgGenerator:
     # list of managed orgs, should match ./ORGS.md
-    _MANAGED_ORGS = ["cloudfoundry"]
+    _MANAGED_ORGS = ["cloudfoundry", "cloudfoundry-tutorials"]
     _DEFAULT_ORG = "cloudfoundry"
 
     # parameters intended for testing only, all params are yaml docs
