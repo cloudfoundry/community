@@ -2739,3 +2739,84 @@ orgs:
         privacy: closed
         repos:
           terraform-provider-cloudfoundry: admin
+  cloudfoundry-tutorials:
+      admins: [] # shall be empty, maintained in TOC.md
+      billing_email: ap@cloudfoundry.org
+      company: ""
+      default_repository_permission: none
+      description: Cloud Foundry Foundation Tutorials active projects
+      email: cf-dev@lists.cloudfoundry.org
+      has_organization_projects: true
+      has_repository_projects: true
+      location: Worldwide
+      members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
+      members_can_create_repositories: false
+      name: Cloud Foundry Tutorials
+      repos:
+        cf4devs:
+          description: Cloud Foundry for Developers. In depth, hands on training
+          has_projects: false
+          has_wiki: false
+        korifi-ci:
+          description: An introduction to the Korifi project
+          has_projects: false
+          has_wiki: false
+        korifi-sample-app:
+          description: A sample application used in the Korifi tutorial
+          has_projects: false
+          has_wiki: false
+        tutorials:
+          description: This repository contains the landing page for https://tutorials.cloudfoundry.org and automations
+          has_projects: false
+          has_wiki: false
+        what-is-cf:
+          description: Tutorial explaining what is Cloud Foundry, the foundation, etc
+          has_projects: false
+          has_wiki: false
+        sample-app:
+          description: A sample application written in Go used for training purposes
+          has_projects: false
+          has_wiki: false
+        edx:
+          description: Cloud Foundry educational content in edX
+          has_projects: false
+          has_wiki: false
+        trycf:
+          description: ""
+          archived: true
+          has_projects: false
+          has_wiki: false
+        cf4k8s-do:
+          description: Installing cf-for-k8s on Digital Ocean
+          archived: true
+          has_projects: false
+          has_wiki: false
+        unhappy-appy:
+          description: An app that doesn't always start well. For demo and training ONLY
+          has_projects: false
+          has_wiki: false
+        cf4k8s-gke:
+          description: Learn to deploy cf-for-k8s on Google Kubernetes Engine
+          archived: true
+          has_projects: false
+          has_wiki: false
+        harness:
+          description: Simple script to make live-editing easier
+          archived: true
+          has_projects: false
+          has_wiki: false
+        fake-mysql-broker:
+          description: A service broker that looks like it provisions MySQL but doesn't actually do anything. Used for training
+          has_projects: false
+          has_wiki: false
+        hugo-whisper-theme:
+          description: Whisper is a minimal documentation theme for Hugo
+          archived: true
+          has_projects: false
+          has_wiki: false
+        cf-and-k8s:
+          description: ""
+          archived: true
+          has_projects: false
+          has_wiki: false
+      teams: {}
