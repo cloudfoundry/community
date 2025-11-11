@@ -75,6 +75,8 @@ areas:
     github: akop
   - name: Jovan Kostovski
     github: chombium
+  - name: Arsalan Khan
+    github: asalan316
   repositories:
   - cloudfoundry-tutorials/cf4devs
   - cloudfoundry-tutorials/korifi-ci
