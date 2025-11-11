@@ -64,6 +64,8 @@ areas:
   approvers:
   - name: Steve Greenberg
     github: spgreenberg
+  - name: Anita Flegg
+    github: anita-flegg
   reviewers:
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
