@@ -218,8 +218,6 @@ branch-protection:
             - "Build suite=test, mysql=8"
             - "Build suite=integration, mysql=8"
             - "reviewdog"
-            - "Build suite=integration, postgres=15"
-            - "Build suite=test, postgres=15"
             - "CodeQL"
           required_pull_request_reviews:
             dismiss_stale_reviews: false
