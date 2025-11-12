@@ -83,21 +83,21 @@ Inactive users according to the criteria defined in
 
 ## Development
 
-Requires Python 3.13.
+Requires [uv](https://docs.astral.sh/uv/getting-started/installation/).
+
+Recommended IDE: VSCode with Python, Ruff and BasedPyright extensions.
 
 How to run locally:
 ```
 cd ./orgs
-python -m venv <path/to/venv>
-source <path/to/venv>/bin/activate
-pip install -r requirements.txt
-python -m org_management --help
-python -m org_user_management --help
+uv sync
+uv run python -m org_management --help
+uv run python -m org_management.org_user_management --help
 ```
 
 Usage:
 ```
-$ python -m org_management --help
+$ uv run python -m org_management --help
 usage: org_management.py [-h] [-o OUT] [-b BRANCHPROTECTION]
 
 Cloud Foundry Org Generator
@@ -110,7 +110,7 @@ optional arguments:
 ```
 
 ```
-python -m org_user_management --help
+$ uv run python -m org_management.org_user_management --help
 usage: org_user_management.py [-h] [-goid GITHUBORGID] [-go GITHUBORG] [-sd SINCEDATE] [-gt GITHUBTOKEN] [-dr DRYRUN] [-tu TAGUSERS]
 
 Cloud Foundry Org Inactive User Handler
@@ -134,9 +134,14 @@ options:
 How to run tests:
 ```
 cd ./org
-python -m venv <path/to/venv>
-source <path/to/venv>/bin/activate
-pip install -r requirements-dev.txt
-python -m flake8
-python -m unittest discover -s .
+uv run ruff check
+uv run ruff format --check
+uv run basedpyright
+uv run -m unittest discover -s .
+```
+
+How to update dependencies (there is no renovate or dependabot configured):
+```
+cd ./org
+uv sync --upgrade
 ```

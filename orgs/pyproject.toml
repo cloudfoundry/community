@@ -1,2 +1,97 @@
-[tool.black]
+[project]
+name = "org_management"
+version = "0.1.0"
+description = "Automation for GitHub orgs managed by the Cloud Foundry Foundation"
+readme = "readme.md"
+requires-python = ">=3.14"
+license-files = ["LICENSE"]
+classifiers = ["Private :: Do Not Upload"]
+dependencies = [
+    "pyyaml",
+    "jsonschema",
+    "requests",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "basedpyright",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.0,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+
+[tool.ruff]
 line-length = 140
+
+[tool.ruff.lint]
+select = [
+    # See: https://docs.astral.sh/ruff/rules/
+    # Basic list from: https://docs.astral.sh/ruff/linter/#rule-selection
+    "E", # https://docs.astral.sh/ruff/rules/#error-e
+    "F", # https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "UP", # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "B", # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+    "I", # https://docs.astral.sh/ruff/rules/#isort-i
+    # Other possibilities:
+    # "D" # https://docs.astral.sh/ruff/rules/#pydocstyle-d
+    # "Q" # https://docs.astral.sh/ruff/rules/#flake8-quotes-q
+    # "COM" # https://docs.astral.sh/ruff/rules/#flake8-commas-com
+    # "SIM", # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+
+]
+ignore = [
+    # Disable some rules that are overly pedantic. Add/remove as desired:
+    "E501", # https://docs.astral.sh/ruff/rules/line-too-long/
+    "E402", # https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file/
+    "E731", # https://docs.astral.sh/ruff/rules/lambda-assignment/
+    # We use both ruff formatter and linter so some rules should always be disabled.
+    # See: https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+    "W191", # https://docs.astral.sh/ruff/rules/tab-indentation/
+    "E111", # https://docs.astral.sh/ruff/rules/indentation-with-invalid-multiple/
+    "E114", # https://docs.astral.sh/ruff/rules/indentation-with-invalid-multiple-comment/
+    "E117", # https://docs.astral.sh/ruff/rules/over-indented/
+    "D206", # https://docs.astral.sh/ruff/rules/docstring-tab-indentation/
+    "D300", # https://docs.astral.sh/ruff/rules/triple-single-quotes/
+    "Q000", # https://docs.astral.sh/ruff/rules/bad-quotes-inline-string/
+    "Q001", # https://docs.astral.sh/ruff/rules/bad-quotes-multiline-string/
+    "Q002", # https://docs.astral.sh/ruff/rules/bad-quotes-docstring/
+    "Q003", # https://docs.astral.sh/ruff/rules/avoidable-escaped-quote/
+    "COM812", # https://docs.astral.sh/ruff/rules/missing-trailing-comma/
+    "COM819", # https://docs.astral.sh/ruff/rules/prohibited-trailing-comma/
+    "ISC002", # https://docs.astral.sh/ruff/rules/multi-line-implicit-string-concatenation/
+]
+
+
+[tool.basedpyright]
+# https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright
+# https://docs.basedpyright.com/latest/configuration/config-files/#sample-pyprojecttoml-file
+include = ["org_management"]
+# By default BasedPyright is very strict, so you almost certainly want to disable
+# some of the rules.
+# First, these turn off warnings about (yes) how you ignore warnings:
+failOnWarnings = false
+enableTypeIgnoreComments = true
+# reportIgnoreCommentWithoutRule = false
+# reportUnnecessaryTypeIgnoreComment = false
+# A few typically noisy warnings are next.
+# How many you enable is up to you. The first few are off by default, but you can
+# comment/uncomment these as desired:
+reportMissingTypeStubs = false
+reportUnusedCallResult = false
+reportAny = false
+reportExplicitAny = false
+# reportImplicitStringConcatenation = false
+# reportUnreachable = false
+# reportImplicitOverride = false
+# reportPrivateImportUsage = false
+# reportPrivateLocalImportUsage = false
+# reportMissingImports = false
+# reportUnnecessaryIsInstance = false
+# reportUnknownVariableType = false
+# reportUnknownArgumentType = false
+# reportUnknownMemberType = false
