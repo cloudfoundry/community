@@ -3,7 +3,7 @@ import datetime
 import os
 import uuid
 from pathlib import Path
-from typing import final
+from typing import Any, final
 
 import requests
 import yaml
@@ -30,17 +30,17 @@ class InactiveUserHandler:
     def _get_request_headrs(self):
         return {"Authorization": f"Bearer {self.github_token}"}
 
-    def _process_request_result(self, request):
+    def _process_request_result(self, request: requests.Response):
         if request.status_code == 200 or request.status_code == 201:
             return request.json()
         else:
             raise Exception(f"Request execution failed with status code of {request.status_code}. {request.status_code}")
 
-    def _execute_query(self, query):
+    def _execute_query(self, query: str):
         request = requests.post("https://api.github.com/graphql", json={"query": query}, headers=self._get_request_headrs())
         return self._process_request_result(request)
 
-    def _build_query(self, after_cursor_value=None):
+    def _build_query(self, after_cursor_value: Any):
         after_cursor = f'"{after_cursor_value}"' if after_cursor_value else "null"
         query = (
             """
@@ -70,10 +70,10 @@ class InactiveUserHandler:
         )
         return query
 
-    def get_inactive_users(self):
-        inactive_users = set()
+    def get_inactive_users(self) -> set[str]:
+        inactive_users = set[str]()
         has_next_page = True
-        after_cursor_value = None
+        after_cursor_value: Any = None
         while has_next_page:
             result = self._execute_query(self._build_query(after_cursor_value))
             for user_node in result["data"]["organization"]["membersWithRole"]["nodes"]:
@@ -89,31 +89,31 @@ class InactiveUserHandler:
 
         return inactive_users
 
-    def _load_yaml_file(self, path):
+    def _load_yaml_file(self, path: Path) -> dict[str, Any]:
         with open(path) as stream:
             return yaml.safe_load(stream)
 
-    def _write_yaml_file(self, path, data):
+    def _write_yaml_file(self, path: Path, data: dict[str, Any]):
         with open(path, "w") as f:
             yaml.dump(data, f)
 
-    def _get_inactive_users_msg_for_wgs(self, inactive_users_by_wg, user_tagging_prefix):
+    def _get_inactive_users_msg_for_wgs(self, inactive_users_by_wg: dict[str, set[str]], user_tagging_prefix: str) -> str:
         result = "\n\nWarning:\n" if inactive_users_by_wg else ""
         for wg, users in inactive_users_by_wg.items():
             wg_users_as_list = "\n".join(str(user_tagging_prefix + s) for s in users)
             result += f'Inactive users of Working Group "{wg}" are: \n{wg_users_as_list}\n'
         return result
 
-    def delete_inactive_contributors(self, users_to_delete):
-        path = f"{_SCRIPT_PATH}/contributors.yml"
+    def delete_inactive_contributors(self, users_to_delete: set[str]):
+        path = _SCRIPT_PATH / "contributors.yml"
         contributors_yaml = self._load_yaml_file(path)
-        users_to_delete_lower = [user.lower() for user in users_to_delete]
+        users_to_delete_lower = {user.lower() for user in users_to_delete}
         contributors_yaml["orgs"][self.github_org]["contributors"] = [
             c for c in contributors_yaml["orgs"][self.github_org]["contributors"] if c.lower() not in users_to_delete_lower
         ]
         self._write_yaml_file(path, contributors_yaml)
 
-    def get_inactive_users_msg(self, users_to_delete, inactive_users_by_wg, tagusers):
+    def get_inactive_users_msg(self, users_to_delete: set[str], inactive_users_by_wg: dict[str, set[str]], tagusers: bool) -> str:
         rfc = (
             "https://github.com/cloudfoundry/community/blob/main/toc/rfc/"
             "rfc-0025-define-criteria-and-removal-process-for-inactive-members.md"
@@ -137,8 +137,10 @@ class InactiveUserHandler:
             f"{self._get_inactive_users_msg_for_wgs(inactive_users_by_wg, user_tagging_prefix)}"
         )
 
-    def get_inactive_users_by_wg(self, inactive_users, community_members_with_role_by_wg):
-        result = dict()
+    def get_inactive_users_by_wg(
+        self, inactive_users: set[str], community_members_with_role_by_wg: dict[str, set[str]]
+    ) -> dict[str, set[str]]:
+        result = dict[str, set[str]]()
         for wg, members in community_members_with_role_by_wg.items():
             wg_inactive_members = inactive_users.intersection(members)
             if len(wg_inactive_members) != 0 and wg != "Admin":
@@ -146,8 +148,8 @@ class InactiveUserHandler:
         return result
 
     @staticmethod
-    def _get_bool_env_var(env_var_name, default):
-        return os.getenv(env_var_name, default).lower() == "true"
+    def get_bool_env_var(env_var_name: str, default: bool) -> bool:
+        return os.getenv(env_var_name, str(default)).lower() == "true"
 
 
 if __name__ == "__main__":
@@ -178,7 +180,7 @@ if __name__ == "__main__":
     generator = OrgGenerator()
     generator.load_from_project()
     community_members_with_role_by_wg = generator.get_community_members_with_role_by_wg(args.githuborg)
-    community_members_with_role = set()
+    community_members_with_role = set[str]()
     for members in community_members_with_role_by_wg.values():
         community_members_with_role |= set(members)
 
@@ -188,11 +190,11 @@ if __name__ == "__main__":
 
     print(f"Inactive users length is {len(inactive_users)} and inactive users are {inactive_users}")
     users_to_delete = inactive_users - community_members_with_role
-    tagusers = args.tagusers or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", "False")
+    tagusers = args.tagusers or InactiveUserHandler.get_bool_env_var("INACTIVE_USER_MANAGEMENT_TAG_USERS", False)
     inactive_users_by_wg = userHandler.get_inactive_users_by_wg(inactive_users, community_members_with_role_by_wg)
     inactive_users_msg = userHandler.get_inactive_users_msg(users_to_delete, inactive_users_by_wg, tagusers)
     print(f"Inactive users by wg are {inactive_users_by_wg}")
-    if args.dryrun or InactiveUserHandler._get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", "False"):
+    if args.dryrun or InactiveUserHandler.get_bool_env_var("INACTIVE_USER_MANAGEMENT_DRY_RUN", False):
         print(f"Dry-run mode.\nInactive_users_msg is: {inactive_users_msg}")
         print(f"Following users will be deleted: {inactive_users}")
     elif users_to_delete:

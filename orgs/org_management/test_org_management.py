@@ -1,9 +1,12 @@
 import unittest
+from typing import final, override
 
 import jsonschema
 import yaml
 
 from .org_management import OrgGenerator
+
+# pyright: reportPrivateUsage=false
 
 org_cfg = """
 ---
@@ -278,7 +281,9 @@ branch-protection:
 """
 
 
+@final
 class TestOrgGenerator(unittest.TestCase):
+    @override
     def setUp(self) -> None:
         OrgGenerator._MANAGED_ORGS = ["cloudfoundry"]
 
