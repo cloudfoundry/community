@@ -12,18 +12,21 @@ jobs:
   org-config-generation-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.13
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: community
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: "community/orgs/pyproject.toml"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
       - name: Clean inactive github org users
         id: uds
+        working-directory: ./community/orgs
         run: |
-          python -m pip install --upgrade pip
-          pip install -r community/orgs/requirements.txt
-          python community/orgs/org_user_management.py
+          uv run --no-dev python -m org_management.org_user_management
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           INACTIVE_USER_MANAGEMENT_TAG_USERS: ${{ secrets.INACTIVE_USER_MANAGEMENT_TAG_USERS }}

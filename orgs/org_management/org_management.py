@@ -7,19 +7,21 @@
 # See readme.md
 
 import glob
-import yaml
-import re
 import os
-import argparse
-import jsonschema
-from typing import Any, Dict, Set, List, Optional, Tuple
+import re
+from pathlib import Path
+from typing import Any, final, override
 
-_SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
+import jsonschema
+import yaml
+
+_SCRIPT_PATH = Path(__file__).parent.parent.resolve()
 
 
 # pyyaml silently ignores duplicate keys but they shall be rejected
 # https://yaml.org/spec/1.2.2/ requires unique keys
 class UniqueKeyLoader(yaml.SafeLoader):
+    @override
     def construct_mapping(self, node, deep=False):
         mapping = set()
         for key_node, _ in node.value:
@@ -30,6 +32,7 @@ class UniqueKeyLoader(yaml.SafeLoader):
         return super().construct_mapping(node, deep)
 
 
+@final
 class OrgGenerator:
     # list of managed orgs, should match ./ORGS.md
     _MANAGED_ORGS = ["cloudfoundry"]
@@ -38,11 +41,11 @@ class OrgGenerator:
     # parameters intended for testing only, all params are yaml docs
     def __init__(
         self,
-        static_org_cfg: Optional[str] = None,
-        contributors: Optional[str] = None,
-        toc: Optional[str] = None,
-        working_groups: Optional[List[str]] = None,
-        branch_protection: Optional[str] = None,
+        static_org_cfg: str | None = None,
+        contributors: str | None = None,
+        toc: str | None = None,
+        working_groups: list[str] | None = None,
+        branch_protection: str | None = None,
     ):
         self.org_cfg = OrgGenerator._validate_github_org_cfg(OrgGenerator._yaml_load(static_org_cfg)) if static_org_cfg else {"orgs": {}}
         self.contributors = dict[str, set[str]]()
@@ -131,10 +134,10 @@ class OrgGenerator:
                         repo_owners[repo] = wg_name
         return valid
 
-    def get_contributors(self, org: str) -> Set[str]:
+    def get_contributors(self, org: str) -> set[str]:
         return set(self.contributors[org]) if org in self.contributors else set()
 
-    def get_community_members_with_role_by_wg(self, org: str) -> Dict[str, Set[str]]:
+    def get_community_members_with_role_by_wg(self, org: str) -> dict[str, set[str]]:
         # TOC is always added
         result = {"toc": set(OrgGenerator._wg_github_users(self.toc))}
         for wg in self.working_groups[org]:
@@ -221,13 +224,13 @@ class OrgGenerator:
 
     @staticmethod
     def _read_yml_file(path: str):
-        with open(path, "r") as stream:
+        with open(path) as stream:
             return OrgGenerator._yaml_load(stream)
 
     @staticmethod
     def _read_wg_charter(path: str):
         print(f"Reading WG from {path}")
-        with open(path, "r") as stream:
+        with open(path) as stream:
             wg_charter = stream.read()
             wg = OrgGenerator._extract_wg_config(wg_charter)
             if not wg:
@@ -255,7 +258,7 @@ class OrgGenerator:
         }
 
     @staticmethod
-    def _wg_github_users(wg) -> Set[str]:
+    def _wg_github_users(wg) -> set[str]:
         users = {u["github"] for u in wg["execution_leads"]}
         users |= {u["github"] for u in wg["technical_leads"]}
         users |= {u["github"] for u in wg["bots"]}
@@ -268,7 +271,7 @@ class OrgGenerator:
         return users
 
     @staticmethod
-    def _wg_github_users_leads(wg) -> Set[str]:
+    def _wg_github_users_leads(wg) -> set[str]:
         users = {u["github"] for u in wg["execution_leads"]}
         users |= {u["github"] for u in wg["technical_leads"]}
         return users
@@ -417,7 +420,7 @@ class OrgGenerator:
 
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md
     @staticmethod
-    def _generate_wg_teams(wg) -> Tuple[str, Dict[str, Any]]:
+    def _generate_wg_teams(wg) -> tuple[str, dict[str, Any]]:
         org = wg["org"]
         org_prefix = org + "/"
         org_prefix_len = len(org_prefix)
@@ -427,7 +430,7 @@ class OrgGenerator:
         approvers = {u["github"] for a in wg["areas"] for u in a["approvers"]}
         repositories = {r[org_prefix_len:] for a in wg["areas"] for r in a["repositories"] if r.startswith(org_prefix)}
         # WG team and teams for WG areas
-        team = {
+        team: dict[str, Any] = {
             "description": f"Leads and approvers for {wg['name']} WG",
             "privacy": "closed",
             "maintainers": sorted(maintainers),
@@ -486,7 +489,7 @@ class OrgGenerator:
         return (name, team)
 
     @staticmethod
-    def _generate_toc_team(wg) -> Tuple[str, Dict[str, Any]]:
+    def _generate_toc_team(wg) -> tuple[str, dict[str, Any]]:
         org = wg["org"]
         org_prefix = org + "/"
         org_prefix_len = len(org_prefix)
@@ -501,7 +504,7 @@ class OrgGenerator:
         return ("toc", team)
 
     @staticmethod
-    def _generate_wg_leads_team(wgs: List[Any]) -> Tuple[str, Dict[str, Any]]:
+    def _generate_wg_leads_team(wgs: list[Any]) -> tuple[str, dict[str, Any]]:
         members = {u for wg in wgs for u in OrgGenerator._wg_github_users_leads(wg)}
         team = {
             "description": "Technical and Execution Leads for all WGs",
@@ -512,7 +515,7 @@ class OrgGenerator:
 
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md
     # returns hash with branch protection rules per repo
-    def _generate_wg_branch_protection(self, wg) -> Dict[str, Any]:
+    def _generate_wg_branch_protection(self, wg) -> dict[str, Any]:
         org = wg["org"]
         org_prefix = org + "/"
         org_prefix_len = len(org_prefix)
@@ -563,24 +566,3 @@ class OrgGenerator:
         # kebab case = lower case and all special chars replaced by dash
         # no leading, trailing or double dashes
         return OrgGenerator._KEBAB_CASE_RE.sub("-", name.lower()).strip("-")
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="CFF Managed Github Orgs Generator")
-    parser.add_argument("-o", "--out", default="orgs.out.yml", help="output file for generated org configuration")
-    parser.add_argument(
-        "-b", "--branchprotection", default="branchprotection.out.yml", help="output file for generated branch protection rules"
-    )
-    args = parser.parse_args()
-
-    print("Generating CFF Managed Github Org configuration.")
-    generator = OrgGenerator()
-    generator.load_from_project()
-    if not generator.validate_repo_ownership():
-        print("ERROR: Repository ownership is invalid. Refer to RFC-0007.")
-        exit(1)
-    generator.generate_org_members()
-    generator.generate_teams()
-    generator.generate_branch_protection()
-    generator.write_org_config(args.out)
-    generator.write_branch_protection(args.branchprotection)

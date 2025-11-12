@@ -1,8 +1,10 @@
 
 toc/elections/2021/private.csv
 /.secrets
-.vscode
 __pycache__
 orgs.out.yml
 branchprotection.out.yml
 /.idea
+.venv
+.ruff_cache
+.DS_Store

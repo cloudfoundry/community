@@ -1,7 +1,9 @@
 import unittest
-import yaml
+
 import jsonschema
-from org_management import OrgGenerator
+import yaml
+
+from .org_management import OrgGenerator
 
 org_cfg = """
 ---

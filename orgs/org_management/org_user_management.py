@@ -1,15 +1,19 @@
-import requests
 import argparse
 import datetime
-import yaml
 import os
 import uuid
+from pathlib import Path
+from typing import final
 
-from org_management import OrgGenerator
+import requests
+import yaml
 
-_SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
+from .org_management import OrgGenerator
+
+_SCRIPT_PATH = Path(__file__).parent.parent.resolve()
 
 
+@final
 class InactiveUserHandler:
     def __init__(
         self,
@@ -37,8 +41,9 @@ class InactiveUserHandler:
         return self._process_request_result(request)
 
     def _build_query(self, after_cursor_value=None):
-        after_cursor = '"{}"'.format(after_cursor_value) if after_cursor_value else "null"
-        query = """
+        after_cursor = f'"{after_cursor_value}"' if after_cursor_value else "null"
+        query = (
+            """
         {
             organization(login: \"%s\") {
                 membersWithRole(first: 20, after:%s) {
@@ -55,11 +60,13 @@ class InactiveUserHandler:
                 }
             }
         }
-        """ % (
-            self.github_org,
-            after_cursor,
-            self.github_org_id,
-            self.activity_date,
+        """  # noqa: UP031
+            % (
+                self.github_org,
+                after_cursor,
+                self.github_org_id,
+                self.activity_date,
+            )
         )
         return query
 
@@ -83,7 +90,7 @@ class InactiveUserHandler:
         return inactive_users
 
     def _load_yaml_file(self, path):
-        with open(path, "r") as stream:
+        with open(path) as stream:
             return yaml.safe_load(stream)
 
     def _write_yaml_file(self, path, data):
