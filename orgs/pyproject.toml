@@ -74,7 +74,7 @@ include = ["org_management"]
 # By default BasedPyright is very strict, so you almost certainly want to disable
 # some of the rules.
 # First, these turn off warnings about (yes) how you ignore warnings:
-failOnWarnings = false
+# failOnWarnings = false
 enableTypeIgnoreComments = true
 # reportIgnoreCommentWithoutRule = false
 # reportUnnecessaryTypeIgnoreComment = false

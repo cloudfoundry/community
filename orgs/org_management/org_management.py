@@ -10,7 +10,7 @@ import glob
 import os
 import re
 from pathlib import Path
-from typing import Any, final, override
+from typing import Any, TextIO, final, override
 
 import jsonschema
 import yaml
@@ -22,10 +22,10 @@ _SCRIPT_PATH = Path(__file__).parent.parent.resolve()
 # https://yaml.org/spec/1.2.2/ requires unique keys
 class UniqueKeyLoader(yaml.SafeLoader):
     @override
-    def construct_mapping(self, node, deep=False):
-        mapping = set()
+    def construct_mapping(self, node: Any, deep: bool = False):
+        mapping = set[str]()
         for key_node, _ in node.value:
-            key = self.construct_object(key_node, deep=deep)
+            key: str = str(self.construct_object(key_node, deep=deep))  # pyright: ignore[reportUnknownMemberType, reportUnknownArgumentType]
             if key in mapping:
                 raise yaml.MarkedYAMLError(f"Duplicate key {key!r} found.", key_node.start_mark)
             mapping.add(key)
@@ -47,10 +47,12 @@ class OrgGenerator:
         working_groups: list[str] | None = None,
         branch_protection: str | None = None,
     ):
-        self.org_cfg = OrgGenerator._validate_github_org_cfg(OrgGenerator._yaml_load(static_org_cfg)) if static_org_cfg else {"orgs": {}}
+        self.org_cfg: dict[str, Any] = (
+            OrgGenerator._validate_github_org_cfg(OrgGenerator._yaml_load(static_org_cfg)) if static_org_cfg else {"orgs": {}}
+        )
         self.contributors = dict[str, set[str]]()
-        self.working_groups = {}
-        self.branch_protection = (
+        self.working_groups: dict[str, Any] = {}
+        self.branch_protection: dict[str, Any] = (
             OrgGenerator._validate_branch_protection(OrgGenerator._yaml_load(branch_protection))
             if branch_protection
             else {"branch-protection": {"orgs": {}}}
@@ -218,7 +220,7 @@ class OrgGenerator:
             return yaml.safe_dump(self.branch_protection, stream)
 
     @staticmethod
-    def _yaml_load(stream) -> dict[str, Any]:
+    def _yaml_load(stream: TextIO | str) -> dict[str, Any]:
         # safe_load + reject unique keys
         return yaml.load(stream, UniqueKeyLoader)
 
@@ -247,7 +249,7 @@ class OrgGenerator:
         return OrgGenerator._validate_wg(OrgGenerator._yaml_load(match.group(1))) if match else None
 
     @staticmethod
-    def _empty_wg_config(name: str):
+    def _empty_wg_config(name: str) -> dict[str, Any]:
         return {
             "name": name,
             "org": OrgGenerator._DEFAULT_ORG,
@@ -258,7 +260,7 @@ class OrgGenerator:
         }
 
     @staticmethod
-    def _wg_github_users(wg) -> set[str]:
+    def _wg_github_users(wg: dict[str, Any]) -> set[str]:
         users = {u["github"] for u in wg["execution_leads"]}
         users |= {u["github"] for u in wg["technical_leads"]}
         users |= {u["github"] for u in wg["bots"]}
@@ -271,7 +273,7 @@ class OrgGenerator:
         return users
 
     @staticmethod
-    def _wg_github_users_leads(wg) -> set[str]:
+    def _wg_github_users_leads(wg: dict[str, Any]) -> set[str]:
         users = {u["github"] for u in wg["execution_leads"]}
         users |= {u["github"] for u in wg["technical_leads"]}
         return users
@@ -297,7 +299,7 @@ class OrgGenerator:
     }
 
     @staticmethod
-    def _validate_contributors(contributors) -> dict[str, Any]:
+    def _validate_contributors(contributors: dict[str, Any]) -> dict[str, Any]:
         jsonschema.validate(contributors, OrgGenerator._CONTRIBUTORS_SCHEMA)
         # check that orgs are in _ORGS
         for org in contributors["orgs"]:
@@ -343,7 +345,7 @@ class OrgGenerator:
     }
 
     @staticmethod
-    def _validate_wg(wg) -> dict[str, Any]:
+    def _validate_wg(wg: dict[str, Any]) -> dict[str, Any]:
         jsonschema.validate(wg, OrgGenerator._WG_SCHEMA)
         # validate org and use 'cloudfoundry' if missing
         if "org" not in wg:
@@ -375,7 +377,7 @@ class OrgGenerator:
     }
 
     @staticmethod
-    def _validate_github_org_cfg(cfg):
+    def _validate_github_org_cfg(cfg: dict[str, Any]) -> dict[str, Any]:
         jsonschema.validate(cfg, OrgGenerator._GITHUB_ORG_CFG_SCHEMA)
         # check that orgs are in _ORGS
         for org in cfg["orgs"]:
@@ -410,7 +412,7 @@ class OrgGenerator:
     }
 
     @staticmethod
-    def _validate_branch_protection(cfg):
+    def _validate_branch_protection(cfg: dict[str, Any]) -> dict[str, Any]:
         jsonschema.validate(cfg, OrgGenerator._BRANCH_PROTECTION_SCHEMA)
         # check that orgs are in _ORGS
         for org in cfg["branch-protection"]["orgs"]:
@@ -420,7 +422,7 @@ class OrgGenerator:
 
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md
     @staticmethod
-    def _generate_wg_teams(wg) -> tuple[str, dict[str, Any]]:
+    def _generate_wg_teams(wg: dict[str, Any]) -> tuple[str, dict[str, Any]]:
         org = wg["org"]
         org_prefix = org + "/"
         org_prefix_len = len(org_prefix)
@@ -489,7 +491,7 @@ class OrgGenerator:
         return (name, team)
 
     @staticmethod
-    def _generate_toc_team(wg) -> tuple[str, dict[str, Any]]:
+    def _generate_toc_team(wg: dict[str, Any]) -> tuple[str, dict[str, Any]]:
         org = wg["org"]
         org_prefix = org + "/"
         org_prefix_len = len(org_prefix)
@@ -504,7 +506,7 @@ class OrgGenerator:
         return ("toc", team)
 
     @staticmethod
-    def _generate_wg_leads_team(wgs: list[Any]) -> tuple[str, dict[str, Any]]:
+    def _generate_wg_leads_team(wgs: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
         members = {u for wg in wgs for u in OrgGenerator._wg_github_users_leads(wg)}
         team = {
             "description": "Technical and Execution Leads for all WGs",
@@ -515,7 +517,7 @@ class OrgGenerator:
 
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md
     # returns hash with branch protection rules per repo
-    def _generate_wg_branch_protection(self, wg) -> dict[str, Any]:
+    def _generate_wg_branch_protection(self, wg: dict[str, Any]) -> dict[str, Any]:
         org = wg["org"]
         org_prefix = org + "/"
         org_prefix_len = len(org_prefix)
