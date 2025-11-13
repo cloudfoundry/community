@@ -38,6 +38,8 @@ technical_leads:
   github: rkoster
 - name: Beyhan Veli
   github: beyhan
+- name: Aram Price
+  github: aramprice
 bots:
 - name: bosh-admin-bot
   github: bosh-admin-bot
