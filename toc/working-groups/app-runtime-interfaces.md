@@ -293,6 +293,9 @@ areas:
   approvers:
   - name: Shawn Neal
     github: sneal
+  reviewers:
+  - name: Anugrah Gupta
+    github: ANUGRAHG
   repositories:
   - cloudfoundry/go-cfclient
 
