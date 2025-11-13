@@ -34,17 +34,20 @@ jobs:
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.13
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: community
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: "community/orgs/pyproject.toml"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
       - name: Generate github org configuration
+        working-directory: ./community/orgs
         run: |
-          python -m pip install --upgrade pip
-          pip install -r community/orgs/requirements.txt
-          python community/orgs/org_management.py -o orgs.out.yml -b branchprotection.out.yml
+          uv run --no-dev python -m org_management -o orgs.out.yml -b branchprotection.out.yml
       - name: write github private key
         run: |
           echo "${GH_PRIVATE_KEY}" > private_key
@@ -96,17 +99,20 @@ jobs:
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.13
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: community
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: "community/orgs/pyproject.toml"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
       - name: Generate github org configuration
+        working-directory: ./community/orgs
         run: |
-          python -m pip install --upgrade pip
-          pip install -r community/orgs/requirements.txt
-          python community/orgs/org_management.py -o orgs.out.yml -b branchprotection.out.yml
+          uv run --no-dev python -m org_management -o orgs.out.yml -b branchprotection.out.yml
       - name: write github private key
         run: |
           echo "${GH_PRIVATE_KEY}" > private_key
