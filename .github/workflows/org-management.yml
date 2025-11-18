@@ -47,7 +47,7 @@ jobs:
       - name: Generate github org configuration
         working-directory: ./community/orgs
         run: |
-          uv run --no-dev python -m org_management -o orgs.out.yml -b branchprotection.out.yml
+          uv run --no-dev python -m org_management -o ../../orgs.out.yml -b ../../branchprotection.out.yml
       - name: write github private key
         run: |
           echo "${GH_PRIVATE_KEY}" > private_key

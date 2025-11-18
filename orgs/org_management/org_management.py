@@ -225,13 +225,15 @@ class OrgGenerator:
                         branch_protection_repos[repo] = repo_rules[repo]
 
     def write_org_config(self, path: str):
-        print(f"Writing org configuration to {path}")
-        with open(path, "w") as stream:
+        p = Path(path)
+        print(f"Writing org configuration to {p.absolute()}")
+        with open(p, "w") as stream:
             return yaml.safe_dump(self.org_cfg, stream)
 
     def write_branch_protection(self, path: str):
-        print(f"Writing branch protection to {path}")
-        with open(path, "w") as stream:
+        p = Path(path)
+        print(f"Writing branch protection to {p.absolute()}")
+        with open(p, "w") as stream:
             return yaml.safe_dump(self.branch_protection, stream)
 
     @staticmethod
