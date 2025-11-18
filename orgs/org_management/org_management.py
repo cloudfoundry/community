@@ -131,7 +131,7 @@ class OrgGenerator:
                 wg_repos = set(r for a in wg["areas"] for r in a["repositories"])
                 for repo in wg_repos:
                     if repo in repo_owners:
-                        print(f"ERROR: Repository {repo} is owned by multiple WGs: {repo_owners[repo]}, {wg_name}")
+                        print(f"ERROR: Repository '{repo}' is owned by multiple WGs: {repo_owners[repo]}, {wg_name}")
                         valid = False
                     else:
                         repo_owners[repo] = wg_name
@@ -145,7 +145,7 @@ class OrgGenerator:
                     repo_org = repo.split("/")[0]
                     if repo_org != org and repo_org in OrgGenerator._MANAGED_ORGS:
                         print(
-                            f"ERROR: Working Group {wg_name} assigned to Github org {org} contains repository {repo} from different managed org."
+                            f"ERROR: Working Group '{wg_name}' assigned to Github org '{org}' contains repository '{repo}' from a different managed org."
                         )
                         valid = False
 
