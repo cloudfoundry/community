@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Automation for GitHub orgs managed by the Cloud Foundry Foundation"
 readme = "readme.md"
 requires-python = ">=3.14"
-license-files = ["LICENSE"]
+license = "Apache-2.0"
 classifiers = ["Private :: Do Not Upload"]
 dependencies = [
     "pyyaml",

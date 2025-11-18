@@ -14,7 +14,7 @@ if __name__ == "__main__":
     generator = OrgGenerator()
     generator.load_from_project()
     if not generator.validate_repo_ownership():
-        print("ERROR: Repository ownership is invalid. Refer to RFC-0007.")
+        print("ERROR: Repository ownership is invalid. Refer to RFC-0007 and RFC-0036.")
         exit(1)
     generator.generate_org_members()
     generator.generate_teams()

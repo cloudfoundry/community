@@ -208,7 +208,7 @@ areas:
   repositories:
   - cloudfoundry2/repo3
   - cloudfoundry2/repo4
-  - cloudfoundry/repo5
+  - cloudfoundry2/repo5
 """
 
 toc = """
@@ -474,6 +474,18 @@ class TestOrgGenerator(unittest.TestCase):
         o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1, wg2, wg3])
         self.assertFalse(o.validate_repo_ownership())
 
+    def test_validate_repo_ownership_multiple_orgs(self):
+        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        o = OrgGenerator(static_org_cfg=org_cfg_multiple, toc=toc, working_groups=[wg1, wg4_other_org])
+        self.assertTrue(o.validate_repo_ownership())
+        # includes non-managed orgs
+        o = OrgGenerator(static_org_cfg=org_cfg_multiple, toc=toc, working_groups=[wg1, wg2, wg4_other_org])
+        self.assertTrue(o.validate_repo_ownership())
+        # wg can only have repos of one org
+        bad_wg4_other_org = wg4_other_org.replace("cloudfoundry2/repo5", "cloudfoundry/repo5")
+        o = OrgGenerator(static_org_cfg=org_cfg_multiple, toc=toc, working_groups=[wg1, bad_wg4_other_org])
+        self.assertFalse(o.validate_repo_ownership())
+
     def test_generate_wg_teams(self):
         _wg1 = OrgGenerator._yaml_load(wg1)
         OrgGenerator._validate_wg(_wg1)
@@ -559,7 +571,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertDictEqual({"repo1": "write", "repo2": "write"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg4-name-area-2-approvers"]
-        self.assertDictEqual({"repo3": "write", "repo4": "write"}, team["repos"])
+        self.assertDictEqual({"repo3": "write", "repo4": "write", "repo5": "write"}, team["repos"])
 
     def test_generate_toc_team(self):
         _toc = OrgGenerator._yaml_load(toc)
@@ -758,7 +770,7 @@ class TestOrgGenerator(unittest.TestCase):
 
         bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry2"]["repos"]
         # wg4 opted in, repo5 is ignored because of wrong org
-        self.assertSetEqual({f"repo{i}" for i in range(1, 5)}, set(bp_repos.keys()))
+        self.assertSetEqual({f"repo{i}" for i in range(1, 6)}, set(bp_repos.keys()))
         # repo1 has static config that wins over generated branch protection rules
         self.assertTrue(bp_repos["repo1"]["protect"])
         self.assertNotIn("required_pull_request_reviews", bp_repos["repo1"])

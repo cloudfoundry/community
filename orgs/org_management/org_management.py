@@ -120,9 +120,10 @@ class OrgGenerator:
                         raise ValueError(f"Invalid org {org} in WG {wg['name']}, expected one of {OrgGenerator._MANAGED_ORGS}")
                     self.working_groups[org].append(wg)
 
-    # rfc-0007-repository-ownership: a repo can't be owned by multiple WGs, scope is github org
     def validate_repo_ownership(self) -> bool:
         valid = True
+
+        # rfc-0007-repository-ownership: a repo can't be owned by multiple WGs, scope is github org
         for org in OrgGenerator._MANAGED_ORGS:
             repo_owners = {}
             for wg in self.working_groups[org]:
@@ -130,10 +131,24 @@ class OrgGenerator:
                 wg_repos = set(r for a in wg["areas"] for r in a["repositories"])
                 for repo in wg_repos:
                     if repo in repo_owners:
-                        print(f"ERROR: Repository {repo} is owned by multiple WGs: {repo_owners[repo]}, {wg_name}")
+                        print(f"ERROR: Repository '{repo}' is owned by multiple WGs: {repo_owners[repo]}, {wg_name}")
                         valid = False
                     else:
                         repo_owners[repo] = wg_name
+
+        # rfc-0036-multiple-github-orgs: Working Groups MUST only contain repos from one CFF Github Org (but repos from unmanaged orgs are allowed as temporary exception)
+        for org in self.working_groups.keys():
+            for wg in self.working_groups[org]:
+                wg_name = wg["name"]
+                wg_repos = set(r for a in wg["areas"] for r in a["repositories"])
+                for repo in wg_repos:
+                    repo_org = repo.split("/")[0]
+                    if repo_org != org and repo_org in OrgGenerator._MANAGED_ORGS:
+                        print(
+                            f"ERROR: Working Group '{wg_name}' assigned to Github org '{org}' contains repository '{repo}' from a different managed org."
+                        )
+                        valid = False
+
         return valid
 
     def get_contributors(self, org: str) -> set[str]:
