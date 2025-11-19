@@ -3,8 +3,8 @@
 - Name: Integrate pcap feature for Cloud Foundry applications
 - Start Date: 2025-09-10
 - Author(s): @maxmoehl @peanball
-- Status: Draft
-- RFC Pull Request: [community#1309](https://github.com/cloudfoundry/community/issues/1309)
+- Status: Accepted
+- RFC Pull Request: [community#1309](https://github.com/cloudfoundry/community/pull/1309)
 
 ## Summary
 
