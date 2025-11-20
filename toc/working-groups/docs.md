@@ -78,13 +78,12 @@ areas:
   - name: Arsalan Khan
     github: asalan316
   repositories:
-  - cloudfoundry-tutorials/cf4devs
-  - cloudfoundry-tutorials/korifi-ci
-  - cloudfoundry-tutorials/korifi-sample-app
-  - cloudfoundry-tutorials/tutorials
-  - cloudfoundry-tutorials/what-is-cf
-  - cloudfoundry-tutorials/sample-app
-  - cloudfoundry-tutorials/edx
-  - cloudfoundry-tutorials/unhappy-appy
-  - cloudfoundry-tutorials/fake-mysql-broker
+  - cloudfoundry/cf4devs
+  - cloudfoundry/korifi-sample-app
+  - cloudfoundry/tutorials
+  - cloudfoundry/what-is-cf
+  - cloudfoundry/sample-app
+  - cloudfoundry/edx
+  - cloudfoundry/unhappy-appy
+  - cloudfoundry/fake-mysql-broker
 ```
