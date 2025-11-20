@@ -862,6 +862,25 @@ orgs:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 24.04 LTS
         has_projects: true
+      cf4k8s-do:
+        description: Installing cf-for-k8s on Digital Ocean
+        archived: true
+        has_projects: false
+        has_wiki: false
+      cf4devs:
+        description: Cloud Foundry for Developers. In depth, hands on training
+        has_projects: false
+        has_wiki: false
+      cf4k8s-gke:
+        description: Learn to deploy cf-for-k8s on Google Kubernetes Engine
+        archived: true
+        has_projects: false
+        has_wiki: false
+      cf-and-k8s:
+        description: ""
+        archived: true
+        has_projects: false
+        has_wiki: false
       cli:
         allow_merge_commit: false
         description: The official command line client for Cloud Foundry
@@ -1246,6 +1265,10 @@ orgs:
         has_projects: false
         has_wiki: false
         archived: true
+      edx:
+        description: Cloud Foundry educational content in edX
+        has_projects: false
+        has_wiki: false
       eirini-ci:
         description: CI for Eirini
         has_projects: false
@@ -1295,6 +1318,10 @@ orgs:
         has_projects: true
       existingvolumebroker:
         has_projects: true
+      fake-mysql-broker:
+        description: A service broker that looks like it provisions MySQL but doesn't actually do anything. Used for training
+        has_projects: false
+        has_wiki: false
       firehose_exporter:
         description: Cloud Foundry Firehose Prometheus exporter
         default_branch: master
@@ -1502,6 +1529,11 @@ orgs:
       haproxy-boshrelease:
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
+      harness:
+        description: Simple script to make live-editing easier
+        archived: true
+        has_projects: false
+        has_wiki: false
       healthcheck:
         archived: true
         description: Common healthcheck for buildpacks and docker
@@ -1517,6 +1549,11 @@ orgs:
         has_wiki: false
       honeycomb-ginkgo-reporter:
         has_projects: true
+      hugo-whisper-theme:
+        description: Whisper is a minimal documentation theme for Hugo
+        archived: true
+        has_projects: false
+        has_wiki: false
       hwc:
         has_projects: true
         has_wiki: false
@@ -1661,6 +1698,10 @@ orgs:
       korifi-website:
         default_branch: main
         has_projects: false
+      korifi-sample-app:
+        description: A sample application used in the Korifi tutorial
+        has_projects: false
+        has_wiki: false
       lager:
         description: An opinionated logger for Go.
         has_projects: true
@@ -2203,6 +2244,10 @@ orgs:
       sapi-env-pool:
         has_projects: true
         private: true
+      sample-app:
+        description: A sample application written in Go used for training purposes
+        has_projects: false
+        has_wiki: false
       secure-credentials-broker:
         has_projects: true
       security-notices:
@@ -2456,6 +2501,15 @@ orgs:
       training-cert-admin:
         has_projects: true
         private: true
+      trycf:
+        description: ""
+        archived: true
+        has_projects: false
+        has_wiki: false
+      tutorials:
+        description: This repository contains the landing page for https://tutorials.cloudfoundry.org and automations
+        has_projects: false
+        has_wiki: false
       tycho-env:
         archived: true
         has_projects: true
@@ -2516,6 +2570,10 @@ orgs:
       urljoiner:
         archived: true
         has_projects: true
+      unhappy-appy:
+        description: An app that doesn't always start well. For demo and training ONLY
+        has_projects: false
+        has_wiki: false
       usn-resource:
         has_projects: true
       vantablackbox-release:
@@ -2538,6 +2596,10 @@ orgs:
         has_projects: true
       volumedriver:
         has_projects: true
+      what-is-cf:
+        description: Tutorial explaining what is Cloud Foundry, the foundation, etc
+        has_projects: false
+        has_wiki: false
       wg-app-platform-runtime-ci:
         has_projects: true
       winc:
@@ -2739,84 +2801,3 @@ orgs:
         privacy: closed
         repos:
           terraform-provider-cloudfoundry: admin
-  cloudfoundry-tutorials:
-      admins: [] # shall be empty, maintained in TOC.md
-      billing_email: ap@cloudfoundry.org
-      company: ""
-      default_repository_permission: none
-      description: Cloud Foundry Foundation Tutorials active projects
-      email: cf-dev@lists.cloudfoundry.org
-      has_organization_projects: true
-      has_repository_projects: true
-      location: Worldwide
-      members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
-      members_can_create_repositories: false
-      name: Cloud Foundry Tutorials
-      repos:
-        cf4devs:
-          description: Cloud Foundry for Developers. In depth, hands on training
-          has_projects: false
-          has_wiki: false
-        korifi:
-          description: An introduction to the Korifi project
-          has_projects: false
-          has_wiki: false
-        korifi-sample-app:
-          description: A sample application used in the Korifi tutorial
-          has_projects: false
-          has_wiki: false
-        tutorials:
-          description: This repository contains the landing page for https://tutorials.cloudfoundry.org and automations
-          has_projects: false
-          has_wiki: false
-        what-is-cf:
-          description: Tutorial explaining what is Cloud Foundry, the foundation, etc
-          has_projects: false
-          has_wiki: false
-        sample-app:
-          description: A sample application written in Go used for training purposes
-          has_projects: false
-          has_wiki: false
-        edx:
-          description: Cloud Foundry educational content in edX
-          has_projects: false
-          has_wiki: false
-        trycf:
-          description: ""
-          archived: true
-          has_projects: false
-          has_wiki: false
-        cf4k8s-do:
-          description: Installing cf-for-k8s on Digital Ocean
-          archived: true
-          has_projects: false
-          has_wiki: false
-        unhappy-appy:
-          description: An app that doesn't always start well. For demo and training ONLY
-          has_projects: false
-          has_wiki: false
-        cf4k8s-gke:
-          description: Learn to deploy cf-for-k8s on Google Kubernetes Engine
-          archived: true
-          has_projects: false
-          has_wiki: false
-        harness:
-          description: Simple script to make live-editing easier
-          archived: true
-          has_projects: false
-          has_wiki: false
-        fake-mysql-broker:
-          description: A service broker that looks like it provisions MySQL but doesn't actually do anything. Used for training
-          has_projects: false
-          has_wiki: false
-        hugo-whisper-theme:
-          description: Whisper is a minimal documentation theme for Hugo
-          archived: true
-          has_projects: false
-          has_wiki: false
-        cf-and-k8s:
-          description: ""
-          archived: true
-          has_projects: false
-          has_wiki: false
-      teams: {}

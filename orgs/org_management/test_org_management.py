@@ -779,11 +779,11 @@ class TestOrgGenerator(unittest.TestCase):
 # integration test, depends on data in this repo which may change
 class TestOrgGeneratorIntegrationTest(unittest.TestCase):
     def test_cf_org(self):
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry-tutorials"]
+        self.assertEqual(["cloudfoundry"], OrgGenerator._MANAGED_ORGS)
 
         o = OrgGenerator()
         o.load_from_project()
-        self.assertEqual(2, len(o.org_cfg["orgs"]))
+        self.assertEqual(1, len(o.org_cfg["orgs"]))
         self.assertEqual("cloudfoundry", o.toc_org)
         self.assertEqual("Technical Oversight Committee", o.toc["name"])
         self.assertGreater(len(o.contributors["cloudfoundry"]), 100)
