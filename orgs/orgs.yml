@@ -2757,7 +2757,7 @@ orgs:
           description: Cloud Foundry for Developers. In depth, hands on training
           has_projects: false
           has_wiki: false
-        korifi-ci:
+        korifi:
           description: An introduction to the Korifi project
           has_projects: false
           has_wiki: false
