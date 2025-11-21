@@ -60,4 +60,30 @@ areas:
   - cloudfoundry/docs-credhub
   - cloudfoundry/docs-deploying-cf
   - cloudfoundry/docs-dotnet-core-tutorial
+- name: Cloud Foundry Tutorials
+  approvers:
+  - name: Steve Greenberg
+    github: spgreenberg
+  - name: Anita Flegg
+    github: anita-flegg
+  reviewers:
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  - name: Maurice Brinkmann
+    github: mauricebrinkmann
+  - name: Andreas Koppenhöfer
+    github: akop
+  - name: Jovan Kostovski
+    github: chombium
+  - name: Arsalan Khan
+    github: asalan316
+  repositories:
+  - cloudfoundry/cf4devs
+  - cloudfoundry/korifi-sample-app
+  - cloudfoundry/tutorials
+  - cloudfoundry/what-is-cf
+  - cloudfoundry/sample-app
+  - cloudfoundry/edx
+  - cloudfoundry/unhappy-appy
+  - cloudfoundry/fake-mysql-broker
 ```
