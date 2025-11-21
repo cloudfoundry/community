@@ -215,8 +215,6 @@ branch-protection:
             - "EasyCLA"
             - "Create Bosh Release"
             - "Acceptance Tests - BOSH release / Result"
-            - "Build suite=test, mysql=8"
-            - "Build suite=integration, mysql=8"
             - "reviewdog"
             - "CodeQL"
           required_pull_request_reviews:
