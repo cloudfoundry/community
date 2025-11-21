@@ -386,6 +386,14 @@ areas:
     github: xiujiao
   - name: Dennis Bell
     github: dennisjbell
+  - name: Dr. Hu
+    github: haochenhu233
+  - name: Tristan Poland
+    github: tristanpoland
+  - name: Jan Lucca Patzelt
+    github: patzeltj
+  - name: Matthias Folz
+    github: mafolz
 
   repositories:
   - cloudfoundry/stratos
