@@ -239,8 +239,6 @@ areas:
   - name: Sam Gunaratne
     github: samze
   reviewers:
-  - name: George Gelashvili
-    github: pivotalgeorge
   - name: Pete Levine
     github: PeteLevineA
   - name: Tim Downey
@@ -301,14 +299,10 @@ areas:
 
 - name: Terraform Provider Cloudfoundry
   approvers:
-  - name: Yogesh Purantharan
-    github: pyogesh2
   - name: Vipin Vijaykumar
     github: vipinvkmenon
   - name: Christian Lechner
     github: lechnerc77
-  - name: Kesavan
-    github: KesavanKing
   - name: Debaditya Ray 
     github: Dray56
   - name: Gourab Mukherjee
@@ -382,8 +376,6 @@ areas:
   - name: Ioannis Tsouvalas
     github: itsouvalas
   reviewers:
-  - name: Dr. Xiujiao Gao
-    github: xiujiao
   - name: Dennis Bell
     github: dennisjbell
 
