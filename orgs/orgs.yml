@@ -586,7 +586,7 @@ orgs:
         default_branch: main
         has_projects: true
       cf-deployment:
-        default_branch: main
+        default_branch: develop
         description: The canonical open source deployment manifest for Cloud Foundry
         has_projects: true
       cf-deployment-concourse-tasks:
