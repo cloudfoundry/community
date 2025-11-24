@@ -39,10 +39,10 @@ areas:
     github: FelisiaM
   - name: Marcela Campo
     github: pivotal-marcela-campo
-  - name: Ed King
-    github: teddyking
-  - name: Diego Lemos
-    github: dlresende
+  - name: Georgi Dim. Dimitrov
+    github: georgidimdimitrov
+  - name: Bogomil Kuzmanov
+    github: bogomil-kuzmanov
   bots:
   - name: Services Enablement bot
     github: servicesenablement
@@ -61,6 +61,4 @@ config:
   github_project_sync:
     mapping:
       cloudfoundry: 27
-      openservicebrokerapi: 1
-      cloudfoundry-incubator: 3
 ```
