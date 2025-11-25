@@ -862,23 +862,8 @@ orgs:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 24.04 LTS
         has_projects: true
-      cf4k8s-do:
-        description: Installing cf-for-k8s on Digital Ocean
-        archived: true
-        has_projects: false
-        has_wiki: false
       cf4devs:
         description: Cloud Foundry for Developers. In depth, hands on training
-        has_projects: false
-        has_wiki: false
-      cf4k8s-gke:
-        description: Learn to deploy cf-for-k8s on Google Kubernetes Engine
-        archived: true
-        has_projects: false
-        has_wiki: false
-      cf-and-k8s:
-        description: ""
-        archived: true
         has_projects: false
         has_wiki: false
       cli:
@@ -1529,11 +1514,6 @@ orgs:
       haproxy-boshrelease:
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
-      harness:
-        description: Simple script to make live-editing easier
-        archived: true
-        has_projects: false
-        has_wiki: false
       healthcheck:
         archived: true
         description: Common healthcheck for buildpacks and docker
@@ -1549,11 +1529,6 @@ orgs:
         has_wiki: false
       honeycomb-ginkgo-reporter:
         has_projects: true
-      hugo-whisper-theme:
-        description: Whisper is a minimal documentation theme for Hugo
-        archived: true
-        has_projects: false
-        has_wiki: false
       hwc:
         has_projects: true
         has_wiki: false
@@ -2501,11 +2476,6 @@ orgs:
       training-cert-admin:
         has_projects: true
         private: true
-      trycf:
-        description: ""
-        archived: true
-        has_projects: false
-        has_wiki: false
       tutorials:
         description: This repository contains the landing page for https://tutorials.cloudfoundry.org and automations
         has_projects: false
