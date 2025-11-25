@@ -504,6 +504,35 @@ areas:
   - cloudfoundry/bosh-s3cli
   - cloudfoundry/storage-cli
 
+- name: Cloud Service Broker
+  approvers:
+  - name: George Blue
+    github: blgm
+  - name: Felisia Martini
+    github: FelisiaM
+  - name: Marcela Campo
+    github: pivotal-marcela-campo
+  - name: Georgi Dim. Dimitrov
+    github: georgidimdimitrov
+  - name: Bogomil Kuzmanov
+    github: bogomil-kuzmanov
+  bots:
+  - name: Services Enablement bot
+    github: servicesenablement
+  - name: cf-gitbot
+    github: cf-gitbot    
+  repositories:
+  - cloudfoundry/cloud-service-broker
+  - cloudfoundry/csb-brokerpak-azure
+  - cloudfoundry/csb-brokerpak-aws
+  - cloudfoundry/csb-brokerpak-gcp
+  - cloudfoundry/jdbctestapp
+  - cloudfoundry/upgrade-all-services-cli-plugin
+  - cloudfoundry/terraform-provider-csbpg
+  - cloudfoundry/terraform-provider-csbmysql
+  - cloudfoundry/terraform-provider-csbsqlserver
+  - cloudfoundry/brokerapi
+
 config:
   github_project_sync:
     mapping:

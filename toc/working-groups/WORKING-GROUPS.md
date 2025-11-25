@@ -41,7 +41,6 @@ The current working groups are:
 - Docs
 - Foundational Infrastructure
 - Paketo
-- Service Management
 - Vulnerability Management
 - Concourse
 
@@ -184,25 +183,6 @@ This working group has no repositories in the `cloudfoundry` GitHub organization
 | <img width="30px" src="https://github.com/dmikusa.png">          | Daniel Mikusa     | VMware  | [@dmikusa](https://github.com/dmikusa) |
 | <img width="30px" src="https://github.com/jericop.png">          | Jerico Pena       | Rapid7  | [@jericop](https://github.com/jericop) |
 | <img width="30px" src="https://github.com/loewenstein-sap.png">  | Jan von Löwenstein| SAP     | [@loewenstein-sap](https://github.com/loewenstein-sap) |
-
-
-## Service Management
-
-Mission: Provides interfaces for service lifecycle within application platforms and adapters to common external service providers.
-
-The GitHub repos this WG manages in the `cloudfoundry` and `cloudfoundry-incubator` GitHub organization are to be labeled with the `cff-wg-service-manangement` topic.
-
-| Artifact                   | Link |
-| -------------------------- | ---- |
-| Charter                    | [service-management.md](./service-management.md)  |
-| Forum                      | [Video chat](https://zoom.us/j/96135973215?pwd=NzQrRk1tbXlTQnZEVmRNZlluSm50QT09)  |
-| Community Meeting Calendar | Monthly on the first Tuesday at 10:30 UK / 11:30 CET/ 16 IST / Monthly on the second Tuesday at 11:30 ET/ 16:30 UK |
-| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1pVepAY0IxA9zz6imyMNnZeCM_mUkxzk1Dd1PDClmkWE/view)  |
-| Slack Channels             | [&#x23;wg-service-management](https://cloudfoundry.slack.com/archives/C02TXDMPSUS)|
-
-| &nbsp;                                                   | Leads            | Company | Profile                                 |
-| -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
-| <img width="30px" src="https://github.com/pivotal-marcela-campo.png"> | Marcela Campo       | VMWare  | [@pivotal-marcela-campo](https://github.com/pivotal-marcela-campo) |
 
 
 ## Vulnerability Management
