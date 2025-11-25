@@ -852,7 +852,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         csb-brokerpak-gcp:
@@ -871,7 +871,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         csb-brokerpak-azure:
@@ -890,7 +890,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         jdbctestapp:
@@ -909,7 +909,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         upgrade-all-services-cli-plugin:
@@ -928,7 +928,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         terraform-provider-csbpg:
@@ -947,7 +947,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         terraform-provider-csbmysql:
@@ -966,7 +966,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         terraform-provider-csbsqlserver:
@@ -985,7 +985,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         brokerapi:
@@ -1004,7 +1004,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         cloud-service-broker:
@@ -1023,7 +1023,7 @@ branch-protection:
             require_code_owner_reviews: false
             required_approving_review_count: 1
             bypass_pull_request_allowances:
-              teams: ["wg-service-management-cloud-service-broker-bots"]
+              teams: ["wg-foundational-infrastructure-cloud-service-broker-bots"]
           include: [ "^main$" ]
 
         uaa:
