@@ -863,6 +863,7 @@ orgs:
         description: Cloud Foundry stack based on Ubuntu 24.04 LTS
         has_projects: true
       cf4devs:
+        default_branch: main
         description: Cloud Foundry for Developers. In depth, hands on training
         has_projects: false
         has_wiki: false
@@ -1251,6 +1252,7 @@ orgs:
         has_wiki: false
         archived: true
       edx:
+        default_branch: main
         description: Cloud Foundry educational content in edX
         has_projects: false
         has_wiki: false
@@ -1304,6 +1306,7 @@ orgs:
       existingvolumebroker:
         has_projects: true
       fake-mysql-broker:
+        default_branch: main
         description: A service broker that looks like it provisions MySQL but doesn't actually do anything. Used for training
         has_projects: false
         has_wiki: false
@@ -1572,6 +1575,11 @@ orgs:
         has_issues: false
         has_projects: true
         archived: true
+      intro-to-korifi:
+        default_branch: main
+        description: An introduction to the Korifi project
+        has_projects: false
+        has_wiki: false
       istio-scaling:
         archived: true
         has_projects: false
@@ -1674,6 +1682,7 @@ orgs:
         default_branch: main
         has_projects: false
       korifi-sample-app:
+        default_branch: main
         description: A sample application used in the Korifi tutorial
         has_projects: false
         has_wiki: false
@@ -2220,6 +2229,7 @@ orgs:
         has_projects: true
         private: true
       sample-app:
+        default_branch: main
         description: A sample application written in Go used for training purposes
         has_projects: false
         has_wiki: false
@@ -2477,6 +2487,7 @@ orgs:
         has_projects: true
         private: true
       tutorials:
+        default_branch: main
         description: This repository contains the landing page for https://tutorials.cloudfoundry.org and automations
         has_projects: false
         has_wiki: false
@@ -2541,6 +2552,7 @@ orgs:
         archived: true
         has_projects: true
       unhappy-appy:
+        default_branch: main
         description: An app that doesn't always start well. For demo and training ONLY
         has_projects: false
         has_wiki: false
@@ -2567,6 +2579,7 @@ orgs:
       volumedriver:
         has_projects: true
       what-is-cf:
+        default_branch: main
         description: Tutorial explaining what is Cloud Foundry, the foundation, etc
         has_projects: false
         has_wiki: false

@@ -79,11 +79,12 @@ areas:
     github: asalan316
   repositories:
   - cloudfoundry/cf4devs
-  - cloudfoundry/korifi-sample-app
-  - cloudfoundry/tutorials
-  - cloudfoundry/what-is-cf
-  - cloudfoundry/sample-app
   - cloudfoundry/edx
-  - cloudfoundry/unhappy-appy
   - cloudfoundry/fake-mysql-broker
+  - cloudfoundry/intro-to-korifi
+  - cloudfoundry/korifi-sample-app
+  - cloudfoundry/sample-app
+  - cloudfoundry/tutorials
+  - cloudfoundry/unhappy-appy
+  - cloudfoundry/what-is-cf
 ```
