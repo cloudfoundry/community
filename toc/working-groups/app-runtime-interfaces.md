@@ -59,6 +59,9 @@ areas:
     github: salzmannsusan
   - name: Alan Moran
     github: bonzofenix
+  reviewers:
+  - name: Tibor Schöll
+    github: t-schoell
   bots:
   - name: App Autoscaler CI Bot
     github: app-autoscaler-ci-bot
