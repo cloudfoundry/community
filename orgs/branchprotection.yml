@@ -215,7 +215,6 @@ branch-protection:
             - "EasyCLA"
             - "Create Bosh Release"
             - "Acceptance Tests - BOSH release / Result"
-            - "reviewdog"
             - "CodeQL"
           required_pull_request_reviews:
             dismiss_stale_reviews: false
@@ -236,6 +235,7 @@ branch-protection:
             - "Acceptance Tests - MTA / Result"
             - "Build suite=integration, postgres=15"
             - "Build suite=test, postgres=15"
+            - "reviewdog"
           required_pull_request_reviews:
             dismiss_stale_reviews: false
             require_code_owner_reviews: true
