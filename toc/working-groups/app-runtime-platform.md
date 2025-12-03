@@ -93,13 +93,13 @@ areas:
     github: vlast3k
   - name: Plamen Doychev
     github: PlamenDoychev
+  - name: Karthick Udayakumar
+    github: kart2bc
   reviewers:
   - name: Konstantin Lapkov
     github: klapkov
   - name: Tim Downey
     github: tcdowney
-  - name: Karthick Udayakumar
-    github: kart2bc
   - name: Plamen Bardarov
     github: plamen-bardarov
   - name: Alexander Lais
@@ -148,9 +148,9 @@ areas:
     github: winkingturtle-vmw
   - name: Brandon Roberson
     github: ebroberson
-  reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
+  reviewers:
   - name: Tim Downey
     github: tcdowney
   - name: Alexander Lais
@@ -291,6 +291,8 @@ areas:
     github: a18e
   - name: Tim Downey
     github: tcdowney
+  - name: Karthick Udayakumar
+    github: kart2bc
   reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
@@ -304,8 +306,6 @@ areas:
     github: Mrizwanshaik
   - name: Michal Tekel
     github: mtekel
-  - name: Karthick Udayakumar
-    github: kart2bc
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/cf-lookup-route
