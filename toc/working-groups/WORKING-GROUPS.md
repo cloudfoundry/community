@@ -93,7 +93,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | Artifact                   | Link |
 | -------------------------- | ---- |
 | Charter                    | [app-runtime-platform.md](./app-runtime-platform.md)  |
-| Forum                      | [Video chat](https://zoom.us/j/96811724570?pwd=akxYdzlPQVJZMU9ySDVKSThNTUI4dz09) |
+| Forum                      | [Video chat](https://zoom-lfx.platform.linuxfoundation.org/meeting/96235676044?password=214f3059-9187-467d-bf80-2b9645c0e13f) |
 | Community Meeting Calendar | [Monthly on the first Wednesday at noon ET / 9 am PT](https://calendar.google.com/event?action=TEMPLATE&tmeid=bnBmZTMzMzYyNGlxY3U5ODR2ZHFtZ2kyZDRfMjAyMTExMDNUMTYwMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL)  |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1aGT5P_1kFiDMqgvRgmryXMvjGRXKpmtexAhAGK0t3yc/edit)  |
 | Slack Channel              | [&#x23;wg-app-runtime-platform](https://cloudfoundry.slack.com/archives/C02HNDJB31R)  |
