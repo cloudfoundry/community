@@ -29,7 +29,6 @@ orgs:
     - bosh-admin-bot
     - bosh-init-concourse
     - boyan-velinov
-    - bruce-ricard
     - bsoroushian
     - c0d1ngm0nk3y
     - cf-buildpacks-eng
@@ -88,7 +87,6 @@ orgs:
     - jhvhs
     - joaopapereira
     - jochenehret
-    - joefitzgerald
     - joemahady-comm
     - joergdw
     - johha
@@ -103,7 +101,6 @@ orgs:
     - klaus-sap
     - kohara88
     - korifi-bot
-    - krsna-m
     - krutten
     - lechnerc77
     - lnguyen
@@ -118,8 +115,6 @@ orgs:
     - modulo11
     - moggibear
     - moleske
-    - mrosecrance
-    - mvach
     - nader-ziada
     - nand2
     - navinms711
@@ -127,7 +122,6 @@ orgs:
     - norman-abramovitz
     - nouseforaname
     - oliver-heinrich
-    - oppegard
     - paketo-bot
     - paketo-bot-reviewer
     - paulcwarren
@@ -171,9 +165,7 @@ orgs:
     - stuclem
     - svcboteos
     - svkrieger
-    - swalchemist
     - tack-sap
-    - Tallicia
     - tas-runtime-bot
     - tcdowney
     - teddyking
