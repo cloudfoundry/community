@@ -45,8 +45,6 @@ bots:
   github: bosh-admin-bot
 - name: runtime-bot
   github: tas-runtime-bot
-- name: cf-bosh-ci-bot
-  github: cf-bosh-ci-bot
 - name: cf-uaa-ci-bot
   github: cf-identity
 - name: mysql-ci
@@ -132,8 +130,6 @@ areas:
     github: hsinn0
   - name: Florian Tack
     github: tack-sap
-  - name: Torsten Luh
-    github: torsten-sap
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
   - name: Duane May
@@ -173,8 +169,6 @@ areas:
     github: hsinn0
   - name: Florian Tack
     github: tack-sap
-  - name: Torsten Luh
-    github: torsten-sap
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
   - name: Filip Hanik
