@@ -34,3 +34,11 @@ As an initial experimental setup for this new local deployment, a new area will 
 ## Possible Future Work
 
 If this new local deployment release proves helpful to the CF community and works well, it should graduate into an officially supported local setup and be adopted by the CF community. This means that maintenance of the Helm charts could be adopted by the corresponding working groups, while the App Runtime Deployments WG would own the integration and validation of those charts.
+
+## Long term vision
+
+This RFC is not limited to local development or experimentation scenarios. CF on Kind is intentionally designed to lower the entry barrier for contributors, enable fast feedback cycles, and simplify development and testing workflows.
+
+At the same time, CF on Kind is a foundational step towards a broader CF on Kubernetes vision. If the underlying concepts, architectures, and operational patterns prove to be robust, the long term goal is to evolve these learnings into a community maintained CF on Kubernetes deployment option that can be used in production environments.
+
+In this model, CF on Kind serves as a lightweight and fast feedback environment, while CF on Kubernetes represents the production grade deployment, meeting the required standards for reliability, security, scalability, and operability. Making this distinction explicit ensures that design decisions made in the context of CF on Kind are aligned with a potential future production capable CF on Kubernetes architecture.
