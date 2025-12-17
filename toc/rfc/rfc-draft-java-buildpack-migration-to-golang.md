@@ -1,0 +1,40 @@
+# Meta
+[meta]: #meta
+- Name: Java Buildpack Migration to Golang
+- Start Date: 2025-12-18
+- Author(s): (GitHub usernames)
+- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- RFC Pull Request: (fill in with PR link after you submit it)
+
+
+## Summary
+
+Migrate the Cloud Foundry Java Buildpack from its current Ruby-based implementation to a Go-based implementation to align with other buildpacks in the ecosystem. This migration will address the maintenance gap, improve consistency, and make it easier for the community to contribute and maintain the buildpack going forward.
+
+
+## Problem
+
+The Ruby-based Java Buildpack is currently unmaintained following the departure of its core maintainer from the CF community. Additionally, it has a historically grown unique implementation in Ruby, while all other Cloud Foundry buildpacks have been implemented in Go. This creates maintenance challenges and inconsistency across the buildpack ecosystem.
+
+## Proposal
+
+The Buildpacks and Stacks area of the App Runtime Interfaces working reimplements the Java Buildpack in Go to align with other Cloud Foundry buildpacks and restore active maintainability to this critical component. The new buildpack will be provided as a drop-in replacement for the current Ruby-based Java Buildpack under a new major version. We will reach out to the CF community to help validate the pre-release version and provide feedback to ensure a smooth transition.
+
+### Breaking Changes
+
+Please note the following breaking changes in the Go-based Java Buildpack:
+
+#### Custom JRE Usage
+
+Custom JRE usage will be supported only as documented in the [Custom JRE Usage Guide](https://github.com/cloudfoundry/java-buildpack/blob/feature/go-migration/docs/custom-jre-usage.md).
+
+#### Frameworks Not Included
+
+The following frameworks will not be migrated to the Go buildpack:
+
+* Takipi Agent (OverOps) – Removed because the agent has moved behind a licensed login wall, making it inaccessible for automated buildpack integration
+* Java Security – Rarely used and custom security policies should be implemented at the platform level or within application code
+* Multi Buildpack – No longer needed as multi-buildpack support is now built into the libbuildpack architecture by default
+* Spring Insight – Legacy monitoring tool that has been replaced by modern APM solutions (such as New Relic, AppDynamics, and Dynatrace)
+
+
