@@ -20,6 +20,11 @@ The Ruby-based Java Buildpack is currently unmaintained following the departure 
 
 The Buildpacks and Stacks area of the App Runtime Interfaces working reimplements the Java Buildpack in Go to align with other Cloud Foundry buildpacks and restore active maintainability to this critical component. The new buildpack will be provided as a drop-in replacement for the current Ruby-based Java Buildpack under a new major version. We will reach out to the CF community to help validate the pre-release version and provide feedback to ensure a smooth transition.
 
+### Release Plan
+
+* `v5.0.x` - Experimental release intended to get broad feedback by users, incompatible changes may happen
+* `v5.1.0` - First non-experimental GA release
+
 ### Breaking Changes
 
 Please note the following breaking changes in the Go-based Java Buildpack:
