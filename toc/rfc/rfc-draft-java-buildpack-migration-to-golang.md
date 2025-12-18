@@ -28,6 +28,10 @@ Please note the following breaking changes in the Go-based Java Buildpack:
 
 Custom JRE usage will be supported only as documented in the [Custom JRE Usage Guide](https://github.com/cloudfoundry/java-buildpack/blob/feature/go-migration/docs/custom-jre-usage.md).
 
+#### Changed Default Configuration
+
+* SpringAutoReconfigurationFramework is now disabled by default. Please note that SpringAutoReconfigurationFramework is deprecated, and the recommended alternative is [java-cfenv](https://github.com/pivotal-cf/java-cfenv).
+
 #### Frameworks Not Included
 
 The following frameworks will not be migrated to the Go buildpack:
@@ -36,5 +40,6 @@ The following frameworks will not be migrated to the Go buildpack:
 * Java Security – Rarely used and custom security policies should be implemented at the platform level or within application code
 * Multi Buildpack – No longer needed as multi-buildpack support is now built into the libbuildpack architecture by default
 * Spring Insight – Legacy monitoring tool that has been replaced by modern APM solutions (such as New Relic, AppDynamics, and Dynatrace)
+* Configuration based on resource overlay - This is more of an anti-pattern and requires a fork of the buildpack.
 
 
