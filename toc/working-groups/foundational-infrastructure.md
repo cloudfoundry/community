@@ -313,6 +313,8 @@ areas:
     github: KauzClay
   - name: Sebastian Heid
     github: s4heid
+  - name: Matthew Kocher
+    github: mkocher
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
