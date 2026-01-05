@@ -32,7 +32,6 @@ orgs:
     - bsoroushian
     - c0d1ngm0nk3y
     - cf-buildpacks-eng
-    - cf-bosh-ci-bot
     - cf-cli-eng
     - cf-final-release-election-bot
     - cf-frontend
@@ -94,7 +93,6 @@ orgs:
     - kathap
     - KauzClay
     - kehrlann
-    - KesavanKing
     - kevin-ortega
     - kimago
     - klapkov
@@ -134,10 +132,8 @@ orgs:
     - Pivotal-Christopher-Wong
     - pivotal-david-osullivan
     - pivotal-marcela-campo
-    - pivotalgeorge
     - plowin
     - prkalle
-    - pyogesh2
     - ragaskar
     - ramonskie
     - RichardJJG
@@ -175,7 +171,6 @@ orgs:
     - theghost5800
     - tnikolova82
     - tomkennedy513
-    - torsten-sap
     - uzabanov
     - vipinvkmenon
     - vkalapov
@@ -186,7 +181,6 @@ orgs:
     - WeiQuan0605
     - winkingturtle-vmw
     - xandroc
-    - xiujiao
     - xtreme-conor-nosal
     - xtreme-nitin-ravindran
     - Yavor16
