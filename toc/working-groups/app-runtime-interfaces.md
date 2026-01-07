@@ -250,6 +250,8 @@ areas:
     github: Dariquest
   - name: João Viegas
     github: jcvrabo
+  - name: Vui Lam
+    github: vuil
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
