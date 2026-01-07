@@ -93,6 +93,24 @@ find_prs_for_repo() {
   local user=$1
   local repo=$2
 
+  # Use GitHub Search API to find PRs reviewed by the user
+  if prs=$(gh api --paginate "search/issues?q=repo:${repo}+type:pr+reviewed-by:${user}&per_page=100" 2>/dev/null); then
+    echo "${prs}" | interactions=$(yq -oj -I=0 -r '
+      .items[]
+      | "- " + .created_at + ": [" + .title + "](" + .html_url + ")"
+    ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
+  fi
+
+  # Also check for PRs with review comments
+  if prs=$(gh api --paginate "search/issues?q=repo:${repo}+type:pr+commenter:${user}&per_page=100" 2>/dev/null); then
+    echo "${prs}" | interactions=$(user="${user}" yq -oj -I=0 -r '
+      .items[]
+      | select(.user.login != strenv(user))
+      | "- " + .created_at + ": [" + .title + "](" + .html_url + ")"
+    ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
+  fi
+
+  # Fallback to events for recent activity
   echo "${EVENTS_JSON}" | interactions=$(repository="${repo}" yq -oj -I=0 -r '
     .[]
     | select(.type == "PullRequestReviewEvent")
@@ -116,12 +134,14 @@ find_issues_for_repo() {
   if issues=$(gh api --paginate "repos/${repo}/issues?creator=${user}&state=all" 2>/dev/null); then
     echo "${issues}" | interactions=$(yq -oj -I=0 -r '
       .[]
+      | select(.pull_request == null)
       | "- " + .created_at + ": [" + .title + "](" + .html_url + ")"
     ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
   fi
   if issues=$(gh api --paginate "repos/${repo}/issues?mentioned=${user}&state=all" 2>/dev/null); then
     echo "${issues}" | interactions=$(yq -oj -I=0 -r '
       .[]
+      | select(.pull_request == null)
       | "- " + .created_at + ": [" + .title + "](" + .html_url + ")"
     ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
   fi
@@ -130,6 +150,7 @@ find_issues_for_repo() {
     .[]
     | select(.type == "IssueCommentEvent")
     | select(.repo.name == strenv(repo))
+    | select(.payload.issue.pull_request == null)
     | select(.payload.issue.user.login != strenv(user))
     | "- " + .payload.issue.created_at + ": [" + .payload.issue.title + "](" + .payload.issue.html_url + ")"
   ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
