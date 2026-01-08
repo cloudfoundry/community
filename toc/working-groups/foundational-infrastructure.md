@@ -94,6 +94,8 @@ areas:
   approvers:
   - name: Aram Price
     github: aramprice
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
@@ -221,6 +223,8 @@ areas:
   approvers:
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Long Nguyen
@@ -283,6 +287,8 @@ areas:
     github: aramprice
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
@@ -425,6 +431,8 @@ areas:
     github: aramprice
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Maya Rosecrance
+    github: mrosecrance
   - name: Brian Upton
     github: ystros
   - name: Chris Selzo
