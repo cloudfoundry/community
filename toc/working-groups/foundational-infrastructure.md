@@ -255,13 +255,13 @@ areas:
     github: a-hassanin
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Ned Petrov
+    github: neddp
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Ivaylo Ivanov
     github: ivaylogi98
-  - name: Ned Petrov
-    github: neddp
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
@@ -311,6 +311,8 @@ areas:
     github: s4heid
   - name: Matthew Kocher
     github: mkocher
+  - name: Ned Petrov
+    github: neddp
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
@@ -318,8 +320,6 @@ areas:
     github: peanball
   - name: Ivaylo Ivanov
     github: ivaylogi98
-  - name: Ned Petrov
-    github: neddp
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
