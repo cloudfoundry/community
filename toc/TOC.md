@@ -66,7 +66,7 @@ the Cloud Foundry community via an election.
 | <img width="30px" src="https://github.com/beyhan.png">       | Beyhan Veli (TOC Chair)| SAP         | [@beyhan](https://github.com/beyhan)             | 2024-06-21 | 2026     |
 | <img width="30px" src="https://github.com/Cweibel.png">      | Chris Weibel           | Cloud.gov   | [@cweibel](https://github.com/cweibel)           | 2025-07-01 | 2027     |
 | <img width="30px" src="https://github.com/gerg.png">         | Greg Cobb              | VMware      | [@gerg](https://github.com/Gerg)                 | 2025-07-01 | 2027     |
-| <img width="30px" src="https://github.com/rkoster.png">      | Ruben Koster           | VMware      | [@rkoster](https://github.com/rkoster)           | 2024-06-21 | 2026     |
+| <img width="30px" src="https://github.com/rkoster.png">      | Ruben Koster           | Rabobank    | [@rkoster](https://github.com/rkoster)           | 2024-06-21 | 2026     |
 | <img width="30px" src="https://github.com/stephanme.png">    | Stephan Merker         | SAP         | [@stephanme](https://github.com/stephanme)       | 2025-07-01 | 2027     |
 
 
