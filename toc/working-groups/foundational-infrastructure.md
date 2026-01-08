@@ -268,6 +268,8 @@ areas:
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
+  - name: Harry Metske
+    github: metskem
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
