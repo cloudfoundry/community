@@ -241,6 +241,8 @@ areas:
     github: joaopapereira
   - name: Sam Gunaratne
     github: samze
+  - name: Anuj Chaudhari
+    github: anujc25
   reviewers:
   - name: Pete Levine
     github: PeteLevineA
