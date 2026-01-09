@@ -60,7 +60,7 @@ java-buildpack/java-buildpack-v4.77.0.zip:
 
 ### Examples of Affected Repositories
 
-The investigation identified that UUID blobs are created by multiple BOSH release repositories, including but not limited to:
+The investigation identified that UUID blobs are created by buildpack BOSH release repositories:
 
 **Buildpack BOSH Releases (13 repositories):**
 - ruby-buildpack-release
@@ -76,6 +76,8 @@ The investigation identified that UUID blobs are created by multiple BOSH releas
 - r-buildpack-release
 - hwc-buildpack-release
 - java-offline-buildpack-release
+
+**Note:** This RFC focuses on buildpack BOSH releases only. Infrastructure BOSH releases (diego, capi, routing, garden-runc) that may also use this bucket are out of scope for this proposal.
 
 ## Proposal
 
@@ -172,14 +174,7 @@ Examples:
 - `buildpacks-java.cloudfoundry.org`
 - `buildpacks-nodejs.cloudfoundry.org`
 
-**Step 2: Configure CloudFront Distributions**
-
-Create CloudFront distribution for each bucket:
-- Origin: New S3 bucket
-- Domain: `buildpacks-{buildpack-name}.cloudfoundry.org`
-- TLS Certificate: CFF-managed wildcard or per-bucket certificates
-
-**Step 3: Update BOSH Release Configuration**
+**Step 2: Update BOSH Release Configuration**
 
 ```yaml
 # config/final.yml for ruby-buildpack-release
@@ -190,7 +185,7 @@ blobstore:
     bucket_name: buildpacks-ruby.cloudfoundry.org
 ```
 
-**Step 4: Migrate Blobs**
+**Step 3: Migrate Blobs**
 
 For each buildpack:
 1. Identify all blobs from `config/blobs.yml`
@@ -199,7 +194,7 @@ For each buildpack:
 4. Test release builds
 5. Keep old bucket accessible for rollback period
 
-**Step 5: Update DNS and CDN**
+**Step 4: Update DNS**
 
 - Configure DNS for new subdomains
 - Point buildpack consumers to new bucket URLs (if any direct access exists)
@@ -216,10 +211,12 @@ For each buildpack:
 
 #### Cons
 
-- ❌ **High Infrastructure Overhead:** 13+ new buckets,
+- ❌ **High Infrastructure Overhead:** 13+ new S3 buckets to manage
+- ❌ **Increased DNS Complexity:** Requires multiple DNS entries
 - ❌ **Operational Burden:** More resources to monitor, maintain, and secure
+- ❌ **Higher AWS Costs:** Multiple S3 buckets incur additional request and monitoring overhead (~$20/month additional)
 - ❌ **Breaking Change Potential:** May impact consumers if not carefully coordinated
-- ❌ **Significant Migration Effort:** Larger coordination effort across teams, DNS, CDN, and AWS resources
+- ❌ **Significant Migration Effort:** Larger coordination effort across teams and AWS resources
 
 #### Additional Consideration: Release Candidates Bucket
 
@@ -261,16 +258,75 @@ The release candidates bucket would **not** require BOSH configuration changes, 
 
 | Aspect | Option 1: Folder Namespacing | Option 2: Dedicated Buckets |
 |--------|------------------------------|----------------------------|
-| **Infrastructure Changes** | Minimal (config only) | Major (13+ buckets, CDNs) |
+| **Infrastructure Changes** | Minimal (config only) | Major (13 buckets + DNS) |
 | **Migration Complexity** | Medium | High |
 | **Operational Overhead** | Low | High |
 | **Team Isolation** | Logical (folders) | Physical (buckets) |
 | **Access Control Granularity** | Bucket-level | Bucket-level per team |
-| **Cost Impact** | ~$5-10/month (temp storage during migration) | +$50-100/month (CDN base costs) |
+| **Cost Impact** | ~$5-10/month temporary (migration grace period) | +~$20/month ongoing (request & monitoring overhead) |
 | **Rollback Ease** | Easy (keep old files) | Difficult (multiple resources) |
 | **BOSH Native Support** | ✅ Yes (`folder_name`) | ✅ Yes (`bucket_name`) |
 | **Orphan Detection** | Easier (per folder) | Easiest (per bucket) |
 | **Breaking Changes Risk** | Low | Medium-High |
+
+## Cost Analysis
+
+### Current State (Shared Bucket)
+- **Storage:** ~2.32 TB = ~$53/month (at $0.023/GB S3 Standard)
+- **Data Transfer OUT:** ~500 GB/month = ~$45/month (at $0.09/GB)
+- **S3 Requests:** ~$0.50/month
+- **Total:** ~$98.50/month
+
+### Option 1: Folder Namespacing
+
+**Migration Period (30 days):**
+- Temporary blob duplication during grace period
+- Additional storage: ~$5-10/month for 30 days
+- **Migration cost:** ~$5-10 (one-time)
+
+**Steady State:**
+- Same storage structure (folders within 1 bucket)
+- Same request costs
+- Cleanup of orphaned blobs: **-$6/month savings**
+- **Total: ~$92/month** (6% reduction)
+
+### Option 2: Dedicated Buckets Per Buildpack
+
+**Infrastructure:**
+- 13 buildpack buckets
+- 1 optional release candidates bucket
+- **Total: 14 S3 buckets**
+
+**Monthly Costs:**
+- **Storage:** ~$53/month (same, just distributed)
+- **Data Transfer OUT:** ~$45/month (same)
+- **Additional S3 Request Overhead:** 14 buckets × $0.50 = **+$7/month**
+- **CloudWatch Monitoring:** 14 buckets × $0.30 = **+$4.20/month**
+- **Additional DNS/Certificate Management:** ~$1/month
+- **Total: ~$110/month** (~12% increase)
+
+**Cost Comparison:**
+- **Option 1:** $92/month (after cleanup)
+- **Option 2:** $110/month
+- **Difference:** +$18/month (~+$216/year) for Option 2
+
+**Note:** This analysis assumes **no CDN** (CloudFront) is used. If CloudFront distributions were added per bucket, costs would increase by an additional $50-100/month for Option 2.
+
+## Recommendation
+
+**Option 1 (Folder-Based Namespacing) is recommended** for the following reasons:
+
+1. **Lower Risk:** Minimal infrastructure changes reduce deployment and rollback complexity
+2. **Cost Effective:** Avoids recurring per-bucket overhead costs (+$18/month savings vs Option 2)
+3. **Native Support:** Uses existing BOSH functionality without custom tooling
+4. **Faster Implementation:** Can be rolled out incrementally per buildpack over ~16 weeks
+5. **Preserves Existing Architecture:** Maintains current DNS and access patterns
+6. **Sufficient for Buildpacks:** Logical separation via folders meets organizational needs for buildpack teams
+
+Option 2 should be considered only if:
+- Per-team IAM access control is a hard requirement
+- Budget allows for increased AWS costs (+$216/year)
+- Physical bucket isolation is mandated by security/compliance requirements
 
 ## Implementation Plan
 
@@ -280,7 +336,7 @@ Assuming **Option 1** is adopted:
 - [ ] Finalize `folder_name` naming convention
 - [ ] Create migration scripts for blob copying
 - [ ] Document rollback procedures
-- [ ] Identify all BOSH releases using the shared bucket (13 buildpacks + 4 infrastructure)
+- [ ] Identify all buildpack BOSH releases using the shared bucket (13 buildpacks)
 - [ ] **Decision:** Determine whether to create separate `buildpacks-candidates.cloudfoundry.org` bucket for release candidates
 
 ### Phase 2: Pilot Migration (Week 3-4)
@@ -296,18 +352,13 @@ Assuming **Option 1** is adopted:
 - [ ] Verify each buildpack's release process post-migration
 - [ ] Document per-buildpack migration status
 
-### Phase 4: Infrastructure BOSH Releases (Week 11-13)
-- [ ] Coordinate with Foundational Infrastructure WG
-- [ ] Migrate diego, capi, routing, garden-runc releases
-- [ ] Test infrastructure releases thoroughly
-
-### Phase 5: Cleanup (Week 14-16)
+### Phase 4: Cleanup (Week 11-13)
 - [ ] Generate final orphan blob report
 - [ ] Archive July 2024 migration artifacts (702 blobs, ~250 GB) to S3 Glacier Deep Archive
 - [ ] After 30-day grace period, remove root-level blobs that are successfully migrated
 - [ ] Document final bucket organization in buildpacks-ci repository
 
-### Phase 6: Automation (Week 17-20)
+### Phase 5: Automation (Week 14-16)
 - [ ] Implement automated orphan detection (monthly scan)
 - [ ] Add S3 lifecycle policies for temporary CI artifacts
 - [ ] Set up CloudWatch alarms for bucket size anomalies
@@ -339,9 +390,7 @@ Assuming **Option 1** is adopted:
 
 ## Open Questions
 
-1. **Who owns migration execution?** Should this be Application Runtime Interfaces WG, Foundational Infrastructure WG, or joint ownership?
-2. **Infrastructure BOSH releases scope:** Should infrastructure releases (diego, capi, routing, garden-runc) be included in Phase 1, or handled separately?
-3. **Budget approval:** Does the CFF budget accommodate temporary storage cost increase during migration grace period (~$5-10/month for 30 days)?
-4. **Access control requirements:** Are there any per-team IAM access control requirements that would necessitate Option 2?
-5. **CDN caching implications:** Will folder-based paths impact CloudFront cache hit rates or require CDN configuration changes?
-6. **Release candidates bucket separation:** Should the `buildpack-release-candidates/` directory (1,099 files) be moved to a dedicated `buildpacks-candidates.cloudfoundry.org` bucket to enable independent lifecycle management and cleanup policies?
+1. **Who owns migration execution?** Should this be Application Runtime Interfaces WG or joint ownership with other teams?
+2. **Budget approval:** Does the CFF budget accommodate temporary storage cost increase during migration grace period (~$5-10/month for 30 days)?
+3. **Access control requirements:** Are there any per-team IAM access control requirements that would necessitate Option 2?
+4. **Release candidates bucket separation:** Should the `buildpack-release-candidates/` directory (1,099 files) be moved to a dedicated `buildpacks-candidates.cloudfoundry.org` bucket to enable independent lifecycle management and cleanup policies?
