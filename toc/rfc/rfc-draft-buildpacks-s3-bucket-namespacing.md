@@ -310,24 +310,6 @@ The release candidates bucket would **not** require BOSH configuration changes, 
 - **Option 2:** $110/month
 - **Difference:** +$18/month (~+$216/year) for Option 2
 
-**Note:** This analysis assumes **no CDN** (CloudFront) is used. If CloudFront distributions were added per bucket, costs would increase by an additional $50-100/month for Option 2.
-
-## Recommendation
-
-**Option 1 (Folder-Based Namespacing) is recommended** for the following reasons:
-
-1. **Lower Risk:** Minimal infrastructure changes reduce deployment and rollback complexity
-2. **Cost Effective:** Avoids recurring per-bucket overhead costs (+$18/month savings vs Option 2)
-3. **Native Support:** Uses existing BOSH functionality without custom tooling
-4. **Faster Implementation:** Can be rolled out incrementally per buildpack over ~16 weeks
-5. **Preserves Existing Architecture:** Maintains current DNS and access patterns
-6. **Sufficient for Buildpacks:** Logical separation via folders meets organizational needs for buildpack teams
-
-Option 2 should be considered only if:
-- Per-team IAM access control is a hard requirement
-- Budget allows for increased AWS costs (+$216/year)
-- Physical bucket isolation is mandated by security/compliance requirements
-
 ## Implementation Plan
 
 Assuming **Option 1** is adopted:
@@ -363,22 +345,6 @@ Assuming **Option 1** is adopted:
 - [ ] Add S3 lifecycle policies for temporary CI artifacts
 - [ ] Set up CloudWatch alarms for bucket size anomalies
 - [ ] Create runbook for future blob management
-
-## Estimated Impact
-
-### Storage Cost Savings (Post-Migration)
-- **Orphaned Blob Cleanup:** Remove/archive 770 orphaned blobs (~270 GB)
-  - Move July 2024 migration artifacts (250 GB) to Deep Archive: $0.25/month (from $5.75/month)
-  - Delete truly orphaned blobs (20 GB): $0.46/month savings
-- **Total Monthly Savings:** ~$5.50/month
-- **Annual Savings:** ~$66/year
-
-### Operational Benefits
-- **Improved Discoverability:** Engineers can browse blobs by buildpack in S3 console
-- **Faster Audits:** Clear ownership boundaries speed up security/compliance reviews
-- **Easier Debugging:** Quickly identify which buildpack owns a blob
-- **Reduced Onboarding Time:** New team members understand bucket organization intuitively
-- **Better Orphan Detection:** Automated scripts can detect unused blobs per buildpack folder
 
 ## Additional Information
 
