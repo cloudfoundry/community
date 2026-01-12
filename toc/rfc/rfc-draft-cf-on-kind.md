@@ -8,7 +8,7 @@
 
 ## Summary
 
-Cloud Foundry local setup is currently cumbersome and has a steep learning curve. This makes it difficult for new users to get started and slows down component development. We propose a simple and fast way to run Cloud Foundry locally, providing a better first-time user experience. Additionally, this enables developers to rapidly prototype, develop, and test new ideas in an inexpensive setup.
+Cloud Foundry local setup with Bosh and cf-deployment is currently cumbersome and has a steep learning curve. This makes it difficult for new users to get started and slows down component development. We propose a simple and fast way to run Cloud Foundry locally, providing a better first-time user experience. Additionally, this enables developers to rapidly prototype, develop, and test new ideas in an inexpensive setup.
 
 ## Problem
 
