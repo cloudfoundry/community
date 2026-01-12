@@ -12,7 +12,7 @@ Cloud Foundry local setup with Bosh and cf-deployment is currently cumbersome an
 
 ## Problem
 
-Setting up Cloud Foundry locally is currently cumbersome which creates a significant barrier to entry.
+Setting up Cloud Foundry locally using Bosh and cf-deployment is currently cumbersome which creates a significant barrier to entry.
 
 First-time users encounter significant difficulty when they simply want to try out the `cf push` workflow. Currently, there is no local setup using existing community tools and technologies that can be ready within minutes.
 
