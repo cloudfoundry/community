@@ -343,8 +343,6 @@ areas:
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
   reviewers:
-  - name: Monika Noeva
-    github: MNoeva
   - name: Stoyan Ivanov
     github: stiv03
   - name: Krasimir Kargov
