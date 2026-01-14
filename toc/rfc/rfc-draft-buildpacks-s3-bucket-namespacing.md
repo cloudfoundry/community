@@ -122,14 +122,22 @@ For each buildpack BOSH release:
 3. Keep original files in root temporarily for rollback capability
 4. After successful verification (30-day grace period), archive or delete root-level blobs
 
-**Step 3: Update CI/CD Pipelines**
+**Step 3: Move orphaned Blobs**
+
+the orphaned blobs that are left would be moved to a folder named `orphaned`
+we would set a retention for this for 3 months
+
+if no one complains in the next 3 months 
+it would be safe to assume that we can delete these blobs
+
+**Step 4: Update CI/CD Pipelines**
 
 Update `buildpacks-ci` task scripts:
 - Modify `tasks/cf-release/create-buildpack-dev-release/run` to use updated `config/final.yml`
 - Ensure `bosh upload-blobs` respects new folder configuration
 - Update any direct S3 access scripts to use new paths
 
-**Step 4: Verification & Rollback**
+**Step 5: Verification & Rollback**
 
 - Test blob access with updated configuration in staging/dev environments
 - Monitor BOSH release builds for 30 days
@@ -156,67 +164,6 @@ Update `buildpacks-ci` task scripts:
 - ❌ **Multi-Repo Coordination:** Changes must be synchronized across multiple repositories
 - ❌ **No Per-Team Access Control:** Cannot implement IAM policies for individual buildpack teams within shared bucket
 
-### Option 2: Dedicated S3 Buckets Per Buildpack
-
-Create separate S3 buckets for each buildpack BOSH release.
-
-#### Implementation
-
-**Step 1: Create S3 Buckets**
-
-Create one bucket per buildpack with naming convention:
-```
-buildpacks-{buildpack-name}.cloudfoundry.org
-```
-
-Examples:
-- `buildpacks-ruby.cloudfoundry.org`
-- `buildpacks-java.cloudfoundry.org`
-- `buildpacks-nodejs.cloudfoundry.org`
-
-**Step 2: Update BOSH Release Configuration**
-
-```yaml
-# config/final.yml for ruby-buildpack-release
----
-blobstore:
-  provider: s3
-  options:
-    bucket_name: buildpacks-ruby.cloudfoundry.org
-```
-
-**Step 3: Migrate Blobs**
-
-For each buildpack:
-1. Identify all blobs from `config/blobs.yml`
-2. Copy blobs to new dedicated bucket
-3. Update `config/final.yml` with new bucket name
-4. Test release builds
-5. Keep old bucket accessible for rollback period
-
-**Step 4: Update DNS**
-
-- Configure DNS for new subdomains
-- Point buildpack consumers to new bucket URLs (if any direct access exists)
-- Update documentation
-
-#### Pros
-
-- ✅ **Complete Team Isolation:** Each buildpack team has full control over their bucket
-- ✅ **Granular IAM Policies:** Per-team access control via AWS IAM
-- ✅ **Independent Lifecycle Management:** Teams can set their own retention policies
-- ✅ **Reduced Blast Radius:** Issues with one bucket don't affect others
-- ✅ **Clear Cost Attribution:** Track S3 costs per buildpack
-- ✅ **No Namespace Collisions:** Impossible for teams to interfere with each other
-
-#### Cons
-
-- ❌ **High Infrastructure Overhead:** 13+ new S3 buckets to manage
-- ❌ **Increased DNS Complexity:** Requires multiple DNS entries
-- ❌ **Operational Burden:** More resources to monitor, maintain, and secure
-- ❌ **Higher AWS Costs:** Multiple S3 buckets incur additional request and monitoring overhead (~$20/month additional)
-- ❌ **Breaking Change Potential:** May impact consumers if not carefully coordinated
-- ❌ **Significant Migration Effort:** Larger coordination effort across teams and AWS resources
 
 #### Additional Consideration: Release Candidates Bucket
 
@@ -309,42 +256,6 @@ The release candidates bucket would **not** require BOSH configuration changes, 
 - **Option 1:** $92/month (after cleanup)
 - **Option 2:** $110/month
 - **Difference:** +$18/month (~+$216/year) for Option 2
-
-## Implementation Plan
-
-Assuming **Option 1** is adopted:
-
-### Phase 1: Preparation (Week 1-2)
-- [ ] Finalize `folder_name` naming convention
-- [ ] Create migration scripts for blob copying
-- [ ] Document rollback procedures
-- [ ] Identify all buildpack BOSH releases using the shared bucket (13 buildpacks)
-- [ ] **Decision:** Determine whether to create separate `buildpacks-candidates.cloudfoundry.org` bucket for release candidates
-
-### Phase 2: Pilot Migration (Week 3-4)
-- [ ] Select 1-2 pilot buildpacks (e.g., `staticfile-buildpack-release`, `binary-buildpack-release` - lower risk)
-- [ ] Update `config/final.yml` with `folder_name`
-- [ ] Copy pilot buildpack blobs to new folder structure
-- [ ] Test BOSH release builds in CI
-- [ ] Monitor for 2 weeks
-
-### Phase 3: Rollout (Week 5-10)
-- [ ] Roll out to remaining buildpack BOSH releases (3-4 buildpacks per week)
-- [ ] Update CI/CD pipelines to use new configuration
-- [ ] Verify each buildpack's release process post-migration
-- [ ] Document per-buildpack migration status
-
-### Phase 4: Cleanup (Week 11-13)
-- [ ] Generate final orphan blob report
-- [ ] Archive July 2024 migration artifacts (702 blobs, ~250 GB) to S3 Glacier Deep Archive
-- [ ] After 30-day grace period, remove root-level blobs that are successfully migrated
-- [ ] Document final bucket organization in buildpacks-ci repository
-
-### Phase 5: Automation (Week 14-16)
-- [ ] Implement automated orphan detection (monthly scan)
-- [ ] Add S3 lifecycle policies for temporary CI artifacts
-- [ ] Set up CloudWatch alarms for bucket size anomalies
-- [ ] Create runbook for future blob management
 
 ## Additional Information
 
