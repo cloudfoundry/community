@@ -2,7 +2,7 @@
 [meta]: #meta
 - Name: Java Buildpack Migration to Golang
 - Start Date: 2025-12-18
-- Author(s): (GitHub usernames)
+- Author: @beyhan
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
 - RFC Pull Request: (fill in with PR link after you submit it)
 
