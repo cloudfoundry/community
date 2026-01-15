@@ -270,6 +270,8 @@ areas:
     github: dudejas
   - name: Harry Metske
     github: metskem
+  - name: Rene Dollevoet
+    github: lodener
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
