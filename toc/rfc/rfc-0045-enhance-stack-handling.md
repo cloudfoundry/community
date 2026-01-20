@@ -115,7 +115,7 @@ The possible states for a stack will be:
 
 - `ACTIVE`: The stack is fully usable. This is the default state for a new stack.
 - `DEPRECATED`: The stack is still usable, but a prominent warning will be logged during staging and starting of applications. This is to inform users about the upcoming removal of the stack.
-- `LOCKED`: The stack cannot be used for new applications. Existing applications using this stack can still be updated, restarted, and scaled. This state is intended to prevent new adoption of the stack.
+- `RESTRICTED`: The stack cannot be used for new applications. Existing applications using this stack can still be updated, restarted, and scaled. This state is intended to prevent new adoption of the stack.
 - `DISABLED`: The stack cannot be used for staging or restaging any application. Existing applications will continue to run, but they cannot be updated. Restarting and scaling of existing apps using the disabled stack is still possible.
 
 This requires extending the `stacks` table in the database with a `state` column. The API endpoints for managing and listing stacks will also need to be updated to expose and allow modification of this new field. Client libraries and the `cf` CLI should be updated to display the stack's state.
@@ -124,7 +124,7 @@ The `state` of the stack will directly influence the behavior of the CF API:
 
 - When an application is staged or restaged, the API will check the state of the used stack.
 - If the state is `DEPRECATED`, a warning message will be added to the logs.
-- If the state is `LOCKED`, staging a *new* application will fail with an error.
+- If the state is `RESTRICTED`, staging a *new* application will fail with an error.
 - If the state is `DISABLED`, staging or restaging *any* application will fail with an error.
 
 To improve communication with developers, the existing `description` field of a stack will be leveraged. The content of the `description` field should be included in any warning or error message related to the stack's state. This allows operators to provide context, migration guides, or links to further documentation.
@@ -169,7 +169,7 @@ This approach provides a clear and explicit way for operators to manage the life
 - It introduces additional complexity to the stack management process
 
 - Blocks workflows of CF users who want to use a stack that is
-  deprecated, locked or disabled. This may lead to support tickets and
+  deprecated, restricted or disabled. This may lead to support tickets and
   complaints from CF users. It only affects lifecycle operations and not creates actual app downtime, but it may still be perceived as a negative operation by some users.
   To mitigate this and allow users to regain control over lifecycle operations the [Custom Stack RFC](https://github.com/cloudfoundry/community/pull/1251) proposes
   to provide custom stacks functionality. This allows CF Foundation operators to respond
@@ -188,7 +188,7 @@ In the CF API currently, only a global stack management exists as
 described above.
 In addition to that we'd like to create the ability for CF Admins to
 decide per organization to set or remove the statuses "deprecate",
-"locked", "disabled" on an organization individual basis.
+"restricted", "disabled" on an organization individual basis.
 
 Introducing two new endpoints:
 
@@ -197,7 +197,7 @@ Introducing two new endpoints:
 `UPDATE /v3/organizations/[GUID]/stacks`
 
 This allows CF admins to react on CF user request/complains/tickets on
-an individual level rather than re-enabling a deprecated, locked or
+an individual level rather than re-enabling a deprecated, restricted or
 disabled stack for a whole CF Foundation and all users.\
 It supplies the tool required by CF admins to support individual users
 properly without making commitments to all CF users regarding
