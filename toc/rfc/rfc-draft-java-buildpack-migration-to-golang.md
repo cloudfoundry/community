@@ -36,6 +36,7 @@ Custom JRE usage will be supported only as documented in the [Custom JRE Usage G
 #### Changed Default Configuration
 
 * SpringAutoReconfigurationFramework is now disabled by default. Please note that SpringAutoReconfigurationFramework is deprecated, and the recommended alternative is [java-cfenv](https://github.com/pivotal-cf/java-cfenv).
+* JRE selection based on `JBP_CONFIG_COMPONENTS` is deprecated in the go-based buildpack and JRE selection based on `JBP_CONFIG_<JRE_TYPE>` is supported as described [here](https://github.com/cloudfoundry/java-buildpack/blob/feature/go-migration/README.md#jre-selection).
 
 #### Frameworks Not Included
 
