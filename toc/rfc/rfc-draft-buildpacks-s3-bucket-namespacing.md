@@ -165,9 +165,9 @@ Update `buildpacks-ci` task scripts:
 - ❌ **No Per-Team Access Control:** Cannot implement IAM policies for individual buildpack teams within shared bucket
 
 
-#### Additional Consideration: Release Candidates Bucket
+#### Release Candidates Bucket
 
-The `buildpack-release-candidates/` directory (1,099 files) could also be separated into its own dedicated bucket under Option 2. This directory contains pre-release buildpack versions organized by buildpack type:
+The `buildpack-release-candidates/` directory (1,099 files) should also be separated into its own dedicated bucket. This directory contains pre-release buildpack versions organized by buildpack type:
 
 ```
 buildpack-release-candidates/
@@ -195,68 +195,6 @@ buildpacks.cloudfoundry.org            # Production BOSH blobs only
 buildpacks-candidates.cloudfoundry.org # Pre-release buildpack packages
 ```
 
-**Note:** This separation is **compatible with both Option 1 and Option 2**:
-- **With Option 1:** Release candidates bucket + shared production bucket with folder namespacing
-- **With Option 2:** Release candidates bucket + per-buildpack production buckets
-
-The release candidates bucket would **not** require BOSH configuration changes, as these files are uploaded directly by CI/CD pipelines (`buildpacks-ci`), not via `bosh upload-blobs`.
-
-## Comparison
-
-| Aspect | Option 1: Folder Namespacing | Option 2: Dedicated Buckets |
-|--------|------------------------------|----------------------------|
-| **Infrastructure Changes** | Minimal (config only) | Major (13 buckets + DNS) |
-| **Migration Complexity** | Medium | High |
-| **Operational Overhead** | Low | High |
-| **Team Isolation** | Logical (folders) | Physical (buckets) |
-| **Access Control Granularity** | Bucket-level | Bucket-level per team |
-| **Cost Impact** | ~$5-10/month temporary (migration grace period) | +~$20/month ongoing (request & monitoring overhead) |
-| **Rollback Ease** | Easy (keep old files) | Difficult (multiple resources) |
-| **BOSH Native Support** | ✅ Yes (`folder_name`) | ✅ Yes (`bucket_name`) |
-| **Orphan Detection** | Easier (per folder) | Easiest (per bucket) |
-| **Breaking Changes Risk** | Low | Medium-High |
-
-## Cost Analysis
-
-### Current State (Shared Bucket)
-- **Storage:** ~2.32 TB = ~$53/month (at $0.023/GB S3 Standard)
-- **Data Transfer OUT:** ~500 GB/month = ~$45/month (at $0.09/GB)
-- **S3 Requests:** ~$0.50/month
-- **Total:** ~$98.50/month
-
-### Option 1: Folder Namespacing
-
-**Migration Period (30 days):**
-- Temporary blob duplication during grace period
-- Additional storage: ~$5-10/month for 30 days
-- **Migration cost:** ~$5-10 (one-time)
-
-**Steady State:**
-- Same storage structure (folders within 1 bucket)
-- Same request costs
-- Cleanup of orphaned blobs: **-$6/month savings**
-- **Total: ~$92/month** (6% reduction)
-
-### Option 2: Dedicated Buckets Per Buildpack
-
-**Infrastructure:**
-- 13 buildpack buckets
-- 1 optional release candidates bucket
-- **Total: 14 S3 buckets**
-
-**Monthly Costs:**
-- **Storage:** ~$53/month (same, just distributed)
-- **Data Transfer OUT:** ~$45/month (same)
-- **Additional S3 Request Overhead:** 14 buckets × $0.50 = **+$7/month**
-- **CloudWatch Monitoring:** 14 buckets × $0.30 = **+$4.20/month**
-- **Additional DNS/Certificate Management:** ~$1/month
-- **Total: ~$110/month** (~12% increase)
-
-**Cost Comparison:**
-- **Option 1:** $92/month (after cleanup)
-- **Option 2:** $110/month
-- **Difference:** +$18/month (~+$216/year) for Option 2
-
 ## Additional Information
 
 - **S3 Bucket Investigation Document:** [`buildpacks-ci/S3_BUCKET_INVESTIGATION.md`](https://github.com/cloudfoundry/buildpacks-ci/blob/cf-release/S3_BUCKET_INVESTIGATION.md)
@@ -264,10 +202,3 @@ The release candidates bucket would **not** require BOSH configuration changes, 
 - **July 2024 Bucket Migration Context:** [buildpacks-ci commit](https://github.com/cloudfoundry/buildpacks-ci/commit/XXXXXXX) - "Switch to using buildpacks.cloudfoundry.org bucket" for CFF CDN takeover
 - **BOSH `folder_name` Documentation:** [BOSH Blobstore Docs](https://bosh.io/docs/release-blobs/)
 - **Related RFC:** [RFC-0011: Move Buildpack Dependencies Repository to CFF](rfc-0011-move-buildpacks-dependencies-to-cff.md)
-
-## Open Questions
-
-1. **Who owns migration execution?** Should this be Application Runtime Interfaces WG or joint ownership with other teams?
-2. **Budget approval:** Does the CFF budget accommodate temporary storage cost increase during migration grace period (~$5-10/month for 30 days)?
-3. **Access control requirements:** Are there any per-team IAM access control requirements that would necessitate Option 2?
-4. **Release candidates bucket separation:** Should the `buildpack-release-candidates/` directory (1,099 files) be moved to a dedicated `buildpacks-candidates.cloudfoundry.org` bucket to enable independent lifecycle management and cleanup policies?
