@@ -94,7 +94,6 @@ orgs:
     - kathap
     - KauzClay
     - kehrlann
-    - KesavanKing
     - kevin-ortega
     - kimago
     - klapkov
@@ -105,16 +104,19 @@ orgs:
     - lechnerc77
     - lnguyen
     - loewenstein-sap
+    - lodener
     - Lokowandtg
     - MarcPaquette
     - mariash
     - metric-store-ci
+    - metskem
     - mingxiao
     - mkocher
     - MNoeva
     - modulo11
     - moggibear
     - moleske
+    - mrosecrance
     - nader-ziada
     - nand2
     - navinms711
@@ -132,9 +134,8 @@ orgs:
     - Pivotal-Christopher-Wong
     - pivotal-david-osullivan
     - pivotal-marcela-campo
-    - pivotalgeorge
     - plowin
-    - pyogesh2
+    - prkalle
     - ragaskar
     - ramonskie
     - RichardJJG
@@ -172,17 +173,16 @@ orgs:
     - theghost5800
     - tnikolova82
     - tomkennedy513
-    - torsten-sap
     - uzabanov
     - vipinvkmenon
     - vkalapov
+    - vuil
     - VRBogdanov
     - wayneeseguin
     - weili-broadcom
     - WeiQuan0605
     - winkingturtle-vmw
     - xandroc
-    - xiujiao
     - xtreme-conor-nosal
     - xtreme-nitin-ravindran
     - Yavor16

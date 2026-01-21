@@ -45,8 +45,6 @@ bots:
   github: bosh-admin-bot
 - name: runtime-bot
   github: tas-runtime-bot
-- name: cf-bosh-ci-bot
-  github: cf-bosh-ci-bot
 - name: cf-uaa-ci-bot
   github: cf-identity
 - name: mysql-ci
@@ -134,8 +132,6 @@ areas:
     github: hsinn0
   - name: Florian Tack
     github: tack-sap
-  - name: Torsten Luh
-    github: torsten-sap
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
   - name: Duane May
@@ -175,8 +171,6 @@ areas:
     github: hsinn0
   - name: Florian Tack
     github: tack-sap
-  - name: Torsten Luh
-    github: torsten-sap
   - name: Adrian Hoelzl
     github: adrianhoelzl-sap
   - name: Filip Hanik
@@ -265,19 +259,23 @@ areas:
     github: a-hassanin
   - name: Clay Kauzlaric
     github: KauzClay
+  - name: Ned Petrov
+    github: neddp
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Ivaylo Ivanov
     github: ivaylogi98
-  - name: Ned Petrov
-    github: neddp
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
+  - name: Harry Metske
+    github: metskem
+  - name: Rene Dollevoet
+    github: lodener
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -319,6 +317,10 @@ areas:
     github: KauzClay
   - name: Sebastian Heid
     github: s4heid
+  - name: Matthew Kocher
+    github: mkocher
+  - name: Ned Petrov
+    github: neddp
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
@@ -326,8 +328,6 @@ areas:
     github: peanball
   - name: Ivaylo Ivanov
     github: ivaylogi98
-  - name: Ned Petrov
-    github: neddp
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova

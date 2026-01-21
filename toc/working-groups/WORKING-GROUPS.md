@@ -94,7 +94,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | -------------------------- | ---- |
 | Charter                    | [app-runtime-platform.md](./app-runtime-platform.md)  |
 | Forum                      | [Video chat](https://zoom-lfx.platform.linuxfoundation.org/meeting/96235676044?password=214f3059-9187-467d-bf80-2b9645c0e13f) |
-| Community Meeting Calendar | [Monthly on the first Wednesday at noon ET / 9 am PT](https://calendar.google.com/event?action=TEMPLATE&tmeid=bnBmZTMzMzYyNGlxY3U5ODR2ZHFtZ2kyZDRfMjAyMTExMDNUMTYwMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL)  |
+| Community Meeting Calendar | [Monthly on the first Thursday at 10:30 am ET / 7:30 am PT](https://calendar.google.com/event?action=TEMPLATE&tmeid=bnBmZTMzMzYyNGlxY3U5ODR2ZHFtZ2kyZDRfMjAyMTExMDNUMTYwMDAwWiBjbG91ZGZvdW5kcnkub3JnX29lZGIwaWxvdGc1dWRzcGRsdjMyYTV2Yzc4QGc&tmsrc=cloudfoundry.org_oedb0ilotg5udspdlv32a5vc78%40group.calendar.google.com&scp=ALL)  |
 | Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1aGT5P_1kFiDMqgvRgmryXMvjGRXKpmtexAhAGK0t3yc/edit)  |
 | Slack Channel              | [&#x23;wg-app-runtime-platform](https://cloudfoundry.slack.com/archives/C02HNDJB31R)  |
 
@@ -160,7 +160,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | &nbsp;                                                   | Leads            | Company | Profile                                 |
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/beyhan.png"> | Beyhan Veli       | SAP  | [@beyhan](https://github.com/beyhan) |
-| <img width="30px" src="https://github.com/rkoster.png"> | Ruben Koster     | VMware  | [@rkoster](https://github.com/rkoster) |
+| <img width="30px" src="https://github.com/rkoster.png"> | Ruben Koster     | Rabobank | [@rkoster](https://github.com/rkoster) |
 | <img width="30px" src="https://github.com/jpalermo.png"> | Joseph Palermo  | VMware  | [@jpalermo](https://github.com/jpalermo) |
 
 

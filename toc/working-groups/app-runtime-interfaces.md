@@ -241,15 +241,21 @@ areas:
     github: joaopapereira
   - name: Sam Gunaratne
     github: samze
+  - name: Anuj Chaudhari
+    github: anujc25
   reviewers:
   - name: Pete Levine
     github: PeteLevineA
+  - name: Prem Kalle
+    github: prkalle
   - name: Tim Downey
     github: tcdowney
   - name: Daria Anton
     github: Dariquest
   - name: João Viegas
     github: jcvrabo
+  - name: Vui Lam
+    github: vuil
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
