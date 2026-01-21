@@ -3,8 +3,8 @@
 - Name: Java Buildpack Migration to Golang
 - Start Date: 2025-12-18
 - Author: @beyhan
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- RFC Pull Request: [community#1392](https://github.com/cloudfoundry/community/pull/1392)
 
 
 ## Summary

@@ -3,8 +3,8 @@
 - Name: CF on KinD
 - Start Date: 2025-12-12
 - Author(s): @beyhan, @c0d1ngm0nk3y, @loewenstein-sap, @modulo11, @mvach, @nicolasbender, @pbusko
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1389
+- Status: Accepted <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- RFC Pull Request: [community#1389](https://github.com/cloudfoundry/community/pull/1389)
 
 ## Summary
 
