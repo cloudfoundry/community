@@ -81,12 +81,8 @@ The investigation identified that UUID blobs are created by buildpack BOSH relea
 
 ## Proposal
 
-Implement proper namespacing for BOSH blobs in the buildpacks S3 bucket to improve organization, discoverability, and maintainability. Two options are proposed:
-
-### Option 1: Folder-Based Namespacing
-
-Implement BOSH's built-in folder namespacing feature by adding `folder_name` configuration to each buildpack BOSH release.
-
+Implement proper namespacing for BOSH blobs in the buildpacks S3 bucket to improve organization, discoverability, and maintainability. The idea is to introduce folder-based namespacing per buildpack. This could be implemented using BOSH's built-in folder namespacing feature by adding a folder_name configuration to each buildpack BOSH release.
+### App Runtime Interfaces
 #### Implementation
 
 **Step 1: Update BOSH Release Configuration**
