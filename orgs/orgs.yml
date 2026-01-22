@@ -2776,8 +2776,6 @@ orgs:
       temp-ari-terraform-provider-cloudfoundry-admins:
         description: "Temporary team for managing terraform-provider-cloudfoundry secrets."
         maintainers:
-          - pyogesh2
-          - KesavanKing
           - vipinvkmenon
           - lechnerc77
         members: []
