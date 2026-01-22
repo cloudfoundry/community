@@ -321,6 +321,8 @@ areas:
     github: mkocher
   - name: Ned Petrov
     github: neddp
+  - name: Maria Shaldybin
+    github: mariash
   reviewers:
   - name: Sascha Stojanovic
     github: Sascha-Stoj
