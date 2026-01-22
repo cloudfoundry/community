@@ -59,7 +59,6 @@ areas:
     github: salzmannsusan
   - name: Alan Moran
     github: bonzofenix
-  reviewers:
   - name: Tibor Schöll
     github: t-schoell
   bots:
