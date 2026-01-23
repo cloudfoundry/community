@@ -1000,6 +1000,11 @@ orgs:
         description: CredHub CLI provides a command line interface to interact with
           CredHub servers
         has_projects: true
+      credhub-deployments:
+        default_branch: main
+        has_projects: true
+        has_wiki: false
+        private: true
       credhub-oss-ci:
         default_branch: main
         has_projects: true
@@ -2752,6 +2757,7 @@ orgs:
         repos:
           uaa-ci: admin
           credhub-oss-ci: admin
+          credhub-deployments: admin
       temp-prometheus-exporter-admins:
         description: "Temporary admin team for Prometheus Repositories."
         maintainers:

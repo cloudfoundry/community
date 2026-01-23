@@ -82,6 +82,7 @@ areas:
   - cloudfoundry/credhub-api-site
   - cloudfoundry/credhub-cli
   - cloudfoundry/credhub-ci-locks
+  - cloudfoundry/credhub-deployments 
   - cloudfoundry/credhub-oss-ci
   - cloudfoundry/credhub-perf-release
   - cloudfoundry/secure-credentials-broker
