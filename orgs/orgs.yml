@@ -1676,6 +1676,14 @@ orgs:
         description: Terminate the JVM when resources are exhausted
         has_projects: true
         has_wiki: false
+      k8s-garden-client:
+        description: Garden client implementation for Kubernetes
+        has_projects: false
+        has_wiki: false
+      kind-deployment:
+        description: Deploying Cloud Foundry on a local kind cluster
+        has_projects: false
+        has_wiki: false
       korifi:
         default_branch: main
         description: Cloud Foundry on Kubernetes
