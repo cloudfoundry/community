@@ -43,6 +43,8 @@ technical_leads:
 bots:
 - name: ard-wg-gitbot
   github: ard-wg-gitbot
+- name: ard-wg-k8s-gitbot
+  github: ard-wg-k8s-gitbot
 areas:
 - name: CF Deployment
   reviewers:
