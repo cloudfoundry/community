@@ -187,8 +187,6 @@ branch-protection:
               - "unit"
               - "EasyCLA"
           required_pull_request_reviews:
-            bypass_pull_request_allowances:
-              teams: ["ard-wg-k8s-gitbot"]
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
             required_approving_review_count: 1
@@ -204,8 +202,6 @@ branch-protection:
               - "unit"
               - "EasyCLA"
           required_pull_request_reviews:
-            bypass_pull_request_allowances:
-              teams: ["ard-wg-k8s-gitbot"]
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
             required_approving_review_count: 1
