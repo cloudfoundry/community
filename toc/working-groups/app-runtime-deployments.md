@@ -83,4 +83,22 @@ areas:
   - cloudfoundry/relint-team
   - cloudfoundry/runtime-ci
   - cloudfoundry/uptimer
+- name: Kind Deployment
+  reviewers: []
+  approvers:
+  - name: Jan von Löwenstein
+    github: loewenstein-sap
+  - name: Pavel Busko
+    github: pbusko
+  - name: Johannes Dillmann
+    github: modulo11
+  - name: Ralf Pannemans
+    github: c0d1ngm0nk3y
+  - name: Nicolas Bender
+    github: nicolasbender
+  - name: Matthias Vach
+    github: mvach
+  repositories:
+  - cloudfoundry/k8s-garden-client
+  - cloudfoundry/kind-deployment
 ```
