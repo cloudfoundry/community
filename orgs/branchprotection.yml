@@ -430,6 +430,7 @@ branch-protection:
           enforce_admins: false
           include:
           - ^ubuntu-jammy$
+          - ^ubuntu-noble$
           - ^v[0-9]*$
           protect: true
           required_pull_request_reviews:
