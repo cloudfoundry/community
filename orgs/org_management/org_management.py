@@ -464,7 +464,7 @@ class OrgGenerator:
                 f"{name}-bots": {
                     "description": f"Bot accounts for {wg['name']} WG",
                     "privacy": "closed",
-                    "maintainers": sorted(maintainers),
+                    "maintainers": [],
                     "members": sorted({u["github"] for u in wg["bots"]} - maintainers),
                     "repos": {r: "write" for r in repositories},
                 },

@@ -500,7 +500,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertDictEqual({f"repo{i}": "admin" for i in range(1, 5)}, team["repos"])
 
         team = wg_team["teams"]["wg-wg1-name-bots"]
-        self.assertListEqual(["execution-lead-wg1", "technical-lead-wg1"], team["maintainers"])
+        self.assertListEqual([], team["maintainers"])
         self.assertListEqual(["bot1-wg1"], team["members"])
         self.assertDictEqual({f"repo{i}": "write" for i in range(1, 5)}, team["repos"])
 
@@ -542,7 +542,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertDictEqual({"repo10": "admin", "repo11": "admin"}, team["repos"])
 
         team = wg_team["teams"]["wg-wg2-name-bots"]
-        self.assertListEqual(["execution-lead-wg2", "technical-lead-wg2"], team["maintainers"])
+        self.assertListEqual([], team["maintainers"])
         self.assertListEqual([], team["members"])
         self.assertDictEqual({"repo10": "write", "repo11": "write"}, team["repos"])
 
