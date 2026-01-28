@@ -3,8 +3,8 @@
 - Name: Buildpacks S3 Bucket Namespacing Strategy
 - Start Date: 2026-01-09
 - Author(s): @ramonskie
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#1403](https://github.com/cloudfoundry/community/pull/1403)
 
 
 ## Summary
@@ -64,7 +64,7 @@ The investigation identified that UUID blobs are created by buildpack BOSH relea
 
 **Buildpack BOSH Releases (13 repositories):**
 - ruby-buildpack-release
-- java-buildpack-release  
+- java-buildpack-release
 - python-buildpack-release
 - nodejs-buildpack-release
 - go-buildpack-release
@@ -123,7 +123,7 @@ For each buildpack BOSH release:
 the orphaned blobs that are left would be moved to a folder named `orphaned`
 we would set a retention for this for 3 months
 
-if no one complains in the next 3 months 
+if no one complains in the next 3 months
 it would be safe to assume that we can delete these blobs
 
 **Step 4: Update CI/CD Pipelines**
