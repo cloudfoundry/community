@@ -142,6 +142,7 @@ areas:
   approvers: []
   repositories:
   - cloudfoundry/community
+  - cloudfoundry/.github
 config:
   github_project_sync:
     mapping:
