@@ -127,20 +127,18 @@ The `state` of the stack will directly influence the behavior of the CF API:
 - If the state is `RESTRICTED`, staging a *new* application will fail with an error.
 - If the state is `DISABLED`, staging or restaging *any* application will fail with an error.
 
-To improve communication with developers, the existing `description` field of a stack will be leveraged. The content of the `description` field should be included in any warning or error message related to the stack's state. This allows operators to provide context, migration guides, or links to further documentation.
+To improve communication with developers, an additional field e.g `state_reason` of a stack object should be leveraged. The content of the `state_reason` field should be included in any warning or error message related to the stack's state. This allows operators to provide context, migration guides, or links to further documentation.
 
 For example, a deprecation warning could look like this:
 
 ```
-WARNING: The stack 'cflinuxfs3' is DEPRECATED and will be removed in the future.
-Description: This stack is based on Ubuntu 18.04, which is no longer supported. Please migrate your applications to 'cflinuxfs4'. For more information, see: <link-to-docs>.
+WARNING: The stack 'cflinuxfs3' is DEPRECATED and will be removed in the future: "This stack is based on Ubuntu 18.04, which is no longer supported. Please migrate your applications to 'cflinuxfs4'. For more information, see: <link-to-docs>."
 ```
 
 And an error message for a disabled stack:
 
 ```
-ERROR: Staging failed. The stack 'cflinuxfs3' is DISABLED and can no longer be used for staging.
-Description: This stack is based on Ubuntu 18.04, which is no longer supported. Please migrate your applications to 'cflinuxfs4'. For more information, see: <link-to-docs>.
+ERROR: Staging failed. The stack 'cflinuxfs3' is DISABLED and can no longer be used for staging:"This stack is based on Ubuntu 18.04, which is no longer supported. Please migrate your applications to 'cflinuxfs4'. For more information, see: <link-to-docs>."
 ```
 
 This approach provides a clear and explicit way for operators to manage the lifecycle of stacks and communicate changes to users effectively.
