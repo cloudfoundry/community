@@ -1680,6 +1680,10 @@ orgs:
         description: Garden client implementation for Kubernetes
         has_projects: false
         has_wiki: false
+      k8s-policy-agent:
+        description: Policy Agent implementation for Kubernetes
+        has_projects: false
+        has_wiki: false
       kind-deployment:
         description: Deploying Cloud Foundry on a local kind cluster
         has_projects: false

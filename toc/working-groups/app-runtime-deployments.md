@@ -100,5 +100,6 @@ areas:
     github: mvach
   repositories:
   - cloudfoundry/k8s-garden-client
+  - cloudfoundry/k8s-policy-agent
   - cloudfoundry/kind-deployment
 ```
