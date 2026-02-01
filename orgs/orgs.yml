@@ -1677,14 +1677,20 @@ orgs:
         has_projects: true
         has_wiki: false
       k8s-garden-client:
+        allow_merge_commit: false
+        default_branch: main
         description: Garden client implementation for Kubernetes
         has_projects: false
         has_wiki: false
       k8s-policy-agent:
+        allow_merge_commit: false
+        default_branch: main
         description: Policy Agent implementation for Kubernetes
         has_projects: false
         has_wiki: false
       kind-deployment:
+        allow_merge_commit: false
+        default_branch: main
         description: Deploying Cloud Foundry on a local kind cluster
         has_projects: false
         has_wiki: false
