@@ -184,6 +184,7 @@ branch-protection:
           protect: true
           required_status_checks:
             contexts:
+              - "lint"
               - "unit"
               - "build"
               - "integration"
@@ -201,7 +202,10 @@ branch-protection:
           protect: true
           required_status_checks:
             contexts:
+              - "lint"
               - "unit"
+              - "build"
+              - "integration"
               - "EasyCLA"
           required_pull_request_reviews:
             dismiss_stale_reviews: true
