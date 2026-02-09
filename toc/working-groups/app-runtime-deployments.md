@@ -84,6 +84,9 @@ areas:
   - cloudfoundry/runtime-ci
   - cloudfoundry/uptimer
 - name: Kind Deployment
+  bots:
+  - name: ard-wg-k8s-gitbot
+    github: ard-wg-k8s-gitbot
   reviewers: []
   approvers:
   - name: Jan von Löwenstein
