@@ -21,7 +21,8 @@ TOC members SHOULD be granted full administrative access to:
 - All CFF-managed Concourse CI instances  
 - CFF Docker Hub organizations  
 - The Cloudflare CFF account  
-- All IaaS provider accounts used by the CFF  
+- All IaaS provider accounts used by the CFF
+- CF community Slack workspace  
 
 This access MUST be provisioned through existing secure authentication methods (e.g., SSO, MFA) and MUST remain auditable. When TOC membership changes, access MUST be updated immediately.
 
