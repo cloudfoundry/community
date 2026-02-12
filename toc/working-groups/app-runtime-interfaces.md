@@ -229,16 +229,10 @@ areas:
 
 - name: CLI
   approvers:
-  - name: Al Berez
-    github: a-b
   - name: Michael Oleske
     github: moleske
   - name: George Blue
     github: blgm
-  - name: Shwetha Gururaj
-    github: gururajsh
-  - name: João Pereira
-    github: joaopapereira
   - name: Sam Gunaratne
     github: samze
   - name: Anuj Chaudhari
