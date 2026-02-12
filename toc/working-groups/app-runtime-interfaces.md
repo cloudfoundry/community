@@ -336,8 +336,6 @@ areas:
     github: ikasarov
   - name: Velizar Kalapov
     github: vkalapov
-  - name: Vasil Bogdanov
-    github: VRBogdanov
   - name: Yavor Uzunov
     github: Yavor16
   - name: Stefan Yonkov
