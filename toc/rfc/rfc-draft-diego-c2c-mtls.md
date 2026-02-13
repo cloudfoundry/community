@@ -43,25 +43,29 @@ The existing BOSH property `containers.proxy.require_and_verify_client_certifica
 ```mermaid
 flowchart LR
     subgraph Container
-        Envoy["Envoy\n(port 61001)"]
-        App["App\n(port 8080)"]
+        Envoy["Envoy<br/>(port 61001)"]
+        App["App<br/>(port 8080)"]
         Envoy -->|plain TCP| App
     end
     Gorouter -->|TLS| Envoy
     
-    Note["Envoy only handles INBOUND traffic\n(DownstreamTlsContext)"]
+    Note["Envoy only handles INBOUND traffic<br/>(DownstreamTlsContext)"]
 ```
 
 ### Current Certificate Setup
 
-Diego generates two separate certificates per container:
+Diego generates two separate certificates per container in the [credmanager](https://github.com/cloudfoundry/executor/blob/main/depot/containerstore/credmanager.go):
 
 | Certificate | SAN Contents | Purpose | mTLS Support | HTTP/2 |
 |------------|--------------|---------|--------------|--------|
 | Instance Identity | Container IP address | Route integrity (Gorouter → App) | Yes (optional) | Yes |
 | C2C Certificate | Internal route hostnames (e.g., `app.apps.internal`) | Container-to-container TLS | No | No |
 
-Both certificates include app identity in the `OrganizationalUnit` field with claims like `app:some-app-guid`, `space:some-space-guid`, and `organization:some-org-guid`.
+Both certificates include app identity in the certificate's `Subject.OrganizationalUnit` field (separate from the SAN). These claims are set by Cloud Controller and passed through the [BBS CertificateProperties](https://github.com/cloudfoundry/bbs/blob/main/models/certificate_properties.pb.go) model:
+
+- `app:<app-guid>`
+- `space:<space-guid>`
+- `organization:<org-guid>`
 
 
 ## Proposal
@@ -77,7 +81,7 @@ Both certificates include app identity in the `OrganizationalUnit` field with cl
 | Port | Type | Purpose | mTLS | XFCC | Status |
 |------|------|---------|------|------|--------|
 | 61001+ | HTTP | Route integrity | Optional | No | Existing |
-| 61443 | TCP | Legacy C2C TLS | No | No | Existing (unchanged) |
+| 61443 | TCP | C2C TLS (TCP-based) | No | No | Existing (unchanged) |
 | **62443** | **HTTP** | **C2C mTLS with identity** | **Required** | **Yes** | **New** |
 | 61445 | HTTP | Egress proxy (client-side) | N/A | N/A | New |
 
@@ -95,16 +99,16 @@ Add a new Envoy listener on port 62443 that provides HTTP-based C2C with mTLS an
 flowchart TB
     subgraph ContainerB["Container B (Server)"]
         subgraph Listeners
-            L61443["Port 61443\n(TCP, legacy)"]
-            L62443["Port 62443\n(HTTP, new)"]
+            L61443["Port 61443<br/>(TCP)"]
+            L62443["Port 62443<br/>(HTTP, new)"]
         end
-        AppB["App B\n(port 8080)"]
+        AppB["App B<br/>(port 8080)"]
         
-        L61443 -->|"TLS termination only\nNo client cert validation\nNo XFCC header"| AppB
-        L62443 -->|"mTLS required\nXFCC header forwarded"| AppB
+        L61443 -->|"TLS termination only<br/>No client cert validation<br/>No XFCC header"| AppB
+        L62443 -->|"mTLS required<br/>XFCC header forwarded"| AppB
     end
     
-    ClientA["Container A\n(Client)"] -->|"Option 1: Legacy"| L61443
+    ClientA["Container A<br/>(Client)"] -->|"Option 1: TLS (TCP proxy)"| L61443
     ClientA -->|"Option 2: mTLS with identity"| L62443
 ```
 
@@ -116,7 +120,7 @@ flowchart TB
 - HTTP connection manager (not TCP proxy)
 - `DownstreamTlsContext` with `RequireClientCertificate: true`
 - Validation context trusting the instance identity CA
-- XFCC header forwarding configured via `ForwardClientCertDetails: SANITIZE_SET`
+- XFCC header set from the verified client certificate, with any existing headers removed to prevent spoofing
 - Subject, URI, and DNS fields included in the XFCC header
 
 **BOSH Properties**:
@@ -126,10 +130,6 @@ containers.proxy.enable_c2c_mtls_listener:
   description: "Enable the HTTP-based C2C mTLS listener on port 62443. This listener 
     requires client certificates and forwards caller identity via the X-Forwarded-Client-Cert header."
   default: false
-
-containers.proxy.c2c_mtls_port:
-  description: "Port for the HTTP-based C2C mTLS listener with XFCC support"
-  default: 62443
 ```
 
 **Port Reservation**: Add validation to prevent applications from using port 62443, similar to the existing reservation for port 61443.
@@ -155,34 +155,34 @@ Enable Envoy to act as an HTTP proxy for outbound connections, automatically inj
 flowchart LR
     subgraph ContainerA["Container A"]
         AppA["App A"]
-        EgressProxy["Envoy Egress\n(port 61445)"]
+        EgressProxy["Envoy Egress<br/>(port 61445)"]
         AppA -->|HTTP| EgressProxy
     end
     
     subgraph ContainerB["Container B"]
-        IngressProxy["Envoy Ingress\n(port 62443)"]
+        IngressProxy["Envoy Ingress<br/>(port 62443)"]
     end
     
-    EgressProxy -->|"mTLS\n(auto cert injection)"| IngressProxy
+    EgressProxy -->|"mTLS<br/>(auto cert injection)"| IngressProxy
     
-    Note["Certificate contains:\nOU=app:client-app-guid\nOU=space:space-guid"]
+    Note["Certificate contains:<br/>OU=app:client-app-guid<br/>OU=space:space-guid"]
 ```
 
 #### Changes Required
 
 **Egress Proxy Port**: Reserve port 61445 for the egress proxy.
 
-**Egress Listener**: Create a new Envoy listener that acts as an HTTP CONNECT proxy, bound to `127.0.0.1:61445` (localhost only).
+**Egress Listener**: Create a new Envoy listener that acts as an HTTP CONNECT proxy, bound to `127.0.0.1:61445` (localhost only). The proxy accepts all outbound traffic but only injects the instance identity certificate for connections to C2C mTLS backends.
 
-**UpstreamTlsContext**: Configure the egress proxy to automatically attach the instance identity certificate to outbound connections using `UpstreamTlsContext` with the `id-cert-and-key` SDS secret.
+**UpstreamTlsContext**: Configure the egress proxy to attach the instance identity certificate only when connecting to C2C mTLS backends, identified by destination port (62443) and hostname pattern matching the configured `internal_domains`.
 
-**Environment Variable** (optional): Inject a CF-specific environment variable to allow applications to opt-in:
+**Environment Variable**: Inject a CF-specific environment variable for applications to discover the egress proxy:
 
 ```
 CF_INSTANCE_MTLS_PROXY=http://127.0.0.1:61445
 ```
 
-Using a CF-specific variable rather than `HTTP_PROXY` allows applications to opt-in explicitly without affecting all outbound traffic.
+**Enforcing Proxy Usage**: Operators can make the egress proxy mandatory for all applications by setting `HTTP_PROXY` and `HTTPS_PROXY` to `http://127.0.0.1:61445` using [running environment variable groups](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#evgroups). This ensures all HTTP/HTTPS traffic from applications is routed through the egress proxy, with instance identity certificates injected only for C2C mTLS backends.
 
 **BOSH Properties**:
 
@@ -191,16 +191,19 @@ containers.proxy.enable_egress_proxy:
   description: "Enable Envoy egress proxy for outbound mTLS on port 61445"
   default: false
 
-containers.proxy.egress_proxy_port:
-  description: "Port for the egress HTTP proxy"
-  default: 61445
+containers.proxy.internal_domains:
+  description: "Domains for C2C mTLS backends where the instance identity certificate should be injected."
+  example: ["apps.internal.", "my.apps.internal."]
+  default: []
 ```
+
+This follows the same naming and format as the [`internal_domains` property in `bosh-dns-adapter`](https://github.com/cloudfoundry/cf-networking-release/blob/develop/jobs/bosh-dns-adapter/spec).
 
 #### Considerations
 
 - **SNI Handling**: Envoy needs to extract the target hostname for proper TLS handshake
 - **NO_PROXY**: Applications should configure `NO_PROXY` for traffic that should not go through the proxy
-- **Non-HTTP Traffic**: TCP-based protocols will not work through HTTP CONNECT
+- **Non-HTTP Traffic**: The HTTP CONNECT-based egress proxy only supports HTTP/HTTPS traffic. Support for TCP-based protocols could be addressed in a follow-up RFC.
 - **Performance**: Additional hop adds latency
 - **Memory**: Additional memory allocation may be needed for the egress proxy
 
@@ -244,21 +247,11 @@ Applications can parse the XFCC header to make authorization decisions based on 
 
 ### Benefits
 
-| Aspect | Benefit |
-|--------|---------|
-| **Backwards compatible** | Port 61443 unchanged, existing apps continue to work |
-| **Operator opt-in** | New BOSH properties to enable 62443 and 61445 listeners |
-| **App author opt-in** | Must explicitly connect to 62443 to use mTLS with identity |
-| **Clear semantics** | 62443 = "secure C2C with identity verification" |
-| **Gradual migration** | Apps can migrate one at a time |
-| **No breaking changes** | All existing functionality preserved |
-
-### What Full mTLS Enables
-
-1. **Automatic identity injection**: Apps don't need to handle certificates manually
-2. **Identity verification**: Server apps can verify and extract caller identity
-3. **Zero-trust networking**: All app-to-app traffic is authenticated
-4. **Policy enforcement**: Authorization decisions based on app/space/org identity
+- Backwards compatible: port 61443 stays as-is, existing apps keep working
+- Opt-in for both operators (BOSH properties) and app authors (connect to 62443)
+- Apps can migrate gradually, no big-bang required
+- Server apps can verify who's calling and authorize based on app/space/org
+- No more manual certificate handling for C2C calls
 
 ---
 
@@ -268,10 +261,8 @@ The following repositories require modifications to implement this proposal:
 
 | Repository | Purpose |
 |------------|---------|
-| [cloudfoundry/executor](https://github.com/cloudfoundry/executor) | Envoy config generation, certificate generation, environment variable injection |
-| [cloudfoundry/bbs](https://github.com/cloudfoundry/bbs) | CertificateProperties model |
+| [cloudfoundry/executor](https://github.com/cloudfoundry/executor) | Envoy config generation, environment variable injection |
 | [cloudfoundry/diego-release](https://github.com/cloudfoundry/diego-release) | BOSH property definitions |
-| [cloudfoundry-incubator/routing-info](https://github.com/cloudfoundry-incubator/routing-info) | InternalRoutes structure |
 
 ## References
 
