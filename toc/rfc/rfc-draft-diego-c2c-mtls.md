@@ -4,7 +4,7 @@
 - Start Date: 2026-02-13
 - Author(s): @rkoster
 - Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: [community#1437](https://github.com/cloudfoundry/community/pull/1437)
 
 
 ## Summary
