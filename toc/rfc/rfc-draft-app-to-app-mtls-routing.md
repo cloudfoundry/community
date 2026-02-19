@@ -2,7 +2,7 @@
 [meta]: #meta
 - Name: App-to-App mTLS via GoRouter
 - Start Date: 2026-02-16
-- Author(s): @rkoster
+- Author(s): @rkoster, @beyhan, @maxmoehl
 - Status: Draft
 - RFC Pull Request: [community#1438](https://github.com/cloudfoundry/community/pull/1438)
 
