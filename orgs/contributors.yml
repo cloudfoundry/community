@@ -14,7 +14,6 @@ orgs:
     - ANUGRAHG
     - anujc25
     - app-autoscaler-ci-bot
-    - aqstack
     - aramprice
     - ard-wg-gitbot
     - ard-wg-k8s-gitbot
@@ -113,7 +112,6 @@ orgs:
     - metskem
     - mingxiao
     - mkocher
-    - MNoeva
     - modulo11
     - moggibear
     - moleske
