@@ -4,8 +4,8 @@
 - Name: TOC Administrative Access to CFF Infrastructure
 - Start Date: 2026-01-27
 - Author(s): @rkoster
-- Status: Draft
-- RFC Pull Request: (fill in after submission)
+- Status: Accepted
+- RFC Pull Request: [community#1415](https://github.com/cloudfoundry/community/pull/1415)
 
 ## Summary
 
