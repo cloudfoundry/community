@@ -403,6 +403,8 @@ areas:
   approvers:
   - name: He Guimin
     github: xiaozhu36
+  - name: Tai Kang
+    github: ali-tkang
   repositories:
   - cloudfoundry/bosh-alicloud-cpi-release
   - cloudfoundry/bosh-alicloud-light-stemcell-builder
