@@ -257,6 +257,8 @@ areas:
   approvers:
   - name: Tamara Boehm
     github: b1tamara
+  - name: Clemens Hoffmann
+    github: hoffmaen
   - name: Brandon Roberson
     github: ebroberson
   - name: Carson Long
