@@ -91,8 +91,6 @@ areas:
     github: winkingturtle-vmw
   - name: Marc Paquette
     github: marcpaquette
-  - name: Vladimir Savchenko
-    github: vlast3k
   - name: Plamen Doychev
     github: PlamenDoychev
   - name: Karthick Udayakumar
@@ -200,8 +198,6 @@ areas:
     github: jorbaum
   - name: Pascal Zimmermann
     github: ZPascal
-  - name: Felix Hambrecht
-    github: fhambrec
   - name: Andrew Costa
     github: acosta11
   - name: Karthick Udayakumar
@@ -277,16 +273,12 @@ areas:
     github: plowin
   - name: Chris Selzo
     github: selzoc
-  - name: Stefan Lay
-    github: stefanlay
   - name: Amin Jamali
     github: winkingturtle-vmw
   - name: Maximilian Moehl
     github: maxmoehl
   - name: Marc Paquette
     github: MarcPaquette
-  - name: Vladimir Savchenko
-    github: vlast3k
   - name: Alexander Lais
     github: peanball
   - name: Plamen Doychev
