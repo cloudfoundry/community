@@ -378,8 +378,6 @@ areas:
   - name: Ioannis Tsouvalas
     github: itsouvalas
   reviewers:
-  - name: Dennis Bell
-    github: dennisjbell
   - name: Tristan Poland
     github: tristanpoland
   - name: Jan Lucca Patzelt
