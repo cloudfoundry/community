@@ -87,6 +87,29 @@ GoRouter gains the ability to require client certificates for specific domains w
 - `only_trust_client_ca_certs: true`: only Instance Identity CA is trusted
 - `forwarded_client_cert: sanitize_set`: XFCC header cannot be spoofed
 
+### XFCC Header Format
+
+GoRouter currently forwards client certificates in raw base64 format. For mTLS app-to-app routing, a new compact [Envoy-style format](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-forwarded-client-cert) is recommended:
+
+| Format | Size | Parsing | Description |
+|--------|------|---------|-------------|
+| `raw` | ~1.5KB | Certificate decode required | Full base64-encoded certificate |
+| `envoy` | ~300 bytes | String parsing only | `Hash=<sha256>;Subject="<DN>"` |
+
+The `envoy` format extracts identity directly from the Subject DN (e.g., `OU=app:guid`) without certificate parsing, reducing both bandwidth and CPU overhead.
+
+Configuration:
+```yaml
+router:
+  mtls_domains:
+  - domain: "*.apps.mtls.internal"
+    ca_certs: "((diego_instance_identity_ca.certificate))"
+    forwarded_client_cert: sanitize_set
+    xfcc_format: envoy  # recommended for mTLS app-to-app
+```
+
+Operators should use `raw` format if applications need the full certificate (e.g., for signature verification). The default is `raw` for backward compatibility.
+
 ### Phase 1b: Authorization Enforcement
 
 GoRouter enforces access control at the routing layer using a default-deny model, matching the design of container-to-container network policies.
