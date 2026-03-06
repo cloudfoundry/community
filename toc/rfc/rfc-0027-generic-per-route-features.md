@@ -33,7 +33,7 @@ The following constraints apply (types are as specified in [RFC 8259](https://rf
 
 ### Size Limits
 
-To prevent excessive NATS bandwidth consumption, Cloud Controller MUST enforce a configurable
+To prevent excessive resource consumption, Cloud Controller MUST enforce a configurable
 maximum size for the serialized route options map. This limit applies to the total JSON-encoded
 size of the `options` field.
 
@@ -53,6 +53,7 @@ accommodates most use cases (e.g., ~25 app GUIDs in an allowlist) while protecti
 stability.
 
 **Operator guidance**: Operators can tune NATS bandwidth consumption for route options by
+**Operator guidance**: Operators can tune resource consumption for route options by
 adjusting two settings:
 - **Route options size limit**: Controls the maximum size per route (default: 1 KB)
 - **Route emit interval**: Controls how frequently routes are re-registered (default: 20s)
