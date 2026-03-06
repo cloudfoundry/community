@@ -52,15 +52,17 @@ significantly impact NATS bandwidth in deployments with many app instances. A 1 
 accommodates most use cases (e.g., ~25 app GUIDs in an allowlist) while protecting platform
 stability.
 
-**Operator guidance**: Operators can tune NATS bandwidth consumption for route options by
 **Operator guidance**: Operators can tune resource consumption for route options by
 adjusting two settings:
 - **Route options size limit**: Controls the maximum size per route (default: 1 KB)
 - **Route emit interval**: Controls how frequently routes are re-registered (default: 20s)
 
 Operators with larger route options requirements MAY increase the size limit while also
-increasing the emit interval to maintain acceptable bandwidth usage, depending on their
+increasing the emit interval to maintain acceptable resource usage, depending on their
 deployment characteristics.
+
+Note: Lowering the size limit does not affect existing routes. Routes created before the
+change may still contain options exceeding the new limit until they are updated.
 
 ### Required Changes
 
