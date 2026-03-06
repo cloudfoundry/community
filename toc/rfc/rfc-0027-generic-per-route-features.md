@@ -31,6 +31,36 @@ The following constraints apply (types are as specified in [RFC 8259](https://rf
 * The map MUST only use strings as keys.
 * The map MUST only use numbers, strings and the literal values `true` and `false` as values.
 
+### Size Limits
+
+To prevent excessive NATS bandwidth consumption, Cloud Controller MUST enforce a configurable
+maximum size for the serialized route options map. This limit applies to the total JSON-encoded
+size of the `options` field.
+
+**Default limit**: 1024 bytes (1 KB)
+
+**Behavior**:
+- Cloud Controller MUST validate the size of route options when a route is created or updated
+- If the serialized options exceed the configured limit, Cloud Controller MUST reject the request
+  with an appropriate error (HTTP 422 Unprocessable Entity) and a message indicating the size
+  limit was exceeded
+- The limit MUST be configurable by operators via the `cc.max_route_options_size` BOSH property
+
+**Rationale**: Route registration messages are transmitted via NATS at a configurable interval
+(default: 20 seconds) from each app instance to each GoRouter instance. Large route options can
+significantly impact NATS bandwidth in deployments with many app instances. A 1 KB default
+accommodates most use cases (e.g., ~25 app GUIDs in an allowlist) while protecting platform
+stability.
+
+**Operator guidance**: Operators can tune NATS bandwidth consumption for route options by
+adjusting two settings:
+- **Route options size limit**: Controls the maximum size per route (default: 1 KB)
+- **Route emit interval**: Controls how frequently routes are re-registered (default: 20s)
+
+Operators with larger route options requirements MAY increase the size limit while also
+increasing the emit interval to maintain acceptable bandwidth usage, depending on their
+deployment characteristics.
+
 ### Required Changes
 
 #### CLI
