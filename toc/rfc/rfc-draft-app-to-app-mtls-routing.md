@@ -184,6 +184,20 @@ This ensures:
 - Applications cannot bypass GoRouter
 
 
+## Application Security Groups
+
+By default, Cloud Foundry's Application Security Groups (ASGs) block applications from accessing internal infrastructure, including GoRouter instances. For mTLS app-to-app routing, applications must be able to reach GoRouter on port 443.
+
+**Operator requirement**: Operators must configure ASGs to allow application traffic to GoRouter. Options include:
+- Explicit router IPs (update when routers are added/removed)
+- Router subnet CIDR (deploy routers in a dedicated subnet)
+- Opening port 443 on the internal network
+
+The appropriate choice depends on the operator's security requirements.
+
+**Future improvement**: DNS-based ASG rules would provide a generic solution that works across all environments, but this is out of scope for this RFC and would require a separate RFC to extend ASG functionality.
+
+
 ## Release Criteria
 
 **Phase 1a and Phase 1b are co-requisites and must be released together.**
