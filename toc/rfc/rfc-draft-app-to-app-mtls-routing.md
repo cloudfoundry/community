@@ -43,7 +43,7 @@ flowchart LR
     
     subgraph "GoRouter"
         GR["1. Validate cert<br/>(Instance Identity CA)"]
-        Auth["2. Check allowed_sources"]
+        Auth["2. Check mTLS authorization"]
     end
     
     subgraph "App B Container"
@@ -62,7 +62,7 @@ flowchart LR
 The solution has two core components that must ship together:
 
 - **Phase 1a (mTLS Infrastructure)**: GoRouter requires and validates client certificates for the mTLS domain, forwarding caller identity via the XFCC header.
-- **Phase 1b (Authorization Enforcement)**: GoRouter enforces per-route access control. Routes are blocked by default unless `allowed_sources` explicitly permits the caller.
+- **Phase 1b (Authorization Enforcement)**: GoRouter enforces per-route access control. Routes are blocked by default unless mTLS route options explicitly permit the caller.
 
 An optional enhancement simplifies client adoption:
 
@@ -92,10 +92,10 @@ GoRouter gains the ability to require client certificates for specific domains w
 GoRouter enforces access control at the routing layer using a default-deny model, matching the design of container-to-container network policies.
 
 **How it works:**
-1. Route owner specifies `allowed_sources` in the route configuration
+1. Route owner specifies mTLS authorization options in the route configuration
 2. When a request arrives on an mTLS domain, GoRouter:
    - Extracts the caller's identity from the client certificate (app GUID, space GUID, org GUID)
-   - Checks if the identity matches any `allowed_sources` rule
+   - Checks if the identity matches any allowed source
    - Returns `403 Forbidden` if not authorized (default-deny)
    - Forwards the request with XFCC header if authorized
 
@@ -108,9 +108,8 @@ applications:
   routes:
   - route: backend.apps.mtls.internal
     options:
-      allowed_sources:
-        apps: ["frontend-app-guid"]
-        spaces: ["trusted-space-guid"]
+      mtls_allowed_apps: "frontend-app-guid"
+      mtls_allowed_spaces: "trusted-space-guid"
 ```
 
 App-delegated authorization (any authenticated app allowed):
@@ -120,15 +119,20 @@ applications:
   routes:
   - route: autoscaler.apps.mtls.internal
     options:
-      allowed_sources:
-        any: true
+      mtls_allow_any: true
 ```
 
-When `any: true` is set, GoRouter allows any request with a valid instance identity certificate. The app receives the XFCC header and performs its own authorization checks. This is useful when authorization depends on dynamic information (e.g., service bindings) that cannot be determined at route creation time.
+When `mtls_allow_any: true` is set, GoRouter allows any request with a valid instance identity certificate. The app receives the XFCC header and performs its own authorization checks. This is useful when authorization depends on dynamic information (e.g., service bindings) that cannot be determined at route creation time.
+
+**Route options** (RFC-0027 compliant flat format):
+- `mtls_allowed_apps`: Comma-separated list of app GUIDs
+- `mtls_allowed_spaces`: Comma-separated list of space GUIDs
+- `mtls_allowed_orgs`: Comma-separated list of org GUIDs
+- `mtls_allow_any`: Boolean, allow any authenticated app
 
 **Validation rules:**
-- `any: true` is mutually exclusive with `apps`, `spaces`, and `orgs`
-- If `any` is not set, at least one of `apps`, `spaces`, or `orgs` must be specified (default-deny)
+- `mtls_allow_any: true` is mutually exclusive with `mtls_allowed_apps`, `mtls_allowed_spaces`, and `mtls_allowed_orgs`
+- If `mtls_allow_any` is not set, at least one of the allowed lists must be specified (default-deny)
 
 This builds on the route options framework from [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md). Phase 1b depends on RFC-0027 being implemented first.
 
@@ -203,8 +207,8 @@ This eliminates the need for applications to load certificates and configure TLS
 
 | Repository | Changes |
 |------------|---------|
-| [routing-release](https://github.com/cloudfoundry/routing-release) | Phase 1a: `mtls_domains` config; Phase 1b: `allowed_sources` enforcement |
-| [capi-release](https://github.com/cloudfoundry/capi-release) | Phase 1b: `allowed_sources` route option validation |
+| [routing-release](https://github.com/cloudfoundry/routing-release) | Phase 1a: `mtls_domains` config; Phase 1b: mTLS authorization enforcement |
+| [capi-release](https://github.com/cloudfoundry/capi-release) | Phase 1b: mTLS route options validation |
 | [diego-release](https://github.com/cloudfoundry/diego-release) | Phase 2: Egress proxy configuration |
 | [cf-deployment](https://github.com/cloudfoundry/cf-deployment) | Ops-file for enabling mTLS app routing |
 
