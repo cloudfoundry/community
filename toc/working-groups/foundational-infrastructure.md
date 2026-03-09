@@ -94,6 +94,8 @@ areas:
     github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
+  - name: Allan Yu
+    github: ay901246
   approvers:
   - name: Aram Price
     github: aramprice
@@ -265,6 +267,8 @@ areas:
   - name: Ned Petrov
     github: neddp
   reviewers:
+  - name: Allan Yu
+    github: ay901246
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Ivaylo Ivanov
@@ -327,6 +331,8 @@ areas:
   - name: Maria Shaldybin
     github: mariash
   reviewers:
+  - name: Allan Yu
+    github: ay901246
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Alexander Lais
@@ -497,6 +503,8 @@ areas:
   - name: Clay Kauzlaric
     github: KauzClay
   reviewers:
+  - name: Allan Yu
+    github: ay901246
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   - name: Alexander Lais
