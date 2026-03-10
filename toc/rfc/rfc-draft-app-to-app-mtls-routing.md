@@ -157,40 +157,21 @@ Authorization is enforced at two layers:
 
 ```mermaid
 flowchart TD
-    A[Request arrives on mTLS domain] --> B{Domain authorization<br/>operator level}
-    
-    B -->|"scope: space"| B1{Caller same space?}
-    B -->|"scope: org"| B2{Caller same org?}
-    B -->|"scope: any"| C
-    B -->|"orgs: [...]"| B3{Caller org in list?}
-    B -->|"spaces: [...]"| B4{Caller space in list?}
-    
-    B1 -->|No| D1[403 + warning to app log]
-    B2 -->|No| D1
-    B3 -->|No| D1
-    B4 -->|No| D1
-    
-    B1 -->|Yes| C
-    B2 -->|Yes| C
-    B3 -->|Yes| C
-    B4 -->|Yes| C
-    
-    C{Route authorization<br/>developer level}
-    
-    C -->|"any: true"| E
-    C -->|"apps: [...]"| C1{Caller app in list?}
-    C -->|"spaces: [...]"| C2{Caller space in list?}
-    C -->|"orgs: [...]"| C3{Caller org in list?}
-    
-    C1 -->|No| D2[403 Forbidden]
-    C2 -->|No| D2
-    C3 -->|No| D2
-    
-    C1 -->|Yes| E
-    C2 -->|Yes| E
-    C3 -->|Yes| E
-    
-    E[Request forwarded with XFCC header]
+    A[Request arrives on mTLS domain] --> B
+
+    subgraph B["1. Domain authorization (operator)"]
+        B1["scope: space → caller same space?<br/>scope: org → caller same org?<br/>scope: any → pass<br/>orgs: [...] → caller org in list?<br/>spaces: [...] → caller space in list?"]
+    end
+
+    B -->|fail| D1[403 + warning to app log]
+    B -->|pass| C
+
+    subgraph C["2. Route authorization (developer)"]
+        C1["any: true → pass<br/>apps: [...] → caller app in list?<br/>spaces: [...] → caller space in list?<br/>orgs: [...] → caller org in list?"]
+    end
+
+    C -->|fail| D2[403 Forbidden]
+    C -->|pass| E[Request forwarded with XFCC header]
 ```
 
 Developers can only **restrict further** within the boundaries set by operators. They cannot expand access beyond operator-defined limits.
