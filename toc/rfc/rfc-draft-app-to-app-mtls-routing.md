@@ -233,7 +233,137 @@ This ensures developers are aware of policy mismatches and can work with operato
 
 This builds on the route options framework from [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md). Phase 1b depends on RFC-0027 being implemented first.
 
-### Use Case Examples
+### Extensibility
+
+The `xfcc.identity_extractor` and `authorization.mode` fields are designed to support additional modes in the future without breaking the configuration schema:
+
+| Identity Extractor | Authorization Mode | Use Case |
+|-------------------|-------------------|----------|
+| `none` | `none` | External client certs, app-level authorization |
+| `cf_ou` | `cf_identity` | CF app-to-app with platform-enforced rules |
+| `cf_ou` | `cf_identity` | Cross-CF federation (via per-installation domains) |
+| `subject_cn` (future) | `cn_allowlist` (future) | Generic CN-based authorization |
+| `spiffe` (future) | `spiffe_authz` (future) | SPIFFE identity federation |
+
+Each `authorization.mode` can define its own `authorization.config` schema, allowing future modes to have different policy options without affecting existing configurations.
+
+This allows operators to use `mtls_domains` for external client certificate validation without CF-specific coupling, while preserving the option to add new identity extraction and authorization modes as needs evolve.
+
+### Implementation References
+
+| Component | Reference |
+|-----------|-----------|
+| GoRouter TLS config | [`routing-release/.../config.go`](https://github.com/cloudfoundry/routing-release/blob/develop/src/code.cloudfoundry.org/gorouter/config/config.go) |
+| GoRouter BOSH spec | [`routing-release/jobs/gorouter/spec`](https://github.com/cloudfoundry/routing-release/blob/develop/jobs/gorouter/spec) |
+| RFC-0027 route options | [`toc/rfc/rfc-0027-generic-per-route-features.md`](rfc-0027-generic-per-route-features.md) |
+| Cloud Controller routes | [`cloud_controller_ng/.../route.rb`](https://github.com/cloudfoundry/cloud_controller_ng/blob/main/app/models/runtime/route.rb) |
+
+
+## Security Model
+
+Two layers of mTLS enforcement ensure only authorized traffic reaches applications:
+
+| Layer | Validates | Trusts |
+|-------|-----------|--------|
+| Client → GoRouter | Client certificate | Configured CA per domain |
+| GoRouter → Backend | GoRouter's backend cert | GoRouter Backend CA |
+
+For CF app-to-app routing (with `authorization.mode: cf_identity`):
+- Only CF application instances can connect to mTLS routes
+- Only GoRouter can connect to application backends
+- Applications cannot bypass GoRouter
+- Operator-level `authorization.config` enforces organizational boundaries (scope, specific orgs/spaces)
+- Developer-level `allowed_sources` rules are enforced within operator boundaries
+
+For external client validation (with `authorization.mode: none`):
+- Any client with a valid certificate from the configured CA can connect
+- Backend applications are responsible for authorization based on XFCC header contents
+- GoRouter provides certificate validation and XFCC forwarding only
+
+
+## Release Criteria
+
+**For CF app-to-app routing use case:**
+
+Phase 1a and Phase 1b (with `xfcc.identity_extractor: cf_ou` and `authorization.mode: cf_identity`) are co-requisites and must be released together.
+
+Deploying Phase 1a without enabling CF identity authorization would leave all mTLS routes accessible to any authenticated app, violating the default-deny security model. Operators enabling CF app-to-app routing must configure appropriate `authorization.config` settings.
+
+Phase 1b depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first.
+
+**For external client validation use case:**
+
+Phase 1a alone (with `authorization.mode: none`) is sufficient. Backend applications handle authorization based on the XFCC header.
+
+
+## Optional Enhancements
+
+### Phase 2: Egress HTTP Proxy
+
+To simplify client adoption, add an HTTP proxy to the application sidecar that automatically handles mTLS.
+
+**How it works:**
+1. Diego configures an egress proxy (Envoy) listening on `127.0.0.1:8888`
+2. The proxy is configured to intercept requests to `*.apps.mtls.internal`
+3. For matching requests, the proxy:
+   - Upgrades the connection to TLS
+   - Presents the application's instance identity certificate
+   - Forwards the request to GoRouter
+
+**Application usage:**
+```bash
+# Client app sets HTTP_PROXY for the internal domain
+export HTTP_PROXY=http://127.0.0.1:8888
+export NO_PROXY=external-api.example.com
+
+# Plain HTTP request, proxy handles mTLS automatically
+curl http://myservice.apps.mtls.internal/api
+```
+
+This eliminates the need for applications to load certificates and configure TLS clients.
+
+**Implementation references:**
+- Diego Envoy proxy: [`diego-release/.../envoy-builder`](https://github.com/cloudfoundry/diego-release/tree/develop/src/code.cloudfoundry.org/envoy-builder)
+- Instance identity certs: [`diego-release/docs/050-app-instance-identity.md`](https://github.com/cloudfoundry/diego-release/blob/develop/docs/050-app-instance-identity.md)
+
+
+## Key Repositories
+
+| Repository | Changes |
+|------------|---------|
+| [routing-release](https://github.com/cloudfoundry/routing-release) | Phase 1a: `mtls_domains` config with `xfcc` and `authorization`; Phase 1b: layered authorization enforcement |
+| [capi-release](https://github.com/cloudfoundry/capi-release) | Phase 1b: `allowed_sources` route option schema validation |
+| [diego-release](https://github.com/cloudfoundry/diego-release) | Phase 2: Egress proxy configuration |
+| [cf-deployment](https://github.com/cloudfoundry/cf-deployment) | Ops-file for enabling mTLS app routing |
+
+
+## References
+
+- [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md)
+- [Container-to-Container Networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html)
+- [Diego Instance Identity Documentation](https://github.com/cloudfoundry/diego-release/blob/develop/docs/050-app-instance-identity.md)
+- [GoRouter Client Certificate Configuration](https://github.com/cloudfoundry/routing-release/blob/develop/jobs/gorouter/spec)
+
+
+## Appendix: Relationship to Container-to-Container Networking
+
+This RFC complements Cloud Foundry's existing [container-to-container (C2C) networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html) rather than replacing it. The two mechanisms serve different purposes and operate at different layers.
+
+**Why extend GoRouter instead of C2C networking?**
+
+This RFC reuses existing GoRouter infrastructure—TLS termination, request routing, load balancing, access logging, and the route options framework from [RFC-0027](rfc-0027-generic-per-route-features.md). By enforcing authorization at the HTTP layer, applications gain access to caller identity via the XFCC header, enabling fine-grained authorization decisions. GoRouter already handles millions of requests; adding per-domain mTLS builds on proven infrastructure.
+
+C2C networking operates at Layer 4 (TCP/UDP) using IPtables rules enforced on Diego Cells via [VXLAN policy agents](https://github.com/cloudfoundry/silk-release). This architecture has [scaling considerations for large deployments](https://github.com/cloudfoundry/cf-networking-release/blob/develop/docs/09-large-deployments.md): policies are limited by VXLAN's 16-bit marks (~65,535 apps can participate in policies), and each policy requires IPtables rules on every Diego Cell. For HTTP traffic requiring caller identity, load balancing, and observability, GoRouter-based routing is a better fit.
+
+**When to use which:**
+
+- **C2C networking**: Non-HTTP protocols (databases, message queues, gRPC over TCP), low-latency direct connections, when traffic should bypass GoRouter entirely.
+- **mTLS app routing (this RFC)**: HTTP APIs requiring caller identity in the request, platform-enforced authorization at the route level, when you need GoRouter features (load balancing, retries, observability, access logs).
+
+The two mechanisms can coexist. An application might use C2C networking for database connections while exposing HTTP APIs via mTLS app routing.
+
+
+## Appendix: Configuration Examples
 
 **CF app-to-app routing with same-org restriction:**
 ```yaml
@@ -367,132 +497,3 @@ The domain naming convention `*.apps.mtls.<cf-installation>.internal` ensures:
 - GUIDs are scoped to their originating installation
 - Each installation's CA is trusted independently
 - Standard `cf_ou` identity extraction and `cf_identity` authorization work unchanged
-
-### Extensibility
-
-The `xfcc.identity_extractor` and `authorization.mode` fields are designed to support additional modes in the future without breaking the configuration schema:
-
-| Identity Extractor | Authorization Mode | Use Case |
-|-------------------|-------------------|----------|
-| `none` | `none` | External client certs, app-level authorization |
-| `cf_ou` | `cf_identity` | CF app-to-app with platform-enforced rules |
-| `cf_ou` | `cf_identity` | Cross-CF federation (via per-installation domains) |
-| `subject_cn` (future) | `cn_allowlist` (future) | Generic CN-based authorization |
-| `spiffe` (future) | `spiffe_authz` (future) | SPIFFE identity federation |
-
-Each `authorization.mode` can define its own `authorization.config` schema, allowing future modes to have different policy options without affecting existing configurations.
-
-This allows operators to use `mtls_domains` for external client certificate validation without CF-specific coupling, while preserving the option to add new identity extraction and authorization modes as needs evolve.
-
-### Implementation References
-
-| Component | Reference |
-|-----------|-----------|
-| GoRouter TLS config | [`routing-release/.../config.go`](https://github.com/cloudfoundry/routing-release/blob/develop/src/code.cloudfoundry.org/gorouter/config/config.go) |
-| GoRouter BOSH spec | [`routing-release/jobs/gorouter/spec`](https://github.com/cloudfoundry/routing-release/blob/develop/jobs/gorouter/spec) |
-| RFC-0027 route options | [`toc/rfc/rfc-0027-generic-per-route-features.md`](rfc-0027-generic-per-route-features.md) |
-| Cloud Controller routes | [`cloud_controller_ng/.../route.rb`](https://github.com/cloudfoundry/cloud_controller_ng/blob/main/app/models/runtime/route.rb) |
-
-
-## Security Model
-
-Two layers of mTLS enforcement ensure only authorized traffic reaches applications:
-
-| Layer | Validates | Trusts |
-|-------|-----------|--------|
-| Client → GoRouter | Client certificate | Configured CA per domain |
-| GoRouter → Backend | GoRouter's backend cert | GoRouter Backend CA |
-
-For CF app-to-app routing (with `authorization.mode: cf_identity`):
-- Only CF application instances can connect to mTLS routes
-- Only GoRouter can connect to application backends
-- Applications cannot bypass GoRouter
-- Operator-level `authorization.config` enforces organizational boundaries (scope, specific orgs/spaces)
-- Developer-level `allowed_sources` rules are enforced within operator boundaries
-
-For external client validation (with `authorization.mode: none`):
-- Any client with a valid certificate from the configured CA can connect
-- Backend applications are responsible for authorization based on XFCC header contents
-- GoRouter provides certificate validation and XFCC forwarding only
-
-
-## Release Criteria
-
-**For CF app-to-app routing use case:**
-
-Phase 1a and Phase 1b (with `xfcc.identity_extractor: cf_ou` and `authorization.mode: cf_identity`) are co-requisites and must be released together.
-
-Deploying Phase 1a without enabling CF identity authorization would leave all mTLS routes accessible to any authenticated app, violating the default-deny security model. Operators enabling CF app-to-app routing must configure appropriate `authorization.config` settings.
-
-Phase 1b depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first.
-
-**For external client validation use case:**
-
-Phase 1a alone (with `authorization.mode: none`) is sufficient. Backend applications handle authorization based on the XFCC header.
-
-
-## Optional Enhancements
-
-### Phase 2: Egress HTTP Proxy
-
-To simplify client adoption, add an HTTP proxy to the application sidecar that automatically handles mTLS.
-
-**How it works:**
-1. Diego configures an egress proxy (Envoy) listening on `127.0.0.1:8888`
-2. The proxy is configured to intercept requests to `*.apps.mtls.internal`
-3. For matching requests, the proxy:
-   - Upgrades the connection to TLS
-   - Presents the application's instance identity certificate
-   - Forwards the request to GoRouter
-
-**Application usage:**
-```bash
-# Client app sets HTTP_PROXY for the internal domain
-export HTTP_PROXY=http://127.0.0.1:8888
-export NO_PROXY=external-api.example.com
-
-# Plain HTTP request, proxy handles mTLS automatically
-curl http://myservice.apps.mtls.internal/api
-```
-
-This eliminates the need for applications to load certificates and configure TLS clients.
-
-**Implementation references:**
-- Diego Envoy proxy: [`diego-release/.../envoy-builder`](https://github.com/cloudfoundry/diego-release/tree/develop/src/code.cloudfoundry.org/envoy-builder)
-- Instance identity certs: [`diego-release/docs/050-app-instance-identity.md`](https://github.com/cloudfoundry/diego-release/blob/develop/docs/050-app-instance-identity.md)
-
-
-## Key Repositories
-
-| Repository | Changes |
-|------------|---------|
-| [routing-release](https://github.com/cloudfoundry/routing-release) | Phase 1a: `mtls_domains` config with `xfcc` and `authorization`; Phase 1b: layered authorization enforcement |
-| [capi-release](https://github.com/cloudfoundry/capi-release) | Phase 1b: `allowed_sources` route option schema validation |
-| [diego-release](https://github.com/cloudfoundry/diego-release) | Phase 2: Egress proxy configuration |
-| [cf-deployment](https://github.com/cloudfoundry/cf-deployment) | Ops-file for enabling mTLS app routing |
-
-
-## References
-
-- [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md)
-- [Container-to-Container Networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html)
-- [Diego Instance Identity Documentation](https://github.com/cloudfoundry/diego-release/blob/develop/docs/050-app-instance-identity.md)
-- [GoRouter Client Certificate Configuration](https://github.com/cloudfoundry/routing-release/blob/develop/jobs/gorouter/spec)
-
-
-## Appendix: Relationship to Container-to-Container Networking
-
-This RFC complements Cloud Foundry's existing [container-to-container (C2C) networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html) rather than replacing it. The two mechanisms serve different purposes and operate at different layers.
-
-**Why extend GoRouter instead of C2C networking?**
-
-This RFC reuses existing GoRouter infrastructure—TLS termination, request routing, load balancing, access logging, and the route options framework from [RFC-0027](rfc-0027-generic-per-route-features.md). By enforcing authorization at the HTTP layer, applications gain access to caller identity via the XFCC header, enabling fine-grained authorization decisions. GoRouter already handles millions of requests; adding per-domain mTLS builds on proven infrastructure.
-
-C2C networking operates at Layer 4 (TCP/UDP) using IPtables rules enforced on Diego Cells via [VXLAN policy agents](https://github.com/cloudfoundry/silk-release). This architecture has [scaling considerations for large deployments](https://github.com/cloudfoundry/cf-networking-release/blob/develop/docs/09-large-deployments.md): policies are limited by VXLAN's 16-bit marks (~65,535 apps can participate in policies), and each policy requires IPtables rules on every Diego Cell. For HTTP traffic requiring caller identity, load balancing, and observability, GoRouter-based routing is a better fit.
-
-**When to use which:**
-
-- **C2C networking**: Non-HTTP protocols (databases, message queues, gRPC over TCP), low-latency direct connections, when traffic should bypass GoRouter entirely.
-- **mTLS app routing (this RFC)**: HTTP APIs requiring caller identity in the request, platform-enforced authorization at the route level, when you need GoRouter features (load balancing, retries, observability, access logs).
-
-The two mechanisms can coexist. An application might use C2C networking for database connections while exposing HTTP APIs via mTLS app routing.
