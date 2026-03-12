@@ -4,7 +4,7 @@
 - Start Date: 2026-03-12
 - Author(s): @joyvuu-dave
 - Status: Draft
-- RFC Pull Request: [community#XXXX](https://github.com/cloudfoundry/community/pull/XXXX)
+- RFC Pull Request: [community#1449](https://github.com/cloudfoundry/community/pull/1449)
 
 
 ## Summary
