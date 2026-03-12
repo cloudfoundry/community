@@ -124,23 +124,21 @@ router:
         #                 (requires identity_extractor: cf_ou)
         mode: cf_identity
         
-        # Operator-level access policy (only for mode: cf_identity)
-        # Use EITHER scope OR orgs/spaces (mutually exclusive)
+        # Operator-level caller restrictions (only for mode: cf_identity)
+        # Restricts which callers can access routes on this domain.
+        # Use orgs OR spaces (mutually exclusive). If omitted, any
+        # authenticated caller passes domain-level checks (route-level
+        # mtls_allowed_* options still apply).
         config:
-          # Relative boundary - caller must be in same space/org as target:
-          #   any (default) - No restriction at domain level
-          #   org - Caller must be in same org as target app
-          #   space - Caller must be in same space as target app
-          scope: org
-          
-          # Absolute boundary - explicit list of allowed orgs/spaces:
+          # Only allow callers from these orgs:
           orgs: ["org-guid-1", "org-guid-2"]
-          spaces: ["space-guid-1", "space-guid-2"]
+          # OR only allow callers from these spaces:
+          # spaces: ["space-guid-1", "space-guid-2"]
 ```
 
 **Validation rules:**
-- `authorization.config.scope` is mutually exclusive with `authorization.config.orgs`/`authorization.config.spaces`
-- If `authorization.config` is omitted, defaults to `authorization.config.scope: any`
+- `authorization.config.orgs` is mutually exclusive with `authorization.config.spaces`
+- If `authorization.config` is omitted, any authenticated caller passes domain-level checks
 - `authorization.mode: cf_identity` requires `xfcc.identity_extractor: cf_ou`
 - Invalid combinations are rejected during BOSH deployment by the GoRouter job templates
 
@@ -253,7 +251,7 @@ This allows operators to use `mtls_domains` for external client certificate vali
 
 Phase 1a and Phase 1b (with `xfcc.identity_extractor: cf_ou` and `authorization.mode: cf_identity`) are co-requisites and must be released together.
 
-Deploying Phase 1a without enabling CF identity authorization would leave all mTLS routes accessible to any authenticated app, violating the default-deny security model. Operators enabling CF app-to-app routing must configure appropriate `authorization.config` settings.
+Deploying Phase 1a without enabling CF identity authorization would leave all mTLS routes accessible to any authenticated app, violating the default-deny security model. Routes must specify `mtls_allowed_*` options to control access.
 
 Phase 1b depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first.
 
@@ -283,7 +281,23 @@ The two mechanisms can coexist. An application might use C2C networking for data
 
 ### Configuration Examples
 
-**CF app-to-app routing with different scope restrictions:**
+**CF app-to-app routing (basic):**
+```yaml
+router:
+  mtls_domains:
+    - domain: "*.apps.mtls.internal"
+      ca_certs: ((diego_instance_identity_ca.certificate))
+      forwarded_client_cert: sanitize_set
+      xfcc:
+        format: envoy
+        identity_extractor: cf_ou
+      authorization:
+        mode: cf_identity
+        # No config: any authenticated caller passes domain-level checks
+        # Route-level mtls_allowed_* options control access
+```
+
+**CF app-to-app routing with operator-level caller restrictions:**
 ```yaml
 router:
   mtls_domains:
@@ -296,10 +310,8 @@ router:
       authorization:
         mode: cf_identity
         config:
-          # Choose ONE of the following scope options:
-          scope: org    # Apps can only call other apps in the same org
-          # scope: space  # Apps can only call other apps in the same space
-          # scope: any    # Any app can call, subject to route-level mtls_allowed_*
+          # Only apps from these orgs can access routes on this domain
+          orgs: ["trusted-org-guid-1", "trusted-org-guid-2"]
 ```
 
 **External client certificate validation (app-level authorization):**
@@ -335,8 +347,7 @@ router:
         identity_extractor: cf_ou
       authorization:
         mode: cf_identity
-        config:
-          scope: org
+        # No config: any local app can call (route-level mtls_allowed_* applies)
 
     # Trust apps from CF-East installation
     - domain: "*.apps.mtls.cf-east.internal"
@@ -359,8 +370,7 @@ router:
         identity_extractor: cf_ou
       authorization:
         mode: cf_identity
-        config:
-          scope: any  # Any CF-West app can call (route-level mtls_allowed_* applies)
+        # No config: any CF-West app can call (route-level mtls_allowed_* applies)
 ```
 
 Route configuration specifies allowed apps per originating installation:
@@ -369,7 +379,7 @@ Route configuration specifies allowed apps per originating installation:
 applications:
 - name: backend-api
   routes:
-  # Local clients (must be same org due to domain scope)
+  # Local clients
   - route: backend.apps.mtls.internal
     options:
       mtls_allowed_apps: "local-frontend-guid"
@@ -384,6 +394,46 @@ The domain naming convention `*.apps.mtls.<cf-installation>.internal` ensures:
 - GUIDs are scoped to their originating installation
 - Each installation's CA is trusted independently
 - Standard `cf_ou` identity extraction and `cf_identity` authorization work unchanged
+
+**Org-scoped internal domains (isolating orgs via domain patterns):**
+
+Operators who want to ensure apps can only communicate with other apps in the same org can achieve this using per-org mTLS domains. This approach uses domain naming conventions rather than runtime checks, leveraging the same pattern as cross-CF federation:
+
+```yaml
+router:
+  mtls_domains:
+    # Org-1 internal routes - only Org-1 apps can access
+    - domain: "*.apps.mtls.org1.internal"
+      ca_certs: ((diego_instance_identity_ca.certificate))
+      forwarded_client_cert: sanitize_set
+      xfcc:
+        format: envoy
+        identity_extractor: cf_ou
+      authorization:
+        mode: cf_identity
+        config:
+          orgs: ["org-1-guid"]  # Only callers from org-1 allowed
+    
+    # Org-2 internal routes - only Org-2 apps can access
+    - domain: "*.apps.mtls.org2.internal"
+      ca_certs: ((diego_instance_identity_ca.certificate))
+      forwarded_client_cert: sanitize_set
+      xfcc:
+        format: envoy
+        identity_extractor: cf_ou
+      authorization:
+        mode: cf_identity
+        config:
+          orgs: ["org-2-guid"]  # Only callers from org-2 allowed
+```
+
+With this configuration:
+- Apps in `org-1` deploy routes to `*.apps.mtls.org1.internal`
+- Apps in `org-2` deploy routes to `*.apps.mtls.org2.internal`
+- An app in `org-1` cannot call routes on `*.apps.mtls.org2.internal` (blocked at domain level)
+- Route-level `mtls_allowed_*` options provide additional fine-grained control within each org
+
+The same pattern works for space-level isolation using `spaces:` instead of `orgs:`.
 
 ### References
 
