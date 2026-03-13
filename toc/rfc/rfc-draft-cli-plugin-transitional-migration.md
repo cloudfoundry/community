@@ -4,7 +4,7 @@
 - Start Date: 2026-03-01
 - Author(s): @norman-abramovitz
 - Status: Draft
-- RFC Pull Request: [cloudfoundry/community#XXX](https://github.com/cloudfoundry/community/pull/XXX)
+- RFC Pull Request: [cloudfoundry/community#1452](https://github.com/cloudfoundry/community/pull/1452)
 - Tracking Issue: [cloudfoundry/cli#3621](https://github.com/cloudfoundry/cli/issues/3621)
 
 ## Summary
