@@ -300,8 +300,6 @@ areas:
     github: Soha-Albaghdady
   - name: Daria Anton
     github: Dariquest
-  - name: Clemens Hoffmann
-    github: hoffmaen
   - name: Konstantin Lapkov
     github: klapkov
   - name: M Rizwan Shaik
