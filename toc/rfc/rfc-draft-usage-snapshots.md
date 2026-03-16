@@ -59,4 +59,4 @@ A reference implementation is available in [PR #4858](https://github.com/cloudfo
 
 ## Possible Future Work
 
-CF CLI commands for listing and requesting snapshots (e.g. `cf app-usage-snapshot`, `cf service-usage-snapshot`) would improve the operator experience. The initial proposal focuses on the API surface, which billing systems will consume directly.
+CF CLI commands for listing and requesting snapshots (e.g. `cf app-usage-snapshot`, `cf service-usage-snapshot`) would improve the operator experience. The initial proposal focuses on the API surface, which automated systems will integrate with directly.
