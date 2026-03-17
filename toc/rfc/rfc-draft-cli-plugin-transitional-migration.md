@@ -116,7 +116,26 @@ Plugin teams that have already migrated — including [App Autoscaler](https://g
 
 ### Relationship to a New Plugin Interface
 
-This RFC addresses the immediate V2 end-of-life risk using the existing plugin interface and works with any current CLI version (v7, v8). A separate future RFC will propose a modernized plugin interface targeting v9 and later with a minimal stable contract, polyglot language support, backward compatibility, and improved help and versioning metadata.
+This RFC addresses the immediate V2 end-of-life risk using the existing plugin interface and works with CF CLI v8. A separate future RFC will propose a modernized plugin interface targeting v9 and later with a minimal stable contract, polyglot language support, backward compatibility, and improved help and versioning metadata.
+
+Note: CLI v7 is already deprecated and its use of CF API v2 for service-related commands means it will not function on foundations with v2 disabled, independent of plugin migration. This RFC therefore scopes to v8 and later.
+
+## Plugin Repository Metadata and Maintenance
+
+As plugins migrate, the [CF CLI plugin repository](https://github.com/cloudfoundry/cli-plugin-repo) would benefit from structured metadata indicating which CLI plugin interface versions each plugin is compatible with. This would allow operators and developers to quickly identify which plugins are safe to use on v2-disabled foundations.
+
+A proposed metadata field (subject to CLI WG and TOC consensus):
+
+```yaml
+compatibility:
+  cli_plugin_interface: ">=v3"   # minimum plugin interface version
+  capi: "v3"                      # API version dependency
+  cf_cli: ">=8"                   # minimum CF CLI version
+```
+
+Additionally, plugins that have not been updated to remove v2 dependencies and are not actively maintained should have their compatibility metadata updated to reflect their limitations. The decision to remove unmaintained plugins from the repository is deferred to the CLI Working Group and TOC.
+
+The `cf-plugin-migrate` scan tool (see [cf-plugin-rfc-proposal](https://github.com/norman-abramovitz/cf-plugin-rfc-proposal)) can be run against any plugin in the repository to identify v2 dependencies, providing an objective basis for tagging compatibility metadata without requiring plugin authors to self-report.
 
 ## References
 
@@ -127,3 +146,4 @@ This RFC addresses the immediate V2 end-of-life risk using the existing plugin i
 - [App Autoscaler PR #132 — V3 migration](https://github.com/cloudfoundry/app-autoscaler-cli-plugin/pull/132)
 - [Plugin survey — 20 plugins analyzed](https://github.com/norman-abramovitz/cf-plugin-rfc-proposal/blob/main/plugin-survey.md)
 - [Detailed design document](rfc-draft-plugin-transitional-migration-detailed.md) — Full technical specification with code examples, field mappings, and worked migration examples
+- [cf-plugin-rfc-proposal](https://github.com/norman-abramovitz/cf-plugin-rfc-proposal) — RFC repository including `cf-plugin-migrate` proof-of-concept tool, plugin survey, and migration design documents
