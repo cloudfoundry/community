@@ -9,39 +9,53 @@
 
 ## Summary
 
-Enable Diego containers to use IaaS-managed persistent disks through the existing volume services architecture:
+Enable Diego containers to use IaaS-managed persistent disks through a **secure-by-default** architecture that leverages BOSH's existing per-instance identity:
 
-- **BOSH Director** gains a `permissions` model controlling which instance groups may create, attach, detach, and delete disks
-- **BOSH Agent** gains subcommands that relay disk requests to the Director over NATS
-- **Volume driver** implements Docker Volume Plugin v1.12, translating volume operations into Agent disk commands
+- **No credential distribution** — The volume driver calls the local BOSH Agent binary, which relays requests to the Director over its existing mTLS NATS connection. No UAA tokens, no API credentials on cells.
+- **Per-instance blast radius** — Each Agent has a unique certificate. A compromised cell can only perform operations on itself (`disk.self.attach`), not on other cells. No lateral movement.
+- **Manifest-driven permissions** — Operators declare capabilities in the deployment manifest. The Director enforces them at runtime. No external credential management.
 
-Diego's volman discovers this driver automatically — **zero changes to Diego, CAPI, or the CF CLI**.
+The architecture has four layers:
 
-This is a **foundation technology** enabling Cloud Foundry to run stateful single-container workloads — agentic coding sessions, cloud-based developer environments, and long-running AI agent processes — by giving Diego containers access to dedicated IaaS block storage managed by BOSH.
+1. **BOSH Director** — `permissions` model controlling disk lifecycle operations per instance group
+2. **BOSH Agent** — subcommands relaying disk requests to the Director
+3. **Volume driver** — Docker Volume Plugin v1.12, collocated on Diego cells
+4. **Diego changes** — evacuation sequencing for exclusive-access volumes, instance-indexed volume IDs
+
+This enables Cloud Foundry to run **stateful single-container workloads** — agentic coding sessions, cloud-based developer environments, AI agent processes — with dedicated IaaS block storage, while maintaining the security posture operators expect.
 
 
 ## Problem
 
-A new class of workload is emerging: **single-container processes that need dedicated persistent storage as part of their own execution environment**.
+A new class of workload is emerging: **single-container processes that need dedicated persistent storage**.
 
-- **Agentic coding sessions** — an AI agent operates within a workspace containing source code, build artifacts, and tool state
+- **Agentic coding sessions** — AI agents operating within workspaces containing source code, build artifacts, and tool state
 - **Cloud-based developer environments** — persistent scratch space tied to a single container
 - **Batch jobs** — checkpoint intermediate state across restarts
 
-These workloads need storage that survives container restarts but is tied to a single container — not a shared service.
+These workloads need storage that survives container restarts but is tied to a single container — not a shared service. Diego's volume services already support persistent storage via drivers (`nfsv3driver`, `smbdriver`), but these use shared network filesystems. What's missing is a driver backed by **dedicated IaaS block storage**.
 
-Diego's volume services already attach persistent storage via drivers (`nfsv3driver`, `smbdriver`). What's missing is a driver backed by **dedicated IaaS block storage managed by BOSH**.
+### The integration challenge
+
+Integrating IaaS disk operations with Diego raises security questions:
+
+- **Who holds IaaS credentials?** Diego cells shouldn't have direct access to cloud provider APIs.
+- **How are operations authorized?** Which cells can attach which disks?
+- **What's the blast radius of compromise?** If one cell is compromised, what can an attacker do?
+
+This RFC proposes an architecture that answers these questions by building on BOSH's existing per-instance identity infrastructure — no new credentials, no credential distribution, and a blast radius limited to a single VM.
 
 
 ## Proposal
 
 ### Overview
 
-The proposal has three layers:
+The proposal has four layers:
 
 1. **BOSH Director** — `permissions` model on instance groups controlling disk lifecycle operations, enforced at runtime
 2. **BOSH Agent** — subcommands that relay disk requests to the Director over NATS (Agent is a relay, not an enforcement point)
 3. **Volume driver for Diego** — Docker Volume Plugin v1.12 job on Diego cells; disk CIDs flow through CC service bindings (same as NFS/SMB)
+4. **Diego changes** — Volman queries driver capabilities; Rep uses stop-first evacuation and instance-indexed volume IDs for `private`-scope volumes
 
 
 ### Layer 1: BOSH Director — Dynamic Disk Management
@@ -161,7 +175,7 @@ A BOSH job (`bosh-volume-driver`) implements the [Docker Volume Plugin v1.12](ht
 | `/VolumeDriver.Unmount` | Unmounts filesystem, calls `bosh-agent detach-disk` |
 | `/VolumeDriver.Remove` | Removes disk CID from local state (broker handles deletion) |
 | `/VolumeDriver.Get/List/Path` | Returns volume info from local state |
-| `/VolumeDriver.Capabilities` | Returns `{"Capabilities": {"Scope": "local"}}` |
+| `/VolumeDriver.Capabilities` | Returns `{"Capabilities": {"Scope": "private"}}` (see Layer 4) |
 | `/Plugin.Activate` | Returns `{"Implements": ["VolumeDriver"]}` |
 
 #### Plugin discovery
@@ -172,12 +186,11 @@ Volman discovers drivers through spec files in `/var/vcap/data/voldrivers` (defa
 {
   "Name": "bosh-volume-driver",
   "Addr": "unix:///var/vcap/data/bosh-volume-driver/driver.sock",
-  "TLSConfig": null,
-  "UniqueVolumeIds": true
+  "InstanceIndexedVolumeIds": true
 }
 ```
 
-Volman syncs every 30 seconds and calls `/Plugin.Activate` to verify the driver. No changes to Diego, volman, the Rep, or Garden.
+Volman syncs every 30 seconds and calls `/Plugin.Activate` to verify the driver. Diego changes for `private`-scope volumes and `InstanceIndexedVolumeIds` are specified in Layer 4.
 
 #### Disk CID flow through Cloud Foundry
 
@@ -210,12 +223,120 @@ flowchart LR
 This is identical to NFS/SMB volume services. The only difference is the backing storage: IaaS block devices instead of network filesystem shares.
 
 
+### Layer 4: Diego Changes
+
+IaaS block devices (EBS, GCP Persistent Disk, Azure Disk) can only attach to one VM at a time. This constraint requires two changes to Diego's behavior.
+
+#### Querying driver capabilities
+
+Diego's volman must query the driver's capabilities to determine scope. The volume driver returns:
+
+```json
+{"Capabilities": {"Scope": "private"}}
+```
+
+The `Scope` field values:
+- `local` — volume is local to a single host (current default)
+- `global` — volume is global across hosts (shared storage)
+- `private` — volume is private to a single container (one mount at a time)
+
+The `private` scope signals that the volume uses exclusive-access storage. Diego uses this signal to enable stop-first evacuation (Change 1 below).
+
+> **Why `private`?** The Docker Volume Plugin spec defines `local` and `global` scopes. Adding `private` follows this naming pattern: `local` = host-scoped, `global` = cluster-scoped, `private` = container-scoped (exclusive access). Alternative names like `exclusive` or `single-mount` were considered but don't fit the existing scheme.
+
+#### Change 1: Evacuation sequencing for private-scope volumes
+
+**Current behavior:** During cell evacuation, the Rep requests an auction for replacement instances immediately while existing containers are still running. The old container is stopped only after the new container is placed elsewhere.
+
+**Problem:** For block devices, the new container cannot attach the disk until the old container releases it. The mount operation fails because the disk is still attached to the evacuating cell.
+
+**New behavior:** For LRPs with `private`-scope volumes, the Rep changes the evacuation sequence:
+
+1. **Stop first** — Stop the existing container and unmount all `private`-scope volumes (triggers `VolumeDriver.Unmount` → `detach-disk`)
+2. **Then auction** — Request placement of the replacement instance
+
+This ensures the disk is detached before the new container attempts to attach it.
+
+**Components affected:**
+- **Rep** (`evacuation_controller.go`) — Check volume scope before evacuation; use stop-first sequence for `private` scope
+- **Volman** (`docker_driver_plugin.go`) — Call `Capabilities()` endpoint on driver discovery; cache and expose scope to Rep
+
+#### Change 2: Instance-indexed volume IDs
+
+**Current behavior:** When a driver declares `UniqueVolumeIds: true` in its spec file, volman appends the **container GUID** as a suffix to the volume ID. The container GUID is a UUID that changes on every restart.
+
+**Problem:** For persistent block storage, a restarted container must receive the same disk. Using container GUID as suffix means the driver sees a different volume ID after restart and cannot map it back to the original disk.
+
+**New behavior:** A new driver spec flag `InstanceIndexedVolumeIds` tells volman to use the **instance index** (0, 1, 2, ...) as the suffix instead. The instance index is stable across restarts — instance 0 always receives suffix `_0`, instance 1 receives `_1`, etc.
+
+The driver receives:
+- `<volume-id>_0` for instance 0
+- `<volume-id>_1` for instance 1
+- etc.
+
+This enables the driver to maintain a stable mapping: volume ID + instance index → disk CID.
+
+**`UniqueVolumeIds` vs `InstanceIndexedVolumeIds`:**
+
+These flags are **mutually exclusive** — they represent alternative strategies for volume ID suffixing:
+
+| Spec Flag | Suffix | Stability | Use Case |
+|-----------|--------|-----------|----------|
+| Neither | None | N/A | Shared volume, same for all instances |
+| `UniqueVolumeIds: true` | Container GUID | Changes on restart | Per-container state (e.g., caches) |
+| `InstanceIndexedVolumeIds: true` | Instance Index | Stable across restarts | Persistent per-instance storage |
+
+**Components affected:**
+- **Volman** — New `InstanceIndexedVolumeIds` spec field; use `ActualLRPKey.Index` as suffix when set
+- **Rep** — Already passes instance index to volman in `NewRunRequestFromDesiredLRP`; no changes needed
+
+#### Driver spec file
+
+The volume driver spec file for the BOSH volume driver:
+
+```json
+{
+  "Name": "bosh-volume-driver",
+  "Addr": "unix:///var/vcap/data/bosh-volume-driver/driver.sock",
+  "InstanceIndexedVolumeIds": true
+}
+```
+
+- `InstanceIndexedVolumeIds: true` — use instance index as volume ID suffix (stable across restarts)
+- `Scope: "private"` — discovered dynamically via the `Capabilities()` endpoint, not declared in the spec file
+
+
 ### Security Model
 
-- **No Director credentials in workloads.** Jobs call the local Agent binary; the Agent uses existing NATS mTLS credentials.
-- **Director-enforced permissions.** The Director identifies callers by client certificate, resolves to instance group, and checks `permissions` before executing. Analogous to UAA scope checking.
-- **No new network access.** The Agent already has NATS connectivity.
-- **Disk isolation.** IaaS block devices can only be attached to one VM at a time (enforced by the IaaS).
+This RFC's security model builds on BOSH's existing per-instance identity infrastructure.
+
+#### Secure by default — no credential distribution
+
+The volume driver calls the local BOSH Agent binary. The Agent relays requests to the Director over its existing mTLS NATS connection. No UAA tokens, no Director API credentials, no cloud provider credentials on Diego cells. There's nothing to leak.
+
+#### Per-instance blast radius
+
+Each BOSH Agent has a unique mTLS client certificate tied to that specific VM instance. When a request arrives, the Director identifies the *exact VM* making the request — not just the instance group, but the specific instance.
+
+If an attacker compromises a Diego cell, they can only perform operations that specific cell is permitted to perform. With `disk.self.attach` / `disk.self.detach` permissions, a compromised cell can only attach disks to itself — not to other cells. No lateral movement is possible.
+
+#### Manifest-driven permissions
+
+Operators declare permissions in the deployment manifest:
+
+```yaml
+instance_groups:
+  - name: diego-cell
+    permissions:
+      - disk.self.attach
+      - disk.self.detach
+```
+
+The Director enforces these at runtime. No external credential management, no UAA client configuration, no scope-to-instance-group mapping to maintain. The manifest is the single source of truth.
+
+#### IaaS-enforced disk isolation
+
+IaaS block devices can only be attached to one VM at a time. This is enforced by the cloud provider, providing an additional layer of isolation beyond CF's authorization model.
 
 
 ### Scope and Deliverables
@@ -226,6 +347,7 @@ This RFC specifies **interface contracts and deployment model** only. Implied de
 2. **BOSH Agent** — `create-disk`, `delete-disk`, `attach-disk`, `detach-disk` subcommands
 3. **Volume driver job** — Docker Volume Plugin v1.12, collocated on Diego cells (`bosh-volume-services` release)
 4. **Volume broker job** — Open Service Broker API for disk lifecycle, same release
+5. **Diego** — Volman calls `Capabilities()` endpoint and caches scope; Rep uses stop-first evacuation for `private`-scope volumes; new `InstanceIndexedVolumeIds` spec flag for stable per-instance volume IDs
 
 
 ## Future Work
@@ -255,35 +377,22 @@ A **disk set** is a broker-managed collection of disks:
 
 1. **Provision**: `cf create-service bosh-disk-set default my-workspace` — broker creates a disk set record (no disks yet)
 2. **Bind**: `cf bind-service my-app my-workspace` — broker returns `volume_id = <disk-set-id>` (a namespace, not a single CID)
-3. **Mount (per instance)**: Diego places instance N, volman calls the driver with an encoded volume ID containing the instance index. Driver resolves: "disk set X, index N → disk CID" (creates on first use). Driver calls `bosh-agent attach-disk`.
+3. **Mount (per instance)**: Diego places instance N, volman calls the driver with an encoded volume ID containing the instance index (via `InstanceIndexedVolumeIds`). Driver resolves: "disk set X, index N → disk CID" (creates on first use). Driver calls `bosh-agent attach-disk`.
 4. **Scale up**: New instances trigger new disk creation
 5. **Scale down**: Disks are detached but **retained** (like K8s StatefulSet)
 6. **Deprovision**: Broker deletes all disks in the set
 
-#### Leveraging Diego's `UniqueVolumeIds` mechanism
+#### Leveraging Layer 4's instance-indexed volumes
 
-Diego's volman already supports per-container volume differentiation via the `UniqueVolumeIds` driver spec flag. When a driver declares this flag, volman encodes `<volume-id>_<suffix>` before passing to the driver. The driver decodes prefix and suffix to handle per-container state.
+Layer 4 of this RFC specifies the `InstanceIndexedVolumeIds` driver spec flag, which tells volman to use the **instance index** as the volume ID suffix instead of container GUID. This behavior is exactly what disk sets need:
 
-Today, the suffix is the **container GUID** (a UUID that changes on every restart). For disk sets, the suffix must be the **instance index** (0, 1, 2 — stable across restarts). This requires a small Diego change:
+- Instance 0 receives volume ID `<disk-set-id>_0`
+- Instance 1 receives volume ID `<disk-set-id>_1`
+- etc.
 
-**Proposed: `InstanceIndexedVolumes` driver spec flag**
+The driver decodes the suffix, uses it as the instance key, and resolves to the correct disk CID from the broker's disk set. Because the instance index is stable across restarts, instance 0 always receives the same disk.
 
-```json
-{
-  "Name": "bosh-volume-driver",
-  "Addr": "unix:///var/vcap/data/bosh-volume-driver/driver.sock",
-  "UniqueVolumeIds": true,
-  "InstanceIndexedVolumes": true
-}
-```
-
-When `InstanceIndexedVolumes` is true, volman passes the instance index (from `ActualLRPKey.Index`) as the suffix instead of the container GUID. The Rep already has this value available in `NewRunRequestFromDesiredLRP` — the change is small and isolated.
-
-With this flag, the driver receives:
-- Create: `<disk-set-id>_0`, `<disk-set-id>_1`, etc.
-- Mount: `<disk-set-id>_0` for instance 0, `<disk-set-id>_1` for instance 1
-
-The driver decodes the suffix, uses it as the instance key, and resolves to the correct disk CID from the broker's disk set.
+Disk sets also require `Scope: "private"` to enable stop-first evacuation — each disk can only be attached to one VM at a time.
 
 #### BOSH-side support
 
@@ -297,7 +406,7 @@ This allows the broker to enumerate disks in a set without maintaining a separat
 
 #### Scope
 
-Disk sets require the `InstanceIndexedVolumes` Diego change. This RFC establishes the foundation (single-disk primitives); disk sets are a follow-up RFC that builds on this foundation and proposes the Diego enhancement.
+With the Diego changes in Layer 4 (`InstanceIndexedVolumeIds` and `Scope: "private"`), disk sets require only broker-side logic to manage the disk set state and map instance indices to disk CIDs. This RFC establishes the foundation; a follow-up RFC can specify the disk set broker behavior in detail.
 
 
 ## Appendix: Alternative Architectures
@@ -372,12 +481,13 @@ Could the volume driver be centralized to avoid per-cell credentials?
 
 **Option 1: Centralized volume driver proxy**
 
-A single process holds Director credentials and proxies volume operations for all cells.
+A single process holds Director credentials and proxies volume operations for all cells. Diego's volman supports remote drivers via TCP/HTTPS (not just Unix sockets), so this is technically feasible without modifying volman's discovery mechanism.
 
-Problems:
-- Volman discovers drivers via local Unix socket spec files — there's no built-in remote driver protocol
-- Would require building a custom network protocol and modifying volman's discovery mechanism
-- Single point of failure for all volume operations
+Concerns:
+- **Single point of failure** — All volume mount/unmount operations depend on this proxy
+- **Per-cell identity still required** — The proxy must authenticate which cell is making the request to enforce `disk.self.attach` semantics (only attach to the requesting cell). This requires building authentication infrastructure between cells and proxy.
+- **Additional operational complexity** — New component to deploy, configure, scale, and monitor
+- **Latency** — Extra network hop for every mount/unmount operation
 
 **Option 2: Controller watching Diego BBS**
 
@@ -389,7 +499,7 @@ Problems:
 - Must coordinate with Rep's mount lifecycle (Rep expects volume driver to return mountpoint synchronously)
 - Deep integration with Diego internals rather than using the standard volume plugin interface
 
-Both alternatives require significant custom integration work, whereas the standard volume driver model integrates cleanly with Diego's existing architecture.
+The Agent relay approach (this RFC) avoids these concerns by using BOSH's existing per-instance mTLS identity — each Agent has a unique certificate, so the Director can identify exactly which VM is making the request without building additional authentication infrastructure.
 
 ### E. Comparison summary
 
@@ -398,7 +508,7 @@ Both alternatives require significant custom integration work, whereas the stand
 | **Credential model** | No new credentials. Agent uses existing NATS mTLS. | UAA OAuth credentials required. |
 | **Cell requirements** | No changes. Agent already present. | Director API credentials + network access on every cell. |
 | **Permission granularity** | Per-instance-group, declared in manifest. | Per-UAA-client. All clients with scope have equal access. |
-| **Diego integration** | Standard volume driver plugin. Zero Diego changes. | Custom integration required. |
+| **Diego integration** | Standard volume driver plugin. Minimal Diego changes (Layer 4). | Custom integration required. |
 | **Broker integration** | Calls local Agent binary. | Calls Director HTTP API (straightforward). |
 
 Both approaches share the same Director dependency for disk operations and the same failure mode: mounted disks survive Director downtime, but new operations require the Director to be available.
@@ -469,3 +579,41 @@ sequenceDiagram
     Agent_B-->>Broker: OK
     Broker-->>CC: 200 OK
 ```
+
+
+## Appendix: Docker Volume Plugin vs Kubernetes CSI
+
+Diego's volman uses the **Docker Volume Plugin** protocol, not Kubernetes CSI. This appendix compares the two to clarify why this RFC extends the `Scope` field rather than using CSI-style access modes.
+
+### Protocol comparison
+
+| Aspect | Docker Volume Plugin | Kubernetes CSI |
+|---|---|---|
+| **Transport** | HTTP REST over Unix socket | gRPC |
+| **Discovery** | Spec files in `/run/docker/plugins` or custom path | Node registration via kubelet |
+| **Lifecycle endpoints** | `Create`, `Remove`, `Mount`, `Unmount`, `Get`, `List`, `Path` | `CreateVolume`, `DeleteVolume`, `NodeStageVolume`, `NodePublishVolume`, `NodeUnpublishVolume`, etc. |
+| **Capabilities endpoint** | `Capabilities` — returns `{"Scope": "local\|global"}` | `GetCapabilities` — returns detailed access modes and capabilities |
+| **Access modes** | None built-in (only `Scope`) | Rich: `SINGLE_NODE_WRITER`, `SINGLE_NODE_READER_ONLY`, `MULTI_NODE_READER_ONLY`, `MULTI_NODE_SINGLE_WRITER`, `MULTI_NODE_MULTI_WRITER`, `SINGLE_NODE_SINGLE_WRITER` (RWOP) |
+
+### Why extend `Scope` instead of adding access modes?
+
+CSI's `SINGLE_NODE_SINGLE_WRITER` (ReadWriteOncePod, RWOP) access mode is semantically what we need — a volume that can only be mounted by one workload at a time. However:
+
+1. **Diego uses Docker Volume Plugin, not CSI.** The CSI protocol is not available in Diego's architecture.
+2. **The Docker spec is extensible.** The `Scope` field is a plain string with no validation. The spec explicitly states "More capabilities may be added in the future."
+3. **Adding a new scope value is minimal change.** Drivers already implement `Capabilities()`; returning `"private"` instead of `"local"` requires no protocol changes.
+4. **`private` fits the naming scheme.** `local` = host-scoped, `global` = cluster-scoped, `private` = container-scoped (exclusive).
+
+### Diego's current gap
+
+Diego's volman (`voldocker/docker_driver_plugin.go`) currently **does not call the `Capabilities()` endpoint**. The `Scope` field has no effect on Diego's behavior today. Layer 4 of this RFC addresses this by having volman query capabilities and act on the result.
+
+### CSI reference: RWOP
+
+Kubernetes 1.22 introduced `ReadWriteOncePod` (RWOP) access mode via CSI's `SINGLE_NODE_SINGLE_WRITER` capability. This provides the same semantics we achieve with `Scope: "private"`:
+
+- Volume can only be mounted by a single pod at a time
+- Scheduler considers this constraint when placing pods
+- If a pod is evicted, the volume is unmounted before a new pod can claim it
+
+The Diego changes in Layer 4 (stop-first evacuation for private-scope volumes) mirror this Kubernetes behavior.
