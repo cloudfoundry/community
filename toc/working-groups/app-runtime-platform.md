@@ -257,6 +257,8 @@ areas:
   approvers:
   - name: Tamara Boehm
     github: b1tamara
+  - name: Clemens Hoffmann
+    github: hoffmaen
   - name: Brandon Roberson
     github: ebroberson
   - name: Carson Long
@@ -298,8 +300,6 @@ areas:
     github: Soha-Albaghdady
   - name: Daria Anton
     github: Dariquest
-  - name: Clemens Hoffmann
-    github: hoffmaen
   - name: Konstantin Lapkov
     github: klapkov
   - name: M Rizwan Shaik
