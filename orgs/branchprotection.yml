@@ -221,6 +221,7 @@ branch-protection:
           required_status_checks:
             contexts:
               - "kind-smoke"
+              - "kind-cats"
               - "EasyCLA"
           required_pull_request_reviews:
             dismiss_stale_reviews: true
