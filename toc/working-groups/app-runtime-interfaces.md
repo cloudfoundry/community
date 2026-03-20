@@ -296,6 +296,8 @@ areas:
   reviewers:
   - name: Anugrah Gupta
     github: ANUGRAHG
+  - name: João Viegas
+    github: jcvrabo
   repositories:
   - cloudfoundry/go-cfclient
 
