@@ -42,7 +42,7 @@ GoRouter gains the ability to require client certificates for specific domains, 
 
 - **Phase 1a (mTLS Domain Infrastructure)**: GoRouter requires and validates client certificates for configured domains. The XFCC header is set with certificate details. This alone enables external client certificate validation.
 - **Phase 1b (CF Identity & Authorization)**: Optional, opt-in behavior where GoRouter extracts CF identity from Diego instance certificates and enforces authorization rules. This enables CF app-to-app routing and cross-CF federation.
-- **Phase 2 (Egress HTTP Proxy)**: Optional enhancement where the sidecar proxy automatically injects instance identity certificates, simplifying client adoption for CF app-to-app routing.
+- **Phase 2 (Egress HTTP Proxy)**: Opt-in enhancement where the sidecar proxy automatically injects instance identity certificates, simplifying client adoption for CF app-to-app routing. Users enable this per-app; it is not required for Phase 1 functionality.
 
 ### Architecture Overview
 
@@ -185,7 +185,7 @@ When `xfcc.identity_extractor: cf_ou` and `authorization.mode: cf_identity` are 
 Authorization is enforced at two layers:
 
 1. **Domain level (operator)**: Configured via `authorization.config` in `mtls_domains`
-2. **Route level (developer)**: Configured via `allowed_sources` in route options
+2. **Route level (developer)**: Configured via `mtls_allowed_*` route options
 
 **Layered authorization:**
 
@@ -232,17 +232,20 @@ applications:
 
 **Warning behavior:**
 
-When a route specifies `mtls_allowed_*` options but the domain has `authorization.mode: none`, GoRouter logs a warning to the application's log stream:
+When a route specifies `mtls_allowed_*` options but the domain has `authorization.mode: none`, the route options are stored by CAPI as inert metadata — CAPI does not track or validate whether the domain enforces them. GoRouter logs a warning per-request to the application's log stream (see [Router Log Messages](#router-log-messages) for the full format):
 
 ```
-[WARN] Route 'backend.partner.example.com' specifies mtls_allowed_apps but domain has authorization.mode=none; rules are not enforced.
+[RTR] backend.partner.example.com - mtls_auth:"not_enforced"
+  mtls_denied_reason:"route specifies mtls_allowed_apps but domain authorization.mode=none; rules ignored"
 ```
+
+The request is forwarded, not denied. This allows developers to set route options before the operator enables enforcement, and provides visible feedback that the rules are not yet active.
 
 This builds on the route options framework from [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md). Phase 1b depends on RFC-0027 being implemented first.
 
-### Phase 2: Egress HTTP Proxy (Optional)
+### Phase 2: Egress HTTP Proxy (Opt-in)
 
-To simplify client adoption, add an HTTP proxy to the application sidecar that automatically handles mTLS.
+To simplify client adoption, add an HTTP proxy to the application sidecar that automatically handles mTLS. Users enable this per-app; applications that configure TLS clients directly do not need it.
 
 **How it works:**
 1. Diego configures an egress proxy (Envoy) listening on `127.0.0.1:8888`
@@ -298,6 +301,92 @@ Phase 1a alone (with `authorization.mode: none`) is sufficient. Backend applicat
 
 ## Appendix
 
+### Router Log Messages
+
+GoRouter emits `[RTR]` log lines to the application's log stream (visible via `cf logs`). The following messages cover mTLS authorization scenarios, including edge cases where route options exist but authorization is not enforced.
+
+**Successful authorized request:**
+
+When a request passes both domain-level and route-level authorization:
+
+```
+[RTR] backend.apps.mtls.internal - [2026-03-20T10:15:00Z]
+  "GET /api/data HTTP/1.1" 200 1234
+  x_forwarded_for:"10.0.1.5" x_forwarded_proto:"https"
+  caller_app:"frontend-guid" caller_space:"space-guid" caller_org:"org-guid"
+  mtls_auth:"allowed" mtls_rule:"route:mtls_allowed_apps"
+```
+
+The `caller_*` fields are extracted from the instance identity certificate. `mtls_auth:"allowed"` confirms authorization passed, and `mtls_rule` identifies which rule matched.
+
+**Denied — failed domain-level scope check:**
+
+When the caller's identity does not match the operator's `scope` boundary:
+
+```
+[RTR] backend.apps.mtls.internal - [2026-03-20T10:15:01Z]
+  "GET /api/data HTTP/1.1" 403 0
+  caller_app:"attacker-guid" caller_space:"other-space-guid" caller_org:"other-org-guid"
+  mtls_auth:"denied" mtls_rule:"domain:scope=org"
+  mtls_denied_reason:"caller org other-org-guid not in endpoint pool"
+```
+
+**Denied — failed route-level `mtls_allowed_*` check:**
+
+When the caller passes domain-level checks but is not in the route's `mtls_allowed_*` list:
+
+```
+[RTR] backend.apps.mtls.internal - [2026-03-20T10:15:02Z]
+  "GET /api/data HTTP/1.1" 403 0
+  caller_app:"unknown-app-guid" caller_space:"same-space-guid" caller_org:"same-org-guid"
+  mtls_auth:"denied" mtls_rule:"route:mtls_allowed_apps"
+  mtls_denied_reason:"caller app unknown-app-guid not in mtls_allowed_apps"
+```
+
+**Denied — no route options set (default deny):**
+
+When a route on an mTLS domain has no `mtls_allowed_*` options and no `mtls_allow_any`, the default-deny model rejects all requests:
+
+```
+[RTR] backend.apps.mtls.internal - [2026-03-20T10:15:03Z]
+  "GET /api/data HTTP/1.1" 403 0
+  caller_app:"frontend-guid" caller_space:"space-guid" caller_org:"org-guid"
+  mtls_auth:"denied" mtls_rule:"route:no_mtls_allowed_options"
+  mtls_denied_reason:"route has no mtls_allowed_* options configured"
+```
+
+**Warning — route options set but domain authorization not enabled:**
+
+When a route has `mtls_allowed_*` options but the domain uses `authorization.mode: none` (or the route is on a non-mTLS domain), GoRouter logs a warning on each request. The request is **forwarded** (not denied) because authorization is not active:
+
+```
+[RTR] backend.partner.example.com - [2026-03-20T10:15:04Z]
+  "GET /api/data HTTP/1.1" 200 1234
+  mtls_auth:"not_enforced"
+  mtls_denied_reason:"route specifies mtls_allowed_apps but domain authorization.mode=none; rules ignored"
+```
+
+This warning is logged per request (not just at startup) so it appears in the application's log stream, making it visible to developers who may have misconfigured their route. CAPI stores the route options as-is — it does not validate whether the domain enforces them. The route options are inert metadata until the operator enables `authorization.mode: cf_identity` on the domain.
+
+**Warning — identity extraction failed:**
+
+When the client certificate is valid but does not contain the expected identity fields:
+
+```
+[RTR] backend.apps.mtls.internal - [2026-03-20T10:15:05Z]
+  "GET /api/data HTTP/1.1" 403 0
+  mtls_auth:"denied" mtls_rule:"identity_extraction"
+  mtls_denied_reason:"certificate does not contain CF identity OU fields"
+```
+
+**Summary of `mtls_auth` values:**
+
+| Value | HTTP Status | Meaning |
+|-------|-------------|---------|
+| `allowed` | 2xx/3xx/5xx | Request authorized and forwarded to backend |
+| `denied` | 403 | Request rejected by GoRouter |
+| `not_enforced` | 2xx/3xx/5xx | Route has mTLS options but domain does not enforce them |
+
 ### Relationship to Container-to-Container Networking
 
 This RFC complements Cloud Foundry's existing [container-to-container (C2C) networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html) rather than replacing it. The two mechanisms serve different purposes and operate at different layers.
@@ -314,6 +403,17 @@ C2C networking operates at Layer 4 (TCP/UDP) using IPtables rules enforced on Di
 - **mTLS app routing (this RFC)**: HTTP APIs requiring caller identity in the request, platform-enforced authorization at the route level, when you need GoRouter features (load balancing, retries, observability, access logs).
 
 The two mechanisms can coexist. An application might use C2C networking for database connections while exposing HTTP APIs via mTLS app routing.
+
+**Authorization model differences:**
+
+C2C network policies and this RFC's `scope` have different authorization semantics:
+
+- **C2C**: A user creates a network policy allowing App A → App B. The user must have the [`network.write` scope](https://docs.cloudfoundry.org/devguide/deploy-apps/cf-networking.html#grant-permissions) (or Space Developer role with `enable_space_developer_self_service`) in **both** the source and destination spaces. The policy is directional and names specific source/destination pairs.
+- **`scope: space` (this RFC)**: The operator boundary allows any app in the same space as the destination to call that route. The developer registers `mtls_allowed_*` route options on their own route — they only need permissions in the destination space. There is no requirement for the caller's space to opt in.
+
+This is intentional. This RFC's model is *destination-controlled*: the route owner decides who may call them, and the operator sets the maximum boundary. This matches how HTTP APIs typically work — the server defines its access policy. C2C's *bilateral* model (both sides must agree) is appropriate for Layer 4 network-level access where neither side is inherently the "server."
+
+Operators who want the bilateral guarantee of C2C should continue using C2C networking for those workloads. The two are complementary.
 
 ### Configuration Examples
 
