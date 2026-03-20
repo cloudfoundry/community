@@ -124,23 +124,59 @@ router:
         #                 (requires identity_extractor: cf_ou)
         mode: cf_identity
         
-        # Operator-level caller restrictions (only for mode: cf_identity)
-        # Restricts which callers can access routes on this domain.
-        # Use orgs OR spaces (mutually exclusive). If omitted, any
-        # authenticated caller passes domain-level checks (route-level
-        # mtls_allowed_* options still apply).
+        # Operator-level caller restrictions (only for mode: cf_identity).
+        # Two approaches (mutually exclusive):
+        #
+        # 1. Relative boundary (scope) - compares caller identity against
+        #    the route destination's tags (organization_id, space_id) which
+        #    are set by the route-emitter for each app instance:
+        #      any (default) - Any authenticated caller passes domain-level checks
+        #      org   - Caller must be in the same org as the route's destination app
+        #      space - Caller must be in the same space as the route's destination app
+        #
+        # 2. Explicit boundary (orgs/spaces) - absolute list of allowed
+        #    caller org/space GUIDs. Useful for cross-CF federation where
+        #    scope checks are meaningless (remote GUIDs have no local context).
         config:
-          # Only allow callers from these orgs:
-          orgs: ["org-guid-1", "org-guid-2"]
-          # OR only allow callers from these spaces:
-          # spaces: ["space-guid-1", "space-guid-2"]
+          # Option 1: Relative boundary (recommended for single-CF)
+          scope: org
+          
+          # Option 2: Explicit boundary (for cross-CF federation)
+          # orgs: ["remote-cf-org-guid-1", "remote-cf-org-guid-2"]
+          # OR
+          # spaces: ["remote-cf-space-guid-1"]
 ```
 
 **Validation rules:**
+- `authorization.config.scope` is mutually exclusive with `authorization.config.orgs` and `authorization.config.spaces`
 - `authorization.config.orgs` is mutually exclusive with `authorization.config.spaces`
-- If `authorization.config` is omitted, any authenticated caller passes domain-level checks
+- If `authorization.config` is omitted, the default is `scope: any` (any authenticated caller passes domain-level checks)
 - `authorization.mode: cf_identity` requires `xfcc.identity_extractor: cf_ou`
 - Invalid combinations are rejected during BOSH deployment by the GoRouter job templates
+
+**How scope works:**
+
+GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `scope` is set, GoRouter compares the caller's identity (extracted from the mTLS certificate) against the destination's tags:
+
+| Scope | Check | Effect |
+|-------|-------|--------|
+| `any` | None | Any authenticated caller passes domain-level checks |
+| `org` | `caller.OrgGUID ∈ pool endpoints' organization_id` | Caller must be from the same org as the destination |
+| `space` | `caller.SpaceGUID ∈ pool endpoints' space_id` | Caller must be from the same space as the destination |
+
+**Shared routes and endpoint pools:**
+
+When a [shared route](https://v3-apidocs.cloudfoundry.org/version/3.215.0/index.html#share-a-route-with-other-spaces-experimental) has apps mapped from multiple spaces, the GoRouter `EndpointPool` for that route contains endpoints from different spaces. Each endpoint carries its own `space_id` and `organization_id` tags, set by the route-emitter based on the app instance it represents — not the route owner.
+
+For example, if route `api.apps.mtls.internal` is shared between Space A and Space B, with an app mapped in each:
+
+```
+EndpointPool for "api.apps.mtls.internal":
+  [0] 10.0.1.5:8080  tags: { space_id: "space-a-guid", organization_id: "org-guid" }
+  [1] 10.0.2.9:8080  tags: { space_id: "space-b-guid", organization_id: "org-guid" }
+```
+
+GoRouter iterates the pool's endpoints when evaluating scope, checking the caller's identity against each endpoint's tags and short-circuiting on the first match. For `scope: space`, if any endpoint's `space_id` matches the caller's space GUID, the request is allowed. A caller from Space A or Space B passes the check; a caller from Space C (with no app mapped to the route) is denied. This naturally enables cross-space access on shared routes between the participating spaces.
 
 ### Phase 1b: CF Identity & Authorization
 
@@ -281,23 +317,7 @@ The two mechanisms can coexist. An application might use C2C networking for data
 
 ### Configuration Examples
 
-**CF app-to-app routing (basic):**
-```yaml
-router:
-  mtls_domains:
-    - domain: "*.apps.mtls.internal"
-      ca_certs: ((diego_instance_identity_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        # No config: any authenticated caller passes domain-level checks
-        # Route-level mtls_allowed_* options control access
-```
-
-**CF app-to-app routing with operator-level caller restrictions:**
+**CF app-to-app routing (same-org boundary):**
 ```yaml
 router:
   mtls_domains:
@@ -310,8 +330,45 @@ router:
       authorization:
         mode: cf_identity
         config:
-          # Only apps from these orgs can access routes on this domain
-          orgs: ["trusted-org-guid-1", "trusted-org-guid-2"]
+          # Caller must be from the same org as the route's destination app.
+          # No org GUIDs needed — GoRouter checks the caller's certificate
+          # against the route-emitter tags on each endpoint.
+          scope: org
+```
+
+**CF app-to-app routing (same-space boundary):**
+```yaml
+router:
+  mtls_domains:
+    - domain: "*.apps.mtls.internal"
+      ca_certs: ((diego_instance_identity_ca.certificate))
+      forwarded_client_cert: sanitize_set
+      xfcc:
+        format: envoy
+        identity_extractor: cf_ou
+      authorization:
+        mode: cf_identity
+        config:
+          # Caller must be from the same space as the route's destination app.
+          # With shared routes, callers from any participating space (i.e. any
+          # space that has an app mapped to the route) are allowed.
+          scope: space
+```
+
+**CF app-to-app routing (any authenticated caller):**
+```yaml
+router:
+  mtls_domains:
+    - domain: "*.apps.mtls.internal"
+      ca_certs: ((diego_instance_identity_ca.certificate))
+      forwarded_client_cert: sanitize_set
+      xfcc:
+        format: envoy
+        identity_extractor: cf_ou
+      authorization:
+        mode: cf_identity
+        # No config or scope: any — any authenticated caller passes domain-level checks
+        # Route-level mtls_allowed_* options control access
 ```
 
 **External client certificate validation (app-level authorization):**
@@ -333,12 +390,12 @@ In this configuration, GoRouter validates that the client certificate is signed 
 
 **Cross-CF federation (apps calling across CF installations):**
 
-When multiple CF installations need to communicate, configure a separate mTLS domain per remote CF installation. This scopes GUIDs to their originating installation and trusts only that installation's CA:
+When multiple CF installations need to communicate, configure a separate mTLS domain per remote CF installation. This uses explicit `orgs:`/`spaces:` lists rather than `scope:` because org/space GUIDs from a remote CF are meaningless locally — there are no local route-emitter tags to match against. Each remote installation's CA is trusted independently:
 
 ```yaml
 router:
   mtls_domains:
-    # Local CF app-to-app
+    # Local CF app-to-app (scope uses route-emitter tags)
     - domain: "*.apps.mtls.internal"
       ca_certs: ((diego_instance_identity_ca.certificate))
       forwarded_client_cert: sanitize_set
@@ -347,9 +404,11 @@ router:
         identity_extractor: cf_ou
       authorization:
         mode: cf_identity
-        # No config: any local app can call (route-level mtls_allowed_* applies)
+        config:
+          scope: org  # Callers must be in same org as destination
 
     # Trust apps from CF-East installation
+    # Uses explicit orgs: list because remote GUIDs have no local route-emitter tags
     - domain: "*.apps.mtls.cf-east.internal"
       ca_certs: ((cf_east_diego_ca.certificate))
       forwarded_client_cert: sanitize_set
@@ -362,6 +421,7 @@ router:
           orgs: ["trusted-east-org-guid"]  # Only this org from CF-East can call
 
     # Trust apps from CF-West installation
+    # No explicit list: any CF-West app can call (route-level mtls_allowed_* applies)
     - domain: "*.apps.mtls.cf-west.internal"
       ca_certs: ((cf_west_diego_ca.certificate))
       forwarded_client_cert: sanitize_set
@@ -394,46 +454,7 @@ The domain naming convention `*.apps.mtls.<cf-installation>.internal` ensures:
 - GUIDs are scoped to their originating installation
 - Each installation's CA is trusted independently
 - Standard `cf_ou` identity extraction and `cf_identity` authorization work unchanged
-
-**Org-scoped internal domains (isolating orgs via domain patterns):**
-
-Operators who want to ensure apps can only communicate with other apps in the same org can achieve this using per-org mTLS domains. This approach uses domain naming conventions rather than runtime checks, leveraging the same pattern as cross-CF federation:
-
-```yaml
-router:
-  mtls_domains:
-    # Org-1 internal routes - only Org-1 apps can access
-    - domain: "*.apps.mtls.org1.internal"
-      ca_certs: ((diego_instance_identity_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        config:
-          orgs: ["org-1-guid"]  # Only callers from org-1 allowed
-    
-    # Org-2 internal routes - only Org-2 apps can access
-    - domain: "*.apps.mtls.org2.internal"
-      ca_certs: ((diego_instance_identity_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        config:
-          orgs: ["org-2-guid"]  # Only callers from org-2 allowed
-```
-
-With this configuration:
-- Apps in `org-1` deploy routes to `*.apps.mtls.org1.internal`
-- Apps in `org-2` deploy routes to `*.apps.mtls.org2.internal`
-- An app in `org-1` cannot call routes on `*.apps.mtls.org2.internal` (blocked at domain level)
-- Route-level `mtls_allowed_*` options provide additional fine-grained control within each org
-
-The same pattern works for space-level isolation using `spaces:` instead of `orgs:`.
+- Local domains use `scope:` (matches route-emitter tags); remote domains use explicit `orgs:`/`spaces:` lists
 
 ### References
 
