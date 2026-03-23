@@ -78,13 +78,13 @@ find_commits_for_repo() {
   if commits=$(gh api --paginate "repos/${repo}/commits?author=${user}&per_page=100" 2>/dev/null); then
     echo "${commits}" | interactions=$(yq -oj -I=0 -r '
       .[] |
-      "- " + .commit.author.date + ": [" + (.commit.message | split("\n")[0]) + "](" + .html_url + ")"
+      "- " + .commit.author.date + ": [" + ((.commit.message | split("\n"))[0]) + "](" + .html_url + ")"
     ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
   fi
   if commits=$(gh api --paginate "repos/${repo}/commits?committer=${user}&per_page=100" 2>/dev/null); then
     echo "${commits}" | interactions=$(yq -oj -I=0 -r '
       .[] |
-      "- " + .commit.committer.date + ": [" + (.commit.message | split("\n")[0]) + "](" + .html_url + ")"
+      "- " + .commit.committer.date + ": [" + ((.commit.message | split("\n"))[0]) + "](" + .html_url + ")"
     ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
   fi
 }
@@ -171,7 +171,7 @@ areas=($(echo "${TOC_JSON}" | wg_name="${WORKING_GROUP}" yq -oj -r -I=0 -r "
 
 for area in "${areas[@]}"; do
   echo "Gathering contributions for the '${WORKING_GROUP}: ${area}' area..."
-  uri_safe_file=$(echo "${wg} - ${area}.md" | yq -oj -I=0 -r '@uri' | sed -E 's/\%20|\+|\%28/\ /g' | sed -E 's/\%0A|\%29//g' | sed 's/%2F/and/g')
+  uri_safe_file=$(echo "${WORKING_GROUP} - ${area}.md" | yq -oj -I=0 -r '@uri' | sed -E 's/\%20|\+|\%28/\ /g' | sed -E 's/\%0A|\%29//g' | sed 's/%2F/and/g')
   gist_url=$(
     (
       echo "# ${WORKING_GROUP}: ${area} Contributions"
