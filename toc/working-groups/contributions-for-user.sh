@@ -71,22 +71,72 @@ usage_checks() {
   fi
 }
 
-find_commits_for_repo() {
+find_commits_grouped_by_pr_for_repo() {
   local user=$1
   local repo=$2
 
-  if commits=$(gh api --paginate "repos/${repo}/commits?author=${user}&per_page=100" 2>/dev/null); then
-    echo "${commits}" | interactions=$(yq -oj -I=0 -r '
-      .[] |
-      "- " + .commit.author.date + ": [" + ((.commit.message | split("\n"))[0]) + "](" + .html_url + ")"
-    ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
+  if ! prs=$(gh api --paginate "search/issues?q=repo:${repo}+type:pr+author:${user}+is:merged&per_page=100" 2>/dev/null); then
+    return
   fi
-  if commits=$(gh api --paginate "repos/${repo}/commits?committer=${user}&per_page=100" 2>/dev/null); then
-    echo "${commits}" | interactions=$(yq -oj -I=0 -r '
-      .[] |
-      "- " + .commit.committer.date + ": [" + ((.commit.message | split("\n"))[0]) + "](" + .html_url + ")"
-    ') yq -oj -r '(select(strenv(interactions) == "- ") | . = "") // strenv(interactions)'
+
+  local merged_pr_count
+  merged_pr_count=$(echo "${prs}" | yq -oj -r '.items | length')
+
+  while IFS= read -r pr_json; do
+    [[ -z "${pr_json}" ]] && continue
+    local pr_number pr_title pr_url pr_date
+    pr_number=$(echo "${pr_json}" | yq -oj -r '.number')
+    pr_title=$(echo "${pr_json}"  | yq -oj -r '.title')
+    pr_url=$(echo "${pr_json}"    | yq -oj -r '.html_url')
+    pr_date=$(echo "${pr_json}"   | yq -oj -r '.created_at')
+
+    echo "- ${pr_date}: [${pr_title}](${pr_url})"
+
+    if pr_commits=$(gh api --paginate "repos/${repo}/pulls/${pr_number}/commits?per_page=100" 2>/dev/null); then
+      local pr_commit_count
+      pr_commit_count=$(echo "${pr_commits}" | yq -oj -r '. | length')
+      if [[ "${pr_commit_count}" -gt 1 ]]; then
+        echo "${pr_commits}" | yq -oj -I=0 -r '
+          .[] |
+          "  - " + .commit.author.date + ": [" + ((.commit.message | split("\n"))[0]) + "](" + .html_url + ")"
+        '
+      fi
+    fi
+  done < <(echo "${prs}" | yq -oj -I=0 -r '.items[]')
+
+  # Fallback for very recent merged PRs that might not be searchable yet.
+  if [[ "${merged_pr_count}" -gt 0 ]]; then
+    return
   fi
+
+  while IFS= read -r pr_json; do
+    [[ -z "${pr_json}" ]] && continue
+    local pr_title pr_url pr_date pr_number
+    pr_title=$(echo "${pr_json}" | yq -oj -r '.payload.pull_request.title')
+    pr_url=$(echo "${pr_json}"   | yq -oj -r '.payload.pull_request.html_url')
+    pr_date=$(echo "${pr_json}"  | yq -oj -r '.payload.pull_request.created_at')
+    pr_number=$(echo "${pr_json}"| yq -oj -r '.payload.number')
+
+    echo "- ${pr_date}: [${pr_title}](${pr_url})"
+
+    if pr_commits=$(gh api --paginate "repos/${repo}/pulls/${pr_number}/commits?per_page=100" 2>/dev/null); then
+      local pr_commit_count
+      pr_commit_count=$(echo "${pr_commits}" | yq -oj -r '. | length')
+      if [[ "${pr_commit_count}" -gt 1 ]]; then
+        echo "${pr_commits}" | yq -oj -I=0 -r '
+          .[] |
+          "  - " + .commit.author.date + ": [" + ((.commit.message | split("\n"))[0]) + "](" + .html_url + ")"
+        '
+      fi
+    fi
+  done < <(echo "${EVENTS_JSON}" | user="${user}" repository="${repo}" yq -oj -I=0 -r '
+    .[]
+    | select(.type == "PullRequestEvent")
+    | select(.repo.name == strenv(repository))
+    | select(.payload.action == "closed")
+    | select(.payload.pull_request.user.login == strenv(user))
+    | select(.payload.pull_request.merged == true)
+  ')
 }
 
 find_prs_for_repo() {
@@ -196,8 +246,8 @@ for area in "${areas[@]}"; do
 
       echo "### Code contributions:"
       for repo in "${repos[@]}"; do
-        find_commits_for_repo "${USERNAME}" "${repo}"
-      done | sort -u
+        find_commits_grouped_by_pr_for_repo "${USERNAME}" "${repo}"
+      done
       echo
     ) | gh gist create -d "${USERNAME}'s Possible Contributions to ${WORKING_GROUP} - ${area}" -f "${uri_safe_file}" - 2>/dev/null
   )
