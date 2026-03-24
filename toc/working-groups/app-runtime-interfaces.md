@@ -106,6 +106,8 @@ areas:
     github: ionphractal
   - name: Ivo Radkov
     github: ivo1116
+  - name: Kiril Keranov
+    github: kiril-keranov
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
