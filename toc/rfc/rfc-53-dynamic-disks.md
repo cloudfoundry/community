@@ -3,8 +3,8 @@
 - Name: Dynamic Disks Support in BOSH
 - Start Date: 2026-01-07
 - Author(s): @mariash, @Alphasite, @rkoster
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1401
+- Status: Accepted <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
+- RFC Pull Request: [community#1401](https://github.com/cloudfoundry/community/pull/1401)
 
 
 ## Summary
