@@ -392,6 +392,10 @@ branch-protection:
           protect: false
         cflinuxfs4-compat-release:
           protect: false
+        cflinuxfs5:
+          protect: false
+        cflinuxfs5-release:
+          protect: false
         buildpacks-envs:
           protect: false
 
