@@ -11,7 +11,7 @@
 
 Enable per-domain mutual TLS (mTLS) on GoRouter with optional identity extraction and authorization enforcement. Operators configure domains that require client certificates, specify how to handle the XFCC header, and optionally enable platform-enforced access control.
 
-This infrastructure supports multiple use cases: authenticated CF app-to-app communication via internal domains (e.g., `apps.mtls.internal`), external client certificate validation for partner integrations, and cross-CF federation between installations.
+This infrastructure supports two primary use cases: authenticated CF app-to-app communication via internal domains (e.g., `apps.mtls.internal`), and external client certificate validation for partner integrations.
 
 For CF app-to-app routing, this follows the same default-deny model as container-to-container network policies: all traffic is blocked unless explicitly allowed.
 
@@ -23,13 +23,11 @@ Cloud Foundry applications can communicate via external routes (through GoRouter
 - **External routes**: Traffic leaves the VPC to reach the load balancer, adding latency and cost. GoRouter's client certificate settings are global—enabling strict mTLS for one domain affects all domains.
 - **C2C networking**: Requires [`network.write` scope](https://docs.cloudfoundry.org/devguide/deploy-apps/cf-networking.html#grant-permissions), which is not granted to space developers by default—operators must set [`enable_space_developer_self_service: true`](https://github.com/cloudfoundry/cf-networking-release/blob/develop/jobs/policy-server/spec). Also lacks load balancing, observability, and identity forwarding.
 
-This RFC addresses several use cases that require per-domain mTLS:
+This RFC addresses two use cases that require per-domain mTLS:
 
 1. **CF app-to-app routing**: Applications need authenticated internal communication where only CF apps can connect (via instance identity), traffic stays internal, the platform enforces which apps can call which routes, and standard GoRouter features work (load balancing, retries, observability).
 
 2. **External client certificates**: Some platforms need to validate client certificates from external systems (partner integrations, IoT devices) on specific domains without affecting other domains or requiring CF-specific identity handling.
-
-3. **Cross-CF federation**: Applications on one CF installation need to securely communicate with applications on another CF installation, each with its own CA and GUID namespace.
 
 **The gap**: GoRouter has no mechanism for requiring mTLS on specific domains while leaving others unaffected, and no way to enforce authorization rules at the route level based on caller identity.
 
@@ -38,11 +36,10 @@ For CF app-to-app routing specifically, authentication alone is insufficient. Wi
 
 ## Proposal
 
-GoRouter gains the ability to require client certificates for specific domains, with configurable identity extraction and authorization enforcement. This is implemented in phases:
+GoRouter gains the ability to require client certificates for specific domains, with configurable identity extraction and authorization enforcement. This is implemented in two parts:
 
-- **Phase 1a (mTLS Domain Infrastructure)**: GoRouter requires and validates client certificates for configured domains. The XFCC header is set with certificate details. This alone enables external client certificate validation.
-- **Phase 1b (CF Identity & Authorization)**: Optional, opt-in behavior where GoRouter extracts CF identity from Diego instance certificates and enforces authorization rules. This enables CF app-to-app routing and cross-CF federation.
-- **Phase 2 (Egress HTTP Proxy)**: Opt-in enhancement where the sidecar proxy automatically injects instance identity certificates, simplifying client adoption for CF app-to-app routing. Users enable this per-app; it is not required for Phase 1 functionality.
+- **Part 1 (mTLS Domain Infrastructure)**: GoRouter requires and validates client certificates for configured domains. The XFCC header is set with certificate details. This alone enables external client certificate validation.
+- **Part 2 (CF Identity & Authorization)**: GoRouter extracts CF identity from Diego instance certificates (when using Envoy XFCC format) and enforces authorization rules based on route options. This enables CF app-to-app routing.
 
 ### Architecture Overview
 
@@ -52,7 +49,6 @@ The diagram below shows CF app-to-app routing (the most complex use case). For e
 flowchart LR
     subgraph "App A Container"
         AppA["App A"]
-        ProxyA["Envoy<br/>(egress proxy)"]
     end
     
     subgraph "GoRouter"
@@ -65,29 +61,29 @@ flowchart LR
         AppB["App B"]
     end
     
-    AppA -->|"HTTP"| ProxyA
-    ProxyA -->|"mTLS<br/>(instance cert)"| GR
+    AppA -->|"mTLS<br/>(instance cert)"| GR
     GR --> Auth
     Auth -->|"authorized<br/>mTLS<br/>(GoRouter cert)"| ProxyB
-    Auth -.->|"403 Forbidden"| ProxyA
+    Auth -.->|"403 Forbidden"| AppA
     ProxyB -->|"HTTP + XFCC"| AppB
 ```
 
-### Phase 1a: mTLS Domain Infrastructure
+### Part 1: mTLS Domain Infrastructure
 
 GoRouter gains the ability to require client certificates for specific domains while leaving other domains unaffected. This infrastructure is generic and can be used for multiple purposes beyond CF app-to-app routing.
 
 **How it works:**
-1. Operator configures a domain with mTLS requirements in the `mtls_domains` configuration
-2. DNS (BOSH DNS or external) resolves the domain to GoRouter instances
-3. Applications map routes to this domain like any shared domain
-4. When a client connects, GoRouter:
+1. Operator configures a domain with mTLS requirements in the `mtls_domains` BOSH configuration
+2. Operator enables access rules enforcement via Cloud Controller API (`enforce_access_rules: true`)
+3. DNS (BOSH DNS or external) resolves the domain to GoRouter instances
+4. Applications map routes to this domain like any shared domain
+5. When a client connects, GoRouter:
    - Requires a client certificate
    - Validates it against the configured CA
    - Sets the XFCC header with certificate details (format configurable)
-   - Optionally extracts identity and enforces authorization (Phase 1b)
+   - If route options contain `access_rules`, enforces authorization (Part 2)
 
-**Configuration:**
+**GoRouter BOSH Configuration:**
 
 ```yaml
 router:
@@ -104,59 +100,43 @@ router:
       #   always_forward - Always pass through, even if no client cert
       forwarded_client_cert: sanitize_set
       
-      xfcc:
-        # Format of the XFCC header:
-        #   raw (default) - Full base64-encoded certificate (~1.5KB)
-        #   envoy - Compact format (~300 bytes):
-        #           Hash=<sha256>;Subject="CN=<instance-id>,OU=app:<guid>..."
-        format: envoy
-        
-        # How to extract caller identity from the certificate:
-        #   none (default) - No extraction; backend parses XFCC itself
-        #   cf_ou - Extract app/space/org GUIDs from Diego instance identity
-        #           certificate OU fields (app:<guid>, space:<guid>, organization:<guid>)
-        identity_extractor: cf_ou
-      
-      authorization:
-        # How to enforce access control:
-        #   none (default) - Any valid certificate accepted
-        #   cf_identity - Enforce rules using CF identity hierarchy
-        #                 (requires identity_extractor: cf_ou)
-        mode: cf_identity
-        
-        # Operator-level caller restrictions (only for mode: cf_identity).
-        # Two approaches (mutually exclusive):
-        #
-        # 1. Relative boundary (scope) - compares caller identity against
-        #    the route destination's tags (organization_id, space_id) which
-        #    are set by the route-emitter for each app instance:
-        #      any (default) - Any authenticated caller passes domain-level checks
-        #      org   - Caller must be in the same org as the route's destination app
-        #      space - Caller must be in the same space as the route's destination app
-        #
-        # 2. Explicit boundary (orgs/spaces) - absolute list of allowed
-        #    caller org/space GUIDs. Useful for cross-CF federation where
-        #    scope checks are meaningless (remote GUIDs have no local context).
-        config:
-          # Option 1: Relative boundary (recommended for single-CF)
-          scope: org
-          
-          # Option 2: Explicit boundary (for cross-CF federation)
-          # orgs: ["remote-cf-org-guid-1", "remote-cf-org-guid-2"]
-          # OR
-          # spaces: ["remote-cf-space-guid-1"]
+      # Format of the XFCC header:
+      #   raw (default) - Full base64-encoded certificate (~1.5KB)
+      #   envoy - Compact format (~300 bytes):
+      #           Hash=<sha256>;Subject="CN=<instance-id>,OU=app:<guid>..."
+      #           When using envoy format, GoRouter automatically extracts
+      #           CF identity (app/space/org GUIDs) from the Subject OU fields
+      #           for authorization enforcement.
+      xfcc_format: envoy
 ```
 
-**Validation rules:**
-- `authorization.config.scope` is mutually exclusive with `authorization.config.orgs` and `authorization.config.spaces`
-- `authorization.config.orgs` is mutually exclusive with `authorization.config.spaces`
-- If `authorization.config` is omitted, the default is `scope: any` (any authenticated caller passes domain-level checks)
-- `authorization.mode: cf_identity` requires `xfcc.identity_extractor: cf_ou`
-- Invalid combinations are rejected during BOSH deployment by the GoRouter job templates
+The BOSH configuration is minimal—just TLS settings. Authorization policy is managed entirely through Cloud Controller.
+
+**Cloud Controller Domain Configuration:**
+
+Operators enable access rules enforcement via the Cloud Controller API:
+
+```bash
+# Enable access rules enforcement on a domain
+cf enable-domain-access-rules apps.mtls.internal --scope org
+
+# Or via API
+cf curl -X PATCH /v3/domains/domain-guid -d '{
+  "enforce_access_rules": true,
+  "access_rules_scope": "org"
+}'
+```
+
+**Domain API Fields:**
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `enforce_access_rules` | boolean | `false` | When true, GoRouter enforces access rules for routes on this domain |
+| `access_rules_scope` | string | `any` | Operator-level boundary: `any`, `org`, or `space` |
 
 **How scope works:**
 
-GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `scope` is set, GoRouter compares the caller's identity (extracted from the mTLS certificate) against the destination's tags:
+GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `access_rules_scope` is set, GoRouter compares the caller's identity (extracted from the mTLS certificate) against the destination's tags:
 
 | Scope | Check | Effect |
 |-------|-------|--------|
@@ -178,14 +158,16 @@ EndpointPool for "api.apps.mtls.internal":
 
 GoRouter iterates the pool's endpoints when evaluating scope, checking the caller's identity against each endpoint's tags and short-circuiting on the first match. For `scope: space`, if any endpoint's `space_id` matches the caller's space GUID, the request is allowed. A caller from Space A or Space B passes the check; a caller from Space C (with no app mapped to the route) is denied. This naturally enables cross-space access on shared routes between the participating spaces.
 
-### Phase 1b: CF Identity & Authorization
+### Part 2: CF Identity & Authorization
 
-When `xfcc.identity_extractor: cf_ou` and `authorization.mode: cf_identity` are enabled, GoRouter enforces access control at the routing layer using a default-deny model, matching the design of container-to-container network policies.
+When a domain has `enforce_access_rules: true`, GoRouter enforces access control at the routing layer using a default-deny model, matching the design of container-to-container network policies. If no access rules are configured for a route, all requests are denied.
+
+**Identity extraction:** GoRouter extracts CF identity from Diego instance identity certificates regardless of `xfcc_format`. With `envoy` format, identity is parsed from pre-extracted Subject fields (`OU=app:<guid>,OU=space:<guid>,OU=organization:<guid>`). With `raw` format, GoRouter decodes the base64 certificate and extracts the same fields. The `envoy` format is more performant but both work identically for authorization.
 
 Authorization is enforced at two layers:
 
-1. **Domain level (operator)**: Configured via `authorization.config` in `mtls_domains`
-2. **Route level (developer)**: Configured via `mtls_allowed_*` route options
+1. **Domain level (operator)**: Configured via `access_rules_scope` on the domain. Requires Admin role for shared domains, Org Manager for private domains.
+2. **Route level (developer)**: Configured via the Access Rules API. Requires Space Developer role in the route's space.
 
 **Layered authorization:**
 
@@ -198,112 +180,255 @@ flowchart LR
 
 Developers can only **restrict further** within operator boundaries. They cannot expand access beyond operator-defined limits.
 
-**Route options** (RFC-0027 compliant flat format):
+#### Access Rules API
 
-```yaml
-applications:
-# Platform-enforced authorization with explicit allowlist
-- name: backend-api
-  routes:
-  - route: backend.apps.mtls.internal
-    options:
-      # Comma-separated app GUIDs allowed to call this route
-      mtls_allowed_apps: "frontend-app-guid,monitoring-app-guid"
-      # Comma-separated space GUIDs whose apps can call this route
-      mtls_allowed_spaces: "trusted-space-guid"
-      # Comma-separated org GUIDs whose apps can call this route
-      mtls_allowed_orgs: "partner-org-guid"
+Developers manage route-level access rules through a dedicated Cloud Controller API. Each access rule has a human-readable name for auditability and a selector that identifies allowed callers. See [Access Rules API Examples](#access-rules-api-examples) for full request/response examples.
 
-# App-delegated authorization: any authenticated app allowed within operator scope
-# Useful when authorization depends on dynamic information (e.g., service bindings)
-- name: autoscaler-api
-  routes:
-  - route: autoscaler.apps.mtls.internal
-    options:
-      # When true, any request passing operator-level authorization is allowed
-      # The app receives XFCC header for additional authorization checks
-      mtls_allow_any: true
+**API Endpoints:**
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/v3/access_rules` | List access rules (with filters) |
+| `GET` | `/v3/routes/:route_guid/access_rules` | List access rules for a route |
+| `POST` | `/v3/routes/:route_guid/access_rules` | Create access rules |
+| `DELETE` | `/v3/access_rules/:guid` | Delete a rule by guid |
+
+**List Query Parameters:**
+
+| Parameter | Description |
+|-----------|-------------|
+| `names` | Comma-delimited list of rule names to filter by |
+| `route_guids` | Comma-delimited list of route guids to filter by |
+| `selectors` | Comma-delimited list of selectors to filter by |
+| `include` | Comma-delimited list of related resources to include: `route`, `selector_resource` |
+| `page` | Page to display (default: 1) |
+| `per_page` | Number of results per page (default: 50) |
+| `order_by` | Value to sort by (e.g., `created_at`, `-created_at`, `name`, `-name`) |
+
+**Including related resources:**
+
+The `include` parameter supports `route` and `selector_resource`. When `selector_resource` is specified, the response includes an `included` block with the resolved resources:
+
+```json
+{
+  "resources": [
+    { "selector": "cf:app:frontend-guid", ... }
+  ],
+  "included": {
+    "apps": [{ "guid": "frontend-guid", "name": "frontend-app", ... }],
+    "spaces": [],
+    "organizations": [],
+    "routes": []
+  }
+}
+```
+
+The selector is resolved based on its type: `cf:app:<guid>` → `apps`, `cf:space:<guid>` → `spaces`, `cf:org:<guid>` → `organizations`. Resources that no longer exist will not appear in the `included` block, making stale rules visible during audits.
+
+#### Selector Syntax
+
+Access rules use a namespaced selector syntax to identify allowed callers:
+
+| Selector | Description |
+|----------|-------------|
+| `cf:app:<guid>` | Allow a specific CF application |
+| `cf:space:<guid>` | Allow all apps in a CF space |
+| `cf:org:<guid>` | Allow all apps in a CF organization |
+| `cf:any` | Allow any authenticated CF application (within operator scope) |
+
+**Namespace reservation:**
+
+The `cf:` prefix is reserved for Cloud Foundry native identities. Future extensibility may include additional namespaces such as `spiffe:` (SPIFFE identity URIs), `oidc:` (OIDC subject claims), or `x509:` (X.509 certificate subjects).
+
+#### CLI Commands
+
+**Route-level access rules (Space Developers):**
+
+```bash
+# Add an access rule
+cf add-access-rule frontend-app apps.mtls.internal cf:app:d76446a1-f429-4444-8797-be2f78b75b08 \
+  --hostname backend
+
+# List access rules
+cf access-rules apps.mtls.internal --hostname backend
+
+# Remove an access rule
+cf remove-access-rule frontend-app apps.mtls.internal --hostname backend
+```
+
+**Domain-level configuration (Admins for shared domains, Org Managers for private domains):**
+
+```bash
+# Enable access rules enforcement with org scope
+cf enable-domain-access-rules apps.mtls.internal --scope org
+
+# Disable access rules enforcement
+cf enable-domain-access-rules apps.mtls.internal --disable
 ```
 
 **Validation rules:**
-- `mtls_allow_any: true` is mutually exclusive with `mtls_allowed_apps`, `mtls_allowed_spaces`, and `mtls_allowed_orgs`
-- All `mtls_allowed_*` values are comma-separated strings of GUIDs
-- Cloud Controller validates GUID format (not existence, to support federation)
+- Access rules can only be created for routes on domains where `enforce_access_rules` is true
+- `cf:any` is mutually exclusive with specific selectors on the same route (cannot combine `cf:any` with `cf:app:*`)
+- Duplicate selectors on the same route are rejected with an error
+- Rule names must be unique per route
 
-**Warning behavior:**
+**Authorization:**
 
-When a route specifies `mtls_allowed_*` options but the domain has `authorization.mode: none`, the route options are stored by CAPI as inert metadata — CAPI does not track or validate whether the domain enforces them. GoRouter logs a warning per-request to the application's log stream (see [Router Log Messages](#router-log-messages) for the full format):
+Only Space Developers in the route's space can manage access rules. Unlike C2C policies which require permissions in both source and destination spaces, mTLS access rules are destination-controlled.
 
-```
-[RTR] backend.partner.example.com - mtls_auth:"not_enforced"
-  mtls_denied_reason:"route specifies mtls_allowed_apps but domain authorization.mode=none; rules ignored"
-```
+#### Internal Implementation
 
-The request is forwarded, not denied. This allows developers to set route options before the operator enables enforcement, and provides visible feedback that the rules are not yet active.
+Cloud Controller stores access rules in a dedicated `route_access_rules` table. When syncing route information to Diego, Cloud Controller flattens these rules into RFC-0027 compliant route options:
 
-This builds on the route options framework from [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md). Phase 1b depends on RFC-0027 being implemented first.
-
-### Phase 2: Egress HTTP Proxy (Opt-in)
-
-To simplify client adoption, add an HTTP proxy to the application sidecar that automatically handles mTLS. Users enable this per-app; applications that configure TLS clients directly do not need it.
-
-**How it works:**
-1. Diego configures an egress proxy (Envoy) listening on `127.0.0.1:8888`
-2. The proxy is configured to intercept requests to `*.apps.mtls.internal`
-3. For matching requests, the proxy:
-   - Upgrades the connection to TLS
-   - Presents the application's instance identity certificate
-   - Forwards the request to GoRouter
-
-**Application usage:**
-```bash
-# Client app sets HTTP_PROXY for the internal domain
-export HTTP_PROXY=http://127.0.0.1:8888
-export NO_PROXY=external-api.example.com
-
-# Plain HTTP request, proxy handles mTLS automatically
-curl http://myservice.apps.mtls.internal/api
+```ruby
+# Access rules are converted to RFC-0027 compliant route options
+route.options = {
+  "access_scope": "org",
+  "access_rules": "cf:app:guid1,cf:space:guid2,cf:any"
+}
 ```
 
-This eliminates the need for applications to load certificates and configure TLS clients.
+This conversion happens transparently—developers interact only with the Access Rules API, not with raw route options. Cloud Controller filters `access_scope` and `access_rules` from the `/v3/routes` API responses; these fields are internal implementation details visible only in the Diego sync path.
 
-### Extensibility
+**GoRouter authorization behavior:**
 
-The `xfcc.identity_extractor` and `authorization.mode` fields are designed to support additional modes in the future without breaking the configuration schema:
+GoRouter determines authorization mode based on route options. It has no knowledge of domain-level settings—Cloud Controller translates `enforce_access_rules: true` into the presence of `access_scope` in route options during Diego sync.
 
-| Identity Extractor | Authorization Mode | Use Case |
-|-------------------|-------------------|----------|
-| `none` | `none` | External client certs, app-level authorization |
-| `cf_ou` | `cf_identity` | CF app-to-app with platform-enforced rules |
-| `cf_ou` | `cf_identity` | Cross-CF federation (via per-installation domains) |
-| `subject_cn` (future) | `cn_allowlist` (future) | Generic CN-based authorization |
-| `spiffe` (future) | `spiffe_authz` (future) | SPIFFE identity federation |
+- If route options contain `access_scope` → enforcement is active:
+  - Apply scope boundary (`any`, `org`, or `space`)
+  - If `access_rules` present → check caller against rules
+  - If no `access_rules` → deny all requests (default deny)
+- If route options do not contain `access_scope` → forward request without authorization checks
 
-Each `authorization.mode` can define its own `authorization.config` schema, allowing future modes to have different policy options without affecting existing configurations.
-
-This allows operators to use `mtls_domains` for external client certificate validation without CF-specific coupling, while preserving the option to add new identity extraction and authorization modes as needs evolve.
+This builds on the route options framework from [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md). Part 2 depends on RFC-0027 being implemented first.
 
 
 ## Release Criteria
 
 **For CF app-to-app routing use case:**
 
-Phase 1a and Phase 1b (with `xfcc.identity_extractor: cf_ou` and `authorization.mode: cf_identity`) are co-requisites and must be released together.
+Part 1 and Part 2 are co-requisites and must be released together.
 
-Deploying Phase 1a without enabling CF identity authorization would leave all mTLS routes accessible to any authenticated app, violating the default-deny security model. Routes must specify `mtls_allowed_*` options to control access.
+Deploying Part 1 without Part 2 would leave all mTLS routes accessible to any authenticated app, violating the default-deny security model. Routes must have access rules configured via the Access Rules API to control access.
 
-Phase 1b depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first.
+Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first.
 
 **For external client validation use case:**
 
-Phase 1a alone (with `authorization.mode: none`) is sufficient. Backend applications handle authorization based on the XFCC header.
+Part 1 alone (with `enforce_access_rules: false` on the domain) is sufficient. Backend applications handle authorization based on the XFCC header. Note that if `enforce_access_rules` is enabled without any access rules configured, requests will be denied by default.
 
 
 ## Appendix
 
+### Access Rules API Examples
+
+**Create Request:**
+
+```http
+POST /v3/routes/:route_guid/access_rules
+```
+
+```json
+{
+  "rules": [
+    {
+      "name": "frontend-app",
+      "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08"
+    },
+    {
+      "name": "monitoring-space",
+      "selector": "cf:space:a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    }
+  ]
+}
+```
+
+**Create Response:**
+
+```json
+{
+  "resources": [
+    {
+      "guid": "rule-guid-1",
+      "name": "frontend-app",
+      "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+      "created_at": "2026-03-25T10:00:00Z",
+      "updated_at": "2026-03-25T10:00:00Z",
+      "relationships": {
+        "route": { "data": { "guid": "route-guid" } }
+      },
+      "links": {
+        "self": { "href": "/v3/access_rules/rule-guid-1" },
+        "route": { "href": "/v3/routes/route-guid" }
+      }
+    }
+  ]
+}
+```
+
+**List with includes (for auditing):**
+
+```http
+GET /v3/access_rules?include=route,selector_resource
+```
+
+```json
+{
+  "pagination": {
+    "total_results": 1,
+    "total_pages": 1,
+    "first": { "href": "/v3/access_rules?page=1&per_page=50" },
+    "last": { "href": "/v3/access_rules?page=1&per_page=50" },
+    "next": null,
+    "previous": null
+  },
+  "resources": [
+    {
+      "guid": "rule-guid-1",
+      "name": "frontend-app",
+      "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+      "created_at": "2026-03-25T10:00:00Z",
+      "updated_at": "2026-03-25T10:00:00Z",
+      "relationships": {
+        "route": { "data": { "guid": "route-guid" } }
+      },
+      "links": {
+        "self": { "href": "/v3/access_rules/rule-guid-1" },
+        "route": { "href": "/v3/routes/route-guid" }
+      }
+    }
+  ],
+  "included": {
+    "apps": [
+      {
+        "guid": "d76446a1-f429-4444-8797-be2f78b75b08",
+        "name": "frontend-app",
+        "relationships": {
+          "space": { "data": { "guid": "space-guid" } }
+        }
+      }
+    ],
+    "spaces": [],
+    "organizations": [],
+    "routes": [
+      {
+        "guid": "route-guid",
+        "host": "backend",
+        "path": "",
+        "url": "backend.apps.mtls.internal",
+        "relationships": {
+          "domain": { "data": { "guid": "domain-guid" } },
+          "space": { "data": { "guid": "space-guid" } }
+        }
+      }
+    ]
+  }
+}
+```
+
 ### Router Log Messages
 
-GoRouter emits `[RTR]` log lines to the application's log stream (visible via `cf logs`). The following messages cover mTLS authorization scenarios, including edge cases where route options exist but authorization is not enforced.
+GoRouter emits `[RTR]` log lines to the application's log stream (visible via `cf logs`). The following messages cover mTLS authorization scenarios, including edge cases where access rules exist but authorization is not enforced.
 
 **Successful authorized request:**
 
@@ -314,7 +439,7 @@ When a request passes both domain-level and route-level authorization:
   "GET /api/data HTTP/1.1" 200 1234
   x_forwarded_for:"10.0.1.5" x_forwarded_proto:"https"
   caller_app:"frontend-guid" caller_space:"space-guid" caller_org:"org-guid"
-  mtls_auth:"allowed" mtls_rule:"route:mtls_allowed_apps"
+  mtls_auth:"allowed" mtls_rule:"route:cf:app:frontend-guid"
 ```
 
 The `caller_*` fields are extracted from the instance identity certificate. `mtls_auth:"allowed"` confirms authorization passed, and `mtls_rule` identifies which rule matched.
@@ -331,46 +456,33 @@ When the caller's identity does not match the operator's `scope` boundary:
   mtls_denied_reason:"caller org other-org-guid not in endpoint pool"
 ```
 
-**Denied — failed route-level `mtls_allowed_*` check:**
+**Denied — failed route-level access rule check:**
 
-When the caller passes domain-level checks but is not in the route's `mtls_allowed_*` list:
+When the caller passes domain-level checks but has no matching access rule:
 
 ```
 [RTR] backend.apps.mtls.internal - [2026-03-20T10:15:02Z]
   "GET /api/data HTTP/1.1" 403 0
   caller_app:"unknown-app-guid" caller_space:"same-space-guid" caller_org:"same-org-guid"
-  mtls_auth:"denied" mtls_rule:"route:mtls_allowed_apps"
-  mtls_denied_reason:"caller app unknown-app-guid not in mtls_allowed_apps"
+  mtls_auth:"denied" mtls_rule:"route:access_rules"
+  mtls_denied_reason:"caller app unknown-app-guid not in access_rules"
 ```
 
-**Denied — no route options set (default deny):**
+**Denied — no access rules configured (default deny):**
 
-When a route on an mTLS domain has no `mtls_allowed_*` options and no `mtls_allow_any`, the default-deny model rejects all requests:
+When a route on an mTLS domain has no access rules configured, the default-deny model rejects all requests:
 
 ```
 [RTR] backend.apps.mtls.internal - [2026-03-20T10:15:03Z]
   "GET /api/data HTTP/1.1" 403 0
   caller_app:"frontend-guid" caller_space:"space-guid" caller_org:"org-guid"
-  mtls_auth:"denied" mtls_rule:"route:no_mtls_allowed_options"
-  mtls_denied_reason:"route has no mtls_allowed_* options configured"
+  mtls_auth:"denied" mtls_rule:"route:no_access_rules"
+  mtls_denied_reason:"route has no access rules configured"
 ```
 
-**Warning — route options set but domain authorization not enabled:**
+**Denied — identity extraction failed:**
 
-When a route has `mtls_allowed_*` options but the domain uses `authorization.mode: none` (or the route is on a non-mTLS domain), GoRouter logs a warning on each request. The request is **forwarded** (not denied) because authorization is not active:
-
-```
-[RTR] backend.partner.example.com - [2026-03-20T10:15:04Z]
-  "GET /api/data HTTP/1.1" 200 1234
-  mtls_auth:"not_enforced"
-  mtls_denied_reason:"route specifies mtls_allowed_apps but domain authorization.mode=none; rules ignored"
-```
-
-This warning is logged per request (not just at startup) so it appears in the application's log stream, making it visible to developers who may have misconfigured their route. CAPI stores the route options as-is — it does not validate whether the domain enforces them. The route options are inert metadata until the operator enables `authorization.mode: cf_identity` on the domain.
-
-**Warning — identity extraction failed:**
-
-When the client certificate is valid but does not contain the expected identity fields:
+When the client certificate is valid but does not contain the expected CF identity fields (e.g., a partner certificate on a route with `access_scope` set):
 
 ```
 [RTR] backend.apps.mtls.internal - [2026-03-20T10:15:05Z]
@@ -385,7 +497,6 @@ When the client certificate is valid but does not contain the expected identity 
 |-------|-------------|---------|
 | `allowed` | 2xx/3xx/5xx | Request authorized and forwarded to backend |
 | `denied` | 403 | Request rejected by GoRouter |
-| `not_enforced` | 2xx/3xx/5xx | Route has mTLS options but domain does not enforce them |
 
 ### Relationship to Container-to-Container Networking
 
@@ -406,10 +517,10 @@ The two mechanisms can coexist. An application might use C2C networking for data
 
 **Authorization model differences:**
 
-C2C network policies and this RFC's `scope` have different authorization semantics:
+C2C network policies and this RFC's access rules have different authorization semantics:
 
 - **C2C**: A user creates a network policy allowing App A → App B. The user must have the [`network.write` scope](https://docs.cloudfoundry.org/devguide/deploy-apps/cf-networking.html#grant-permissions) (or Space Developer role with `enable_space_developer_self_service`) in **both** the source and destination spaces. The policy is directional and names specific source/destination pairs.
-- **`scope: space` (this RFC)**: The operator boundary allows any app in the same space as the destination to call that route. The developer registers `mtls_allowed_*` route options on their own route — they only need permissions in the destination space. There is no requirement for the caller's space to opt in.
+- **Access rules (this RFC)**: The operator boundary allows callers within the configured scope. The developer creates access rules on their own route via Cloud Controller — they only need permissions in the destination space. There is no requirement for the caller's space to opt in.
 
 This is intentional. This RFC's model is *destination-controlled*: the route owner decides who may call them, and the operator sets the maximum boundary. This matches how HTTP APIs typically work — the server defines its access policy. C2C's *bilateral* model (both sides must agree) is appropriate for Layer 4 network-level access where neither side is inherently the "server."
 
@@ -418,143 +529,79 @@ Operators who want the bilateral guarantee of C2C should continue using C2C netw
 ### Configuration Examples
 
 **CF app-to-app routing (same-org boundary):**
+
+GoRouter BOSH config:
 ```yaml
 router:
   mtls_domains:
     - domain: "*.apps.mtls.internal"
       ca_certs: ((diego_instance_identity_ca.certificate))
       forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        config:
-          # Caller must be from the same org as the route's destination app.
-          # No org GUIDs needed — GoRouter checks the caller's certificate
-          # against the route-emitter tags on each endpoint.
-          scope: org
+      xfcc_format: envoy
+```
+
+Cloud Controller domain configuration:
+```bash
+cf enable-domain-access-rules apps.mtls.internal --scope org
+```
+
+Application access rule configuration:
+```bash
+# Allow specific apps to call a route
+cf add-route-access-rule frontend-app apps.mtls.internal cf:app:frontend-guid --hostname backend
+cf add-route-access-rule monitoring apps.mtls.internal cf:app:monitoring-guid --hostname backend
+
+# List rules
+cf route-access-rules apps.mtls.internal --hostname backend
+# name            selector
+# frontend-app    cf:app:frontend-guid
+# monitoring      cf:app:monitoring-guid
 ```
 
 **CF app-to-app routing (same-space boundary):**
-```yaml
-router:
-  mtls_domains:
-    - domain: "*.apps.mtls.internal"
-      ca_certs: ((diego_instance_identity_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        config:
-          # Caller must be from the same space as the route's destination app.
-          # With shared routes, callers from any participating space (i.e. any
-          # space that has an app mapped to the route) are allowed.
-          scope: space
+
+```bash
+cf enable-domain-access-rules apps.mtls.internal --scope space
 ```
 
+With shared routes, callers from any participating space (i.e., any space that has an app mapped to the route) are allowed.
+
 **CF app-to-app routing (any authenticated caller):**
-```yaml
-router:
-  mtls_domains:
-    - domain: "*.apps.mtls.internal"
-      ca_certs: ((diego_instance_identity_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        # No config or scope: any — any authenticated caller passes domain-level checks
-        # Route-level mtls_allowed_* options control access
+
+```bash
+cf enable-domain-access-rules apps.mtls.internal --scope any
+```
+
+Route-level access rules control access:
+```bash
+# Allow any authenticated app (within operator scope)
+cf add-route-access-rule allow-all apps.mtls.internal cf:any --hostname public-api
+
+# Or allow all apps in a specific space
+cf add-route-access-rule trusted-space apps.mtls.internal cf:space:trusted-space-guid --hostname internal-api
 ```
 
 **External client certificate validation (app-level authorization):**
+
+GoRouter BOSH config:
 ```yaml
 router:
   mtls_domains:
     - domain: "*.partner.example.com"
       ca_certs: ((partner_ca.certificate))
       forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        # identity_extractor: none (default)
-      authorization:
-        mode: none
-        # No config needed for mode: none
+      xfcc_format: envoy
+```
+
+Cloud Controller domain configuration:
+```bash
+# Do NOT enable access rules enforcement - let the app handle authorization
+# (enforce_access_rules defaults to false)
 ```
 
 In this configuration, GoRouter validates that the client certificate is signed by the partner CA, then forwards the XFCC header to the backend application. The application parses the XFCC header and performs its own authorization based on the certificate's Subject, SANs, or other fields.
 
-**Cross-CF federation (apps calling across CF installations):**
-
-When multiple CF installations need to communicate, configure a separate mTLS domain per remote CF installation. This uses explicit `orgs:`/`spaces:` lists rather than `scope:` because org/space GUIDs from a remote CF are meaningless locally — there are no local route-emitter tags to match against. Each remote installation's CA is trusted independently:
-
-```yaml
-router:
-  mtls_domains:
-    # Local CF app-to-app (scope uses route-emitter tags)
-    - domain: "*.apps.mtls.internal"
-      ca_certs: ((diego_instance_identity_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        config:
-          scope: org  # Callers must be in same org as destination
-
-    # Trust apps from CF-East installation
-    # Uses explicit orgs: list because remote GUIDs have no local route-emitter tags
-    - domain: "*.apps.mtls.cf-east.internal"
-      ca_certs: ((cf_east_diego_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        config:
-          orgs: ["trusted-east-org-guid"]  # Only this org from CF-East can call
-
-    # Trust apps from CF-West installation
-    # No explicit list: any CF-West app can call (route-level mtls_allowed_* applies)
-    - domain: "*.apps.mtls.cf-west.internal"
-      ca_certs: ((cf_west_diego_ca.certificate))
-      forwarded_client_cert: sanitize_set
-      xfcc:
-        format: envoy
-        identity_extractor: cf_ou
-      authorization:
-        mode: cf_identity
-        # No config: any CF-West app can call (route-level mtls_allowed_* applies)
-```
-
-Route configuration specifies allowed apps per originating installation:
-
-```yaml
-applications:
-- name: backend-api
-  routes:
-  # Local clients
-  - route: backend.apps.mtls.internal
-    options:
-      mtls_allowed_apps: "local-frontend-guid"
-  # Clients from CF-East (must be in trusted-east-org-guid due to domain config)
-  - route: backend.apps.mtls.cf-east.internal
-    options:
-      mtls_allowed_apps: "east-frontend-guid"
-```
-
-The domain naming convention `*.apps.mtls.<cf-installation>.internal` ensures:
-- No conflict with existing app routes (CF identifier is at the parent domain level)
-- GUIDs are scoped to their originating installation
-- Each installation's CA is trusted independently
-- Standard `cf_ou` identity extraction and `cf_identity` authorization work unchanged
-- Local domains use `scope:` (matches route-emitter tags); remote domains use explicit `orgs:`/`spaces:` lists
+**Important:** If you enable `enforce_access_rules: true` on a domain used for external partner certificates, requests will be denied unless the certificate contains CF identity OU fields. For external partner certificates that don't have CF identity, keep `enforce_access_rules: false` and let the backend application handle authorization.
 
 ### References
 
@@ -565,4 +612,5 @@ The domain naming convention `*.apps.mtls.<cf-installation>.internal` ensures:
 | RFC-0027 route options | [`toc/rfc/rfc-0027-generic-per-route-features.md`](rfc-0027-generic-per-route-features.md) |
 | Cloud Controller routes | [`cloud_controller_ng/.../route.rb`](https://github.com/cloudfoundry/cloud_controller_ng/blob/main/app/models/runtime/route.rb) |
 | Container-to-Container Networking | [CF Docs](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html) |
+| C2C Policy Server API | [`cf-networking-release/docs/08-policy-server-api.md`](https://github.com/cloudfoundry/cf-networking-release/blob/develop/docs/08-policy-server-api.md) |
 | Diego Instance Identity | [`diego-release/docs/050-app-instance-identity.md`](https://github.com/cloudfoundry/diego-release/blob/develop/docs/050-app-instance-identity.md) |
