@@ -6,9 +6,9 @@
 
 **Author(s):** @beyhan
 
-**Status:** Draft
+**Status:** Accepted
 
-**RFC Pull Request:** (fill in with PR link after you submit it)
+**RFC Pull Request:** ([community#1461](https://github.com/cloudfoundry/community/pull/1461)
 
 ## Summary
 This RFC proposes extending the current [Cloud Foundry RFC template](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-template.md) with two additional metadata fields: `Related RFCs` and `Affected Component(s)`. These fields will improve traceability between related proposals and make it easier to identify which Cloud Foundry components are affected by a given RFC.
