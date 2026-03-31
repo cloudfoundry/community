@@ -318,6 +318,48 @@ Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-ro
 Part 1 alone (with `enforce_access_rules: false` on the domain) is sufficient. Backend applications handle authorization based on the XFCC header. Note that if `enforce_access_rules` is enabled without any access rules configured, requests will be denied by default.
 
 
+## Security Considerations
+
+### SNI and Host Header Validation
+
+GoRouter uses Server Name Indication (SNI) during the TLS handshake to determine whether to require a client certificate. This creates a potential security concern: SNI and the HTTP Host header are independent values controlled by the client.
+
+**Attack scenario without mitigation:**
+
+1. Attacker connects to GoRouter with SNI = `regular-app.example.com` (non-mTLS domain)
+2. TLS handshake completes without requiring a client certificate
+3. Attacker sends HTTP request with `Host: secure-api.apps.mtls.internal` (mTLS domain)
+4. Without validation, the request would be routed to the mTLS-protected application
+
+**Mitigation: SNI-Host validation**
+
+GoRouter validates that the TLS handshake was performed appropriately for the target domain. For requests to mTLS domains, GoRouter verifies that:
+
+1. **mTLS was enforced during TLS handshake**: The client certificate was required and validated
+2. **The mTLS domain matches the Host header**: The domain used for TLS configuration matches the HTTP request target
+
+If either check fails, GoRouter rejects the request with HTTP 421 (Misdirected Request) before forwarding to the backend. See [SNI-Host Validation Implementation](#sni-host-validation-implementation) in the Appendix for technical details.
+
+**Mixed-mode environments:**
+
+GoRouter supports mixed-mode operation where some domains require mTLS and others do not. Clients connecting to non-mTLS domains are not required to send SNI. The validation rule is:
+
+- If the HTTP Host header points to an mTLS domain, mTLS **must** have been enforced during the TLS handshake for that specific domain
+- If the HTTP Host header points to a non-mTLS domain, no additional validation is required
+
+This preserves backward compatibility with existing deployments while preventing mTLS bypass attacks.
+
+**Behavior summary:**
+
+| SNI | Host Header | TLS Handshake | Result |
+|-----|-------------|---------------|--------|
+| `secure.mtls.internal` | `secure.mtls.internal` | mTLS enforced | ✅ Allowed |
+| (empty) | `regular.example.com` | No mTLS | ✅ Allowed |
+| `regular.example.com` | `secure.mtls.internal` | No mTLS | ❌ 421 Misdirected |
+| (empty) | `secure.mtls.internal` | No mTLS | ❌ 421 Misdirected |
+| `secure-a.mtls.internal` | `secure-b.mtls.internal` | mTLS for domain A | ❌ 421 Misdirected |
+
+
 ## Appendix
 
 ### Access Rules API Examples
@@ -491,12 +533,24 @@ When the client certificate is valid but does not contain the expected CF identi
   mtls_denied_reason:"certificate does not contain CF identity OU fields"
 ```
 
+**Rejected — SNI/Host mismatch (mTLS bypass attempt):**
+
+When a client attempts to access an mTLS domain but the TLS handshake was performed for a different domain (or without SNI). This indicates either a misconfigured client or an attempted mTLS bypass attack. See [SNI and Host Header Validation](#sni-and-host-header-validation) for details.
+
+```
+[RTR] secure.apps.mtls.internal - [2026-03-20T10:15:06Z]
+  "GET /api HTTP/1.1" 421 0
+  tls_sni:"regular.example.com" host:"secure.apps.mtls.internal"
+  error:"mTLS enforcement mismatch: TLS handshake did not enforce mTLS for requested domain"
+```
+
 **Summary of `mtls_auth` values:**
 
 | Value | HTTP Status | Meaning |
 |-------|-------------|---------|
 | `allowed` | 2xx/3xx/5xx | Request authorized and forwarded to backend |
-| `denied` | 403 | Request rejected by GoRouter |
+| `denied` | 403 | Request rejected by GoRouter (authorization failure) |
+| (none) | 421 | Request rejected before authorization (SNI/Host mismatch) |
 
 ### Relationship to Container-to-Container Networking
 
@@ -602,6 +656,69 @@ Cloud Controller domain configuration:
 In this configuration, GoRouter validates that the client certificate is signed by the partner CA, then forwards the XFCC header to the backend application. The application parses the XFCC header and performs its own authorization based on the certificate's Subject, SANs, or other fields.
 
 **Important:** If you enable `enforce_access_rules: true` on a domain used for external partner certificates, requests will be denied unless the certificate contains CF identity OU fields. For external partner certificates that don't have CF identity, keep `enforce_access_rules: false` and let the backend application handle authorization.
+
+### SNI-Host Validation Implementation
+
+This section provides implementation details for the [SNI and Host Header Validation](#sni-and-host-header-validation) security mechanism.
+
+**Why track `clientCertRequired`?**
+
+Checking only that SNI matches the Host header is insufficient. Consider this scenario:
+
+1. A bug or race condition in TLS configuration causes GoRouter to skip client certificate validation
+2. The client sends correct SNI for an mTLS domain
+3. The TLS handshake completes without actually requiring/verifying a client certificate
+4. Without tracking `clientCertRequired`, the HTTP-layer check would pass (SNI matches Host)
+
+By explicitly tracking whether client certificate validation was enforced during the TLS handshake, GoRouter provides defense-in-depth against implementation bugs.
+
+**Connection state tracking:**
+
+GoRouter captures TLS handshake state using Go's [`tls.Config.GetConfigForClient`](https://pkg.go.dev/crypto/tls#Config) callback, which is invoked for each new connection:
+
+```go
+// Captured during TLS handshake (GetConfigForClient callback)
+type tlsConnectionState struct {
+    sni              string  // SNI from ClientHello
+    mtlsDomain       string  // mTLS domain that was matched (empty if none)
+    clientCertRequired bool  // Whether client cert was required
+}
+```
+
+The state is stored in a connection-scoped context and retrieved at the HTTP layer.
+
+**HTTP-layer validation:**
+
+The mTLS authorization handler validates the connection state before processing authorization rules:
+
+```go
+func (h *mtlsAuthorization) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+    hostDomain := extractDomain(r.Host)
+    
+    if h.config.IsMtlsDomain(hostDomain) {
+        connState := getTLSConnectionState(r)
+        
+        // Verify mTLS was actually enforced for this domain
+        if !connState.clientCertRequired || connState.mtlsDomain != hostDomain {
+            h.logger.Warn("mtls-enforcement-mismatch",
+                slog.String("host", r.Host),
+                slog.String("tls_sni", connState.sni),
+                slog.String("tls_mtls_domain", connState.mtlsDomain))
+            w.WriteHeader(http.StatusMisdirectedRequest) // 421
+            return
+        }
+    }
+    // ... proceed with authorization checks
+}
+```
+
+**Relevant source files:**
+
+| File | Purpose |
+|------|---------|
+| [`router/router.go`](https://github.com/cloudfoundry/routing-release/blob/develop/src/code.cloudfoundry.org/gorouter/router/router.go) | TLS configuration and `GetConfigForClient` callback |
+| [`handlers/mtls_authorization.go`](https://github.com/cloudfoundry/routing-release/blob/develop/src/code.cloudfoundry.org/gorouter/handlers/mtls_authorization.go) | HTTP-layer SNI/Host validation and authorization |
+| [`config/config.go`](https://github.com/cloudfoundry/routing-release/blob/develop/src/code.cloudfoundry.org/gorouter/config/config.go) | `GetMtlsDomainConfig()` and `IsMtlsDomain()` methods |
 
 ### References
 
