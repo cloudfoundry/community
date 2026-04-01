@@ -43,7 +43,21 @@ GoRouter gains the ability to require client certificates for specific domains, 
 
 ### Architecture Overview
 
-The diagram below shows CF app-to-app routing (the most complex use case). For external client certificate validation, only GoRouter and the backend app are involved—external clients connect directly to GoRouter with their certificates.
+**How it works end-to-end:**
+
+| Step | Part | Actor | What happens |
+|------|------|-------|--------------|
+| 1 | 1 | Operator | Configures a domain with mTLS requirements in the `mtls_domains` BOSH configuration |
+| 2 | 1 | DNS | BOSH DNS (or external DNS) resolves the domain to GoRouter instances |
+| 3 | 1 | Developer | Maps application routes to this domain like any shared domain |
+| 4 | 1 | GoRouter | Requires and validates a client certificate, sets the XFCC header |
+| 5 | 2 | Operator | Enables access rules enforcement on the domain via the CF API (`enforce_access_rules: true`) |
+| 6 | 2 | Developer | Creates access rules per route via the Access Rules API |
+| 7 | 2 | GoRouter | Extracts CF identity from the certificate and enforces access rules |
+
+Part 1 alone (without Part 2) is sufficient for external client certificate validation: GoRouter validates the cert and sets the XFCC header; backend applications handle authorization themselves based on that header.
+
+The diagram below shows the most complex use case: CF app-to-app routing with both parts active.
 
 ```mermaid
 flowchart LR
@@ -70,18 +84,7 @@ flowchart LR
 
 ### Part 1: mTLS Domain Infrastructure
 
-GoRouter gains the ability to require client certificates for specific domains while leaving other domains unaffected. This infrastructure is generic and can be used for multiple purposes beyond CF app-to-app routing.
-
-**How it works:**
-1. Operator configures a domain with mTLS requirements in the `mtls_domains` BOSH configuration
-2. Operator enables access rules enforcement via Cloud Controller API (`enforce_access_rules: true`)
-3. DNS (BOSH DNS or external) resolves the domain to GoRouter instances
-4. Applications map routes to this domain like any shared domain
-5. When a client connects, GoRouter:
-   - Requires a client certificate
-   - Validates it against the configured CA
-   - Sets the XFCC header with certificate details (format configurable)
-   - If route options contain `access_rules`, enforces authorization (Part 2)
+GoRouter gains the ability to require client certificates for specific domains while leaving other domains unaffected. This infrastructure is generic and can be used for multiple purposes beyond CF app-to-app routing. Operators configure it entirely through the BOSH manifest.
 
 **GoRouter BOSH Configuration:**
 
@@ -100,25 +103,31 @@ router:
       #   always_forward - Always pass through, even if no client cert
       forwarded_client_cert: sanitize_set
       
-      # Format of the XFCC header:
-      #   raw (default) - Full base64-encoded certificate (~1.5KB)
-      #   envoy - Compact format (~300 bytes):
-      #           Hash=<sha256>;Subject="CN=<instance-id>,OU=app:<guid>..."
-      #           When using envoy format, GoRouter automatically extracts
-      #           CF identity (app/space/org GUIDs) from the Subject OU fields
-      #           for authorization enforcement.
+      # Format of the XFCC header value: raw (default) or envoy
       xfcc_format: envoy
 ```
 
-The BOSH configuration is minimal—just TLS settings. Authorization policy is managed entirely through Cloud Controller.
+**XFCC header format:**
 
-**Cloud Controller Domain Configuration:**
+The `xfcc_format` field controls the format of the `X-Forwarded-Client-Cert` header that GoRouter sets on proxied requests:
 
-Operators enable access rules enforcement via the Cloud Controller API:
+- **`raw`** (default): The full PEM certificate is base64-encoded and placed in the header. This produces a large header value (approximately 1.5 KB per certificate) that the backend application must decode and parse to extract identity fields.
+- **`envoy`**: GoRouter uses the same compact format as [Envoy's XFCC implementation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-forwarded-client-cert): `Hash=<sha256-fingerprint>;Subject="<distinguished-name>"`. This reduces the header to approximately 300 bytes. When `xfcc_format: envoy` is configured and Part 2 authorization is active, GoRouter parses identity directly from the Subject's `OU` fields (`OU=app:<guid>`, `OU=space:<guid>`, `OU=organization:<guid>`) without decoding the full certificate, which is more efficient.
+
+### Part 2: CF Identity & Authorization
+
+Part 2 adds Cloud Foundry identity and authorization on top of the mTLS infrastructure from Part 1. It is implemented entirely through Cloud Controller API changes — no additional BOSH configuration is required beyond Part 1.
+
+**Operator configuration (CC API):**
+
+Operators enable access rules enforcement on a domain via the Cloud Controller API:
 
 ```bash
-# Enable access rules enforcement on a domain
+# Enable access rules enforcement with org scope
 cf enable-domain-access-rules apps.mtls.internal --scope org
+
+# Disable access rules enforcement
+cf disable-domain-access-rules apps.mtls.internal
 
 # Or via API
 cf curl -X PATCH /v3/domains/domain-guid -d '{
@@ -158,8 +167,6 @@ EndpointPool for "api.apps.mtls.internal":
 
 GoRouter iterates the pool's endpoints when evaluating scope, checking the caller's identity against each endpoint's tags and short-circuiting on the first match. For `scope: space`, if any endpoint's `space_id` matches the caller's space GUID, the request is allowed. A caller from Space A or Space B passes the check; a caller from Space C (with no app mapped to the route) is denied. This naturally enables cross-space access on shared routes between the participating spaces.
 
-### Part 2: CF Identity & Authorization
-
 When a domain has `enforce_access_rules: true`, GoRouter enforces access control at the routing layer using a default-deny model, matching the design of container-to-container network policies. If no access rules are configured for a route, all requests are denied.
 
 **Identity extraction:** GoRouter extracts CF identity from Diego instance identity certificates regardless of `xfcc_format`. With `envoy` format, identity is parsed from pre-extracted Subject fields (`OU=app:<guid>,OU=space:<guid>,OU=organization:<guid>`). With `raw` format, GoRouter decodes the base64 certificate and extracts the same fields. The `envoy` format is more performant but both work identically for authorization.
@@ -182,16 +189,19 @@ Developers can only **restrict further** within operator boundaries. They cannot
 
 #### Access Rules API
 
-Developers manage route-level access rules through a dedicated Cloud Controller API. Each access rule has a human-readable name for auditability and a selector that identifies allowed callers. See [Access Rules API Examples](#access-rules-api-examples) for full request/response examples.
+Developers manage route-level access rules through a dedicated Cloud Controller API. Each access rule has a human-readable name for auditability and a selector that identifies allowed callers. Access rules are owned by their route: deleting a route cascades to delete all its access rules. See [Access Rules API Examples](#access-rules-api-examples) for full request/response examples.
 
 **API Endpoints:**
 
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/v3/access_rules` | List access rules (with filters) |
-| `GET` | `/v3/routes/:route_guid/access_rules` | List access rules for a route |
-| `POST` | `/v3/routes/:route_guid/access_rules` | Create access rules |
+| `GET` | `/v3/access_rules/:guid` | Get a single access rule |
+| `POST` | `/v3/access_rules` | Create an access rule |
+| `PATCH` | `/v3/access_rules/:guid` | Update an access rule (metadata only) |
 | `DELETE` | `/v3/access_rules/:guid` | Delete a rule by guid |
+| `GET` | `/v3/routes/:route_guid/access_rules` | List access rules for a route |
+| `POST` | `/v3/routes/:route_guid/access_rules` | Create access rules for a route (batch convenience endpoint) |
 
 **List Query Parameters:**
 
@@ -200,6 +210,7 @@ Developers manage route-level access rules through a dedicated Cloud Controller 
 | `names` | Comma-delimited list of rule names to filter by |
 | `route_guids` | Comma-delimited list of route guids to filter by |
 | `selectors` | Comma-delimited list of selectors to filter by |
+| `selector_resource_guids` | Comma-delimited list of resolved selector resource GUIDs to filter by. Pass empty value (`selector_resource_guids=`) to return only rules whose selector resource no longer exists (stale rules). |
 | `include` | Comma-delimited list of related resources to include: `route`, `selector_resource` |
 | `page` | Page to display (default: 1) |
 | `per_page` | Number of results per page (default: 50) |
@@ -249,28 +260,27 @@ The `cf:` prefix is reserved for Cloud Foundry native identities. Future extensi
 cf add-access-rule frontend-app apps.mtls.internal cf:app:d76446a1-f429-4444-8797-be2f78b75b08 \
   --hostname backend
 
+# Add an access rule for a route with a path
+cf add-access-rule frontend-app apps.mtls.internal cf:app:d76446a1-f429-4444-8797-be2f78b75b08 \
+  --hostname backend --path /api
+
 # List access rules
 cf access-rules apps.mtls.internal --hostname backend
+cf access-rules apps.mtls.internal --hostname backend --path /api
 
 # Remove an access rule
 cf remove-access-rule frontend-app apps.mtls.internal --hostname backend
+cf remove-access-rule frontend-app apps.mtls.internal --hostname backend --path /api
 ```
 
-**Domain-level configuration (Admins for shared domains, Org Managers for private domains):**
-
-```bash
-# Enable access rules enforcement with org scope
-cf enable-domain-access-rules apps.mtls.internal --scope org
-
-# Disable access rules enforcement
-cf enable-domain-access-rules apps.mtls.internal --disable
-```
+Selectors always require a GUID rather than a name. This is intentional: the person creating the rule does not need read access to the selector's source app, space, or org. The GUID is a public identity that the calling team shares out of band.
 
 **Validation rules:**
 - Access rules can only be created for routes on domains where `enforce_access_rules` is true
-- `cf:any` is mutually exclusive with specific selectors on the same route (cannot combine `cf:any` with `cf:app:*`)
+- `cf:any` cannot be combined with other selectors on the same route. If a route has a `cf:any` rule, no other rules (`cf:app:...`, `cf:space:...`, `cf:org:...`) can be added.
 - Duplicate selectors on the same route are rejected with an error
 - Rule names must be unique per route
+- Selector GUIDs (`cf:app:<guid>`, `cf:space:<guid>`, `cf:org:<guid>`) are not validated against Cloud Controller at creation time. The developer creating the rule does not need visibility into the source app, space, or org. App and space GUIDs function as public identities that teams can share with each other out of band. This intentionally differs from C2C networking, where both sides of a policy must be reachable by the policy creator.
 
 **Authorization:**
 
@@ -284,7 +294,7 @@ Cloud Controller stores access rules in a dedicated `route_access_rules` table. 
 # Access rules are converted to RFC-0027 compliant route options
 route.options = {
   "access_scope": "org",
-  "access_rules": "cf:app:guid1,cf:space:guid2,cf:any"
+  "access_rules": "cf:app:guid1,cf:space:guid2"
 }
 ```
 
@@ -364,7 +374,50 @@ This preserves backward compatibility with existing deployments while preventing
 
 ### Access Rules API Examples
 
-**Create Request:**
+**Create a single rule (`POST /v3/access_rules`):**
+
+```http
+POST /v3/access_rules
+```
+
+```json
+{
+  "name": "frontend-app",
+  "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+  "metadata": {
+    "labels": { "team": "payments" },
+    "annotations": { "description": "Allow frontend to call payments API" }
+  },
+  "relationships": {
+    "route": { "data": { "guid": "route-guid" } }
+  }
+}
+```
+
+**Create Response:**
+
+```json
+{
+  "guid": "rule-guid-1",
+  "name": "frontend-app",
+  "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+  "created_at": "2026-03-25T10:00:00Z",
+  "updated_at": "2026-03-25T10:00:00Z",
+  "metadata": {
+    "labels": { "team": "payments" },
+    "annotations": { "description": "Allow frontend to call payments API" }
+  },
+  "relationships": {
+    "route": { "data": { "guid": "route-guid" } }
+  },
+  "links": {
+    "self": { "href": "/v3/access_rules/rule-guid-1" },
+    "route": { "href": "/v3/routes/route-guid" }
+  }
+}
+```
+
+**Batch create for a route (`POST /v3/routes/:route_guid/access_rules`):**
 
 ```http
 POST /v3/routes/:route_guid/access_rules
@@ -385,7 +438,7 @@ POST /v3/routes/:route_guid/access_rules
 }
 ```
 
-**Create Response:**
+**Batch Create Response:**
 
 ```json
 {
@@ -396,6 +449,10 @@ POST /v3/routes/:route_guid/access_rules
       "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
       "created_at": "2026-03-25T10:00:00Z",
       "updated_at": "2026-03-25T10:00:00Z",
+      "metadata": {
+        "labels": {},
+        "annotations": {}
+      },
       "relationships": {
         "route": { "data": { "guid": "route-guid" } }
       },
@@ -406,6 +463,22 @@ POST /v3/routes/:route_guid/access_rules
     }
   ]
 }
+```
+
+**Update metadata (`PATCH /v3/access_rules/:guid`):**
+
+```http
+PATCH /v3/access_rules/rule-guid-1
+```
+
+```json
+{
+  "metadata": {
+    "labels": { "team": "payments", "env": "prod" },
+    "annotations": { "description": "Updated description" }
+  }
+}
+```
 ```
 
 **List with includes (for auditing):**
@@ -431,6 +504,10 @@ GET /v3/access_rules?include=route,selector_resource
       "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
       "created_at": "2026-03-25T10:00:00Z",
       "updated_at": "2026-03-25T10:00:00Z",
+      "metadata": {
+        "labels": { "team": "payments" },
+        "annotations": {}
+      },
       "relationships": {
         "route": { "data": { "guid": "route-guid" } }
       },
