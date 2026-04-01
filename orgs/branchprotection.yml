@@ -39,6 +39,24 @@ branch-protection:
           protect: false
         docs-running-cf:
           protect: false
+        docs-dev-guide:
+          protect: false
+        docs-services:
+          protect: false
+        docs-credhub:
+          protect: false
+        docs-deploying-cf:
+          protect: false
+        docs-cf-cli:
+          protect: false
+        docs-cloudfoundry-concepts:
+          protect: false
+        docs-buildpacks:
+          protect: false
+        docs-uaa:
+          protect: false
+        docs-bbr:
+          protect: false
         go-envstruct:
           protect: true
           enforce_admins: true
