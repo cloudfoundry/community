@@ -392,6 +392,7 @@ orgs:
         has_projects: true
         private: true
       bosh-stemcells-ci:
+        archived: true
         has_projects: true
       bosh-system-metrics-forwarder-release:
         allow_merge_commit: false
