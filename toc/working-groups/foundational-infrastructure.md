@@ -199,6 +199,8 @@ areas:
     github: ryanwittrup
   - name: Pascal Zimmermann
     github: ZPascal
+  - name: Nishad Mathur
+    github: alphasite
   reviewers:
   - name: Andreas Kyrian
     github: Jobsby
