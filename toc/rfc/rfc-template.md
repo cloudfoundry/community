@@ -5,6 +5,9 @@
 - Author(s): (GitHub usernames)
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
 - RFC Pull Request: (fill in with PR link after you submit it)
+- Related RFCs: (links to related or dependent RFCs or just leave it empty if no depencies exist)
+- Affected Component(s): (affected Cloud Foundry components e.g., Diego, Gorouter)
+
 
 
 ## Summary
