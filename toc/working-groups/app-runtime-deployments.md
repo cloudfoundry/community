@@ -48,6 +48,8 @@ areas:
   reviewers:
   - github: oliver-heinrich
     name: Oliver Heinrich
+  - github: dtasSap
+    name: Deniz Tas
   approvers:
   - github: davewalter
     name: Dave Walter
