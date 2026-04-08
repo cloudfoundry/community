@@ -70,6 +70,8 @@ areas:
     github: c0d1ngm0nk3y
   - name: Nicolas Bender
     github: nicolasbender
+  - name: Matthias Vach
+    github: mvach
   reviewers:
   - name: Tom Kennedy
     github: tomkennedy513
