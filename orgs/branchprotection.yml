@@ -426,6 +426,7 @@ branch-protection:
           protect: true
           required_status_checks:
             contexts:
+              - "e2e"
               - "unit"
               - "EasyCLA"
           required_pull_request_reviews:
