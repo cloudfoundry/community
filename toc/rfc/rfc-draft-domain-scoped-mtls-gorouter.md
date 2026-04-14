@@ -158,7 +158,7 @@ These fields are set via the `POST /v3/domains` CC API endpoint (via `cf create-
 | `org` | Caller must be from the same org as the destination |
 | `space` | Caller must be from the same space as the destination |
 
-For shared routes with apps mapped from multiple spaces, scope is evaluated against all endpoints in the pool. See [Scope Evaluation and Shared Routes](#scope-evaluation-and-shared-routes) in the Appendix for details.
+For shared routes with apps mapped from multiple spaces, scope is evaluated against the selected backend after load balancing. See [Scope Evaluation and Shared Routes](#scope-evaluation-and-shared-routes) in the Appendix for details and tradeoffs.
 
 #### Layered Authorization
 
@@ -218,6 +218,7 @@ Selectors always require a GUID rather than a name. This is intentional: the per
 ##### Validation Rules
 
 - Access rules can only be created for routes on domains where `enforce_access_rules` is true (i.e., domains created with `--enforce-access-rules`)
+- Access rules cannot be created for routes on internal domains (domains created with `--internal`). Traffic to internal domains bypasses GoRouter entirely via container-to-container networking, so GoRouter cannot enforce access rules. Cloud Controller rejects the request with a 422 error.
 - `cf:any` cannot be combined with other selectors on the same route. If a route has a `cf:any` rule, no other rules (`cf:app:...`, `cf:space:...`, `cf:org:...`) can be added.
 - Duplicate selectors on the same route are rejected with an error
 - Rule names must be unique per route
@@ -233,7 +234,7 @@ Selectors always require a GUID rather than a name. This is intentional: the per
 | `PATCH` | `/v3/access_rules/:guid` | Update an access rule (metadata only) |
 | `DELETE` | `/v3/access_rules/:guid` | Delete a rule by guid |
 
-Access rules are owned by their route: deleting a route cascades to delete all its access rules. See [Access Rules API Examples](#access-rules-api-examples) for full request/response examples and [Access Rules API Reference](#access-rules-api-reference) for query parameters, includes, and filtering details.
+Access rules are owned by their route: deleting a route cascades to delete all its access rules. However, deleting the resource referenced by a selector (app, space, or org) does **not** delete the access rule — see [Access Rule Lifecycle](#access-rule-lifecycle) in the Appendix. See [Access Rules API Examples](#access-rules-api-examples) for full request/response examples and [Access Rules API Reference](#access-rules-api-reference) for query parameters, includes, and filtering details.
 
 Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first. See [Internal Implementation](#internal-implementation) for how Cloud Controller translates access rules into route options and how GoRouter processes them.
 
@@ -333,7 +334,10 @@ POST /v3/access_rules
     "annotations": { "description": "Allow frontend to call payments API" }
   },
   "relationships": {
-    "route": { "data": { "guid": "route-guid" } }
+    "route": { "data": { "guid": "route-guid" } },
+    "app": { "data": { "guid": "d76446a1-f429-4444-8797-be2f78b75b08" } },
+    "space": { "data": null },
+    "organization": { "data": null }
   },
   "links": {
     "self": { "href": "/v3/access_rules/rule-guid-1" },
@@ -360,13 +364,13 @@ PATCH /v3/access_rules/rule-guid-1
 #### List with Includes (for Auditing)
 
 ```http
-GET /v3/access_rules?include=route,selector_resource
+GET /v3/access_rules?include=route,app
 ```
 
 ```json
 {
   "pagination": {
-    "total_results": 1,
+    "total_results": 2,
     "total_pages": 1,
     "first": { "href": "/v3/access_rules?page=1&per_page=50" },
     "last": { "href": "/v3/access_rules?page=1&per_page=50" },
@@ -385,10 +389,34 @@ GET /v3/access_rules?include=route,selector_resource
         "annotations": {}
       },
       "relationships": {
-        "route": { "data": { "guid": "route-guid" } }
+        "route": { "data": { "guid": "route-guid" } },
+        "app": { "data": { "guid": "d76446a1-f429-4444-8797-be2f78b75b08" } },
+        "space": { "data": null },
+        "organization": { "data": null }
       },
       "links": {
         "self": { "href": "/v3/access_rules/rule-guid-1" },
+        "route": { "href": "/v3/routes/route-guid" }
+      }
+    },
+    {
+      "guid": "rule-guid-2",
+      "name": "old-job",
+      "selector": "cf:app:app-guid-deleted",
+      "created_at": "2025-11-01T14:23:00Z",
+      "updated_at": "2025-11-01T14:23:00Z",
+      "metadata": {
+        "labels": {},
+        "annotations": {}
+      },
+      "relationships": {
+        "route": { "data": { "guid": "route-guid" } },
+        "app": { "data": null },
+        "space": { "data": null },
+        "organization": { "data": null }
+      },
+      "links": {
+        "self": { "href": "/v3/access_rules/rule-guid-2" },
         "route": { "href": "/v3/routes/route-guid" }
       }
     }
@@ -403,8 +431,6 @@ GET /v3/access_rules?include=route,selector_resource
         }
       }
     ],
-    "spaces": [],
-    "organizations": [],
     "routes": [
       {
         "guid": "route-guid",
@@ -421,15 +447,17 @@ GET /v3/access_rules?include=route,selector_resource
 }
 ```
 
+In `rule-guid-2`, the `app` relationship is `null` because the referenced app (`app-guid-deleted`) no longer exists. The selector string is preserved so the caller can identify which GUID was referenced. Stale rules are visible at two levels: the `null` relationship on the resource itself, and the absence of the deleted app from the `included.apps` block.
+
 ### Scope Evaluation and Shared Routes
 
-GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `access_rules_scope` is set, GoRouter compares the caller's identity (extracted from the client certificate) against the destination's tags:
+GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `access_rules_scope` is set, GoRouter compares the caller's identity (extracted from the client certificate) against the **selected backend's** tags after load balancing:
 
 | Scope | Check | Effect |
 |-------|-------|--------|
 | `any` | None | Any authenticated caller passes domain-level checks |
-| `org` | `caller.OrgGUID ∈ pool endpoints' organization_id` | Caller must be from the same org as the destination |
-| `space` | `caller.SpaceGUID ∈ pool endpoints' space_id` | Caller must be from the same space as the destination |
+| `org` | `caller.OrgGUID == selected_endpoint.organization_id` | Caller must be from the same org as the selected backend |
+| `space` | `caller.SpaceGUID == selected_endpoint.space_id` | Caller must be from the same space as the selected backend |
 
 When a [shared route](https://v3-apidocs.cloudfoundry.org/version/3.215.0/index.html#share-a-route-with-other-spaces-experimental) has apps mapped from multiple spaces, the GoRouter `EndpointPool` for that route contains endpoints from different spaces. Each endpoint carries its own `space_id` and `organization_id` tags, set by the route-emitter based on the app instance it represents — not the route owner.
 
@@ -441,7 +469,32 @@ EndpointPool for "api.apps.identity":
   [1] 10.0.2.9:8080  tags: { space_id: "space-b-guid", organization_id: "org-guid" }
 ```
 
-GoRouter iterates the pool's endpoints when evaluating scope, checking the caller's identity against each endpoint's tags and short-circuiting on the first match. For `scope: space`, if any endpoint's `space_id` matches the caller's space GUID, the request is allowed. A caller from Space A or Space B passes the check; a caller from Space C (with no app mapped to the route) is denied. This naturally enables cross-space access on shared routes between the participating spaces.
+GoRouter first selects a backend endpoint via load balancing, then evaluates scope against that specific endpoint's tags. For `scope: space`:
+
+- A caller from Space A is allowed if endpoint [0] is selected, denied if endpoint [1] is selected
+- A caller from Space B is allowed if endpoint [1] is selected, denied if endpoint [0] is selected
+- A caller from Space C (no app mapped to the route) is always denied
+
+#### Tradeoff: Intermittent Failures on Cross-Space Shared Routes
+
+This design prioritizes **strictness over intuitiveness**. When an operator configures `scope: space`, they are expressing the intent that callers should only reach backends in their own space. Post-selection checking honors this intent even when a route spans multiple spaces.
+
+The tradeoff is that callers may see **intermittent 403 errors** if:
+1. A route is shared across spaces (e.g., Space A and Space B)
+2. A caller from Space A makes requests to the route
+3. Load balancing sometimes selects a backend in Space B
+
+This behavior is deterministic per request (the same backend selection produces the same authorization result) and becomes consistent when sticky sessions pin the caller to a specific backend.
+
+**Workaround for intentional cross-space sharing:** Developers who intentionally share a route across spaces and want all participating spaces to access all backends can add the shared org as an additional selector:
+
+```bash
+# Allow any app in the shared org to reach this route
+cf add-access-rule shared-org-access api.apps.identity \
+  cf:org:shared-org-guid --hostname api
+```
+
+This bypasses the space-level scope check by granting access at the org level.
 
 ### Identity Extraction
 
@@ -457,30 +510,68 @@ GoRouter extracts CF identity from Diego instance identity certificates regardle
 | `route_guids` | Comma-delimited list of route guids to filter by |
 | `selectors` | Comma-delimited list of selectors to filter by |
 | `selector_resource_guids` | Comma-delimited list of GUIDs to filter by. CC performs a text-match against the selector string (e.g., `cf:app:<guid>`, `cf:space:<guid>`, `cf:org:<guid>`). Stale rule detection — identifying rules whose referenced GUID no longer exists — is the caller's responsibility. |
-| `include` | Comma-delimited list of related resources to include: `route`, `selector_resource` |
+| `include` | Comma-delimited list of related resources to include: `route`, `app`, `space`, `organization` |
 | `page` | Page to display (default: 1) |
 | `per_page` | Number of results per page (default: 50) |
 | `order_by` | Value to sort by (e.g., `created_at`, `-created_at`, `name`, `-name`) |
 
 #### Including Related Resources
 
-The `include` parameter supports `route` and `selector_resource`. When `selector_resource` is specified, the response includes an `included` block with the resolved resources:
+Access rules have **read-only** relationships for `app`, `space`, and `organization`. These relationships are:
+
+- **Populated by Cloud Controller** based on the selector type and whether the referenced resource exists
+- **Not settable by the user** — the `relationships` block in a `POST` or `PATCH` request only accepts `route`
+- **Updated automatically** when CC resolves the selector on each API response (not stored in the database)
+
+| Selector type | Populated relationship | Others |
+|---------------|----------------------|--------|
+| `cf:app:<guid>` (exists) | `app: { data: { guid: "..." } }` | `space`, `organization` → `null` |
+| `cf:app:<guid>` (deleted) | `app: { data: null }` | `space`, `organization` → `null` |
+| `cf:space:<guid>` (exists) | `space: { data: { guid: "..." } }` | `app`, `organization` → `null` |
+| `cf:org:<guid>` (exists) | `organization: { data: { guid: "..." } }` | `app`, `space` → `null` |
+| `cf:any` | All `null` | — |
+
+When a relationship is non-null, the corresponding resource can be sideloaded via the `include` parameter (e.g., `include=app` returns the app object in the `included.apps` block). When the referenced resource no longer exists, the relationship data is `null` even though the selector string is preserved, making stale rules immediately visible without cross-referencing.
+
+The `route` relationship is always present (required at creation time) and can also be sideloaded via `include=route`.
+
+#### Access Rule Lifecycle
+
+Access rules have different cascade behaviors depending on which resource is deleted:
+
+| Deleted resource | Access rule behavior | Rationale |
+|-----------------|---------------------|-----------|
+| **Route** | Access rule is **deleted** (cascade) | Access rules cannot exist without a route |
+| **App/Space/Org** (selector target) | Access rule is **preserved** | Metadata may contain useful context (see below) |
+
+When a selector's target resource is deleted (e.g., the app referenced by `cf:app:<guid>` is deleted), the access rule remains in place but becomes "stale":
+
+- The `selector` string is preserved (e.g., `cf:app:d76446a1-...`)
+- The corresponding relationship becomes `null` (e.g., `app: { data: null }`)
+- The rule no longer grants access (GoRouter cannot match a non-existent app's identity)
+
+**Why preserve stale rules?** The access rule's metadata (name, labels, annotations) may contain information the Space Developer needs to re-establish the rule:
 
 ```json
 {
-  "resources": [
-    { "selector": "cf:app:frontend-guid", ... }
-  ],
-  "included": {
-    "apps": [{ "guid": "frontend-guid", "name": "frontend-app", ... }],
-    "spaces": [],
-    "organizations": [],
-    "routes": []
+  "name": "frontend-team-access",
+  "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+  "metadata": {
+    "labels": { "team": "frontend" },
+    "annotations": { 
+      "contact": "frontend-team@example.com",
+      "slack": "#frontend-support"
+    }
+  },
+  "relationships": {
+    "app": { "data": null }
   }
 }
 ```
 
-The selector is resolved based on its type: `cf:app:<guid>` → `apps`, `cf:space:<guid>` → `spaces`, `cf:org:<guid>` → `organizations`. CC stores selectors as opaque strings and does not join against apps, spaces, or organizations at query time. Resources that no longer exist will be absent from the `included` block, which makes stale rules visible during audits — but identifying them requires the caller to cross-reference the `resources` list against the `included` block. Stale detection is the caller's responsibility, not CC's.
+When the frontend team deploys a new app with a different GUID, the Space Developer can contact them (using the annotation) to get the new GUID, then update or replace the access rule. Automatic deletion would lose this context.
+
+Space Developers can query for stale rules and clean them up manually when appropriate. See the `selector_resource_guids` query parameter in [List Query Parameters](#list-query-parameters).
 
 ### Namespace Reservation
 
@@ -532,14 +623,14 @@ The `caller_*` fields are extracted from the instance identity certificate. `mtl
 
 #### Denied — Failed Domain-Level Scope Check
 
-When the caller's identity does not match the operator's `scope` boundary:
+When the caller's identity does not match the operator's `scope` boundary for the selected backend:
 
 ```
 [RTR] backend.apps.identity - [2026-03-20T10:15:01Z]
   "GET /api/data HTTP/1.1" 403 0
   caller_app:"attacker-guid" caller_space:"other-space-guid" caller_org:"other-org-guid"
   mtls_auth:"denied" mtls_rule:"domain:scope=org"
-  mtls_denied_reason:"caller org other-org-guid not in endpoint pool"
+  mtls_denied_reason:"caller org other-org-guid does not match selected backend org-guid"
 ```
 
 #### Denied — Failed Route-Level Access Rule Check
