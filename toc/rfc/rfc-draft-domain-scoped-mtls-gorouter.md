@@ -136,7 +136,7 @@ cf share-private-domain my-org apps.identity
 
 # 4. Developers create routes and add access rules before going live
 cf map-route my-app apps.identity --hostname my-app
-cf add-access-rule my-app apps.identity cf:app:<caller-guid> --hostname my-app
+cf add-access-rule allow-caller apps.identity --source-app caller-app --hostname my-app
 ```
 
 To register a domain for Part 1 only (external client certificate validation, no CF identity enforcement), omit the flag: `cf create-shared-domain partner.example.com`.
@@ -196,24 +196,37 @@ The `cf:` prefix is reserved for Cloud Foundry native identities. See [Namespace
 ##### CLI Commands
 
 ```bash
-# Add an access rule
-cf add-access-rule frontend-app apps.identity cf:app:d76446a1-f429-4444-8797-be2f78b75b08 \
-  --hostname backend
+# Allow a specific app (in current space) to access the route
+cf add-access-rule allow-frontend apps.identity --source-app frontend-app --hostname backend
 
-# Add an access rule for a route with a path
-cf add-access-rule frontend-app apps.identity cf:app:d76446a1-f429-4444-8797-be2f78b75b08 \
-  --hostname backend --path /api
+# Allow an app in a different space to access the route
+cf add-access-rule allow-other-space apps.identity --source-app api-client --source-space other-space --hostname backend
+
+# Allow an app in a different org to access the route
+cf add-access-rule allow-other-org apps.identity --source-app external-client --source-space external-space --source-org external-org --hostname backend
+
+# Allow all apps in a space to access the route
+cf add-access-rule allow-monitoring apps.identity --source-space monitoring --hostname api --path /metrics
+
+# Allow all apps in an org to access the route
+cf add-access-rule allow-platform-org apps.identity --source-org platform --hostname shared-api
+
+# Allow any authenticated app to access the route
+cf add-access-rule allow-all apps.identity --source-any --hostname public-api
+
+# Use raw selector (advanced, for cross-org scenarios where names cannot be resolved)
+cf add-access-rule allow-raw apps.identity --selector cf:app:d76446a1-f429-4444-8797-be2f78b75b08 --hostname backend
 
 # List access rules
 cf access-rules apps.identity --hostname backend
 cf access-rules apps.identity --hostname backend --path /api
 
 # Remove an access rule
-cf remove-access-rule frontend-app apps.identity --hostname backend
-cf remove-access-rule frontend-app apps.identity --hostname backend --path /api
+cf remove-access-rule allow-frontend apps.identity --hostname backend
+cf remove-access-rule allow-frontend apps.identity --hostname backend --path /api
 ```
 
-Selectors always require a GUID rather than a name. This is intentional: the person creating the rule does not need read access to the selector's source app, space, or org. The GUID is a public identity that the calling team shares out of band.
+The CLI resolves `--source-app`, `--source-space`, and `--source-org` names to GUIDs before creating the access rule. When the selector's source app, space, or org is in a different org that the current user cannot read, use the `--selector` flag with the raw GUID (shared out of band by the calling team).
 
 ##### Validation Rules
 
@@ -490,8 +503,7 @@ This behavior is deterministic per request (the same backend selection produces 
 
 ```bash
 # Allow any app in the shared org to reach this route
-cf add-access-rule shared-org-access api.apps.identity \
-  cf:org:shared-org-guid --hostname api
+cf add-access-rule shared-org-access apps.identity --source-org shared-org --hostname api
 ```
 
 This bypasses the space-level scope check by granting access at the org level.
@@ -737,14 +749,14 @@ cf create-shared-domain apps.identity --enforce-access-rules --scope org
 Application access rule configuration:
 ```bash
 # Allow specific apps to call a route
-cf add-access-rule frontend-app apps.identity cf:app:frontend-guid --hostname backend
-cf add-access-rule monitoring apps.identity cf:app:monitoring-guid --hostname backend
+cf add-access-rule allow-frontend apps.identity --source-app frontend-app --hostname backend
+cf add-access-rule allow-monitoring apps.identity --source-app monitoring-app --hostname backend
 
 # List rules
 cf access-rules apps.identity --hostname backend
-# name            selector
-# frontend-app    cf:app:frontend-guid
-# monitoring      cf:app:monitoring-guid
+# name              selector
+# allow-frontend    cf:app:frontend-guid
+# allow-monitoring  cf:app:monitoring-guid
 ```
 
 #### CF App-to-App Routing (Same-Space Boundary)
@@ -753,7 +765,7 @@ cf access-rules apps.identity --hostname backend
 cf create-shared-domain apps.identity --enforce-access-rules --scope space
 ```
 
-With shared routes, callers from any participating space (i.e., any space that has an app mapped to the route) are allowed.
+With `scope: space`, callers must be from the same space as the selected backend. See [Scope Evaluation and Shared Routes](#scope-evaluation-and-shared-routes) for behavior when a route spans multiple spaces.
 
 #### CF App-to-App Routing (Any Authenticated Caller)
 
@@ -764,10 +776,10 @@ cf create-shared-domain apps.identity --enforce-access-rules --scope any
 Route-level access rules control access:
 ```bash
 # Allow any authenticated app (within operator scope)
-cf add-access-rule allow-all apps.identity cf:any --hostname public-api
+cf add-access-rule allow-all apps.identity --source-any --hostname public-api
 
 # Or allow all apps in a specific space
-cf add-access-rule trusted-space apps.identity cf:space:trusted-space-guid --hostname internal-api
+cf add-access-rule allow-trusted-space apps.identity --source-space trusted-space --hostname internal-api
 ```
 
 #### External Client Certificate Validation (App-Level Authorization)
