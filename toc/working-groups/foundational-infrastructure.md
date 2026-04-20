@@ -119,8 +119,6 @@ areas:
     github: ragaskar
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
@@ -240,8 +238,6 @@ areas:
     github: ramonskie
   - name: Aram Price
     github: aramprice
-  - name: Shilpa Chandrashekara
-    github: ShilpaChandrashekara
   - name: Joerg W
     github: joergdw
   - name: Ansh Rupani
@@ -256,8 +252,6 @@ areas:
     github: alphasite
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
   - name: Felix Moehler
@@ -316,8 +310,6 @@ areas:
     github: alphasite
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
   - name: Felix Moehler
@@ -424,8 +416,6 @@ areas:
       github: benjaminguttmann-avtq
     - name: Gilles Miraillet
       github: gmllt
-    - name: Mario Di Miceli
-      github: mdimiceli
     - name: Nicolas Herbst
       github: nmaurer23
   repositories:
@@ -464,8 +454,6 @@ areas:
     github: nader-ziada
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
   - name: Felix Moehler
