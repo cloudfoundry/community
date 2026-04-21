@@ -14,7 +14,7 @@ Enable identity-aware routing on GoRouter through per-domain mutual TLS (mTLS). 
 This RFC introduces two tiers:
 
 - **mTLS domain** (Part 1): A domain configured in `router.domains` where GoRouter requires and validates a client certificate during the TLS handshake. Any valid certificate signed by the configured CA is accepted. GoRouter sets the XFCC header for backend applications. This establishes mutual authentication between client and router for that domain.
-- **Identity-aware domain** (Part 2): An mTLS domain that also has Cloud Foundry identity enforcement enabled (`--enforce-access-rules`). GoRouter extracts CF app identity from the certificate and enforces route-level access rules. This follows the same default-deny model as container-to-container network policies: all traffic is blocked unless explicitly allowed.
+- **Identity-aware domain** (Part 2): An mTLS domain that also has Cloud Foundry identity enforcement enabled (`--enforce-route-policies`). GoRouter extracts CF app identity from the certificate and enforces route-level route policies. This follows the same default-deny model as container-to-container network policies: all traffic is blocked unless explicitly allowed.
 
 This infrastructure supports two primary use cases: authenticated CF app-to-app communication (identity-aware domains, e.g., `apps.identity`), and external client certificate validation for partner integrations (mTLS domains without enforcement).
 
@@ -51,10 +51,10 @@ GoRouter gains the ability to require client certificates for specific domains, 
 | 1 | 1 | Operator | Configures an mTLS domain in the `router.domains` BOSH configuration |
 | 2 | 1 | DNS | BOSH DNS (or external DNS) resolves the domain to GoRouter instances |
 | 3 | 1 | GoRouter | Requires and validates a client certificate, sets the XFCC header |
-| 4 | 2 | Operator | Registers the domain in CC with `cf create-shared-domain` (or `cf create-private-domain`); add `--enforce-access-rules` to make it identity-aware (`--scope` is optional) |
+| 4 | 2 | Operator | Registers the domain in CC with `cf create-shared-domain` (or `cf create-private-domain`); add `--enforce-route-policies` to make it identity-aware (`--scope` is optional) |
 | 5 | 2 | Operator | Shares the domain into orgs (`cf share-private-domain`) so developers can create routes |
-| 6 | 2 | Developer | Creates access rules per route via the Access Rules API (identity-aware domains only) |
-| 7 | 2 | GoRouter | Extracts CF identity from the certificate and enforces access rules (identity-aware domains only) |
+| 6 | 2 | Developer | Creates route policies per route via the Route Policies API (identity-aware domains only) |
+| 7 | 2 | GoRouter | Extracts CF identity from the certificate and enforces route policies (identity-aware domains only) |
 
 Part 1 alone (without Part 2) is sufficient for external client certificate validation: GoRouter validates the cert and sets the XFCC header; backend applications handle authorization themselves based on that header. This is an mTLS domain without identity awareness.
 
@@ -119,36 +119,36 @@ The `xfcc_format` field controls the format of the `X-Forwarded-Client-Cert` hea
 
 ### Part 2: CF Identity & Authorization
 
-Part 2 adds Cloud Foundry identity and authorization on top of the mTLS infrastructure from Part 1. An mTLS domain becomes an **identity-aware domain** when created with `--enforce-access-rules`. Identity-aware domains enforce route-level access rules using CF app identity extracted from Diego instance certificates. Part 2 is implemented entirely through Cloud Controller API changes — no additional BOSH configuration is required beyond Part 1.
+Part 2 adds Cloud Foundry identity and authorization on top of the mTLS infrastructure from Part 1. An mTLS domain becomes an **identity-aware domain** when created with `--enforce-route-policies`. Identity-aware domains enforce route-level policies using CF app identity extracted from Diego instance certificates. Part 2 is implemented entirely through Cloud Controller API changes — no additional BOSH configuration is required beyond Part 1.
 
 #### Operator Setup
 
-Enforcement is configured at domain creation time using `--enforce-access-rules` and is immutable after that — a domain cannot be converted between enforcing and non-enforcing once registered. This makes the rollout safe by design: the domain enforces access rules before any developer can create a route on it.
+Enforcement is configured at domain creation time using `--enforce-route-policies` and is immutable after that — a domain cannot be converted between enforcing and non-enforcing once registered. This makes the rollout safe by design: the domain enforces route policies before any developer can create a route on it.
 
 ```bash
 # 1. BOSH: configure router.domains in gorouter.yml (GoRouter infrastructure)
 
 # 2. Register the domain in CC with enforcement enabled from the start
-cf create-shared-domain apps.identity --enforce-access-rules --scope org
+cf create-shared-domain apps.identity --enforce-route-policies --scope org
 
 # 3. Share the domain into orgs (developers can now create routes)
 cf share-private-domain my-org apps.identity
 
-# 4. Developers create routes and add access rules before going live
+# 4. Developers create routes and add route policies before going live
 cf map-route my-app apps.identity --hostname my-app
-cf add-access-rule apps.identity --source-app caller-app --hostname my-app
+cf add-route-policy apps.identity --source-app caller-app --hostname my-app
 ```
 
 To register a domain for Part 1 only (external client certificate validation, no CF identity enforcement), omit the flag: `cf create-shared-domain partner.example.com`.
 
 #### Operator Scope
 
-The operator sets a scope boundary at domain creation time that limits which callers can reach routes on the domain. This boundary is enforced before any route-level access rules are evaluated.
+The operator sets a scope boundary at domain creation time that limits which callers can reach routes on the domain. This boundary is enforced before any route-level policies are evaluated.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `enforce_access_rules` | boolean | When true, GoRouter enforces access rules for routes on this domain. Set at creation time only — immutable after creation. |
-| `access_rules_scope` | string | Operator-level boundary: `any`, `org`, or `space`. Set at creation time only — immutable after creation. |
+| `enforce_route_policies` | boolean | When true, GoRouter enforces route policies for routes on this domain. Set at creation time only — immutable after creation. |
+| `route_policies_scope` | string | Operator-level boundary: `any`, `org`, or `space`. Set at creation time only — immutable after creation. |
 
 These fields are set via the `POST /v3/domains` CC API endpoint (via `cf create-shared-domain` or `cf create-private-domain`). They are not present on the `PATCH /v3/domains/:guid` endpoint.
 
@@ -171,21 +171,21 @@ flowchart LR
     C --> D[Request forwarded with XFCC header]
 ```
 
-1. **Domain level (operator)**: The `access_rules_scope` boundary, configured at domain creation. Requires Admin role for shared domains, Org Manager for private domains.
-2. **Route level (developer)**: Access rules on individual routes, configured via the Access Rules API. Requires Space Developer role in the route's space.
+1. **Domain level (operator)**: The `route_policies_scope` boundary, configured at domain creation. Requires Admin role for shared domains, Org Manager for private domains.
+2. **Route level (developer)**: Route policies on individual routes, configured via the Route Policies API. Requires Space Developer role in the route's space.
 
-Developers can only **restrict further** within operator boundaries. They cannot expand access beyond operator-defined limits. When a domain has `enforce_access_rules: true`, all requests to routes without access rules are denied by default.
+Developers can only **restrict further** within operator boundaries. They cannot expand access beyond operator-defined limits. When a domain has `enforce_route_policies: true`, all requests to routes without route policies are denied by default.
 
 See [Identity Extraction](#identity-extraction) in the Appendix for details on how GoRouter parses identity from certificates.
 
-#### Developer Access Rules
+#### Developer Route Policies
 
-Developers control which callers can reach their routes by creating access rules. Each rule has a selector that identifies allowed callers. Labels and annotations provide metadata for auditability. Only Space Developers in the route's space can manage access rules — unlike C2C policies which require permissions in both source and destination spaces, access rules are destination-controlled.
+Developers control which callers can reach their routes by creating route policies. Each policy specifies an allowed source: a specific app, space, org, or any authenticated caller. Labels and annotations provide metadata for auditability. Only Space Developers in the route's space can manage route policies — unlike C2C policies which require permissions in both source and destination spaces, route policies are destination-controlled.
 
-##### Selector Syntax
+##### Source
 
-| Selector | Description |
-|----------|-------------|
+| Source | Description |
+|--------|-------------|
 | `cf:app:<guid>` | Allow a specific CF application |
 | `cf:space:<guid>` | Allow all apps in a CF space |
 | `cf:org:<guid>` | Allow all apps in a CF organization |
@@ -197,70 +197,70 @@ The `cf:` prefix is reserved for Cloud Foundry native identities. See [Namespace
 
 ```bash
 # Allow a specific app (in current space) to access the route
-cf add-access-rule apps.identity --source-app frontend-app --hostname backend
+cf add-route-policy apps.identity --source-app frontend-app --hostname backend
 
 # Allow an app in a different space to access the route
-cf add-access-rule apps.identity --source-app api-client --source-space other-space --hostname backend
+cf add-route-policy apps.identity --source-app api-client --source-space other-space --hostname backend
 
 # Allow an app in a different org to access the route
-cf add-access-rule apps.identity --source-app external-client --source-space external-space --source-org external-org --hostname backend
+cf add-route-policy apps.identity --source-app external-client --source-space external-space --source-org external-org --hostname backend
 
 # Allow all apps in a space to access the route
-cf add-access-rule apps.identity --source-space monitoring --hostname api --path /metrics
+cf add-route-policy apps.identity --source-space monitoring --hostname api --path /metrics
 
 # Allow all apps in an org to access the route
-cf add-access-rule apps.identity --source-org platform --hostname shared-api
+cf add-route-policy apps.identity --source-org platform --hostname shared-api
 
 # Allow any authenticated app to access the route
-cf add-access-rule apps.identity --source-any --hostname public-api
+cf add-route-policy apps.identity --source-any --hostname public-api
 
-# Use raw selector (advanced, for cross-org scenarios where names cannot be resolved)
-cf add-access-rule apps.identity --selector cf:app:d76446a1-f429-4444-8797-be2f78b75b08 --hostname backend
+# Use raw source (advanced, for cross-org scenarios where names cannot be resolved)
+cf add-route-policy apps.identity --source cf:app:d76446a1-f429-4444-8797-be2f78b75b08 --hostname backend
 
-# List access rules (all rules in current space)
-cf access-rules
-# route                            selector                                       scope   source
+# List route policies (all policies in current space)
+cf route-policies
+# route                            source                                         scope   name
 # backend.apps.identity            cf:app:d76446a1-f429-4444-8797-be2f78b75b08    app     frontend-app
 # backend.apps.identity            cf:app:a1b2c3d4-e5f6-7890-abcd-ef1234567890    app     monitoring-app
 # api.apps.identity/metrics        cf:space:2b26e210-1b48-4e60-8432-f24bc5927789  space   monitoring
 # shared-api.apps.identity         cf:org:6e424e4e-5e46-419a-9cb6-eac9de2794e8   org     platform
 # public-api.apps.identity         cf:any                                         any
 
-# List access rules for a specific route
-cf access-rules apps.identity --hostname backend
+# List route policies for a specific route
+cf route-policies apps.identity --hostname backend
 
-# Remove an access rule by GUID
-cf remove-access-rule RULE_GUID
+# Remove a route policy by GUID
+cf remove-route-policy POLICY_GUID
 
-# Remove an access rule by selector
-cf remove-access-rule apps.identity --selector cf:app:d76446a1-f429-4444-8797-be2f78b75b08 --hostname backend
+# Remove a route policy by source
+cf remove-route-policy apps.identity --source cf:app:d76446a1-f429-4444-8797-be2f78b75b08 --hostname backend
 ```
 
-The `source` column shows the resolved name of the selector's app, space, or org. When the selector references a resource the current user cannot read (different org) or a resource that no longer exists, the column is empty.
+The `name` column shows the resolved name of the source's app, space, or org. When the source references a resource the current user cannot read (different org) or a resource that no longer exists, the column is empty.
 
-The CLI resolves `--source-app`, `--source-space`, and `--source-org` names to GUIDs before creating the access rule. When the selector's source app, space, or org is in a different org that the current user cannot read, use the `--selector` flag with the raw GUID (shared out of band by the calling team).
+The CLI resolves `--source-app`, `--source-space`, and `--source-org` names to GUIDs before creating the route policy. When the policy's source app, space, or org is in a different org that the current user cannot read, use the `--source` flag with the raw GUID (shared out of band by the calling team).
 
 ##### Validation Rules
 
-- Access rules can only be created for routes on domains where `enforce_access_rules` is true (i.e., domains created with `--enforce-access-rules`)
-- Access rules cannot be created for routes on internal domains (domains created with `--internal`). Traffic to internal domains bypasses GoRouter entirely via container-to-container networking, so GoRouter cannot enforce access rules. Cloud Controller rejects the request with a 422 error.
-- `cf:any` cannot be combined with other selectors on the same route. If a route has a `cf:any` rule, no other rules (`cf:app:...`, `cf:space:...`, `cf:org:...`) can be added.
-- Duplicate selectors on the same route are rejected with an error
-- Selector GUIDs (`cf:app:<guid>`, `cf:space:<guid>`, `cf:org:<guid>`) are not validated against Cloud Controller at creation time. The developer creating the rule does not need visibility into the source app, space, or org. App and space GUIDs function as public identities that teams can share with each other out of band. This intentionally differs from C2C networking, where both sides of a policy must be reachable by the policy creator.
+- Route policies can only be created for routes on domains where `enforce_route_policies` is true (i.e., domains created with `--enforce-route-policies`)
+- Route policies cannot be created for routes on internal domains (domains created with `--internal`). Traffic to internal domains bypasses GoRouter entirely via container-to-container networking, so GoRouter cannot enforce route policies. Cloud Controller rejects the request with a 422 error.
+- `cf:any` cannot be combined with other sources on the same route. If a route has a `cf:any` policy, no other policies (`cf:app:...`, `cf:space:...`, `cf:org:...`) can be added.
+- Duplicate sources on the same route are rejected with an error
+- Source GUIDs (`cf:app:<guid>`, `cf:space:<guid>`, `cf:org:<guid>`) are not validated against Cloud Controller at creation time. The developer creating the policy does not need visibility into the source app, space, or org. App and space GUIDs function as public identities that teams can share with each other out of band. This intentionally differs from C2C networking, where both sides of a policy must be reachable by the policy creator.
 
-#### Access Rules API
+#### Route Policies API
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `GET` | `/v3/access_rules` | List access rules (with filters) |
-| `GET` | `/v3/access_rules/:guid` | Get a single access rule |
-| `POST` | `/v3/access_rules` | Create an access rule |
-| `PATCH` | `/v3/access_rules/:guid` | Update an access rule (metadata only) |
-| `DELETE` | `/v3/access_rules/:guid` | Delete a rule by guid |
+| `GET` | `/v3/route_policies` | List route policies (with filters) |
+| `GET` | `/v3/route_policies/:guid` | Get a single route policy |
+| `POST` | `/v3/route_policies` | Create a route policy |
+| `PATCH` | `/v3/route_policies/:guid` | Update a route policy (metadata only) |
+| `DELETE` | `/v3/route_policies/:guid` | Delete a policy by guid |
 
-Access rules are owned by their route: deleting a route cascades to delete all its access rules. However, deleting the resource referenced by a selector (app, space, or org) does **not** delete the access rule — see [Access Rule Lifecycle](#access-rule-lifecycle) in the Appendix. See [Access Rules API Examples](#access-rules-api-examples) for full request/response examples and [Access Rules API Reference](#access-rules-api-reference) for query parameters, includes, and filtering details.
+Route policies are owned by their route: deleting a route cascades to delete all its route policies. However, deleting the resource referenced by a source (app, space, or org) does **not** delete the route policy — see [Route Policy Lifecycle](#route-policy-lifecycle) in the Appendix. See [Route Policies API Examples](#route-policies-api-examples) for full request/response examples and [Route Policies API Reference](#route-policies-api-reference) for query parameters, includes, and filtering details.
 
-Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first. See [Internal Implementation](#internal-implementation) for how Cloud Controller translates access rules into route options and how GoRouter processes them.
+Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first. See [Internal Implementation](#internal-implementation) for how Cloud Controller translates route policies into route options and how GoRouter processes them.
 
 
 ## Release Criteria
@@ -269,13 +269,13 @@ Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-ro
 
 Part 1 and Part 2 are co-requisites and must be released together.
 
-Deploying Part 1 without Part 2 would leave all routes on identity-aware domains accessible to any authenticated app, violating the default-deny security model. Routes must have access rules configured via the Access Rules API to control access.
+Deploying Part 1 without Part 2 would leave all routes on identity-aware domains accessible to any authenticated app, violating the default-deny security model. Routes must have route policies configured via the Route Policies API to control access.
 
 Part 2 depends on [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md) being implemented first.
 
 ### External Client Validation Use Case
 
-Part 1 alone (without `--enforce-access-rules` on the domain) is sufficient. Backend applications handle authorization based on the XFCC header. Note that if a domain is created with `--enforce-access-rules` but no access rules are configured on a route, requests to that route will be denied by default.
+Part 1 alone (without `--enforce-route-policies` on the domain) is sufficient. Backend applications handle authorization based on the XFCC header. Note that if a domain is created with `--enforce-route-policies` but no route policies are configured on a route, requests to that route will be denied by default.
 
 
 ## Security Considerations
@@ -322,17 +322,17 @@ This preserves backward compatibility with existing deployments while preventing
 
 ## Appendix
 
-### Access Rules API Examples
+### Route Policies API Examples
 
-#### Create a Single Rule (`POST /v3/access_rules`)
+#### Create a Single Policy (`POST /v3/route_policies`)
 
 ```http
-POST /v3/access_rules
+POST /v3/route_policies
 ```
 
 ```json
 {
-  "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+  "source": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
   "metadata": {
     "labels": { "team": "payments" },
     "annotations": { "description": "Allow frontend to call payments API" }
@@ -347,8 +347,8 @@ POST /v3/access_rules
 
 ```json
 {
-  "guid": "rule-guid-1",
-  "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+  "guid": "policy-guid-1",
+  "source": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
   "created_at": "2026-03-25T10:00:00Z",
   "updated_at": "2026-03-25T10:00:00Z",
   "metadata": {
@@ -362,16 +362,16 @@ POST /v3/access_rules
     "organization": { "data": null }
   },
   "links": {
-    "self": { "href": "/v3/access_rules/rule-guid-1" },
+    "self": { "href": "/v3/route_policies/policy-guid-1" },
     "route": { "href": "/v3/routes/route-guid" }
   }
 }
 ```
 
-#### Update Metadata (`PATCH /v3/access_rules/:guid`)
+#### Update Metadata (`PATCH /v3/route_policies/:guid`)
 
 ```http
-PATCH /v3/access_rules/rule-guid-1
+PATCH /v3/route_policies/policy-guid-1
 ```
 
 ```json
@@ -386,7 +386,7 @@ PATCH /v3/access_rules/rule-guid-1
 #### List with Includes (for Auditing)
 
 ```http
-GET /v3/access_rules?include=route,app
+GET /v3/route_policies?include=route,app
 ```
 
 ```json
@@ -394,15 +394,15 @@ GET /v3/access_rules?include=route,app
   "pagination": {
     "total_results": 2,
     "total_pages": 1,
-    "first": { "href": "/v3/access_rules?page=1&per_page=50" },
-    "last": { "href": "/v3/access_rules?page=1&per_page=50" },
+    "first": { "href": "/v3/route_policies?page=1&per_page=50" },
+    "last": { "href": "/v3/route_policies?page=1&per_page=50" },
     "next": null,
     "previous": null
   },
   "resources": [
     {
-      "guid": "rule-guid-1",
-      "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+      "guid": "policy-guid-1",
+      "source": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
       "created_at": "2026-03-25T10:00:00Z",
       "updated_at": "2026-03-25T10:00:00Z",
       "metadata": {
@@ -416,13 +416,13 @@ GET /v3/access_rules?include=route,app
         "organization": { "data": null }
       },
       "links": {
-        "self": { "href": "/v3/access_rules/rule-guid-1" },
+        "self": { "href": "/v3/route_policies/policy-guid-1" },
         "route": { "href": "/v3/routes/route-guid" }
       }
     },
     {
-      "guid": "rule-guid-2",
-      "selector": "cf:app:app-guid-deleted",
+      "guid": "policy-guid-2",
+      "source": "cf:app:app-guid-deleted",
       "created_at": "2025-11-01T14:23:00Z",
       "updated_at": "2025-11-01T14:23:00Z",
       "metadata": {
@@ -436,7 +436,7 @@ GET /v3/access_rules?include=route,app
         "organization": { "data": null }
       },
       "links": {
-        "self": { "href": "/v3/access_rules/rule-guid-2" },
+        "self": { "href": "/v3/route_policies/policy-guid-2" },
         "route": { "href": "/v3/routes/route-guid" }
       }
     }
@@ -467,11 +467,11 @@ GET /v3/access_rules?include=route,app
 }
 ```
 
-In `rule-guid-2`, the `app` relationship is `null` because the referenced app (`app-guid-deleted`) no longer exists. The selector string is preserved so the caller can identify which GUID was referenced. Stale rules are visible at two levels: the `null` relationship on the resource itself, and the absence of the deleted app from the `included.apps` block.
+In `policy-guid-2`, the `app` relationship is `null` because the referenced app (`app-guid-deleted`) no longer exists. The source pattern is preserved so the caller can identify which GUID was referenced. Stale policies are visible at two levels: the `null` relationship on the resource itself, and the absence of the deleted app from the `included.apps` block.
 
 ### Scope Evaluation and Shared Routes
 
-GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `access_rules_scope` is set, GoRouter compares the caller's identity (extracted from the client certificate) against the **selected backend's** tags after load balancing:
+GoRouter's route table stores per-endpoint tags from the route-emitter, including `organization_id` and `space_id` for each destination app instance. When `route_policies_scope` is set, GoRouter compares the caller's identity (extracted from the client certificate) against the **selected backend's** tags after load balancing:
 
 | Scope | Check | Effect |
 |-------|-------|--------|
@@ -506,11 +506,11 @@ The tradeoff is that callers may see **intermittent 403 errors** if:
 
 This behavior is deterministic per request (the same backend selection produces the same authorization result) and becomes consistent when sticky sessions pin the caller to a specific backend.
 
-**Workaround for intentional cross-space sharing:** Developers who intentionally share a route across spaces and want all participating spaces to access all backends can add the shared org as an additional selector:
+**Workaround for intentional cross-space sharing:** Developers who intentionally share a route across spaces and want all participating spaces to access all backends can add the shared org as an additional source:
 
 ```bash
 # Allow any app in the shared org to reach this route
-cf add-access-rule apps.identity --source-org shared-org --hostname api
+cf add-route-policy apps.identity --source-org shared-org --hostname api
 ```
 
 This bypasses the space-level scope check by granting access at the org level.
@@ -519,16 +519,16 @@ This bypasses the space-level scope check by granting access at the org level.
 
 GoRouter extracts CF identity from Diego instance identity certificates regardless of `xfcc_format`. With `envoy` format, identity is parsed from pre-extracted Subject fields (`OU=app:<guid>,OU=space:<guid>,OU=organization:<guid>`). With `raw` format, GoRouter decodes the base64 certificate and extracts the same fields. The `envoy` format is more performant but both work identically for authorization.
 
-### Access Rules API Reference
+### Route Policies API Reference
 
 #### List Query Parameters
 
 | Parameter | Description |
 |-----------|-------------|
-| `guids` | Comma-delimited list of rule GUIDs to filter by |
+| `guids` | Comma-delimited list of policy GUIDs to filter by |
 | `route_guids` | Comma-delimited list of route guids to filter by |
-| `selectors` | Comma-delimited list of selectors to filter by |
-| `selector_resource_guids` | Comma-delimited list of GUIDs to filter by. CC performs a text-match against the selector string (e.g., `cf:app:<guid>`, `cf:space:<guid>`, `cf:org:<guid>`). Stale rule detection — identifying rules whose referenced GUID no longer exists — is the caller's responsibility. |
+| `sources` | Comma-delimited list of sources to filter by |
+| `source_guids` | Comma-delimited list of GUIDs to filter by. CC performs a text-match against the source pattern (e.g., `cf:app:<guid>`, `cf:space:<guid>`, `cf:org:<guid>`). Stale policy detection — identifying policies whose referenced GUID no longer exists — is the caller's responsibility. |
 | `include` | Comma-delimited list of related resources to include: `route`, `app`, `space`, `organization` |
 | `page` | Page to display (default: 1) |
 | `per_page` | Number of results per page (default: 50) |
@@ -536,44 +536,44 @@ GoRouter extracts CF identity from Diego instance identity certificates regardle
 
 #### Including Related Resources
 
-Access rules have **read-only** relationships for `app`, `space`, and `organization`. These relationships are:
+Route policies have **read-only** relationships for `app`, `space`, and `organization`. These relationships are:
 
-- **Populated by Cloud Controller** based on the selector type and whether the referenced resource exists
+- **Populated by Cloud Controller** based on the source type and whether the referenced resource exists
 - **Not settable by the user** — the `relationships` block in a `POST` or `PATCH` request only accepts `route`
-- **Updated automatically** when CC resolves the selector on each API response (not stored in the database)
+- **Updated automatically** when CC resolves the source on each API response (not stored in the database)
 
-| Selector type | Populated relationship | Others |
-|---------------|----------------------|--------|
+| Source type | Populated relationship | Others |
+|-------------|----------------------|--------|
 | `cf:app:<guid>` (exists) | `app: { data: { guid: "..." } }` | `space`, `organization` → `null` |
 | `cf:app:<guid>` (deleted) | `app: { data: null }` | `space`, `organization` → `null` |
 | `cf:space:<guid>` (exists) | `space: { data: { guid: "..." } }` | `app`, `organization` → `null` |
 | `cf:org:<guid>` (exists) | `organization: { data: { guid: "..." } }` | `app`, `space` → `null` |
 | `cf:any` | All `null` | — |
 
-When a relationship is non-null, the corresponding resource can be sideloaded via the `include` parameter (e.g., `include=app` returns the app object in the `included.apps` block). When the referenced resource no longer exists, the relationship data is `null` even though the selector string is preserved, making stale rules immediately visible without cross-referencing.
+When a relationship is non-null, the corresponding resource can be sideloaded via the `include` parameter (e.g., `include=app` returns the app object in the `included.apps` block). When the referenced resource no longer exists, the relationship data is `null` even though the source pattern is preserved, making stale policies immediately visible without cross-referencing.
 
 The `route` relationship is always present (required at creation time) and can also be sideloaded via `include=route`.
 
-#### Access Rule Lifecycle
+#### Route Policy Lifecycle
 
-Access rules have different cascade behaviors depending on which resource is deleted:
+Route policies have different cascade behaviors depending on which resource is deleted:
 
-| Deleted resource | Access rule behavior | Rationale |
+| Deleted resource | Route policy behavior | Rationale |
 |-----------------|---------------------|-----------|
-| **Route** | Access rule is **deleted** (cascade) | Access rules cannot exist without a route |
-| **App/Space/Org** (selector target) | Access rule is **preserved** | Metadata may contain useful context (see below) |
+| **Route** | Route policy is **deleted** (cascade) | Route policies cannot exist without a route |
+| **App/Space/Org** (source target) | Route policy is **preserved** | Metadata may contain useful context (see below) |
 
-When a selector's target resource is deleted (e.g., the app referenced by `cf:app:<guid>` is deleted), the access rule remains in place but becomes "stale":
+When a source's target resource is deleted (e.g., the app referenced by `cf:app:<guid>` is deleted), the route policy remains in place but becomes "stale":
 
-- The `selector` string is preserved (e.g., `cf:app:d76446a1-...`)
+- The source pattern is preserved (e.g., `cf:app:d76446a1-...`)
 - The corresponding relationship becomes `null` (e.g., `app: { data: null }`)
-- The rule no longer grants access (GoRouter cannot match a non-existent app's identity)
+- The policy no longer grants access (GoRouter cannot match a non-existent app's identity)
 
-**Why preserve stale rules?** The access rule's metadata (labels, annotations) may contain information the Space Developer needs to re-establish the rule:
+**Why preserve stale policies?** The route policy's metadata (labels, annotations) may contain information the Space Developer needs to re-establish the policy:
 
 ```json
 {
-  "selector": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
+  "source": "cf:app:d76446a1-f429-4444-8797-be2f78b75b08",
   "metadata": {
     "labels": { "team": "frontend" },
     "annotations": { 
@@ -587,9 +587,9 @@ When a selector's target resource is deleted (e.g., the app referenced by `cf:ap
 }
 ```
 
-When the frontend team deploys a new app with a different GUID, the Space Developer can contact them (using the annotation) to get the new GUID, then update or replace the access rule. Automatic deletion would lose this context.
+When the frontend team deploys a new app with a different GUID, the Space Developer can contact them (using the annotation) to get the new GUID, then update or replace the route policy. Automatic deletion would lose this context.
 
-Space Developers can query for stale rules and clean them up manually when appropriate. See the `selector_resource_guids` query parameter in [List Query Parameters](#list-query-parameters).
+Space Developers can query for stale policies and clean them up manually when appropriate. See the `source_guids` query parameter in [List Query Parameters](#list-query-parameters).
 
 ### Namespace Reservation
 
@@ -597,33 +597,33 @@ The `cf:` prefix is reserved for Cloud Foundry native identities. Future extensi
 
 ### Internal Implementation
 
-Cloud Controller stores access rules in a dedicated `route_access_rules` table. When syncing route information to Diego, Cloud Controller flattens these rules into RFC-0027 compliant route options:
+Cloud Controller stores route policies in a dedicated `route_policies` table. When syncing route information to Diego, Cloud Controller flattens these policies into RFC-0027 compliant route options:
 
 ```ruby
-# Access rules are converted to RFC-0027 compliant route options
+# Route policies are converted to RFC-0027 compliant route options
 route.options = {
-  "access_scope": "org",
-  "access_rules": "cf:app:guid1,cf:space:guid2"
+  "route_policy_scope": "org",
+  "route_policy_sources": "cf:app:guid1,cf:space:guid2"
 }
 ```
 
-This conversion happens transparently — developers interact only with the Access Rules API, not with raw route options. Cloud Controller filters `access_scope` and `access_rules` from the `/v3/routes` API responses; these fields are internal implementation details visible only in the Diego sync path.
+This conversion happens transparently — developers interact only with the Route Policies API, not with raw route options. Cloud Controller filters `route_policy_scope` and `route_policy_sources` from the `/v3/routes` API responses; these fields are internal implementation details visible only in the Diego sync path.
 
 #### GoRouter Authorization Behavior
 
-GoRouter determines authorization mode based on route options. It has no knowledge of domain-level settings — Cloud Controller translates `enforce_access_rules: true` into the presence of `access_scope` in route options during Diego sync.
+GoRouter determines authorization mode based on route options. It has no knowledge of domain-level settings — Cloud Controller translates `enforce_route_policies: true` into the presence of `route_policy_scope` in route options during Diego sync.
 
-- If route options contain `access_scope` → enforcement is active:
+- If route options contain `route_policy_scope` → enforcement is active:
   - Apply scope boundary (`any`, `org`, or `space`)
-  - If `access_rules` present → check caller against rules
-  - If no `access_rules` → deny all requests (default deny)
-- If route options do not contain `access_scope` → forward request without authorization checks
+  - If `route_policy_sources` present → check caller against policies
+  - If no `route_policy_sources` → deny all requests (default deny)
+- If route options do not contain `route_policy_scope` → forward request without authorization checks
 
 This builds on the route options framework from [RFC-0027: Generic Per-Route Features](rfc-0027-generic-per-route-features.md).
 
 ### Router Log Messages
 
-GoRouter emits `[RTR]` log lines to the application's log stream (visible via `cf logs`). The following messages cover authorization scenarios for identity-aware domains, including edge cases where access rules exist but authorization is not enforced.
+GoRouter emits `[RTR]` log lines to the application's log stream (visible via `cf logs`). The following messages cover authorization scenarios for identity-aware domains, including edge cases where route policies exist but authorization is not enforced.
 
 #### Successful Authorized Request
 
@@ -634,10 +634,10 @@ When a request passes both domain-level and route-level authorization:
   "GET /api/data HTTP/1.1" 200 1234
   x_forwarded_for:"10.0.1.5" x_forwarded_proto:"https"
   caller_app:"frontend-guid" caller_space:"space-guid" caller_org:"org-guid"
-  mtls_auth:"allowed" mtls_rule:"route:cf:app:frontend-guid"
+  mtls_auth:"allowed" mtls_policy:"route:cf:app:frontend-guid"
 ```
 
-The `caller_*` fields are extracted from the instance identity certificate. `mtls_auth:"allowed"` confirms authorization passed, and `mtls_rule` identifies which rule matched.
+The `caller_*` fields are extracted from the instance identity certificate. `mtls_auth:"allowed"` confirms authorization passed, and `mtls_policy` identifies which policy matched.
 
 #### Denied — Failed Domain-Level Scope Check
 
@@ -647,37 +647,37 @@ When the caller's identity does not match the operator's `scope` boundary for th
 [RTR] backend.apps.identity - [2026-03-20T10:15:01Z]
   "GET /api/data HTTP/1.1" 403 0
   caller_app:"attacker-guid" caller_space:"other-space-guid" caller_org:"other-org-guid"
-  mtls_auth:"denied" mtls_rule:"domain:scope=org"
+  mtls_auth:"denied" mtls_policy:"domain:scope=org"
   mtls_denied_reason:"caller org other-org-guid does not match selected backend org-guid"
 ```
 
-#### Denied — Failed Route-Level Access Rule Check
+#### Denied — Failed Route-Level Policy Check
 
-When the caller passes domain-level checks but has no matching access rule:
+When the caller passes domain-level checks but has no matching route policy:
 
 ```
 [RTR] backend.apps.identity - [2026-03-20T10:15:02Z]
   "GET /api/data HTTP/1.1" 403 0
   caller_app:"unknown-app-guid" caller_space:"same-space-guid" caller_org:"same-org-guid"
-  mtls_auth:"denied" mtls_rule:"route:access_rules"
-  mtls_denied_reason:"caller app unknown-app-guid not in access_rules"
+  mtls_auth:"denied" mtls_policy:"route:route_policies"
+  mtls_denied_reason:"caller app unknown-app-guid not in route_policies"
 ```
 
-#### Denied — No Access Rules Configured (Default Deny)
+#### Denied — No Route Policies Configured (Default Deny)
 
-When a route on an identity-aware domain has no access rules configured, the default-deny model rejects all requests:
+When a route on an identity-aware domain has no route policies configured, the default-deny model rejects all requests:
 
 ```
 [RTR] backend.apps.identity - [2026-03-20T10:15:03Z]
   "GET /api/data HTTP/1.1" 403 0
   caller_app:"frontend-guid" caller_space:"space-guid" caller_org:"org-guid"
-  mtls_auth:"denied" mtls_rule:"route:no_access_rules"
-  mtls_denied_reason:"route has no access rules configured"
+  mtls_auth:"denied" mtls_policy:"route:no_route_policies"
+  mtls_denied_reason:"route has no route policies configured"
 ```
 
 #### Denied — Identity Extraction Failed
 
-When the client certificate is valid but does not contain the expected CF identity fields (e.g., a partner certificate on a route with `access_scope` set):
+When the client certificate is valid but does not contain the expected CF identity fields (e.g., a partner certificate on a route with `route_policy_scope` set):
 
 ```
 [RTR] backend.apps.identity - [2026-03-20T10:15:05Z]
@@ -724,10 +724,10 @@ The two mechanisms can coexist. An application might use C2C networking for data
 
 #### Authorization Model Differences
 
-C2C network policies and this RFC's access rules have different authorization semantics:
+C2C network policies and this RFC's route policies have different authorization semantics:
 
 - **C2C**: A user creates a network policy allowing App A → App B. The user must have the [`network.write` scope](https://docs.cloudfoundry.org/devguide/deploy-apps/cf-networking.html#grant-permissions) (or Space Developer role with `enable_space_developer_self_service`) in **both** the source and destination spaces. The policy is directional and names specific source/destination pairs.
-- **Access rules (this RFC)**: The operator boundary allows callers within the configured scope. The developer creates access rules on their own route via Cloud Controller — they only need permissions in the destination space. There is no requirement for the caller's space to opt in.
+- **Route policies (this RFC)**: The operator boundary allows callers within the configured scope. The developer creates route policies on their own route via Cloud Controller — they only need permissions in the destination space. There is no requirement for the caller's space to opt in.
 
 This is intentional. This RFC's model is *destination-controlled*: the route owner decides who may call them, and the operator sets the maximum boundary. This matches how HTTP APIs typically work — the server defines its access policy. C2C's *bilateral* model (both sides must agree) is appropriate for Layer 4 network-level access where neither side is inherently the "server."
 
@@ -749,18 +749,18 @@ router:
 
 Cloud Controller domain registration:
 ```bash
-cf create-shared-domain apps.identity --enforce-access-rules --scope org
+cf create-shared-domain apps.identity --enforce-route-policies --scope org
 ```
 
-Application access rule configuration:
+Application route policy configuration:
 ```bash
 # Allow specific apps to call a route
-cf add-access-rule apps.identity --source-app frontend-app --hostname backend
-cf add-access-rule apps.identity --source-app monitoring-app --hostname backend
+cf add-route-policy apps.identity --source-app frontend-app --hostname backend
+cf add-route-policy apps.identity --source-app monitoring-app --hostname backend
 
-# List rules
-cf access-rules apps.identity --hostname backend
-# route                   selector                                       scope   source
+# List policies
+cf route-policies apps.identity --hostname backend
+# route                   source                                         scope   name
 # backend.apps.identity   cf:app:d76446a1-f429-4444-8797-be2f78b75b08    app     frontend-app
 # backend.apps.identity   cf:app:a1b2c3d4-e5f6-7890-abcd-ef1234567890    app     monitoring-app
 ```
@@ -768,7 +768,7 @@ cf access-rules apps.identity --hostname backend
 #### CF App-to-App Routing (Same-Space Boundary)
 
 ```bash
-cf create-shared-domain apps.identity --enforce-access-rules --scope space
+cf create-shared-domain apps.identity --enforce-route-policies --scope space
 ```
 
 With `scope: space`, callers must be from the same space as the selected backend. See [Scope Evaluation and Shared Routes](#scope-evaluation-and-shared-routes) for behavior when a route spans multiple spaces.
@@ -776,16 +776,16 @@ With `scope: space`, callers must be from the same space as the selected backend
 #### CF App-to-App Routing (Any Authenticated Caller)
 
 ```bash
-cf create-shared-domain apps.identity --enforce-access-rules --scope any
+cf create-shared-domain apps.identity --enforce-route-policies --scope any
 ```
 
-Route-level access rules control access:
+Route-level policies control access:
 ```bash
 # Allow any authenticated app (within operator scope)
-cf add-access-rule apps.identity --source-any --hostname public-api
+cf add-route-policy apps.identity --source-any --hostname public-api
 
 # Or allow all apps in a specific space
-cf add-access-rule apps.identity --source-space trusted-space --hostname internal-api
+cf add-route-policy apps.identity --source-space trusted-space --hostname internal-api
 ```
 
 #### External Client Certificate Validation (App-Level Authorization)
@@ -802,13 +802,13 @@ router:
 
 Cloud Controller domain registration:
 ```bash
-# Do NOT pass --enforce-access-rules — let the app handle authorization
+# Do NOT pass --enforce-route-policies — let the app handle authorization
 cf create-shared-domain partner.example.com
 ```
 
 In this configuration, GoRouter validates that the client certificate is signed by the partner CA, then forwards the XFCC header to the backend application. The application parses the XFCC header and performs its own authorization based on the certificate's Subject, SANs, or other fields.
 
-**Important:** If you pass `--enforce-access-rules` on a domain used for external partner certificates, requests will be denied unless the certificate contains CF identity OU fields. For external partner certificates that don't have CF identity, omit `--enforce-access-rules` and let the backend application handle authorization.
+**Important:** If you pass `--enforce-route-policies` on a domain used for external partner certificates, requests will be denied unless the certificate contains CF identity OU fields. For external partner certificates that don't have CF identity, omit `--enforce-route-policies` and let the backend application handle authorization.
 
 ### SNI-Host Validation Implementation
 
