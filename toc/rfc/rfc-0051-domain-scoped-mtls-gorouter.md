@@ -3,7 +3,7 @@
 - Name: Identity-Aware Routing for GoRouter
 - Start Date: 2026-02-16
 - Author(s): @rkoster, @beyhan, @maxmoehl
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: [community#1438](https://github.com/cloudfoundry/community/pull/1438)
 
 
