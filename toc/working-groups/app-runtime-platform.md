@@ -289,9 +289,9 @@ areas:
     github: tcdowney
   - name: Karthick Udayakumar
     github: kart2bc
-  reviewers:
   - name: Soha Alboghdady
     github: Soha-Albaghdady
+  reviewers:
   - name: Daria Anton
     github: Dariquest
   - name: Konstantin Lapkov
