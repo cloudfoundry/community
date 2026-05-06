@@ -3,8 +3,8 @@
 - Name: CF CLI v2 Plugins Transition Plan
 - Start Date: 2026-04-17
 - Author(s): @anujc25, @gerg, @vuil
-- Status: Draft
-- RFC Pull Request: TBD
+- Status: Accepted
+- RFC Pull Request: [community#1475](https://github.com/cloudfoundry/community/pull/1475)
 
 ## Summary
 
