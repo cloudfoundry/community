@@ -60,8 +60,6 @@ areas:
     github: hsinn0
   - name: Prateek Gangwal
     github: coolgang123
-  - name: Joe Eltgroth
-    github: joeeltgroth
   - name: Markus Strehle
     github: strehle
   - name: Daniel Linsley
@@ -69,8 +67,6 @@ areas:
   reviewers:
   - name: Duane May
     github: duanemay
-  - name: Behrouz Soroushian
-    github: bsoroushian
   - name: Ajita Jain
     github: jajita
   - name: Andrew Costa
@@ -90,8 +86,6 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   reviewers:
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Allan Yu
@@ -119,8 +113,6 @@ areas:
     github: ragaskar
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Colin Shield
     github: colins
   repositories:
@@ -242,8 +234,6 @@ areas:
     github: ramonskie
   - name: Aram Price
     github: aramprice
-  - name: Shilpa Chandrashekara
-    github: ShilpaChandrashekara
   - name: Joerg W
     github: joergdw
   - name: Ansh Rupani
@@ -252,14 +242,10 @@ areas:
     github: selzoc
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
   - name: Felix Moehler
@@ -314,14 +300,10 @@ areas:
     github: anshrupani
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
   - name: Felix Moehler
@@ -430,10 +412,11 @@ areas:
       github: benjaminguttmann-avtq
     - name: Gilles Miraillet
       github: gmllt
-    - name: Mario Di Miceli
-      github: mdimiceli
     - name: Nicolas Herbst
       github: nmaurer23
+  reviewers:
+    - name: Fabian Kittel
+      github: fkittelinger
   repositories:
     - cloudfoundry/bosh_exporter
     - cloudfoundry/cf_exporter
@@ -466,12 +449,8 @@ areas:
     github: anshrupani
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Julian Hjortshoj
     github: julian-hj
-  - name: Ming Xiao
-    github: mingxiao
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
   - name: Felix Moehler
@@ -500,8 +479,6 @@ areas:
     github: Benjamintf1
   - name: Sam Gunaratne
     github: samze
-  - name: Alex Rocha
-    github: xandroc
   - name: Jochen Ehret
     github: jochenehret
   - name: Greg Cobb
