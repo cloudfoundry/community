@@ -408,6 +408,9 @@ areas:
       github: gmllt
     - name: Nicolas Herbst
       github: nmaurer23
+  reviewers:
+    - name: Fabian Kittel
+      github: fkittelinger
   repositories:
     - cloudfoundry/bosh_exporter
     - cloudfoundry/cf_exporter
