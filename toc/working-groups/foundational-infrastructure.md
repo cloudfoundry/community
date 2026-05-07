@@ -60,8 +60,6 @@ areas:
     github: hsinn0
   - name: Prateek Gangwal
     github: coolgang123
-  - name: Joe Eltgroth
-    github: joeeltgroth
   - name: Markus Strehle
     github: strehle
   - name: Daniel Linsley
@@ -69,8 +67,6 @@ areas:
   reviewers:
   - name: Duane May
     github: duanemay
-  - name: Behrouz Soroushian
-    github: bsoroushian
   - name: Ajita Jain
     github: jajita
   - name: Andrew Costa
@@ -90,8 +86,6 @@ areas:
   - cloudfoundry/secure-credentials-broker
 - name: Disaster Recovery (BBR)
   reviewers:
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
   - name: Allan Yu
@@ -246,8 +240,6 @@ areas:
     github: selzoc
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -304,8 +296,6 @@ areas:
     github: anshrupani
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -450,8 +440,6 @@ areas:
     github: anshrupani
   - name: Nitin Ravindran
     github: xtreme-nitin-ravindran
-  - name: Nader Ziada
-    github: nader-ziada
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Benjamin Guttmann
@@ -482,8 +470,6 @@ areas:
     github: Benjamintf1
   - name: Sam Gunaratne
     github: samze
-  - name: Alex Rocha
-    github: xandroc
   - name: Jochen Ehret
     github: jochenehret
   - name: Greg Cobb
