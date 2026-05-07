@@ -236,11 +236,11 @@ areas:
     github: samze
   - name: Anuj Chaudhari
     github: anujc25
+  - name: Prem Kalle
+    github: prkalle
   reviewers:
   - name: Pete Levine
     github: PeteLevineA
-  - name: Prem Kalle
-    github: prkalle
   - name: Tim Downey
     github: tcdowney
   - name: Daria Anton
