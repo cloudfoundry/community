@@ -113,6 +113,8 @@ areas:
     github: ragaskar
   - name: Julian Hjortshoj
     github: julian-hj
+  - name: Colin Shield
+    github: colins
   repositories:
   - cloudfoundry/backup-and-restore-sdk-release
   - cloudfoundry/bosh-backup-and-restore
@@ -254,6 +256,8 @@ areas:
     github: KauzClay
   - name: Ned Petrov
     github: neddp
+  - name: Colin Shield
+    github: colins
   reviewers:
   - name: Allan Yu
     github: ay901246
@@ -314,6 +318,8 @@ areas:
     github: neddp
   - name: Maria Shaldybin
     github: mariash
+  - name: Colin Shield
+    github: colins
   reviewers:
   - name: Allan Yu
     github: ay901246
