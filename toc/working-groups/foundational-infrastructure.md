@@ -148,6 +148,8 @@ areas:
     github: praveenkalluri18
   - name: Joe Mahady
     github: joemahady-comm
+  - name: Georgi Genchev
+    github: gdgenchev
   repositories:
   - cloudfoundry/cf-identity-acceptance-tests-release
   - cloudfoundry/cf-uaa-lib
