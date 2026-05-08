@@ -200,6 +200,8 @@ areas:
     github: nookala
   - name: Serdar Özer
     github: serdarozerr
+  - name: Wei Quan
+    github: WeiQuan0605
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
