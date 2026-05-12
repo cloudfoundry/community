@@ -194,6 +194,7 @@ orgs:
         description: Test Releases for bosh-backup-and-restore
         has_projects: true
       bosh-bbl-ci-envs:
+        archived: true
         description: BOSH DNS release CI envs
         has_projects: false
         has_wiki: false
