@@ -3,8 +3,8 @@
 - Name: AWS European Sovereign Cloud Account for BOSH Stemcell Publishing
 - Start Date: 2026-02-25
 - Author(s): @I766702
-- Status: Draft
-- RFC Pull Request: (fill in with PR link after you submit it)
+- Status: Accepted
+- RFC Pull Request: [community#1441](https://github.com/cloudfoundry/community/pull/1441)
 
 
 ## Summary
