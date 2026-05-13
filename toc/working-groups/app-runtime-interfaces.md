@@ -185,8 +185,6 @@ areas:
     github: Benjamintf1
   - name: Sam Gunaratne
     github: samze
-  - name: Alex Rocha
-    github: xandroc
   - name: Jochen Ehret
     github: jochenehret
   reviewers:
