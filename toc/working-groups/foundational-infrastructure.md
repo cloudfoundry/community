@@ -516,12 +516,6 @@ areas:
 
 - name: Cloud Service Broker
   approvers:
-  - name: George Blue
-    github: blgm
-  - name: Felisia Martini
-    github: FelisiaM
-  - name: Marcela Campo
-    github: pivotal-marcela-campo
   - name: Georgi Dim. Dimitrov
     github: georgidimdimitrov
   - name: Bogomil Kuzmanov
