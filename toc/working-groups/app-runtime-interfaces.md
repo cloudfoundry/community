@@ -95,6 +95,8 @@ areas:
     github: plamen-bardarov
   - name: Ramon Makkelie
     github: ramonskie
+  - name: Kiril Keranov
+    github: kiril-keranov
   reviewers:
   - name: Wayne E. Seguin
     github: wayneeseguin
@@ -104,8 +106,6 @@ areas:
     github: ionphractal
   - name: Ivo Radkov
     github: ivo1116
-  - name: Kiril Keranov
-    github: kiril-keranov
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
