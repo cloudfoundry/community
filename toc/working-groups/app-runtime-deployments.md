@@ -50,6 +50,8 @@ areas:
     name: Oliver Heinrich
   - github: dtasSap
     name: Deniz Tas
+  - github: AttilaAlmasi
+    name: Attila Almasi
   approvers:
   - github: davewalter
     name: Dave Walter
