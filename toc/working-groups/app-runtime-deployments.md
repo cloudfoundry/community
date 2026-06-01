@@ -107,4 +107,5 @@ areas:
   - cloudfoundry/k8s-garden-client
   - cloudfoundry/k8s-policy-agent
   - cloudfoundry/kind-deployment
+  - cloudfoundry/cf-k8s-releases
 ```
