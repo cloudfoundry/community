@@ -648,6 +648,12 @@ orgs:
         archived: true
         default_branch: main
         has_projects: true
+      cf-k8s-releases:
+        allow_merge_commit: false
+        default_branch: main
+        description: k8s deploy assets (helm charts and dockerfiles) for Cloud Foundry
+        has_projects: false
+        has_wiki: false
       cf-k8s-secrets:
         default_branch: main
         has_projects: true
