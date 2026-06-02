@@ -30,7 +30,6 @@ orgs:
     - bosh-admin-bot
     - bosh-init-concourse
     - boyan-velinov
-    - bsoroushian
     - c0d1ngm0nk3y
     - cf-buildpacks-eng
     - cf-bosh-ci-bot
@@ -111,13 +110,11 @@ orgs:
     - mariash
     - metric-store-ci
     - metskem
-    - mingxiao
     - mkocher
     - modulo11
     - moggibear
     - moleske
     - mrosecrance
-    - nader-ziada
     - nand2
     - navinms711
     - neowulf
@@ -152,7 +149,6 @@ orgs:
     - services-api-ci
     - servicesenablement
     - sethboyles
-    - shilpachandrashekara
     - shilpamayanna
     - shrisha-c
     - silvestre
@@ -161,7 +157,6 @@ orgs:
     - spgreenberg
     - sp1goyal
     - ssunka
-    - sthielke
     - strehle
     - stuclem
     - svcboteos
@@ -182,7 +177,6 @@ orgs:
     - WeiQuan0605
     - ay901246
     - winkingturtle-vmw
-    - xandroc
     - xtreme-conor-nosal
     - xtreme-nitin-ravindran
     - Yavor16
@@ -192,7 +186,6 @@ orgs:
     - ystros
     - ZPascal
     - nookala
-    - joeeltgroth
     - jajita
     - hamideh-amini-khezrabad
     - Milena-Encheva
