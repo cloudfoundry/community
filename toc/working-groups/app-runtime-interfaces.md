@@ -97,6 +97,8 @@ areas:
     github: ramonskie
   - name: Kiril Keranov
     github: kiril-keranov
+  - name: Peter Paul Bakker
+    github: stokpop
   reviewers:
   - name: Wayne E. Seguin
     github: wayneeseguin
@@ -106,8 +108,6 @@ areas:
     github: ionphractal
   - name: Ivo Radkov
     github: ivo1116
-  - name: Peter Paul Bakker
-    github: stokpop
   repositories:
   - cloudfoundry/go-buildpack
   - cloudfoundry/go-buildpack-release
