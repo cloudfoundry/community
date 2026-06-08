@@ -29,6 +29,29 @@ branch-protection:
           required_status_checks:
             contexts:
               - "EasyCLA"
+              - "binary-buildpack-verify"
+              - "bosh-dns-verify"
+              - "capi-verify"
+              - "cf-networking-verify"
+              - "cflinuxfs4-verify"
+              - "credhub-verify"
+              - "diego-verify"
+              - "dotnet-core-buildpack-verify"
+              - "go-buildpack-verify"
+              - "java-buildpack-verify"
+              - "log-cache-verify"
+              - "loggregator-agent-verify"
+              - "loggregator-verify"
+              - "nfs-volume-verify"
+              - "nginx-buildpack-verify"
+              - "nodejs-buildpack-verify"
+              - "php-buildpack-verify"
+              - "python-buildpack-verify"
+              - "r-buildpack-verify"
+              - "routing-verify"
+              - "ruby-buildpack-verify"
+              - "staticfile-buildpack-verify"
+              - "uaa-verify"
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
