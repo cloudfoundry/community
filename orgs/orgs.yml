@@ -1099,6 +1099,10 @@ orgs:
         archived: true
         has_projects: true
         private: true
+      diego-db-helpers:
+        description: DB Helpers Shared by BBS + Locket
+        has_issues: false
+        has_projects: true
       diego-design-notes:
         archived: true
         description: Diego Architectural Design Musings and Explications
