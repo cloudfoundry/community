@@ -66,6 +66,23 @@ branch-protection:
           include: [ "^<default branch>$", "^v[0-9]*$"]  # note the surrounding ^...$ to avoid matching branches containing 'main' or 'v'
 ```
 
+#### Deploy Keys (opt-in)
+
+Repositories that require direct pushes via SSH deploy keys (e.g. automated releases that bypass PRs) can opt-in by listing them under `config.deploy_keys.repositories` in the working group charter yaml:
+
+```yaml
+config:
+  generate_rfc0015_branch_protection_rules: true
+  deploy_keys:
+    repositories:
+      - cloudfoundry/my-repo
+      - cloudfoundry/another-repo
+```
+
+For listed repositories the generated branch protection rule will have `enforce_admins: false` instead of the default `true`, allowing deploy key pushes to bypass branch protection. All other rules remain unchanged.
+
+Repositories listed here must also appear in one of the working group's area `repositories` lists. The automation validates this on every PR.
+
 Best Practices:
 - Replace github deploy keys by working group bot users. Branch protection rules enforce PRs for commits with deploy keys (enforce_admins=true).
 - Ensure that all bot users are members of the working group bots team or working group area bots team.

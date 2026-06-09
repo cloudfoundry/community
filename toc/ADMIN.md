@@ -104,4 +104,7 @@ config:
   github_project_sync:
     mapping:
       cloudfoundry: 31
+  deploy_keys:
+    repositories:
+    - cloudfoundry/homebrew-tap
 ```
