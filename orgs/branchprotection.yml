@@ -494,9 +494,7 @@ branch-protection:
           allow_force_pushes: false
           enforce_admins: false
           include:
-          - ^ubuntu-jammy$
-          - ^ubuntu-noble$
-          - ^v[0-9]*$
+          - ^ubuntu-[a-z]+$
           protect: true
           required_pull_request_reviews:
             bypass_pull_request_allowances:
