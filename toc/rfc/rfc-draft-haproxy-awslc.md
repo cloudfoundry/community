@@ -9,13 +9,13 @@
 
 ## Summary
 
-This proposal applies to HAProxy as deployed by haproxy-boshrelease, which Cloud Foundry uses as the HTTPS ingress in front of the Gorouter. It is **not** about the TCP Router shipped with cf-deployment, which is a separate component with a different role.
+**Note:** This proposal applies to HAProxy as deployed by haproxy-boshrelease, which Cloud Foundry uses as the HTTPS ingress in front of the Gorouter. It is **not** about the TCP Router shipped with cf-deployment, which is a separate component with a different role.
 
 Today, HAProxy is linked against the OpenSSL version provided by the BOSH stemcell. In practice that currently means OpenSSL 3.0.2 — significant TLS performance improvements have landed in OpenSSL 3.5, but adopting them requires a stemcell that ships OpenSSL 3.5, which is outside this release's control.
 
 Extend HAProxy with [AWS-LC](https://github.com/aws/aws-lc) as an optional TLS backend in Cloud Foundry's haproxy-boshrelease. AWS-LC is an open-source (Apache 2.0) cryptographic library maintained by AWS, based on BoringSSL, with a [FIPS 140-3 validated module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4816).
 
-Load testing demonstrates that AWS-LC delivers **43% lower CPU usage** and **65% higher peak TLS connection rate** compared to OpenSSL 3.0 for TLS handshakes. HAProxy upstream explicitly recommends against OpenSSL in production ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)).
+Load testing demonstrates that AWS-LC delivers **43% lower CPU usage** and **65% higher peak TLS connection rate** compared to OpenSSL 3.0 for TLS handshakes. Under FIPS, the gap widens further to **39% lower CPU** and **109% higher peak rate** (OpenSSL FIPS vs AWS-LC FIPS). HAProxy upstream explicitly recommends against OpenSSL in production ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)).
 
 The change is non-breaking: OpenSSL remains the default, and AWS-LC is offered as an opt-in variant alongside existing releases.
 
@@ -23,33 +23,23 @@ The change is non-breaking: OpenSSL remains the default, and AWS-LC is offered a
 
 HAProxy terminates all inbound TLS connections for Cloud Foundry. The TLS handshake is the most CPU-intensive operation on the ingress data path. Under connection-heavy workloads — rolling deployments, autoscaling events, short-lived connections — OpenSSL 3.0 becomes the bottleneck.
 
-### Measured Performance Gap
-
-Load testing on representative CF infrastructure (HAProxy 3.2.16, TLS 1.3, `oha --disable-keepalive` isolating handshake performance):
-
-| Metric | OpenSSL 3.0 | AWS-LC | Improvement |
-|--------|-------------|--------|-------------|
-| Peak new TLS connections/s (CPU saturated) | ~5,000 | ~8,100 | **+65%** |
-| CPU at 5,000 conn/s (c=20) | 86% | 49% | **-43%** |
-| CPU at 4,000 conn/s (c=40) | 62% | 44% | **-29%** |
-| p95 latency at 5,000 conn/s | 5.1ms | 3.5ms | **-32%** |
-| p95 latency at saturation (10k target) | 23.6ms | 11.2ms | **-53%** |
-
-With keepalive (no handshake per request), throughput is identical (~45k req/s). The difference is entirely in the **TLS handshake path**.
-
 ### Production Impact
 
-In real Cloud Foundry deployments the OpenSSL bottleneck appears at much lower connection rates than the synthetic numbers above suggest. The HAProxy maintainers attribute this to OpenSSL's poor performance under realistic ingress workloads — particularly when HAProxy also opens encrypted connections to backends, which doubles the TLS work per request ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)). With AWS-LC we expect HAProxy to handle load peaks substantially better than what the synthetic benchmarks alone would predict.
+In real Cloud Foundry deployments the OpenSSL bottleneck appears at lower connection rates than synthetic benchmarks alone would suggest. The HAProxy maintainers attribute this to OpenSSL's poor performance under realistic ingress workloads — particularly when HAProxy also opens encrypted connections to backends, which doubles the TLS work per request ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)). With AWS-LC we expect HAProxy to handle load peaks substantially better than what the synthetic benchmarks alone would predict.
 
-- **Connection storms**: During rolling deployments, all clients reconnect simultaneously.
-- **Tail latency**: Under load, OpenSSL's p95 grows to 23.6ms while AWS-LC stays at 11.2ms.
-- **Scaling costs**: The 43% CPU reduction at typical operating rates eliminates unnecessary horizontal scaling.
+- **Connection storms**: During rolling deployments and client reconnection waves, large numbers of new TLS handshakes arrive simultaneously and saturate the ingress.
+- **Tail latency**: Under load, OpenSSL's p95 handshake latency grows steeply while AWS-LC remains stable.
+- **Scaling costs**: The CPU reduction at typical operating rates eliminates unnecessary horizontal scaling and frees headroom for traffic spikes.
 
-### Upstream Recommendation
+### HAProxy Upstream Recommendation
 
-HAProxy maintainers explicitly recommend against OpenSSL, citing performance issues and architectural incompatibilities with OpenSSL 3.x's provider dispatch model ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)). HAProxy ships optimized code paths for AWS-LC via the `USE_OPENSSL_AWSLC` build flag.
+HAProxy maintainers explicitly recommend against OpenSSL, citing performance issues and architectural incompatibilities with OpenSSL 3.x's provider dispatch model ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)). HAProxy ships optimized code paths for AWS-LC via the `USE_OPENSSL_AWSLC=1` build flag, and HAProxy Technologies publishes a [State of SSL Stacks](https://www.haproxy.com/blog/state-of-ssl-stacks) review that recommends AWS-LC and ships [official Community Performance Packages compiled with AWS-LC](https://www.haproxy.com/company/news/haproxy-technologies-announces-availability-of-haproxy-community-performance-packages-compiled-with-aws-lc).
+
+Other TLS libraries supported by HAProxy were considered and rejected: WolfSSL requires a commercial production license, while upstream BoringSSL has no stable release cadence and no FIPS certification. AWS-LC is the only option that combines an open-source license, stable releases, FIPS 140-3 validation, and an HAProxy-optimized integration path.
 
 ## Proposal
+
+Extend the haproxy-boshrelease build matrix: keep the existing OpenSSL-based release as the default, and additionally ship slim single-variant releases for AWS-LC and AWS-LC FIPS — each available with and without custom HAProxy patches. In addition, ship one multi-variant release that bundles all six HAProxy binaries together and lets operators switch between TLS backends at deploy time via a BOSH property, without recompiling.
 
 ### Release Variants
 
@@ -67,13 +57,13 @@ The naming schema treats OpenSSL as the standard: the existing release keeps its
 | `awslc-fips-patched` | AWS-LC FIPS | FIPS with custom HAProxy patches |
 | `multi` | All of the above | Runtime-switchable, for migration |
 
-### Single-Variant Releases
+#### Single-Variant Releases
 
 Each single-variant release contains one monolithic `haproxy` package with only the blobs required for that specific TLS backend. The packaging script auto-detects which library to build based on the included blobs.
 
 These releases are **slim and deploy quickly**: only the necessary dependencies are compiled, and the release tarball contains no unused components. A typical OpenSSL deployment compiles in ~15 minutes; AWS-LC in ~25 minutes (including cmake).
 
-### Multi-Variant Release
+#### Multi-Variant Release
 
 The multi release bundles all six HAProxy binaries into a single deployment. A BOSH property selects the active variant at runtime:
 
@@ -116,6 +106,32 @@ The job wrapper resolves the binary path at startup:
 
 This ensures backward compatibility: existing deployments that use the single-variant `openssl` release continue to work without manifest changes.
 
+### Measured Performance Gap
+
+The tables below quantify the production scenarios described in the Problem section. Load testing on representative CF infrastructure (HAProxy 3.2.16, TLS 1.3, `oha --disable-keepalive` isolating handshake performance):
+
+| Metric | OpenSSL 3.0 | AWS-LC | Improvement |
+|--------|-------------|--------|-------------|
+| Peak new TLS connections/s (CPU saturated) | ~5,000 | ~8,100 | **+65%** |
+| CPU at 5,000 conn/s (c=20) | 86% | 49% | **-43%** |
+| CPU at 4,000 conn/s (c=40) | 62% | 44% | **-29%** |
+| p95 latency at 5,000 conn/s | 5.1ms | 3.5ms | **-32%** |
+| p95 latency at saturation (10k target) | 23.6ms | 11.2ms | **-53%** |
+
+With keepalive (no handshake per request), throughput is identical (~45k req/s). The difference is entirely in the **TLS handshake path**.
+
+### FIPS Performance Gap
+
+The same benchmark was repeated with FIPS-validated builds (OpenSSL 3.0.2 with the FIPS provider vs AWS-LC FIPS 3.3.0). Under FIPS, the gap is roughly twice as large as in the non-FIPS case:
+
+| Metric | OpenSSL FIPS | AWS-LC FIPS | Improvement |
+|--------|--------------|-------------|-------------|
+| Peak new TLS connections/s (CPU saturated) | ~3,500 | ~7,500 | **+109%** |
+| CPU at 2,000 conn/s | 49% | 30% | **-39%** |
+| p95 latency at 5,000 conn/s (c=20) | 11.5ms | 3.0ms | **-73%** |
+
+OpenSSL FIPS saturates at less than half the connection rate of AWS-LC FIPS. This is consistent with OpenSSL 3.0's provider dispatch model: every cryptographic operation pays an indirection cost that the FIPS provider compounds with additional self-test bookkeeping. AWS-LC's FIPS module is integrated directly into its TLS implementation without that overhead, so customers requiring FIPS compliance pay the *largest* performance penalty under OpenSSL — and gain the most from migrating to AWS-LC.
+
 ### Cipher and Curve Differences
 
 AWS-LC (both FIPS and non-FIPS) differs from OpenSSL in TLS cipher availability:
@@ -131,15 +147,6 @@ In practice this has no client impact: DHE is rarely required by modern clients,
 **Compatibility note**: A client would only break on AWS-LC if it supports **DHE but not ECDHE**. Such stacks predate ~2010 and also predate TLS 1.2. Under a TLS 1.2-minimum policy (already enforced in this deployment), they are filtered out at the protocol layer regardless of cipher selection — every client that can negotiate TLS 1.2 also supports ECDHE. Clients that currently happen to negotiate DHE will transparently fall back to ECDHE with no visible impact.
 
 Recommended curve configuration for AWS-LC: `X25519:P-256:P-384:P-521`
-
-### FIPS Verification
-
-The AWS-LC FIPS module is built from a frozen, certified source tree using a fixed compiler toolchain. To produce a FIPS-compliant binary, AWS-LC's build process runs a `delocate`/`inject_hash` step that rewrites assembly and embeds an integrity hash of the module into the resulting library. This step is implemented in Go, so a Go toolchain (~200MB) must be available at compile time. Go is only a build-time dependency — it is cleaned up after the FIPS library is built and is not part of the runtime.
-
-FIPS mode can be verified at runtime:
-
-- `haproxy -vv` reports "AWS-LC FIPS 3.3.0"
-- Stats socket: `SslFipsModeRuntime: 1`
 
 ### Version Management
 
@@ -162,25 +169,13 @@ Phased rollout:
 
 ## Alternatives Considered
 
-### WolfSSL
-
-HAProxy supports WolfSSL, but it requires a commercial license for production use. AWS-LC is fully open source (Apache 2.0 + ISC).
-
-### Tuning OpenSSL Configuration
-
-OpenSSL 3.x's provider dispatch architecture introduces per-operation overhead that cannot be eliminated through configuration. The HAProxy maintainers have stated this architectural mismatch is fundamental.
-
-### BoringSSL
-
-AWS-LC is a maintained fork of BoringSSL with stable releases, FIPS validation, and dedicated support. BoringSSL itself has no stable release cadence or FIPS certification.
-
-### Replacing HAProxy Entirely
-
-Alternatives like Envoy or nginx exist but would require rewriting the entire BOSH release, job templates, and operator tooling. The TLS library swap achieves the performance goal with minimal disruption.
+OpenSSL configuration tuning was evaluated but cannot eliminate OpenSSL 3.x's per-operation provider dispatch overhead, which is architectural. Replacing HAProxy entirely with Envoy or nginx would solve the TLS performance problem but require rewriting the entire BOSH release, job templates, and operator tooling — disproportionate scope for a TLS-library swap.
 
 ## References
 
 - [HAProxy issue #3086: Recommend against OpenSSL](https://github.com/haproxy/haproxy/issues/3086)
+- [HAProxy Technologies — State of SSL Stacks](https://www.haproxy.com/blog/state-of-ssl-stacks)
+- [HAProxy Technologies — Community Performance Packages compiled with AWS-LC](https://www.haproxy.com/company/news/haproxy-technologies-announces-availability-of-haproxy-community-performance-packages-compiled-with-aws-lc)
 - [AWS-LC GitHub](https://github.com/aws/aws-lc)
 - [AWS-LC FIPS 140-3 certificate #4816](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4816)
 - [oha load testing tool](https://github.com/hatoo/oha)
