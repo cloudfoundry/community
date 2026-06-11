@@ -133,10 +133,6 @@ areas:
 
 - name: Garden Containers
   approvers:
-  - name: Danail Branekov
-    github: danail-branekov
-  - name: George
-    github: georgethebeatle
   - name: Geoff Franks
     github: geofffranks
   - name: Maria Shaldybin
