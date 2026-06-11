@@ -15,7 +15,7 @@ Today, HAProxy is linked against the OpenSSL version provided by the BOSH stemce
 
 Extend HAProxy with [AWS-LC](https://github.com/aws/aws-lc) as an optional TLS backend in Cloud Foundry's haproxy-boshrelease. AWS-LC is an open-source (Apache 2.0) cryptographic library maintained by AWS, based on BoringSSL, with a [FIPS 140-3 validated module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4816).
 
-Load testing demonstrates that AWS-LC delivers **43% lower CPU usage** and **65% higher peak TLS connection rate** compared to OpenSSL 3.0 for TLS handshakes. Under FIPS, the gap widens further to **39% lower CPU** and **109% higher peak rate** (OpenSSL FIPS vs AWS-LC FIPS). HAProxy upstream explicitly recommends against OpenSSL in production ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)).
+Load testing demonstrates that AWS-LC delivers **43% lower CPU usage** and **65% higher peak TLS connection rate** compared to OpenSSL 3.0 for TLS handshakes. Under FIPS, the gap widens further to **45% lower CPU** and **125% higher peak rate** (OpenSSL FIPS vs AWS-LC FIPS). HAProxy upstream explicitly recommends against OpenSSL in production ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)).
 
 The change is non-breaking: OpenSSL remains the default, and AWS-LC is offered as an opt-in variant alongside existing releases.
 
@@ -126,7 +126,7 @@ The same benchmark was repeated with FIPS-validated builds (OpenSSL 3.0.2 with t
 
 | Metric | OpenSSL FIPS | AWS-LC FIPS | Improvement |
 |--------|--------------|-------------|-------------|
-| Peak new TLS connections/s (CPU saturated) | ~3,500 | ~7,500 | **+109%** |
+| Peak new TLS connections/s (CPU saturated, c=60) | 3,363 | 7,559 | **+125%** |
 | CPU at 2,000 conn/s | 49% | 30% | **-39%** |
 | p95 latency at 5,000 conn/s (c=20) | 11.5ms | 3.0ms | **-73%** |
 
