@@ -374,6 +374,7 @@ areas:
   - cloudfoundry/bosh-package-nginx-release
   - cloudfoundry/bosh-package-python-release
   - cloudfoundry/bosh-package-ruby-release
+  - cloudfoundry/bosh-package-rust-release
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-shared-ci
   - cloudfoundry/bosh-utils
@@ -563,6 +564,7 @@ config:
     - cloudfoundry/bosh-package-nginx-release
     - cloudfoundry/bosh-package-python-release
     - cloudfoundry/bosh-package-ruby-release
+    - cloudfoundry/bosh-package-rust-release
     - cloudfoundry/bosh-s3cli
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bpm-release
