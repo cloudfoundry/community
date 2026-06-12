@@ -354,6 +354,10 @@ orgs:
         description: Ruby release for use with `bosh vendor-package`
         default_branch: main
         has_projects: false
+      bosh-package-rust-release:
+        description: Rust release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
       bosh-linux-stemcell-builder:
         default_branch: ubuntu-jammy
         description: 'BOSH Ubuntu Linux stemcells '
