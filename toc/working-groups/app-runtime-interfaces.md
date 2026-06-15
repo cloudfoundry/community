@@ -337,11 +337,11 @@ areas:
     github: Yavor16
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
+  - name: Krasimir Kargov
+    github: karrgov
   - name: Stoyan Ivanov
     github: stiv03
   reviewers:
-  - name: Krasimir Kargov
-    github: karrgov
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
