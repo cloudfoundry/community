@@ -115,6 +115,7 @@ areas:
   - cloudfoundry/clock
   - cloudfoundry/debugserver
   - cloudfoundry/runtime-ci-pools
+  - cloudfoundry/diego-db-helpers
   - cloudfoundry/diego-logging-client
   - cloudfoundry/diego-release
   - cloudfoundry/diego-upgrade-stability-tests

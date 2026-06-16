@@ -97,6 +97,8 @@ areas:
     github: ramonskie
   - name: Kiril Keranov
     github: kiril-keranov
+  - name: Peter Paul Bakker
+    github: stokpop
   reviewers:
   - name: Wayne E. Seguin
     github: wayneeseguin

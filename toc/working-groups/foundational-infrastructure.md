@@ -374,6 +374,7 @@ areas:
   - cloudfoundry/bosh-package-nginx-release
   - cloudfoundry/bosh-package-python-release
   - cloudfoundry/bosh-package-ruby-release
+  - cloudfoundry/bosh-package-rust-release
   - cloudfoundry/bosh-psmodules
   - cloudfoundry/bosh-shared-ci
   - cloudfoundry/bosh-utils
@@ -541,4 +542,41 @@ config:
   github_project_sync:
     mapping:
       cloudfoundry: 21
+  deploy_keys:
+    repositories:
+    - cloudfoundry/bosh
+    - cloudfoundry/bosh-agent-index
+    - cloudfoundry/bosh-aws-cpi-release
+    - cloudfoundry/bosh-azure-storage-cli
+    - cloudfoundry/bosh-backup-and-restore
+    - cloudfoundry/bosh-cli
+    - cloudfoundry/bosh-cpi-go
+    - cloudfoundry/bosh-davcli
+    - cloudfoundry/bosh-deployment
+    - cloudfoundry/bosh-docker-cpi-release
+    - cloudfoundry/bosh-gcscli
+    - cloudfoundry/bosh-google-cpi-release
+    - cloudfoundry/bosh-io-releases-index
+    - cloudfoundry/bosh-io-stemcells-core-index
+    - cloudfoundry/bosh-io-stemcells-cpi-index
+    - cloudfoundry/bosh-io-web
+    - cloudfoundry/bosh-package-golang-release
+    - cloudfoundry/bosh-package-nginx-release
+    - cloudfoundry/bosh-package-python-release
+    - cloudfoundry/bosh-package-ruby-release
+    - cloudfoundry/bosh-package-rust-release
+    - cloudfoundry/bosh-s3cli
+    - cloudfoundry/bosh-warden-cpi-release
+    - cloudfoundry/bpm-release
+    - cloudfoundry/config-server
+    - cloudfoundry/credhub
+    - cloudfoundry/credhub-acceptance-tests
+    - cloudfoundry/credhub-api-site
+    - cloudfoundry/credhub-cli
+    - cloudfoundry/credhub-deployments
+    - cloudfoundry/credhub-oss-ci
+    - cloudfoundry/jumpbox-deployment
+    - cloudfoundry/postgres-release
+    - cloudfoundry/socks5-proxy
+    - cloudfoundry/windows-utilities-release
 ```

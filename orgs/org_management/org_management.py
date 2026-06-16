@@ -149,6 +149,17 @@ class OrgGenerator:
                         )
                         valid = False
 
+        # validate deploy_keys repos exist in WG areas
+        for org in OrgGenerator._MANAGED_ORGS:
+            for wg in self.working_groups[org]:
+                wg_name = wg["name"]
+                wg_repos = {r for a in wg["areas"] for r in a["repositories"]}
+                if "config" in wg and "deploy_keys" in wg["config"]:
+                    for repo in wg["config"]["deploy_keys"]["repositories"]:
+                        if repo not in wg_repos:
+                            print(f"ERROR: Working Group '{wg_name}' has repo '{repo}' in deploy_keys but not in any area's repositories.")
+                            valid = False
+
         return valid
 
     def get_contributors(self, org: str) -> set[str]:
@@ -347,7 +358,23 @@ class OrgGenerator:
                     "additionalProperties": False,
                 },
             },
-            "config": {"type": "object"},
+            "config": {
+                "type": "object",
+                "properties": {
+                    "github_project_sync": {"type": "object"},
+                    "deploy_keys": {
+                        "type": "object",
+                        "properties": {
+                            "repositories": {
+                                "type": "array",
+                                "items": {"type": "string"},
+                            },
+                        },
+                        "required": ["repositories"],
+                        "additionalProperties": False,
+                    },
+                },
+            },
         },
         "required": ["name", "execution_leads", "technical_leads", "bots", "areas"],
         "additionalProperties": False,
@@ -542,10 +569,13 @@ class OrgGenerator:
         repos = {r[org_prefix_len:] for a in wg["areas"] for r in a["repositories"] if r.startswith(org_prefix)}
         wg_name = f"wg-{wg['name']}"
         wg_bots = OrgGenerator._kebab_case(f"{wg_name}-bots")
+        deploy_key_repos: set[str] = set()
+        if "config" in wg and "deploy_keys" in wg["config"]:
+            deploy_key_repos = {r[len(org_prefix) :] for r in wg["config"]["deploy_keys"]["repositories"] if r.startswith(org_prefix)}
         return {
             repo: {
                 "protect": True,
-                "enforce_admins": True,
+                "enforce_admins": repo not in deploy_key_repos,
                 "allow_force_pushes": False,
                 "allow_deletions": False,
                 "allow_disabled_policies": True,  # needed to allow branches w/o branch protection

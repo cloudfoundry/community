@@ -89,15 +89,22 @@ areas:
     github: lnguyen
   - name: Rajan Agaskar
     github: ragaskar
+  - name: Duane May
+    github: duanemay
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
   - name: Credhub CLI
     github: credhub-ci-bot
+  - name: cf-uaa-ci-bot
+    github: cf-identity
   repositories:
   - cloudfoundry/homebrew-tap
 config:
   github_project_sync:
     mapping:
       cloudfoundry: 31
+  deploy_keys:
+    repositories:
+    - cloudfoundry/homebrew-tap
 ```

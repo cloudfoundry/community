@@ -354,6 +354,10 @@ orgs:
         description: Ruby release for use with `bosh vendor-package`
         default_branch: main
         has_projects: false
+      bosh-package-rust-release:
+        description: Rust release for use with `bosh vendor-package`
+        default_branch: main
+        has_projects: false
       bosh-linux-stemcell-builder:
         default_branch: ubuntu-jammy
         description: 'BOSH Ubuntu Linux stemcells '
@@ -648,6 +652,12 @@ orgs:
         archived: true
         default_branch: main
         has_projects: true
+      cf-k8s-releases:
+        allow_merge_commit: false
+        default_branch: main
+        description: k8s deploy assets (helm charts and dockerfiles) for Cloud Foundry
+        has_projects: false
+        has_wiki: false
       cf-k8s-secrets:
         default_branch: main
         has_projects: true
@@ -1093,6 +1103,10 @@ orgs:
         archived: true
         has_projects: true
         private: true
+      diego-db-helpers:
+        description: DB Helpers Shared by BBS + Locket
+        has_issues: false
+        has_projects: true
       diego-design-notes:
         archived: true
         description: Diego Architectural Design Musings and Explications
@@ -2771,6 +2785,7 @@ orgs:
         maintainers:
           - coolgang123
           - duanemay
+          - fhanik
           - hsinn0
           - peterhaochen47
           - acosta11

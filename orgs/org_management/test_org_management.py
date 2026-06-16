@@ -171,6 +171,80 @@ areas:
     name: WG3 Area5 Bot
 """
 
+wg_deploy_keys_valid = """
+name: WG DeployKeys Valid
+execution_leads:
+- name: Lead
+  github: lead-dk
+technical_leads:
+- name: Tech Lead
+  github: tech-lead-dk
+bots: []
+areas:
+- name: Area 1
+  approvers:
+  - github: approver1-dk
+    name: User 1
+  repositories:
+  - cloudfoundry/deploy-repo1
+  - cloudfoundry/deploy-repo2
+config:
+  deploy_keys:
+    repositories:
+    - cloudfoundry/deploy-repo1
+"""
+
+wg_deploy_keys_invalid = """
+name: WG DeployKeys Invalid
+execution_leads:
+- name: Lead
+  github: lead-dk-inv
+technical_leads:
+- name: Tech Lead
+  github: tech-lead-dk-inv
+bots: []
+areas:
+- name: Area 1
+  approvers:
+  - github: approver1-dk-inv
+    name: User 1
+  repositories:
+  - cloudfoundry/deploy-repo1
+config:
+  deploy_keys:
+    repositories:
+    - cloudfoundry/nonexistent-repo
+"""
+
+wg_deploy_keys_policy = """
+name: WG DeployKeys Policy
+execution_leads:
+- name: Lead
+  github: lead-dk-pol
+technical_leads:
+- name: Tech Lead
+  github: tech-lead-dk-pol
+bots: []
+areas:
+- name: Area 1
+  approvers:
+  - github: approver1-dk-pol
+    name: User 1
+  - github: approver2-dk-pol
+    name: User 2
+  - github: approver3-dk-pol
+    name: User 3
+  - github: approver4-dk-pol
+    name: User 4
+  repositories:
+  - cloudfoundry/repo-dk-deploy
+  - cloudfoundry/repo-dk-normal
+config:
+  deploy_keys:
+    repositories:
+    - cloudfoundry/repo-dk-deploy
+"""
+
 wg4_other_org = """
 name: WG4 Name
 org: cloudfoundry2
@@ -739,6 +813,22 @@ class TestOrgGenerator(unittest.TestCase):
         pr_reviews = repos_bp["repo5"]["required_pull_request_reviews"]
         self.assertEqual(1, pr_reviews["required_approving_review_count"])
         self.assertListEqual(["wg-wg3-name-bots", "wg-wg3-name-area-5-bots"], pr_reviews["bypass_pull_request_allowances"]["teams"])
+
+    def test_deploy_keys_in_repo_ownership_validates(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg_deploy_keys_valid])
+        self.assertTrue(o.validate_repo_ownership())
+
+    def test_deploy_keys_validation_fails_for_nonexistent_repo(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg_deploy_keys_invalid])
+        self.assertFalse(o.validate_repo_ownership())
+
+    def test_generate_wg_branch_protection_with_deploy_keys(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, branch_protection=branch_protection)
+        wg = OrgGenerator._yaml_load(wg_deploy_keys_policy)
+        OrgGenerator._validate_wg(wg)
+        repos_bp = o._generate_wg_branch_protection(wg)
+        self.assertFalse(repos_bp["repo-dk-deploy"]["enforce_admins"])
+        self.assertTrue(repos_bp["repo-dk-normal"]["enforce_admins"])
 
     def test_generate_branch_protection(self):
         o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1, wg2, wg3], branch_protection=branch_protection)
