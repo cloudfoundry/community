@@ -45,6 +45,8 @@ technical_leads:
 - name: Ioannis Tsouvalas
   github: itsouvalas
 
+bots: []
+
 areas:
 - name: Agentic Runtime
   approvers:
