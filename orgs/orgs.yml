@@ -23,6 +23,10 @@ orgs:
       admin-tools:
         has_projects: true
         private: true
+      agentic-runtime-notes:
+        default_branch: main
+        description: Research notes, design documents, and RFCs for the Agentic Runtime Working Group
+        has_projects: true
       api-docs:
         default_branch: main
         description: Cloud Controller API Docs
