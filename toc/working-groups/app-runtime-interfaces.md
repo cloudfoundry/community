@@ -337,6 +337,8 @@ areas:
     github: Yavor16
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
+  - name: Stoyan Ivanov
+    github: stiv03
   reviewers:
   - name: Stoyan Ivanov
     github: stiv03
