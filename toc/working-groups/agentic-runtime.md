@@ -58,6 +58,8 @@ areas:
     github: vlast3k
   - name: Arsalan Khan
     github: asalan316
+  - name: Kevin Rutten
+    github: krutten
   reviewers:
   - name: Tsvetelina Marinova
     github: ivanovac
@@ -69,6 +71,8 @@ areas:
     github: dudejas
   - name: Nicolas Herbst
     github: nmaurer23
+  - name: Rashid Rashidov
+    github: rrashidov
   repositories:
   - cloudfoundry/agentic-runtime-notes
 ```
