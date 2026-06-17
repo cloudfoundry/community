@@ -340,8 +340,6 @@ areas:
   - name: Stoyan Ivanov
     github: stiv03
   reviewers:
-  - name: Stoyan Ivanov
-    github: stiv03
   - name: Krasimir Kargov
     github: karrgov
   bots:
