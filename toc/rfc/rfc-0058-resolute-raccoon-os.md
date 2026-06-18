@@ -3,8 +3,8 @@
 - Name: Support Resolute Raccoon (26.04) as the CF Linux Operating System
 - Start Date: 2026-05-08
 - Author(s): @mkocher
-- Status: Draft
-- RFC Pull Request: [#1498](https://github.com/cloudfoundry/community/pull/1498)
+- Status: Accepted
+- RFC Pull Request: [community#1498](https://github.com/cloudfoundry/community/pull/1498)
 - Related RFCs: [rfc-0001-jammy-os](rfc-0001-jammy-os.md), [rfc-0026-noble-os](rfc-0026-noble-os.md)
 - Affected Component(s): bosh-linux-stemcell-builder, cf-deployment, assorted releases
 
