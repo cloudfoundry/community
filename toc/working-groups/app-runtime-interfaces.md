@@ -341,7 +341,7 @@ areas:
     github: karrgov
   - name: Stoyan Ivanov
     github: stiv03
-  reviewers:
+  reviewers: []
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
