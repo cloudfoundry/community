@@ -263,8 +263,6 @@ areas:
   reviewers:
   - name: Allan Yu
     github: ay901246
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
   - name: Ivaylo Ivanov
     github: ivaylogi98
   - name: Yuri Adam
@@ -300,8 +298,6 @@ areas:
     github: a-hassanin
   - name: Ansh Rupani
     github: anshrupani
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -325,8 +321,6 @@ areas:
   reviewers:
   - name: Allan Yu
     github: ay901246
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
   - name: Alexander Lais
     github: peanball
   - name: Ivaylo Ivanov
@@ -413,8 +407,6 @@ areas:
   approvers:
     - name: Benjamin Guttmann
       github: benjaminguttmann-avtq
-    - name: Gilles Miraillet
-      github: gmllt
     - name: Nicolas Herbst
       github: nmaurer23
   reviewers:
@@ -450,8 +442,6 @@ areas:
     github: a-hassanin
   - name: Ansh Rupani
     github: anshrupani
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Benjamin Guttmann
@@ -493,8 +483,6 @@ areas:
   reviewers:
   - name: Allan Yu
     github: ay901246
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
   - name: Alexander Lais
     github: peanball
   - name: Al Berez
