@@ -17,6 +17,8 @@ Extend HAProxy with [AWS-LC](https://github.com/aws/aws-lc) as an optional TLS b
 
 Load testing demonstrates that AWS-LC delivers **43% lower CPU usage** and **65% higher peak TLS connection rate** compared to OpenSSL 3.0 for TLS handshakes. Under FIPS, the gap widens further to **45% lower CPU** and **125% higher peak rate** (OpenSSL FIPS vs AWS-LC FIPS). HAProxy upstream explicitly recommends against OpenSSL in production ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)).
 
+In addition to the performance gap, AWS-LC ships native **post-quantum-safe TLS key exchange** (ML-KEM / Kyber), which OpenSSL 3.0 does not support. Adopting AWS-LC therefore unlocks a forward-looking security capability that the current stemcell-provided OpenSSL cannot offer, ahead of the upcoming OpenSSL 3.5 stemcell adoption.
+
 The change is non-breaking: OpenSSL remains the default, and AWS-LC is offered as an opt-in variant alongside existing releases.
 
 ## Problem
@@ -36,6 +38,23 @@ In real Cloud Foundry deployments the OpenSSL bottleneck appears at lower connec
 HAProxy maintainers explicitly recommend against OpenSSL, citing performance issues and architectural incompatibilities with OpenSSL 3.x's provider dispatch model ([haproxy#3086](https://github.com/haproxy/haproxy/issues/3086)). HAProxy ships optimized code paths for AWS-LC via the `USE_OPENSSL_AWSLC=1` build flag, and HAProxy Technologies publishes a [State of SSL Stacks](https://www.haproxy.com/blog/state-of-ssl-stacks) review that recommends AWS-LC and ships [official Community Performance Packages compiled with AWS-LC](https://www.haproxy.com/company/news/haproxy-technologies-announces-availability-of-haproxy-community-performance-packages-compiled-with-aws-lc).
 
 Other TLS libraries supported by HAProxy were considered and rejected: WolfSSL requires a commercial production license, while upstream BoringSSL has no stable release cadence and no FIPS certification. AWS-LC is the only option that combines an open-source license, stable releases, FIPS 140-3 validation, and an HAProxy-optimized integration path.
+
+### No Post-Quantum TLS Support in OpenSSL 3.0
+
+A growing class of security-sensitive workloads — financial integrations, long-lived B2B confidential data, government / healthcare connectors — has multi-decade confidentiality requirements that the **"harvest now, decrypt later"** threat model puts at risk. An adversary recording encrypted traffic today could decrypt it once a cryptographically relevant quantum computer exists. Mitigating this requires post-quantum-safe key exchange in TLS today, not at some future migration point.
+
+OpenSSL 3.0 — the version currently shipped by the stemcell — has **no native post-quantum key exchange or signature support.** Native ML-KEM (FIPS 203, "Kyber") and ML-DSA (FIPS 204, "Dilithium") only landed upstream in OpenSSL 3.5 (2025). PQ on OpenSSL 3.0 is only available via the third-party `oqs-provider` from the Open Quantum Safe project, which is a separate install and not part of any supported stemcell.
+
+AWS-LC, by contrast, ships native post-quantum support today:
+
+- **ML-KEM (Kyber, FIPS 203)** — TLS 1.3 hybrid named groups such as `X25519MLKEM768` that combine classical X25519 with ML-KEM-768. Used in production by AWS, Google, and Cloudflare.
+- **ML-DSA (Dilithium, FIPS 204)** — post-quantum signature scheme; deployable today on internal mTLS where both sides are controlled, and a forward path for public certificate signing once the CA ecosystem catches up.
+- **Hybrid groups** are TLS 1.3 named groups, configured via the existing `ssl-default-bind-curves` knob — no HAProxy code changes required to enable them.
+- AWS-LC's PQ algorithms are **FIPS 140-3 validated** as part of AWS-LC FIPS 3.3.0, so the FIPS variant retains PQ capability.
+
+For details on the algorithms and their integration in AWS-LC, see the upstream [PQREADME](https://github.com/aws/aws-lc/blob/main/crypto/fipsmodule/PQREADME.md).
+
+Adopting AWS-LC therefore closes a forward-looking security gap that cannot be closed within the current OpenSSL 3.0 stemcell. The capability is opt-in (operators must add a PQ named group to the curves list) and additive: clients without PQ support continue to negotiate classical curves with no behavioural change.
 
 ## Proposal
 
