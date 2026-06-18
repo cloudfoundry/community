@@ -84,43 +84,6 @@ areas:
   - cloudfoundry/credhub-oss-ci
   - cloudfoundry/credhub-perf-release
   - cloudfoundry/secure-credentials-broker
-- name: Disaster Recovery (BBR)
-  reviewers:
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
-  - name: Allan Yu
-    github: ay901246
-  approvers:
-  - name: Aram Price
-    github: aramprice
-  - name: Maya Rosecrance
-    github: mrosecrance
-  - name: Brian Upton
-    github: ystros
-  - name: Chris Selzo
-    github: selzoc
-  - name: Clay Kauzlaric
-    github: KauzClay
-  - name: Diego Lemos
-    github: dlresende
-  - name: George Blue
-    github: blgm
-  - name: Long Nguyen
-    github: lnguyen
-  - name: Nishad Mathur
-    github: alphasite
-  - name: Rajan Agaskar
-    github: ragaskar
-  - name: Julian Hjortshoj
-    github: julian-hj
-  - name: Colin Shield
-    github: colins
-  repositories:
-  - cloudfoundry/backup-and-restore-sdk-release
-  - cloudfoundry/bosh-backup-and-restore
-  - cloudfoundry/bosh-backup-and-restore-test-releases
-  - cloudfoundry/bosh-disaster-recovery-acceptance-tests
-  - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
@@ -332,66 +295,71 @@ areas:
   - name: Saumya Dudeja
     github: dudejas
   repositories:
-  - cloudfoundry/bbl-state-resource
-  - cloudfoundry/bosh
-  - cloudfoundry/bosh-acceptance-tests
-  - cloudfoundry/bosh-agent
-  - cloudfoundry/bosh-agent-index
-  - cloudfoundry/bosh-aws-cpi-release
-  - cloudfoundry/bosh-aws-light-stemcell-builder
-  - cloudfoundry/bosh-azure-cpi-release
-  - cloudfoundry/bosh-apt-resources
-  - cloudfoundry/bosh-bbl-ci-envs
-  - cloudfoundry/bosh-bootloader
-  - cloudfoundry/bosh-cli
-  - cloudfoundry/bosh-common
-  - cloudfoundry/bosh-cpi-certification
-  - cloudfoundry/bosh-cpi-go
-  - cloudfoundry/bosh-cpi-ruby
-  - cloudfoundry/bosh-deployment
-  - cloudfoundry/bosh-deployment-resource
-  - cloudfoundry/bosh-dns-aliases-release
-  - cloudfoundry/bosh-dns-release
-  - cloudfoundry/bosh-docker-cpi-release
-  - cloudfoundry/bosh-google-cpi-release
-  - cloudfoundry/bosh-io-releases
-  - cloudfoundry/bosh-io-releases-index
-  - cloudfoundry/bosh-io-stemcells-core-index
-  - cloudfoundry/bosh-io-stemcells-cpi-index
-  - cloudfoundry/bosh-io-stemcells-legacy-index
-  - cloudfoundry/bosh-io-stemcells-windows-index
-  - cloudfoundry/bosh-io-web
-  - cloudfoundry/bosh-io-worker
-  - cloudfoundry/bosh-linux-stemcell-builder
-  - cloudfoundry/bosh-openstack-cpi-release
-  - cloudfoundry/bosh-package-golang-release
-  - cloudfoundry/bosh-package-nginx-release
-  - cloudfoundry/bosh-package-python-release
-  - cloudfoundry/bosh-package-ruby-release
-  - cloudfoundry/bosh-package-rust-release
-  - cloudfoundry/bosh-psmodules
-  - cloudfoundry/bosh-shared-ci
-  - cloudfoundry/bosh-utils
-  - cloudfoundry/bosh-virtualbox-cpi-release
-  - cloudfoundry/bosh-vsphere-cpi-release
-  - cloudfoundry/bosh-warden-cpi-release
-  - cloudfoundry/bosh-windows-stemcell-builder
-  - cloudfoundry/bpm-release
-  - cloudfoundry/config-server
-  - cloudfoundry/config-server-release
-  - cloudfoundry/docs-bosh
-  - cloudfoundry/exemplar-release
-  - cloudfoundry/go-socks5
-  - cloudfoundry/gofileutils
-  - cloudfoundry/gosigar
-  - cloudfoundry/greenhouse-ci
-  - cloudfoundry/jumpbox-deployment
-  - cloudfoundry/os-conf-release
-  - cloudfoundry/sample-windows-bosh-release
-  - cloudfoundry/socks5-proxy
-  - cloudfoundry/stembuild
-  - cloudfoundry/usn-resource
-  - cloudfoundry/windows-utilities-release
+    - cloudfoundry/backup-and-restore-sdk-release
+    - cloudfoundry/bbl-state-resource
+    - cloudfoundry/bosh
+    - cloudfoundry/bosh-acceptance-tests
+    - cloudfoundry/bosh-agent
+    - cloudfoundry/bosh-agent-index
+    - cloudfoundry/bosh-apt-resources
+    - cloudfoundry/bosh-aws-cpi-release
+    - cloudfoundry/bosh-aws-light-stemcell-builder
+    - cloudfoundry/bosh-azure-cpi-release
+    - cloudfoundry/bosh-backup-and-restore
+    - cloudfoundry/bosh-backup-and-restore-test-releases
+    - cloudfoundry/bosh-bbl-ci-envs
+    - cloudfoundry/bosh-bootloader
+    - cloudfoundry/bosh-cli
+    - cloudfoundry/bosh-common
+    - cloudfoundry/bosh-cpi-certification
+    - cloudfoundry/bosh-cpi-go
+    - cloudfoundry/bosh-cpi-ruby
+    - cloudfoundry/bosh-deployment
+    - cloudfoundry/bosh-deployment-resource
+    - cloudfoundry/bosh-disaster-recovery-acceptance-tests
+    - cloudfoundry/bosh-dns-aliases-release
+    - cloudfoundry/bosh-dns-release
+    - cloudfoundry/bosh-docker-cpi-release
+    - cloudfoundry/bosh-google-cpi-release
+    - cloudfoundry/bosh-io-releases
+    - cloudfoundry/bosh-io-releases-index
+    - cloudfoundry/bosh-io-stemcells-core-index
+    - cloudfoundry/bosh-io-stemcells-cpi-index
+    - cloudfoundry/bosh-io-stemcells-legacy-index
+    - cloudfoundry/bosh-io-stemcells-windows-index
+    - cloudfoundry/bosh-io-web
+    - cloudfoundry/bosh-io-worker
+    - cloudfoundry/bosh-linux-stemcell-builder
+    - cloudfoundry/bosh-openstack-cpi-release
+    - cloudfoundry/bosh-package-golang-release
+    - cloudfoundry/bosh-package-nginx-release
+    - cloudfoundry/bosh-package-python-release
+    - cloudfoundry/bosh-package-ruby-release
+    - cloudfoundry/bosh-package-rust-release
+    - cloudfoundry/bosh-psmodules
+    - cloudfoundry/bosh-shared-ci
+    - cloudfoundry/bosh-utils
+    - cloudfoundry/bosh-virtualbox-cpi-release
+    - cloudfoundry/bosh-vsphere-cpi-release
+    - cloudfoundry/bosh-warden-cpi-release
+    - cloudfoundry/bosh-windows-stemcell-builder
+    - cloudfoundry/bpm-release
+    - cloudfoundry/config-server
+    - cloudfoundry/config-server-release
+    - cloudfoundry/docs-bosh
+    - cloudfoundry/exemplar-backup-and-restore-release
+    - cloudfoundry/exemplar-release
+    - cloudfoundry/go-socks5
+    - cloudfoundry/gofileutils
+    - cloudfoundry/gosigar
+    - cloudfoundry/greenhouse-ci
+    - cloudfoundry/jumpbox-deployment
+    - cloudfoundry/os-conf-release
+    - cloudfoundry/sample-windows-bosh-release
+    - cloudfoundry/socks5-proxy
+    - cloudfoundry/stembuild
+    - cloudfoundry/usn-resource
+    - cloudfoundry/windows-utilities-release
 - name: Ali Cloud VM deployment lifecycle (BOSH)
   approvers:
   - name: He Guimin
