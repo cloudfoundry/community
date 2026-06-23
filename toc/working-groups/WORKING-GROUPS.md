@@ -34,6 +34,7 @@ Most working groups manage a subset of repositories in the `cloudfoundry` GitHub
 
 The current working groups are:
 
+- Agentic Runtime
 - App Runtime Deployments
 - App Runtime Interfaces
 - App Runtime Platform
@@ -43,6 +44,28 @@ The current working groups are:
 - Paketo
 - Vulnerability Management
 - Concourse
+
+
+## Agentic Runtime
+
+Mission: To define and advance a shared vision for running AI agents and LLM-powered workloads as first-class citizens on Cloud Foundry.
+
+The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-agentic-runtime` topic.
+
+| Artifact                   | Link |
+| -------------------------- | ---- |
+| Charter                    | [agentic-runtime.md](./agentic-runtime.md) |
+| Forum                      | TBD |
+| Community Meeting Calendar | TBD |
+| Meeting Notes              | TBD |
+| Slack Channel              | [&#x23;ai-wg](https://cloudfoundry.slack.com/archives/C0B214KJ1HA) |
+
+| &nbsp;                                                   | Leads            | Company | Profile                                  |
+| -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
+| <img width="30px" src="https://github.com/beyhan.png"> | Beyhan Veli | SAP | [@beyhan](https://github.com/beyhan) |
+| <img width="30px" src="https://github.com/wayneeseguin.png"> | Wayne E. Seguin | FiveTwenty.io | [@wayneeseguin](https://github.com/wayneeseguin) |
+| <img width="30px" src="https://github.com/rkoster.png"> | Ruben Koster | Rabobank | [@rkoster](https://github.com/rkoster) |
+| <img width="30px" src="https://github.com/itsouvalas.png"> | Ioannis Tsouvalas | &nbsp; | [@itsouvalas](https://github.com/itsouvalas) |
 
 
 ## App Runtime Deployments
