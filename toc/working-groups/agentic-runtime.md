@@ -73,6 +73,8 @@ areas:
     github: nmaurer23
   - name: Rashid Rashidov
     github: rrashidov
+  - name: Gerd Alliu
+    github: al-gerd
   repositories:
   - cloudfoundry/agentic-runtime-notes
 ```
