@@ -532,6 +532,7 @@ config:
     - cloudfoundry/credhub-deployments
     - cloudfoundry/credhub-oss-ci
     - cloudfoundry/jumpbox-deployment
+    - cloudfoundry/os-conf-release
     - cloudfoundry/postgres-release
     - cloudfoundry/socks5-proxy
     - cloudfoundry/windows-utilities-release
