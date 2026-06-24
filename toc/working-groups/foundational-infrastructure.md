@@ -503,6 +503,7 @@ config:
     - cloudfoundry/bosh
     - cloudfoundry/bosh-agent-index
     - cloudfoundry/bosh-aws-cpi-release
+    - cloudfoundry/bosh-aws-light-stemcell-builder
     - cloudfoundry/bosh-azure-storage-cli
     - cloudfoundry/bosh-backup-and-restore
     - cloudfoundry/bosh-cli
