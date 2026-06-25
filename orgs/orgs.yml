@@ -482,6 +482,7 @@ orgs:
         has_projects: false
         has_wiki: false
       buildpackapplifecycle:
+        archived: true
         description: The bit that takes some bits, mashes them together with other
           bits, and produces a new bit
         has_projects: false
@@ -515,6 +516,7 @@ orgs:
         has_issues: false
         has_projects: true
       cacheddownloader:
+        archived: true
         description: A cached HTTP blob downloader
         has_issues: false
         has_projects: true
@@ -1321,6 +1323,7 @@ orgs:
       example-sidecar-buildpack:
         has_projects: true
       executor:
+        archived: true
         description: thy will be done
         has_issues: false
         has_projects: true
@@ -2155,6 +2158,7 @@ orgs:
         has_projects: true
         private: true
       rep:
+        archived: true
         description: Representative bids on tasks and schedules them on an associated
           Executor
         has_issues: false
