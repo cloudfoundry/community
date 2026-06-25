@@ -223,11 +223,11 @@ areas:
     github: neddp
   - name: Colin Shield
     github: colins
+  - name: Ivaylo Ivanov
+    github: ivaylogi98
   reviewers:
   - name: Allan Yu
     github: ay901246
-  - name: Ivaylo Ivanov
-    github: ivaylogi98
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
@@ -281,13 +281,13 @@ areas:
     github: mariash
   - name: Colin Shield
     github: colins
+  - name: Ivaylo Ivanov
+    github: ivaylogi98
   reviewers:
   - name: Allan Yu
     github: ay901246
   - name: Alexander Lais
     github: peanball
-  - name: Ivaylo Ivanov
-    github: ivaylogi98
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
