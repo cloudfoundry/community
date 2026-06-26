@@ -63,7 +63,7 @@ Enable ARM64 as a supported architecture through a phased approach, delivering t
 
 ### Phase 1: ARM64 Stemcell
 
-Publish an ARM64 BOSH stemcell based on the current CF Linux operating system (Ubuntu Jammy, and subsequently Noble/Resolute). The stemcell MUST include:
+Publish an ARM64 BOSH stemcell based on the current CF Linux operating system (Ubuntu Noble, and subsequently Resolute Raccoon as it becomes available). The stemcell MUST include:
 
 - ARM64 kernel and userspace
 - BOSH agent compiled for ARM64
@@ -149,7 +149,7 @@ Applications
 
 The Foundational Infrastructure Working Group owns `bosh-linux-stemcell-builder` and the BOSH agent. Work includes:
 
-- Extend `bosh-linux-stemcell-builder` to produce ARM64 stemcells (Ubuntu Jammy initially, Noble/Resolute when applicable)
+- Extend `bosh-linux-stemcell-builder` to produce ARM64 stemcells (Ubuntu Noble initially, Noble/Resolute Raccoon when applicable)
 - Validate the BOSH agent on ARM64 (POC has demonstrated this works)
 - Set up CI pipelines producing ARM64 stemcell builds (ARM64 CI workers will be provided)
 - Validate the BOSH Director (Ruby) operates correctly on ARM64 (POC validated 134 gems)
@@ -186,14 +186,14 @@ The App Runtime Deployments Working Group owns `cf-deployment`. Work includes:
 - Provide an ops-file enabling operators to deploy CF on ARM64
 - Validate the full CF deployment lifecycle (deploy, upgrade, scale) on ARM64
 
-## Paketo WG
+## App Runtime Interfaces WG (Classical Buildpacks)
 
-The Paketo Working Group owns buildpacks. Work includes:
+The ARI Working Group owns the classical buildpacks which have higher adoption in CF today. Note: ARM64 support for Cloud Native Buildpacks (CNBs) is already being addressed by the Paketo WG separately (see [ARM64 Paketo Buildpacks](https://www.cloudfoundry.org/blog/arm64-paketo-buildpacks/)). Work for classical buildpacks includes:
 
-- Produce ARM64 variants of all CF buildpack dependencies (JDK, Node.js, Python, Ruby, Go, .NET, PHP, nginx, R runtimes)
+- Produce ARM64 variants of classical buildpack dependencies (JDK, Node.js, Python, Ruby, Go, .NET, PHP, nginx runtimes)
 - Produce an ARM64 variant of the `cflinuxfs4` root filesystem
-- Validate buildpack `detect` and `compile` phases on ARM64 cells
-- Update buildpack CI to produce and test ARM64 artifacts
+- Validate classical buildpack `detect` and `compile` phases on ARM64 cells
+- Update classical buildpack CI to produce and test ARM64 artifacts
 
 ## All CF Release Authors
 
