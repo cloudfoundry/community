@@ -238,6 +238,8 @@ areas:
     github: metskem
   - name: Rene Dollevoet
     github: lodener
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -294,6 +296,8 @@ areas:
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   repositories:
     - cloudfoundry/backup-and-restore-sdk-release
     - cloudfoundry/bbl-state-resource
