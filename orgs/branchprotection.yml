@@ -371,6 +371,36 @@ branch-protection:
               teams: ["wg-app-runtime-interfaces-autoscaler-bots"]
           include: [ "^main$" ]
 
+        # Stratos
+        stratos:
+          protect: true
+          enforce_admins: false
+          allow_force_pushes: false
+          allow_deletions: false
+          allow_disabled_policies: true
+          required_status_checks:
+            contexts:
+            - "EasyCLA"
+            - "Lint Check"
+            - "Frontend Tests (core)"
+            - "Frontend Tests (store)"
+            - "Frontend Tests (cloud-foundry)"
+            - "Frontend Tests (kubernetes)"
+            - "Frontend Tests (git)"
+            - "Frontend Tests (shared)"
+            - "Frontend Tests (extension)"
+            - "Backend Tests"
+            - "Build Check"
+            - "STB Tests"
+          required_pull_request_reviews:
+            dismiss_stale_reviews: false
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+          # develop = dev integration (default); main = release line (rc + stable).
+          # main is pre-staged here; allow_disabled_policies tolerates it until the
+          # master->main rename lands. See cloudfoundry/stratos#5507.
+          include: [ "^develop$", "^main$" ]
+
         # Cloud Controller / CAPI related repos to skip branch protection on
         cf-performance-tests-pipeline:
           protect: false
