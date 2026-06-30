@@ -24,7 +24,7 @@ Technical assets for the Concourse working group are contained in the following 
 
 * [github.com/concourse](https://github.com/concourse)
 
-```
+```yaml
 name: Concourse
 execution_leads:
 - name: Derek Richard
@@ -36,6 +36,11 @@ technical_leads:
   github: drich10
 - name: Taylor Silva
   github: taylorsilva
+bots:
+- name: concourse-otto
+  github: concourse-otto
+- name: concourse-bot
+  github: concourse-bot
 areas:
 - name: Core
   approvers:
@@ -53,43 +58,43 @@ areas:
   - name: Kump3r
     github: Kump3r
   repositories:
-  - concourse/concourse
-  - concourse/concourse-bosh-release
-  - concourse/ci
-  - concourse/docs
-  - concourse/dex
-  - concourse/semver-resource
-  - concourse/houdini
-  - concourse/concourse-bosh-deployment
-  - concourse/registry-image-resource
-  - concourse/hg-resource
-  - concourse/github-release-resource
-  - concourse/bosh-io-stemcell-resource
-  - concourse/docker-image-resource
-  - concourse/rfcs
-  - concourse/blog
-  - concourse/concourse-chart
-  - concourse/mock-resource
-  - concourse/infrastructure
-  - concourse/concourse-docker
-  - concourse/git-resource
-  - concourse/examples
-  - concourse/flag
-  - concourse/s3-resource
-  - concourse/pool-resource
-  - concourse/resource-types-website
-  - concourse/resource-types
-  - concourse/oci-build-task
-  - concourse/time-resource
   - concourse/bosh-io-release-resource
+  - concourse/bosh-io-stemcell-resource
+  - concourse/ci
+  - concourse/concourse
+  - concourse/concourse-bosh-deployment
+  - concourse/concourse-bosh-release
+  - concourse/concourse-chart
+  - concourse/concourse-docker
+  - concourse/dex
+  - concourse/docker-image-resource
+  - concourse/docs
+  - concourse/examples
+  - concourse/git-resource
+  - concourse/github-release-resource
+  - concourse/hg-resource
+  - concourse/houdini
+  - concourse/infrastructure
+  - concourse/mock-resource
+  - concourse/oci-build-task
+  - concourse/pool-resource
+  - concourse/registry-image-resource
+  - concourse/resource-types
+  - concourse/resource-types-website
   - concourse/retryhttp
-  - concourse/prod
-  - concourse/booklit
-  - concourse/oxygen-mask
-  - concourse/datadog-event-resource
-  - concourse/office-hours #here and below is either archived, or we expect to archive in near the future
-  - concourse/governance
+  - concourse/rfcs
+  - concourse/s3-resource
+  - concourse/semver-resource
+  - concourse/time-resource
   - concourse/.github
+  # Repositories below this line are archived
+  - concourse/blog
+  - concourse/flag
+  - concourse/prod
+  - concourse/oxygen-mask
+  - concourse/office-hours
+  - concourse/governance
+  - concourse/datadog-event-resource
   - concourse/hush-house
   - concourse/tracker-resource
   - concourse/baggage-claim
