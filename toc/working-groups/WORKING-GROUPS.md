@@ -184,7 +184,7 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | -------------------------------------------------------- | ---------------- | ------- | --------------------------------------- |
 | <img width="30px" src="https://github.com/beyhan.png"> | Beyhan Veli       | SAP  | [@beyhan](https://github.com/beyhan) |
 | <img width="30px" src="https://github.com/rkoster.png"> | Ruben Koster     | Rabobank | [@rkoster](https://github.com/rkoster) |
-| <img width="30px" src="https://github.com/jpalermo.png"> | Joseph Palermo  | VMware  | [@jpalermo](https://github.com/jpalermo) |
+| <img width="30px" src="https://github.com/aramprice.png"> | aram price | Broadcom  | [@aramprice](https://github.com/aramprice) |
 
 
 ## Paketo
