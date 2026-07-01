@@ -47,9 +47,9 @@ areas:
     github: Spimtav
   - name: Harish Yayi
     github: yharish991
-  reviewers:
   - name: Ivan Chalukov
     github: IvanChalukov
+  reviewers:
   - name: Kump3r
     github: Kump3r
   repositories:
