@@ -31,6 +31,10 @@ Some CF ecosystem tools already have ARM64 builds:
 - **CF CLI** — already publishes ARM64 binaries
 - **ARM64 JDKs** — production-ready ARM64 JDKs are available
 
+### Developer Workflow Benefit
+
+ARM64 Linux support also benefits CF core developers on Apple Silicon MacBooks (M1/M2/M3/M4). All Go-based CF components can be cross-compiled locally using `GOOS=linux GOARCH=arm64`, enabling faster development and unit test iteration without needing remote infrastructure.
+
 # Proposal
 
 Enable ARM64 as a supported architecture through a phased approach, delivering the work across multiple working groups.
@@ -56,7 +60,7 @@ Enable ARM64 as a supported architecture through a phased approach, delivering t
 1. **Not breaking x86_64 support** — existing deployments continue unchanged
 2. **Not requiring CF operators to migrate** — ARM64 is optional, operators opt in
 3. **Not supporting 32-bit ARM** — only 64-bit ARM (aarch64)
-4. **Not supporting mixed-architecture Diego cells initially** — cells within a deployment are homogeneous per availability zone
+4. **Not requiring homogeneous deployments** — mixed-architecture deployments (ARM64 Diego cells alongside x86_64 control plane) are in scope following the existing Windows cell model with architecture-aware placement
 5. **Not creating provider-specific forks** — all work contributed upstream
 
 ## Phases
@@ -72,7 +76,7 @@ Publish an ARM64 BOSH stemcell based on the current CF Linux operating system (U
 
 ### Phase 2: Platform Component Validation
 
-All BOSH releases in `cf-deployment` MUST produce ARM64 binaries alongside x86_64. Go-based components SHOULD cross-compile via CI with `GOARCH=arm64`. Components with C dependencies (e.g., Garden-runC, runC) MUST be validated with native ARM64 compilation.
+All BOSH releases in `cf-deployment` MUST produce ARM64 binaries alongside x86_64. Go-based components SHOULD cross-compile via CI with `GOARCH=arm64`. Components with C dependencies (e.g., Garden-runC, runC) MUST be validated with native ARM64 compilation. Components shipping pre-compiled binary blobs (e.g., JDK in uaa-release) MUST include ARM64 variants of those blobs, with packaging scripts selecting the correct variant based on stemcell architecture (`uname -m`).
 
 ### Phase 3: ARM64 Stack and Buildpacks
 
