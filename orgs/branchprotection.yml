@@ -707,3 +707,5 @@ branch-protection:
           require_code_owner_reviews: true
           required_approving_review_count: 1
 
+    concourse:
+      repos: {}

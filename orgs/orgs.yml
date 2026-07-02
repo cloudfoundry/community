@@ -2819,3 +2819,18 @@ orgs:
         privacy: closed
         repos:
           terraform-provider-cloudfoundry: admin
+  concourse:
+    admins: [] # shall be empty, maintained in TOC.md
+    billing_email: ap@cloudfoundry.org
+    company: ""
+    default_repository_permission: none
+    description: An open-source continuous thing-doer, mostly used for CI/CD
+    email: contact@concourse-ci.org
+    has_organization_projects: true
+    has_repository_projects: true
+    location: Worldwide
+    members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
+    members_can_create_repositories: false
+    name: Concourse
+    repos: {}
+    teams: {}

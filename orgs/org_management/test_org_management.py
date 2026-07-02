@@ -359,7 +359,12 @@ branch-protection:
 class TestOrgGenerator(unittest.TestCase):
     @override
     def setUp(self) -> None:
+        self._original_managed_orgs = OrgGenerator._MANAGED_ORGS  # pyright: ignore[reportUninitializedInstanceVariable]
         OrgGenerator._MANAGED_ORGS = ["cloudfoundry"]
+
+    @override
+    def tearDown(self) -> None:
+        OrgGenerator._MANAGED_ORGS = self._original_managed_orgs
 
     def test_empty_org(self):
         o = OrgGenerator()
@@ -869,14 +874,18 @@ class TestOrgGenerator(unittest.TestCase):
 # integration test, depends on data in this repo which may change
 class TestOrgGeneratorIntegrationTest(unittest.TestCase):
     def test_cf_org(self):
-        self.assertEqual(["cloudfoundry"], OrgGenerator._MANAGED_ORGS)
+        self.assertEqual(["cloudfoundry", "concourse"], OrgGenerator._MANAGED_ORGS)
 
         o = OrgGenerator()
         o.load_from_project()
-        self.assertEqual(1, len(o.org_cfg["orgs"]))
+        self.assertEqual(2, len(o.org_cfg["orgs"]))
         self.assertEqual("cloudfoundry", o.toc_org)
         self.assertEqual("Technical Oversight Committee", o.toc["name"])
+
         self.assertGreater(len(o.contributors["cloudfoundry"]), 100)
+        self.assertGreater(len(o.contributors["concourse"]), 9)
+
+        # cloudfoundry WGs
         cf_wgs = o.working_groups["cloudfoundry"]
         self.assertGreater(len(cf_wgs), 5)
         self.assertEqual(1, len([wg for wg in cf_wgs if "Admin" in wg["name"]]))
@@ -888,29 +897,61 @@ class TestOrgGeneratorIntegrationTest(unittest.TestCase):
         # branch protection
         self.assertIn("cloudfoundry", o.branch_protection["branch-protection"]["orgs"])
 
+        # concourse WGs
+        concourse_wgs = o.working_groups["concourse"]
+        self.assertEqual(len(concourse_wgs), 1)
+        self.assertEqual(1, len([wg for wg in concourse_wgs if "Concourse" in wg["name"]]))
+        # no WGs without execution leads
+        self.assertEqual(0, len([wg for wg in concourse_wgs if len(wg["execution_leads"]) == 0]))
+        # branch protection
+        self.assertIn("concourse", o.branch_protection["branch-protection"]["orgs"])
+
         self.assertTrue(o.validate_repo_ownership())
 
         o.generate_org_members()
-        members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
-        admins = o.org_cfg["orgs"]["cloudfoundry"]["admins"]
-        self.assertGreater(len(members), 100)
-        self.assertGreater(len(admins), 7)  # 5 toc members + CFF technical staff
-        self.assertIn("cf-bosh-ci-bot", members)
+        # cloudfoundry
+        cf_members = o.org_cfg["orgs"]["cloudfoundry"]["members"]
+        cf_admins = o.org_cfg["orgs"]["cloudfoundry"]["admins"]
+        self.assertGreater(len(cf_members), 100)
+        self.assertGreater(len(cf_admins), 7)  # 5 toc members + CFF technical staff
+        self.assertIn("cf-bosh-ci-bot", cf_members)
+        # concourse
+        concourse_members = o.org_cfg["orgs"]["concourse"]["members"]
+        concourse_admins = o.org_cfg["orgs"]["concourse"]["admins"]
+        self.assertGreater(len(concourse_members), 9)
+        self.assertGreater(len(concourse_admins), 7)  # 5 toc members + CFF technical staff
+        self.assertIn("concourse-bot", concourse_members)
 
         o.generate_teams()
-        teams = o.org_cfg["orgs"]["cloudfoundry"]["teams"]
-        self.assertIn("wg-app-runtime-deployments", teams)
+        # cloudfoundry
+        cf_teams = o.org_cfg["orgs"]["cloudfoundry"]["teams"]
+        self.assertIn("wg-app-runtime-deployments", cf_teams)
         self.assertIn(
-            "cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment-approvers"]["repos"]
+            "cf-deployment", cf_teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-cf-deployment-approvers"]["repos"]
         )
-        self.assertIn("cf-deployment", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
-        self.assertIn("ard-wg-gitbot", teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
-        self.assertIn("toc", teams)
-        self.assertEqual(5, len(teams["toc"]["maintainers"]))
-        self.assertIn("community", teams["toc"]["repos"])
-        self.assertIn("wg-leads", teams)
-        self.assertIn("community", teams["wg-leads"]["repos"])
+        self.assertIn("cf-deployment", cf_teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["repos"])
+        self.assertIn("ard-wg-gitbot", cf_teams["wg-app-runtime-deployments"]["teams"]["wg-app-runtime-deployments-bots"]["members"])
+        self.assertIn("toc", cf_teams)
+        self.assertEqual(5, len(cf_teams["toc"]["maintainers"]))
+        self.assertIn("community", cf_teams["toc"]["repos"])
+        self.assertIn("wg-leads", cf_teams)
+        self.assertIn("community", cf_teams["wg-leads"]["repos"])
+
+        # concourse
+        concourse_teams = o.org_cfg["orgs"]["concourse"]["teams"]
+        self.assertIn("wg-concourse", concourse_teams)
+        self.assertIn("concourse-bosh-deployment", concourse_teams["wg-concourse"]["teams"]["wg-concourse-core-approvers"]["repos"])
+        self.assertIn("concourse-bosh-deployment", concourse_teams["wg-concourse"]["teams"]["wg-concourse-bots"]["repos"])
+        self.assertIn("concourse-bot", concourse_teams["wg-concourse"]["teams"]["wg-concourse-bots"]["members"])
+        self.assertIn("wg-leads", concourse_teams)
+        self.assertEqual(2, len(concourse_teams["wg-leads"]["members"]))
+        # concourse wg leads are also in cloudfoundry wg-leads to grant access to the community repo
+        self.assertIn("wg-leads-concourse", cf_teams)
+        self.assertEqual(2, len(cf_teams["wg-leads-concourse"]["members"]))
+        self.assertIn("community", cf_teams["wg-leads-concourse"]["repos"])
 
         o.generate_branch_protection()
-        bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
-        self.assertGreaterEqual(len(bp_repos), 3)
+        cf_bp_repos = o.branch_protection["branch-protection"]["orgs"]["cloudfoundry"]["repos"]
+        self.assertGreaterEqual(len(cf_bp_repos), 300)
+        concourse_bp_repos = o.branch_protection["branch-protection"]["orgs"]["concourse"]["repos"]
+        self.assertGreaterEqual(len(concourse_bp_repos), 30)
