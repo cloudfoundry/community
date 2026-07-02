@@ -787,3 +787,5 @@ branch-protection:
             - "AWS S3 Public Read Integration"
             - "AWS S3 US Integration"
             - "S3 Compatible Integration"
+    concourse:
+      repos: {}
