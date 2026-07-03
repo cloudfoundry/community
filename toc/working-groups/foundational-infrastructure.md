@@ -348,7 +348,6 @@ areas:
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bosh-windows-stemcell-builder
     - cloudfoundry/bpm-release
-    - cloudfoundry/config-server
     - cloudfoundry/config-server-release
     - cloudfoundry/docs-bosh
     - cloudfoundry/exemplar-backup-and-restore-release
@@ -529,7 +528,6 @@ config:
     - cloudfoundry/bosh-s3cli
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bpm-release
-    - cloudfoundry/config-server
     - cloudfoundry/credhub
     - cloudfoundry/credhub-acceptance-tests
     - cloudfoundry/credhub-api-site
