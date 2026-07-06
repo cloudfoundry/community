@@ -30,10 +30,11 @@ Some CF ecosystem tools already have ARM64 builds:
 - **BOSH CLI** — already publishes ARM64 binaries
 - **CF CLI** — already publishes ARM64 binaries
 - **ARM64 JDKs** — production-ready ARM64 JDKs are available
+- **Paketo Cloud Native Buildpacks** — already ARM64 compatible (see [ARM64 Paketo Buildpacks](https://www.cloudfoundry.org/blog/arm64-paketo-buildpacks/))
 
 ### Developer Workflow Benefit
 
-ARM64 Linux support also benefits CF core developers on Apple Silicon MacBooks (M1/M2/M3/M4). All Go-based CF components can be cross-compiled locally using `GOOS=linux GOARCH=arm64`, enabling faster development and unit test iteration without needing remote infrastructure.
+ARM64 Linux support also benefits CF core developers on Apple Silicon MacBooks (M1/M2/M3/M4). All Go-based CF components can be cross-compiled locally using `GOOS=linux GOARCH=arm64`, enabling faster development and unit test iteration without needing remote infrastructure. Additionally, an ARM64 stemcell would enable running BOSH with the Docker CPI natively on Apple Silicon (see [bosh-deployment#497](https://github.com/cloudfoundry/bosh-deployment/issues/497)), giving developers a fully local CF environment without Rosetta emulation issues. Validating this local BOSH-lite workflow on Apple Silicon is included in the testing scope.
 
 # Proposal
 
@@ -81,6 +82,11 @@ All BOSH releases in `cf-deployment` MUST produce ARM64 binaries alongside x86_6
 ### Phase 3: ARM64 Stack and Buildpacks
 
 An ARM64 variant of the `cflinuxfs4` root filesystem and ARM64-compiled buildpack dependencies MUST be produced to enable `cf push` application staging on ARM64 cells.
+Key considerations for buildpack ARM64 support (informed by Paketo's experience):
+- **Binary storage:** Architecture-specific blobs stored and accessed separately, selected at staging time based on cell architecture
+- **Update monitoring:** Dependency update processes must be architecture-aware, checking for both x86_64 and ARM64 releases
+- **Buildpack size:** Architecture-specific buildpack variants (separate downloads per arch) are preferred over bundling both architectures into a single buildpack to avoid doubling download size
+- **Release pipelines:** Existing pipeline assumptions around single-architecture artifacts will need to be extended
 
 ### Phase 4: Multi-Architecture Deployment Support
 
