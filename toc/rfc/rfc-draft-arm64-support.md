@@ -81,7 +81,8 @@ All BOSH releases in `cf-deployment` MUST produce ARM64 binaries alongside x86_6
 
 ### Phase 3: ARM64 Stack and Buildpacks
 
-An ARM64 variant of the `cflinuxfs4` root filesystem and ARM64-compiled buildpack dependencies MUST be produced to enable `cf push` application staging on ARM64 cells.
+An ARM64 variant of the `cflinuxfs5` (Noble) root filesystem and ARM64-compiled buildpack dependencies MUST be produced to enable `cf push` application staging on ARM64 cells.
+
 Key considerations for buildpack ARM64 support (informed by Paketo's experience):
 - **Binary storage:** Architecture-specific blobs stored and accessed separately, selected at staging time based on cell architecture
 - **Update monitoring:** Dependency update processes must be architecture-aware, checking for both x86_64 and ARM64 releases
