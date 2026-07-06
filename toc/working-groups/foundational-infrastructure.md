@@ -528,6 +528,7 @@ config:
     - cloudfoundry/bosh-s3cli
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bpm-release
+    - cloudfoundry/config-server-release
     - cloudfoundry/credhub
     - cloudfoundry/credhub-acceptance-tests
     - cloudfoundry/credhub-api-site
