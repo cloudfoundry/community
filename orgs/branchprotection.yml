@@ -381,16 +381,13 @@ branch-protection:
           required_status_checks:
             contexts:
             - "EasyCLA"
-            - "Lint Check"
-            - "Frontend Tests (core)"
-            - "Frontend Tests (store)"
-            - "Frontend Tests (cloud-foundry)"
-            - "Frontend Tests (kubernetes)"
-            - "Frontend Tests (git)"
-            - "Frontend Tests (shared)"
-            - "Frontend Tests (extension)"
-            - "Backend Tests"
-            - "Build Check"
+            # PR Quality Gate is the in-repo aggregate (runs on every PR via
+            # `if: always()` and fails on any failed/cancelled suite job).
+            # Requiring it instead of each suite job lets docs-only PRs skip
+            # the suite without the skipped matrix shards blocking merges as
+            # forever-"expected" contexts. STB Tests runs from its own
+            # workflow and is not covered by the aggregate, so it stays.
+            - "PR Quality Gate"
             - "STB Tests"
           required_pull_request_reviews:
             dismiss_stale_reviews: false
