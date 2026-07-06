@@ -49,7 +49,6 @@ areas:
     github: yharish991
   - name: Ivan Chalukov
     github: IvanChalukov
-  reviewers:
   - name: Kump3r
     github: Kump3r
   repositories:

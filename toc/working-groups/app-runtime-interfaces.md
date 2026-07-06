@@ -384,6 +384,8 @@ areas:
     github: patzeltj
   - name: Matthias Folz
     github: mafolz
+  - name: Bart Kuijper
+    github: Bartan89
 
   repositories:
   - cloudfoundry/stratos
