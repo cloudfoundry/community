@@ -47,11 +47,10 @@ areas:
     github: Spimtav
   - name: Harish Yayi
     github: yharish991
-  - name: Kump3r
-    github: Kump3r
-  reviewers:
   - name: Ivan Chalukov
     github: IvanChalukov
+  - name: Kump3r
+    github: Kump3r
   repositories:
   - concourse/concourse
   - concourse/concourse-bosh-release
