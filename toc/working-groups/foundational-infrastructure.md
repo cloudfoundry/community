@@ -238,6 +238,8 @@ areas:
     github: metskem
   - name: Rene Dollevoet
     github: lodener
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -294,6 +296,8 @@ areas:
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   repositories:
     - cloudfoundry/backup-and-restore-sdk-release
     - cloudfoundry/bbl-state-resource
@@ -344,7 +348,6 @@ areas:
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bosh-windows-stemcell-builder
     - cloudfoundry/bpm-release
-    - cloudfoundry/config-server
     - cloudfoundry/config-server-release
     - cloudfoundry/docs-bosh
     - cloudfoundry/exemplar-backup-and-restore-release
@@ -525,7 +528,7 @@ config:
     - cloudfoundry/bosh-s3cli
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bpm-release
-    - cloudfoundry/config-server
+    - cloudfoundry/config-server-release
     - cloudfoundry/credhub
     - cloudfoundry/credhub-acceptance-tests
     - cloudfoundry/credhub-api-site

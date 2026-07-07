@@ -962,13 +962,14 @@ orgs:
         has_projects: false
         has_wiki: false
       config-server:
+        archived: true
         description: Example config server that integrates with BOSH Director
         has_projects: false
         has_wiki: false
       config-server-release:
         description: Example BOSH release for config server
         has_projects: true
-        homepage: https://github.com/cloudfoundry/config-server
+        homepage: https://github.com/cloudfoundry/config-server-release
       concourse-infra-for-fiwg:
         description: This repo holds the deployment tooling used to deploy a Concourse instance for the Foundation Infrastructure Working Group
         default_branch: main
