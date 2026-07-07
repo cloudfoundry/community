@@ -1,0 +1,8 @@
+-------------------------------------------------------------
+name: Samuel Gaist
+ID: sgaist
+info:
+  - employer: Idiap Research Institute
+-------------------------------------------------------------
+
+Nomination Statement: I am presently a paketo buildpacks maintainer for the Python and Go buildpacks. I started out as a user and contributed from time to time to fix or update things for my work. Having become more active, @jericop asked whether becoming a maintainer of the Python buildpacks would interest me. Question to which I answered yes. Later on, as part of my work and more precisely the development of the Renku platform, I wanted to add support for the uv and Pixi package managers. This ended up in the creation of the Python consolidation RFC which I implemented with the goal of simplifying the maintenance of the Python buildpacks ecosystem and make adding new package managers simpler (i.e. a reduced number of buildpacks to achieve the same output). This lead to the creation of two new buildpacks, that will "replace them all", that were donated to the Paketo organization once they were ready so it would benefit the larger community in the long term. Beside that, I have been active in keeping things rolling on the CI side for the Python and Go buildpacks by fixing pipelines here and there as well as un-breaking some dependencies changes. @dmikusa suggested joining the Steering Committee has an other venue to help with the project. I believe I could also been helpful on that front. We might be using the buildpacks in an unconventional setting which could bring fresh ideas moving forward.
