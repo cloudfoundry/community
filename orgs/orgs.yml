@@ -1,7 +1,14 @@
----
 orgs:
   cloudfoundry:
-    admins: [] # shall be empty, maintained in TOC.md
+    admins:
+    - beyhan
+    - christopherclark
+    - cweibel
+    - Gerg
+    - ramiyengar
+    - rkoster
+    - stephanme
+    - thelinuxfoundation
     billing_email: ap@cloudfoundry.org
     company: ""
     default_repository_permission: none
@@ -10,25 +17,256 @@ orgs:
     has_organization_projects: true
     has_repository_projects: true
     location: Worldwide
-    members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
+    members:
+    - a-b
+    - a-hassanin
+    - a18e
+    - abg
+    - accrazed
+    - acosta11
+    - adrianhoelzl-sap
+    - agnello-noronha
+    - akop
+    - al-gerd
+    - alchen1218
+    - ali-tkang
+    - Alphasite
+    - ameowlia
+    - anita-flegg
+    - anshrupani
+    - anthonydahanne
+    - ANUGRAHG
+    - anujc25
+    - app-autoscaler-ci-bot
+    - appruntimeplatform-bot
+    - aramprice
+    - ard-wg-gitbot
+    - ard-wg-k8s-gitbot
+    - ari-wg-gitbot
+    - arjun024
+    - asalan316
+    - AttilaAlmasi
+    - ay901246
+    - b1tamara
+    - benjaminguttmann-avtq
+    - Benjamintf1
+    - Bhuvisha03
+    - Birdrock
+    - blgm
+    - bogomil-kuzmanov
+    - bonzofenix
+    - bosh-admin-bot
+    - boyan-velinov
+    - c0d1ngm0nk3y
+    - cf-bosh-ci-bot
+    - cf-buildpacks-eng
+    - cf-cli-eng
+    - cf-frontend
+    - cf-gitbot
+    - cf-identity
+    - cf-infra-bot
+    - cf-logging-metrics-bot
+    - cf-mta-deploy-bot
+    - cf-prometheus-ci-bot
+    - cf-rabbit-bot
+    - CFN-CI
+    - chombium
+    - colins
+    - coolgang123
+    - credhub-ci-bot
+    - Cryogenics-CI
+    - ctlong
+    - danail-branekov
+    - Dariquest
+    - davewalter
+    - dennisjbell
+    - dilipmighty245
+    - dimivel
+    - dlinsley
+    - dlresende
+    - dmikusa
+    - Dray56
+    - dtasSap
+    - duanemay
+    - dudejas
+    - ebroberson
+    - emmjohnson
+    - evanfarrar
+    - FelisiaM
+    - fhanik
+    - fkittelinger
+    - FloThinksPi
+    - fmoehler
+    - ForestEckhardt
+    - gdgenchev
+    - geigerj0
+    - geofffranks
+    - georgethebeatle
+    - georgidimdimitrov
+    - gogolok
+    - gururajsh
+    - hamideh-amini-khezrabad
+    - haochenhu233
+    - hoffmaen
+    - hsinn0
+    - iaftab-alam
+    - ikasarov
+    - ionphractal
+    - ireneGonzalezRuiz
+    - itsouvalas
+    - IvanBorislavovDimitrov
+    - ivanovac
+    - Ivaylogi98
+    - ivo1116
+    - jcvrabo
+    - jericop
+    - jhvhs
+    - joaopapereira
+    - Jobsby
+    - jochenehret
+    - joemahady-comm
+    - joergdw
+    - johha
+    - jorbaum
+    - joshuatcasey
+    - julian-hj
+    - karrgov
+    - kart2bc
+    - kathap
+    - KauzClay
+    - Kehrlann
+    - kimago
+    - kiril-keranov
+    - klapkov
+    - korifi-bot
+    - krutten
+    - lechnerc77
+    - lnguyen
+    - lodener
+    - loewenstein-sap
+    - Lokowandtg
+    - mafolz
+    - MarcPaquette
+    - mariash
+    - mauricebrinkmann
+    - maxmoehl
+    - metric-store-ci
+    - metskem
+    - mhdawson
+    - Milena-Encheva
+    - mkocher
+    - modulo11
+    - moleske
+    - Mrizwanshaik
+    - mrosecrance
+    - mtekel
+    - mvach
+    - navinms711
+    - neddp
+    - nicolasbender
+    - nmaurer23
+    - nookala
+    - norman-abramovitz
+    - nouseforaname
+    - oliver-heinrich
+    - OliverMautschke
+    - pacostas
+    - patzeltj
+    - paulcwarren
+    - pbusko
+    - pcf-core-services-writer
+    - peanball
+    - PeteLevineA
+    - peterhaochen47
+    - philippthun
+    - pivotal-david-osullivan
+    - pivotal-marcela-campo
+    - plamen-bardarov
+    - PlamenDoychev
+    - plowin
+    - praveenkalluri18
+    - prkalle
+    - ragaskar
+    - ramonskie
+    - rashedkvm
+    - RichardJJG
+    - robdimsdale
+    - rrashidov
+    - ryanwittrup
+    - s-yonkov-yonkov
+    - s4heid
+    - salzmannsusan
+    - Samze
+    - Sascha-Stoj
+    - selzoc
+    - serdarozerr
+    - servicesenablement
+    - sethboyles
+    - shilpamayanna
+    - shrisha-c
+    - silvestre
+    - simonjjones
+    - sneal
+    - Soha-Albaghdady
+    - sophiewigmore
+    - sp1goyal
+    - spgreenberg
+    - ssunka
+    - sthielke
+    - stiv03
+    - stokpop
+    - strehle
+    - stuclem
+    - svcboteos
+    - svkrieger
+    - t-schoell
+    - tack-sap
+    - tas-runtime-bot
+    - tcdowney
+    - teddyking
+    - theghost5800
+    - thomasthal
+    - tnikolova82
+    - tomkennedy513
+    - tristanpoland
+    - uzabanov
+    - vipinvkmenon
+    - vkalapov
+    - vlast3k
+    - vuil
+    - wayneeseguin
+    - weili-broadcom
+    - WeiQuan0605
+    - winkingturtle-vmw
+    - xiaozhu36
+    - xtreme-nitin-ravindran
+    - Yavor16
+    - ystros
+    - yuriadam-sap
+    - ZPascal
     members_can_create_repositories: false
     name: Cloud Foundry
     repos:
       .github:
         has_projects: true
       CLAW:
+        allow_merge_commit: false
         description: The CF CLI download redirection web application
         has_projects: true
         has_wiki: false
       admin-tools:
         has_projects: true
         private: true
+      agentic-runtime-notes:
+        default_branch: main
+        description: Research notes, design documents, and RFCs for the Agentic Runtime
+          Working Group
+        has_projects: true
       api-docs:
         default_branch: main
         description: Cloud Controller API Docs
         has_projects: true
       app-autoscaler:
-        archived: false
         default_branch: main
         description: Auto Scaling for CF Applications
         has_projects: true
@@ -36,7 +274,6 @@ orgs:
         archived: true
         description: The CI part of the app-autoscaler project
         has_projects: true
-        private: true
       app-autoscaler-cli-plugin:
         default_branch: main
         description: CF CLI Plugin for the App AutoScaler
@@ -44,22 +281,28 @@ orgs:
       app-autoscaler-env-bbl-state:
         default_branch: main
         has_projects: true
+        has_wiki: false
         private: true
       app-autoscaler-release:
+        archived: true
         default_branch: main
+        description: Automated scaling for apps running on Cloud Foundry
         has_projects: true
       app-autoscaler-ui:
         archived: true
         description: A UI project for the Cloud Foundry incubator app-autoscaler
         has_projects: true
       app-runtime-deployments-infrastructure:
-        description: Infrastructure as Code for the App Runtime Deployments Working Group
-        has_projects: true
         default_branch: main
+        description: Infrastructure as Code for the App Runtime Deployments Working
+          Group
+        has_projects: true
       app-runtime-interfaces-infrastructure:
-        description: Infrastructure as Code for the App Runtime Interfaces Working Group
-        has_projects: true
         default_branch: main
+        description: Infrastructure as Code for the App Runtime Interfaces Working
+          Group
+        has_projects: true
+        has_wiki: false
       app-runtime-platform-envs:
         default_branch: main
         description: bbl state files for App Runtime Platform Working Group environments
@@ -72,16 +315,22 @@ orgs:
         archived: true
         has_projects: true
       archiver:
+        allow_merge_commit: false
+        default_branch: main
         description: Utilities for extracting and compressing tgz and zip files.
         has_issues: false
         has_projects: true
       auction:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Auction encodes Diego's long-running-process distribution algorithm
         has_issues: false
         has_projects: true
       auctioneer:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Runs diego auctions
         has_issues: false
         has_projects: true
@@ -98,11 +347,15 @@ orgs:
         description: a concourse resource for manipulating bbl states
         has_projects: true
       bbs:
+        allow_merge_commit: false
+        default_branch: main
         description: Internal API to access the database for Diego.
         has_issues: false
         has_projects: true
       benchmarkbbs:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Diego BBS Benchmark
         has_issues: false
         has_projects: true
@@ -152,9 +405,21 @@ orgs:
         has_wiki: false
       bosh-agent-index:
         has_projects: true
+      bosh-ali-storage-cli:
+        default_branch: main
+        description: Go CLI for Alibaba storage
+        has_projects: true
+      bosh-alicloud-cpi-release:
+        description: BOSH Alibaba CPI
+        has_projects: true
+        has_wiki: false
       bosh-alicloud-light-stemcell-builder:
         description: Builds light stemcells for Alibaba Cloud from a "full" bosh stemcell
         has_projects: true
+      bosh-apt-resources:
+        description: Builds debian packages for public bosh apt repository
+        has_projects: false
+        has_wiki: false
       bosh-aws-cpi-release:
         description: BOSH AWS CPI
         has_projects: true
@@ -172,21 +437,9 @@ orgs:
         has_projects: true
         has_wiki: false
       bosh-azure-storage-cli:
+        default_branch: main
         description: Go CLI for Azure storage
         has_projects: true
-        default_branch: main
-      bosh-alicloud-cpi-release:
-        description: BOSH Alibaba CPI
-        has_projects: true
-        default_branch: master
-      bosh-ali-storage-cli:
-        description: Go CLI for Alibaba storage
-        has_projects: true
-        default_branch: main
-      bosh-apt-resources:
-        description: Builds debian packages for public bosh apt repository
-        has_projects: false
-        has_wiki: false
       bosh-backup-and-restore:
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
@@ -208,9 +461,9 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-bootloader-ci-envs:
-        archived: true
         allow_merge_commit: false
         allow_squash_merge: false
+        archived: true
         default_branch: main
         description: state files for bbl ci environments
         has_projects: false
@@ -275,11 +528,8 @@ orgs:
         description: BOSH Docker CPI
         has_projects: true
         has_wiki: false
-      bosh_exporter:
-        description: BOSH Prometheus Exporter
-        default_branch: master
-        has_projects: false
       bosh-gcscli:
+        default_branch: main
         description: GCS for BOSH
         has_projects: false
         has_wiki: false
@@ -287,73 +537,61 @@ orgs:
         description: BOSH Google CPI
         has_projects: true
       bosh-google-light-stemcell-builder:
+        archived: true
         description: Builds light stemcells for GCP from a "full" bosh stemcell
         has_projects: false
         has_wiki: false
-        archived: true
-      bosh-io-releases-index:
-        description: Index of all release assets
-        default_branch: main
-        has_projects: false
       bosh-io-releases:
+        default_branch: main
         description: List of releases tracked by bosh.io
-        default_branch: main
         has_projects: false
+        has_wiki: false
+      bosh-io-releases-index:
+        default_branch: main
+        description: Index of all release assets
+        has_issues: false
+        has_projects: false
+        has_wiki: false
       bosh-io-stemcells-core-index:
+        default_branch: main
         description: Stemcell index produced by BOSH core team
-        default_branch: main
+        has_issues: false
         has_projects: false
+        has_wiki: false
       bosh-io-stemcells-cpi-index:
+        default_branch: main
         description: Stemcell index for light stemcells (AWS, GCP, Oracle, ...)
-        default_branch: main
+        has_issues: false
         has_projects: false
+        has_wiki: false
       bosh-io-stemcells-legacy-index:
+        archived: true
         description: bosh-hub combined stemcell index
-        default_branch: main
         has_projects: false
-        archived: true
+        has_wiki: false
       bosh-io-stemcells-softlayer-index:
+        archived: true
+        default_branch: main
         description: Stemcell index produced by Softlayer CPI team
-        default_branch: main
+        has_issues: false
         has_projects: false
-        archived: true
+        has_wiki: false
       bosh-io-stemcells-windows-index:
+        default_branch: main
         description: Stemcell index produced by BOSH Windows team
-        default_branch: main
+        has_issues: false
         has_projects: false
+        has_wiki: false
       bosh-io-web:
+        default_branch: main
         description: Web frontend for https://bosh.io
-        default_branch: main
         has_projects: false
+        has_wiki: false
       bosh-io-worker:
+        default_branch: main
         description: Worker for pulling in bosh.io assets
-        default_branch: main
         has_projects: false
-      bosh-package-cf-cli-release:
-        description: BOSH release of Cloud Foundry CLI
-        default_branch: main
-        has_projects: false
-      bosh-package-golang-release:
-        description: Golang release for use with `bosh vendor-package`
-        default_branch: main
-        has_projects: false
-      bosh-package-java-release:
-        description: Java release for OpenJDK for use with `bosh vendor-package`
-        default_branch: main
-        has_projects: false
-        archived: true
-      bosh-package-nginx-release:
-        description: Nginx release for use with `bosh vendor-package`
-        default_branch: main
-        has_projects: false
-      bosh-package-python-release:
-        description: Python release for use with `bosh vendor-package`
-        default_branch: main
-        has_projects: false
-      bosh-package-ruby-release:
-        description: Ruby release for use with `bosh vendor-package`
-        default_branch: main
-        has_projects: false
+        has_wiki: false
       bosh-linux-stemcell-builder:
         default_branch: ubuntu-jammy
         description: 'BOSH Ubuntu Linux stemcells '
@@ -371,23 +609,63 @@ orgs:
         has_issues: false
         has_projects: true
         private: true
+      bosh-package-cf-cli-release:
+        allow_merge_commit: false
+        default_branch: main
+        description: BOSH release of Cloud Foundry CLI
+        has_projects: false
+        has_wiki: false
+        homepage: https://github.com/cloudfoundry/cli
+      bosh-package-golang-release:
+        default_branch: main
+        description: Golang release for use with `bosh vendor-package`
+        has_projects: false
+        has_wiki: false
+      bosh-package-java-release:
+        archived: true
+        default_branch: main
+        description: Java release for OpenJDK for use with `bosh vendor-package`
+        has_projects: false
+        has_wiki: false
+      bosh-package-nginx-release:
+        default_branch: main
+        description: Nginx release for use with `bosh vendor-package`
+        has_projects: false
+        has_wiki: false
+      bosh-package-python-release:
+        default_branch: main
+        description: Python release for use with `bosh vendor-package`
+        has_projects: false
+        has_wiki: false
+      bosh-package-ruby-release:
+        default_branch: main
+        description: Ruby release for use with `bosh vendor-package`
+        has_projects: false
+        has_wiki: false
+      bosh-package-rust-release:
+        default_branch: main
+        description: Rust release for use with `bosh vendor-package`
+        has_projects: false
       bosh-psmodules:
         archived: true
         default_branch: windows-2019
         description: PowerShell modules for building Windows Stemcells
         has_projects: false
       bosh-s3cli:
+        default_branch: main
         description: Go CLI for S3
         has_projects: false
         has_wiki: false
       bosh-shared-ci:
-        description: Concourse CI tasks intended to be used across many different projects
+        default_branch: main
+        description: Concourse CI tasks intended to be used across many different
+          projects
         has_projects: false
         has_wiki: false
       bosh-softlayer-cpi-release:
+        archived: true
         description: An external BOSH CPI for the SoftLayer cloud written in Golang
         has_projects: true
-        archived: true
       bosh-stemcell-resource:
         archived: true
         has_projects: true
@@ -431,11 +709,15 @@ orgs:
       bosh-workstation:
         allow_merge_commit: false
         allow_squash_merge: false
+        archived: true
         description: Get your workstation setup to work on the bosh team
         has_projects: false
         has_wiki: false
-        archived: true
         private: true
+      bosh_exporter:
+        description: BOSH Prometheus Exporter
+        has_projects: false
+        has_wiki: false
       bosh_rackspace_cpi_spike:
         description: An experimental/unsupported/untested CPI for Rackspace
         has_projects: true
@@ -445,14 +727,19 @@ orgs:
         description: isolated bosh jobs
         has_projects: false
         has_wiki: false
+      branchprotection-test:
+        default_branch: main
+        has_projects: true
       brats:
+        archived: true
         description: Buildpack Runtime Acceptance Tests
         has_projects: false
         has_wiki: false
       brokerapi:
+        allow_merge_commit: false
+        default_branch: main
         description: A Go package for implementing the V2 Open Service Broker API
         has_projects: false
-        has_wiki: true
       bsdtar:
         archived: true
         has_projects: true
@@ -474,6 +761,7 @@ orgs:
         has_projects: false
         has_wiki: false
       buildpackapplifecycle:
+        default_branch: main
         description: The bit that takes some bits, mashes them together with other
           bits, and produces a new bit
         has_projects: false
@@ -503,10 +791,14 @@ orgs:
         has_projects: true
         private: true
       bytefmt:
+        allow_merge_commit: false
+        default_branch: main
         description: Human readable byte formatter
         has_issues: false
         has_projects: true
       cacheddownloader:
+        allow_merge_commit: false
+        default_branch: main
         description: A cached HTTP blob downloader
         has_issues: false
         has_projects: true
@@ -543,6 +835,8 @@ orgs:
         description: The CF API parts of cloudfoundry/cf-for-k8s
         has_projects: true
       capi-release:
+        allow_merge_commit: false
+        allow_rebase_merge: false
         default_branch: develop
         description: Bosh Release for Cloud Controller and friends
         has_projects: true
@@ -560,21 +854,25 @@ orgs:
         description: Style Guide for Cloud Controller v3 API
         has_projects: true
       cc-uploader:
+        allow_merge_commit: false
+        allow_rebase_merge: false
         default_branch: main
         description: CC Bridge component to enable Diego to upload files to Cloud
           Controller's blobstore
         has_projects: true
       cert-injector:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       certauthority:
         allow_merge_commit: false
         default_branch: main
         has_projects: true
       certsplitter:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
-        archived: false
       cf-acceptance-tests:
         default_branch: develop
         description: CF Acceptance tests
@@ -595,15 +893,11 @@ orgs:
         default_branch: main
         has_projects: true
       cf-drain-cli:
-        archived: true
         allow_merge_commit: false
+        archived: true
         default_branch: main
         description: CF CLI plugin to create syslog drains
         has_projects: true
-      cf_exporter:
-        description: Cloud Foundry Prometheus Exporter
-        default_branch: master
-        has_projects: false
       cf-for-k8s:
         archived: true
         default_branch: develop
@@ -617,6 +911,7 @@ orgs:
         archived: true
         has_projects: true
       cf-identity-acceptance-tests-release:
+        default_branch: main
         has_projects: true
       cf-java-client:
         default_branch: main
@@ -658,38 +953,35 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
-      cf-openapi:
-        default_branch: main
-        description: OpenAPI specification for the Cloud Foundry API.
-        has_projects: true
       cf-lite-ci:
         has_projects: true
         private: true
       cf-lookup-route:
         default_branch: main
-        description: A plugin for the CF-CLI to quickly identify the application a certain route is pointing to.
+        description: A plugin for the CF-CLI to quickly identify the application a
+          certain route is pointing to.
         has_projects: true
       cf-mysql-bootstrap:
+        archived: true
         description: Auto-bootstrap errand for cf-mysql-release
         has_projects: true
-        archived: true
       cf-mysql-ci:
+        archived: true
         description: Contains Concourse CI scripts and configuration we use to test
           cf-mysql-release
         has_projects: true
-        archived: true
       cf-mysql-cluster-health-logger:
-        has_projects: true
         archived: true
+        has_projects: true
       cf-mysql-deployment:
+        archived: true
         default_branch: develop
         has_projects: true
-        archived: true
       cf-mysql-release:
+        archived: true
         default_branch: develop
         description: Cloud Foundry MySQL Release
         has_projects: true
-        archived: true
       cf-networking-deployments:
         archived: true
         description: Private manifests and credentials for the Container Networking
@@ -699,6 +991,7 @@ orgs:
         has_wiki: false
         private: true
       cf-networking-helpers:
+        allow_merge_commit: false
         default_branch: main
         description: Shared libraries for the CF Networking team
         has_projects: false
@@ -709,6 +1002,7 @@ orgs:
           area of CF
         has_projects: true
       cf-networking-release:
+        allow_merge_commit: false
         default_branch: develop
         description: Container Networking for CloudFoundry
         has_projects: true
@@ -717,23 +1011,28 @@ orgs:
         archived: true
         default_branch: main
         has_projects: true
-      cf-performance-tests:
+      cf-openapi:
         default_branch: main
+        description: OpenAPI specification for the Cloud Foundry API.
         has_projects: true
-      cf-performance-tests-release:
-        description: BOSH errand for running cf-performance-tests
+      cf-performance-tests:
         default_branch: main
         has_projects: true
       cf-performance-tests-pipeline:
         default_branch: main
         has_projects: true
+      cf-performance-tests-release:
+        default_branch: main
+        description: BOSH errand for running cf-performance-tests
+        has_projects: true
       cf-relint-ci-semver:
         default_branch: main
         has_projects: true
       cf-routing-test-helpers:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
         has_projects: true
-        archived: true
       cf-slackin:
         has_projects: true
         private: true
@@ -746,10 +1045,11 @@ orgs:
         default_branch: main
         has_projects: true
       cf-tcp-router:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
         description: TCP Router repository for Cloud Foundry
         has_projects: true
-        archived: true
       cf-test-helpers:
         default_branch: main
         description: Helpers for running tests against Cloud Foundry
@@ -759,12 +1059,23 @@ orgs:
           Authentication service
         has_projects: true
       cf-uaac:
+        default_branch: main
         has_projects: true
       cf-volume-services-acceptance-tests:
+        default_branch: main
         has_projects: true
       cf-volume-services-team:
         has_projects: true
         private: true
+      cf_exporter:
+        description: Cloud Foundry Prometheus Exporter
+        has_projects: false
+        has_wiki: false
+      cf4devs:
+        default_branch: main
+        description: Cloud Foundry for Developers. In depth, hands on training
+        has_projects: false
+        has_wiki: false
       cfar-logging-acceptance-tests:
         archived: true
         has_projects: true
@@ -774,6 +1085,7 @@ orgs:
         has_projects: true
       cfbench:
         archived: true
+        default_branch: main
         has_issues: false
         has_projects: true
       cfcd-broker:
@@ -814,9 +1126,12 @@ orgs:
         has_projects: true
         private: true
       cfcd-prep:
+        archived: true
         has_projects: true
       cfdot:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: A command-line tool to interact with a Cloud Foundry Diego deployment.
         has_issues: false
         has_projects: true
@@ -833,6 +1148,8 @@ orgs:
         has_projects: true
         private: true
       cfhttp:
+        allow_merge_commit: false
+        default_branch: main
         description: Wrapper for official go http package
         has_issues: false
         has_projects: true
@@ -855,32 +1172,30 @@ orgs:
       cflinuxfs4:
         default_branch: main
         has_projects: true
-      cflinuxfs5:
-        default_branch: main
-        has_projects: true
       cflinuxfs4-compat-release:
         default_branch: main
-        description: Cloud Foundry compatibility stack with Ruby and Python based on Ubuntu 22.04 LTS
+        description: Cloud Foundry compatibility stack with Ruby and Python based
+          on Ubuntu 22.04 LTS
         has_projects: true
       cflinuxfs4-release:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 22.04 LTS
         has_projects: true
+      cflinuxfs5:
+        default_branch: main
+        has_projects: true
       cflinuxfs5-release:
         default_branch: main
         description: Cloud Foundry stack based on Ubuntu 24.04 LTS
         has_projects: true
-      cf4devs:
-        default_branch: main
-        description: Cloud Foundry for Developers. In depth, hands on training
-        has_projects: false
-        has_wiki: false
       cli:
         allow_merge_commit: false
+        default_branch: main
         description: The official command line client for Cloud Foundry
         has_projects: true
         homepage: https://docs.cloudfoundry.org/cf-cli
       cli-ci:
+        default_branch: main
         description: The CI repo for the CloudFoundry CLI.
         has_projects: true
       cli-docs-scripts:
@@ -891,6 +1206,7 @@ orgs:
         has_projects: true
         homepage: https://code.cloudfoundry.org/cli
       cli-plugin-repo:
+        default_branch: main
         description: Public repository for community created CF CLI plugins.
         has_projects: false
         has_wiki: false
@@ -900,14 +1216,17 @@ orgs:
         has_projects: true
         private: true
       cli-private:
+        default_branch: main
         description: ssssssh! it's a secret!
         has_projects: true
         private: true
       cli-workstation:
+        default_branch: main
         description: CF CLI Developer workstation setup/maintenance repository
         has_projects: true
         has_wiki: false
       clock:
+        allow_merge_commit: false
         default_branch: main
         description: time provider & rich fake for Go
         has_issues: false
@@ -921,6 +1240,8 @@ orgs:
         has_projects: true
         has_wiki: false
       cloud_controller_ng:
+        allow_merge_commit: false
+        allow_rebase_merge: false
         default_branch: main
         description: Cloud Foundry Cloud Controller
         has_projects: true
@@ -934,10 +1255,12 @@ orgs:
         archived: true
         has_projects: true
       cnbapplifecycle:
+        default_branch: main
         description: Lifecycle to create apps using Cloud Native Buildpacks
         has_projects: false
         has_wiki: false
       commandrunner:
+        default_branch: main
         has_projects: true
       community:
         default_branch: main
@@ -953,20 +1276,30 @@ orgs:
           Cloud Foundry Buildpack compile scripts.
         has_projects: false
         has_wiki: false
+      concourse-flake-hunter:
+        default_branch: main
+        description: Searches for flakes on Concourse
+        has_issues: false
+        has_projects: true
+      concourse-infra-for-fiwg:
+        default_branch: main
+        description: This repo holds the deployment tooling used to deploy a Concourse
+          instance for the Foundation Infrastructure Working Group
+        has_projects: true
       config-server:
+        archived: true
         description: Example config server that integrates with BOSH Director
         has_projects: false
         has_wiki: false
       config-server-release:
+        default_branch: main
         description: Example BOSH release for config server
         has_projects: true
-        homepage: https://github.com/cloudfoundry/config-server
-      concourse-infra-for-fiwg:
-        description: This repo holds the deployment tooling used to deploy a Concourse instance for the Foundation Infrastructure Working Group
-        default_branch: main
-        has_projects: true
+        homepage: https://github.com/cloudfoundry/config-server-release
       consuladapter:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Consul client adapter and test cluster runner
         has_issues: false
         has_projects: true
@@ -976,11 +1309,13 @@ orgs:
         has_projects: false
         has_wiki: false
       cpu-entitlement-admin-plugin:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       cpu-entitlement-plugin:
-        has_projects: true
         archived: true
+        default_branch: develop
+        has_projects: true
       credhub:
         allow_merge_commit: false
         allow_squash_merge: false
@@ -1041,6 +1376,8 @@ orgs:
         archived: true
         has_projects: true
       debugserver:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       delayed_job_sequel:
@@ -1049,10 +1386,12 @@ orgs:
         has_projects: true
       dependachore:
         archived: true
+        default_branch: main
         has_projects: true
       deployments-diego:
         allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Configuration files for deployments owned and managed by the
           CF Diego team.
         has_projects: true
@@ -1091,32 +1430,48 @@ orgs:
         has_projects: true
         private: true
       diego-acceptance:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Diego PM acceptance notes and tools
         has_projects: true
         private: true
       diego-checkman:
         archived: true
+        default_branch: main
         has_projects: true
         private: true
+      diego-db-helpers:
+        default_branch: main
+        description: DB Helpers Shared by BBS + Locket
+        has_issues: false
+        has_projects: true
       diego-design-notes:
         archived: true
+        default_branch: main
         description: Diego Architectural Design Musings and Explications
         has_projects: true
       diego-dockerfiles:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         has_issues: false
         has_projects: false
         has_wiki: false
       diego-logging-client:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       diego-notes:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Diego Notes
         has_projects: true
       diego-perf-release:
         archived: true
+        default_branch: main
         description: Used to deploy multiple app-pushers and fezzik-runners for performance-testing
           a Diego(+Runtime) deployment
         has_projects: true
@@ -1125,16 +1480,21 @@ orgs:
         description: BOSH Release for Diego
         has_projects: true
       diego-ssh:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Access Diego containers with ssh
         has_issues: false
         has_projects: true
       diego-stress-tests:
         archived: true
+        default_branch: main
         description: Diego Stress Tests
         has_projects: true
       diego-team:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Checklists for the Diego team
         has_projects: true
         private: true
@@ -1145,15 +1505,17 @@ orgs:
         has_projects: true
       diego-windows-release:
         archived: true
+        default_branch: main
         has_projects: true
       diegocanaryapp:
         archived: true
+        default_branch: main
         description: Simple canary app to test long-running Diego deployments
         has_projects: true
       diff-exporter:
+        archived: true
         default_branch: main
         has_projects: true
-        archived: true
       disaster-recovery-acceptance-tests:
         default_branch: main
         description: Acceptance tests for disaster recovery of Cloud Foundry
@@ -1162,13 +1524,18 @@ orgs:
         archived: true
         has_projects: true
       docker_driver_integration_tests:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       dockerapplifecycle:
+        allow_merge_commit: false
+        archived: true
+        default_branch: main
         description: Code that runs inside of containers, for docker-based apps
         has_projects: true
-        archived: true
       dockerdriver:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       docs-bbr:
@@ -1224,6 +1591,7 @@ orgs:
       docs-uaa:
         has_projects: true
       dontpanic:
+        default_branch: main
         description: system data collector for disaster-struck garden vms
         has_projects: true
       dotnet-core-buildpack:
@@ -1252,40 +1620,44 @@ orgs:
         has_projects: true
         private: true
       durationjson:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       ecrhelper:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         has_issues: false
         has_projects: true
-      eirini:
-        description: Pluggable container orchestration for Cloud Foundry, and a Kubernetes
-          backend
-        has_projects: false
-        has_wiki: false
-        archived: true
       edx:
         default_branch: main
         description: Cloud Foundry educational content in edX
         has_projects: false
         has_wiki: false
+      eirini:
+        archived: true
+        description: Pluggable container orchestration for Cloud Foundry, and a Kubernetes
+          backend
+        has_projects: false
+        has_wiki: false
       eirini-ci:
+        archived: true
         description: CI for Eirini
         has_projects: false
         has_wiki: false
         homepage: https://jetson.eirini.cf-app.com
-        archived: true
       eirini-controller:
-        has_projects: true
         archived: true
+        has_projects: true
       eirini-private-config:
+        archived: true
         has_projects: false
         private: true
-        archived: true
       eirini-release:
+        archived: true
         description: Helm release for Project Eirini
         has_projects: true
-        archived: true
       envoy-nginx-release:
         default_branch: develop
         description: BOSH release for deploying nginx in place of envoy to enable
@@ -1300,14 +1672,18 @@ orgs:
         has_wiki: false
         homepage: http://coreos.com/docs/etcd/
       event-log-release:
-        has_projects: true
         archived: true
+        has_projects: true
       eventhub:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       example-sidecar-buildpack:
         has_projects: true
       executor:
+        allow_merge_commit: false
+        default_branch: main
         description: thy will be done
         has_issues: false
         has_projects: true
@@ -1317,25 +1693,31 @@ orgs:
       exemplar-release:
         has_projects: true
       existingvolumebroker:
+        default_branch: brokerapi
         has_projects: true
       fake-mysql-broker:
         default_branch: main
-        description: A service broker that looks like it provisions MySQL but doesn't actually do anything. Used for training
+        description: A service broker that looks like it provisions MySQL but doesn't
+          actually do anything. Used for training
         has_projects: false
         has_wiki: false
-      firehose_exporter:
-        description: Cloud Foundry Firehose Prometheus exporter
-        default_branch: master
-        has_projects: false
       filelock:
+        default_branch: main
         has_projects: true
       fileserver:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: 'Bob Loblaw''s file server '
         has_issues: false
         has_projects: true
+      firehose_exporter:
+        description: Cloud Foundry Firehose Prometheus exporter
+        has_projects: false
+        has_wiki: false
       flightattendant:
         archived: true
+        default_branch: main
         has_projects: true
       flintstone:
         description: Store pipeline credentials and templates.
@@ -1353,50 +1735,59 @@ orgs:
         has_projects: true
         private: true
       galera-healthcheck:
+        archived: true
         description: A lightweight web server written in Golang to check the health
           of a node in a Galera cluster
         has_projects: true
-        archived: true
       galera-init:
+        archived: true
         description: Monit ctl script for MariaDB in cf-mysql-release
         has_projects: true
-        archived: true
       garden:
+        default_branch: main
         description: Go Warden
         has_projects: true
       garden-ci:
         archived: true
+        default_branch: main
         has_projects: true
         private: true
       garden-ci-artifacts-release:
         archived: true
+        default_branch: develop
         has_projects: true
       garden-dockerfiles:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       garden-dotfiles:
         archived: true
+        default_branch: main
         has_projects: true
       garden-dotfiles-archived:
         archived: true
         has_projects: true
         private: true
       garden-integration-tests:
+        default_branch: main
         description: gits
         has_projects: true
       garden-performance-acceptance-tests:
+        default_branch: main
         has_projects: true
       garden-runc-release:
         default_branch: develop
         has_projects: true
       garden-wiki:
         archived: true
+        default_branch: main
         description: Wiki and checklists for the London Garden team
         has_projects: true
         private: true
       garden-windows-ci:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       garden-windows-tools-release:
         archived: true
         has_projects: true
@@ -1419,17 +1810,17 @@ orgs:
       go-cf-api:
         allow_rebase_merge: false
         allow_squash_merge: false
+        archived: true
         default_branch: main
         description: A proof of concept implementation as an alternative to cloud_controller_ng,
           written in Go.
         has_projects: true
         has_wiki: false
-        archived: true
         homepage: https://cloudfoundry.github.io/go-cf-api/
       go-cf-api-release:
         allow_rebase_merge: false
-        default_branch: main
         archived: true
+        default_branch: main
         has_projects: true
       go-cfclient:
         default_branch: main
@@ -1486,12 +1877,14 @@ orgs:
         archived: true
         has_projects: true
       gorouter:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
         description: CF Router
         has_projects: true
         has_wiki: false
-        archived: true
       goshims:
+        default_branch: main
         description: generated real/fake os shim objects for tdd in go
         has_projects: true
       gosigar:
@@ -1503,6 +1896,7 @@ orgs:
         has_projects: true
         has_wiki: false
       grace:
+        default_branch: main
         has_projects: true
       greenhouse-ci:
         archived: true
@@ -1510,34 +1904,40 @@ orgs:
         has_projects: true
         has_wiki: false
       groot:
+        default_branch: main
         has_projects: true
         has_wiki: false
       groot-windows:
+        archived: true
         default_branch: main
         description: A Garden image plugin for Windows
         has_projects: true
         has_wiki: false
-        archived: true
       grootfs:
+        default_branch: main
         description: Garden root file system
         has_projects: true
       grootfs-ci-secrets:
         has_projects: true
         private: true
       guardian:
+        default_branch: main
         description: containers4life
         has_projects: true
       haproxy-boshrelease:
+        allow_merge_commit: false
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
       healthcheck:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Common healthcheck for buildpacks and docker
         has_issues: false
         has_projects: true
       healthchecker-release:
-        description: 'A BOSH release for vendoring the healtchecker BOSH package'
-        has_issues: true
+        default_branch: develop
+        description: A BOSH release for vendoring the healtchecker BOSH package
         has_projects: true
       homebrew-tap:
         description: Cloud Foundry Homebrew packages
@@ -1546,6 +1946,7 @@ orgs:
       honeycomb-ginkgo-reporter:
         has_projects: true
       hwc:
+        default_branch: develop
         has_projects: true
         has_wiki: false
       hwc-buildpack:
@@ -1560,18 +1961,21 @@ orgs:
         default_branch: main
         has_projects: true
       ibm-websphere-liberty-buildpack:
+        default_branch: main
         description: IBM WebSphere Application Server Liberty Buildpack
         has_projects: true
       identity-ci:
+        archived: true
+        default_branch: main
         description: where everything else lives
         has_projects: true
         private: true
-        archived: true
       identity-tools:
         description: 'Cloud Foundry - the open platform as a service project '
         has_projects: true
         has_wiki: false
       idmapper:
+        default_branch: main
         has_projects: true
       infrastructure-ci-bbl-states:
         has_projects: true
@@ -1584,10 +1988,12 @@ orgs:
         has_wiki: false
         private: true
       inigo:
+        allow_merge_commit: false
+        archived: true
+        default_branch: main
         description: diego integration tests
         has_issues: false
         has_projects: true
-        archived: true
       intro-to-korifi:
         default_branch: main
         description: An introduction to the Korifi project
@@ -1613,6 +2019,7 @@ orgs:
         default_branch: main
         has_projects: true
       java-buildpack-container-certificate-trust-store:
+        archived: true
         has_projects: true
       java-buildpack-container-customizer:
         default_branch: main
@@ -1658,7 +2065,8 @@ orgs:
         allow_merge_commit: false
         allow_rebase_merge: false
         default_branch: main
-        description: A Spring Boot app for testing JDBC connectivity in general and TLS in particular
+        description: A Spring Boot app for testing JDBC connectivity in general and
+          TLS in particular
         has_projects: true
         has_wiki: false
       jmx-cnb:
@@ -1709,15 +2117,18 @@ orgs:
       korifi-ci:
         default_branch: main
         has_projects: true
-      korifi-website:
-        default_branch: main
-        has_projects: false
       korifi-sample-app:
         default_branch: main
         description: A sample application used in the Korifi tutorial
         has_projects: false
         has_wiki: false
+      korifi-website:
+        default_branch: main
+        description: Web page for korifi.cloudfoundry.org
+        has_projects: false
       lager:
+        allow_merge_commit: false
+        default_branch: main
         description: An opinionated logger for Go.
         has_projects: true
       lamb-ci-tools:
@@ -1750,13 +2161,19 @@ orgs:
         archived: true
         has_projects: true
       localdriver:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         has_issues: false
         has_projects: true
       localip:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       locket:
+        allow_merge_commit: false
+        default_branch: main
         has_issues: false
         has_projects: true
       log-cache:
@@ -1802,6 +2219,7 @@ orgs:
         private: true
       logging-route-service:
         archived: true
+        default_branch: main
         description: A sample route service written in Go.
         has_projects: true
       loggregator:
@@ -1854,9 +2272,11 @@ orgs:
         has_projects: true
         homepage: http://docs.cloudfoundry.org/buildpacks/
       mapfs:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       mapfs-release:
+        default_branch: develop
         description: BOSH release with mapfs, allows uid/gid mapping at the path
         has_projects: true
       membrane:
@@ -1898,30 +2318,38 @@ orgs:
         has_projects: true
         private: true
       multiapps:
+        allow_merge_commit: false
+        allow_rebase_merge: false
         description: Parsers, validators, persistence and utilities for Multi-Target
           Application (MTA) models.
         has_projects: true
       multiapps-cli-plugin:
+        allow_merge_commit: false
         description: A CLI plugin for Multi-Target Application (MTA) operations in
           Cloud Foundry
         has_projects: true
       multiapps-controller:
+        allow_merge_commit: false
         description: The server side component (controller) for Multi-Target Application
           (MTA) for Cloud Foundry
         has_projects: true
       multierror:
-        has_projects: true
         archived: true
+        default_branch: main
+        has_projects: true
       mysql-backup-release:
         has_projects: true
       mysql-monitoring-release:
         has_projects: true
       nats-release:
+        allow_merge_commit: false
         default_branch: develop
         has_projects: true
       netplugin-shim:
+        default_branch: main
         has_projects: true
       networking-oss-deployments:
+        allow_merge_commit: false
         archived: true
         default_branch: main
         description: bbl state store for networking oss deployments
@@ -1935,13 +2363,14 @@ orgs:
         description: Machine setup for Cloud Foundry Networking team
         has_projects: true
       nfs-volume-release:
+        default_branch: develop
         has_projects: true
       nfsbroker:
-        has_projects: true
         archived: true
+        has_projects: true
       nfsv3driver:
-        has_projects: true
         archived: true
+        has_projects: true
       nginx-buildpack:
         description: Cloud Foundry buildpack that provides NGINX
         has_projects: false
@@ -1958,8 +2387,8 @@ orgs:
         has_projects: true
       node-exporter-boshrelease:
         description: Prometheus Node Exporter BOSH Release
-        default_branch: master
         has_projects: false
+        has_wiki: false
       nodejs-buildpack:
         description: Cloud Foundry buildpack for Node.js
         has_projects: false
@@ -1983,8 +2412,8 @@ orgs:
           applications
         has_projects: true
       notifications:
-        description: The notifications service component of Cloud Foundry
         archived: true
+        description: The notifications service component of Cloud Foundry
         has_projects: true
         has_wiki: false
       notifications-release:
@@ -1994,13 +2423,16 @@ orgs:
       omniauth-uaa-oauth2:
         has_projects: true
       open-source-licenses:
+        default_branch: main
         has_projects: true
         private: true
       openjdk-cnb:
         archived: true
         has_projects: true
       operationq:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: processes multiple queues in parallel
         has_issues: false
         has_projects: true
@@ -2009,9 +2441,11 @@ orgs:
         has_projects: false
         has_wiki: false
       osb-checker:
-        default_branch: master
-        description: An automatic checker to verify an Open Service Broker API implementation against the specification
+        description: An automatic checker to verify an Open Service Broker API implementation
+          against the specification
+        has_projects: true
         has_wiki: false
+        homepage: https://github.com/openservicebrokerapi/servicebroker/
       oss-s3-buckets-stack:
         has_projects: true
         private: true
@@ -2029,13 +2463,16 @@ orgs:
           and bindings. Conforms to the Open Service Broker API standard.
         has_projects: true
       pcap-release:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
-        description: A BOSH release and CLI to enable network analysis for CF app developers
+        description: A BOSH release and CLI to enable network analysis for CF app
+          developers
         has_projects: true
-        archived: true
+        has_wiki: false
       persi-ci:
-        has_projects: true
         archived: true
+        has_projects: true
       persistence-load-tests:
         has_projects: true
         private: true
@@ -2067,6 +2504,7 @@ orgs:
           Meetings
         has_projects: true
       policy_client:
+        default_branch: main
         description: Policy Client allows Cloud Foundry system components to query
           the policy server for policies
         has_projects: true
@@ -2082,13 +2520,14 @@ orgs:
         has_projects: true
       prometheus-boshrelease:
         description: bosh release for prometheus ecosystem
-        default_branch: master
         has_projects: false
+        has_wiki: false
       public-buildpacks-ci-robots:
         default_branch: main
         has_projects: false
         has_wiki: false
       pxc-release:
+        default_branch: main
         description: 'BOSH release of Percona Xtradb Cluster '
         has_projects: true
       python-buildpack:
@@ -2139,43 +2578,52 @@ orgs:
         homepage: https://github.com/cloudfoundry/relint-team/wiki
         private: true
       relogger:
+        default_branch: main
         has_projects: true
         private: true
       rep:
+        allow_merge_commit: false
+        default_branch: main
         description: Representative bids on tasks and schedules them on an associated
           Executor
         has_issues: false
         has_projects: true
       resolvconf-manager:
-        has_projects: true
         archived: true
+        has_projects: true
       resolvconf-manager-index:
+        archived: true
         has_projects: true
-        archived: true
       route-emitter:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: Registers and unregisters processes running on executors with
           the gorouter
         has_issues: false
         has_projects: true
       route-registrar:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
         description: A standalone executable written in golang that continuously broadcasts
           a route using NATS to the CF router.
         has_projects: true
-        archived: true
       routing-acceptance-tests:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
         has_projects: true
-        archived: true
       routing-api:
+        allow_merge_commit: false
         default_branch: main
         has_projects: false
         has_wiki: false
       routing-api-cli:
+        allow_merge_commit: false
+        archived: true
         default_branch: main
         has_projects: true
-        archived: true
       routing-ci:
         archived: true
         has_projects: true
@@ -2187,10 +2635,12 @@ orgs:
         has_projects: true
         private: true
       routing-info:
+        allow_merge_commit: false
         default_branch: main
         description: Routing information helpers for CF / Diego
         has_projects: true
       routing-perf-release:
+        allow_merge_commit: false
         archived: true
         default_branch: main
         description: A BOSH release for routing performance tests
@@ -2208,6 +2658,7 @@ orgs:
         has_wiki: false
       routing-team-checklists:
         archived: true
+        default_branch: main
         description: A Repository for the CF Routing Team checklists and Wiki
         has_projects: true
         private: true
@@ -2225,11 +2676,14 @@ orgs:
         default_branch: main
         has_projects: true
       runtime-ci-pools:
+        allow_merge_commit: false
+        default_branch: main
         description: Lock pools for the runtime CI
-        has_projects: true
         has_issues: false
+        has_projects: true
       runtime-credentials:
         archived: true
+        default_branch: main
         has_projects: true
         private: true
       runtime-og-ci:
@@ -2247,10 +2701,17 @@ orgs:
       runtimeschema:
         description: Shared golang schema for runtime
         has_projects: true
+      sample-app:
+        default_branch: main
+        description: A sample application written in Go used for training purposes
+        has_projects: false
+        has_wiki: false
       sample-http-app:
         archived: true
+        default_branch: main
         has_projects: true
       sample-service-metrics-release:
+        default_branch: main
         has_projects: true
         private: true
       sample-windows-bosh-release:
@@ -2259,60 +2720,52 @@ orgs:
       sapi-env-pool:
         has_projects: true
         private: true
-      sample-app:
-        default_branch: main
-        description: A sample application written in Go used for training purposes
-        has_projects: false
-        has_wiki: false
       secure-credentials-broker:
         has_projects: true
       security-notices:
         has_projects: true
         private: true
-      servicebroker:
-        default_branch: master
-        description: Open Service Broker API Specification
-        has_wiki: true
       service-broker-store:
+        default_branch: main
         has_projects: true
       service-fabrik-backup-restore:
+        archived: true
         description: Service fabrik's library for backup and restore of service instances
         has_projects: true
-        archived: true
       service-fabrik-blueprint-app:
+        archived: true
         description: Service fabrik's blueprint app which is a test app to test the
           blueprint service
         has_projects: true
-        archived: true
       service-fabrik-blueprint-boshrelease:
+        archived: true
         description: A boshrelease for service fabrik's blueprint service that is
           used to try out service-fabrik broker
         has_projects: true
-        archived: true
       service-fabrik-blueprint-service:
+        archived: true
         description: Service fabrik's blueprint service which is a test service to
           try out service fabrik broker
         has_projects: true
-        archived: true
       service-fabrik-boshrelease:
+        archived: true
         description: BOSH release to deploy the Service Fabrik which provisions service
           instances as Docker containers and BOSH deployments.
         has_projects: true
-        archived: true
       service-fabrik-broker:
+        archived: true
         description: Cloud Foundry service broker which provisions service instances
           as Docker containers and BOSH deployments.
         has_projects: true
-        archived: true
       service-fabrik-cli-plugin:
+        archived: true
         description: This is a Cloud Foundry CLI plugin for performing various backup
           and restore operations on service instances in Cloud Foundry.
         has_projects: true
-        archived: true
       service-fabrik-lvm-volume-driver:
+        archived: true
         description: The logical volume driver for service-fabrik's docker based services
         has_projects: true
-        archived: true
       service-logs-release:
         archived: true
         default_branch: develop
@@ -2330,6 +2783,10 @@ orgs:
         description: 'Service Metrics BOSH Release '
         has_projects: true
         homepage: https://docs.pivotal.io/svc-sdk/service-metrics
+      servicebroker:
+        description: Open Service Broker API Specification
+        has_projects: true
+        homepage: https://openservicebrokerapi.org/
       services-api-home:
         archived: true
         has_projects: true
@@ -2339,8 +2796,8 @@ orgs:
         has_projects: true
         private: true
       silk:
-        archived: true
         allow_merge_commit: false
+        archived: true
         default_branch: main
         description: a network fabric for containers.  inspired by flannel, designed
           for Cloud Foundry.
@@ -2356,14 +2813,15 @@ orgs:
         has_projects: false
         has_wiki: false
       smb-volume-release:
+        default_branch: develop
         description: BOSH release with SMB driver and broker
         has_projects: true
       smbbroker:
-        has_projects: true
         archived: true
+        has_projects: true
       smbdriver:
-        has_projects: true
         archived: true
+        has_projects: true
       socks5-proxy:
         default_branch: main
         description: This is a go library for starting a socks5 proxy server via SSH
@@ -2415,22 +2873,23 @@ orgs:
         has_projects: true
         has_wiki: false
       storage-cli:
-        description: Go CLI for storage access on different IaaS providers
         default_branch: main
+        description: Go CLI for storage access on different IaaS providers
         has_projects: false
         has_wiki: false
       stratos:
-        description: 'Stratos: Web-based Management UI for Cloud Foundry and Kubernetes'
         default_branch: develop
+        description: 'Stratos: Web-based Management UI for Cloud Foundry and Kubernetes'
         has_projects: true
       stratos-buildpack:
-        description: Custom buildpack Stratos (UI for Cloud Foundry)
         default_branch: develop
+        description: Custom buildpack Stratos (UI for Cloud Foundry)
         has_projects: true
       summit-hands-on-labs:
         description: Hands-on Labs for CF Summit Boston '18 and beyond
         has_projects: true
       summit-training-classes:
+        archived: true
         description: 'Opensourced content for cloud foundry training classes: zero
           to hero (beginner), bosh/operator, and microservices'
         has_projects: true
@@ -2439,10 +2898,10 @@ orgs:
         has_projects: false
         has_wiki: false
       switchboard:
+        archived: true
         description: Golang TCP Proxy
         has_projects: true
         has_wiki: false
-        archived: true
       sync-integration-tests:
         has_projects: true
       syslog-adapter-release:
@@ -2472,40 +2931,50 @@ orgs:
         default_branch: main
         has_projects: true
       systemcerts:
-        archived: true
         allow_merge_commit: false
+        archived: true
+        default_branch: main
         has_issues: false
         has_projects: true
       terraform-provider-cloudfoundry:
         default_branch: main
-        description: Terraform provider to manage Cloud Foundry resources using v3 APIs
+        description: Terraform provider to manage Cloud Foundry resources using v3
+          APIs
         has_projects: true
+        homepage: https://registry.terraform.io/providers/cloudfoundry/cloudfoundry/latest
       terraform-provider-csbmysql:
         allow_merge_commit: false
         allow_rebase_merge: false
         default_branch: main
-        description: Terraform provider to manage Cloud Service Broker bindings for MySQL
-        has_projects: true
-        has_wiki: false
-      terraform-provider-csbsqlserver:
-        allow_merge_commit: false
-        allow_rebase_merge: false
-        default_branch: main
-        description: Terraform provider to manage Cloud Service Broker bindings for SQL Server
+        description: Terraform provider to manage Cloud Service Broker bindings for
+          MySQL
         has_projects: true
         has_wiki: false
       terraform-provider-csbpg:
         allow_merge_commit: false
         allow_rebase_merge: false
         default_branch: main
-        description: Terraform provider to manage Cloud Service Broker bindings for PostgreSQL
+        description: Terraform provider to manage Cloud Service Broker bindings for
+          PostgreSQL
+        has_projects: true
+        has_wiki: false
+      terraform-provider-csbsqlserver:
+        allow_merge_commit: false
+        allow_rebase_merge: false
+        default_branch: main
+        description: Terraform provider to manage Cloud Service Broker bindings for
+          SQL Server
         has_projects: true
         has_wiki: false
       test-log-emitter:
+        default_branch: main
         has_projects: true
       test-log-emitter-release:
+        default_branch: develop
         has_projects: true
       tlsconfig:
+        allow_merge_commit: false
+        default_branch: main
         description: build tls configurations
         has_projects: false
         has_wiki: false
@@ -2513,6 +2982,8 @@ orgs:
         archived: true
         has_projects: true
       tps:
+        allow_merge_commit: false
+        allow_rebase_merge: false
         description: the process status reporter
         has_projects: true
       training-cert-admin:
@@ -2520,7 +2991,8 @@ orgs:
         private: true
       tutorials:
         default_branch: main
-        description: This repository contains the landing page for https://tutorials.cloudfoundry.org and automations
+        description: This repository contains the landing page for https://tutorials.cloudfoundry.org
+          and automations
         has_projects: false
         has_wiki: false
       tycho-env:
@@ -2534,6 +3006,8 @@ orgs:
         has_projects: true
         has_wiki: false
       uaa-ci:
+        allow_merge_commit: false
+        allow_squash_merge: false
         default_branch: main
         has_projects: true
         has_wiki: false
@@ -2562,6 +3036,7 @@ orgs:
         description: Bosh Release for the UAA
         has_projects: true
       uaa-singular:
+        default_branch: main
         description: Singular Login for Web Applications
         has_projects: true
       uaa-singular-example:
@@ -2571,11 +3046,18 @@ orgs:
         description: Setup scripts for UAA workstations
         has_projects: true
         private: true
+      unhappy-appy:
+        default_branch: main
+        description: An app that doesn't always start well. For demo and training
+          ONLY
+        has_projects: false
+        has_wiki: false
       upgrade-all-services-cli-plugin:
         allow_merge_commit: false
         allow_rebase_merge: false
         default_branch: main
         has_projects: true
+        has_wiki: false
       uptimer:
         default_branch: main
         description: A Cloud Foundry availability measurement tool for eventful times
@@ -2583,47 +3065,52 @@ orgs:
       urljoiner:
         archived: true
         has_projects: true
-      unhappy-appy:
-        default_branch: main
-        description: An app that doesn't always start well. For demo and training ONLY
-        has_projects: false
-        has_wiki: false
       usn-resource:
         has_projects: true
       vantablackbox-release:
         archived: true
+        default_branch: develop
         has_projects: true
       vcap-common:
         archived: true
         has_projects: true
         has_wiki: false
       vizzini:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         description: 'Vizzini: Inconceivable Tests'
         has_issues: false
         has_projects: true
       volman:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         has_issues: false
         has_projects: true
       volume-mount-options:
+        default_branch: main
         has_projects: true
       volumedriver:
+        default_branch: main
+        has_projects: true
+      wg-app-platform-runtime-ci:
+        allow_merge_commit: false
+        default_branch: main
+        description: Scripts and tools to run Diego's CI builds on Concourse.
         has_projects: true
       what-is-cf:
         default_branch: main
         description: Tutorial explaining what is Cloud Foundry, the foundation, etc
         has_projects: false
         has_wiki: false
-      wg-app-platform-runtime-ci:
-        has_projects: true
       winc:
+        archived: true
         default_branch: main
         description: CLI tool for spawning and running containers on Windows according
           to the OCI specification
         has_projects: true
         has_wiki: false
-        archived: true
       winc-release:
         default_branch: develop
         description: A BOSH release for deploying winc on windows
@@ -2631,6 +3118,7 @@ orgs:
         has_wiki: false
       windows-regression-tests:
         archived: true
+        default_branch: main
         has_projects: true
         has_wiki: false
       windows-syslog-release:
@@ -2639,15 +3127,17 @@ orgs:
         description: BOSH release for forwarding logs from BOSH jobs on Windows VMs
         has_projects: true
       windows-tools-release:
+        default_branch: develop
         description: Contains miscellaneous Windows packages to be BOSH-deployed
         has_projects: true
         has_wiki: false
       windows-utilities-release:
         has_projects: true
       windows-utilities-tests:
-        has_projects: true
         archived: true
+        has_projects: true
       windows2016fs:
+        default_branch: main
         description: A rootfs for Windows containers in Cloud Foundry
         has_projects: true
         has_wiki: false
@@ -2658,7 +3148,9 @@ orgs:
         default_branch: develop
         has_projects: true
       workpool:
+        allow_merge_commit: false
         archived: true
+        default_branch: main
         has_issues: false
         has_projects: true
       yagnats:
@@ -2669,23 +3161,42 @@ orgs:
         description: reads zips and JAR files with additional prefixed bytes
         has_projects: true
       yttk8smatchers:
+        archived: true
         default_branch: main
         has_projects: true
-        archived: true
     teams:
+      temp-ari-autoscaler-admins:
+        description: Temporary team for managing autoscaler secrets until we have
+          a permanent plan.
+        maintainers:
+        - bonzofenix
+        - silvestre
+        - joergdw
+        - asalan316
+        - OliverMautschke
+        - salzmannsusan
+        - t-schoell
+        - geigerj0
+        privacy: closed
+        repos:
+          app-autoscaler: admin
+          app-autoscaler-cli-plugin: admin
+          app-autoscaler-env-bbl-state: admin
+          app-autoscaler-release: admin
+          app-runtime-interfaces-infrastructure: admin
       temp-ari-buildpacks-admins:
-        description: "Temporary team for managing Buildpacks secrets until we have a permanent plan."
+        description: Temporary team for managing Buildpacks secrets until we have
+          a permanent plan.
         maintainers:
         - arjun024
         - sophiewigmore
-        members: []
         privacy: closed
         repos:
           apt-buildpack: admin
           binary-buildpack: admin
           buildpacks-ci: admin
-          cflinuxfs4-compat-release: admin
           cflinuxfs4: admin
+          cflinuxfs4-compat-release: admin
           dotnet-core-buildpack: admin
           go-buildpack: admin
           hwc-buildpack: admin
@@ -2698,139 +3209,3547 @@ orgs:
           ruby-buildpack: admin
           staticfile-buildpack: admin
           switchblade: admin
-      temp-ari-cli-admins:
-        description: "Temporary team for managing CLI secrets until we have a permanent plan."
-        maintainers:
-          - a-b
-          - gururajsh
-        members: []
-        privacy: closed
-        repos:
-          CLAW: admin
-          cli-ci: admin
-          cli-plugin-repo: admin
-          cli: admin
-          bosh-package-cf-cli-release: admin
-          cli-private: admin
-      temp-multiapps-admins:
-        description: "Temporary team for managing MultiApps secrets until we have a permanent plan."
-        maintainers:
-          - IvanBorislavovDimitrov
-          - theghost5800
-          - boyan-velinov
-          - ikasarov
-          - vkalapov
-        members: []
-        privacy: closed
-        repos:
-          multiapps: admin
-          multiapps-controller: admin
-          multiapps-cli-plugin: admin
-      temp-ari-autoscaler-admins:
-        description: "Temporary team for managing autoscaler secrets until we have a permanent plan."
-        maintainers:
-        - asalan316
-        - silvestre
-        - joergdw
-        - bonzofenix
-        - olivermautschke
-        - geigerj0
-        - salzmannsusan
-        - t-schoell
-        members: []
-        privacy: closed
-        repos:
-          app-autoscaler: admin
-          app-autoscaler-release: admin
-          app-autoscaler-cli-plugin: admin
-          app-runtime-interfaces-infrastructure: admin
-          app-autoscaler-env-bbl-state: admin
-      temp-arp-networking-admins:
-        description: "Temporary team for managing GitHub integrations for automation/concourse."
-        maintainers:
-          - plowin
-          - peanball
-          - Soha-Albaghdady
-        members: []
-        privacy: closed
-        repos:
-          haproxy-boshrelease: admin
-      temp-sm-csb-bots-admins:
-        description: "Temporary team to allow for bots driven dependency bumps until we implement another strategy"
-        maintainers:
-          - pivotal-marcela-campo
-        members:
-          - servicesenablement
-        privacy: closed
-        repos:
-          cloud-service-broker: admin
-          csb-brokerpak-azure: admin
-          csb-brokerpak-aws: admin
-          csb-brokerpak-gcp: admin
-          jdbctestapp: admin
-          upgrade-all-services-cli-plugin: admin
-          terraform-provider-csbpg: admin
-          terraform-provider-csbmysql: admin
-          terraform-provider-csbsqlserver: admin
-      temp-uaa-ci-admins:
-        description: "Temporary team for managing UAA CI"
-        maintainers:
-          - coolgang123
-          - duanemay
-          - fhanik
-          - hsinn0
-          - peterhaochen47
-          - acosta11
-          - dlinsley
-          - shilpamayanna
-        members: []
-        privacy: closed
-        repos:
-          uaa-ci: admin
-          credhub-oss-ci: admin
-          credhub-deployments: admin
-      temp-prometheus-exporter-admins:
-        description: "Temporary admin team for Prometheus Repositories."
-        maintainers:
-          - benjaminguttmann-avtq
-        members: []
-        privacy: closed
-        repos:
-          cf_exporter: admin
-          firehose_exporter: admin
-          bosh_exporter: admin
-          node-exporter-boshrelease: admin
-          prometheus-boshrelease: admin
       temp-ari-capi-admins:
-        description: "Temporary admin team for CAPI"
+        description: Temporary admin team for CAPI
         maintainers:
-          - philippthun
-          - johha
-        members: []
+        - philippthun
+        - johha
         privacy: closed
         repos:
           cloud_controller_ng: admin
-      temp-ari-terraform-provider-cloudfoundry-admins:
-        description: "Temporary team for managing terraform-provider-cloudfoundry secrets."
+      temp-ari-cli-admins:
+        description: Temporary team for managing CLI secrets until we have a permanent
+          plan.
         maintainers:
-          - vipinvkmenon
-          - lechnerc77
-        members: []
+        - a-b
+        - gururajsh
+        privacy: closed
+        repos:
+          CLAW: admin
+          bosh-package-cf-cli-release: admin
+          cli: admin
+          cli-ci: admin
+          cli-plugin-repo: admin
+          cli-private: admin
+      temp-ari-terraform-provider-cloudfoundry-admins:
+        description: Temporary team for managing terraform-provider-cloudfoundry secrets.
+        maintainers:
+        - vipinvkmenon
+        - lechnerc77
         privacy: closed
         repos:
           terraform-provider-cloudfoundry: admin
-  concourse:
-    admins: [] # shall be empty, maintained in TOC.md
-    billing_email: ap@cloudfoundry.org
-    company: ""
-    default_repository_permission: none
-    description: An open-source continuous thing-doer, mostly used for CI/CD
-    email: contact@concourse-ci.org
-    has_organization_projects: true
-    has_repository_projects: true
-    location: Worldwide
-    members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
-    members_can_create_repositories: false
-    name: Concourse
-    repos: {}
-    teams: {}
+      temp-arp-networking-admins:
+        description: Temporary team for managing GitHub integrations for automation/concourse.
+        maintainers:
+        - peanball
+        - Soha-Albaghdady
+        - plowin
+        privacy: closed
+        repos:
+          haproxy-boshrelease: admin
+      temp-multiapps-admins:
+        description: Temporary team for managing MultiApps secrets until we have a
+          permanent plan.
+        maintainers:
+        - theghost5800
+        - IvanBorislavovDimitrov
+        - boyan-velinov
+        - ikasarov
+        - vkalapov
+        privacy: closed
+        repos:
+          multiapps: admin
+          multiapps-cli-plugin: admin
+          multiapps-controller: admin
+      temp-prometheus-exporter-admins:
+        description: Temporary admin team for Prometheus Repositories.
+        maintainers:
+        - benjaminguttmann-avtq
+        privacy: closed
+        repos:
+          bosh_exporter: admin
+          cf_exporter: admin
+          firehose_exporter: admin
+          node-exporter-boshrelease: admin
+          prometheus-boshrelease: admin
+      temp-sm-csb-bots-admins:
+        description: Temporary team to allow for bots driven dependency bumps until
+          we implement another strategy
+        maintainers:
+        - pivotal-marcela-campo
+        members:
+        - servicesenablement
+        privacy: closed
+        repos:
+          cloud-service-broker: admin
+          csb-brokerpak-aws: admin
+          csb-brokerpak-azure: admin
+          csb-brokerpak-gcp: admin
+          jdbctestapp: admin
+          terraform-provider-csbmysql: admin
+          terraform-provider-csbpg: admin
+          terraform-provider-csbsqlserver: admin
+          upgrade-all-services-cli-plugin: admin
+      temp-uaa-ci-admins:
+        description: Temporary team for managing UAA CI
+        maintainers:
+        - fhanik
+        - duanemay
+        - dlinsley
+        - peterhaochen47
+        - shilpamayanna
+        - coolgang123
+        - acosta11
+        - hsinn0
+        privacy: closed
+        repos:
+          credhub-deployments: admin
+          credhub-oss-ci: admin
+          uaa-ci: admin
+      toc:
+        description: Technical Oversight Committee
+        maintainers:
+        - rkoster
+        - beyhan
+        - Gerg
+        - stephanme
+        - cweibel
+        privacy: closed
+        repos:
+          .github: admin
+          community: admin
+      wg-admin:
+        description: Leads and approvers for Admin WG
+        maintainers:
+        - ramiyengar
+        - thelinuxfoundation
+        - christopherclark
+        members:
+        - aramprice
+        - ragaskar
+        - ystros
+        - Samze
+        - a-b
+        - selzoc
+        - lnguyen
+        - dlresende
+        - duanemay
+        - jhvhs
+        - joaopapereira
+        - cf-identity
+        - cf-cli-eng
+        - blgm
+        - credhub-ci-bot
+        - nouseforaname
+        - gururajsh
+        privacy: closed
+        teams:
+          wg-admin-admin-approvers:
+            description: Approvers for Admin WG, Admin area
+            maintainers:
+            - ramiyengar
+            - thelinuxfoundation
+            - christopherclark
+            privacy: closed
+            repos:
+              admin-tools: write
+              cf-slackin: write
+              cfcd-broker: write
+              cfcd-cert-items: write
+              cfcd-ci: write
+              cfcd-course-content: write
+              cfcd-dockerfile: write
+              cfcd-exam-info: write
+              cfcd-facts: write
+              cfcd-items: write
+              cfcd-mappings: write
+              cfcd-mindmaps: write
+              cfcd-parser: write
+              cfcd-prep: write
+              cff-platform-certification: write
+              dev-cert: write
+              dev-cert-grading: write
+              developer-training-class-apps: write
+              developer-training-class-site: write
+              developer-training-course: write
+              developer-training-hugo-parser: write
+              foundation: write
+              go-fetcher: write
+              lf-elearning: write
+              logos: write
+              oss-summit-class: write
+              platform-certification: write
+              slack-interrupt-bot: write
+              summit-hands-on-labs: write
+              summit-training-classes: write
+              training-cert-admin: write
+          wg-admin-bots:
+            description: Bot accounts for Admin WG
+            privacy: closed
+            repos:
+              admin-tools: write
+              cf-slackin: write
+              cfcd-broker: write
+              cfcd-cert-items: write
+              cfcd-ci: write
+              cfcd-course-content: write
+              cfcd-dockerfile: write
+              cfcd-exam-info: write
+              cfcd-facts: write
+              cfcd-items: write
+              cfcd-mappings: write
+              cfcd-mindmaps: write
+              cfcd-parser: write
+              cfcd-prep: write
+              cff-platform-certification: write
+              dev-cert: write
+              dev-cert-grading: write
+              developer-training-class-apps: write
+              developer-training-class-site: write
+              developer-training-course: write
+              developer-training-hugo-parser: write
+              foundation: write
+              go-fetcher: write
+              homebrew-tap: write
+              lf-elearning: write
+              logos: write
+              oss-summit-class: write
+              platform-certification: write
+              slack-interrupt-bot: write
+              summit-hands-on-labs: write
+              summit-training-classes: write
+              training-cert-admin: write
+          wg-admin-cf-homebrew-tap-approvers:
+            description: Approvers for Admin WG, CF Homebrew TAP area
+            maintainers:
+            - ramiyengar
+            - thelinuxfoundation
+            - christopherclark
+            members:
+            - aramprice
+            - ragaskar
+            - ystros
+            - Samze
+            - a-b
+            - selzoc
+            - lnguyen
+            - dlresende
+            - duanemay
+            - jhvhs
+            - joaopapereira
+            - blgm
+            - nouseforaname
+            - gururajsh
+            privacy: closed
+            repos:
+              homebrew-tap: write
+          wg-admin-cf-homebrew-tap-bots:
+            description: Bot accounts for Admin WG, CF Homebrew TAP area
+            maintainers:
+            - ramiyengar
+            - thelinuxfoundation
+            - christopherclark
+            members:
+            - cf-identity
+            - cf-cli-eng
+            - credhub-ci-bot
+            privacy: closed
+            repos:
+              homebrew-tap: write
+          wg-admin-leads:
+            description: Leads for Admin WG
+            maintainers:
+            - ramiyengar
+            - thelinuxfoundation
+            - christopherclark
+            privacy: closed
+            repos:
+              admin-tools: admin
+              cf-slackin: admin
+              cfcd-broker: admin
+              cfcd-cert-items: admin
+              cfcd-ci: admin
+              cfcd-course-content: admin
+              cfcd-dockerfile: admin
+              cfcd-exam-info: admin
+              cfcd-facts: admin
+              cfcd-items: admin
+              cfcd-mappings: admin
+              cfcd-mindmaps: admin
+              cfcd-parser: admin
+              cfcd-prep: admin
+              cff-platform-certification: admin
+              dev-cert: admin
+              dev-cert-grading: admin
+              developer-training-class-apps: admin
+              developer-training-class-site: admin
+              developer-training-course: admin
+              developer-training-hugo-parser: admin
+              foundation: admin
+              go-fetcher: admin
+              homebrew-tap: admin
+              lf-elearning: admin
+              logos: admin
+              oss-summit-class: admin
+              platform-certification: admin
+              slack-interrupt-bot: admin
+              summit-hands-on-labs: admin
+              summit-training-classes: admin
+              training-cert-admin: admin
+      wg-agentic-runtime:
+        description: Leads and approvers for Agentic Runtime WG
+        maintainers:
+        - wayneeseguin
+        - rkoster
+        - beyhan
+        - itsouvalas
+        members:
+        - wayneeseguin
+        - aramprice
+        - krutten
+        - vlast3k
+        - nmaurer23
+        - ivanovac
+        - asalan316
+        - rrashidov
+        - benjaminguttmann-avtq
+        - Ivaylogi98
+        - itsouvalas
+        - neddp
+        - al-gerd
+        - dudejas
+        privacy: closed
+        teams:
+          wg-agentic-runtime-agentic-runtime-approvers:
+            description: Approvers for Agentic Runtime WG, Agentic Runtime area
+            maintainers:
+            - wayneeseguin
+            - rkoster
+            - beyhan
+            - itsouvalas
+            members:
+            - aramprice
+            - krutten
+            - vlast3k
+            - asalan316
+            - benjaminguttmann-avtq
+            privacy: closed
+            repos:
+              agentic-runtime-notes: write
+          wg-agentic-runtime-agentic-runtime-reviewers:
+            description: Reviewers for Agentic Runtime WG, Agentic Runtime area
+            maintainers:
+            - wayneeseguin
+            - rkoster
+            - beyhan
+            - itsouvalas
+            members:
+            - nmaurer23
+            - ivanovac
+            - rrashidov
+            - Ivaylogi98
+            - neddp
+            - al-gerd
+            - dudejas
+            privacy: closed
+            repos:
+              agentic-runtime-notes: read
+          wg-agentic-runtime-bots:
+            description: Bot accounts for Agentic Runtime WG
+            privacy: closed
+            repos:
+              agentic-runtime-notes: write
+          wg-agentic-runtime-leads:
+            description: Leads for Agentic Runtime WG
+            maintainers:
+            - wayneeseguin
+            - rkoster
+            - beyhan
+            - itsouvalas
+            privacy: closed
+            repos:
+              agentic-runtime-notes: admin
+      wg-app-runtime-deployments:
+        description: Leads and approvers for App Runtime Deployments WG
+        maintainers:
+        - jochenehret
+        members:
+        - davewalter
+        - mvach
+        - philippthun
+        - jochenehret
+        - oliver-heinrich
+        - ctlong
+        - c0d1ngm0nk3y
+        - pbusko
+        - modulo11
+        - nicolasbender
+        - svkrieger
+        - johha
+        - iaftab-alam
+        - Milena-Encheva
+        - dimivel
+        - ard-wg-gitbot
+        - AttilaAlmasi
+        - dtasSap
+        - loewenstein-sap
+        - hamideh-amini-khezrabad
+        - ard-wg-k8s-gitbot
+        privacy: closed
+        teams:
+          wg-app-runtime-deployments-bots:
+            description: Bot accounts for App Runtime Deployments WG
+            members:
+            - ard-wg-gitbot
+            privacy: closed
+            repos:
+              app-runtime-deployments-infrastructure: write
+              cf-acceptance-tests: write
+              cf-deployment: write
+              cf-deployment-concourse-tasks: write
+              cf-k8s-releases: write
+              cf-relint-ci-semver: write
+              cf-smoke-tests: write
+              cf-smoke-tests-release: write
+              cf-test-helpers: write
+              disaster-recovery-acceptance-tests: write
+              honeycomb-ginkgo-reporter: write
+              k8s-garden-client: write
+              k8s-policy-agent: write
+              kind-deployment: write
+              relint-ci-pools: write
+              relint-envs: write
+              relint-team: write
+              runtime-ci: write
+              uptimer: write
+          wg-app-runtime-deployments-cf-deployment-approvers:
+            description: Approvers for App Runtime Deployments WG, CF Deployment area
+            maintainers:
+            - jochenehret
+            members:
+            - davewalter
+            - philippthun
+            - ctlong
+            - svkrieger
+            - johha
+            - iaftab-alam
+            - Milena-Encheva
+            - dimivel
+            - hamideh-amini-khezrabad
+            privacy: closed
+            repos:
+              app-runtime-deployments-infrastructure: write
+              cf-acceptance-tests: write
+              cf-deployment: write
+              cf-deployment-concourse-tasks: write
+              cf-relint-ci-semver: write
+              cf-smoke-tests: write
+              cf-smoke-tests-release: write
+              cf-test-helpers: write
+              disaster-recovery-acceptance-tests: write
+              honeycomb-ginkgo-reporter: write
+              relint-ci-pools: write
+              relint-envs: write
+              relint-team: write
+              runtime-ci: write
+              uptimer: write
+          wg-app-runtime-deployments-cf-deployment-reviewers:
+            description: Reviewers for App Runtime Deployments WG, CF Deployment area
+            maintainers:
+            - jochenehret
+            members:
+            - oliver-heinrich
+            - AttilaAlmasi
+            - dtasSap
+            privacy: closed
+            repos:
+              app-runtime-deployments-infrastructure: read
+              cf-acceptance-tests: read
+              cf-deployment: read
+              cf-deployment-concourse-tasks: read
+              cf-relint-ci-semver: read
+              cf-smoke-tests: read
+              cf-smoke-tests-release: read
+              cf-test-helpers: read
+              disaster-recovery-acceptance-tests: read
+              honeycomb-ginkgo-reporter: read
+              relint-ci-pools: read
+              relint-envs: read
+              relint-team: read
+              runtime-ci: read
+              uptimer: read
+          wg-app-runtime-deployments-kind-deployment-approvers:
+            description: Approvers for App Runtime Deployments WG, Kind Deployment
+              area
+            maintainers:
+            - jochenehret
+            members:
+            - mvach
+            - c0d1ngm0nk3y
+            - pbusko
+            - modulo11
+            - nicolasbender
+            - loewenstein-sap
+            privacy: closed
+            repos:
+              cf-k8s-releases: write
+              k8s-garden-client: write
+              k8s-policy-agent: write
+              kind-deployment: write
+          wg-app-runtime-deployments-kind-deployment-bots:
+            description: Bot accounts for App Runtime Deployments WG, Kind Deployment
+              area
+            maintainers:
+            - jochenehret
+            members:
+            - ard-wg-k8s-gitbot
+            privacy: closed
+            repos:
+              cf-k8s-releases: write
+              k8s-garden-client: write
+              k8s-policy-agent: write
+              kind-deployment: write
+          wg-app-runtime-deployments-kind-deployment-reviewers:
+            description: Reviewers for App Runtime Deployments WG, Kind Deployment
+              area
+            maintainers:
+            - jochenehret
+            privacy: closed
+            repos:
+              cf-k8s-releases: read
+              k8s-garden-client: read
+              k8s-policy-agent: read
+              kind-deployment: read
+          wg-app-runtime-deployments-leads:
+            description: Leads for App Runtime Deployments WG
+            maintainers:
+            - jochenehret
+            privacy: closed
+            repos:
+              app-runtime-deployments-infrastructure: admin
+              cf-acceptance-tests: admin
+              cf-deployment: admin
+              cf-deployment-concourse-tasks: admin
+              cf-k8s-releases: admin
+              cf-relint-ci-semver: admin
+              cf-smoke-tests: admin
+              cf-smoke-tests-release: admin
+              cf-test-helpers: admin
+              disaster-recovery-acceptance-tests: admin
+              honeycomb-ginkgo-reporter: admin
+              k8s-garden-client: admin
+              k8s-policy-agent: admin
+              kind-deployment: admin
+              relint-ci-pools: admin
+              relint-envs: admin
+              relint-team: admin
+              runtime-ci: admin
+              uptimer: admin
+      wg-app-runtime-interfaces:
+        description: Leads and approvers for App Runtime Interfaces WG
+        maintainers:
+        - Gerg
+        - stephanme
+        members:
+        - wayneeseguin
+        - evanfarrar
+        - krutten
+        - mafolz
+        - simonjjones
+        - anthonydahanne
+        - sneal
+        - PeteLevineA
+        - bonzofenix
+        - Samze
+        - a-b
+        - philippthun
+        - ramonskie
+        - nookala
+        - sethboyles
+        - cf-frontend
+        - tcdowney
+        - Benjamintf1
+        - arjun024
+        - vipinvkmenon
+        - silvestre
+        - ivanovac
+        - dmikusa
+        - joergdw
+        - vuil
+        - Kehrlann
+        - FloThinksPi
+        - anujc25
+        - cf-buildpacks-eng
+        - robdimsdale
+        - asalan316
+        - jochenehret
+        - stokpop
+        - serdarozerr
+        - moleske
+        - benjaminguttmann-avtq
+        - norman-abramovitz
+        - cf-cli-eng
+        - ionphractal
+        - ForestEckhardt
+        - theghost5800
+        - blgm
+        - lechnerc77
+        - ANUGRAHG
+        - kathap
+        - itsouvalas
+        - pivotal-david-osullivan
+        - IvanBorislavovDimitrov
+        - boyan-velinov
+        - tristanpoland
+        - svkrieger
+        - Yavor16
+        - prkalle
+        - OliverMautschke
+        - karrgov
+        - ikasarov
+        - johha
+        - WeiQuan0605
+        - Dray56
+        - Dariquest
+        - salzmannsusan
+        - vkalapov
+        - app-autoscaler-ci-bot
+        - gururajsh
+        - tnikolova82
+        - stiv03
+        - Bhuvisha03
+        - t-schoell
+        - geigerj0
+        - kiril-keranov
+        - jcvrabo
+        - s-yonkov-yonkov
+        - ari-wg-gitbot
+        - patzeltj
+        - cf-mta-deploy-bot
+        - Lokowandtg
+        - plamen-bardarov
+        - ivo1116
+        privacy: closed
+        teams:
+          wg-app-runtime-interfaces-autoscaler-approvers:
+            description: Approvers for App Runtime Interfaces WG, Autoscaler area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - bonzofenix
+            - silvestre
+            - joergdw
+            - asalan316
+            - OliverMautschke
+            - salzmannsusan
+            - t-schoell
+            - geigerj0
+            privacy: closed
+            repos:
+              app-autoscaler: write
+              app-autoscaler-cli-plugin: write
+              app-autoscaler-env-bbl-state: write
+              app-autoscaler-release: write
+              app-runtime-interfaces-infrastructure: write
+          wg-app-runtime-interfaces-autoscaler-bots:
+            description: Bot accounts for App Runtime Interfaces WG, Autoscaler area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - app-autoscaler-ci-bot
+            privacy: closed
+            repos:
+              app-autoscaler: write
+              app-autoscaler-cli-plugin: write
+              app-autoscaler-env-bbl-state: write
+              app-autoscaler-release: write
+              app-runtime-interfaces-infrastructure: write
+          wg-app-runtime-interfaces-bots:
+            description: Bot accounts for App Runtime Interfaces WG
+            members:
+            - cf-buildpacks-eng
+            - ari-wg-gitbot
+            privacy: closed
+            repos:
+              CLAW: write
+              app-autoscaler: write
+              app-autoscaler-cli-plugin: write
+              app-autoscaler-env-bbl-state: write
+              app-autoscaler-release: write
+              app-runtime-interfaces-infrastructure: write
+              apt-buildpack: write
+              binary-builder: write
+              binary-buildpack: write
+              binary-buildpack-release: write
+              blobstore_url_signer: write
+              bosh-package-cf-cli-release: write
+              brats: write
+              buildpack-packager: write
+              buildpacks-ci: write
+              buildpacks-envs: write
+              buildpacks-github-config: write
+              buildpacks-workstation: write
+              capi-bara-tests: write
+              capi-ci: write
+              capi-ci-private: write
+              capi-dockerfiles: write
+              capi-env-pool: write
+              capi-release: write
+              capi-team-checklists: write
+              capi-workspace: write
+              cc-uploader: write
+              cf-java-client: write
+              cf-openapi: write
+              cf-performance-tests: write
+              cf-performance-tests-pipeline: write
+              cf-performance-tests-release: write
+              cflinuxfs4: write
+              cflinuxfs4-compat-release: write
+              cflinuxfs4-release: write
+              cflinuxfs5: write
+              cflinuxfs5-release: write
+              cli: write
+              cli-ci: write
+              cli-docs-scripts: write
+              cli-i18n: write
+              cli-plugin-repo: write
+              cli-pools: write
+              cli-private: write
+              cli-workstation: write
+              cloud_controller_ng: write
+              dagger: write
+              delayed_job_sequel: write
+              dotnet-core-buildpack: write
+              dotnet-core-buildpack-release: write
+              example-sidecar-buildpack: write
+              go-buildpack: write
+              go-buildpack-release: write
+              go-cfclient: write
+              hwc-buildpack: write
+              hwc-buildpack-release: write
+              ibm-websphere-liberty-buildpack: write
+              java-buildpack: write
+              java-buildpack-auto-reconfiguration: write
+              java-buildpack-client-certificate-mapper: write
+              java-buildpack-container-customizer: write
+              java-buildpack-dependency-builder: write
+              java-buildpack-memory-calculator: write
+              java-buildpack-metric-writer: write
+              java-buildpack-release: write
+              java-buildpack-security-provider: write
+              java-buildpack-support: write
+              java-buildpack-system-test: write
+              java-test-applications: write
+              jsonry: write
+              jvmkill: write
+              libbuildpack: write
+              multiapps: write
+              multiapps-cli-plugin: write
+              multiapps-controller: write
+              nginx-buildpack: write
+              nginx-buildpack-release: write
+              nodejs-buildpack: write
+              nodejs-buildpack-release: write
+              notifications-release: write
+              osb-checker: write
+              php-buildpack: write
+              php-buildpack-release: write
+              public-buildpacks-ci-robots: write
+              python-buildpack: write
+              python-buildpack-release: write
+              r-buildpack: write
+              r-buildpack-release: write
+              ruby-buildpack: write
+              ruby-buildpack-release: write
+              runtimeschema: write
+              servicebroker: write
+              stack-auditor: write
+              staticfile-buildpack: write
+              staticfile-buildpack-release: write
+              steno: write
+              stratos: write
+              stratos-buildpack: write
+              switchblade: write
+              sync-integration-tests: write
+              terraform-provider-cloudfoundry: write
+              tps: write
+              ykk: write
+          wg-app-runtime-interfaces-buildpacks-and-stacks-approvers:
+            description: Approvers for App Runtime Interfaces WG, Buildpacks and Stacks
+              area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - simonjjones
+            - anthonydahanne
+            - ramonskie
+            - arjun024
+            - ivanovac
+            - dmikusa
+            - robdimsdale
+            - stokpop
+            - ForestEckhardt
+            - pivotal-david-osullivan
+            - tnikolova82
+            - kiril-keranov
+            - plamen-bardarov
+            privacy: closed
+            repos:
+              apt-buildpack: write
+              binary-builder: write
+              binary-buildpack: write
+              binary-buildpack-release: write
+              brats: write
+              buildpack-packager: write
+              buildpacks-ci: write
+              buildpacks-envs: write
+              buildpacks-github-config: write
+              buildpacks-workstation: write
+              cflinuxfs4: write
+              cflinuxfs4-compat-release: write
+              cflinuxfs4-release: write
+              cflinuxfs5: write
+              cflinuxfs5-release: write
+              dagger: write
+              dotnet-core-buildpack: write
+              dotnet-core-buildpack-release: write
+              example-sidecar-buildpack: write
+              go-buildpack: write
+              go-buildpack-release: write
+              hwc-buildpack: write
+              hwc-buildpack-release: write
+              ibm-websphere-liberty-buildpack: write
+              java-buildpack: write
+              java-buildpack-auto-reconfiguration: write
+              java-buildpack-client-certificate-mapper: write
+              java-buildpack-container-customizer: write
+              java-buildpack-dependency-builder: write
+              java-buildpack-memory-calculator: write
+              java-buildpack-metric-writer: write
+              java-buildpack-release: write
+              java-buildpack-security-provider: write
+              java-buildpack-support: write
+              java-buildpack-system-test: write
+              java-test-applications: write
+              jvmkill: write
+              libbuildpack: write
+              nginx-buildpack: write
+              nginx-buildpack-release: write
+              nodejs-buildpack: write
+              nodejs-buildpack-release: write
+              php-buildpack: write
+              php-buildpack-release: write
+              public-buildpacks-ci-robots: write
+              python-buildpack: write
+              python-buildpack-release: write
+              r-buildpack: write
+              r-buildpack-release: write
+              ruby-buildpack: write
+              ruby-buildpack-release: write
+              stack-auditor: write
+              staticfile-buildpack: write
+              staticfile-buildpack-release: write
+              switchblade: write
+          wg-app-runtime-interfaces-buildpacks-and-stacks-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, Buildpacks and Stacks
+              area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - wayneeseguin
+            - benjaminguttmann-avtq
+            - ionphractal
+            - ivo1116
+            privacy: closed
+            repos:
+              apt-buildpack: read
+              binary-builder: read
+              binary-buildpack: read
+              binary-buildpack-release: read
+              brats: read
+              buildpack-packager: read
+              buildpacks-ci: read
+              buildpacks-envs: read
+              buildpacks-github-config: read
+              buildpacks-workstation: read
+              cflinuxfs4: read
+              cflinuxfs4-compat-release: read
+              cflinuxfs4-release: read
+              cflinuxfs5: read
+              cflinuxfs5-release: read
+              dagger: read
+              dotnet-core-buildpack: read
+              dotnet-core-buildpack-release: read
+              example-sidecar-buildpack: read
+              go-buildpack: read
+              go-buildpack-release: read
+              hwc-buildpack: read
+              hwc-buildpack-release: read
+              ibm-websphere-liberty-buildpack: read
+              java-buildpack: read
+              java-buildpack-auto-reconfiguration: read
+              java-buildpack-client-certificate-mapper: read
+              java-buildpack-container-customizer: read
+              java-buildpack-dependency-builder: read
+              java-buildpack-memory-calculator: read
+              java-buildpack-metric-writer: read
+              java-buildpack-release: read
+              java-buildpack-security-provider: read
+              java-buildpack-support: read
+              java-buildpack-system-test: read
+              java-test-applications: read
+              jvmkill: read
+              libbuildpack: read
+              nginx-buildpack: read
+              nginx-buildpack-release: read
+              nodejs-buildpack: read
+              nodejs-buildpack-release: read
+              php-buildpack: read
+              php-buildpack-release: read
+              public-buildpacks-ci-robots: read
+              python-buildpack: read
+              python-buildpack-release: read
+              r-buildpack: read
+              r-buildpack-release: read
+              ruby-buildpack: read
+              ruby-buildpack-release: read
+              stack-auditor: read
+              staticfile-buildpack: read
+              staticfile-buildpack-release: read
+              switchblade: read
+          wg-app-runtime-interfaces-capi-approvers:
+            description: Approvers for App Runtime Interfaces WG, CAPI area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - Samze
+            - philippthun
+            - sethboyles
+            - tcdowney
+            - Benjamintf1
+            - FloThinksPi
+            - jochenehret
+            - moleske
+            - kathap
+            - svkrieger
+            - johha
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: write
+              blobstore_url_signer: write
+              capi-bara-tests: write
+              capi-ci: write
+              capi-ci-private: write
+              capi-dockerfiles: write
+              capi-env-pool: write
+              capi-release: write
+              capi-team-checklists: write
+              capi-workspace: write
+              cc-uploader: write
+              cf-openapi: write
+              cf-performance-tests: write
+              cf-performance-tests-pipeline: write
+              cf-performance-tests-release: write
+              cloud_controller_ng: write
+              delayed_job_sequel: write
+              osb-checker: write
+              runtimeschema: write
+              servicebroker: write
+              stack-auditor: write
+              steno: write
+              sync-integration-tests: write
+              tps: write
+          wg-app-runtime-interfaces-capi-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, CAPI area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - evanfarrar
+            - a-b
+            - nookala
+            - serdarozerr
+            - WeiQuan0605
+            - gururajsh
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: read
+              blobstore_url_signer: read
+              capi-bara-tests: read
+              capi-ci: read
+              capi-ci-private: read
+              capi-dockerfiles: read
+              capi-env-pool: read
+              capi-release: read
+              capi-team-checklists: read
+              capi-workspace: read
+              cc-uploader: read
+              cf-openapi: read
+              cf-performance-tests: read
+              cf-performance-tests-pipeline: read
+              cf-performance-tests-release: read
+              cloud_controller_ng: read
+              delayed_job_sequel: read
+              osb-checker: read
+              runtimeschema: read
+              servicebroker: read
+              stack-auditor: read
+              steno: read
+              sync-integration-tests: read
+              tps: read
+          wg-app-runtime-interfaces-cli-approvers:
+            description: Approvers for App Runtime Interfaces WG, CLI area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - Samze
+            - anujc25
+            - moleske
+            - blgm
+            - prkalle
+            privacy: closed
+            repos:
+              CLAW: write
+              app-runtime-interfaces-infrastructure: write
+              bosh-package-cf-cli-release: write
+              cli: write
+              cli-ci: write
+              cli-docs-scripts: write
+              cli-i18n: write
+              cli-plugin-repo: write
+              cli-pools: write
+              cli-private: write
+              cli-workstation: write
+              jsonry: write
+              stack-auditor: write
+              ykk: write
+          wg-app-runtime-interfaces-cli-bots:
+            description: Bot accounts for App Runtime Interfaces WG, CLI area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - cf-cli-eng
+            privacy: closed
+            repos:
+              CLAW: write
+              app-runtime-interfaces-infrastructure: write
+              bosh-package-cf-cli-release: write
+              cli: write
+              cli-ci: write
+              cli-docs-scripts: write
+              cli-i18n: write
+              cli-plugin-repo: write
+              cli-pools: write
+              cli-private: write
+              cli-workstation: write
+              jsonry: write
+              stack-auditor: write
+              ykk: write
+          wg-app-runtime-interfaces-cli-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, CLI area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - PeteLevineA
+            - tcdowney
+            - vuil
+            - Dariquest
+            - jcvrabo
+            privacy: closed
+            repos:
+              CLAW: read
+              app-runtime-interfaces-infrastructure: read
+              bosh-package-cf-cli-release: read
+              cli: read
+              cli-ci: read
+              cli-docs-scripts: read
+              cli-i18n: read
+              cli-plugin-repo: read
+              cli-pools: read
+              cli-private: read
+              cli-workstation: read
+              jsonry: read
+              stack-auditor: read
+              ykk: read
+          wg-app-runtime-interfaces-go-tools-approvers:
+            description: Approvers for App Runtime Interfaces WG, Go Tools area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - sneal
+            privacy: closed
+            repos:
+              go-cfclient: write
+          wg-app-runtime-interfaces-go-tools-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, Go Tools area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - ANUGRAHG
+            - jcvrabo
+            privacy: closed
+            repos:
+              go-cfclient: read
+          wg-app-runtime-interfaces-java-tools-approvers:
+            description: Approvers for App Runtime Interfaces WG, Java Tools area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - anthonydahanne
+            - dmikusa
+            - Kehrlann
+            - pivotal-david-osullivan
+            - Lokowandtg
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: write
+              cf-java-client: write
+          wg-app-runtime-interfaces-java-tools-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, Java Tools area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - theghost5800
+            - s-yonkov-yonkov
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: read
+              cf-java-client: read
+          wg-app-runtime-interfaces-leads:
+            description: Leads for App Runtime Interfaces WG
+            maintainers:
+            - Gerg
+            - stephanme
+            privacy: closed
+            repos:
+              CLAW: admin
+              app-autoscaler: admin
+              app-autoscaler-cli-plugin: admin
+              app-autoscaler-env-bbl-state: admin
+              app-autoscaler-release: admin
+              app-runtime-interfaces-infrastructure: admin
+              apt-buildpack: admin
+              binary-builder: admin
+              binary-buildpack: admin
+              binary-buildpack-release: admin
+              blobstore_url_signer: admin
+              bosh-package-cf-cli-release: admin
+              brats: admin
+              buildpack-packager: admin
+              buildpacks-ci: admin
+              buildpacks-envs: admin
+              buildpacks-github-config: admin
+              buildpacks-workstation: admin
+              capi-bara-tests: admin
+              capi-ci: admin
+              capi-ci-private: admin
+              capi-dockerfiles: admin
+              capi-env-pool: admin
+              capi-release: admin
+              capi-team-checklists: admin
+              capi-workspace: admin
+              cc-uploader: admin
+              cf-java-client: admin
+              cf-openapi: admin
+              cf-performance-tests: admin
+              cf-performance-tests-pipeline: admin
+              cf-performance-tests-release: admin
+              cflinuxfs4: admin
+              cflinuxfs4-compat-release: admin
+              cflinuxfs4-release: admin
+              cflinuxfs5: admin
+              cflinuxfs5-release: admin
+              cli: admin
+              cli-ci: admin
+              cli-docs-scripts: admin
+              cli-i18n: admin
+              cli-plugin-repo: admin
+              cli-pools: admin
+              cli-private: admin
+              cli-workstation: admin
+              cloud_controller_ng: admin
+              dagger: admin
+              delayed_job_sequel: admin
+              dotnet-core-buildpack: admin
+              dotnet-core-buildpack-release: admin
+              example-sidecar-buildpack: admin
+              go-buildpack: admin
+              go-buildpack-release: admin
+              go-cfclient: admin
+              hwc-buildpack: admin
+              hwc-buildpack-release: admin
+              ibm-websphere-liberty-buildpack: admin
+              java-buildpack: admin
+              java-buildpack-auto-reconfiguration: admin
+              java-buildpack-client-certificate-mapper: admin
+              java-buildpack-container-customizer: admin
+              java-buildpack-dependency-builder: admin
+              java-buildpack-memory-calculator: admin
+              java-buildpack-metric-writer: admin
+              java-buildpack-release: admin
+              java-buildpack-security-provider: admin
+              java-buildpack-support: admin
+              java-buildpack-system-test: admin
+              java-test-applications: admin
+              jsonry: admin
+              jvmkill: admin
+              libbuildpack: admin
+              multiapps: admin
+              multiapps-cli-plugin: admin
+              multiapps-controller: admin
+              nginx-buildpack: admin
+              nginx-buildpack-release: admin
+              nodejs-buildpack: admin
+              nodejs-buildpack-release: admin
+              notifications-release: admin
+              osb-checker: admin
+              php-buildpack: admin
+              php-buildpack-release: admin
+              public-buildpacks-ci-robots: admin
+              python-buildpack: admin
+              python-buildpack-release: admin
+              r-buildpack: admin
+              r-buildpack-release: admin
+              ruby-buildpack: admin
+              ruby-buildpack-release: admin
+              runtimeschema: admin
+              servicebroker: admin
+              stack-auditor: admin
+              staticfile-buildpack: admin
+              staticfile-buildpack-release: admin
+              steno: admin
+              stratos: admin
+              stratos-buildpack: admin
+              switchblade: admin
+              sync-integration-tests: admin
+              terraform-provider-cloudfoundry: admin
+              tps: admin
+              ykk: admin
+          wg-app-runtime-interfaces-multiapps-approvers:
+            description: Approvers for App Runtime Interfaces WG, MultiApps area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - theghost5800
+            - IvanBorislavovDimitrov
+            - boyan-velinov
+            - Yavor16
+            - karrgov
+            - ikasarov
+            - vkalapov
+            - stiv03
+            - s-yonkov-yonkov
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: write
+              multiapps: write
+              multiapps-cli-plugin: write
+              multiapps-controller: write
+          wg-app-runtime-interfaces-multiapps-bots:
+            description: Bot accounts for App Runtime Interfaces WG, MultiApps area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - cf-mta-deploy-bot
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: write
+              multiapps: write
+              multiapps-cli-plugin: write
+              multiapps-controller: write
+          wg-app-runtime-interfaces-multiapps-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, MultiApps area
+            maintainers:
+            - Gerg
+            - stephanme
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: read
+              multiapps: read
+              multiapps-cli-plugin: read
+              multiapps-controller: read
+          wg-app-runtime-interfaces-notifications-approvers:
+            description: Approvers for App Runtime Interfaces WG, Notifications area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - evanfarrar
+            - a-b
+            - Benjamintf1
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: write
+              notifications-release: write
+          wg-app-runtime-interfaces-notifications-bots:
+            description: Bot accounts for App Runtime Interfaces WG, Notifications
+              area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - cf-frontend
+            privacy: closed
+            repos:
+              app-runtime-interfaces-infrastructure: write
+              notifications-release: write
+          wg-app-runtime-interfaces-stratos-console-for-cloud-foundry-approvers:
+            description: Approvers for App Runtime Interfaces WG, Stratos Console
+              for Cloud Foundry area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - wayneeseguin
+            - krutten
+            - norman-abramovitz
+            - itsouvalas
+            privacy: closed
+            repos:
+              stratos: write
+              stratos-buildpack: write
+          wg-app-runtime-interfaces-stratos-console-for-cloud-foundry-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, Stratos Console
+              for Cloud Foundry area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - mafolz
+            - tristanpoland
+            - patzeltj
+            privacy: closed
+            repos:
+              stratos: read
+              stratos-buildpack: read
+          wg-app-runtime-interfaces-terraform-provider-cloudfoundry-approvers:
+            description: Approvers for App Runtime Interfaces WG, Terraform Provider
+              Cloudfoundry area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - vipinvkmenon
+            - lechnerc77
+            - ANUGRAHG
+            - Dray56
+            privacy: closed
+            repos:
+              terraform-provider-cloudfoundry: write
+          wg-app-runtime-interfaces-terraform-provider-cloudfoundry-reviewers:
+            description: Reviewers for App Runtime Interfaces WG, Terraform Provider
+              Cloudfoundry area
+            maintainers:
+            - Gerg
+            - stephanme
+            members:
+            - Bhuvisha03
+            privacy: closed
+            repos:
+              terraform-provider-cloudfoundry: read
+      wg-app-runtime-platform:
+        description: Leads and approvers for App Runtime Platform WG
+        maintainers:
+        - Gerg
+        - ameowlia
+        members:
+        - mariash
+        - mkocher
+        - mvach
+        - peanball
+        - mtekel
+        - selzoc
+        - chombium
+        - tcdowney
+        - ssunka
+        - Benjamintf1
+        - ameowlia
+        - geofffranks
+        - ebroberson
+        - tomkennedy513
+        - ctlong
+        - ZPascal
+        - c0d1ngm0nk3y
+        - a18e
+        - MarcPaquette
+        - pbusko
+        - modulo11
+        - PlamenDoychev
+        - Soha-Albaghdady
+        - nicolasbender
+        - b1tamara
+        - plowin
+        - maxmoehl
+        - acosta11
+        - Dariquest
+        - winkingturtle-vmw
+        - Cryogenics-CI
+        - tas-runtime-bot
+        - Mrizwanshaik
+        - klapkov
+        - svcboteos
+        - CFN-CI
+        - cf-logging-metrics-bot
+        - shrisha-c
+        - jorbaum
+        - hoffmaen
+        - loewenstein-sap
+        - plamen-bardarov
+        - weili-broadcom
+        - kart2bc
+        - appruntimeplatform-bot
+        privacy: closed
+        teams:
+          wg-app-runtime-platform-bots:
+            description: Bot accounts for App Runtime Platform WG
+            members:
+            - Cryogenics-CI
+            - tas-runtime-bot
+            - svcboteos
+            - CFN-CI
+            - cf-logging-metrics-bot
+            - appruntimeplatform-bot
+            privacy: closed
+            repos:
+              app-runtime-platform-envs: write
+              archiver: write
+              bbs: write
+              bosh-system-metrics-forwarder-release: write
+              buildpackapplifecycle: write
+              bytefmt: write
+              cacheddownloader: write
+              certsplitter: write
+              cf-lookup-route: write
+              cf-networking-helpers: write
+              cf-networking-onboarding: write
+              cf-networking-release: write
+              cf-volume-services-acceptance-tests: write
+              cfhttp: write
+              clock: write
+              cnbapplifecycle: write
+              commandrunner: write
+              debugserver: write
+              diego-db-helpers: write
+              diego-logging-client: write
+              diego-release: write
+              diego-upgrade-stability-tests: write
+              dockerdriver: write
+              dontpanic: write
+              dropsonde: write
+              dropsonde-protocol: write
+              dropsonde-protocol-js: write
+              durationjson: write
+              envoy-nginx-release: write
+              eventhub: write
+              executor: write
+              existingvolumebroker: write
+              filelock: write
+              garden: write
+              garden-integration-tests: write
+              garden-performance-acceptance-tests: write
+              garden-runc-release: write
+              go-batching: write
+              go-diodes: write
+              go-envstruct: write
+              go-log-cache: write
+              go-loggregator: write
+              go-metric-registry: write
+              go-orchestrator: write
+              go-pubsub: write
+              goshims: write
+              grace: write
+              groot: write
+              grootfs: write
+              guardian: write
+              haproxy-boshrelease: write
+              healthchecker-release: write
+              hwc: write
+              hydrator: write
+              idmapper: write
+              lager: write
+              localip: write
+              locket: write
+              log-cache-cli: write
+              log-cache-release: write
+              loggregator-agent-release: write
+              loggregator-api: write
+              loggregator-dotfiles: write
+              loggregator-release: write
+              loggregator-tools: write
+              mapfs-release: write
+              metric-store-ci: write
+              metric-store-dotfiles: write
+              metric-store-release: write
+              metrics-discovery-release: write
+              migrate_mysql_to_credhub: write
+              nats-release: write
+              netplugin-shim: write
+              nfs-volume-release: write
+              noaa: write
+              otel-collector-release: write
+              policy_client: write
+              rep: write
+              routing-api: write
+              routing-concourse: write
+              routing-info: write
+              routing-release: write
+              runtime-ci-pools: write
+              service-broker-store: write
+              service-metrics-release: write
+              silk-release: write
+              smb-volume-release: write
+              sonde-go: write
+              statsd-injector-release: write
+              system-metrics-scraper-release: write
+              test-log-emitter: write
+              test-log-emitter-release: write
+              tlsconfig: write
+              volume-mount-options: write
+              volumedriver: write
+              wg-app-platform-runtime-ci: write
+              winc-release: write
+              windows-tools-release: write
+              windows2016fs: write
+              windows2019fs-release: write
+              windowsfs-online-release: write
+          wg-app-runtime-platform-cnbapplifecycle-approvers:
+            description: Approvers for App Runtime Platform WG, cnbapplifecycle area
+            maintainers:
+            - ameowlia
+            members:
+            - mvach
+            - c0d1ngm0nk3y
+            - pbusko
+            - modulo11
+            - nicolasbender
+            - loewenstein-sap
+            privacy: closed
+            repos:
+              cnbapplifecycle: write
+          wg-app-runtime-platform-cnbapplifecycle-reviewers:
+            description: Reviewers for App Runtime Platform WG, cnbapplifecycle area
+            maintainers:
+            - ameowlia
+            members:
+            - tomkennedy513
+            privacy: closed
+            repos:
+              cnbapplifecycle: read
+          wg-app-runtime-platform-diego-approvers:
+            description: Approvers for App Runtime Platform WG, Diego area
+            maintainers:
+            - ameowlia
+            members:
+            - mariash
+            - selzoc
+            - geofffranks
+            - ebroberson
+            - MarcPaquette
+            - PlamenDoychev
+            - winkingturtle-vmw
+            - kart2bc
+            privacy: closed
+            repos:
+              archiver: write
+              bbs: write
+              buildpackapplifecycle: write
+              bytefmt: write
+              cacheddownloader: write
+              certsplitter: write
+              cfhttp: write
+              clock: write
+              debugserver: write
+              diego-db-helpers: write
+              diego-logging-client: write
+              diego-release: write
+              diego-upgrade-stability-tests: write
+              dockerdriver: write
+              durationjson: write
+              eventhub: write
+              executor: write
+              grace: write
+              lager: write
+              localip: write
+              locket: write
+              rep: write
+              runtime-ci-pools: write
+              tlsconfig: write
+              wg-app-platform-runtime-ci: write
+          wg-app-runtime-platform-diego-reviewers:
+            description: Reviewers for App Runtime Platform WG, Diego area
+            maintainers:
+            - ameowlia
+            members:
+            - peanball
+            - tcdowney
+            - klapkov
+            - plamen-bardarov
+            privacy: closed
+            repos:
+              archiver: read
+              bbs: read
+              buildpackapplifecycle: read
+              bytefmt: read
+              cacheddownloader: read
+              certsplitter: read
+              cfhttp: read
+              clock: read
+              debugserver: read
+              diego-db-helpers: read
+              diego-logging-client: read
+              diego-release: read
+              diego-upgrade-stability-tests: read
+              dockerdriver: read
+              durationjson: read
+              eventhub: read
+              executor: read
+              grace: read
+              lager: read
+              localip: read
+              locket: read
+              rep: read
+              runtime-ci-pools: read
+              tlsconfig: read
+              wg-app-platform-runtime-ci: read
+          wg-app-runtime-platform-garden-containers-approvers:
+            description: Approvers for App Runtime Platform WG, Garden Containers
+              area
+            maintainers:
+            - ameowlia
+            members:
+            - mariash
+            - selzoc
+            - geofffranks
+            - ebroberson
+            - MarcPaquette
+            - winkingturtle-vmw
+            - kart2bc
+            privacy: closed
+            repos:
+              commandrunner: write
+              dontpanic: write
+              envoy-nginx-release: write
+              filelock: write
+              garden: write
+              garden-integration-tests: write
+              garden-performance-acceptance-tests: write
+              garden-runc-release: write
+              groot: write
+              grootfs: write
+              guardian: write
+              hwc: write
+              hydrator: write
+              idmapper: write
+              netplugin-shim: write
+              test-log-emitter: write
+              test-log-emitter-release: write
+              winc-release: write
+              windows-tools-release: write
+              windows2016fs: write
+              windows2019fs-release: write
+              windowsfs-online-release: write
+          wg-app-runtime-platform-garden-containers-reviewers:
+            description: Reviewers for App Runtime Platform WG, Garden Containers
+              area
+            maintainers:
+            - ameowlia
+            members:
+            - peanball
+            - tcdowney
+            privacy: closed
+            repos:
+              commandrunner: read
+              dontpanic: read
+              envoy-nginx-release: read
+              filelock: read
+              garden: read
+              garden-integration-tests: read
+              garden-performance-acceptance-tests: read
+              garden-runc-release: read
+              groot: read
+              grootfs: read
+              guardian: read
+              hwc: read
+              hydrator: read
+              idmapper: read
+              netplugin-shim: read
+              test-log-emitter: read
+              test-log-emitter-release: read
+              winc-release: read
+              windows-tools-release: read
+              windows2016fs: read
+              windows2019fs-release: read
+              windowsfs-online-release: read
+          wg-app-runtime-platform-leads:
+            description: Leads for App Runtime Platform WG
+            maintainers:
+            - ameowlia
+            privacy: closed
+            repos:
+              app-runtime-platform-envs: admin
+              archiver: admin
+              bbs: admin
+              bosh-system-metrics-forwarder-release: admin
+              buildpackapplifecycle: admin
+              bytefmt: admin
+              cacheddownloader: admin
+              certsplitter: admin
+              cf-lookup-route: admin
+              cf-networking-helpers: admin
+              cf-networking-onboarding: admin
+              cf-networking-release: admin
+              cf-volume-services-acceptance-tests: admin
+              cfhttp: admin
+              clock: admin
+              cnbapplifecycle: admin
+              commandrunner: admin
+              debugserver: admin
+              diego-db-helpers: admin
+              diego-logging-client: admin
+              diego-release: admin
+              diego-upgrade-stability-tests: admin
+              dockerdriver: admin
+              dontpanic: admin
+              dropsonde: admin
+              dropsonde-protocol: admin
+              dropsonde-protocol-js: admin
+              durationjson: admin
+              envoy-nginx-release: admin
+              eventhub: admin
+              executor: admin
+              existingvolumebroker: admin
+              filelock: admin
+              garden: admin
+              garden-integration-tests: admin
+              garden-performance-acceptance-tests: admin
+              garden-runc-release: admin
+              go-batching: admin
+              go-diodes: admin
+              go-envstruct: admin
+              go-log-cache: admin
+              go-loggregator: admin
+              go-metric-registry: admin
+              go-orchestrator: admin
+              go-pubsub: admin
+              goshims: admin
+              grace: admin
+              groot: admin
+              grootfs: admin
+              guardian: admin
+              haproxy-boshrelease: admin
+              healthchecker-release: admin
+              hwc: admin
+              hydrator: admin
+              idmapper: admin
+              lager: admin
+              localip: admin
+              locket: admin
+              log-cache-cli: admin
+              log-cache-release: admin
+              loggregator-agent-release: admin
+              loggregator-api: admin
+              loggregator-dotfiles: admin
+              loggregator-release: admin
+              loggregator-tools: admin
+              mapfs-release: admin
+              metric-store-ci: admin
+              metric-store-dotfiles: admin
+              metric-store-release: admin
+              metrics-discovery-release: admin
+              migrate_mysql_to_credhub: admin
+              nats-release: admin
+              netplugin-shim: admin
+              nfs-volume-release: admin
+              noaa: admin
+              otel-collector-release: admin
+              policy_client: admin
+              rep: admin
+              routing-api: admin
+              routing-concourse: admin
+              routing-info: admin
+              routing-release: admin
+              runtime-ci-pools: admin
+              service-broker-store: admin
+              service-metrics-release: admin
+              silk-release: admin
+              smb-volume-release: admin
+              sonde-go: admin
+              statsd-injector-release: admin
+              system-metrics-scraper-release: admin
+              test-log-emitter: admin
+              test-log-emitter-release: admin
+              tlsconfig: admin
+              volume-mount-options: admin
+              volumedriver: admin
+              wg-app-platform-runtime-ci: admin
+              winc-release: admin
+              windows-tools-release: admin
+              windows2016fs: admin
+              windows2019fs-release: admin
+              windowsfs-online-release: admin
+          wg-app-runtime-platform-logging-and-metrics-approvers:
+            description: Approvers for App Runtime Platform WG, Logging and Metrics
+              area
+            maintainers:
+            - ameowlia
+            members:
+            - mkocher
+            - selzoc
+            - chombium
+            - Benjamintf1
+            - geofffranks
+            - winkingturtle-vmw
+            privacy: closed
+            repos:
+              app-runtime-platform-envs: write
+              bosh-system-metrics-forwarder-release: write
+              dropsonde: write
+              dropsonde-protocol: write
+              dropsonde-protocol-js: write
+              go-batching: write
+              go-diodes: write
+              go-envstruct: write
+              go-log-cache: write
+              go-loggregator: write
+              go-metric-registry: write
+              go-orchestrator: write
+              go-pubsub: write
+              log-cache-cli: write
+              log-cache-release: write
+              loggregator-agent-release: write
+              loggregator-api: write
+              loggregator-dotfiles: write
+              loggregator-release: write
+              loggregator-tools: write
+              metrics-discovery-release: write
+              noaa: write
+              otel-collector-release: write
+              service-metrics-release: write
+              sonde-go: write
+              statsd-injector-release: write
+              system-metrics-scraper-release: write
+          wg-app-runtime-platform-logging-and-metrics-reviewers:
+            description: Reviewers for App Runtime Platform WG, Logging and Metrics
+              area
+            maintainers:
+            - ameowlia
+            members:
+            - tcdowney
+            - ZPascal
+            - acosta11
+            - jorbaum
+            - weili-broadcom
+            - kart2bc
+            privacy: closed
+            repos:
+              app-runtime-platform-envs: read
+              bosh-system-metrics-forwarder-release: read
+              dropsonde: read
+              dropsonde-protocol: read
+              dropsonde-protocol-js: read
+              go-batching: read
+              go-diodes: read
+              go-envstruct: read
+              go-log-cache: read
+              go-loggregator: read
+              go-metric-registry: read
+              go-orchestrator: read
+              go-pubsub: read
+              log-cache-cli: read
+              log-cache-release: read
+              loggregator-agent-release: read
+              loggregator-api: read
+              loggregator-dotfiles: read
+              loggregator-release: read
+              loggregator-tools: read
+              metrics-discovery-release: read
+              noaa: read
+              otel-collector-release: read
+              service-metrics-release: read
+              sonde-go: read
+              statsd-injector-release: read
+              system-metrics-scraper-release: read
+          wg-app-runtime-platform-metric-store-approvers:
+            description: Approvers for App Runtime Platform WG, Metric Store area
+            maintainers:
+            - ameowlia
+            members:
+            - ssunka
+            - shrisha-c
+            privacy: closed
+            repos:
+              metric-store-ci: write
+              metric-store-dotfiles: write
+              metric-store-release: write
+          wg-app-runtime-platform-metric-store-reviewers:
+            description: Reviewers for App Runtime Platform WG, Metric Store area
+            maintainers:
+            - ameowlia
+            members:
+            - weili-broadcom
+            privacy: closed
+            repos:
+              metric-store-ci: read
+              metric-store-dotfiles: read
+              metric-store-release: read
+          wg-app-runtime-platform-networking-approvers:
+            description: Approvers for App Runtime Platform WG, Networking area
+            maintainers:
+            - Gerg
+            - ameowlia
+            members:
+            - mariash
+            - mkocher
+            - peanball
+            - selzoc
+            - tcdowney
+            - geofffranks
+            - ebroberson
+            - ctlong
+            - a18e
+            - MarcPaquette
+            - PlamenDoychev
+            - Soha-Albaghdady
+            - b1tamara
+            - plowin
+            - maxmoehl
+            - winkingturtle-vmw
+            - hoffmaen
+            - kart2bc
+            privacy: closed
+            repos:
+              app-runtime-platform-envs: write
+              cf-lookup-route: write
+              cf-networking-helpers: write
+              cf-networking-onboarding: write
+              cf-networking-release: write
+              haproxy-boshrelease: write
+              healthchecker-release: write
+              nats-release: write
+              policy_client: write
+              routing-api: write
+              routing-concourse: write
+              routing-info: write
+              routing-release: write
+              silk-release: write
+              wg-app-platform-runtime-ci: write
+          wg-app-runtime-platform-networking-reviewers:
+            description: Reviewers for App Runtime Platform WG, Networking area
+            maintainers:
+            - ameowlia
+            members:
+            - mtekel
+            - Dariquest
+            - Mrizwanshaik
+            - klapkov
+            privacy: closed
+            repos:
+              app-runtime-platform-envs: read
+              cf-lookup-route: read
+              cf-networking-helpers: read
+              cf-networking-onboarding: read
+              cf-networking-release: read
+              haproxy-boshrelease: read
+              healthchecker-release: read
+              nats-release: read
+              policy_client: read
+              routing-api: read
+              routing-concourse: read
+              routing-info: read
+              routing-release: read
+              silk-release: read
+              wg-app-platform-runtime-ci: read
+          wg-app-runtime-platform-volume-services-approvers:
+            description: Approvers for App Runtime Platform WG, Volume Services area
+            maintainers:
+            - ameowlia
+            members:
+            - mariash
+            - geofffranks
+            - MarcPaquette
+            - winkingturtle-vmw
+            privacy: closed
+            repos:
+              cf-volume-services-acceptance-tests: write
+              existingvolumebroker: write
+              goshims: write
+              mapfs-release: write
+              migrate_mysql_to_credhub: write
+              nfs-volume-release: write
+              service-broker-store: write
+              smb-volume-release: write
+              volume-mount-options: write
+              volumedriver: write
+          wg-app-runtime-platform-volume-services-reviewers:
+            description: Reviewers for App Runtime Platform WG, Volume Services area
+            maintainers:
+            - ameowlia
+            members:
+            - kart2bc
+            privacy: closed
+            repos:
+              cf-volume-services-acceptance-tests: read
+              existingvolumebroker: read
+              goshims: read
+              mapfs-release: read
+              migrate_mysql_to_credhub: read
+              nfs-volume-release: read
+              service-broker-store: read
+              smb-volume-release: read
+              volume-mount-options: read
+              volumedriver: read
+      wg-cf-on-k8s:
+        description: Leads and approvers for CF on K8s WG
+        maintainers:
+        - davewalter
+        - danail-branekov
+        - Birdrock
+        - georgethebeatle
+        members:
+        - gogolok
+        - davewalter
+        - tcdowney
+        - danail-branekov
+        - Birdrock
+        - julian-hj
+        - georgethebeatle
+        - acosta11
+        - korifi-bot
+        - uzabanov
+        privacy: closed
+        teams:
+          wg-cf-on-k8s-bots:
+            description: Bot accounts for CF on K8s WG
+            members:
+            - korifi-bot
+            privacy: closed
+            repos:
+              cf-k8s-secrets: write
+              korifi: write
+              korifi-ci: write
+          wg-cf-on-k8s-korifi-approvers:
+            description: Approvers for CF on K8s WG, Korifi area
+            maintainers:
+            - danail-branekov
+            - georgethebeatle
+            members:
+            - gogolok
+            - davewalter
+            - tcdowney
+            - Birdrock
+            - julian-hj
+            - acosta11
+            - uzabanov
+            privacy: closed
+            repos:
+              cf-k8s-secrets: write
+              korifi: write
+              korifi-ci: write
+          wg-cf-on-k8s-leads:
+            description: Leads for CF on K8s WG
+            maintainers:
+            - danail-branekov
+            - georgethebeatle
+            privacy: closed
+            repos:
+              cf-k8s-secrets: admin
+              korifi: admin
+              korifi-ci: admin
+      wg-documentation:
+        description: Leads and approvers for Documentation WG
+        maintainers:
+        - anita-flegg
+        members:
+        - chombium
+        - spgreenberg
+        - akop
+        - asalan316
+        - benjaminguttmann-avtq
+        - stuclem
+        - mauricebrinkmann
+        - RichardJJG
+        - anita-flegg
+        privacy: closed
+        teams:
+          wg-documentation-bots:
+            description: Bot accounts for Documentation WG
+            privacy: closed
+            repos:
+              cf4devs: write
+              docs-bbr: write
+              docs-book-cloudfoundry: write
+              docs-buildpacks: write
+              docs-cf-admin: write
+              docs-cf-cli: write
+              docs-cloudfoundry-concepts: write
+              docs-credhub: write
+              docs-deploying-cf: write
+              docs-dev-guide: write
+              docs-dotnet-core-tutorial: write
+              docs-loggregator: write
+              docs-running-cf: write
+              docs-services: write
+              docs-uaa: write
+              edx: write
+              fake-mysql-broker: write
+              intro-to-korifi: write
+              korifi-sample-app: write
+              sample-app: write
+              tutorials: write
+              unhappy-appy: write
+              what-is-cf: write
+          wg-documentation-cloud-foundry-tutorials-approvers:
+            description: Approvers for Documentation WG, Cloud Foundry Tutorials area
+            maintainers:
+            - anita-flegg
+            members:
+            - spgreenberg
+            privacy: closed
+            repos:
+              cf4devs: write
+              edx: write
+              fake-mysql-broker: write
+              intro-to-korifi: write
+              korifi-sample-app: write
+              sample-app: write
+              tutorials: write
+              unhappy-appy: write
+              what-is-cf: write
+          wg-documentation-cloud-foundry-tutorials-reviewers:
+            description: Reviewers for Documentation WG, Cloud Foundry Tutorials area
+            maintainers:
+            - anita-flegg
+            members:
+            - chombium
+            - akop
+            - asalan316
+            - benjaminguttmann-avtq
+            - mauricebrinkmann
+            privacy: closed
+            repos:
+              cf4devs: read
+              edx: read
+              fake-mysql-broker: read
+              intro-to-korifi: read
+              korifi-sample-app: read
+              sample-app: read
+              tutorials: read
+              unhappy-appy: read
+              what-is-cf: read
+          wg-documentation-docs-approvers:
+            description: Approvers for Documentation WG, Docs area
+            maintainers:
+            - anita-flegg
+            members:
+            - stuclem
+            - RichardJJG
+            privacy: closed
+            repos:
+              docs-bbr: write
+              docs-book-cloudfoundry: write
+              docs-buildpacks: write
+              docs-cf-admin: write
+              docs-cf-cli: write
+              docs-cloudfoundry-concepts: write
+              docs-credhub: write
+              docs-deploying-cf: write
+              docs-dev-guide: write
+              docs-dotnet-core-tutorial: write
+              docs-loggregator: write
+              docs-running-cf: write
+              docs-services: write
+              docs-uaa: write
+          wg-documentation-leads:
+            description: Leads for Documentation WG
+            maintainers:
+            - anita-flegg
+            privacy: closed
+            repos:
+              cf4devs: admin
+              docs-bbr: admin
+              docs-book-cloudfoundry: admin
+              docs-buildpacks: admin
+              docs-cf-admin: admin
+              docs-cf-cli: admin
+              docs-cloudfoundry-concepts: admin
+              docs-credhub: admin
+              docs-deploying-cf: admin
+              docs-dev-guide: admin
+              docs-dotnet-core-tutorial: admin
+              docs-loggregator: admin
+              docs-running-cf: admin
+              docs-services: admin
+              docs-uaa: admin
+              edx: admin
+              fake-mysql-broker: admin
+              intro-to-korifi: admin
+              korifi-sample-app: admin
+              sample-app: admin
+              tutorials: admin
+              unhappy-appy: admin
+              what-is-cf: admin
+      wg-foundational-infrastructure:
+        description: Leads and approvers for Foundational Infrastructure WG
+        maintainers:
+        - aramprice
+        - rkoster
+        - beyhan
+        - Gerg
+        - stephanme
+        members:
+        - evanfarrar
+        - aramprice
+        - mariash
+        - mkocher
+        - ragaskar
+        - ystros
+        - abg
+        - colins
+        - Samze
+        - peanball
+        - nmaurer23
+        - metskem
+        - a-b
+        - fhanik
+        - philippthun
+        - selzoc
+        - chombium
+        - Alphasite
+        - lnguyen
+        - duanemay
+        - ramonskie
+        - nookala
+        - sethboyles
+        - Jobsby
+        - tcdowney
+        - mrosecrance
+        - Benjamintf1
+        - kimago
+        - xtreme-nitin-ravindran
+        - joergdw
+        - cf-gitbot
+        - Kehrlann
+        - FloThinksPi
+        - jochenehret
+        - s4heid
+        - julian-hj
+        - dlinsley
+        - serdarozerr
+        - strehle
+        - cf-identity
+        - moleske
+        - benjaminguttmann-avtq
+        - pcf-core-services-writer
+        - ZPascal
+        - peterhaochen47
+        - servicesenablement
+        - Ivaylogi98
+        - KauzClay
+        - xiaozhu36
+        - tack-sap
+        - gdgenchev
+        - anshrupani
+        - lodener
+        - kathap
+        - svkrieger
+        - bosh-admin-bot
+        - coolgang123
+        - johha
+        - acosta11
+        - fkittelinger
+        - neddp
+        - Sascha-Stoj
+        - tas-runtime-bot
+        - hsinn0
+        - cf-bosh-ci-bot
+        - ryanwittrup
+        - gururajsh
+        - fmoehler
+        - adrianhoelzl-sap
+        - a-hassanin
+        - ali-tkang
+        - jorbaum
+        - ireneGonzalezRuiz
+        - georgidimdimitrov
+        - cf-prometheus-ci-bot
+        - weili-broadcom
+        - dudejas
+        - joemahady-comm
+        - praveenkalluri18
+        - yuriadam-sap
+        - bogomil-kuzmanov
+        - ay901246
+        privacy: closed
+        teams:
+          wg-foundational-infrastructure-ali-cloud-vm-deployment-lifecycle-bosh-approvers:
+            description: Approvers for Foundational Infrastructure WG, Ali Cloud VM
+              deployment lifecycle (BOSH) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - xiaozhu36
+            - ali-tkang
+            privacy: closed
+            repos:
+              bosh-alicloud-cpi-release: write
+              bosh-alicloud-light-stemcell-builder: write
+              stemcells-alicloud-index: write
+          wg-foundational-infrastructure-bots:
+            description: Bot accounts for Foundational Infrastructure WG
+            members:
+            - cf-identity
+            - pcf-core-services-writer
+            - bosh-admin-bot
+            - tas-runtime-bot
+            - cf-bosh-ci-bot
+            privacy: closed
+            repos:
+              backup-and-restore-sdk-release: write
+              bbl-state-resource: write
+              blackbox: write
+              bosh: write
+              bosh-acceptance-tests: write
+              bosh-agent: write
+              bosh-agent-index: write
+              bosh-ali-storage-cli: write
+              bosh-alicloud-cpi-release: write
+              bosh-alicloud-light-stemcell-builder: write
+              bosh-apt-resources: write
+              bosh-aws-cpi-release: write
+              bosh-aws-light-stemcell-builder: write
+              bosh-azure-cpi-release: write
+              bosh-azure-storage-cli: write
+              bosh-backup-and-restore: write
+              bosh-backup-and-restore-test-releases: write
+              bosh-bbl-ci-envs: write
+              bosh-bootloader: write
+              bosh-cli: write
+              bosh-common: write
+              bosh-cpi-certification: write
+              bosh-cpi-go: write
+              bosh-cpi-ruby: write
+              bosh-davcli: write
+              bosh-deployment: write
+              bosh-deployment-resource: write
+              bosh-disaster-recovery-acceptance-tests: write
+              bosh-dns-aliases-release: write
+              bosh-dns-release: write
+              bosh-docker-cpi-release: write
+              bosh-gcscli: write
+              bosh-google-cpi-release: write
+              bosh-io-releases: write
+              bosh-io-releases-index: write
+              bosh-io-stemcells-core-index: write
+              bosh-io-stemcells-cpi-index: write
+              bosh-io-stemcells-legacy-index: write
+              bosh-io-stemcells-windows-index: write
+              bosh-io-web: write
+              bosh-io-worker: write
+              bosh-linux-stemcell-builder: write
+              bosh-openstack-cpi-release: write
+              bosh-package-golang-release: write
+              bosh-package-nginx-release: write
+              bosh-package-python-release: write
+              bosh-package-ruby-release: write
+              bosh-package-rust-release: write
+              bosh-psmodules: write
+              bosh-s3cli: write
+              bosh-shared-ci: write
+              bosh-stemcells-ci: write
+              bosh-system-metrics-server-release: write
+              bosh-utils: write
+              bosh-virtualbox-cpi-release: write
+              bosh-vsphere-cpi-release: write
+              bosh-warden-cpi-release: write
+              bosh-windows-stemcell-builder: write
+              bosh_exporter: write
+              bpm-release: write
+              brokerapi: write
+              cf-identity-acceptance-tests-release: write
+              cf-uaa-lib: write
+              cf-uaac: write
+              cf_exporter: write
+              cloud-service-broker: write
+              concourse-infra-for-fiwg: write
+              config-server-release: write
+              credhub: write
+              credhub-acceptance-tests: write
+              credhub-api-site: write
+              credhub-ci-locks: write
+              credhub-cli: write
+              credhub-deployments: write
+              credhub-oss-ci: write
+              credhub-perf-release: write
+              csb-brokerpak-aws: write
+              csb-brokerpak-azure: write
+              csb-brokerpak-gcp: write
+              docs-bosh: write
+              exemplar-backup-and-restore-release: write
+              exemplar-release: write
+              firehose_exporter: write
+              go-socks5: write
+              go-uaa: write
+              gofileutils: write
+              gosigar: write
+              greenhouse-ci: write
+              identity-tools: write
+              jdbctestapp: write
+              jumpbox-deployment: write
+              mysql-backup-release: write
+              mysql-monitoring-release: write
+              node-exporter-boshrelease: write
+              omniauth-uaa-oauth2: write
+              os-conf-release: write
+              postgres-release: write
+              prometheus-boshrelease: write
+              pxc-release: write
+              sample-windows-bosh-release: write
+              secure-credentials-broker: write
+              socks5-proxy: write
+              stembuild: write
+              stemcells-alicloud-index: write
+              storage-cli: write
+              syslog-release: write
+              system-metrics-release: write
+              terraform-provider-csbmysql: write
+              terraform-provider-csbpg: write
+              terraform-provider-csbsqlserver: write
+              uaa: write
+              uaa-ci: write
+              uaa-cli: write
+              uaa-key-rotator: write
+              uaa-release: write
+              uaa-singular: write
+              upgrade-all-services-cli-plugin: write
+              usn-resource: write
+              windows-syslog-release: write
+              windows-utilities-release: write
+          wg-foundational-infrastructure-cloud-service-broker-approvers:
+            description: Approvers for Foundational Infrastructure WG, Cloud Service
+              Broker area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - georgidimdimitrov
+            - bogomil-kuzmanov
+            privacy: closed
+            repos:
+              brokerapi: write
+              cloud-service-broker: write
+              csb-brokerpak-aws: write
+              csb-brokerpak-azure: write
+              csb-brokerpak-gcp: write
+              jdbctestapp: write
+              terraform-provider-csbmysql: write
+              terraform-provider-csbpg: write
+              terraform-provider-csbsqlserver: write
+              upgrade-all-services-cli-plugin: write
+          wg-foundational-infrastructure-cloud-service-broker-bots:
+            description: Bot accounts for Foundational Infrastructure WG, Cloud Service
+              Broker area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - cf-gitbot
+            - servicesenablement
+            privacy: closed
+            repos:
+              brokerapi: write
+              cloud-service-broker: write
+              csb-brokerpak-aws: write
+              csb-brokerpak-azure: write
+              csb-brokerpak-gcp: write
+              jdbctestapp: write
+              terraform-provider-csbmysql: write
+              terraform-provider-csbpg: write
+              terraform-provider-csbsqlserver: write
+              upgrade-all-services-cli-plugin: write
+          wg-foundational-infrastructure-credential-management-credhub-approvers:
+            description: Approvers for Foundational Infrastructure WG, Credential
+              Management (Credhub) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - dlinsley
+            - strehle
+            - peterhaochen47
+            - coolgang123
+            - hsinn0
+            privacy: closed
+            repos:
+              credhub: write
+              credhub-acceptance-tests: write
+              credhub-api-site: write
+              credhub-ci-locks: write
+              credhub-cli: write
+              credhub-deployments: write
+              credhub-oss-ci: write
+              credhub-perf-release: write
+              secure-credentials-broker: write
+          wg-foundational-infrastructure-credential-management-credhub-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Credential
+              Management (Credhub) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            - Gerg
+            members:
+            - duanemay
+            - acosta11
+            privacy: closed
+            repos:
+              credhub: read
+              credhub-acceptance-tests: read
+              credhub-api-site: read
+              credhub-ci-locks: read
+              credhub-cli: read
+              credhub-deployments: read
+              credhub-oss-ci: read
+              credhub-perf-release: read
+              secure-credentials-broker: read
+          wg-foundational-infrastructure-identity-and-auth-uaa-approvers:
+            description: Approvers for Foundational Infrastructure WG, Identity and
+              Auth (UAA) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - fhanik
+            - duanemay
+            - Kehrlann
+            - strehle
+            - peterhaochen47
+            - tack-sap
+            - coolgang123
+            - hsinn0
+            - adrianhoelzl-sap
+            privacy: closed
+            repos:
+              cf-identity-acceptance-tests-release: write
+              cf-uaa-lib: write
+              cf-uaac: write
+              identity-tools: write
+              omniauth-uaa-oauth2: write
+              uaa: write
+              uaa-ci: write
+              uaa-cli: write
+              uaa-key-rotator: write
+              uaa-release: write
+              uaa-singular: write
+          wg-foundational-infrastructure-identity-and-auth-uaa-go-client-approvers:
+            description: Approvers for Foundational Infrastructure WG, Identity and
+              Auth (UAA) Go Client area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - fhanik
+            - duanemay
+            - strehle
+            - peterhaochen47
+            - tack-sap
+            - hsinn0
+            - adrianhoelzl-sap
+            privacy: closed
+            repos:
+              go-uaa: write
+          wg-foundational-infrastructure-identity-and-auth-uaa-go-client-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Identity and
+              Auth (UAA) Go Client area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - coolgang123
+            privacy: closed
+            repos:
+              go-uaa: read
+          wg-foundational-infrastructure-identity-and-auth-uaa-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Identity and
+              Auth (UAA) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - gdgenchev
+            - ireneGonzalezRuiz
+            - joemahady-comm
+            - praveenkalluri18
+            privacy: closed
+            repos:
+              cf-identity-acceptance-tests-release: read
+              cf-uaa-lib: read
+              cf-uaac: read
+              identity-tools: read
+              omniauth-uaa-oauth2: read
+              uaa: read
+              uaa-ci: read
+              uaa-cli: read
+              uaa-key-rotator: read
+              uaa-release: read
+              uaa-singular: read
+          wg-foundational-infrastructure-integrated-databases-mysql-postgres-approvers:
+            description: Approvers for Foundational Infrastructure WG, Integrated
+              Databases (Mysql / Postgres) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - abg
+            - colins
+            - Alphasite
+            - kimago
+            - ZPascal
+            - ryanwittrup
+            privacy: closed
+            repos:
+              mysql-backup-release: write
+              mysql-monitoring-release: write
+              postgres-release: write
+              pxc-release: write
+          wg-foundational-infrastructure-integrated-databases-mysql-postgres-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Integrated
+              Databases (Mysql / Postgres) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - Jobsby
+            privacy: closed
+            repos:
+              mysql-backup-release: read
+              mysql-monitoring-release: read
+              postgres-release: read
+              pxc-release: read
+          wg-foundational-infrastructure-leads:
+            description: Leads for Foundational Infrastructure WG
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            privacy: closed
+            repos:
+              backup-and-restore-sdk-release: admin
+              bbl-state-resource: admin
+              blackbox: admin
+              bosh: admin
+              bosh-acceptance-tests: admin
+              bosh-agent: admin
+              bosh-agent-index: admin
+              bosh-ali-storage-cli: admin
+              bosh-alicloud-cpi-release: admin
+              bosh-alicloud-light-stemcell-builder: admin
+              bosh-apt-resources: admin
+              bosh-aws-cpi-release: admin
+              bosh-aws-light-stemcell-builder: admin
+              bosh-azure-cpi-release: admin
+              bosh-azure-storage-cli: admin
+              bosh-backup-and-restore: admin
+              bosh-backup-and-restore-test-releases: admin
+              bosh-bbl-ci-envs: admin
+              bosh-bootloader: admin
+              bosh-cli: admin
+              bosh-common: admin
+              bosh-cpi-certification: admin
+              bosh-cpi-go: admin
+              bosh-cpi-ruby: admin
+              bosh-davcli: admin
+              bosh-deployment: admin
+              bosh-deployment-resource: admin
+              bosh-disaster-recovery-acceptance-tests: admin
+              bosh-dns-aliases-release: admin
+              bosh-dns-release: admin
+              bosh-docker-cpi-release: admin
+              bosh-gcscli: admin
+              bosh-google-cpi-release: admin
+              bosh-io-releases: admin
+              bosh-io-releases-index: admin
+              bosh-io-stemcells-core-index: admin
+              bosh-io-stemcells-cpi-index: admin
+              bosh-io-stemcells-legacy-index: admin
+              bosh-io-stemcells-windows-index: admin
+              bosh-io-web: admin
+              bosh-io-worker: admin
+              bosh-linux-stemcell-builder: admin
+              bosh-openstack-cpi-release: admin
+              bosh-package-golang-release: admin
+              bosh-package-nginx-release: admin
+              bosh-package-python-release: admin
+              bosh-package-ruby-release: admin
+              bosh-package-rust-release: admin
+              bosh-psmodules: admin
+              bosh-s3cli: admin
+              bosh-shared-ci: admin
+              bosh-stemcells-ci: admin
+              bosh-system-metrics-server-release: admin
+              bosh-utils: admin
+              bosh-virtualbox-cpi-release: admin
+              bosh-vsphere-cpi-release: admin
+              bosh-warden-cpi-release: admin
+              bosh-windows-stemcell-builder: admin
+              bosh_exporter: admin
+              bpm-release: admin
+              brokerapi: admin
+              cf-identity-acceptance-tests-release: admin
+              cf-uaa-lib: admin
+              cf-uaac: admin
+              cf_exporter: admin
+              cloud-service-broker: admin
+              concourse-infra-for-fiwg: admin
+              config-server-release: admin
+              credhub: admin
+              credhub-acceptance-tests: admin
+              credhub-api-site: admin
+              credhub-ci-locks: admin
+              credhub-cli: admin
+              credhub-deployments: admin
+              credhub-oss-ci: admin
+              credhub-perf-release: admin
+              csb-brokerpak-aws: admin
+              csb-brokerpak-azure: admin
+              csb-brokerpak-gcp: admin
+              docs-bosh: admin
+              exemplar-backup-and-restore-release: admin
+              exemplar-release: admin
+              firehose_exporter: admin
+              go-socks5: admin
+              go-uaa: admin
+              gofileutils: admin
+              gosigar: admin
+              greenhouse-ci: admin
+              identity-tools: admin
+              jdbctestapp: admin
+              jumpbox-deployment: admin
+              mysql-backup-release: admin
+              mysql-monitoring-release: admin
+              node-exporter-boshrelease: admin
+              omniauth-uaa-oauth2: admin
+              os-conf-release: admin
+              postgres-release: admin
+              prometheus-boshrelease: admin
+              pxc-release: admin
+              sample-windows-bosh-release: admin
+              secure-credentials-broker: admin
+              socks5-proxy: admin
+              stembuild: admin
+              stemcells-alicloud-index: admin
+              storage-cli: admin
+              syslog-release: admin
+              system-metrics-release: admin
+              terraform-provider-csbmysql: admin
+              terraform-provider-csbpg: admin
+              terraform-provider-csbsqlserver: admin
+              uaa: admin
+              uaa-ci: admin
+              uaa-cli: admin
+              uaa-key-rotator: admin
+              uaa-release: admin
+              uaa-singular: admin
+              upgrade-all-services-cli-plugin: admin
+              usn-resource: admin
+              windows-syslog-release: admin
+              windows-utilities-release: admin
+          wg-foundational-infrastructure-prometheus-bosh-approvers:
+            description: Approvers for Foundational Infrastructure WG, Prometheus
+              (Bosh) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - nmaurer23
+            - benjaminguttmann-avtq
+            privacy: closed
+            repos:
+              bosh_exporter: write
+              cf_exporter: write
+              firehose_exporter: write
+              node-exporter-boshrelease: write
+              prometheus-boshrelease: write
+          wg-foundational-infrastructure-prometheus-bosh-bots:
+            description: Bot accounts for Foundational Infrastructure WG, Prometheus
+              (Bosh) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - cf-prometheus-ci-bot
+            privacy: closed
+            repos:
+              bosh_exporter: write
+              cf_exporter: write
+              firehose_exporter: write
+              node-exporter-boshrelease: write
+              prometheus-boshrelease: write
+          wg-foundational-infrastructure-prometheus-bosh-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Prometheus
+              (Bosh) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - fkittelinger
+            privacy: closed
+            repos:
+              bosh_exporter: read
+              cf_exporter: read
+              firehose_exporter: read
+              node-exporter-boshrelease: read
+              prometheus-boshrelease: read
+          wg-foundational-infrastructure-stemcell-release-engineering-bosh-approvers:
+            description: Approvers for Foundational Infrastructure WG, Stemcell Release
+              Engineering (BOSH) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - ragaskar
+            - ystros
+            - colins
+            - selzoc
+            - Alphasite
+            - lnguyen
+            - ramonskie
+            - mrosecrance
+            - xtreme-nitin-ravindran
+            - joergdw
+            - julian-hj
+            - benjaminguttmann-avtq
+            - Ivaylogi98
+            - KauzClay
+            - anshrupani
+            - neddp
+            - fmoehler
+            - a-hassanin
+            privacy: closed
+            repos:
+              bosh-stemcells-ci: write
+              concourse-infra-for-fiwg: write
+          wg-foundational-infrastructure-stemcell-release-engineering-bosh-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Stemcell Release
+              Engineering (BOSH) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - metskem
+            - lodener
+            - Sascha-Stoj
+            - dudejas
+            - yuriadam-sap
+            - ay901246
+            privacy: closed
+            repos:
+              bosh-stemcells-ci: read
+              concourse-infra-for-fiwg: read
+          wg-foundational-infrastructure-storage-cli-approvers:
+            description: Approvers for Foundational Infrastructure WG, Storage CLI
+              area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            - Gerg
+            - stephanme
+            members:
+            - ragaskar
+            - ystros
+            - Samze
+            - philippthun
+            - selzoc
+            - Alphasite
+            - lnguyen
+            - ramonskie
+            - sethboyles
+            - tcdowney
+            - mrosecrance
+            - Benjamintf1
+            - FloThinksPi
+            - jochenehret
+            - julian-hj
+            - moleske
+            - benjaminguttmann-avtq
+            - KauzClay
+            - xiaozhu36
+            - anshrupani
+            - kathap
+            - svkrieger
+            - johha
+            - fmoehler
+            - a-hassanin
+            privacy: closed
+            repos:
+              bosh-ali-storage-cli: write
+              bosh-azure-storage-cli: write
+              bosh-davcli: write
+              bosh-gcscli: write
+              bosh-s3cli: write
+              storage-cli: write
+          wg-foundational-infrastructure-storage-cli-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, Storage CLI
+              area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - evanfarrar
+            - peanball
+            - a-b
+            - nookala
+            - serdarozerr
+            - gururajsh
+            - ay901246
+            privacy: closed
+            repos:
+              bosh-ali-storage-cli: read
+              bosh-azure-storage-cli: read
+              bosh-davcli: read
+              bosh-gcscli: read
+              bosh-s3cli: read
+              storage-cli: read
+          wg-foundational-infrastructure-system-logging-and-metrics-rsyslog-event-log-approvers:
+            description: Approvers for Foundational Infrastructure WG, System Logging
+              and Metrics (rsyslog / event-log) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - chombium
+            - Benjamintf1
+            privacy: closed
+            repos:
+              blackbox: write
+              bosh-system-metrics-server-release: write
+              syslog-release: write
+              system-metrics-release: write
+              windows-syslog-release: write
+          wg-foundational-infrastructure-system-logging-and-metrics-rsyslog-event-log-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, System Logging
+              and Metrics (rsyslog / event-log) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - jorbaum
+            - weili-broadcom
+            privacy: closed
+            repos:
+              blackbox: read
+              bosh-system-metrics-server-release: read
+              syslog-release: read
+              system-metrics-release: read
+              windows-syslog-release: read
+          wg-foundational-infrastructure-vm-deployment-lifecycle-bosh-approvers:
+            description: Approvers for Foundational Infrastructure WG, VM deployment
+              lifecycle (BOSH) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - mariash
+            - mkocher
+            - ragaskar
+            - ystros
+            - colins
+            - selzoc
+            - Alphasite
+            - lnguyen
+            - ramonskie
+            - mrosecrance
+            - s4heid
+            - julian-hj
+            - benjaminguttmann-avtq
+            - Ivaylogi98
+            - KauzClay
+            - anshrupani
+            - neddp
+            - fmoehler
+            - a-hassanin
+            privacy: closed
+            repos:
+              backup-and-restore-sdk-release: write
+              bbl-state-resource: write
+              bosh: write
+              bosh-acceptance-tests: write
+              bosh-agent: write
+              bosh-agent-index: write
+              bosh-apt-resources: write
+              bosh-aws-cpi-release: write
+              bosh-aws-light-stemcell-builder: write
+              bosh-azure-cpi-release: write
+              bosh-backup-and-restore: write
+              bosh-backup-and-restore-test-releases: write
+              bosh-bbl-ci-envs: write
+              bosh-bootloader: write
+              bosh-cli: write
+              bosh-common: write
+              bosh-cpi-certification: write
+              bosh-cpi-go: write
+              bosh-cpi-ruby: write
+              bosh-deployment: write
+              bosh-deployment-resource: write
+              bosh-disaster-recovery-acceptance-tests: write
+              bosh-dns-aliases-release: write
+              bosh-dns-release: write
+              bosh-docker-cpi-release: write
+              bosh-google-cpi-release: write
+              bosh-io-releases: write
+              bosh-io-releases-index: write
+              bosh-io-stemcells-core-index: write
+              bosh-io-stemcells-cpi-index: write
+              bosh-io-stemcells-legacy-index: write
+              bosh-io-stemcells-windows-index: write
+              bosh-io-web: write
+              bosh-io-worker: write
+              bosh-linux-stemcell-builder: write
+              bosh-openstack-cpi-release: write
+              bosh-package-golang-release: write
+              bosh-package-nginx-release: write
+              bosh-package-python-release: write
+              bosh-package-ruby-release: write
+              bosh-package-rust-release: write
+              bosh-psmodules: write
+              bosh-shared-ci: write
+              bosh-utils: write
+              bosh-virtualbox-cpi-release: write
+              bosh-vsphere-cpi-release: write
+              bosh-warden-cpi-release: write
+              bosh-windows-stemcell-builder: write
+              bpm-release: write
+              config-server-release: write
+              docs-bosh: write
+              exemplar-backup-and-restore-release: write
+              exemplar-release: write
+              go-socks5: write
+              gofileutils: write
+              gosigar: write
+              greenhouse-ci: write
+              jumpbox-deployment: write
+              os-conf-release: write
+              sample-windows-bosh-release: write
+              socks5-proxy: write
+              stembuild: write
+              usn-resource: write
+              windows-utilities-release: write
+          wg-foundational-infrastructure-vm-deployment-lifecycle-bosh-reviewers:
+            description: Reviewers for Foundational Infrastructure WG, VM deployment
+              lifecycle (BOSH) area
+            maintainers:
+            - aramprice
+            - rkoster
+            - beyhan
+            members:
+            - peanball
+            - Sascha-Stoj
+            - dudejas
+            - yuriadam-sap
+            - ay901246
+            privacy: closed
+            repos:
+              backup-and-restore-sdk-release: read
+              bbl-state-resource: read
+              bosh: read
+              bosh-acceptance-tests: read
+              bosh-agent: read
+              bosh-agent-index: read
+              bosh-apt-resources: read
+              bosh-aws-cpi-release: read
+              bosh-aws-light-stemcell-builder: read
+              bosh-azure-cpi-release: read
+              bosh-backup-and-restore: read
+              bosh-backup-and-restore-test-releases: read
+              bosh-bbl-ci-envs: read
+              bosh-bootloader: read
+              bosh-cli: read
+              bosh-common: read
+              bosh-cpi-certification: read
+              bosh-cpi-go: read
+              bosh-cpi-ruby: read
+              bosh-deployment: read
+              bosh-deployment-resource: read
+              bosh-disaster-recovery-acceptance-tests: read
+              bosh-dns-aliases-release: read
+              bosh-dns-release: read
+              bosh-docker-cpi-release: read
+              bosh-google-cpi-release: read
+              bosh-io-releases: read
+              bosh-io-releases-index: read
+              bosh-io-stemcells-core-index: read
+              bosh-io-stemcells-cpi-index: read
+              bosh-io-stemcells-legacy-index: read
+              bosh-io-stemcells-windows-index: read
+              bosh-io-web: read
+              bosh-io-worker: read
+              bosh-linux-stemcell-builder: read
+              bosh-openstack-cpi-release: read
+              bosh-package-golang-release: read
+              bosh-package-nginx-release: read
+              bosh-package-python-release: read
+              bosh-package-ruby-release: read
+              bosh-package-rust-release: read
+              bosh-psmodules: read
+              bosh-shared-ci: read
+              bosh-utils: read
+              bosh-virtualbox-cpi-release: read
+              bosh-vsphere-cpi-release: read
+              bosh-warden-cpi-release: read
+              bosh-windows-stemcell-builder: read
+              bpm-release: read
+              config-server-release: read
+              docs-bosh: read
+              exemplar-backup-and-restore-release: read
+              exemplar-release: read
+              go-socks5: read
+              gofileutils: read
+              gosigar: read
+              greenhouse-ci: read
+              jumpbox-deployment: read
+              os-conf-release: read
+              sample-windows-bosh-release: read
+              socks5-proxy: read
+              stembuild: read
+              usn-resource: read
+              windows-utilities-release: read
+      wg-leads:
+        description: Technical and Execution Leads for all WGs
+        maintainers:
+        - rkoster
+        - beyhan
+        - Gerg
+        - stephanme
+        - ramiyengar
+        - thelinuxfoundation
+        - christopherclark
+        members:
+        - wayneeseguin
+        - aramprice
+        - dmikusa
+        - danail-branekov
+        - ameowlia
+        - paulcwarren
+        - jochenehret
+        - georgethebeatle
+        - jericop
+        - itsouvalas
+        - thomasthal
+        - anita-flegg
+        - hoffmaen
+        - loewenstein-sap
+        privacy: closed
+        repos:
+          community: write
+      wg-paketo:
+        description: Leads and approvers for Paketo WG
+        maintainers:
+        - dmikusa
+        - jericop
+        - ForestEckhardt
+        - loewenstein-sap
+        members:
+        - anthonydahanne
+        - arjun024
+        - dmikusa
+        - robdimsdale
+        - accrazed
+        - mhdawson
+        - pacostas
+        - c0d1ngm0nk3y
+        - jericop
+        - ForestEckhardt
+        - modulo11
+        - sophiewigmore
+        - joshuatcasey
+        - pivotal-david-osullivan
+        - emmjohnson
+        - loewenstein-sap
+        privacy: closed
+        teams:
+          wg-paketo-app-monitoring-approvers:
+            description: Approvers for Paketo WG, App Monitoring area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - anthonydahanne
+            - joshuatcasey
+            - pivotal-david-osullivan
+            privacy: closed
+          wg-paketo-app-monitoring-reviewers:
+            description: Reviewers for Paketo WG, App Monitoring area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            privacy: closed
+          wg-paketo-bots:
+            description: Bot accounts for Paketo WG
+            privacy: closed
+          wg-paketo-builders-approvers:
+            description: Approvers for Paketo WG, Builders area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - mhdawson
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-builders-reviewers:
+            description: Reviewers for Paketo WG, Builders area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - sophiewigmore
+            privacy: closed
+          wg-paketo-content-approvers:
+            description: Approvers for Paketo WG, Content area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - anthonydahanne
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-content-reviewers:
+            description: Reviewers for Paketo WG, Content area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - robdimsdale
+            - sophiewigmore
+            privacy: closed
+          wg-paketo-dependencies-approvers:
+            description: Approvers for Paketo WG, Dependencies area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            privacy: closed
+          wg-paketo-dependencies-reviewers:
+            description: Reviewers for Paketo WG, Dependencies area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - ForestEckhardt
+            - joshuatcasey
+            privacy: closed
+          wg-paketo-dotnet-core-approvers:
+            description: Approvers for Paketo WG, Dotnet Core area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-dotnet-core-reviewers:
+            description: Reviewers for Paketo WG, Dotnet Core area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - joshuatcasey
+            privacy: closed
+          wg-paketo-go-approvers:
+            description: Approvers for Paketo WG, Go area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-go-reviewers:
+            description: Reviewers for Paketo WG, Go area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - sophiewigmore
+            privacy: closed
+          wg-paketo-java-approvers:
+            description: Approvers for Paketo WG, Java area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - anthonydahanne
+            - pivotal-david-osullivan
+            privacy: closed
+          wg-paketo-java-reviewers:
+            description: Reviewers for Paketo WG, Java area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - c0d1ngm0nk3y
+            - modulo11
+            privacy: closed
+          wg-paketo-leads:
+            description: Leads for Paketo WG
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            privacy: closed
+          wg-paketo-nodejs-approvers:
+            description: Approvers for Paketo WG, NodeJS area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - mhdawson
+            - pacostas
+            privacy: closed
+          wg-paketo-nodejs-reviewers:
+            description: Reviewers for Paketo WG, NodeJS area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - robdimsdale
+            - accrazed
+            - c0d1ngm0nk3y
+            - ForestEckhardt
+            - emmjohnson
+            privacy: closed
+          wg-paketo-php-approvers:
+            description: Approvers for Paketo WG, PHP area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            privacy: closed
+          wg-paketo-php-reviewers:
+            description: Reviewers for Paketo WG, PHP area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - ForestEckhardt
+            - joshuatcasey
+            privacy: closed
+          wg-paketo-python-approvers:
+            description: Approvers for Paketo WG, Python area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - joshuatcasey
+            privacy: closed
+          wg-paketo-python-reviewers:
+            description: Reviewers for Paketo WG, Python area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - ForestEckhardt
+            - emmjohnson
+            privacy: closed
+          wg-paketo-ruby-approvers:
+            description: Approvers for Paketo WG, Ruby area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            privacy: closed
+          wg-paketo-ruby-reviewers:
+            description: Reviewers for Paketo WG, Ruby area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-rust-approvers:
+            description: Approvers for Paketo WG, Rust area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-rust-reviewers:
+            description: Reviewers for Paketo WG, Rust area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            privacy: closed
+          wg-paketo-stacks-approvers:
+            description: Approvers for Paketo WG, Stacks area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - mhdawson
+            privacy: closed
+          wg-paketo-stacks-reviewers:
+            description: Reviewers for Paketo WG, Stacks area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            privacy: closed
+          wg-paketo-tooling-approvers:
+            description: Approvers for Paketo WG, Tooling area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-tooling-reviewers:
+            description: Reviewers for Paketo WG, Tooling area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            privacy: closed
+          wg-paketo-utilities-approvers:
+            description: Approvers for Paketo WG, Utilities area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - ForestEckhardt
+            - pivotal-david-osullivan
+            privacy: closed
+          wg-paketo-utilities-reviewers:
+            description: Reviewers for Paketo WG, Utilities area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - anthonydahanne
+            - sophiewigmore
+            privacy: closed
+          wg-paketo-web-servers-approvers:
+            description: Approvers for Paketo WG, Web Servers area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - arjun024
+            - ForestEckhardt
+            privacy: closed
+          wg-paketo-web-servers-reviewers:
+            description: Reviewers for Paketo WG, Web Servers area
+            maintainers:
+            - dmikusa
+            - jericop
+            - loewenstein-sap
+            members:
+            - robdimsdale
+            - sophiewigmore
+            privacy: closed
+      wg-vulnerability-management:
+        description: Leads and approvers for Vulnerability Management WG
+        maintainers:
+        - paulcwarren
+        - thomasthal
+        - hoffmaen
+        members:
+        - paulcwarren
+        - thomasthal
+        - hoffmaen
+        privacy: closed
+        teams:
+          wg-vulnerability-management-bots:
+            description: Bot accounts for Vulnerability Management WG
+            privacy: closed
+          wg-vulnerability-management-leads:
+            description: Leads for Vulnerability Management WG
+            maintainers:
+            - paulcwarren
+            - thomasthal
+            - hoffmaen
+            privacy: closed
+
