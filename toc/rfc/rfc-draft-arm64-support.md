@@ -164,6 +164,7 @@ The Foundational Infrastructure Working Group owns `bosh-linux-stemcell-builder`
 - Validate the BOSH agent on ARM64 (POC has demonstrated this works)
 - Set up CI pipelines producing ARM64 stemcell builds (ARM64 CI workers will be provided)
 - Validate the BOSH Director (Ruby) operates correctly on ARM64 (POC validated 134 gems)
+- For mixed AMD64/ARM64 environments: address BOSH Director's current single-architecture compilation VM limitation (e.g., support multiple compilation VM types or architecture-aware compilation routing)
 - Run BOSH Acceptance Tests (BATS) on ARM64 stemcells
 - Publish 0.x beta ARM64 stemcells on bosh.io for community validation
 - After successful community validation, publish 1.x GA ARM64 stemcells
@@ -218,7 +219,7 @@ ARM64 build workers will be provided for Concourse pipelines to enable native AR
 
 # Open Questions
 
-1. **Stemcell naming convention:** How should ARM64 stemcells be identified? Proposed: `ubuntu-jammy-arm64` alongside existing `ubuntu-jammy` (implicitly x86_64). Open to community input on naming and metadata approach.
+1. **Stemcell naming convention:** How should ARM64 stemcells be identified? One option is to follow the FIPS naming precedent and embed architecture in the name field (e.g., `bosh-aws-xen-hvm-ubuntu-noble-arm64`) while keeping the `os` field as `ubuntu-noble`. Additionally, architecture should be added as an explicit metadata field. Open question: should users opt in via their choice of uploaded stemcell, or be explicit about architecture in the deployment manifest?
 
 2. **CI/CD long-term ownership:** ARM64 CI workers will be provided initially to unblock development. Should long-term ownership transfer to the CF Foundation, or remain as a community-contributed resource?
 
