@@ -225,9 +225,9 @@ areas:
     github: colins
   - name: Ivaylo Ivanov
     github: ivaylogi98
-  reviewers:
   - name: Allan Yu
     github: ay901246
+  reviewers:
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
@@ -285,9 +285,9 @@ areas:
     github: colins
   - name: Ivaylo Ivanov
     github: ivaylogi98
-  reviewers:
   - name: Allan Yu
     github: ay901246
+  reviewers:
   - name: Alexander Lais
     github: peanball
   - name: Yuri Adam
@@ -451,9 +451,9 @@ areas:
     github: stephanme
   - name: Clay Kauzlaric
     github: KauzClay
-  reviewers:
   - name: Allan Yu
     github: ay901246
+  reviewers:
   - name: Alexander Lais
     github: peanball
   - name: Al Berez
