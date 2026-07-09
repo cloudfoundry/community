@@ -40,10 +40,8 @@ jobs:
         uses: docker://gcr.io/k8s-prow/peribolos
         with:
           entrypoint: /bin/sh
-          # Switch back to app auth once following PR gets merged: https://github.com/kubernetes/test-infra/pull/24882
-          # args: --dump-full --dump cloudfoundry --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key > orgs/orgs.yml
-          # args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-token-path=token > community/orgs/orgs.yml"
-          args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --confirm=true > community/orgs/orgs.yml"
+          # args: -c "/ko-app/peribolos --dump-full --dump cloudfoundry --github-endpoint http://ghproxy:8888 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --confirm=true > community/orgs/orgs.yml"
+          args: -c "/ko-app/peribolos --dump-full --dump concourse --github-endpoint http://ghproxy:8888 --github-app-id=${{ secrets.GH_APP_ID }} --github-app-private-key-path=private_key --confirm=true > community/orgs/orgs.yml"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
