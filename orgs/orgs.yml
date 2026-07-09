@@ -2838,7 +2838,7 @@ orgs:
           terraform-provider-cloudfoundry: admin
   concourse:
     admins: [] # shall be empty, maintained in TOC.md
-    billing_email: ap@cloudfoundry.org
+    billing_email: team@concourse-ci.org
     company: ""
     default_repository_permission: none
     description: An open-source continuous thing-doer, mostly used for CI/CD
@@ -2849,5 +2849,199 @@ orgs:
     members: [] # shall be empty, org members are maintained in contributors.yml and WG charters
     members_can_create_repositories: false
     name: Concourse
-    repos: {}
+    repos:
+      .github:
+        default_branch: main
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      baggageclaim:
+        archived: true
+        description: stateless volume manager for Concourse builds and resource caches
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      blog:
+        archived: true
+        default_branch: main
+        has_projects: true
+        has_wiki: false
+        homepage: https://concourse-ci.org/blog/
+      bosh-io-release-resource:
+        description: Tracks BOSH releases published on https://bosh.io
+        has_projects: false
+        has_wiki: false
+      bosh-io-stemcell-resource:
+        description: Tracks BOSH stemcells published on https://bosh.io
+        has_projects: false
+        has_wiki: false
+      buildroot-images:
+        archived: true
+        description: (outdated/no longer used) BuildRoot-based toolchain for building
+          tiny images for our core resource types.
+        has_issues: false
+        has_projects: true
+      ci:
+        description: Configuration files used to automate the testing and release
+          of various versions of Concourse.
+        has_projects: false
+        has_wiki: false
+      concourse:
+        description: Concourse is a container-based automation system written in Go.
+          It's mostly used for CI/CD.
+        has_projects: false
+        homepage: https://concourse-ci.org
+      concourse-bosh-deployment:
+        description: A toolchain for deploying Concourse with BOSH.
+        has_projects: false
+        has_wiki: false
+      concourse-bosh-release:
+        description: Concourse BOSH release
+        has_projects: false
+        has_wiki: false
+      concourse-chart:
+        description: Helm chart to install Concourse
+        has_projects: false
+        has_wiki: false
+      concourse-docker:
+        description: Offical concourse/concourse Docker image.
+        has_projects: false
+        has_wiki: false
+      concourse-pipeline-resource:
+        archived: true
+        description: '!!! use the `set_pipeline` step instead !!!'
+        has_projects: true
+        homepage: https://concourse-ci.org/jobs.html#schema.step.set-pipeline-step.set_pipeline
+      datadog-event-resource:
+        archived: true
+        has_projects: true
+        has_wiki: false
+      dex:
+        description: A fork of dexidp/dex with changes necessary for Concourse. See
+          the "maintenance" branch for details.
+        has_projects: false
+        has_wiki: false
+      docker-image-resource:
+        description: A resource for docker images
+        has_projects: false
+        has_wiki: false
+      docs:
+        description: concourse documentation and website
+        has_projects: false
+        has_wiki: false
+        homepage: https://concourse-ci.org
+      examples:
+        default_branch: main
+        description: Examples of Concourse workflows
+        has_projects: false
+        has_wiki: false
+      flag:
+        archived: true
+        description: 'ARCHIVED: merged into main concourse/concourse repo. flag types
+          for use with jessevdk/go-flags'
+        has_projects: false
+        has_wiki: false
+      git-resource:
+        description: Tracks commits in a branch of a Git repository
+        has_projects: false
+        has_wiki: false
+      github-release-resource:
+        description: A resource for GitHub releases
+        has_projects: false
+        has_wiki: false
+      governance:
+        archived: true
+        description: Documentation and automation for the Concourse project governance
+          model.
+        has_projects: false
+        has_wiki: false
+      hg-resource:
+        description: Mercurial resource for Concourse
+        has_projects: false
+        has_wiki: false
+      houdini:
+        description: a no-op Garden backend
+        has_projects: false
+        has_wiki: false
+      hush-house:
+        archived: true
+        description: Concourse k8s-based environment
+        has_projects: false
+        has_wiki: false
+        homepage: https://hush-house.pivotal.io
+      infrastructure:
+        description: Automation stack for the Concourse project's infrastructure.
+        has_projects: true
+      mock-resource:
+        description: A resource for testing the resource interface. It reflects the
+          version it's told, and is able to mirror its own container image
+        has_projects: false
+        has_wiki: false
+      oci-build-task:
+        description: a Concourse task for building OCI images
+        has_projects: false
+        has_wiki: false
+      office-hours:
+        archived: true
+        default_branch: main
+        description: Office hours is a community live stream that Concourse hosts
+          every so often
+        has_projects: false
+        has_wiki: false
+        homepage: https://www.youtube.com/channel/UCf5gRGP0pYASo1YwoBkaCGw
+      oxygen-mask:
+        archived: true
+        has_projects: false
+        has_wiki: false
+      pool-resource:
+        description: Atomically manages the state of the world (e.g. external environments)
+        has_projects: false
+        has_wiki: false
+      prod:
+        archived: true
+        description: bosh/terraform config for our deployments
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      registry-image-resource:
+        description: A resource for images in an OCI/Docker registry
+        has_projects: false
+        has_wiki: false
+      resource-types:
+        archived: true
+        description: A place where the concourse resource types live.
+        has_projects: false
+        has_wiki: false
+      resource-types-website:
+        archived: true
+        description: Website for Concourse resource types (Beta)
+        has_projects: false
+        has_wiki: false
+        homepage: https://resource-types.concourse-ci.org
+      retryhttp:
+        description: Retryable http transport used by baggageclaim client and garden
+          client in ATC
+        has_projects: false
+        has_wiki: false
+      rfcs:
+        description: An open process for designing substantial changes to Concourse.
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      s3-resource:
+        description: Concourse resource for interacting with AWS S3
+        has_projects: false
+        has_wiki: false
+      semver-resource:
+        description: Automated semantic version bumping
+        has_projects: false
+        has_wiki: false
+      time-resource:
+        description: A resource for triggering on an interval
+        has_projects: false
+        has_wiki: false
+      tracker-resource:
+        archived: true
+        description: pivotal tracker output resource
+        has_projects: true    
     teams: {}
