@@ -13,6 +13,7 @@ election_officers:
 - dmikusa
 - jericop
 - christopherclark
+- slandath
 - sgreenberg
 eligibility: Any individual who has contributed to Paketo Buildpacks in the twelve months prior to the election is eligible to vote in the Steering Committee election. Each election cycle, an initial set of voters will be identified through automated reporting. Any individual who has at least 10 measurable contributions in the last 12 months will be automatically added to the eligible voter list.
 exception_description: If you feel you are eligible to vote but are not represented in the list of voters, please request an exception to allow you to vote via the Elekto application.
