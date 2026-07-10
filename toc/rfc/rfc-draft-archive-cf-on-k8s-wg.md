@@ -40,4 +40,4 @@ On accepting the RFC (after public discussion and final comment period):
 
 ## Alternatives
 
-The [`kind-deployment`](https://github.com/cloudfoundry/kind-deployment) project provides a simple and fast way to run Cloud Foundry on a local kind cluster. The project does not seem to have the goal of supporting real k8s cluster on its roadmap, however it covers one of the Korifi use cases - quick and cheap local CF API setup.
+The [`kind-deployment`](https://github.com/cloudfoundry/kind-deployment) project provides a simple and fast way to run Cloud Foundry on a local kind cluster. While it currently focuses on quick and cheap local CF API setup, covering one of the Korifi use cases, its long-term vision, as outlined in the [cf-on-kind RFC](https://github.com/cloudfoundry/community/blob/35ddcbb326f4cc7e41f8dba2cef027928b334f81/toc/rfc/rfc-0049-cf-on-kind.md?plain=1#L38-L44), is to support real Kubernetes clusters.
