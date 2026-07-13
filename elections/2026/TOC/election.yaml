@@ -1,7 +1,7 @@
 name: 2026 CFF Technical Oversight Committee election
 organization: Cloud Foundry Foundation
-start_datetime: 2026-07-13 16:00:00 # 9:00 am PDT, 12 Jun 2025
-end_datetime: 2026-07-24 06:59:00 # 11:59 pm PDT, 24 Jun 2025
+start_datetime: 2026-07-21 16:00:00 # 9:00 am PDT, 12 Jun 2025
+end_datetime: 2026-08-02 06:59:00 # 11:59 pm PDT, 24 Jun 2025
 no_winners: 2
 allow_no_opinion: True
 delete_after: True
@@ -19,4 +19,4 @@ election_officers:
 - sgreenberg
 eligibility: Any individual who has contributed to any Cloud Foundry Foundation project in the twelve months prior to the election is eligible to vote in the TOC election. See [the voter eligibility section](https://github.com/cloudfoundry/community/blob/main/toc/TOC.md#community-eligibility-to-vote-in-toc-elections) for more information.
 exception_description: If you feel you are eligible to vote but are not represented in the list of voters, please request an exception to allow you to vote via the Elekto application.
-exception_due: 2026-07-22 06:59:00 # 11:59 pm PT, 22 Jun 2025
+exception_due: 2026-07-30 06:59:00 # 11:59 pm PT, 22 Jun 2025
