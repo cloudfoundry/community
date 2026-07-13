@@ -4,7 +4,8 @@
 - Start Date: 2026-05-06
 - Author(s): @hoffmaen
 - Status: Draft
-- RFC Pull Request:
+- RFC Pull Request: [community#1501](https://github.com/cloudfoundry/community/pull/1501)
+- Related RFCs: [RFC#23: CF components support FIPS certified stemcells](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0023-add-cf-supports-for-fips-stemcell.md)
 - Affected Component(s): haproxy-boshrelease
 
 ## Summary
@@ -198,4 +199,4 @@ OpenSSL configuration tuning was evaluated but cannot eliminate OpenSSL 3.x's pe
 - [AWS-LC GitHub](https://github.com/aws/aws-lc)
 - [AWS-LC FIPS 140-3 certificate #4816](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4816)
 - [oha load testing tool](https://github.com/hatoo/oha)
-- [Implementation branch](https://github.com/cloudfoundry/haproxy-boshrelease/tree/aws-lc-multi)
+- [Implementation draft PR](https://github.com/cloudfoundry/haproxy-boshrelease/pull/925)
