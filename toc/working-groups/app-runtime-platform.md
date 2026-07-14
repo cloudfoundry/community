@@ -324,7 +324,6 @@ areas:
     github: winkingturtle-vmw
   - name: Marc Paquette
     github: marcpaquette
-  reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
   repositories:
