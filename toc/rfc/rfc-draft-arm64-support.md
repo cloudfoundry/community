@@ -151,7 +151,7 @@ Diego (diego-release) + Garden (garden-runc-release) ← critical path
     ↓
 Cloud Controller (capi-release) + Routing + Logging
     ↓
-cflinuxfs4 + Buildpacks
+cflinuxfs5 + Buildpacks
     ↓
 Applications
 ```
@@ -168,6 +168,7 @@ The Foundational Infrastructure Working Group owns `bosh-linux-stemcell-builder`
 - Run BOSH Acceptance Tests (BATS) on ARM64 stemcells
 - Publish 0.x beta ARM64 stemcells on bosh.io for community validation
 - After successful community validation, publish 1.x GA ARM64 stemcells
+- Validate UAA Java WAR deploys and runs on ARM64 JVM (Eclipse Temurin, SAP Machine, or equivalent ARM64 JDK)
 
 ## App Runtime Platform WG
 
@@ -182,10 +183,9 @@ The App Runtime Platform Working Group owns Diego, Garden-runC, Gorouter, Loggre
 
 ## App Runtime Interfaces WG
 
-The App Runtime Interfaces Working Group owns Cloud Controller (CAPI) and UAA. Work includes:
+The App Runtime Interfaces Working Group owns Cloud Controller (CAPI). Work includes:
 
 - Validate Cloud Controller Ruby application runs on ARM64 stemcells (POC validated gem compilation)
-- Validate UAA Java WAR deploys and runs on ARM64 JVM (Eclipse Temurin, SAP Machine, or equivalent ARM64 JDK)
 - Ensure the Go helper binaries (cc-uploader, tps-watcher) are built for ARM64 in CI
 - Run Cloud Controller acceptance tests (CATS) on ARM64
 
@@ -251,7 +251,7 @@ The full scope covers 60+ repositories across the CF ecosystem. The critical pat
 - `nats-release` — Messaging (Go)
 
 **Application Layer (2):**
-- `cflinuxfs4-release` — Root filesystem (Shell)
+- `cflinuxfs5-release` — Root filesystem (Shell)
 - `java-buildpack` — Java applications (priority buildpack)
 
 **Testing (1):**
