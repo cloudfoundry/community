@@ -14,8 +14,8 @@ for the relevant details).
 
 - **July 2**: Election is announced and candidate nomination period begins
 - **July 10, 5:00 pm PDT**: Candidate nomination period ends
-- **July 13, 9:00 am PDT**: Election begins
-- **July 24, 11:59 pm PDT**: Election ends
+- **July 14, 9:00 am PDT**: Election begins
+- **July 26, 11:59 pm PDT**: Election ends
 - **July 27**: Announcement of results
 
 
