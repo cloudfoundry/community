@@ -5,7 +5,7 @@
 - **Author(s):** Sachin Vighe
 - **Status:** Draft
 - **Related RFCs:** [rfc-0026-noble-os](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0026-noble-os.md)
-- **Affected Component(s):** bosh-linux-stemcell-builder, Diego, Garden-runC, Gorouter, Loggregator, Cloud Controller, UAA, cf-deployment, buildpacks
+- **Affected Component(s):** bosh-linux-stemcell-builder, bosh-agent, bosh-dns, Diego, Garden-runC, Gorouter, Loggregator, Cloud Controller, UAA, cf-deployment, buildpacks, BPM, NATS
 
 # Summary
 
@@ -53,16 +53,16 @@ Enable ARM64 as a supported architecture through a phased approach, delivering t
 - BOSH Acceptance Tests (BATS) pass on ARM64 stemcells
 - CF Acceptance Tests (CATs) pass on ARM64 deployment
 - Applications can be deployed via standard buildpacks on ARM64 cells
-- Performance ≥ 100% of x86_64 baseline for equivalent instance classes
+- Performance is comparable to x86_64 baseline for equivalent instance classes (validated via benchmarking during Phase 2)
 - Zero impact on existing x86_64 deployments
 
 ## Non-Goals
 
-1. **Not breaking x86_64 support** — existing deployments continue unchanged
-2. **Not requiring CF operators to migrate** — ARM64 is optional, operators opt in
-3. **Not supporting 32-bit ARM** — only 64-bit ARM (aarch64)
-4. **Not requiring homogeneous deployments** — mixed-architecture deployments (ARM64 Diego cells alongside x86_64 control plane) are in scope following the existing Windows cell model with architecture-aware placement
-5. **Not creating provider-specific forks** — all work contributed upstream
+1. **Windows ARM64** — this RFC covers Linux ARM64 only. Windows ARM64 support may be considered separately in the future.
+2. **32-bit ARM** — only 64-bit ARM (aarch64) is in scope
+3. **Requiring operators to migrate** — ARM64 is strictly opt-in. Operators choose to deploy on ARM64 by selecting an ARM64 stemcell; existing x86_64 deployments are unaffected.
+4. **Requiring homogeneous deployments** — mixed-architecture deployments (ARM64 Diego cells alongside x86_64 control plane) are supported, following the existing Windows cell model with architecture-aware placement
+5. **Provider-specific forks** — all work is contributed upstream to CF Foundation repositories
 
 ## Phases
 
@@ -143,11 +143,11 @@ The implementation requires work across multiple CF working groups. The dependen
 ```
 Stemcells (bosh-linux-stemcell-builder)
     ↓
-BOSH Agent (bosh-agent)
+BOSH Agent (bosh-agent) + BOSH DNS
     ↓
 BOSH Director (bosh)
     ↓
-Diego (diego-release) + Garden (garden-runc-release) ← critical path
+Diego (diego-release) + Garden (garden-runc-release)
     ↓
 Cloud Controller (capi-release) + Routing + Logging
     ↓
@@ -155,13 +155,15 @@ cflinuxfs5 + Buildpacks
     ↓
 Applications
 ```
+Each layer depends on the one above it — the entire dependency chain is effectively the critical path, since it either all works or it doesn't. Garden-runC carries the highest *implementation risk* within the chain due to C code and architecture-specific seccomp policies, but every layer requires validation.
 
 ## Foundational Infrastructure WG
 
 The Foundational Infrastructure Working Group owns `bosh-linux-stemcell-builder` and the BOSH agent. Work includes:
 
-- Extend `bosh-linux-stemcell-builder` to produce ARM64 stemcells (Ubuntu Noble initially, Noble/Resolute Raccoon when applicable)
+- Extend `bosh-linux-stemcell-builder` to produce ARM64 stemcells (Ubuntu Noble initially, Resolute Raccoon when applicable)
 - Validate the BOSH agent on ARM64 (POC has demonstrated this works)
+- Validate BOSH DNS on ARM64
 - Set up CI pipelines producing ARM64 stemcell builds (ARM64 CI workers will be provided)
 - Validate the BOSH Director (Ruby) operates correctly on ARM64 (POC validated 134 gems)
 - For mixed AMD64/ARM64 environments: address BOSH Director's current single-architecture compilation VM limitation (e.g., support multiple compilation VM types or architecture-aware compilation routing)
@@ -203,7 +205,7 @@ The App Runtime Deployments Working Group owns `cf-deployment`. Work includes:
 The ARI Working Group owns the classical buildpacks which have higher adoption in CF today. Note: ARM64 support for Cloud Native Buildpacks (CNBs) is already being addressed by the Paketo WG separately (see [ARM64 Paketo Buildpacks](https://www.cloudfoundry.org/blog/arm64-paketo-buildpacks/)). Work for classical buildpacks includes:
 
 - Produce ARM64 variants of classical buildpack dependencies (JDK, Node.js, Python, Ruby, Go, .NET, PHP, nginx runtimes)
-- Produce an ARM64 variant of the `cflinuxfs4` root filesystem
+- Produce an ARM64 variant of the `cflinuxfs5` (Noble) root filesystem
 - Validate classical buildpack `detect` and `compile` phases on ARM64 cells
 - Update classical buildpack CI to produce and test ARM64 artifacts
 
@@ -216,6 +218,14 @@ The ARI Working Group owns the classical buildpacks which have higher adoption i
 ## CI/CD Infrastructure
 
 ARM64 build workers will be provided for Concourse pipelines to enable native ARM64 compilation and testing. The initial CI infrastructure will be contributed alongside the implementation work. Long-term CI/CD ownership should be discussed as part of this RFC.
+
+## Proposed New Areas
+
+Following the TOC discussion, this RFC proposes creating two new areas to lower the entry barrier and establish clear ownership:
+
+1. **ARM64 Stemcell Area** — responsible for ARM64 stemcell builds, BOSH agent ARM64 validation, and ARM64 CI worker infrastructure. This area has a clear boundary: produce and maintain ARM64 stemcells that pass BATS.
+
+2. **ARM64 CF Stack & Buildpacks Area** — responsible for `cflinuxfs5` ARM64 root filesystem and classical buildpack ARM64 dependency compilation. This area has a clear boundary: produce ARM64 variants of the stack and buildpack dependencies that enable `cf push` on ARM64 cells.
 
 # Open Questions
 
