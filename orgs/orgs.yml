@@ -2971,7 +2971,8 @@ orgs:
         homepage: https://hush-house.pivotal.io
       infrastructure:
         description: Automation stack for the Concourse project's infrastructure.
-        has_projects: true
+        has_projects: false
+        has_wiki: false        
       mock-resource:
         description: A resource for testing the resource interface. It reflects the
           version it's told, and is able to mirror its own container image
