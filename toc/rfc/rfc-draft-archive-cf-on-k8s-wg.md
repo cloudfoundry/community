@@ -37,6 +37,7 @@ On accepting the RFC (after public discussion and final comment period):
 - Delete the [CF-on-K8s-WG GCP project](https://console.cloud.google.com/welcome?project=cf-on-k8s-wg)
 - Delete the `CFF-korifi` AWS account (accountID: `007801690126`)
 - Delete the [`CF-on-K8S` working group](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/cf-on-k8s.md)
+- Delete Korifi references like tutorials or mentioning from   https://www.cloudfoundry.org/
 
 ## Alternatives
 
