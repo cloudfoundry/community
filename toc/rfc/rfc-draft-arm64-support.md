@@ -164,6 +164,7 @@ The Foundational Infrastructure Working Group owns `bosh-linux-stemcell-builder`
 - Extend `bosh-linux-stemcell-builder` to produce ARM64 stemcells (Ubuntu Noble initially, Resolute Raccoon when applicable)
 - Validate the BOSH agent on ARM64 (POC has demonstrated this works)
 - Validate BOSH DNS on ARM64
+- Validate BPM (BOSH Process Manager) on ARM64
 - Set up CI pipelines producing ARM64 stemcell builds (ARM64 CI workers will be provided)
 - Validate the BOSH Director (Ruby) operates correctly on ARM64 (POC validated 134 gems)
 - For mixed AMD64/ARM64 environments: address BOSH Director's current single-architecture compilation VM limitation (e.g., support multiple compilation VM types or architecture-aware compilation routing)
@@ -181,7 +182,7 @@ The App Runtime Platform Working Group owns Diego, Garden-runC, Gorouter, Loggre
 - Run component-level integration tests on ARM64 (Diego inigo tests, Gorouter integration tests)
 - Validate the Loggregator pipeline on ARM64
 - Validate container networking (Silk CNI, cf-networking) on ARM64
-- Validate NATS and BPM on ARM64
+- Validate NATS on ARM64
 
 ## App Runtime Interfaces WG
 
