@@ -243,6 +243,9 @@ areas:
   reviewers:
   - name: Wei Li
     github: weili-broadcom
+  bots:
+  - name: TAS Ecosystem Bot (GPP)
+    github: tas-ecosystem-bot
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
