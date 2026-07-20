@@ -394,6 +394,9 @@ areas:
       github: cf-prometheus-ci-bot
 
 - name: Storage CLI
+  bots:
+  - name: ARI WG Git Bot
+    github: ari-wg-gitbot
   approvers:
   - name: Long Nguyen
     github: lnguyen
