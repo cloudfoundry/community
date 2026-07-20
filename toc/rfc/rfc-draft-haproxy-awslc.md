@@ -209,6 +209,12 @@ Phased rollout:
 2. **Phase 2** (optional): operators choose the safety-net route via the multi release, **or** jump directly to the slim single-variant `awslc` release.
 3. **Phase 3**: switch the default release shipped by haproxy-boshrelease (the no-suffix slim release) from OpenSSL to AWS-LC. The multi release continues to exist for migrations but is not the long-term target — most production deployments end up on a slim single-variant release.
 
+### cf-deployment Integration
+
+cf-deployment integration is **out of scope** for this RFC. haproxy-boshrelease is not part of the cf-deployment base manifest; it is opt-in via `operations/use-haproxy.yml`, which adds the `haproxy` release at a version that is bumped automatically, plus an `haproxy` instance group. Operators who adopt AWS-LC manage their own release pinning outside the cf-deployment auto-bump flow (as this release is already consumed in practice), so no change to cf-deployment is required for this proposal.
+
+First-class cf-deployment support could be added later, for example a variant selector in `use-haproxy.yml` that picks the `-awslc` / `-awslc-fips` release while still tracking automatic version bumps. That is a cf-deployment-side change and is explicitly **out of scope** for this RFC.
+
 ## Alternatives Considered
 
 OpenSSL configuration tuning was evaluated but cannot eliminate OpenSSL 3.x's per-operation provider dispatch overhead, which is architectural. Replacing HAProxy entirely with Envoy or nginx would solve the TLS performance problem but require rewriting the entire BOSH release, job templates, and operator tooling — disproportionate scope for a TLS-library swap.
