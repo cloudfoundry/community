@@ -77,6 +77,16 @@ The naming schema treats OpenSSL as the standard: the existing release keeps its
 | `awslc-fips-patched` | AWS-LC FIPS | FIPS with custom HAProxy patches |
 | `multi` | All of the above | Runtime-switchable, for migration |
 
+#### Custom HAProxy Patches (the `-patched` variants)
+
+The `-patched` variants apply a single patch that relaxes HAProxy's enforcement of [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) (the WebSocket protocol). Stock HAProxy rejects a WebSocket upgrade request whose `Sec-WebSocket-Key` header is missing or malformed; the patch removes that validation in the HTTP/1 multiplexer so such requests are accepted and forwarded to the backend.
+
+- **Why it is needed:** some scenarios require WebSocket support for legacy clients that open long-lived WebSocket connections without sending a spec-compliant `Sec-WebSocket-Key`. These clients predate strict RFC 6455 enforcement and cannot be changed; without the patch their connections are rejected at the ingress. This requirement has been carried across HAProxy releases (it is not new to any particular HAProxy major version).
+- **Why it cannot be the default:** the patch makes HAProxy intentionally non-compliant with RFC 6455 (it accepts malformed WebSocket handshakes). Shipping it by default would weaken protocol conformance for every operator, so it is offered only as an explicit opt-in variant.
+- **Why it is a separate variant rather than a runtime toggle:** BOSH properties are evaluated at deploy time, not at package-compilation time, and BOSH does not recompile a package when a property changes. A compile-time toggle is therefore not expressible as a BOSH property. Shipping the patch as its own variant keeps each compiled binary content-addressable and lets operators who do not need it avoid it entirely.
+
+Operators who do not have this legacy-WebSocket requirement should use the unpatched variants (`openssl`, `awslc`, `awslc-fips`).
+
 #### Single-Variant Releases
 
 Each single-variant release contains one monolithic `haproxy` package with only the blobs required for that specific TLS backend. The packaging script auto-detects which library to build based on the included blobs.
@@ -116,6 +126,18 @@ haproxy-awslc-fips → HAProxy binary linked to AWS-LC FIPS
 ```
 
 HAProxy is compiled with `USE_OPENSSL_AWSLC=1` for both FIPS and non-FIPS. FIPS is a library property — HAProxy itself does not need separate FIPS logic.
+
+### Costs and CI Impact
+
+It is worth being precise about where the cost of the expanded variant matrix actually lands, because the two obvious concerns — CI build time and operator deploy time — behave very differently.
+
+**Operator deploy-time compilation is unchanged.** A BOSH release tarball ships source and blobs; the actual compilation happens on the target VM at deploy time and, for the single-variant releases, compiles **only the one variant an operator deploys**. A slim single-variant release compiles exactly one TLS library plus one HAProxy binary regardless of how many variants exist in the matrix. Adding more variants to the matrix therefore imposes **no additional compilation cost** on any operator who does not deploy them. The multi release is the only exception — it compiles every bundled variant — and it is explicitly a migration/testing artifact, not the recommended production target.
+
+**The incremental cost is confined to the release-build pipeline.** Producing the extra tarballs in Concourse means running `bosh create-release` once per variant. All the additional variants together add a few minutes of pipeline wall-clock (tarring source + blobs, computing fingerprints, uploading to the blobstore), plus the disk to store the extra tarballs (each AWS-LC variant bundles the AWS-LC source blob, so the AWS-LC tarballs are a few hundred MB each and the multi tarball larger still). It does **not** compile HAProxy or AWS-LC in the pipeline — that cost is deferred to deploy time as described above.
+
+**This recurring cost is small in absolute terms.** haproxy-boshrelease cut **9 releases in the first half of 2026**. At that cadence, a few extra minutes of pipeline time and a doubling of per-release artifact disk are negligible against the value of shipping the variants operators need. The CI acceptance-test matrix does not grow linearly with the tarball count either: acceptance jobs are defined per TLS backend (`awslc`, `awslc-fips`), and the `-patched` axis reuses the same backend under test rather than adding new backend combinations.
+
+In short: the matrix size is a release-pipeline concern measured in minutes-per-release and disk, not a per-operator or per-deploy cost.
 
 ### Runtime Selection
 
