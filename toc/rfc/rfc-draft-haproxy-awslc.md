@@ -184,11 +184,29 @@ AWS-LC (both FIPS and non-FIPS) differs from OpenSSL in TLS cipher availability:
 - **All TLS 1.3 ciphersuites work**: AES-128-GCM, AES-256-GCM, CHACHA20-POLY1305.
 - **ECDHE ciphers for TLS 1.2 work**: All `ECDHE_RSA_*` and `ECDHE_ECDSA_*` suites are available.
 
-In practice this has no client impact: DHE is rarely required by modern clients, and ECDHE provides equivalent or better security with superior performance. Existing cipher configurations that include both DHE and ECDHE ciphers continue to work — HAProxy silently skips DHE entries that AWS-LC cannot fulfill, and clients negotiate ECDHE instead.
+The practical impact is small but **not zero**. Clients that already support ECDHE are unaffected: with haproxy-boshrelease's default `ssl_ciphers` ordering (defined in `jobs/haproxy/spec`), which lists every ECDHE suite ahead of any DHE suite, any client capable of ECDHE is already negotiating it today and sees no change on AWS-LC. The affected population is the set of clients that negotiate **DHE and cannot do ECDHE** — for these, there is no fallback, and the handshake fails on AWS-LC.
 
-**Compatibility note**: A client would only break on AWS-LC if it supports **DHE but not ECDHE**. Such stacks predate ~2010 and also predate TLS 1.2. Under a TLS 1.2-minimum policy (already enforced in this deployment), they are filtered out at the protocol layer regardless of cipher selection — every client that can negotiate TLS 1.2 also supports ECDHE. Clients that currently happen to negotiate DHE will transparently fall back to ECDHE with no visible impact.
+Crucially, a DHE-only client does **not** transparently fall back to ECDHE: under the default cipher ordering, if it were capable of ECDHE it would already have negotiated ECDHE. This is because HAProxy enables server cipher preference by default (`SSL_OP_CIPHER_SERVER_PREFERENCE`, which also governs curve/group selection), so HAProxy picks the first entry in its own ordered list that the client supports — and every ECDHE suite sits ahead of any DHE suite in the default list. So the clients currently negotiating DHE are, by definition, the ones for which DHE was the only mutually-supported key exchange. This preference ordering is operator-configurable — it can be inverted with `prefer-client-ciphers` (which haproxy-boshrelease does not set by default), and an operator could place DHE ahead of ECDHE in the list, though there is no practical reason to — so it is a property of the shipped default rather than a guarantee.
+
+That said, genuinely **TLS 1.2-capable but DHE-only** clients are rare in absolute terms, and the affected volume is quantifiable in advance from the access logs: before DHE is disabled these handshakes still succeed (so they produce no `ssl_fc_err`), but they can be counted by the negotiated-cipher fetch, i.e. requests where a `DHE-*` suite was selected. This lets the impact be measured and the affected clients identified *before* the switch, rather than discovered afterwards. The migration path further de-risks it via the reversible `multi`-release rollback.
 
 Recommended curve configuration for AWS-LC: `X25519:P-256:P-384:P-521`
+
+### Testing
+
+haproxy-boshrelease already has a substantial test suite that this proposal reuses rather than reinvents:
+
+- **Go/Ginkgo acceptance suite** (`acceptance-tests/…`) — deploys the release to a real BOSH director and drives live traffic. It already exercises the TLS data path end to end: HTTPS over **TLS 1.2 and 1.3**, HTTP/1.1 and HTTP/2 with **ALPN** negotiation (`https_frontend_test.go`), **mTLS** client-cert verification (`mtls_frontend_test.go`), **strict SNI** (`strict_sni_test.go`), **WebSocket** proxying (`websocket_test.go`), domain-fronting protection, external cert lists, client-cert forwarding, plus ~20 further feature tests.
+- **rspec template specs** (`spec/haproxy/templates/…`) — render the job templates under given properties and assert on the rendered config, without deploying.
+
+**Primary regression strategy: run the existing acceptance suite against the AWS-LC variant.** The suite already asserts that TLS termination, mTLS, SNI, ALPN, and WebSocket proxying all work. Running it unchanged against an AWS-LC-linked binary is the strongest guarantee that swapping the TLS library preserves behaviour — if AWS-LC broke any part of the TLS data path, these existing tests fail. The acceptance pipeline therefore gains an AWS-LC (non-FIPS) run of the suite.
+
+**New test added by this proposal: an rspec spec for the variant selector.** The `ha_proxy.ssl_variant` → binary-resolution logic in the job wrapper is new and template-level, so it is covered by an rspec template spec: the correct package path is selected for each variant, and an absent/misconfigured variant is handled per the Runtime Selection behaviour rather than silently falling back.
+
+**Deliberately not added:**
+
+- **A separate FIPS acceptance run.** Each acceptance run compiles the release on the deploy target (~20–30 min for an AWS-LC variant); adding a second full suite run for `awslc-fips` roughly doubles that cost for little additional signal, since FIPS is a property of the linked library, not of HAProxy's behaviour. FIPS activation is verified out-of-band during release validation (`haproxy -vv` / stats-socket `SslFipsModeRuntime`) rather than on every acceptance run.
+- **Synthetic per-cipher / per-curve negotiation tests.** The repo's testing style is functional (drive a real client, assert the request succeeds), not primitive-level. Asserting the exact negotiated cipher or forcing a DHE-only client adds brittle tests that do not match how this suite is written; the cipher/curve differences are documented above and bounded by the recommended configuration.
 
 ### Version Management
 
