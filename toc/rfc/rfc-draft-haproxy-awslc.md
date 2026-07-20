@@ -143,10 +143,12 @@ In short: the matrix size is a release-pipeline concern measured in minutes-per-
 
 The job wrapper resolves the binary path at startup:
 
-1. If `/var/vcap/packages/haproxy-<ssl_variant>` exists → use variant binary (multi release)
-2. Otherwise → fall back to `/var/vcap/packages/haproxy` (single-variant release)
+1. If `/var/vcap/packages/haproxy-<ssl_variant>` exists → use variant binary (multi release).
+2. If `ssl_variant` is unset (or the release ships only the monolithic `haproxy` package) → use `/var/vcap/packages/haproxy` (single-variant release).
 
 This ensures backward compatibility: existing deployments that use the single-variant `openssl` release continue to work without manifest changes.
+
+Setting `ssl_variant` to a value whose package is not present in the deployed release is a configuration error and **must fail fast with a clear message** rather than silently falling back to a different binary. This covers two cases: an unknown value (e.g. `foobar`) in any release, and a valid variant name on a single-variant release that does not contain it (e.g. `awslc-fips` on the `openssl` release). 
 
 ### Measured Performance Gap
 
