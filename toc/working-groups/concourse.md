@@ -100,4 +100,14 @@ areas:
   - concourse/baggage-claim
   - concourse/buildroot-images
   - concourse/concourse-pipeline-resource
+
+- name: Docs
+  approvers:
+  - name: Kevin Bimonte
+    github: kcbimonte
+  - name: Josh Ghiloni
+    github: jghiloni
+  repositories:
+  - concourse/docs
+  - concourse/examples
 ```
