@@ -76,7 +76,7 @@ jobs:
             --fix-team-members
             --fix-team-repos
             --allow-repo-archival
-            --maximum-removal-delta=0.95
+            --maximum-removal-delta=1
   branchprotector:
     needs: peribolos
     runs-on: ubuntu-latest
