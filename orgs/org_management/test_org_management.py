@@ -20,8 +20,22 @@ orgs:
     repos:
       repo1:
         default_branch: main
+      repo2:
+        default_branch: main
       repo3:
         default_branch: defbranch
+      repo4:
+        default_branch: main
+      repo5:
+        default_branch: main
+      repo10:
+        default_branch: main
+      repo11:
+        default_branch: main
+      deploy-repo1:
+        default_branch: main
+      deploy-repo2:
+        default_branch: main
 """
 
 org_cfg_multiple = """
@@ -36,8 +50,18 @@ orgs:
     repos:
       repo1:
         default_branch: main
+      repo2:
+        default_branch: main
       repo3:
         default_branch: defbranch
+      repo4:
+        default_branch: main
+      repo5:
+        default_branch: main
+      repo10:
+        default_branch: main
+      repo11:
+        default_branch: main
   cloudfoundry2:
     admins:
     - admin2
@@ -47,8 +71,14 @@ orgs:
     repos:
       repo1:
         default_branch: main
+      repo2:
+        default_branch: main
       repo3:
-        default_branch: defbranch
+        default_branch: main
+      repo4:
+        default_branch: main
+      repo5:
+        default_branch: main
 """
 
 wg1 = """
@@ -214,6 +244,25 @@ config:
   deploy_keys:
     repositories:
     - cloudfoundry/nonexistent-repo
+"""
+
+wg_missing_repo = """
+name: WG Missing Repo
+execution_leads:
+- name: Lead
+  github: lead-mr
+technical_leads:
+- name: Tech Lead
+  github: tech-lead-mr
+bots: []
+areas:
+- name: Area 1
+  approvers:
+  - github: approver1-mr
+    name: User 1
+  repositories:
+  - cloudfoundry/repo1
+  - cloudfoundry/nonexistent-repo
 """
 
 wg_deploy_keys_policy = """
@@ -765,6 +814,19 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual(2, len(teams["wg-leads"]["members"]))  # wg4 leads
         self.assertNotIn("repos", teams["wg-leads"])  # community repo is in cf org not in cf2
 
+    def test_validate_wg_repos_in_orgs_yml_valid(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg1])
+        self.assertTrue(o.validate_repo_ownership())
+
+    def test_validate_wg_repos_in_orgs_yml_invalid(self):
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg_missing_repo])
+        self.assertFalse(o.validate_repo_ownership())
+
+    def test_validate_wg_repos_unmanaged_org_ignored(self):
+        # wg2 references non-cloudfoundry/repo12 which is not a managed org — silently ignored
+        o = OrgGenerator(static_org_cfg=org_cfg, toc=toc, working_groups=[wg2])
+        self.assertTrue(o.validate_repo_ownership())
+
     def test_validate_branch_protection(self):
         OrgGenerator._validate_branch_protection(OrgGenerator._yaml_load(branch_protection))
         with self.assertRaises(jsonschema.ValidationError):
@@ -782,7 +844,6 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertEqual("defbranch", o._get_default_branch("cloudfoundry", "repo3"))
         # trouble ahead: new repos get main as default branch (github config)
         # peribolos assumes master as default branch, at least when reading repo config
-        self.assertEqual("master", o._get_default_branch("cloudfoundry", "repo5"))
         self.assertEqual("master", o._get_default_branch("cloudfoundry", "unknown"))
 
     def test_generate_wg_branch_protection(self):
