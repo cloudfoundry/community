@@ -1,7 +1,7 @@
 # Meta
 [meta]: #meta
 - Name: Establish a Windows Buildpacks Working Group Area
-- Start Date: TBD
+- Start Date: 2026-07-22
 - Author(s): @Gerg
 - Status: Accepted
 - RFC Pull Request: [community#1567](https://github.com/cloudfoundry/community/pull/1567)
