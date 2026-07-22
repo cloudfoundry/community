@@ -97,7 +97,7 @@ areas:
   - concourse/datadog-event-resource
   - concourse/hush-house
   - concourse/tracker-resource
-  - concourse/baggage-claim
+  - concourse/baggageclaim
   - concourse/buildroot-images
   - concourse/concourse-pipeline-resource
 ```

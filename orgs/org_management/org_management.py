@@ -123,6 +123,17 @@ class OrgGenerator:
     def validate_repo_ownership(self) -> bool:
         valid = True
 
+        # repos in WG areas must be listed in orgs.yml (managed orgs only)
+        for org in OrgGenerator._MANAGED_ORGS:
+            for wg in self.working_groups[org]:
+                wg_name = wg["name"]
+                for area in wg["areas"]:
+                    for repo in area["repositories"]:
+                        repo_org, repo_name = repo.split("/", 1)
+                        if repo_org in OrgGenerator._MANAGED_ORGS and repo_name not in self.org_cfg["orgs"][repo_org]["repos"]:
+                            print(f"ERROR: Working Group '{wg_name}' references repository '{repo}' which is not listed in orgs.yml")
+                            valid = False
+
         # rfc-0007-repository-ownership: a repo can't be owned by multiple WGs, scope is github org
         for org in OrgGenerator._MANAGED_ORGS:
             repo_owners = {}
