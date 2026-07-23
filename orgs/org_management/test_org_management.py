@@ -408,12 +408,12 @@ branch-protection:
 class TestOrgGenerator(unittest.TestCase):
     @override
     def setUp(self) -> None:
-        self._original_managed_orgs = OrgGenerator._MANAGED_ORGS  # pyright: ignore[reportUninitializedInstanceVariable]
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry"]
+        self._originalMANAGED_ORGS = OrgGenerator.MANAGED_ORGS  # pyright: ignore[reportUninitializedInstanceVariable]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry"]
 
     @override
     def tearDown(self) -> None:
-        OrgGenerator._MANAGED_ORGS = self._original_managed_orgs
+        OrgGenerator.MANAGED_ORGS = self._originalMANAGED_ORGS
 
     def test_empty_org(self):
         o = OrgGenerator()
@@ -469,7 +469,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertListEqual(["Contributor2", "contributor1"], o.org_cfg["orgs"]["cloudfoundry"]["members"])
 
     def test_org_members_multiple_orgs(self):
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         o = OrgGenerator(contributors=contributors_multiple_orgs, toc=toc, working_groups=[wg1, wg2, wg4_other_org])
         o.generate_org_members()
         # 2 contributors, 8 wg1, 3 wg2, 2 wg-leads of cloudfoundry2
@@ -523,7 +523,7 @@ class TestOrgGenerator(unittest.TestCase):
         # multiple orgs
         with self.assertRaises(ValueError):
             OrgGenerator._validate_contributors(OrgGenerator._yaml_load(contributors_multiple_orgs))
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         OrgGenerator._validate_contributors(OrgGenerator._yaml_load(contributors_multiple_orgs))
 
     def test_validate_wg(self):
@@ -563,7 +563,7 @@ class TestOrgGenerator(unittest.TestCase):
         # multiple orgs
         with self.assertRaises(ValueError):
             OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg4_other_org))
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         wg = OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg4_other_org))
         self.assertEqual("cloudfoundry2", wg["org"])
 
@@ -575,7 +575,7 @@ class TestOrgGenerator(unittest.TestCase):
         # multiple orgs
         with self.assertRaises(ValueError):
             OrgGenerator._validate_github_org_cfg(OrgGenerator._yaml_load(org_cfg_multiple))
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         OrgGenerator._validate_github_org_cfg(OrgGenerator._yaml_load(org_cfg_multiple))
 
     def test_kebab_case(self):
@@ -603,7 +603,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertFalse(o.validate_repo_ownership())
 
     def test_validate_repo_ownership_multiple_orgs(self):
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         o = OrgGenerator(static_org_cfg=org_cfg_multiple, toc=toc, working_groups=[wg1, wg4_other_org])
         self.assertTrue(o.validate_repo_ownership())
         # includes non-managed orgs
@@ -683,7 +683,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertNotIn("wg-wg2-name-area-1-bots", wg_team["teams"])
 
     def test_generate_wg_teams_multiple_orgs(self):
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         _wg4 = OrgGenerator._yaml_load(wg4_other_org)
         OrgGenerator._validate_wg(_wg4)
 
@@ -757,7 +757,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertIn("community", teams["wg-leads"]["repos"])
 
     def test_generate_teams_multiple_orgs(self):
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         o = OrgGenerator(
             static_org_cfg=org_cfg_multiple, contributors=contributors_multiple_orgs, toc=toc, working_groups=[wg1, wg2, wg4_other_org]
         )
@@ -835,7 +835,7 @@ class TestOrgGenerator(unittest.TestCase):
         # multiple orgs
         with self.assertRaises(ValueError):
             OrgGenerator._validate_branch_protection(OrgGenerator._yaml_load(branch_protection_multiple_orgs))
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         OrgGenerator._validate_branch_protection(OrgGenerator._yaml_load(branch_protection_multiple_orgs))
 
     def test_get_default_branch(self):
@@ -908,7 +908,7 @@ class TestOrgGenerator(unittest.TestCase):
         self.assertNotIn("required_pull_request_reviews", bp_repos["repo1"])
 
     def test_generate_branch_protection_multiple_orgs(self):
-        OrgGenerator._MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
         o = OrgGenerator(
             static_org_cfg=org_cfg_multiple,
             toc=toc,
@@ -935,7 +935,7 @@ class TestOrgGenerator(unittest.TestCase):
 # integration test, depends on data in this repo which may change
 class TestOrgGeneratorIntegrationTest(unittest.TestCase):
     def test_cf_org(self):
-        self.assertEqual(["cloudfoundry", "concourse"], OrgGenerator._MANAGED_ORGS)
+        self.assertEqual(["cloudfoundry", "concourse"], OrgGenerator.MANAGED_ORGS)
 
         o = OrgGenerator()
         o.load_from_project()

@@ -35,7 +35,7 @@ class UniqueKeyLoader(yaml.SafeLoader):
 @final
 class OrgGenerator:
     # list of managed orgs, should match ./ORGS.md
-    _MANAGED_ORGS = ["cloudfoundry", "concourse"]
+    MANAGED_ORGS = ["cloudfoundry", "concourse"]
     _DEFAULT_ORG = "cloudfoundry"
 
     # parameters intended for testing only, all params are yaml docs
@@ -57,7 +57,7 @@ class OrgGenerator:
             if branch_protection
             else {"branch-protection": {"orgs": {}}}
         )
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             if org not in self.org_cfg["orgs"]:
                 self.org_cfg["orgs"][org] = {"admins": [], "members": [], "teams": {}, "repos": {}}
             self.contributors[org] = set()
@@ -76,15 +76,15 @@ class OrgGenerator:
         wgs = [OrgGenerator._validate_wg(OrgGenerator._yaml_load(wg)) for wg in working_groups] if working_groups else []
         for wg in wgs:
             org = wg["org"]
-            if org not in OrgGenerator._MANAGED_ORGS:
-                raise ValueError(f"Invalid org {org} in WG {wg['name']}, expected one of {OrgGenerator._MANAGED_ORGS}")
+            if org not in OrgGenerator.MANAGED_ORGS:
+                raise ValueError(f"Invalid org {org} in WG {wg['name']}, expected one of {OrgGenerator.MANAGED_ORGS}")
             self.working_groups[org].append(wg)
 
     def load_from_project(self):
         path = f"{_SCRIPT_PATH}/orgs.yml"
         print(f"Reading static org configuration from {path}")
         self.org_cfg = OrgGenerator._validate_github_org_cfg(OrgGenerator._read_yml_file(path))
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             if org not in self.org_cfg["orgs"]:
                 self.org_cfg["orgs"][org] = {"admins": [], "members": [], "teams": {}, "repos": {}}
 
@@ -99,7 +99,7 @@ class OrgGenerator:
         path = f"{_SCRIPT_PATH}/branchprotection.yml"
         print(f"Reading branch protection configuration from {path}")
         self.branch_protection = OrgGenerator._validate_branch_protection(OrgGenerator._read_yml_file(path))
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             if org not in self.branch_protection["branch-protection"]["orgs"]:
                 self.branch_protection["branch-protection"]["orgs"][org] = {"repos": {}}
 
@@ -116,26 +116,26 @@ class OrgGenerator:
                 wg = OrgGenerator._read_wg_charter(wg_file)
                 if wg:
                     org = wg["org"]
-                    if org not in OrgGenerator._MANAGED_ORGS:
-                        raise ValueError(f"Invalid org {org} in WG {wg['name']}, expected one of {OrgGenerator._MANAGED_ORGS}")
+                    if org not in OrgGenerator.MANAGED_ORGS:
+                        raise ValueError(f"Invalid org {org} in WG {wg['name']}, expected one of {OrgGenerator.MANAGED_ORGS}")
                     self.working_groups[org].append(wg)
 
     def validate_repo_ownership(self) -> bool:
         valid = True
 
         # repos in WG areas must be listed in orgs.yml (managed orgs only)
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             for wg in self.working_groups[org]:
                 wg_name = wg["name"]
                 for area in wg["areas"]:
                     for repo in area["repositories"]:
                         repo_org, repo_name = repo.split("/", 1)
-                        if repo_org in OrgGenerator._MANAGED_ORGS and repo_name not in self.org_cfg["orgs"][repo_org]["repos"]:
+                        if repo_org in OrgGenerator.MANAGED_ORGS and repo_name not in self.org_cfg["orgs"][repo_org]["repos"]:
                             print(f"ERROR: Working Group '{wg_name}' references repository '{repo}' which is not listed in orgs.yml")
                             valid = False
 
         # rfc-0007-repository-ownership: a repo can't be owned by multiple WGs, scope is github org
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             repo_owners = {}
             for wg in self.working_groups[org]:
                 wg_name = wg["name"]
@@ -154,14 +154,14 @@ class OrgGenerator:
                 wg_repos = set(r for a in wg["areas"] for r in a["repositories"])
                 for repo in wg_repos:
                     repo_org = repo.split("/")[0]
-                    if repo_org != org and repo_org in OrgGenerator._MANAGED_ORGS:
+                    if repo_org != org and repo_org in OrgGenerator.MANAGED_ORGS:
                         print(
                             f"ERROR: Working Group '{wg_name}' assigned to Github org '{org}' contains repository '{repo}' from a different managed org."
                         )
                         valid = False
 
         # validate deploy_keys repos exist in WG areas
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             for wg in self.working_groups[org]:
                 wg_name = wg["name"]
                 wg_repos = {r for a in wg["areas"] for r in a["repositories"]}
@@ -184,14 +184,14 @@ class OrgGenerator:
         return result
 
     def generate_org_members(self):
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             org_members = set(self.org_cfg["orgs"][org]["members"])  # just in case, should be empty list
             org_members |= self.get_contributors(org)
             for wg in self.working_groups[org]:
                 org_members |= OrgGenerator._wg_github_users(wg)
             # wg-leads of all WGs shall be members in cloudfoundy org for access to community repo
             if org == self.toc_org:
-                for _org in OrgGenerator._MANAGED_ORGS:
+                for _org in OrgGenerator.MANAGED_ORGS:
                     for wg in self.working_groups[_org]:
                         org_members |= OrgGenerator._wg_github_users_leads(wg)
             org_admins = set(self.org_cfg["orgs"][org]["admins"])
@@ -207,7 +207,7 @@ class OrgGenerator:
         (name, team) = OrgGenerator._generate_toc_team(self.toc)
         self.org_cfg["orgs"][self.toc["org"]]["teams"][name] = team
         # wg teams for all orgs
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             # working group teams
             for wg in self.working_groups[org]:
                 if wg["org"] == org:
@@ -221,7 +221,7 @@ class OrgGenerator:
         # RFC-0005 lists community repo explicitly (not all TOC repos)
         self.org_cfg["orgs"][self.toc_org]["teams"]["wg-leads"]["repos"] = {"community": "write"}
         # wg leads of other orgs -> create extra wg-leads-<org> team in cloudfoundry org
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             if org != self.toc_org:
                 wg_leads_other_org = self.org_cfg["orgs"][org]["teams"]["wg-leads"]
                 team = {
@@ -235,7 +235,7 @@ class OrgGenerator:
     def generate_branch_protection(self):
         # basis is static config in self.branch_protection which is never overwritten
         # generate RFC0015 branch protection rules for every WG+TOC by default
-        for org in OrgGenerator._MANAGED_ORGS:
+        for org in OrgGenerator.MANAGED_ORGS:
             branch_protection_repos = self.branch_protection["branch-protection"]["orgs"][org]["repos"]
             wgs = self.working_groups[org]
             if org == self.toc["org"]:
@@ -246,17 +246,23 @@ class OrgGenerator:
                     if repo not in branch_protection_repos:
                         branch_protection_repos[repo] = repo_rules[repo]
 
-    def write_org_config(self, path: str):
+    def write_org_config(self, path: str, orgs: list[str] | None = None):
         p = Path(path)
         print(f"Writing org configuration to {p.absolute()}")
+        cfg = self.org_cfg if orgs is None else {"orgs": {org: self.org_cfg["orgs"][org] for org in orgs}}
         with open(p, "w") as stream:
-            return yaml.safe_dump(self.org_cfg, stream)
+            return yaml.safe_dump(cfg, stream)
 
-    def write_branch_protection(self, path: str):
+    def write_branch_protection(self, path: str, orgs: list[str] | None = None):
         p = Path(path)
         print(f"Writing branch protection to {p.absolute()}")
+        bp = (
+            self.branch_protection
+            if orgs is None
+            else {"branch-protection": {"orgs": {org: self.branch_protection["branch-protection"]["orgs"][org] for org in orgs}}}
+        )
         with open(p, "w") as stream:
-            return yaml.safe_dump(self.branch_protection, stream)
+            return yaml.safe_dump(bp, stream)
 
     @staticmethod
     def _yaml_load(stream: TextIO | str) -> dict[str, Any]:
@@ -342,8 +348,8 @@ class OrgGenerator:
         jsonschema.validate(contributors, OrgGenerator._CONTRIBUTORS_SCHEMA)
         # check that orgs are in _ORGS
         for org in contributors["orgs"]:
-            if org not in OrgGenerator._MANAGED_ORGS:
-                raise ValueError(f"Invalid org {org} in orgs.yml, expected one of {OrgGenerator._MANAGED_ORGS}")
+            if org not in OrgGenerator.MANAGED_ORGS:
+                raise ValueError(f"Invalid org {org} in orgs.yml, expected one of {OrgGenerator.MANAGED_ORGS}")
         return contributors
 
     _WG_SCHEMA = {
@@ -405,8 +411,8 @@ class OrgGenerator:
         # validate org and use 'cloudfoundry' if missing
         if "org" not in wg:
             wg["org"] = OrgGenerator._DEFAULT_ORG
-        if wg["org"] not in OrgGenerator._MANAGED_ORGS:
-            raise ValueError(f"Invalid org {wg['org']} in {wg['name']}, expected one of {OrgGenerator._MANAGED_ORGS}")
+        if wg["org"] not in OrgGenerator.MANAGED_ORGS:
+            raise ValueError(f"Invalid org {wg['org']} in {wg['name']}, expected one of {OrgGenerator.MANAGED_ORGS}")
         return wg
 
     # schema for referenced fields only, not for complete config
@@ -436,8 +442,8 @@ class OrgGenerator:
         jsonschema.validate(cfg, OrgGenerator._GITHUB_ORG_CFG_SCHEMA)
         # check that orgs are in _ORGS
         for org in cfg["orgs"]:
-            if org not in OrgGenerator._MANAGED_ORGS:
-                raise ValueError(f"Invalid org {org} in orgs.yml, expected one of {OrgGenerator._MANAGED_ORGS}")
+            if org not in OrgGenerator.MANAGED_ORGS:
+                raise ValueError(f"Invalid org {org} in orgs.yml, expected one of {OrgGenerator.MANAGED_ORGS}")
         return cfg
 
     # schema for referenced fields only, not for complete config
@@ -471,8 +477,8 @@ class OrgGenerator:
         jsonschema.validate(cfg, OrgGenerator._BRANCH_PROTECTION_SCHEMA)
         # check that orgs are in _ORGS
         for org in cfg["branch-protection"]["orgs"]:
-            if org not in OrgGenerator._MANAGED_ORGS:
-                raise ValueError(f"Invalid org {org} in branchprotection.yml, expected one of {OrgGenerator._MANAGED_ORGS}")
+            if org not in OrgGenerator.MANAGED_ORGS:
+                raise ValueError(f"Invalid org {org} in branchprotection.yml, expected one of {OrgGenerator.MANAGED_ORGS}")
         return cfg
 
     # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0005-github-teams-and-access.md
