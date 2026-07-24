@@ -11,6 +11,10 @@ on:
   schedule:
     - cron: '0 */12 * * *'
 
+concurrency:
+  group: org-automation
+  queue: single
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -35,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: peribolos
+      queue: max
     services:
       ghproxy:
         image: rkoster/ghproxy
@@ -101,6 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: peribolos
+      queue: max
     services:
       ghproxy:
         image: rkoster/ghproxy
@@ -156,6 +162,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: peribolos
+      queue: max
     services:
       ghproxy:
         image: rkoster/ghproxy
@@ -222,6 +229,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: peribolos
+      queue: max
     services:
       ghproxy:
         image: rkoster/ghproxy
