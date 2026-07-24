@@ -1,11 +1,11 @@
 # Meta
 [meta]: #meta
 - Name: Establish a Windows Buildpacks Working Group Area
-- Start Date: TBD
+- Start Date: 2026-07-22
 - Author(s): @Gerg
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
-- Related RFCs: [RFC Draft: Deprecate and Remove Windows Support in Binary Buildpack](https://github.com/cloudfoundry/community/blob/rfc-deprecate-windows-support-binary-buildpack/toc/rfc/rfc-draft-deprecate-and-remove-windows-support-in-binary-buildpack.md)
+- Status: Accepted
+- RFC Pull Request: [community#1567](https://github.com/cloudfoundry/community/pull/1567)
+- Related RFCs: [RFC Draft: Deprecate and Remove Windows Support in Binary Buildpack](https://github.com/cloudfoundry/community/blob/rfc-deprecate-windows-support-binary-buildpack/toc/rfc/rfc-0059-deprecate-and-remove-windows-support-in-binary-buildpack.md)
 
 ## Summary
 
@@ -13,7 +13,7 @@ Establish a "Windows Buildpacks" area within the App Runtime Interfaces (ARI) wo
 
 ## Problem
 
-The binary buildpack's Windows support has become unmaintained following the departure of previous maintainers. Binary buildpack's release has been packaging a [pinned version](https://github.com/cloudfoundry/binary-buildpack-release/blame/e767ad860c466a4aeffd2cefd01ab773933992eb/config/blobs.yml) of binary buildpack for almost 2 years. A [related RFC](https://github.com/cloudfoundry/community/blob/rfc-deprecate-windows-support-binary-buildpack/toc/rfc/rfc-draft-deprecate-and-remove-windows-support-in-binary-buildpack.md) proposes removing Windows support entirely.
+The binary buildpack's Windows support has become unmaintained following the departure of previous maintainers. Binary buildpack's release has been packaging a [pinned version](https://github.com/cloudfoundry/binary-buildpack-release/blame/e767ad860c466a4aeffd2cefd01ab773933992eb/config/blobs.yml) of binary buildpack for almost 2 years. A [related RFC](https://github.com/cloudfoundry/community/blob/rfc-deprecate-windows-support-binary-buildpack/toc/rfc/rfc-0059-deprecate-and-remove-windows-support-in-binary-buildpack.md) proposes removing Windows support entirely.
 
 However, deprecating Windows support in the binary buildpack is, in effect, deprecating Windows support for CF as a whole: without a maintained buildpack that can exercise the Windows runtime interface, the Windows support in CF cannot be properly validated. Windows support is a differentiating feature of CF with active community consumers, and this decision warrants more deliberation than a single buildpack RFC.
 
