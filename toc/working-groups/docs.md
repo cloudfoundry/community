@@ -40,6 +40,8 @@ areas:
   approvers:
   - name: Anita Flegg
     github: anita-flegg
+  - name: Norman Abramovitz
+    github: norman-abramovitz
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
