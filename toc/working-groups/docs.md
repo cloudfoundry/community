@@ -40,8 +40,6 @@ areas:
   approvers:
   - name: Anita Flegg
     github: anita-flegg
-  - name: Richard Johnson
-    github: RichardJJG
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
