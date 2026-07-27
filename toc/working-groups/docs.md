@@ -40,8 +40,6 @@ areas:
   approvers:
   - name: Anita Flegg
     github: anita-flegg
-  - name: Stuart Clements
-    github: stuclem
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
