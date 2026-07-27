@@ -42,8 +42,6 @@ areas:
     github: anita-flegg
   - name: Richard Johnson
     github: RichardJJG
-  - name: Stuart Clements
-    github: stuclem
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
