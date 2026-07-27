@@ -929,6 +929,7 @@ branch-protection:
 
         git-resource: &concourse-resource-repo
           protect: false
+          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           branches:
             master:
               protect: true
