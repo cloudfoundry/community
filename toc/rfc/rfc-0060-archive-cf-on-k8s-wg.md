@@ -3,8 +3,8 @@
 - Name: Archive the CF on K8S working group
 - Start Date: 2026-07-10
 - Author(s): @georgethebeatle @danail-branekov
-- Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1560
+- Status: Accepted
+- RFC Pull Request: [community#1560](https://github.com/cloudfoundry/community/pull/1560)
 - Related RFCs:
 - Affected Component(s): Korifi
 
