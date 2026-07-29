@@ -54,7 +54,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
