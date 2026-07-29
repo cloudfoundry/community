@@ -61,6 +61,9 @@ areas:
     github: bonzofenix
   - name: Tibor Schöll
     github: t-schoell
+  reviewers:
+  - name: Jochen Ehret
+    github: jochenehret
   bots:
   - name: App Autoscaler CI Bot
     github: app-autoscaler-ci-bot
