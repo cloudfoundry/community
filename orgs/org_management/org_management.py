@@ -256,11 +256,11 @@ class OrgGenerator:
     def write_branch_protection(self, path: str, orgs: list[str] | None = None):
         p = Path(path)
         print(f"Writing branch protection to {p.absolute()}")
-        bp = (
-            self.branch_protection
-            if orgs is None
-            else {"branch-protection": {"orgs": {org: self.branch_protection["branch-protection"]["orgs"][org] for org in orgs}}}
-        )
+        if orgs is None:
+            bp = self.branch_protection
+        else:
+            top = self.branch_protection["branch-protection"]
+            bp = {"branch-protection": {**top, "orgs": {org: top["orgs"][org] for org in orgs}}}
         with open(p, "w") as stream:
             return yaml.safe_dump(bp, stream)
 
@@ -418,6 +418,7 @@ class OrgGenerator:
     # schema for referenced fields only, not for complete config
     _GITHUB_ORG_CFG_SCHEMA = {
         "type": "object",
+        "additionalProperties": False,
         "properties": {
             "orgs": {
                 "type": "object",
@@ -449,6 +450,7 @@ class OrgGenerator:
     # schema for referenced fields only, not for complete config
     _BRANCH_PROTECTION_SCHEMA = {
         "type": "object",
+        "additionalProperties": False,
         "properties": {
             "branch-protection": {
                 "type": "object",

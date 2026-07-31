@@ -1,5 +1,6 @@
+import tempfile
 import unittest
-from typing import final, override
+from typing import Any, final, override
 
 import jsonschema
 import yaml
@@ -392,6 +393,7 @@ branch-protection:
 
 branch_protection_multiple_orgs = """
 branch-protection:
+  allow_disabled_policies: true
   orgs:
     cloudfoundry:
       repos:
@@ -930,6 +932,47 @@ class TestOrgGenerator(unittest.TestCase):
         # repo1 has static config that wins over generated branch protection rules
         self.assertTrue(bp_repos["repo1"]["protect"])
         self.assertNotIn("required_pull_request_reviews", bp_repos["repo1"])
+
+    @staticmethod
+    def _load_yml(path: str) -> dict[str, Any]:
+        with open(path) as f:
+            return yaml.safe_load(f)
+
+    def test_write_branch_protection(self):
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        o = OrgGenerator(branch_protection=branch_protection_multiple_orgs)
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            # filtered: one org only
+            o.write_branch_protection(f"{tmpdir}/bp_one.yml", orgs=["cloudfoundry"])
+            written = self._load_yml(f"{tmpdir}/bp_one.yml")
+            self.assertTrue(written["branch-protection"]["allow_disabled_policies"])
+            self.assertIn("cloudfoundry", written["branch-protection"]["orgs"])
+            self.assertNotIn("cloudfoundry2", written["branch-protection"]["orgs"])
+
+            # unfiltered: both orgs
+            o.write_branch_protection(f"{tmpdir}/bp_all.yml")
+            written = self._load_yml(f"{tmpdir}/bp_all.yml")
+            self.assertTrue(written["branch-protection"]["allow_disabled_policies"])
+            self.assertIn("cloudfoundry", written["branch-protection"]["orgs"])
+            self.assertIn("cloudfoundry2", written["branch-protection"]["orgs"])
+
+    def test_write_org_config(self):
+        OrgGenerator.MANAGED_ORGS = ["cloudfoundry", "cloudfoundry2"]
+        o = OrgGenerator(static_org_cfg=org_cfg_multiple)
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            # filtered: one org only
+            o.write_org_config(f"{tmpdir}/orgs_one.yml", orgs=["cloudfoundry"])
+            written = self._load_yml(f"{tmpdir}/orgs_one.yml")
+            self.assertIn("cloudfoundry", written["orgs"])
+            self.assertNotIn("cloudfoundry2", written["orgs"])
+
+            # unfiltered: both orgs
+            o.write_org_config(f"{tmpdir}/orgs_all.yml")
+            written = self._load_yml(f"{tmpdir}/orgs_all.yml")
+            self.assertIn("cloudfoundry", written["orgs"])
+            self.assertIn("cloudfoundry2", written["orgs"])
 
 
 # integration test, depends on data in this repo which may change
