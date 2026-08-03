@@ -19,14 +19,14 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           path: community
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version-file: "community/orgs/pyproject.toml"
-      - uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - name: Validate github org configuration
@@ -52,20 +52,20 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           path: community
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version-file: "community/orgs/pyproject.toml"
-      - uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - name: Generate github org configuration
@@ -119,20 +119,20 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           path: community
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version-file: "community/orgs/pyproject.toml"
-      - uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - name: Generate github org configuration
@@ -175,20 +175,20 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           path: community
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version-file: "community/orgs/pyproject.toml"
-      - uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - name: Generate github org configuration
@@ -242,20 +242,20 @@ jobs:
           - ${{ github.workspace }}/ghproxy-cache:/cache
     steps:
       - name: ghproxy-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ github.workspace }}/ghproxy-cache
           key: ghproxy-cache-${{ github.run_number }}
           restore-keys: |
             ghproxy-cache-
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           path: community
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version-file: "community/orgs/pyproject.toml"
-      - uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - name: Generate github org configuration
