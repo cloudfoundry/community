@@ -17,7 +17,7 @@ for group in $(ls ../*.md | grep -v -e ROLES -e CHANGEPLAN -e PRINCIPLES -e GOVE
      working_group_info=$(echo "${working_group_info}" | working_group_information_json="$(get_working_group_info_json $group)" yq -oj -I=0 '. + [env(working_group_information_json)]')
 done
 
-for working_group in $(ls *.md | grep -v -e WORKING-GROUPS -e paketo -e vulnerability -e concourse); do
+for working_group in $(ls *.md | grep -v -e WORKING-GROUPS -e paketo -e vulnerability); do
      working_group_info=$(echo "${working_group_info}" | working_group_information_json="$(get_working_group_info_json $working_group)" yq -oj -I=0 '. + [env(working_group_information_json)]')
 done
 
