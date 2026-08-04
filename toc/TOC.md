@@ -63,10 +63,10 @@ the Cloud Foundry community via an election.
 
 | &nbsp;                                                       | Member                 | Company     | Profile                                          | Term Start | Term End |
 | ------------------------------------------------------------ | -----------------------| ----------- | ------------------------------------------------ | ---------- | --------
-| <img width="30px" src="https://github.com/beyhan.png">       | Beyhan Veli (TOC Chair)| SAP         | [@beyhan](https://github.com/beyhan)             | 2024-06-21 | 2026     |
+| <img width="30px" src="https://github.com/beyhan.png">       | Beyhan Veli (TOC Chair)| SAP         | [@beyhan](https://github.com/beyhan)             | 2026-07-28 | 2028     |
 | <img width="30px" src="https://github.com/Cweibel.png">      | Chris Weibel           | Cloud.gov   | [@cweibel](https://github.com/cweibel)           | 2025-07-01 | 2027     |
-| <img width="30px" src="https://github.com/gerg.png">         | Greg Cobb              | VMware      | [@gerg](https://github.com/Gerg)                 | 2025-07-01 | 2027     |
-| <img width="30px" src="https://github.com/rkoster.png">      | Ruben Koster           | Rabobank    | [@rkoster](https://github.com/rkoster)           | 2024-06-21 | 2026     |
+| <img width="30px" src="https://github.com/gerg.png">         | Greg Cobb              | Broadcom    | [@gerg](https://github.com/Gerg)                 | 2025-07-01 | 2027     |
+| <img width="30px" src="https://github.com/mkocher.png">      | Matthew Kocher         | Broadcom    | [@mkocher](https://github.com/mkocher)           | 2026-07-28 | 2028     |
 | <img width="30px" src="https://github.com/stephanme.png">    | Stephan Merker         | SAP         | [@stephanme](https://github.com/stephanme)       | 2025-07-01 | 2027     |
 
 
@@ -125,8 +125,8 @@ execution_leads:
   github: cweibel
 - name: Greg Cobb
   github: gerg
-- name: Ruben Koster
-  github: rkoster
+- name: Matthew Kocher
+  github: mkocher
 - name: Stephan Merker
   github: stephanme
 technical_leads:
