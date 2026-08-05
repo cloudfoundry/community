@@ -90,6 +90,8 @@ areas:
     github: ragaskar
   - name: Duane May
     github: duanemay
+  - name: Amin Jamali
+    github: winkingturtle-vmw
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
