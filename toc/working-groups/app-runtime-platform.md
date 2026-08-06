@@ -190,9 +190,9 @@ areas:
     github: winkingturtle-vmw
   - name: Jovan Kostovski
     github: chombium
-  reviewers:
   - name: Joris Baum
     github: jorbaum
+  reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
   - name: Andrew Costa
