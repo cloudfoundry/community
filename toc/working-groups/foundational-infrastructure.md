@@ -516,6 +516,7 @@ config:
     - cloudfoundry/bosh-cpi-go
     - cloudfoundry/bosh-davcli
     - cloudfoundry/bosh-deployment
+    - cloudfoundry/bosh-disaster-recovery-acceptance-tests
     - cloudfoundry/bosh-docker-cpi-release
     - cloudfoundry/bosh-gcscli
     - cloudfoundry/bosh-google-cpi-release
