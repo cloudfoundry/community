@@ -769,6 +769,7 @@ branch-protection:
         houdini:
           include:
             - "^master$"
+            - "^version$"
 
         ci:
           include:
