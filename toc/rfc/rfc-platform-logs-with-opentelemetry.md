@@ -26,7 +26,7 @@ The OpenTelemetry Collector offers huge advantages over Syslog:
 
 ## Proposal
 
-We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all of the goodies mentioned above. The `syslog-release` has to be analyzed in its smallest detail to get to know of all its functionalities and find their proper replacements with OpenTelemetry.
+We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all of the goodies mentioned above. The `syslog-release` has to be analyzed to get to know all its functionalities and find their proper replacements with OpenTelemetry.
 
 ### Affected Working Groups
 - Foundational Infrastructure
@@ -34,7 +34,7 @@ We propose adding support to the [otel-collector-release](https://github.com/clo
 
 ### Implementation
 
-Cloud Foundry supports platform log collection on two major type of operating systems Unix-like with the `syslog-release` and Windows with the [windows-syslog-release](https://github.com/cloudfoundry/windows-syslog-release). It has to be ensured that the OpenTelemetry replacement works equally good for both of them. Both releases have to be analyzed to find the details how they function, so that that proper replacement can be built.
+Cloud Foundry supports platform log collection on two major types of operating systems: Linux with the `syslog-release` and Windows with the [windows-syslog-release](https://github.com/cloudfoundry/windows-syslog-release). It has to be ensured that the OpenTelemetry replacement works equally good for both of them. Both releases have to be analyzed to find the details how they function, so that that proper replacement can be built.
 
 #### Focus
 
