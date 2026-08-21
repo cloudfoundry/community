@@ -26,7 +26,7 @@ The OpenTelemetry Collector offers huge advantages over Syslog:
 
 ## Proposal
 
-We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all oft the goodies mentioned above. The `syslog-release` has to be analyzed in its smallest detail to get to know of all its functionalities and find their proper replacements with OpenTelemetry.
+We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all of the goodies mentioned above. The `syslog-release` has to be analyzed in its smallest detail to get to know of all its functionalities and find their proper replacements with OpenTelemetry.
 
 ### Affected Working Groups
 - Foundational Infrastructure
@@ -58,7 +58,7 @@ Before we start with the technical implementation we have to:
 
 ##### Phase 2 - Implementation
 
-The implementation will based on the findings from the `Discovery Phase` and will follow the new and modern trends for processing logs with Open Telemetry.
+The implementation will be based on the findings from the `Discovery Phase` and will follow the new and modern trends for processing logs with Open Telemetry.
 
 The three main topics in the implementation phase will be:
 - `otel-collector-release` adjustments to support collection and delivery of platform logs:
