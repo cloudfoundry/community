@@ -6,6 +6,7 @@
 - Status: Draft
 - Related RFCs : [rfc-0018-aggregate-metric-egress-with-opentelemetry-collector](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0018-aggregate-metric-egress-with-opentelemetry-collector.md)
 - RFC Pull Request:
+- Affected Component(s): otel-collector-release, cf-deployment
 
 
 ## Summary
