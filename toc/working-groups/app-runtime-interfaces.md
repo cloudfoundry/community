@@ -229,7 +229,6 @@ areas:
   - cloudfoundry/app-runtime-interfaces-infrastructure
   - cloudfoundry/servicebroker
   - cloudfoundry/osb-checker
-  - cloudfoundry/cf-openapi
 
 - name: CLI
   approvers:
