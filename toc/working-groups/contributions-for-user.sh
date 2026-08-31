@@ -103,37 +103,33 @@ find_commits_grouped_by_pr_for_repo() {
   # Primary: GitHub search API for merged PRs authored by user
   local prs
   if prs=$(gh api --paginate "search/issues?q=repo:${repo}+type:pr+author:${user}+is:merged&per_page=100" 2>/dev/null); then
-    while IFS= read -r pr_json; do
-      [[ -z "${pr_json}" ]] && continue
-      local pr_number pr_title pr_url pr_date
-      pr_number=$(echo "${pr_json}" | yq -oj -r '.number')
-      pr_title=$(echo "${pr_json}"  | yq -oj -r '.title')
-      pr_url=$(echo "${pr_json}"    | yq -oj -r '.html_url')
-      pr_date=$(echo "${pr_json}"   | yq -oj -r '.created_at')
+    local total
+    total=$(echo "${prs}" | yq -oj -r '.total_count' | head -1)
+    if [[ "${total:-0}" -gt 1000 ]]; then
+      echo "  WARNING: ${repo}: ${total} merged PRs found; GitHub search caps at 1000 — some may be missing" >&2
+    fi
+    while IFS=$'\t' read -r pr_number pr_title pr_url pr_date; do
+      [[ -z "${pr_number}" ]] && continue
       seen[${pr_number}]=1
       emit_pr_with_commits "${repo}" "${pr_number}" "${pr_title}" "${pr_url}" "${pr_date}"
-    done < <(echo "${prs}" | yq -oj -I=0 -r '.items[]')
+    done < <(echo "${prs}" | yq -oj -r '.items[] | [(.number | tostring), .title, .html_url, .created_at] | @tsv')
   fi
 
   # Supplement: events fallback for very recent merged PRs the search index hasn't picked up yet.
   # Only emit one event per PR number (events can contain many actions for the same PR).
-  while IFS= read -r pr_json; do
-    [[ -z "${pr_json}" ]] && continue
-    local pr_number pr_title pr_url pr_date
-    pr_number=$(echo "${pr_json}" | yq -oj -r '.payload.number')
+  while IFS=$'\t' read -r pr_number pr_title pr_url pr_date; do
+    [[ -z "${pr_number}" ]] && continue
     [[ -n "${seen[${pr_number}]+x}" ]] && continue
-    pr_title=$(echo "${pr_json}" | yq -oj -r '.payload.pull_request.title')
-    pr_url=$(echo "${pr_json}"   | yq -oj -r '.payload.pull_request.html_url')
-    pr_date=$(echo "${pr_json}"  | yq -oj -r '.payload.pull_request.created_at')
     seen[${pr_number}]=1
     emit_pr_with_commits "${repo}" "${pr_number}" "${pr_title}" "${pr_url}" "${pr_date}"
-  done < <(echo "${EVENTS_JSON}" | user="${user}" repository="${repo}" yq -oj -I=0 -r '
+  done < <(echo "${EVENTS_JSON}" | user="${user}" repository="${repo}" yq -oj -r '
     .[]
     | select(.type == "PullRequestEvent")
     | select(.repo.name == strenv(repository))
     | select(.payload.action == "closed")
     | select(.payload.pull_request.user.login == strenv(user))
     | select(.payload.pull_request.merged == true)
+    | [(.payload.number | tostring), .payload.pull_request.title, .payload.pull_request.html_url, .payload.pull_request.created_at] | @tsv
   ')
 }
 
@@ -145,34 +141,26 @@ find_authored_prs_for_repo() {
   # Primary: GitHub search API
   local prs
   if prs=$(gh api --paginate "search/issues?q=repo:${repo}+type:pr+author:${user}&per_page=100" 2>/dev/null); then
-    while IFS= read -r pr_json; do
-      [[ -z "${pr_json}" ]] && continue
-      local num title url date state
-      num=$(echo "${pr_json}"   | yq -oj -r '.number')
-      title=$(echo "${pr_json}" | yq -oj -r '.title')
-      url=$(echo "${pr_json}"   | yq -oj -r '.html_url')
-      date=$(echo "${pr_json}"  | yq -oj -r '.created_at')
-      state=$(echo "${pr_json}" | yq -oj -r '.state')
-      seen[${num}]=1
-      echo "- ${date}: [${title}](${url}) (${state})"
-    done < <(echo "${prs}" | yq -oj -I=0 -r '.items[]')
+    local total
+    total=$(echo "${prs}" | yq -oj -r '.total_count' | head -1)
+    if [[ "${total:-0}" -gt 1000 ]]; then
+      echo "  WARNING: ${repo}: ${total} authored PRs found; GitHub search caps at 1000 — some may be missing" >&2
+    fi
+    while IFS= read -r num; do seen[${num}]=1; done < <(echo "${prs}" | yq -oj -r '.items[].number')
+    echo "${prs}" | yq -oj -r '.items[] | "- " + .created_at + ": [" + .title + "](" + .html_url + ") (" + .state + ")"'
   fi
 
   # Supplement: targeted single-PR lookup for any PRs visible in events that search missed.
   # Filter to action=="opened" so we hit the API at most once per PR, not once per event.
   while IFS= read -r pr_json; do
     [[ -z "${pr_json}" ]] && continue
-    local num title url date state
+    local num
     num=$(echo "${pr_json}" | yq -oj -r '.payload.number')
     [[ -n "${seen[${num}]+x}" ]] && continue
+    seen[${num}]=1
     local pr_detail
     if pr_detail=$(gh api "repos/${repo}/pulls/${num}" 2>/dev/null); then
-      title=$(echo "${pr_detail}" | yq -oj -r '.title')
-      url=$(echo "${pr_detail}"   | yq -oj -r '.html_url')
-      date=$(echo "${pr_detail}"  | yq -oj -r '.created_at')
-      state=$(echo "${pr_detail}" | yq -oj -r '.state')
-      seen[${num}]=1
-      echo "- ${date}: [${title}](${url}) (${state})"
+      echo "${pr_detail}" | yq -oj -r '"- " + .created_at + ": [" + .title + "](" + .html_url + ") (" + .state + ")"'
     fi
   done < <(echo "${EVENTS_JSON}" | user="${user}" repository="${repo}" yq -oj -I=0 -r '
     .[]
@@ -226,36 +214,42 @@ find_commits_on_others_prs_for_repo() {
   local user=$1
   local repo=$2
 
-  # Find commits authored by user in this repo, then check if each landed in a PR
-  # authored by someone else (i.e. the user pushed to a collaborator's branch)
   local commits
   if ! commits=$(gh api --paginate \
       "search/commits?q=author:${user}+repo:${repo}&per_page=100" 2>/dev/null); then
     return
   fi
 
+  local total
+  total=$(echo "${commits}" | yq -oj -r '.total_count' | head -1)
+  if [[ "${total:-0}" -gt 1000 ]]; then
+    echo "  WARNING: ${repo}: ${total} commits found; GitHub search caps at 1000 — some may be missing" >&2
+  fi
+
+  # Fetching the PR(s) for each commit SHA requires one API call per commit.
+  # Cap at MAX_COMMIT_LOOKUPS to avoid rate-limit exhaustion on active repos.
+  local -r MAX_COMMIT_LOOKUPS=50
   local -A seen=()
+  local count=0
 
   while IFS= read -r sha; do
     [[ -z "${sha}" ]] && continue
+    (( count++ )) || true
+    if [[ "${count}" -gt "${MAX_COMMIT_LOOKUPS}" ]]; then
+      echo "  NOTE: ${repo}: more than ${MAX_COMMIT_LOOKUPS} commits; remaining skipped to avoid rate-limit exhaustion" >&2
+      break
+    fi
     local prs_for_commit
-    if ! prs_for_commit=$(gh api "repos/${repo}/commits/${sha}/pulls" 2>/dev/null); then
+    if ! prs_for_commit=$(gh api --paginate "repos/${repo}/commits/${sha}/pulls" 2>/dev/null); then
       continue
     fi
-    while IFS= read -r pr_json; do
-      [[ -z "${pr_json}" ]] && continue
-      local pr_author pr_number pr_title pr_url pr_date
-      pr_author=$(echo "${pr_json}" | yq -oj -r '.user.login')
-      pr_number=$(echo "${pr_json}" | yq -oj -r '.number')
-      # Only include PRs authored by someone else
+    while IFS=$'\t' read -r pr_author pr_number pr_title pr_url pr_date; do
+      [[ -z "${pr_author}" ]] && continue
       [[ "${pr_author}" == "${user}" ]] && continue
       [[ -n "${seen[${pr_number}]+x}" ]] && continue
-      pr_title=$(echo "${pr_json}" | yq -oj -r '.title')
-      pr_url=$(echo "${pr_json}"   | yq -oj -r '.html_url')
-      pr_date=$(echo "${pr_json}"  | yq -oj -r '.created_at')
       seen[${pr_number}]=1
       echo "- ${pr_date}: [${pr_title}](${pr_url}) (by ${pr_author})"
-    done < <(echo "${prs_for_commit}" | yq -oj -I=0 -r '.[]')
+    done < <(echo "${prs_for_commit}" | yq -oj -r '.[] | [.user.login, (.number | tostring), .title, .html_url, .created_at] | @tsv')
   done < <(echo "${commits}" | yq -oj -I=0 -r '.items[].sha')
 }
 
@@ -308,7 +302,6 @@ for area in "${areas[@]}"; do
   echo "Gathering contributions for the '${WORKING_GROUP}: ${area}' area..."
   uri_safe_file=$(echo "${WORKING_GROUP} - ${area}.md" | yq -oj -I=0 -r '@uri' | sed -E 's/\%20|\+|\%28/\ /g' | sed -E 's/\%0A|\%29//g' | sed 's/%2F/and/g')
 
-  declare -a repos
   repos=($(echo "${TOC_JSON}" | wg_name="${WORKING_GROUP}" area="${area}" yq -oj -I=0 -r '
     .[]
     | select(.name == strenv(wg_name))
