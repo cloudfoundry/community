@@ -2837,6 +2837,16 @@ orgs:
         privacy: closed
         repos:
           terraform-provider-cloudfoundry: admin
+      temp-ari-stratos-admins:
+        description: "Temporary team for managing Stratos secrets and packages until we have a permanent plan."
+        maintainers:
+          - norman-abramovitz
+          - krutten
+          - wayneeseguin
+        members: []
+        privacy: closed
+        repos:
+          stratos: admin
   concourse:
     admins: [] # shall be empty, maintained in TOC.md
     billing_email: team@concourse-ci.org
