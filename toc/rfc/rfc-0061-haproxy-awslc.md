@@ -3,7 +3,7 @@
 - Name: AWS-LC as TLS Backend for HAProxy
 - Start Date: 2026-05-06
 - Author(s): @hoffmaen
-- Status: Draft
+- Status: Accepted
 - RFC Pull Request: [community#1501](https://github.com/cloudfoundry/community/pull/1501)
 - Related RFCs: [RFC#23: CF components support FIPS certified stemcells](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0023-add-cf-supports-for-fips-stemcell.md)
 - Affected Component(s): haproxy-boshrelease
