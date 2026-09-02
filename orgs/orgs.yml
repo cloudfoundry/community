@@ -665,6 +665,7 @@ orgs:
         has_projects: false
         has_wiki: false
       cf-k8s-secrets:
+        archived: true
         default_branch: main
         has_projects: true
         private: true
@@ -1606,6 +1607,7 @@ orgs:
         has_projects: true
         archived: true
       intro-to-korifi:
+        archived: true
         default_branch: main
         description: An introduction to the Korifi project
         has_projects: false
@@ -1720,16 +1722,20 @@ orgs:
         has_projects: false
         has_wiki: false
       korifi:
+        archived: true
         default_branch: main
         description: Cloud Foundry on Kubernetes
         has_projects: true
       korifi-ci:
+        archived: true
         default_branch: main
         has_projects: true
       korifi-website:
+        archived: true
         default_branch: main
         has_projects: false
       korifi-sample-app:
+        archived: true
         default_branch: main
         description: A sample application used in the Korifi tutorial
         has_projects: false
