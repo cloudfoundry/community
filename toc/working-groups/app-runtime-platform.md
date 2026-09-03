@@ -186,9 +186,9 @@ areas:
     github: winkingturtle-vmw
   - name: Jovan Kostovski
     github: chombium
-  reviewers:
   - name: Joris Baum
     github: jorbaum
+  reviewers:
   - name: Pascal Zimmermann
     github: ZPascal
   - name: Andrew Costa
@@ -239,6 +239,9 @@ areas:
   reviewers:
   - name: Wei Li
     github: weili-broadcom
+  bots:
+  - name: TAS Ecosystem Bot (GPP)
+    github: tas-ecosystem-bot
   repositories:
   - cloudfoundry/metric-store-ci
   - cloudfoundry/metric-store-release
@@ -314,7 +317,6 @@ areas:
     github: mariash
   - name: Amin Jamali
     github: winkingturtle-vmw
-  reviewers:
   - name: Karthick Udayakumar
     github: kart2bc
   repositories:

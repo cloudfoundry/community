@@ -15,11 +15,11 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ruff",
-    "basedpyright",
+    "ty",
 ]
 
 [build-system]
-requires = ["uv_build>=0.9.0,<0.10.0"]
+requires = ["uv_build>=0.12.0,<0.13.0"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
@@ -66,32 +66,7 @@ ignore = [
     "ISC002", # https://docs.astral.sh/ruff/rules/multi-line-implicit-string-concatenation/
 ]
 
-
-[tool.basedpyright]
-# https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright
-# https://docs.basedpyright.com/latest/configuration/config-files/#sample-pyprojecttoml-file
+[tool.ty.src]
 include = ["org_management"]
-# By default BasedPyright is very strict, so you almost certainly want to disable
-# some of the rules.
-# First, these turn off warnings about (yes) how you ignore warnings:
-# failOnWarnings = false
-enableTypeIgnoreComments = true
-# reportIgnoreCommentWithoutRule = false
-# reportUnnecessaryTypeIgnoreComment = false
-# A few typically noisy warnings are next.
-# How many you enable is up to you. The first few are off by default, but you can
-# comment/uncomment these as desired:
-reportMissingTypeStubs = false
-reportUnusedCallResult = false
-reportAny = false
-reportExplicitAny = false
-# reportImplicitStringConcatenation = false
-# reportUnreachable = false
-# reportImplicitOverride = false
-# reportPrivateImportUsage = false
-# reportPrivateLocalImportUsage = false
-# reportMissingImports = false
-# reportUnnecessaryIsInstance = false
-# reportUnknownVariableType = false
-# reportUnknownArgumentType = false
-# reportUnknownMemberType = false
+
+[tool.ty.rules]

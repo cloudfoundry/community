@@ -84,43 +84,6 @@ areas:
   - cloudfoundry/credhub-oss-ci
   - cloudfoundry/credhub-perf-release
   - cloudfoundry/secure-credentials-broker
-- name: Disaster Recovery (BBR)
-  reviewers:
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
-  - name: Allan Yu
-    github: ay901246
-  approvers:
-  - name: Aram Price
-    github: aramprice
-  - name: Maya Rosecrance
-    github: mrosecrance
-  - name: Brian Upton
-    github: ystros
-  - name: Chris Selzo
-    github: selzoc
-  - name: Clay Kauzlaric
-    github: KauzClay
-  - name: Diego Lemos
-    github: dlresende
-  - name: George Blue
-    github: blgm
-  - name: Long Nguyen
-    github: lnguyen
-  - name: Nishad Mathur
-    github: alphasite
-  - name: Rajan Agaskar
-    github: ragaskar
-  - name: Julian Hjortshoj
-    github: julian-hj
-  - name: Colin Shield
-    github: colins
-  repositories:
-  - cloudfoundry/backup-and-restore-sdk-release
-  - cloudfoundry/bosh-backup-and-restore
-  - cloudfoundry/bosh-backup-and-restore-test-releases
-  - cloudfoundry/bosh-disaster-recovery-acceptance-tests
-  - cloudfoundry/exemplar-backup-and-restore-release
 - name: Identity and Auth (UAA)
   approvers:
   - name: Peter Chen
@@ -260,13 +223,11 @@ areas:
     github: neddp
   - name: Colin Shield
     github: colins
-  reviewers:
-  - name: Allan Yu
-    github: ay901246
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
   - name: Ivaylo Ivanov
     github: ivaylogi98
+  - name: Allan Yu
+    github: ay901246
+  reviewers:
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
@@ -277,6 +238,8 @@ areas:
     github: metskem
   - name: Rene Dollevoet
     github: lodener
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -300,8 +263,6 @@ areas:
     github: a-hassanin
   - name: Ansh Rupani
     github: anshrupani
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -322,82 +283,86 @@ areas:
     github: mariash
   - name: Colin Shield
     github: colins
-  reviewers:
-  - name: Allan Yu
-    github: ay901246
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
-  - name: Alexander Lais
-    github: peanball
   - name: Ivaylo Ivanov
     github: ivaylogi98
+  - name: Allan Yu
+    github: ay901246
+  reviewers:
+  - name: Alexander Lais
+    github: peanball
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
     github: lunaticomic-vc
   - name: Saumya Dudeja
     github: dudejas
+  - name: Sascha Stojanovic
+    github: Sascha-Stoj
   repositories:
-  - cloudfoundry/bbl-state-resource
-  - cloudfoundry/bosh
-  - cloudfoundry/bosh-acceptance-tests
-  - cloudfoundry/bosh-agent
-  - cloudfoundry/bosh-agent-index
-  - cloudfoundry/bosh-aws-cpi-release
-  - cloudfoundry/bosh-aws-light-stemcell-builder
-  - cloudfoundry/bosh-azure-cpi-release
-  - cloudfoundry/bosh-apt-resources
-  - cloudfoundry/bosh-bbl-ci-envs
-  - cloudfoundry/bosh-bootloader
-  - cloudfoundry/bosh-cli
-  - cloudfoundry/bosh-common
-  - cloudfoundry/bosh-cpi-certification
-  - cloudfoundry/bosh-cpi-go
-  - cloudfoundry/bosh-cpi-ruby
-  - cloudfoundry/bosh-deployment
-  - cloudfoundry/bosh-deployment-resource
-  - cloudfoundry/bosh-dns-aliases-release
-  - cloudfoundry/bosh-dns-release
-  - cloudfoundry/bosh-docker-cpi-release
-  - cloudfoundry/bosh-google-cpi-release
-  - cloudfoundry/bosh-io-releases
-  - cloudfoundry/bosh-io-releases-index
-  - cloudfoundry/bosh-io-stemcells-core-index
-  - cloudfoundry/bosh-io-stemcells-cpi-index
-  - cloudfoundry/bosh-io-stemcells-legacy-index
-  - cloudfoundry/bosh-io-stemcells-windows-index
-  - cloudfoundry/bosh-io-web
-  - cloudfoundry/bosh-io-worker
-  - cloudfoundry/bosh-linux-stemcell-builder
-  - cloudfoundry/bosh-openstack-cpi-release
-  - cloudfoundry/bosh-package-golang-release
-  - cloudfoundry/bosh-package-nginx-release
-  - cloudfoundry/bosh-package-python-release
-  - cloudfoundry/bosh-package-ruby-release
-  - cloudfoundry/bosh-package-rust-release
-  - cloudfoundry/bosh-psmodules
-  - cloudfoundry/bosh-shared-ci
-  - cloudfoundry/bosh-utils
-  - cloudfoundry/bosh-virtualbox-cpi-release
-  - cloudfoundry/bosh-vsphere-cpi-release
-  - cloudfoundry/bosh-warden-cpi-release
-  - cloudfoundry/bosh-windows-stemcell-builder
-  - cloudfoundry/bpm-release
-  - cloudfoundry/config-server
-  - cloudfoundry/config-server-release
-  - cloudfoundry/docs-bosh
-  - cloudfoundry/exemplar-release
-  - cloudfoundry/go-socks5
-  - cloudfoundry/gofileutils
-  - cloudfoundry/gosigar
-  - cloudfoundry/greenhouse-ci
-  - cloudfoundry/jumpbox-deployment
-  - cloudfoundry/os-conf-release
-  - cloudfoundry/sample-windows-bosh-release
-  - cloudfoundry/socks5-proxy
-  - cloudfoundry/stembuild
-  - cloudfoundry/usn-resource
-  - cloudfoundry/windows-utilities-release
+    - cloudfoundry/backup-and-restore-sdk-release
+    - cloudfoundry/bbl-state-resource
+    - cloudfoundry/bosh
+    - cloudfoundry/bosh-acceptance-tests
+    - cloudfoundry/bosh-agent
+    - cloudfoundry/bosh-agent-index
+    - cloudfoundry/bosh-apt-resources
+    - cloudfoundry/bosh-aws-cpi-release
+    - cloudfoundry/bosh-aws-light-stemcell-builder
+    - cloudfoundry/bosh-azure-cpi-release
+    - cloudfoundry/bosh-backup-and-restore
+    - cloudfoundry/bosh-backup-and-restore-test-releases
+    - cloudfoundry/bosh-bbl-ci-envs
+    - cloudfoundry/bosh-bootloader
+    - cloudfoundry/bosh-cli
+    - cloudfoundry/bosh-common
+    - cloudfoundry/bosh-cpi-certification
+    - cloudfoundry/bosh-cpi-go
+    - cloudfoundry/bosh-cpi-ruby
+    - cloudfoundry/bosh-deployment
+    - cloudfoundry/bosh-deployment-resource
+    - cloudfoundry/bosh-disaster-recovery-acceptance-tests
+    - cloudfoundry/bosh-dns-aliases-release
+    - cloudfoundry/bosh-dns-release
+    - cloudfoundry/bosh-docker-cpi-release
+    - cloudfoundry/bosh-google-cpi-release
+    - cloudfoundry/bosh-io-releases
+    - cloudfoundry/bosh-io-releases-index
+    - cloudfoundry/bosh-io-stemcells-core-index
+    - cloudfoundry/bosh-io-stemcells-cpi-index
+    - cloudfoundry/bosh-io-stemcells-legacy-index
+    - cloudfoundry/bosh-io-stemcells-windows-index
+    - cloudfoundry/bosh-io-web
+    - cloudfoundry/bosh-io-worker
+    - cloudfoundry/bosh-linux-stemcell-builder
+    - cloudfoundry/bosh-openstack-cpi-release
+    - cloudfoundry/bosh-package-golang-release
+    - cloudfoundry/bosh-package-nginx-release
+    - cloudfoundry/bosh-package-python-release
+    - cloudfoundry/bosh-package-ruby-release
+    - cloudfoundry/bosh-package-rust-release
+    - cloudfoundry/bosh-psmodules
+    - cloudfoundry/bosh-shared-ci
+    - cloudfoundry/bosh-utils
+    - cloudfoundry/bosh-virtualbox-cpi-release
+    - cloudfoundry/bosh-vsphere-cpi-release
+    - cloudfoundry/bosh-warden-cpi-release
+    - cloudfoundry/bosh-windows-stemcell-builder
+    - cloudfoundry/bpm-release
+    - cloudfoundry/config-server-release
+    - cloudfoundry/docs-bosh
+    - cloudfoundry/exemplar-backup-and-restore-release
+    - cloudfoundry/exemplar-release
+    - cloudfoundry/go-socks5
+    - cloudfoundry/gofileutils
+    - cloudfoundry/gosigar
+    - cloudfoundry/greenhouse-ci
+    - cloudfoundry/jumpbox-deployment
+    - cloudfoundry/os-conf-release
+    - cloudfoundry/sample-windows-bosh-release
+    - cloudfoundry/socks5-proxy
+    - cloudfoundry/stembuild
+    - cloudfoundry/usn-resource
+    - cloudfoundry/windows-utilities-release
 - name: Ali Cloud VM deployment lifecycle (BOSH)
   approvers:
   - name: He Guimin
@@ -413,8 +378,6 @@ areas:
   approvers:
     - name: Benjamin Guttmann
       github: benjaminguttmann-avtq
-    - name: Gilles Miraillet
-      github: gmllt
     - name: Nicolas Herbst
       github: nmaurer23
   reviewers:
@@ -431,6 +394,9 @@ areas:
       github: cf-prometheus-ci-bot
 
 - name: Storage CLI
+  bots:
+  - name: ARI WG Git Bot
+    github: ari-wg-gitbot
   approvers:
   - name: Long Nguyen
     github: lnguyen
@@ -450,8 +416,6 @@ areas:
     github: a-hassanin
   - name: Ansh Rupani
     github: anshrupani
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Benjamin Guttmann
@@ -490,11 +454,9 @@ areas:
     github: stephanme
   - name: Clay Kauzlaric
     github: KauzClay
-  reviewers:
   - name: Allan Yu
     github: ay901246
-  - name: Sascha Stojanovic
-    github: Sascha-Stoj
+  reviewers:
   - name: Alexander Lais
     github: peanball
   - name: Al Berez
@@ -547,12 +509,14 @@ config:
     - cloudfoundry/bosh
     - cloudfoundry/bosh-agent-index
     - cloudfoundry/bosh-aws-cpi-release
+    - cloudfoundry/bosh-aws-light-stemcell-builder
     - cloudfoundry/bosh-azure-storage-cli
     - cloudfoundry/bosh-backup-and-restore
     - cloudfoundry/bosh-cli
     - cloudfoundry/bosh-cpi-go
     - cloudfoundry/bosh-davcli
     - cloudfoundry/bosh-deployment
+    - cloudfoundry/bosh-disaster-recovery-acceptance-tests
     - cloudfoundry/bosh-docker-cpi-release
     - cloudfoundry/bosh-gcscli
     - cloudfoundry/bosh-google-cpi-release
@@ -568,7 +532,7 @@ config:
     - cloudfoundry/bosh-s3cli
     - cloudfoundry/bosh-warden-cpi-release
     - cloudfoundry/bpm-release
-    - cloudfoundry/config-server
+    - cloudfoundry/config-server-release
     - cloudfoundry/credhub
     - cloudfoundry/credhub-acceptance-tests
     - cloudfoundry/credhub-api-site
@@ -576,6 +540,7 @@ config:
     - cloudfoundry/credhub-deployments
     - cloudfoundry/credhub-oss-ci
     - cloudfoundry/jumpbox-deployment
+    - cloudfoundry/os-conf-release
     - cloudfoundry/postgres-release
     - cloudfoundry/socks5-proxy
     - cloudfoundry/windows-utilities-release

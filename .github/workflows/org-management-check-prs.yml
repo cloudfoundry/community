@@ -10,14 +10,14 @@ jobs:
   org-config-generation-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           path: community
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version-file: "community/orgs/pyproject.toml"
-      - uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - name: Generate github org configuration

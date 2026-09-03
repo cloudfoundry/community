@@ -1,7 +1,5 @@
 # CFF Managed Github Orgs
 
-:construction: Multiple CFF Managed Github Orgs is work-in-progress. Currently, only the `cloudfoundry` org is supported as CFF Managed Github Org.
-
 The projects, teams and org membership in CFF Managed Github Orgs are maintained according to a number of [RFCs](https://github.com/cloudfoundry/community/tree/main/toc/rfc). The RFCs require PRs to one of the following files:
 
 - [orgs.yml](https://github.com/cloudfoundry/community/blob/main/orgs/orgs.yml) - static org configuration and projects
@@ -56,7 +54,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
@@ -115,15 +112,16 @@ uv run python -m org_management.org_user_management --help
 Usage:
 ```
 $ uv run python -m org_management --help
-usage: org_management.py [-h] [-o OUT] [-b BRANCHPROTECTION]
+usage: python3 -m org_management [-h] [-o OUT] [-b BRANCHPROTECTION] [--org ORG]
 
-Cloud Foundry Org Generator
+CFF Managed Github Orgs Generator
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
-  -o OUT, --out OUT     output file for generated org configuration
-  -b BRANCHPROTECTION, --branchprotection BRANCHPROTECTION
+  -o, --out OUT         output file for generated org configuration
+  -b, --branchprotection BRANCHPROTECTION
                         output file for generated branch protection rules
+  --org ORG             limit output to this org (repeatable); default: all orgs
 ```
 
 ```
@@ -153,7 +151,7 @@ How to run tests:
 cd ./org
 uv run ruff check
 uv run ruff format --check
-uv run basedpyright
+uv run ty check
 uv run -m unittest discover -s .
 ```
 

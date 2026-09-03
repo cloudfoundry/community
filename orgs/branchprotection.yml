@@ -1,6 +1,7 @@
 # doc: https://docs.prow.k8s.io/docs/components/optional/branchprotector/
 # https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md
 branch-protection:
+  allow_disabled_policies: true  # needed to allow branches w/o branch protection
   orgs:
     cloudfoundry:
       repos:
@@ -11,7 +12,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: true
@@ -21,7 +21,6 @@ branch-protection:
           include: [ "^main$", "^v[0-9]*$"]
         cf-k8s-releases:
           allow_deletions: false
-          allow_disabled_policies: true
           allow_force_pushes: false
           enforce_admins: true
           include: ["^main$"]
@@ -99,7 +98,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -112,7 +110,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -125,7 +122,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -138,7 +134,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -151,7 +146,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -164,7 +158,6 @@ branch-protection:
           enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           include: ["^master$"]
           required_status_checks:
             contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
@@ -179,7 +172,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -192,7 +184,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -205,7 +196,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -218,7 +208,6 @@ branch-protection:
           enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           include: ["^main$"]
           required_status_checks:
             contexts: ["concourse-ci/unit-tests","concourse-ci/acceptance-tests"]
@@ -232,7 +221,6 @@ branch-protection:
         # CF-on-K8s
         k8s-garden-client:
           allow_deletions: false
-          allow_disabled_policies: true
           allow_force_pushes: false
           enforce_admins: true
           include: ["^main$"]
@@ -250,7 +238,6 @@ branch-protection:
             required_approving_review_count: 1
         k8s-policy-agent:
           allow_deletions: false
-          allow_disabled_policies: true
           allow_force_pushes: false
           enforce_admins: true
           include: ["^main$"]
@@ -268,7 +255,6 @@ branch-protection:
             required_approving_review_count: 1
         kind-deployment:
           allow_deletions: false
-          allow_disabled_policies: true
           allow_force_pushes: false
           enforce_admins: true
           include: ["^main$"]
@@ -292,7 +278,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           include: ["^main$"]
           required_status_checks:
             contexts:
@@ -317,7 +302,6 @@ branch-protection:
           enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_status_checks:
             contexts:
             - "EasyCLA"
@@ -336,7 +320,6 @@ branch-protection:
           enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_status_checks:
             contexts:
             - "EasyCLA"
@@ -358,7 +341,6 @@ branch-protection:
           enforce_admins: false
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_status_checks:
             contexts:
             - "EasyCLA"
@@ -371,6 +353,32 @@ branch-protection:
               teams: ["wg-app-runtime-interfaces-autoscaler-bots"]
           include: [ "^main$" ]
 
+        # Stratos
+        stratos:
+          protect: true
+          enforce_admins: false
+          allow_force_pushes: false
+          allow_deletions: false
+          required_status_checks:
+            contexts:
+            - "EasyCLA"
+            # PR Quality Gate is the in-repo aggregate (runs on every PR via
+            # `if: always()` and fails on any failed/cancelled suite job).
+            # Requiring it instead of each suite job lets docs-only PRs skip
+            # the suite without the skipped matrix shards blocking merges as
+            # forever-"expected" contexts. STB Tests runs from its own
+            # workflow and is not covered by the aggregate, so it stays.
+            - "PR Quality Gate"
+            - "STB Tests"
+          required_pull_request_reviews:
+            dismiss_stale_reviews: false
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+          # develop = dev integration (default); main = release line (rc + stable).
+          # main is pre-staged here; allow_disabled_policies tolerates it until the
+          # master->main rename lands. See cloudfoundry/stratos#5507.
+          include: [ "^develop$", "^main$" ]
+
         # Cloud Controller / CAPI related repos to skip branch protection on
         cf-performance-tests-pipeline:
           protect: false
@@ -381,8 +389,6 @@ branch-protection:
         capi-dockerfiles:
           protect: false
         capi-env-pool:
-          protect: false
-        cf-openapi:
           protect: false
 
         # CLI
@@ -456,7 +462,6 @@ branch-protection:
 
         cnbapplifecycle:
           allow_deletions: false
-          allow_disabled_policies: true
           allow_force_pushes: false
           enforce_admins: true
           include: ["^main$"]
@@ -479,7 +484,6 @@ branch-protection:
           enforce_admins: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true
           required_pull_request_reviews:
             dismiss_stale_reviews: true
             require_code_owner_reviews: false
@@ -490,7 +494,6 @@ branch-protection:
 
         bosh-linux-stemcell-builder:
           allow_deletions: false
-          allow_disabled_policies: true
           allow_force_pushes: false
           enforce_admins: false
           include:
@@ -510,7 +513,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -529,7 +531,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -548,7 +549,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -567,7 +567,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -586,7 +585,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -605,7 +603,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -624,7 +621,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -643,7 +639,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -662,7 +657,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -681,7 +675,6 @@ branch-protection:
           required_linear_history: true
           allow_force_pushes: false
           allow_deletions: false
-          allow_disabled_policies: true  # needed to allow branches w/o branch protection
           required_status_checks:
             strict: true
             contexts:
@@ -697,7 +690,6 @@ branch-protection:
         uaa:
          protect: true
          allow_deletions: false
-         allow_disabled_policies: true
          allow_force_pushes: false
          enforce_admins: false
          include:
@@ -714,7 +706,6 @@ branch-protection:
         uaa-release:
          protect: true
          allow_deletions: false
-         allow_disabled_policies: true
          allow_force_pushes: false
          enforce_admins: false
          include:
@@ -728,3 +719,203 @@ branch-protection:
           require_code_owner_reviews: true
           required_approving_review_count: 1
 
+        storage-cli:
+          allow_deletions: false
+          allow_force_pushes: false
+          enforce_admins: true
+          include:
+          - ^main$
+          - ^v[0-9]*$
+          protect: true
+          required_pull_request_reviews:
+            bypass_pull_request_allowances:
+              teams:
+              - wg-foundational-infrastructure-bots
+            dismiss_stale_reviews: true
+            require_code_owner_reviews: true
+            required_approving_review_count: 1
+          required_status_checks:
+            strict: true
+            contexts:
+            - "EasyCLA"
+            - "Build Only (No Release)"
+            - "Run Unit Tests"
+            - "Alioss General Integration Tests"
+            - "AzureCloud Environment Integration Tests"
+            - "DAV Integration Tests"
+            - "GCS Integation All Tests"
+            - "GCS Integation Fast Tests"
+            - "AWS S3 European Sovereign Cloud Integration"
+            - "AWS S3 Frankfurt Integration"
+            - "AWS S3 Public Read Integration"
+            - "AWS S3 US Integration"
+            - "S3 Compatible Integration"
+
+    concourse:
+      protect: true
+      enforce_admins: false
+      allow_force_pushes: false
+      allow_deletions: false
+
+      repos:
+        .github:
+          include:
+            - "^main$"
+
+        examples:
+          include:
+            - "^main$"
+
+        houdini:
+          include:
+            - "^master$"
+            - "^version$"
+
+        ci:
+          include:
+            - "^master$"
+
+        infrastructure:
+          include:
+            - "^master$"
+
+        retryhttp:
+          include:
+            - "^master$"
+
+        rfcs:
+          include:
+            - "^master$"
+
+        dex:
+          include:
+            - "^master$"
+            - "^maintenance$"
+            - "^upstream$"
+            - "^pr\/.*$"
+
+        docs:
+          required_status_checks:
+            contexts:
+              - "EasyCLA"
+          include:
+            - "^master$"
+
+        oci-build-task:
+          protect: false
+          branches:
+            master:
+              protect: true
+              required_pull_request_reviews:
+                dismiss_stale_reviews: true
+                required_approving_review_count: 1
+                bypass_pull_request_allowances:
+                  teams: ["wg-concourse-bots"]
+              required_status_checks:
+                contexts:
+                  - "EasyCLA"
+                  - "Test and Build"
+            version:
+              protect: true
+
+        concourse:
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            required_approving_review_count: 1
+            bypass_pull_request_allowances:
+              teams: ["wg-concourse-bots"]
+          required_status_checks:
+            contexts:
+              - "EasyCLA"
+              - "CodeQL"
+              - "Analyze (go)"
+              - "concourse-ci/compile-check"
+              - "concourse-ci/containerd-integration"
+              - "concourse-ci/go-format-check"
+              - "concourse-ci/integration"
+              - "concourse-ci/testflight"
+              - "concourse-ci/unit"
+              - "concourse-ci/validate-labels"
+              - "concourse-ci/watsjs"
+          include:
+            - "^master$"
+            - "^release\/.*$"
+
+        concourse-chart:
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            bypass_pull_request_allowances:
+              teams: ["wg-concourse-bots"]
+          required_status_checks:
+            contexts:
+              - "EasyCLA"
+              - "concourse-ci/lint-and-install-test"
+              - "concourse-ci/unit-tests"
+          include:
+            - "^master$"
+            - "^dev$"
+            - "^release\/.*$"
+
+        concourse-docker:
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            bypass_pull_request_allowances:
+              teams: ["wg-concourse-bots"]
+          required_status_checks:
+            contexts:
+              - "EasyCLA"
+          include:
+            - "^master$"
+            - "^release\/.*$"
+
+        concourse-bosh-release:
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            bypass_pull_request_allowances:
+              teams: ["wg-concourse-bots"]
+          required_status_checks:
+            contexts:
+              - "EasyCLA"
+          include:
+            - "^master$"
+            - "^release\/.*$"
+
+        concourse-bosh-deployment:
+          required_pull_request_reviews:
+            dismiss_stale_reviews: true
+            bypass_pull_request_allowances:
+              teams: ["wg-concourse-bots"]
+          required_status_checks:
+            contexts:
+              - "EasyCLA"
+          include:
+            - "^master$"
+            - "^release\/.*$"
+
+        git-resource: &concourse-resource-repo
+          protect: false
+          branches:
+            master:
+              protect: true
+              required_pull_request_reviews:
+                dismiss_stale_reviews: true
+                bypass_pull_request_allowances:
+                  teams: ["wg-concourse-bots"]
+              required_status_checks:
+                contexts:
+                  - "EasyCLA"
+                  - "Build and Test"
+            version:
+              protect: true
+
+        bosh-io-stemcell-resource: *concourse-resource-repo
+        bosh-io-release-resource: *concourse-resource-repo
+        docker-image-resource: *concourse-resource-repo
+        github-release-resource: *concourse-resource-repo
+        hg-resource: *concourse-resource-repo
+        mock-resource: *concourse-resource-repo
+        pool-resource: *concourse-resource-repo
+        registry-image-resource: *concourse-resource-repo
+        s3-resource: *concourse-resource-repo
+        semver-resource: *concourse-resource-repo
+        time-resource: *concourse-resource-repo

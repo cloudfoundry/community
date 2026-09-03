@@ -200,3 +200,21 @@ orgs:
     - ivo1116
     - t-schoell
     - rashedkvm
+  concourse:
+    contributors:
+    - IvanChalukov
+    - Kump3r
+    - Spimtav
+    - concourse-bot
+    - concourse-otto
+    - drich10
+    - ichandrabhatta
+    - taylorsilva
+    - wayneadams
+    - yharish991
+    - aliculPix4D
+    - marco-m
+    - ceco556
+    - AtanasNikov
+    - jghiloni
+    - kcbimonte

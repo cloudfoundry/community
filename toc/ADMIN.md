@@ -51,7 +51,6 @@ areas:
   - cloudfoundry/developer-training-course
   - cloudfoundry/developer-training-hugo-parser
   - cloudfoundry/foundation
-  - cloudfoundry/go-fetcher
   - cloudfoundry/lf-elearning
   - cloudfoundry/logos
   - cloudfoundry/oss-summit-class
@@ -61,7 +60,7 @@ areas:
   - cloudfoundry/summit-training-classes
   - cloudfoundry/training-cert-admin
 
-- name: CF Homebrew TAP
+- name: CF Code Packaging and Publication
   approvers:
   - name: Al Berez
     github: a-b
@@ -91,6 +90,8 @@ areas:
     github: ragaskar
   - name: Duane May
     github: duanemay
+  - name: Amin Jamali
+    github: winkingturtle-vmw
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
@@ -99,12 +100,14 @@ areas:
   - name: cf-uaa-ci-bot
     github: cf-identity
   repositories:
-  - cloudfoundry/homebrew-tap
+    - cloudfoundry/go-fetcher
+    - cloudfoundry/homebrew-tap
 config:
   github_project_sync:
     mapping:
       cloudfoundry: 31
   deploy_keys:
     repositories:
-    - cloudfoundry/homebrew-tap
+      - cloudfoundry/go-fetcher
+      - cloudfoundry/homebrew-tap
 ```

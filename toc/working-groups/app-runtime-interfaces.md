@@ -61,6 +61,9 @@ areas:
     github: bonzofenix
   - name: Tibor Schöll
     github: t-schoell
+  reviewers:
+  - name: Jochen Ehret
+    github: jochenehret
   bots:
   - name: App Autoscaler CI Bot
     github: app-autoscaler-ci-bot
@@ -226,7 +229,6 @@ areas:
   - cloudfoundry/app-runtime-interfaces-infrastructure
   - cloudfoundry/servicebroker
   - cloudfoundry/osb-checker
-  - cloudfoundry/cf-openapi
 
 - name: CLI
   approvers:
@@ -337,11 +339,11 @@ areas:
     github: Yavor16
   - name: Stefan Yonkov
     github: s-yonkov-yonkov
-  reviewers:
-  - name: Stoyan Ivanov
-    github: stiv03
   - name: Krasimir Kargov
     github: karrgov
+  - name: Stoyan Ivanov
+    github: stiv03
+  reviewers: []
   bots:
   - name: MultiApps Bot
     github: cf-mta-deploy-bot
@@ -384,6 +386,8 @@ areas:
     github: patzeltj
   - name: Matthias Folz
     github: mafolz
+  - name: Bart Kuijper
+    github: Bartan89
 
   repositories:
   - cloudfoundry/stratos

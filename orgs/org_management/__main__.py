@@ -8,7 +8,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "-b", "--branchprotection", default="branchprotection.out.yml", help="output file for generated branch protection rules"
     )
+    parser.add_argument(
+        "--org",
+        dest="orgs",
+        action="append",
+        metavar="ORG",
+        help="limit output to this org (repeatable); default: all orgs",
+    )
     args = parser.parse_args()
+
+    if args.orgs:
+        invalid = set(args.orgs) - set(OrgGenerator.MANAGED_ORGS)
+        if invalid:
+            print(f"ERROR: Unknown org(s): {invalid}. Expected one of {OrgGenerator.MANAGED_ORGS}")
+            exit(1)
 
     print("Generating CFF Managed Github Org configuration.")
     generator = OrgGenerator()
@@ -19,5 +32,5 @@ if __name__ == "__main__":
     generator.generate_org_members()
     generator.generate_teams()
     generator.generate_branch_protection()
-    generator.write_org_config(args.out)
-    generator.write_branch_protection(args.branchprotection)
+    generator.write_org_config(args.out, args.orgs)
+    generator.write_branch_protection(args.branchprotection, args.orgs)
