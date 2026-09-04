@@ -379,6 +379,8 @@ areas:
     github: norman-abramovitz
   - name: Ioannis Tsouvalas
     github: itsouvalas
+  - name: Ruben Koster
+    github: rkoster
   reviewers:
   - name: Tristan Poland
     github: tristanpoland
@@ -392,4 +394,5 @@ areas:
   repositories:
   - cloudfoundry/stratos
   - cloudfoundry/stratos-buildpack
+  - cloudfoundry/cf-mgmt
 ```

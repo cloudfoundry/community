@@ -2445,6 +2445,9 @@ orgs:
         description: Custom buildpack Stratos (UI for Cloud Foundry)
         default_branch: develop
         has_projects: true
+      cf-mgmt:
+        description: A tool to manage Cloud Foundry orgs and spaces
+        has_projects: true
       summit-hands-on-labs:
         description: Hands-on Labs for CF Summit Boston '18 and beyond
         has_projects: true
