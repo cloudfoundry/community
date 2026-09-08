@@ -1242,6 +1242,7 @@ orgs:
       dontpanic:
         description: system data collector for disaster-struck garden vms
         has_projects: true
+        archived: true
       dotnet-core-buildpack:
         description: Cloud Foundry buildpack for .NET Core on Linux
         has_projects: false
@@ -1401,8 +1402,10 @@ orgs:
       garden-integration-tests:
         description: gits
         has_projects: true
+        archived: true
       garden-performance-acceptance-tests:
         has_projects: true
+        archived: true
       garden-runc-release:
         default_branch: develop
         has_projects: true
@@ -1538,12 +1541,14 @@ orgs:
       grootfs:
         description: Garden root file system
         has_projects: true
+        archived: true
       grootfs-ci-secrets:
         has_projects: true
         private: true
       guardian:
         description: containers4life
         has_projects: true
+        archived: true
       haproxy-boshrelease:
         description: A BOSH release for haproxy (based on cf-release's haproxy job)
         has_projects: true
@@ -1590,6 +1595,7 @@ orgs:
         has_wiki: false
       idmapper:
         has_projects: true
+        archived: true
       infrastructure-ci-bbl-states:
         has_projects: true
         private: true
