@@ -89,8 +89,6 @@ areas:
     github: selzoc
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: Marc Paquette
-    github: marcpaquette
   - name: Plamen Doychev
     github: PlamenDoychev
   - name: Karthick Udayakumar
@@ -137,8 +135,6 @@ areas:
     github: geofffranks
   - name: Maria Shaldybin
     github: mariash
-  - name: Marc Paquette
-    github: MarcPaquette
   - name: Chris Selzo
     github: selzoc
   - name: Amin Jamali
@@ -259,8 +255,6 @@ areas:
     github: hoffmaen
   - name: Brandon Roberson
     github: ebroberson
-  - name: Carson Long
-    github: ctlong
   - name: Geoff Franks
     github: geofffranks
   - name: Greg Cobb
@@ -277,8 +271,6 @@ areas:
     github: winkingturtle-vmw
   - name: Maximilian Moehl
     github: maxmoehl
-  - name: Marc Paquette
-    github: MarcPaquette
   - name: Alexander Lais
     github: peanball
   - name: Plamen Doychev
@@ -298,8 +290,6 @@ areas:
     github: klapkov
   - name: M Rizwan Shaik
     github: Mrizwanshaik
-  - name: Michal Tekel
-    github: mtekel
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/cf-lookup-route
@@ -325,8 +315,6 @@ areas:
     github: mariash
   - name: Amin Jamali
     github: winkingturtle-vmw
-  - name: Marc Paquette
-    github: marcpaquette
   - name: Karthick Udayakumar
     github: kart2bc
   repositories:
