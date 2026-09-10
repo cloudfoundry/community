@@ -51,8 +51,6 @@ bots:
   github: cf-logging-metrics-bot
 - name: Metric Store Bot
   github: svcboteos
-- name: Cryogenics CI bot
-  github: Cryogenics-CI
 config:
   github_project_sync:
     mapping:
