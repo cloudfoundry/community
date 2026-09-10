@@ -27,9 +27,9 @@ The OpenTelemetry Collector offers huge advantages over Syslog:
 
 ## Proposal
 
-We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all of the goodies mentioned above. The `syslog-release` has to be analyzed to get to know all its functionalities and find their proper replacements with OpenTelemetry.
+We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all of the goodies mentioned above. The `syslog-release` should be analyzed to understand its functionalities and identify how they can be supported by an OpenTelemetry-based alternative.
 
-The `syslog-release` remains the default and stays in place; OpenTelemetry is offered as an opt-in alternative. Deprecating or removing the `syslog-release` is out of scope for this RFC and would be handled by a future RFC.
+The `syslog-release` remains the default and stays in place; OpenTelemetry is offered as an opt-in alternative. Deprecating or removing the `syslog-release` is out of scope for this RFC and and may be addressed in a future RFC if needed.
 
 ### Affected Working Groups
 - Foundational Infrastructure
@@ -37,13 +37,13 @@ The `syslog-release` remains the default and stays in place; OpenTelemetry is of
 
 ### Implementation
 
-Cloud Foundry supports platform log collection on two major types of operating systems: Linux with the `syslog-release` and Windows with the [windows-syslog-release](https://github.com/cloudfoundry/windows-syslog-release). It has to be ensured that the OpenTelemetry replacement works equally good for both of them. Both releases have to be analyzed to find the details how they function, so that proper replacement can be built.
+Cloud Foundry supports platform log collection on two major types of operating systems: Linux with the `syslog-release` and Windows with the [windows-syslog-release](https://github.com/cloudfoundry/windows-syslog-release). To offer a well-integrated opt-in option, both releases should be analyzed so the OpenTelemetry-based approach can complement rather than disrupt existing setups.
 
 #### Focus
 
 This implementation will focus on collection and processing of the platform component logs (BOSH job logs) stored in `/var/vcap/sys/log` directory. Supporting other paths where logs are stored is nice to have capability.
 
-The two basic functions of the `syslog-release` will be replaced as follows:
+The two basic functions of the `syslog-release` will be supported by the OpenTelemetry-based approach as follows:
 - blackbox -> [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
 - RSyslog parsing rules -> Otel Collector Pipeline with the same functionality. Additional processors and receivers might be needed
 
@@ -67,31 +67,43 @@ flowchart LR
 
 #### Phases
 
-##### Phase 1 - Discovery and Stakeholder Alignment (prerequisite)
+##### Phase 1 - Discovery and Stakeholder Alignment
 
-Before we start with the technical implementation we have to:
--  Analyze the internals of both `syslog-release` and `windows-syslog-release` release, how they work and what functionality do they provide:
-    - BOSH jobs
-    - Configuration parameters
-    - Access permissions for log files. On Ubuntu Noble and higher the AppArmor rules are enforced.
-    - Setting of proper context data with attributes like deployment, az, id, instance etc.. All the data from [syslog-release-forwarding-setup.conf.erb](https://github.com/cloudfoundry/syslog-release/blob/main/jobs/syslog_forwarder/templates/syslog-release-forwarding-setup.conf.erb) has to be covered.
-- **Prerequisite — agree on a resource-attribute naming convention.** The data in OpenTelemetry format will follow the [OpenTelemetry Semantic Conventions for Cloud Foundry](https://opentelemetry.io/docs/specs/semconv/resource/cloudfoundry/). Those conventions cover `cloudfoundry.*` (app/org/space/process) attributes but do **not** define BOSH-level context (deployment, az, instance-group, instance-id, job). This RFC therefore has to *establish* a convention for those BOSH attributes rather than merely follow an existing one. SAP has internal conventions for BOSH which we propose to contribute and publish as the basis for this. Because attribute names are the public contract with every downstream backend, they must be settled before Phase 2 produces stable output. See [Open Questions](#open-questions).
+**Track 1 — Analyze existing releases**
+
+Analyze the internals of both `syslog-release` and `windows-syslog-release` to understand what functionality they provide:
+- BOSH jobs
+- Configuration parameters
+- Access permissions for log files. On Ubuntu Noble and higher the AppArmor rules are enforced.
+- Setting of proper context data with attributes like deployment, az, id, instance etc. All the data from [syslog-release-forwarding-setup.conf.erb](https://github.com/cloudfoundry/syslog-release/blob/main/jobs/syslog_forwarder/templates/syslog-release-forwarding-setup.conf.erb) has to be covered.
+
+**Track 2 — Agree on a resource-attribute naming convention**
+
+The OpenTelemetry format will follow the [OpenTelemetry Semantic Conventions for Cloud Foundry](https://opentelemetry.io/docs/specs/semconv/resource/cloudfoundry/). Those conventions cover `cloudfoundry.*` (app/org/space/process) attributes but do **not** define BOSH-level context (deployment, az, instance-group, instance-id, job). A convention for those BOSH attributes therefore needs to be established. SAP has internal conventions for BOSH which we propose to contribute and publish as the basis for this. Because attribute names are the public contract with every downstream backend, they must be settled and documented before Phase 2 produces stable output. See [Open Questions](#open-questions).
 
 ##### Phase 2 - Implementation
 
 The implementation will be based on the findings from the `Discovery Phase` and will follow the new and modern trends for processing logs with Open Telemetry.
 
-The three main topics in the implementation phase will be:
+The implementation phase covers two deployment targets:
+
+**BOSH-based CF (cf-deployment)**
+
 - `otel-collector-release` adjustments to support collection and delivery of platform logs:
   - BOSH release:
-     - adjust the BOSH jobs, so that they support the same functionality that is provided with the `syslog-release`
+    - adjust the BOSH jobs, so that they support the same functionality that is provided with the `syslog-release`
   - OpenTelemetry Collector:
-    - introduce new receivers, processors and extension
+    - introduce new receivers, processors and extensions
     - introduce some standard pipeline(s) which process the data in the same way that the current `syslog-release` does
     - add examples on how to do further processing of the data inside the OpenTelemetry Collector
-
 - Ops-file for activating collection and processing of platform component logs with OpenTelemetry
-    - The default platform logs forwarding mechanism will remain Syslog up until further notice
+  - The default platform logs forwarding mechanism will remain Syslog up until further notice
+
+**CF on Kubernetes**
+
+- Investigate how platform component logs are currently collected and forwarded in a CF on Kubernetes deployment
+- Define the equivalent opt-in mechanism to enable OpenTelemetry-based log collection alongside the existing approach
+- Provide the necessary configuration (e.g. Helm values, overlays) to activate the OpenTelemetry pipeline as an opt-in alternative
 
 #### Deliverables
 
