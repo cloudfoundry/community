@@ -1,7 +1,7 @@
 # Meta
 [meta]: #meta
 - Name: Support Platform Logs Collection and Processing with OpenTelemetry
-- Start Date: 2026-08-19
+- Start Date: 2026-09-10
 - Author(s): @chombium, @jorbaum, @Katharin4, @beyhan, @silvestre
 - Status: Draft
 - Related RFCs: [rfc-0018-aggregate-metric-egress-with-opentelemetry-collector](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0018-aggregate-metric-egress-with-opentelemetry-collector.md)
