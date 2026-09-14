@@ -60,6 +60,8 @@ areas:
     github: asalan316
   - name: Kevin Rutten
     github: krutten
+  - name: Joris Baum
+    github: jorbaum
   reviewers:
   - name: Tsvetelina Marinova
     github: ivanovac
