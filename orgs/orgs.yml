@@ -2382,6 +2382,10 @@ orgs:
       sipid:
         archived: true
         has_projects: true
+      skills:
+        description: Portable Agent Skills for Cloud Foundry AI coding agents
+        default_branch: main
+        has_projects: false
       slack-interrupt-bot:
         has_projects: false
         has_wiki: false

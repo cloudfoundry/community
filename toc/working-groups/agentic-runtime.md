@@ -79,4 +79,5 @@ areas:
     github: al-gerd
   repositories:
   - cloudfoundry/agentic-runtime-notes
+  - cloudfoundry/skills
 ```
