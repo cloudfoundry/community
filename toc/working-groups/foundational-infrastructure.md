@@ -287,6 +287,8 @@ areas:
     github: ivaylogi98
   - name: Allan Yu
     github: ay901246
+  - name: Saumya Dudeja
+    github: dudejas
   reviewers:
   - name: Alexander Lais
     github: peanball
@@ -294,8 +296,6 @@ areas:
     github: yuriadam-sap
   - name: Danitsa Kostova
     github: lunaticomic-vc
-  - name: Saumya Dudeja
-    github: dudejas
   - name: Sascha Stojanovic
     github: Sascha-Stoj
   repositories:
