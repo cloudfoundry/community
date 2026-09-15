@@ -104,13 +104,13 @@ areas:
     github: kehrlann
   - name: Filip Hanik
     github: fhanik
+  - name: Joe Mahady
+    github: joemahady-comm  
   reviewers:
   - name: Irene Gonzalez Ruiz
     github: ireneGonzalezRuiz
   - name: Praveen K Kumar
     github: praveenkalluri18
-  - name: Joe Mahady
-    github: joemahady-comm
   - name: Georgi Genchev
     github: gdgenchev
   repositories:
