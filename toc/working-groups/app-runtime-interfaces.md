@@ -278,6 +278,8 @@ areas:
     github: s-yonkov-yonkov
   - name: Kristian Atanasov
     github: theghost5800
+  - name: Pascal Zimmermann
+    github: ZPascal
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
