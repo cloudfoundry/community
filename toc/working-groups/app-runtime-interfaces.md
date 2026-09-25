@@ -192,6 +192,8 @@ areas:
     github: samze
   - name: Jochen Ehret
     github: jochenehret
+  - name: Wei Quan
+    github: WeiQuan0605
   reviewers:
   - name: Al Berez
     github: a-b
@@ -203,8 +205,6 @@ areas:
     github: nookala
   - name: Serdar Özer
     github: serdarozerr
-  - name: Wei Quan
-    github: WeiQuan0605
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
