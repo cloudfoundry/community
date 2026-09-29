@@ -3,8 +3,8 @@
 - **Name:** ARM64 (aarch64) Architecture Support for Cloud Foundry
 - **Start Date:** 2026-06-24
 - **Author(s):** Sachin Vighe
-- **Status:** Draft
-- **Related RFCs:** [rfc-0026-noble-os](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0026-noble-os.md)
+- **Status:** Accepted
+- **Related RFCs:** [community#1530](https://github.com/cloudfoundry/community/pull/1530)
 - **Affected Component(s):** bosh-linux-stemcell-builder, bosh-agent, bosh-dns, Diego, Garden-runC, Gorouter, Loggregator, Cloud Controller, UAA, cf-deployment, buildpacks, BPM, NATS
 
 # Summary
