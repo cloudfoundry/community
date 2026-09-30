@@ -194,6 +194,8 @@ areas:
     github: jochenehret
   - name: Wei Quan
     github: WeiQuan0605
+  - name: Serdar Özer
+    github: serdarozerr
   reviewers:
   - name: Al Berez
     github: a-b
@@ -203,8 +205,6 @@ areas:
     github: gururajsh
   - name: Sriram Nookala
     github: nookala
-  - name: Serdar Özer
-    github: serdarozerr
   repositories:
   - cloudfoundry/cloud_controller_ng
   - cloudfoundry/capi-release
