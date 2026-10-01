@@ -47,8 +47,6 @@ areas:
   approvers:
   - name: Indira
     github: ichandrabhatta
-  - name: Wayne Adams
-    github: wayneadams
   - name: Claire Tinati
     github: Spimtav
   - name: Harish Yayi
