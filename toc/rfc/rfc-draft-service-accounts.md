@@ -98,15 +98,58 @@ cf bind-service payments-jobs payments-store --authentication service-account
 ```
 
 CAPI conveys the platform-owned account identity to the broker, which configures
-the service's federation grants. The binding supplies the approved issuer,
-audience and connection metadata; the app's library performs token acquisition
-and exchange. Services may also be configured for federation outside a broker.
+the service's federation grants. Services may also be configured for federation
+outside a broker.
 
-This requires negotiated broker capability and audience/scope policy; no new OSB
-fields are standardized here. Unsupported brokers reject the requested mode;
-ordinary bindings retain their existing behavior. Grants are tracked per binding,
-so removing one binding does not remove another's access. All apps sharing the
-account can exercise its grants, as can anyone able to deploy code to those apps.
+#### OSBAPI impact
+
+Propose a versioned service-plan capability, `service_account_binding`, and an
+additive `bind_resource.service_account` object in the OSBAPI binding request.
+These are **proposed extensions requiring OSBAPI agreement**, not existing fields.
+An explicitly negotiated CF context extension can pilot the same semantics.
+
+Illustrative request fragment supplied by CAPI, never by app binding parameters:
+
+```json
+{
+  "bind_resource": {
+    "app_guid": "<app-guid>",
+    "service_account": {
+      "version": "1.0",
+      "id": "<account-guid>",
+      "issuer": "https://uaa.example.org/oauth/token",
+      "subject": "cf:service-account:payments-worker"
+    }
+  }
+}
+```
+
+The broker accepts only configured issuer trust domains and returns non-secret
+connection/federation metadata through the binding's `credentials` object:
+
+```json
+{
+  "credentials": {
+    "uri": "https://storage.example.org/payments",
+    "authentication": {
+      "type": "oauth2-bearer-jwt",
+      "issuer": "https://uaa.example.org/oauth/token",
+      "audience": "https://identity.example.org/federation/cf-payments"
+    }
+  }
+}
+```
+
+CAPI approves and reconciles audience/scope targets before marking the binding
+ready; libraries perform token acquisition and provider-specific exchange.
+Unsupported brokers reject the requested mode; ordinary bindings stay unchanged.
+Retries/async completion retain the binding's identity snapshot; failed setup or
+cleanup remains visible and retryable. Grants and token targets are reference-counted
+per binding so one unbind cannot remove another binding's access.
+
+Account reassignment requires removing identity-based service bindings first.
+All apps sharing an account share its grants. The OSBAPI originating-identity header
+continues to identify the operation's caller, not the assigned workload account.
 
 Creating accounts follows service-instance creation permissions: **Space Developer
 or platform admin**, with readable/writable-space checks and operator controls.
@@ -187,7 +230,38 @@ sequenceDiagram
 This is a separate token target, not an all-purpose multi-audience token. CAPI
 roles do not authorize external services, and federation grants confer no CAPI roles.
 
-### 5. Manage the account's lifecycle
+### 5. Authorize app-to-app routes with the same identity
+
+Extend RFC 0055 route-policy sources with `cf:service-account:payments-worker`.
+Proposed CLI syntax:
+
+```sh
+cf add-route-policy apps.identity --hostname invoices --source-service-account payments-worker
+```
+
+```mermaid
+flowchart LR
+    API["payments-api"] -->|"mTLS certificate"| Router["GoRouter"]
+    Jobs["payments-jobs"] -->|"mTLS certificate"| Router
+    Policy["Allow: cf:service-account:payments-worker"] -.-> Router
+    Router -->|"verified account SAN + domain scope match"| Backend["invoices.apps.identity"]
+    Other["Unbound app"] -->|"no account SAN: denied"| Router
+```
+
+CAPI resolves the account name to a UUID relationship and distributes a typed rule.
+GoRouter matches exactly one canonical account DNS SAN from a verified certificate,
+not a JWT or a caller-supplied header. Forwarded certificate data must carry the
+verified SAN; XFCC `Hash`/`Subject` alone is insufficient.
+
+Preserve existing source OR semantics, `cf:any` exclusivity and default deny.
+Domain org/space restrictions still apply using the **calling app's** OUs. Enable
+account rules only when every enforcing router supports them; unknown rules must
+fail closed. Referenced accounts cannot be deleted until route grants are removed.
+
+This path needs no UAA token or live CAPI lookup. Consequently, disabling token
+issuance does not revoke route access: old certificates may match until expiry.
+
+### 6. Manage the account's lifecycle
 
 | Intent | Command | Effect |
 | --- | --- | --- |
@@ -214,7 +288,7 @@ bindings/roles, preserves audit history and cannot bypass live-name conflicts or
 quotas. Its warning explains that external grants and valid old certificates may
 still apply to the reused identity.
 
-### 6. Extend space quotas
+### 7. Extend space quotas
 
 Add a maximum account count to space quotas, with this proposed V3 fragment:
 
@@ -242,13 +316,12 @@ fail closed, with operator enablement only after compatible rollout.
 Build on that foundation with curated external token targets, provider-specific
 WIF tests and negotiated broker/driver integration: these deliver the primary
 user-facing goal. CAPI access is the initial validation path, not proof of WIF
-compatibility. Later add account sources for RFC 0055 route policies. Route grants
-must preserve verified-certificate checks, caller org/space restrictions and
-default deny. Existing OSB bindings are unchanged.
+compatibility. Deliver account-aware route policies as a separate integration;
+existing OSB bindings and route source types remain supported.
 
 **Progress:** [CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and
 [CLI][cli] drafts demonstrate the two-app flow, explicit roles, disable/enable and
-unbind/restart against CAPI; external federation and broker integration are not
+unbind/restart against CAPI; external federation, broker and account-route integration are not
 yet demonstrated. Remaining work includes creation permissions, quotas/name reuse,
 [UAA][uaa] bearer policy (the POC still emits `cnf`), leaf-expiry caps, namespace
 protection, caller claims, module publication and rollout capability signaling.
