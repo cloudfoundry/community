@@ -47,10 +47,6 @@ bots:
   github: appruntimeplatform-bot
 - name: Networking CI Bot
   github: CFN-CI
-- name: CF Logging and Metrics Bot
-  github: cf-logging-metrics-bot
-- name: Metric Store Bot
-  github: svcboteos
 config:
   github_project_sync:
     mapping:
