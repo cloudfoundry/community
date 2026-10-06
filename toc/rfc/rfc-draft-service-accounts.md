@@ -6,188 +6,205 @@
 - Status: Draft
 - RFC Pull Request: [community#1645](https://github.com/cloudfoundry/community/pull/1645)
 - Related RFCs: [RFC 0055: Identity-Aware Routing for GoRouter](rfc-0055-identity-aware-routing-for-gorouter.md)
-- Affected Component(s): Cloud Controller, BBS, Diego, UAA, CF CLI; subsequently GoRouter and service brokers
+- Affected Component(s): Cloud Controller, BBS, Diego, UAA, CF CLI; later GoRouter and service brokers
 
 ## Summary
 
-Introduce space-owned service accounts: stable identities that selected apps share
-without sharing a private key or distributing client secrets. Cloud Controller
-manages the account and its OAuth client; Diego adds its identity to each app's
-instance certificate. Apps authenticate to UAA with that certificate and obtain
-short-lived bearer JWTs for explicitly authorized resources.
+Give applications a stable identity they can share, without distributing a shared
+secret. Developers assign a **service account**; Cloud Foundry manages its
+credentials. Apps exchange their instance certificates for short-lived tokens and
+use those tokens to access resources such as the Cloud Foundry API.
 
-```sh
-cf create-service-account payments-worker
-cf bind-service-account payments-api payments-worker
-cf bind-service-account payments-jobs payments-worker
-```
-
-Implementation drafts provide a tested starting point, not a prerequisite for
-accepting their exact API or configuration details.
+**One account, multiple apps, independent keys, explicit permissions.**
 
 ## Problem
 
-Instance GUIDs and app GUIDs identify individual workloads, but are unsuitable as
-a durable identity shared across an API, background workers, replacements and
-blue/green deployments. Applications commonly compensate with stored client
-secrets or externally managed credentials.
+A payments team runs an API and a background worker. Both need the same access to
+Cloud Foundry resources. Today, the team can distribute an OAuth client secret to
+both apps—but then it must store, protect and rotate that secret. Scaling and
+blue/green deployments add more places where the credential lives.
 
-Cloud Foundry already issues per-instance certificates and authorizes OAuth client
-principals. Connecting these mechanisms through an explicit account lifecycle
-provides stable workload identity while preserving instance-level attribution.
+Cloud Foundry already gives every instance its own certificate. However, instance
+identities change on replacement, and app identities do not describe an intentional
+group of apps. The team needs a durable **payments identity**, independent of which
+instances or blue/green apps currently implement it.
+
+Service accounts connect existing instance credentials to that shared identity.
+The platform handles keys; the team decides which apps use the identity and what
+it may access.
 
 ## Proposal
 
-### Identity and authorization boundary
+### 1. Create once, assign to apps
 
-- An account has an immutable UUID, name and owning space. Names are
-  foundation-unique, lowercase DNS labels of 3–63 characters. Deletion retains a
-  name tombstone; ordinary creation cannot reuse it. Only a platform admin may
-  explicitly override that reservation as described below.
-- Each app has zero or one account; multiple apps in the owning space may share
-  it. Cross-space assignment is excluded, including within the same organization.
-- Account creation follows service-instance creation permissions: Space Developers
-  and platform admins may create accounts, subject to readable/writable-space
-  checks and operator controls. Space Manager alone does not confer creation rights.
-  Other account lifecycle operations initially require space managers/platform
-  admins; assignment requires app-write permission in the writable owning space.
-- Creating or binding an account grants no resource permissions. CAPI roles,
-  route rules and broker privileges are explicit and shared by all apps using it.
-  Anyone able to deploy code to those apps can exercise those permissions.
+The account belongs to the targeted space. Each app can use one account, and
+multiple apps in that space can share it. Cross-space assignment is excluded.
 
-| Identity | Example |
-| --- | --- |
-| Name | `payments-worker` |
-| OAuth client ID / JWT subject | `cf:service-account:payments-worker` |
-| Certificate DNS SAN | `payments-worker.svc.identity` |
-| External identity | Trusted `(issuer, subject)` pair |
+```sh
+cf target -o acme -s payments
+cf push payments-api --no-start
+cf push payments-jobs --no-start
 
-The SAN suffix is identity-only: it creates no route or DNS record and is never
-resolved to authenticate a caller. Separate foundations may reuse names; their
-issuers and CA trust domains must remain distinct.
+cf create-service-account payments-worker
+cf bind-service-account payments-api payments-worker
+cf bind-service-account payments-jobs payments-worker
 
-### Control plane and developer experience
+cf start payments-api
+cf start payments-jobs
+cf service-account payments-worker
+```
 
-Creation reserves the account. First authorized bind asynchronously provisions
-one UAA client and roleless CAPI OAuth principal; further binds reuse them. Jobs
-must survive retries/concurrency without adopting an unmanaged client-ID collision
-or issuing credentials before provisioning is ready.
+```mermaid
+flowchart LR
+    CLI["Developer: create and bind"] --> CAPI["CAPI: account and assignments"]
+    CAPI -->|"first bind: managed OAuth client"| UAA["UAA"]
+    CAPI -->|"typed account identity"| Diego["BBS / Diego"]
+    subgraph Space["Space: payments"]
+        API["payments-api<br/>instance key A"]
+        Jobs["payments-jobs<br/>instance key B"]
+    end
+    Diego -->|"issue certificate"| API
+    Diego -->|"issue certificate"| Jobs
+    API -.-> SAN["Shared DNS SAN:<br/>payments-worker.svc.identity"]
+    Jobs -.-> SAN
+```
 
-CAPI exposes `/v3/service_accounts`, account app listing, and the app's
-`/relationships/service_account` relationship. Resource relationships use UUIDs;
-names are human-facing lookup keys. The CLI provides create/list/show/delete,
-bind/unbind and enable/disable commands, waits for jobs, and reports identity,
-provisioning state and restart guidance. Existing `/v3/roles` semantics and org
-membership prerequisites apply to the managed principal.
+First bind provisions one secretless UAA client and a roleless CAPI principal;
+subsequent binds reuse them. The CLI waits for provisioning jobs, including retries.
+No account certificate is issued before authorized provisioning is ready.
 
-For recovery from accidental deletion, propose
-`cf create-service-account NAME --reuse-name`. CAPI must authorize this explicit
-tombstone override server-side for platform admins only and atomically prevent
-conflicts with live accounts or concurrent creation. It creates a new account UUID
-in the selected space, without restoring deleted bindings or CAPI roles; normal
-creation checks and quotas still apply. Audit records retain the reservation's
-history and identify the admin and replacement account.
+### 2. Grant permissions explicitly
 
-The CLI must warn that reuse restores the same SAN and `(issuer, subject)`:
-external grants may authorize the replacement, and still-valid old certificates
-may authenticate once its client is provisioned. This is an intentional admin
-escape hatch, not revocation or isolation from the former identity.
+Binding answers **“Who am I?”**, not **“What may I do?”** An authorized role manager
+can grant the shared account access using existing role commands:
 
-Accounts with no assigned apps retain their identity and roles until explicitly
-disabled or deleted. Deletion requires removal of active workload references;
-future route/broker references must also be resolved before teardown. Audit events
-cover account creation, grants and assignment changes.
+```sh
+cf set-space-role cf:service-account:payments-worker acme payments SpaceAuditor --client
+```
 
-Extend space quotas with a **maximum number of service accounts** (proposed V3
-field: `service_accounts.total_service_accounts`). Count every existing account
-owned by the space, including disabled and unprovisioned accounts; app bindings
-do not consume additional quota. Enforce the limit atomically during creation so
-concurrent requests cannot exceed it. Deletion frees quota capacity, but its name
-tombstone remains and does not count toward this resource limit. Lowering a quota
-below current usage blocks further creation without deleting existing accounts.
-Defaults and unlimited behavior should follow existing space-quota conventions.
+The CLI establishes required org membership before granting the space role. Both
+apps can now read those resources. Without roles, their tokens grant no resource
+access. Anyone who can deploy code to either app can exercise the shared grants.
 
-### Credentials and token profile
+Creating accounts follows service-instance creation permissions: **Space Developer
+or platform admin**, with readable/writable-space checks and operator controls.
+Other lifecycle management initially requires space manager/admin; assignment
+requires app-write permission. Ownership alone grants no account resource roles.
 
-CAPI supplies a platform-owned account name through typed BBS certificate
-properties. Diego derives exactly one account SAN in instance and C2C credentials,
-preserving existing GUID/CN/IP, app/space/org OUs, route SANs and certificate renewal.
-Every instance keeps its own key. Runtime tasks inherit their launch assignment;
-staging receives no account identity. Other SAN-producing inputs cannot inject the
-reserved suffix; malformed or ambiguous account identities fail closed.
+### 3. From app certificate to API access
 
-UAA uses [RFC 8705 PKI client authentication][mtls] with a validated chain and
-exactly one registered DNS SAN binding. Managed clients are secretless,
-`client_credentials`-only, provisioned in the default UAA zone. Operators must
-protect `cf:service-account:` across client-management paths and zones; ordinary
-client administrators cannot create, alter or take over managed registrations.
+The app discovers its client ID and token endpoint through non-secret
+`VCAP_SERVICE_ACCOUNT` metadata. Its library reads `CF_INSTANCE_CERT` and
+`CF_INSTANCE_KEY`, reloading them when acquiring tokens after credential rotation.
 
-Mutual-TLS client authentication is independent of certificate-bound access
-tokens. Set [`tls_client_certificate_bound_access_tokens: false`][binding] on the
-managed client: tokens are bearer JWTs **without `cnf`**, usable without presenting
-the instance certificate to CAPI. Require trusted issuer, stable account subject,
-authorized audience/scopes and expiry no later than five minutes or the issuing
-leaf certificate's expiry. Platform-controlled caller claims should retain
-app/space/org/instance attribution and must not be overridden by app templates.
+```mermaid
+sequenceDiagram
+    participant App as payments-api
+    participant UAA
+    participant CAPI as Cloud Foundry API
+    App->>UAA: HTTPS POST /oauth/mtls/token + instance certificate
+    Note over App,UAA: grant_type=client_credentials<br/>client_id=cf:service-account:payments-worker
+    UAA->>UAA: Validate chain, key possession and exact account SAN
+    UAA-->>App: Signed, short-lived bearer JWT
+    App->>CAPI: HTTPS request with Authorization: Bearer JWT
+    CAPI->>CAPI: Validate JWT and check account roles
+    CAPI-->>App: Authorized resources, or access denied
+```
 
-Non-secret `VCAP_SERVICE_ACCOUNT` metadata supplies the client ID and token
-endpoint. Libraries reread rotated instance credential files when acquiring
-tokens. UAA authenticates against its managed registration without a live CAPI
-assignment lookup. Resource servers independently validate tokens and permissions.
-The first delivery uses a fixed CAPI audience; additional targets require explicit
-audience/scope policy rather than universal multi-audience tokens.
+Illustrative **decoded access-token payload** for the proposed CAPI profile:
 
-### Lifecycle and rollout
+```json
+{
+  "iss": "https://uaa.example.org/oauth/token",
+  "sub": "cf:service-account:payments-worker",
+  "client_id": "cf:service-account:payments-worker",
+  "aud": ["cloud_controller"],
+  "scope": ["cloud_controller.read"],
+  "iat": 1791288000,
+  "exp": 1791288300
+}
+```
 
-Bind/unbind changes desired configuration; running containers retain their
-launch-time identity, including renewal, until replaced. **Restart is required**;
-restaging solely for identity changes is unnecessary. New tasks use the desired
-assignment. Unbind must precede assigning a different account.
+Both apps have the same subject, but authenticate with different keys. The token
+is limited to authorized audiences/scopes and expires within five minutes **and
+no later than the certificate used to obtain it**. Scope permits API use; CAPI
+roles determine which resources are accessible. Caller app/instance attribution
+should also be retained in platform-controlled claims; claim names remain to be
+agreed.
 
-Restart does not revoke copied credentials. While the shared client is enabled,
-an old certificate/key can obtain tokens until certificate expiry; each token is
-also capped by that expiry. Without restart, an old running assignment can keep
-renewing. Account disable stops new tokens when effective, not existing JWTs or
-certificate-only access. Immediate per-app cryptographic revocation is out of scope.
+There is deliberately **no `cnf`**: [RFC 8705][mtls] separates mTLS client
+authentication from certificate-bound tokens. UAA must honor the client policy
+`tls_client_certificate_bound_access_tokens: false`. The certificate is needed
+to obtain the token, not to present it to CAPI. Token issuance needs no live CAPI
+assignment lookup; consumers validate issuer, signature, audience, expiry and
+permissions independently.
 
-Features are operator-enabled only after compatible CAPI, BBS, cells and UAA are
-deployed. Unsupported identity features must fail closed; silently dropping SANs
-is not acceptable. Capability discovery and rollback must account for all cells
-and consumers before enabling new assignments.
+### 4. Manage the account's lifecycle
 
-### Delivery and remaining decisions
+| Intent | Command | Effect |
+| --- | --- | --- |
+| Inspect | `cf service-accounts` | List accounts in the targeted space |
+| Remove assignment | `cf unbind-service-account payments-api` | Changes desired identity; restart the app to apply |
+| Stop new tokens | `cf disable-service-account payments-worker` | Disables issuance for all apps sharing it |
+| Resume | `cf enable-service-account payments-worker` | Re-enables issuance, retaining roles |
+| Delete | `cf delete-service-account payments-worker` | Requires workload references removed; retains a name tombstone |
+| Recover a deleted name | `cf create-service-account payments-worker --reuse-name` | Explicit, audited platform-admin override |
 
-1. Deliver the account lifecycle, native CLI, Diego identity, UAA bearer profile
-   and explicit CAPI roles.
-2. Add curated token targets/external federation and account sources for RFC 0055
-   route policies. Route matching requires verified SAN-bearing certificate data
-   and preserves caller org/space domain restrictions and default-deny behavior.
-3. Negotiate broker/driver support for identity-based service bindings separately;
-   this RFC does not standardize new OSB fields or change legacy bindings.
+Running instances retain their launch identity—including renewal—until restart;
+new tasks use the desired assignment. Staging never receives the account identity.
+Unbind before assigning a different account. Zero-app accounts retain their client
+and roles until explicitly disabled/deleted.
 
-Maintainers should confirm ownership/permission defaults, name retention and
-quotas, namespace protection, token/caller claim policy, API naming and mixed-version
-capability signaling before finalizing the contract.
+**Unbind, restart and disable do not revoke existing tokens or certificates.**
+Copied credentials can remain usable until expiry while the client is enabled;
+without restart, a running old assignment can keep renewing.
 
-### Implementation evidence
+Names are immutable, foundation-unique lowercase DNS labels (3–63 characters).
+The SAN suffix creates no DNS record or route; external identity is the trusted
+`(issuer, subject)` pair. Admin `--reuse-name` creates a new UUID without restoring
+bindings/roles, preserves audit history and cannot bypass live-name conflicts or
+quotas. Its warning explains that external grants and valid old certificates may
+still apply to the reused identity.
 
-Drafts: [CAPI][capi], [capi-release][release], [BBS contract][bbs], [Diego][diego],
-[CLI][cli]. They preserve committed RED/GREEN tests and include verification notes.
-The lab demonstrated two apps sharing a SAN with distinct keys, runtime-task
-inheritance, roleless tokens seeing zero apps, explicit roles enabling access,
-disable/enable, and unbind/restart/rebind through the native CLI.
+### 5. Extend space quotas
 
-**Remaining acceptance requirements:** the prototype's manager-only creation check
-must align with service-instance permissions. Current [UAA mTLS work][uaa] emits `cnf`;
-bearer-policy handling, leaf-expiry caps, managed-namespace enforcement and caller
-claims require completion. BBS module publication and automatic rollout capability
-signaling remain open. Timed live renewal, staging certificate inspection, Windows
-execution and the full negative/rotation matrix need further evidence. Lab CAPI
-calls used internal HTTP; production bearer use requires TLS. The POC therefore
-does not yet meet the complete proposed profile.
+Add a maximum account count to space quotas, with this proposed V3 fragment:
 
-[mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-2.1
-[binding]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
+```json
+{
+  "service_accounts": {
+    "total_service_accounts": 10
+  }
+}
+```
+
+Count existing accounts, including disabled/unprovisioned ones, not bindings or
+tombstones. Creation checks the limit atomically; deletion frees capacity. Lowering
+the limit blocks further creation rather than deleting accounts. Default/unlimited
+behavior follows existing space-quota conventions.
+
+### Delivery
+
+Start with CAPI account APIs/roles, native CLI, typed BBS/Diego identity and UAA
+bearer issuance. Preserve existing instance fields, C2C route SANs and independent
+keys. Protect the SAN namespace and managed client prefix from injection/takeover;
+provision clients only in UAA's default zone. Unsupported identity features must
+fail closed, with operator enablement only after compatible rollout.
+
+Later stages add curated external token targets/federation, account sources for
+RFC 0055 route policies, and negotiated broker/driver integration. Route grants
+must preserve verified-certificate checks, caller org/space restrictions and
+default deny. Existing OSB bindings are unchanged.
+
+**Progress:** [CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and
+[CLI][cli] drafts demonstrate the two-app flow, explicit roles, disable/enable and
+unbind/restart. Remaining work includes creation permissions, quotas/name reuse,
+[UAA][uaa] bearer policy (the POC still emits `cnf`), leaf-expiry caps, namespace
+protection, caller claims, module publication and rollout capability signaling.
+Further renewal/staging/Windows/negative coverage is needed; lab CAPI HTTP access
+must become HTTPS. Implementation details and test evidence live in those PRs.
+
+[mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
 [capi]: https://github.com/cloudfoundry/cloud_controller_ng/pull/5520
 [release]: https://github.com/cloudfoundry/capi-release/pull/702
 [bbs]: https://github.com/cloudfoundry/bbs/pull/168
