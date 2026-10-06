@@ -41,8 +41,9 @@ provides stable workload identity while preserving instance-level attribution.
 ### Identity and authorization boundary
 
 - An account has an immutable UUID, name and owning space. Names are
-  foundation-unique, lowercase DNS labels of 3–63 characters. Deletion permanently
-  reserves the name, preventing another owner from inheriting external grants.
+  foundation-unique, lowercase DNS labels of 3–63 characters. Deletion retains a
+  name tombstone; ordinary creation cannot reuse it. Only a platform admin may
+  explicitly override that reservation as described below.
 - Each app has zero or one account; multiple apps in the owning space may share
   it. Cross-space assignment is excluded, including within the same organization.
 - Account creation follows service-instance creation permissions: Space Developers
@@ -78,6 +79,19 @@ names are human-facing lookup keys. The CLI provides create/list/show/delete,
 bind/unbind and enable/disable commands, waits for jobs, and reports identity,
 provisioning state and restart guidance. Existing `/v3/roles` semantics and org
 membership prerequisites apply to the managed principal.
+
+For recovery from accidental deletion, propose
+`cf create-service-account NAME --reuse-name`. CAPI must authorize this explicit
+tombstone override server-side for platform admins only and atomically prevent
+conflicts with live accounts or concurrent creation. It creates a new account UUID
+in the selected space, without restoring deleted bindings or CAPI roles; normal
+creation checks and quotas still apply. Audit records retain the reservation's
+history and identify the admin and replacement account.
+
+The CLI must warn that reuse restores the same SAN and `(issuer, subject)`:
+external grants may authorize the replacement, and still-valid old certificates
+may authenticate once its client is provisioned. This is an intentional admin
+escape hatch, not revocation or isolation from the former identity.
 
 Accounts with no assigned apps retain their identity and roles until explicitly
 disabled or deleted. Deletion requires removal of active workload references;
