@@ -81,8 +81,17 @@ membership prerequisites apply to the managed principal.
 
 Accounts with no assigned apps retain their identity and roles until explicitly
 disabled or deleted. Deletion requires removal of active workload references;
-future route/broker references must also be resolved before teardown. Namespace
-quotas and audit events must cover account creation, grants and assignment changes.
+future route/broker references must also be resolved before teardown. Audit events
+cover account creation, grants and assignment changes.
+
+Extend space quotas with a **maximum number of service accounts** (proposed V3
+field: `service_accounts.total_service_accounts`). Count every existing account
+owned by the space, including disabled and unprovisioned accounts; app bindings
+do not consume additional quota. Enforce the limit atomically during creation so
+concurrent requests cannot exceed it. Deletion frees quota capacity, but its name
+tombstone remains and does not count toward this resource limit. Lowering a quota
+below current usage blocks further creation without deleting existing accounts.
+Defaults and unlimited behavior should follow existing space-quota conventions.
 
 ### Credentials and token profile
 
