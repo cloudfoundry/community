@@ -6,32 +6,39 @@
 - Status: Draft
 - RFC Pull Request: [community#1645](https://github.com/cloudfoundry/community/pull/1645)
 - Related RFCs: [RFC 0055: Identity-Aware Routing for GoRouter](rfc-0055-identity-aware-routing-for-gorouter.md)
-- Affected Component(s): Cloud Controller, BBS, Diego, UAA, CF CLI; later GoRouter and service brokers
+- Affected Component(s): Cloud Controller, BBS, Diego, UAA, CF CLI, service brokers; later GoRouter
 
 ## Summary
 
 Give applications a stable identity they can share, without distributing a shared
 secret. Developers assign a **service account**; Cloud Foundry manages its
-credentials. Apps exchange their instance certificates for short-lived tokens and
-use those tokens to access resources such as the Cloud Foundry API.
+credentials. Apps obtain short-lived JWTs for **workload identity federation
+(WIF)** to off-platform services, especially services managed by service brokers.
+The same identity can also authorize emerging workloads such as coding agents
+that push applications through the Cloud Foundry API.
 
 **One account, multiple apps, independent keys, explicit permissions.**
 
 ## Problem
 
-A payments team runs an API and a background worker. Both need the same access to
-Cloud Foundry resources. Today, the team can distribute an OAuth client secret to
-both apps—but then it must store, protect and rotate that secret. Scaling and
-blue/green deployments add more places where the credential lives.
+A payments API and background worker need an off-platform database, object store
+or cloud API. Its identity provider supports WIF: exchange a JWT from a trusted
+issuer for short-lived service credentials. The missing piece is a stable CF
+workload identity that the provider can trust, without distributing another secret.
+
+**Broker-managed services are a natural fit.** A broker already provisions the
+service and its access. An identity-aware binding could configure trust and grants
+for the app's service account, returning federation/connection metadata instead
+of a long-lived password. Developers would retain the familiar service-binding UX.
 
 Cloud Foundry already gives every instance its own certificate. However, instance
 identities change on replacement, and app identities do not describe an intentional
 group of apps. The team needs a durable **payments identity**, independent of which
 instances or blue/green apps currently implement it.
 
-Service accounts connect existing instance credentials to that shared identity.
-The platform handles keys; the team decides which apps use the identity and what
-it may access.
+**Next, coding agents running as CF apps** may need to push the applications they
+generate. Explicit CAPI roles can give an agent that ability in a chosen space.
+This is an emerging use case; off-platform federation is the primary motivation.
 
 ## Proposal
 
@@ -73,25 +80,34 @@ First bind provisions one secretless UAA client and a roleless CAPI principal;
 subsequent binds reuse them. The CLI waits for provisioning jobs, including retries.
 No account certificate is issued before authorized provisioning is ready.
 
-### 2. Grant permissions explicitly
+### 2. Bind a broker-managed service using federation
 
-Binding answers **“Who am I?”**, not **“What may I do?”** An authorized role manager
-can grant the shared account access using existing role commands:
+Binding an account answers **“Who am I?”**, not **“What may I do?”** For a service
+whose broker supports identity federation, the proposed UX is:
 
 ```sh
-cf set-space-role cf:service-account:payments-worker acme payments SpaceAuditor --client
+# Proposed option; requires broker and client-library support
+cf bind-service payments-api payments-store --authentication service-account
+cf bind-service payments-jobs payments-store --authentication service-account
 ```
 
-The CLI establishes required org membership before granting the space role. Both
-apps can now read those resources. Without roles, their tokens grant no resource
-access. Anyone who can deploy code to either app can exercise the shared grants.
+CAPI conveys the platform-owned account identity to the broker, which configures
+the service's federation grants. The binding supplies the approved issuer,
+audience and connection metadata; the app's library performs token acquisition
+and exchange. Services may also be configured for federation outside a broker.
+
+This requires negotiated broker capability and audience/scope policy; no new OSB
+fields are standardized here. Unsupported brokers reject the requested mode;
+ordinary bindings retain their existing behavior. Grants are tracked per binding,
+so removing one binding does not remove another's access. All apps sharing the
+account can exercise its grants, as can anyone able to deploy code to those apps.
 
 Creating accounts follows service-instance creation permissions: **Space Developer
 or platform admin**, with readable/writable-space checks and operator controls.
 Other lifecycle management initially requires space manager/admin; assignment
 requires app-write permission. Ownership alone grants no account resource roles.
 
-### 3. From app certificate to API access
+### 3. From app certificate to off-platform access
 
 The app discovers its client ID and token endpoint through non-secret
 `VCAP_SERVICE_ACCOUNT` metadata. Its library reads `CF_INSTANCE_CERT` and
@@ -101,25 +117,28 @@ The app discovers its client ID and token endpoint through non-secret
 sequenceDiagram
     participant App as payments-api
     participant UAA
-    participant CAPI as Cloud Foundry API
+    participant IdP as External federation provider
+    participant Service as Broker-managed service
     App->>UAA: HTTPS POST /oauth/mtls/token + instance certificate
     Note over App,UAA: grant_type=client_credentials<br/>client_id=cf:service-account:payments-worker
     UAA->>UAA: Validate chain, key possession and exact account SAN
-    UAA-->>App: Signed, short-lived bearer JWT
-    App->>CAPI: HTTPS request with Authorization: Bearer JWT
-    CAPI->>CAPI: Validate JWT and check account roles
-    CAPI-->>App: Authorized resources, or access denied
+    UAA-->>App: Signed JWT for the approved federation audience
+    App->>IdP: HTTPS token exchange with JWT
+    IdP->>IdP: Verify issuer, signature, audience and subject grant
+    IdP-->>App: Short-lived service credentials
+    App->>Service: Request using exchanged credentials
+    Service-->>App: Authorized data, or access denied
 ```
 
-Illustrative **decoded access-token payload** for the proposed CAPI profile:
+Illustrative **decoded UAA JWT** for an approved federation target (the provider's
+required audience and exchange protocol must be configured and tested):
 
 ```json
 {
   "iss": "https://uaa.example.org/oauth/token",
   "sub": "cf:service-account:payments-worker",
   "client_id": "cf:service-account:payments-worker",
-  "aud": ["cloud_controller"],
-  "scope": ["cloud_controller.read"],
+  "aud": ["https://identity.example.org/federation/cf-payments"],
   "iat": 1791288000,
   "exp": 1791288300
 }
@@ -127,19 +146,42 @@ Illustrative **decoded access-token payload** for the proposed CAPI profile:
 
 Both apps have the same subject, but authenticate with different keys. The token
 is limited to authorized audiences/scopes and expires within five minutes **and
-no later than the certificate used to obtain it**. Scope permits API use; CAPI
-roles determine which resources are accessible. Caller app/instance attribution
-should also be retained in platform-controlled claims; claim names remain to be
-agreed.
+no later than the certificate used to obtain it**. The external provider controls
+the exchanged credentials' permissions and lifetime. Caller attribution should
+also be retained in platform-controlled claims; claim names remain to be agreed.
 
 There is deliberately **no `cnf`**: [RFC 8705][mtls] separates mTLS client
 authentication from certificate-bound tokens. UAA must honor the client policy
 `tls_client_certificate_bound_access_tokens: false`. The certificate is needed
-to obtain the token, not to present it to CAPI. Token issuance needs no live CAPI
+to obtain the token, not to present it to the federation provider. Token issuance needs no live CAPI
 assignment lookup; consumers validate issuer, signature, audience, expiry and
 permissions independently.
 
-### 4. Manage the account's lifecycle
+### 4. Coding agents: the same identity, a CAPI target
+
+An agent app can instead request a CAPI-targeted token. An authorized role manager
+grants its account `SpaceDeveloper` in the space where generated apps may be pushed:
+
+```sh
+cf set-space-role cf:service-account:app-builder acme generated-apps SpaceDeveloper --client
+```
+
+```mermaid
+sequenceDiagram
+    participant Agent as Coding agent app
+    participant UAA
+    participant CAPI as Cloud Foundry API
+    Agent->>UAA: mTLS token request for approved CAPI target
+    UAA-->>Agent: JWT with aud cloud_controller and CAPI scopes
+    Agent->>CAPI: Create and push generated app over HTTPS with bearer JWT
+    CAPI->>CAPI: Validate token and explicit SpaceDeveloper role
+    CAPI-->>Agent: Deployment result
+```
+
+This is a separate token target, not an all-purpose multi-audience token. CAPI
+roles do not authorize external services, and federation grants confer no CAPI roles.
+
+### 5. Manage the account's lifecycle
 
 | Intent | Command | Effect |
 | --- | --- | --- |
@@ -166,7 +208,7 @@ bindings/roles, preserves audit history and cannot bypass live-name conflicts or
 quotas. Its warning explains that external grants and valid old certificates may
 still apply to the reused identity.
 
-### 5. Extend space quotas
+### 6. Extend space quotas
 
 Add a maximum account count to space quotas, with this proposed V3 fragment:
 
@@ -191,14 +233,17 @@ keys. Protect the SAN namespace and managed client prefix from injection/takeove
 provision clients only in UAA's default zone. Unsupported identity features must
 fail closed, with operator enablement only after compatible rollout.
 
-Later stages add curated external token targets/federation, account sources for
-RFC 0055 route policies, and negotiated broker/driver integration. Route grants
+Build on that foundation with curated external token targets, provider-specific
+WIF tests and negotiated broker/driver integration: these deliver the primary
+user-facing goal. CAPI access is the initial validation path, not proof of WIF
+compatibility. Later add account sources for RFC 0055 route policies. Route grants
 must preserve verified-certificate checks, caller org/space restrictions and
 default deny. Existing OSB bindings are unchanged.
 
 **Progress:** [CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and
 [CLI][cli] drafts demonstrate the two-app flow, explicit roles, disable/enable and
-unbind/restart. Remaining work includes creation permissions, quotas/name reuse,
+unbind/restart against CAPI; external federation and broker integration are not
+yet demonstrated. Remaining work includes creation permissions, quotas/name reuse,
 [UAA][uaa] bearer policy (the POC still emits `cnf`), leaf-expiry caps, namespace
 protection, caller claims, module publication and rollout capability signaling.
 Further renewal/staging/Windows/negative coverage is needed; lab CAPI HTTP access
