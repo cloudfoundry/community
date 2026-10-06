@@ -240,22 +240,6 @@ The proposed CLI resolves the following to that route-option value:
 cf add-route-policy apps.identity --hostname invoices --source-service-account payments-worker
 ```
 
-```mermaid
-flowchart LR
-    subgraph Cert["Verified caller certificate"]
-        Instance["CN / DNS SAN: instance GUID<br/>OUs: app, space, org"]
-        SAN["Account DNS SAN:<br/>payments-worker.svc.identity"]
-    end
-    subgraph Route["Policy for invoices.apps.identity"]
-        Rule["Source: cf:svc:payments-worker"]
-        Expected["Expected account DNS SAN:<br/>payments-worker.svc.identity"]
-        Rule -->|"maps to"| Expected
-    end
-    SAN --> Match["Exact SAN match"]
-    Expected --> Match
-    Match --> Grant["Account rule satisfied<br/>Domain restrictions still apply"]
-```
-
 Both payments apps can now call the invoices route. GoRouter verifies the caller's
 certificate and checks for `payments-worker.svc.identity`; an app without that
 identity does not qualify for this grant. No JWT or token exchange is needed.
