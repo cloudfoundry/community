@@ -257,11 +257,6 @@ Existing route policies keep working. An account grant does not bypass a domain'
 org/space restriction: the **calling app** must still be in the allowed org or
 space. Without a matching grant, access remains denied.
 
-CAPI records which account the policy refers to and sends the rule to GoRouter.
-The rule can be enabled only after all routers support it. If TLS terminates at a
-proxy, the router must receive trustworthy certificate data including the account
-SAN; a caller-provided identity header is not proof of identity.
-
 **Disabling a service account stops new UAA tokens, not route access.** Route access
 uses the certificate directly, so an already-issued certificate may still work
 until expiry. Remove the route grant to withdraw that permission, and remove
