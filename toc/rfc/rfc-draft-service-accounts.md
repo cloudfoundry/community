@@ -309,12 +309,9 @@ drafts already demonstrate the shared two-app identity, explicit roles,
 disable/enable and unbind/restart against CAPI. Finish creation permissions,
 quotas/name reuse, contract publication and compatible rollout before release.
 
-Next, validate external federation targets and implement negotiated broker/driver
-support to deliver the primary WIF use case. Account-aware route policies are a
-separate integration. Neither has yet been demonstrated by the POC; existing OSB
-bindings and route source types remain supported. Further renewal/staging/Windows
-coverage and production HTTPS validation are also needed. Detailed implementation
-and test evidence live in the linked PRs.
+The next step is community review and RFC approval of the proposed identity model
+and developer experience. Detailed implementation and test evidence live in the
+linked PRs.
 
 [mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
 [capi]: https://github.com/cloudfoundry/cloud_controller_ng/pull/5520
