@@ -264,6 +264,15 @@ account route grants before deleting the account.
 | Delete | `cf delete-service-account payments-worker` | Requires workload references removed; retains a name tombstone |
 | Recover a deleted name | `cf create-service-account payments-worker --reuse-name` | Explicit, audited platform-admin override |
 
+**Disabling an account is a token-issuance switch.**
+`cf disable-service-account payments-worker` disables its managed UAA client for
+all apps sharing the account; the CLI waits until reconciliation completes.
+The account, app assignments and CAPI roles remain, and apps keep running.
+Already-issued JWTs remain valid until expiry, and certificates can still grant
+route access. `cf enable-service-account payments-worker` restores token issuance
+with the retained assignments and roles. In the POC, disabling deletes the UAA
+client registration and enabling recreates it.
+
 Running instances retain their launch identity—including renewal—until restart;
 new tasks use the desired assignment. Staging never receives the account identity.
 Unbind before assigning a different account. Zero-app accounts retain their client
