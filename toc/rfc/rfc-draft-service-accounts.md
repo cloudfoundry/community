@@ -22,10 +22,8 @@ cf bind-service-account payments-api payments-worker
 cf bind-service-account payments-jobs payments-worker
 ```
 
-This condenses the [original proposal][source] and deliberately revises its
-org-owned model to **space ownership and same-space assignment**. Implementation
-drafts provide a tested starting point, not a prerequisite for accepting their
-exact API or configuration details.
+Implementation drafts provide a tested starting point, not a prerequisite for
+accepting their exact API or configuration details.
 
 ## Problem
 
@@ -47,8 +45,11 @@ provides stable workload identity while preserving instance-level attribution.
   reserves the name, preventing another owner from inheriting external grants.
 - Each app has zero or one account; multiple apps in the owning space may share
   it. Cross-space assignment is excluded, including within the same organization.
-- The initial permission model uses space managers/platform admins for account
-  management and app writers for assignment in a writable owning space.
+- Account creation follows service-instance creation permissions: Space Developers
+  and platform admins may create accounts, subject to readable/writable-space
+  checks and operator controls. Space Manager alone does not confer creation rights.
+  Other account lifecycle operations initially require space managers/platform
+  admins; assignment requires app-write permission in the writable owning space.
 - Creating or binding an account grants no resource permissions. CAPI roles,
   route rules and broker privileges are explicit and shared by all apps using it.
   Anyone able to deploy code to those apps can exercise those permissions.
@@ -153,7 +154,8 @@ The lab demonstrated two apps sharing a SAN with distinct keys, runtime-task
 inheritance, roleless tokens seeing zero apps, explicit roles enabling access,
 disable/enable, and unbind/restart/rebind through the native CLI.
 
-**Remaining acceptance requirements:** current [UAA mTLS work][uaa] emits `cnf`;
+**Remaining acceptance requirements:** the prototype's manager-only creation check
+must align with service-instance permissions. Current [UAA mTLS work][uaa] emits `cnf`;
 bearer-policy handling, leaf-expiry caps, managed-namespace enforcement and caller
 claims require completion. BBS module publication and automatic rollout capability
 signaling remain open. Timed live renewal, staging certificate inspection, Windows
@@ -161,7 +163,6 @@ execution and the full negative/rotation matrix need further evidence. Lab CAPI
 calls used internal HTTP; production bearer use requires TLS. The POC therefore
 does not yet meet the complete proposed profile.
 
-[source]: https://gist.github.com/rkoster/ee2ae127944943707c44f8f6f8b3f83d
 [mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-2.1
 [binding]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
 [capi]: https://github.com/cloudfoundry/cloud_controller_ng/pull/5520
