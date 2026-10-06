@@ -242,11 +242,18 @@ cf add-route-policy apps.identity --hostname invoices --source-service-account p
 
 ```mermaid
 flowchart LR
-    API["payments-api"] -->|"mTLS certificate"| Router["GoRouter"]
-    Jobs["payments-jobs"] -->|"mTLS certificate"| Router
-    Policy["Allow: cf:svc:payments-worker"] -.-> Router
-    Router -->|"verified account SAN + domain scope match"| Backend["invoices.apps.identity"]
-    Other["Unbound app"] -->|"no account SAN: denied"| Router
+    subgraph Cert["Verified caller certificate"]
+        Instance["CN / DNS SAN: instance GUID<br/>OUs: app, space, org"]
+        SAN["Account DNS SAN:<br/>payments-worker.svc.identity"]
+    end
+    subgraph Route["Policy for invoices.apps.identity"]
+        Rule["Source: cf:svc:payments-worker"]
+        Expected["Expected account DNS SAN:<br/>payments-worker.svc.identity"]
+        Rule -->|"maps to"| Expected
+    end
+    SAN --> Match["Exact SAN match"]
+    Expected --> Match
+    Match --> Grant["Account rule satisfied<br/>Domain restrictions still apply"]
 ```
 
 Both payments apps can now call the invoices route. GoRouter verifies the caller's
