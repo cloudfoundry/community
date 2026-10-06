@@ -308,26 +308,27 @@ behavior follows existing space-quota conventions.
 
 ### Delivery
 
-Start with CAPI account APIs/roles, native CLI, typed BBS/Diego identity and UAA
-bearer issuance. Preserve existing instance fields, C2C route SANs and independent
-keys. Protect the SAN namespace and managed client prefix from injection/takeover;
-provision clients only in UAA's default zone. Unsupported identity features must
-fail closed, with operator enablement only after compatible rollout.
+**The UAA authentication foundation is already implemented and agreed with the
+UAA team, pending final review in [UAA #4076][uaa].** This covers certificate-based
+client authentication and registered subject/SAN matching. This RFC builds on
+that work; it does not propose starting UAA mTLS support from scratch.
 
-Build on that foundation with curated external token targets, provider-specific
-WIF tests and negotiated broker/driver integration: these deliver the primary
-user-facing goal. CAPI access is the initial validation path, not proof of WIF
-compatibility. Deliver account-aware route policies as a separate integration;
-existing OSB bindings and route source types remain supported.
+The remaining UAA work is the service-account profile: bearer issuance without
+`cnf`, certificate-expiry token caps, protected managed-client registrations and
+approved federation audiences/caller claims. These additions remain to be agreed
+and implemented; they are not covered by the authentication team's agreement.
 
-**Progress:** [CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and
-[CLI][cli] drafts demonstrate the two-app flow, explicit roles, disable/enable and
-unbind/restart against CAPI; external federation, broker and account-route integration are not
-yet demonstrated. Remaining work includes creation permissions, quotas/name reuse,
-[UAA][uaa] bearer policy (the POC still emits `cnf`), leaf-expiry caps, namespace
-protection, caller claims, module publication and rollout capability signaling.
-Further renewal/staging/Windows/negative coverage is needed; lab CAPI HTTP access
-must become HTTPS. Implementation details and test evidence live in those PRs.
+[CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and [CLI][cli]
+drafts already demonstrate the shared two-app identity, explicit roles,
+disable/enable and unbind/restart against CAPI. Finish creation permissions,
+quotas/name reuse, contract publication and compatible rollout before release.
+
+Next, validate external federation targets and implement negotiated broker/driver
+support to deliver the primary WIF use case. Account-aware route policies are a
+separate integration. Neither has yet been demonstrated by the POC; existing OSB
+bindings and route source types remain supported. Further renewal/staging/Windows
+coverage and production HTTPS validation are also needed. Detailed implementation
+and test evidence live in the linked PRs.
 
 [mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
 [capi]: https://github.com/cloudfoundry/cloud_controller_ng/pull/5520
