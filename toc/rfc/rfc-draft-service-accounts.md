@@ -232,8 +232,9 @@ roles do not authorize external services, and federation grants confer no CAPI r
 
 ### 5. Authorize app-to-app routes with the same identity
 
-Extend RFC 0055 route-policy sources with `cf:service-account:payments-worker`.
-Proposed CLI syntax:
+Extend RFC 0055 route options with the source format
+`cf:svc:<service-account-name>`, for example `cf:svc:payments-worker`.
+The proposed CLI resolves the following to that route-option value:
 
 ```sh
 cf add-route-policy apps.identity --hostname invoices --source-service-account payments-worker
@@ -243,7 +244,7 @@ cf add-route-policy apps.identity --hostname invoices --source-service-account p
 flowchart LR
     API["payments-api"] -->|"mTLS certificate"| Router["GoRouter"]
     Jobs["payments-jobs"] -->|"mTLS certificate"| Router
-    Policy["Allow: cf:service-account:payments-worker"] -.-> Router
+    Policy["Allow: cf:svc:payments-worker"] -.-> Router
     Router -->|"verified account SAN + domain scope match"| Backend["invoices.apps.identity"]
     Other["Unbound app"] -->|"no account SAN: denied"| Router
 ```
