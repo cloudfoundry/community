@@ -15,6 +15,8 @@ Members of the [App Runtime Platform WG](https://github.com/cloudfoundry/communi
 
 We believe that adding OpenTelemetry support for platform component logs will enable more reliable delivery and open possibilities for better processing of the telemetry data downstream inside and outside of Cloud Foundry.
 
+In this RFC, "platform component logs" means the BOSH job logs written to `/var/vcap/sys/log` on component VMs and forwarded off-box by [`syslog-release`](https://github.com/cloudfoundry/syslog-release). It does **not** cover the platform-emitted lines in the per-app Loggregator stream (source types `API`, `RTR`, ...), which reach users via `cf logs` and are unaffected by this proposal.
+
 ## Problem
 
 In Cloud Foundry the platform component logs are collected and processed with the [syslog-release](https://github.com/cloudfoundry/syslog-release) which provides a tool to tail log files from `/var/vcap/sys/log` called [blackbox](https://github.com/cloudfoundry/blackbox) and forwarding and processing rules for [RSyslog](https://www.rsyslog.com/). Rsyslog is provided with the stemcell. Rsyslog is highly specialized for parsing and processing text strings and JSON, but is hard to extend (depends on plugins delivered with the stemcell), its configuration is done with ReinerScript and some legacy formats. Rsyslog still has some use cases, but it doesn't fit in the modern observability pipelines.
