@@ -282,7 +282,9 @@ and roles until explicitly disabled/deleted.
 Copied credentials can remain usable until expiry while the client is enabled;
 without restart, a running old assignment can keep renewing.
 
-Names are immutable, foundation-unique lowercase DNS labels (3–63 characters).
+Names are immutable and unique within a foundation. They follow
+[RFC 1123 hostname-label syntax][names], restricted to lowercase ASCII and 3–63
+characters: letters, digits and hyphens, beginning and ending with a letter or digit.
 The SAN suffix creates no DNS record or route; external identity is the trusted
 `(issuer, subject)` pair. Admin `--reuse-name` creates a new UUID without restoring
 bindings/roles, preserves audit history and cannot bypass live-name conflicts or
@@ -323,6 +325,7 @@ and developer experience. Detailed implementation and test evidence live in the
 linked PRs.
 
 [mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
+[names]: https://www.rfc-editor.org/rfc/rfc1123.html#section-2.1
 [capi]: https://github.com/cloudfoundry/cloud_controller_ng/pull/5520
 [release]: https://github.com/cloudfoundry/capi-release/pull/702
 [bbs]: https://github.com/cloudfoundry/bbs/pull/168
