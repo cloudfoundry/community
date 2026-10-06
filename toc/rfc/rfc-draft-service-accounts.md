@@ -249,18 +249,23 @@ flowchart LR
     Other["Unbound app"] -->|"no account SAN: denied"| Router
 ```
 
-CAPI resolves the account name to a UUID relationship and distributes a typed rule.
-GoRouter matches exactly one canonical account DNS SAN from a verified certificate,
-not a JWT or a caller-supplied header. Forwarded certificate data must carry the
-verified SAN; XFCC `Hash`/`Subject` alone is insufficient.
+Both payments apps can now call the invoices route. GoRouter verifies the caller's
+certificate and checks for `payments-worker.svc.identity`; an app without that
+identity does not qualify for this grant. No JWT or token exchange is needed.
 
-Preserve existing source OR semantics, `cf:any` exclusivity and default deny.
-Domain org/space restrictions still apply using the **calling app's** OUs. Enable
-account rules only when every enforcing router supports them; unknown rules must
-fail closed. Referenced accounts cannot be deleted until route grants are removed.
+Existing route policies keep working. An account grant does not bypass a domain's
+org/space restriction: the **calling app** must still be in the allowed org or
+space. Without a matching grant, access remains denied.
 
-This path needs no UAA token or live CAPI lookup. Consequently, disabling token
-issuance does not revoke route access: old certificates may match until expiry.
+CAPI records which account the policy refers to and sends the rule to GoRouter.
+The rule can be enabled only after all routers support it. If TLS terminates at a
+proxy, the router must receive trustworthy certificate data including the account
+SAN; a caller-provided identity header is not proof of identity.
+
+**Disabling a service account stops new UAA tokens, not route access.** Route access
+uses the certificate directly, so an already-issued certificate may still work
+until expiry. Remove the route grant to withdraw that permission, and remove
+account route grants before deleting the account.
 
 ### 6. Manage the account's lifecycle
 
