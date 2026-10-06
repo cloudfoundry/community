@@ -33,6 +33,15 @@ We propose adding support to the [otel-collector-release](https://github.com/clo
 
 The `syslog-release` remains the default and stays in place; OpenTelemetry is offered as an opt-in alternative. Deprecating or removing the `syslog-release` is out of scope for this RFC and and may be addressed in a future RFC if needed.
 
+#### Out of scope
+
+This RFC covers only the `blackbox`/RSyslog path that tails `/var/vcap/sys/log` and forwards component logs off-box. It does **not** cover the paths by which some platform component logs reach operators through Loggregator:
+
+- `BOSH jobs → forwarder-agent → syslog-agent → aggregate drain → log-cache`
+- `BOSH jobs → forwarder-agent → loggregator-agent → doppler → RLP` (legacy; removed in the shared-nothing architecture)
+
+These are excluded because they are separate transport mechanisms with their own release ownership; folding them in would broaden the scope well beyond a `syslog-release` replacement. They may be addressed in a future RFC.
+
 ### Affected Working Groups
 - Foundational Infrastructure
 - Application Runtime Platform
