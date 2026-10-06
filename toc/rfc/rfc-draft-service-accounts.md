@@ -304,11 +304,6 @@ UAA team, pending final review in [UAA #4076][uaa].** This covers certificate-ba
 client authentication and registered subject/SAN matching. This RFC builds on
 that work; it does not propose starting UAA mTLS support from scratch.
 
-The remaining UAA work is the service-account profile: bearer issuance without
-`cnf`, certificate-expiry token caps, protected managed-client registrations and
-approved federation audiences/caller claims. These additions remain to be agreed
-and implemented; they are not covered by the authentication team's agreement.
-
 [CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and [CLI][cli]
 drafts already demonstrate the shared two-app identity, explicit roles,
 disable/enable and unbind/restart against CAPI. Finish creation permissions,
