@@ -31,7 +31,7 @@ The OpenTelemetry Collector offers huge advantages over Syslog:
 
 We propose adding support to the [otel-collector-release](https://github.com/cloudfoundry/otel-collector-release) for collection and processing of platform component logs in a way that is compatible with what the `syslog-release` currently offers and the use cases it covers. Having the platform component logs and metrics in the same place would enable usage for all of the goodies mentioned above. The `syslog-release` should be analyzed to understand its functionalities and identify how they can be supported by an OpenTelemetry-based alternative.
 
-The `syslog-release` remains the default and stays in place; OpenTelemetry is offered as an opt-in alternative. Deprecating or removing the `syslog-release` is out of scope for this RFC and and may be addressed in a future RFC if needed.
+The `syslog-release` remains the default and stays in place; OpenTelemetry is offered as an opt-in alternative. Deprecating or removing the syslog-release is out of scope for this RFC. Upon successful adoption of the OpenTelemetry approach, a future RFC will address the deprecation of syslog-release.
 
 #### Out of scope
 
