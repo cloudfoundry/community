@@ -4,7 +4,7 @@
 - Start Date: 2026-10-06
 - Author(s): @rkoster
 - Status: Draft
-- RFC Pull Request: To be added after submission
+- RFC Pull Request: [community#1645](https://github.com/cloudfoundry/community/pull/1645)
 - Related RFCs: [RFC 0055: Identity-Aware Routing for GoRouter](rfc-0055-identity-aware-routing-for-gorouter.md)
 - Affected Component(s): Cloud Controller, BBS, Diego, UAA, CF CLI; subsequently GoRouter and service brokers
 
