@@ -11,20 +11,24 @@
 ## Summary
 
 Give applications a stable identity they can share, without distributing a shared
-secret. Developers assign a **service account**; Cloud Foundry manages its
-credentials. Apps obtain short-lived JWTs for **workload identity federation
-(WIF)** to off-platform services, especially services managed by service brokers.
-The same identity can also authorize emerging workloads such as coding agents
-that push applications through the Cloud Foundry API.
+secret. Developers assign a **service account**. Cloud Foundry issues and rotates
+each app instance's certificate, which the app uses to obtain short-lived JWTs
+from UAA. External services can trust those JWTs directly or exchange them for
+their own credentials.
+
+The primary use case is **workload identity federation (WIF)** to off-platform
+services, especially services managed by service brokers.
 
 **One account, multiple apps, independent keys, explicit permissions.**
 
 ## Problem
 
-A payments API and background worker need an off-platform database, object store
-or cloud API. Its identity provider supports WIF: exchange a JWT from a trusted
-issuer for short-lived service credentials. The missing piece is a stable CF
-workload identity that the provider can trust, without distributing another secret.
+A payments API stores uploaded invoices in a broker-managed cloud object store;
+a background worker reads them for processing. Both need access to that external
+service, without storing a long-lived access key in their service bindings.
+The cloud provider supports WIF: exchange a JWT from a trusted issuer for
+short-lived service credentials. The missing piece is a stable workload identity
+that the provider can trust, without distributing another secret.
 
 **Broker-managed services are a natural fit.** A broker already provisions the
 service and its access. An identity-aware binding could configure trust and grants
@@ -44,8 +48,10 @@ This is an emerging use case; off-platform federation is the primary motivation.
 
 ### 1. Create once, assign to apps
 
-The account belongs to the targeted space. Each app can use one account, and
-multiple apps in that space can share it. Cross-space assignment is excluded.
+First, give the payments apps an identity that the object store's federation
+provider can recognize across deployments. The account belongs to the targeted
+space: each app can use one account, and multiple apps in that space can share
+it. Cross-space assignment is excluded. Service access is granted in the next step.
 
 ```sh
 cf target -o acme -s payments
