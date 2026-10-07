@@ -308,6 +308,17 @@ tombstones. Creation checks the limit atomically; deletion frees capacity. Lower
 the limit blocks further creation rather than deleting accounts. Default/unlimited
 behavior follows existing space-quota conventions.
 
+Separately, operators configure a foundation-wide creation budget per authenticated
+principal over a rolling seven-day window, with an explicit **unlimited** option.
+This constrains name-reservation abuse on public platforms; internal platforms may
+choose unlimited. The budget applies across all spaces to users and automation
+clients, but **platform admins are exempt**, including automation authenticated with
+platform-admin privileges. Each successful non-exempt creation consumes budget
+atomically; failed requests do not. Deletion remains available and does not replenish
+the budget. Admin-only `--reuse-name` remains subject to live-name and space-quota
+checks, but is exempt from this creation budget.
+This bounds per-principal creation rates, not total retained tombstones.
+
 ### Delivery
 
 **The UAA authentication foundation is already implemented and agreed with the
