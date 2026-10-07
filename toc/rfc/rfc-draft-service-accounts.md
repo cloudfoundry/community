@@ -264,6 +264,13 @@ account route grants before deleting the account.
 | Delete | `cf delete-service-account payments-worker` | Requires workload references removed; retains a name tombstone |
 | Recover a deleted name | `cf create-service-account payments-worker --reuse-name` | Explicit, audited platform-admin override |
 
+**Space/org deletion cascades owned service accounts, as it does service instances.**
+CAPI cleans up account-backed service bindings and route grants, deletes the
+workloads and their account references, and removes managed UAA registrations and
+account roles before deleting the accounts. Name tombstones remain. Pending or
+failed cleanup prevents final space/org deletion and is visible through the
+deletion job; users need not manually delete each account first.
+
 **Disabling an account is a token-issuance switch.**
 `cf disable-service-account payments-worker` disables its managed UAA client for
 all apps sharing the account; the CLI waits until reconciliation completes.
@@ -329,7 +336,8 @@ that work; it does not propose starting UAA mTLS support from scratch.
 [CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and [CLI][cli]
 drafts already demonstrate the shared two-app identity, explicit roles,
 disable/enable and unbind/restart against CAPI. Finish creation permissions,
-quotas/name reuse, contract publication and compatible rollout before release.
+quotas/name reuse, cascading space/org cleanup, contract publication and compatible
+rollout before release.
 
 The next step is community review and RFC approval of the proposed identity model
 and developer experience. Detailed implementation and test evidence live in the
