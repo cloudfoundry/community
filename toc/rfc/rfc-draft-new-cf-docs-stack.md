@@ -41,6 +41,7 @@ Key capabilities the chosen framework MUST provide:
 - AI-agent compatibility: clean, crawlable HTML and optionally an LLM-friendly `/llms.txt` index
 - Ability to handle HTML, especially HTML tables with column-width specification supported
 - Ability to handle variables in a way that's easy and transparent for contributers
+- Ability to display code snippets of various types (shell, console, json, yaml) properly for readability. Ideally, these code displays will have a copy button for easy transfer.
 
 The migration SHOULD use a phased approach (see [Phases](#phases)) and MUST NOT break the existing canonical `docs.cloudfoundry.org` URL during transition.
 
