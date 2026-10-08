@@ -176,3 +176,4 @@ Based on PoC findings, all documentation content SHOULD be migrated to Markdown.
 - Who will support the technical aspects of the new implementation?
 - Who can we involve to vet this proposal for the UAA API docs and the CredHub API docs?
 - Who owns the CF docs domain `docs.cloudfoundry.org` (registrar, DNS, and hosting configuration), and who can change the DNS records for the cutover?
+- Are partials supported by Docusaurus? If not, the migration will have to integrate them into their calling topics.
