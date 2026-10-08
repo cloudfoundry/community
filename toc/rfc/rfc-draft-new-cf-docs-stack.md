@@ -39,6 +39,8 @@ Key capabilities the chosen framework MUST provide:
 - A lightweight templating/component system that does not require Ruby or ERB (Docusaurus: MDX 3, shipped with the current Docusaurus version)
 - SEO-friendly HTML output (structured metadata, canonical URLs, sitemap)
 - AI-agent compatibility: clean, crawlable HTML and optionally an LLM-friendly `/llms.txt` index
+- Ability to handle HTML, especially HTML tables with column-width specification supported
+- Ability to handle variables in a way that's easy and transparent for contributers
 
 The migration SHOULD use a phased approach (see [Phases](#phases)) and MUST NOT break the existing canonical `docs.cloudfoundry.org` URL during transition.
 
