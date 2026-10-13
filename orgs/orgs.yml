@@ -288,6 +288,14 @@ orgs:
         description: GCS for BOSH
         has_projects: false
         has_wiki: false
+      bosh-gdc-ci:
+        description: GDC-Specific CFBOSH CI/CD Orchestration and End-to-End Test Suites
+        default_branch: main
+        has_projects: false
+      bosh-gdc-cpi-release:
+        description: BOSH Google Distributed Cloud air-gapped (GDC) CPI Release
+        default_branch: main
+        has_projects: false
       bosh-google-cpi-release:
         description: BOSH Google CPI
         has_projects: true
@@ -2867,6 +2875,23 @@ orgs:
         privacy: closed
         repos:
           stratos: admin
+      temp-fi-gdc-admins:
+        description: "Admin team for managing GDC BOSH CPI and CI repositories, secrets, and environments."
+        maintainers:
+          # Google
+          - ajlfleos
+          - sanjay-nagarur
+          - dilipkumar2k6
+          - daniel-sarran
+          - cmuuss
+          - ahsanasardar
+          # SAP
+          - gowrisankar22
+        members: []
+        privacy: closed
+        repos:
+          bosh-gdc-cpi-release: admin
+          bosh-gdc-ci: admin
   concourse:
     admins: [] # shall be empty, maintained in TOC.md
     billing_email: team@concourse-ci.org
