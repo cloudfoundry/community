@@ -23,6 +23,7 @@ The current CF documentation system has several issues that have accumulated ove
 - **Versioning is unclear:** There is no well-defined versioning model for documentation, making it difficult to track what applies to which CF release.
 - **Hosting costs and access:** The current hosting solution involves infrastructure managed outside the community GitHub organization, leading to cost, access, and governance concerns.
 - **Unclear contributor scope:** It is unclear which repositories contribute to the public-facing CF docs, and which teams are actively maintaining them.
+- **Working Groups not informed of doc changes:** Contributors from multiple WGs already commit to documentation repositories today, but there is no mechanism to notify the relevant WG when content in their area changes. Only the Docs WG reviews PRs — other WGs are not looped in.
 
 ## Proposal
 
@@ -66,21 +67,26 @@ To sustain documentation quality without overburdening maintainers, the followin
 
 #### Repository Structure
 
-- After the migration, there is ONE single documentation repository that contains all documentation content and builds and publishes the site.
-- Working Groups maintain their documentation areas directly in this repository. Docs-related content in other repositories is migrated into it during Phase 3.
+The new CF documentation lives in **one single repository**. There is no multi-repo setup: all documentation content is authored, reviewed, built, and published from this one repository. Working Groups maintain their areas directly in it. This is a deliberate design decision — a single repository removes the "which repo do I edit?" problem entirely, since the URL path of any page maps directly to its file path in the repository. The edit link on every page points straight to the right file on GitHub with no lookup needed.
 
-#### Code Owners
+Docs-related content in other repositories is migrated into this repository during Phase 3 (see [Phases](#phases)).
 
-- The docs repository contains a `CODEOWNERS` file that assigns each documentation area to the GitHub team of the responsible Working Group.
-- The `CODEOWNERS` file MUST include the GitHub teams of all involved Working Groups, as well as the Docs WG team.
-- The GitHub teams SHOULD be kept in line with the WG membership defined in the community repo.
+#### Ownership and Notifications
+
+Today, documentation repositories like `docs-cloudfoundry-concepts`, `docs-running-cf`, and `docs-cf-admin` already have contributors from multiple Working Groups — engineers from ARP, ARI, ARD, FI, and others contribute alongside the Docs WG. Moving to a single repository does not change this: the same cross-WG contributors continue to contribute, now in one place with clearer directory-level boundaries.
+
+What a single repository adds is **per-area notifications**. A `CODEOWNERS` file with directory-level entries means the right WG is automatically notified when their area is touched — something that isn't possible today across many separate repositories. GitHub-native `CODEOWNERS` is the baseline; notification-only tools like CODENOTIFY MAY be evaluated if review-request noise becomes a concern.
+
+- The docs repository MUST contain a `CODEOWNERS` (or equivalent) file that assigns each area to the responsible WG's GitHub team, plus the Docs WG team.
+- The GitHub teams SHOULD be kept in line with WG membership defined in the community repo.
+- The Docs WG remains the sole approver for merging PRs. WG notifications are for awareness and optional review, not a merge gate.
 
 #### Review Process
 
 1. A contributor opens a PR against the docs repository.
-2. GitHub automatically requests review from the code owners, i.e., the GitHub team of the Working Group owning the changed area.
-3. The Docs WG reviews every PR and approves it before it is merged. The review covers content as well as look and feel, style, grammar, and consistency with the documentation style guide.
-4. Merging into the main branch triggers the build and the deployment to GitHub Pages.
+2. GitHub notifies the code owners for the changed area. This is an invitation to review, not a merge requirement.
+3. The Docs WG reviews every PR and approves it before merge — covering content, style, grammar, and consistency with the documentation style guide.
+4. Merging into the main branch triggers the build and deployment to GitHub Pages.
 
 #### Automation
 
@@ -130,6 +136,17 @@ The results of the PoC SHOULD be presented in a TOC / Docs WG meeting.
 
 Based on PoC findings, all documentation content SHOULD be migrated to Markdown. The conversion MUST be done by one central migration team to ensure consistency, not by each Working Group individually. A migration script MAY be developed, and AI tooling (e.g., Cursor or Claude) MAY be used for the bulk conversion of the ERB/HTML source to Markdown, as long as cross-repository links are preserved. Every section receives a manual review pass by the owning Working Group. A full migration timeline MUST be published and agreed upon by all affected Working Groups before this phase begins.
 
+#### Phase 3a: Parallel Operation and Commit-Tracked Sync
+
+After the initial migration, the new docs repository and the existing source repositories run in parallel until cutover. During this window:
+
+- The new docs repository tracks the upstream source repositories via a manifest file (e.g., `.docs-sources.json`) that records the last-synchronized commit SHA for each source repository.
+- A scheduled CI job (e.g., daily) checks each source repository for new commits since the recorded SHA, converts any changed content, opens a PR against the new docs repository, and updates the manifest on merge.
+- This ensures the new site stays current without requiring contributors to change their existing workflow in the source repositories before cutover.
+- The manifest and sync tooling are owned by the Docs WG.
+
+This phase ends when all Working Groups have confirmed their content is fully migrated and the cutover date is set.
+
 #### Phase 4: Cutover and Decommission
 
 - The new site goes live at `docs.cloudfoundry.org`.
@@ -142,6 +159,7 @@ Based on PoC findings, all documentation content SHOULD be migrated to Markdown.
 - **Phase 1 (Discovery):** October – November 2026 — stakeholder survey completed, repository inventory published
 - **Phase 2 (PoC):** November – December 2026 — working Docusaurus site with representative content, deployed to GitHub Pages
 - **Phase 3 (Full Migration):** Q1 2027 — all content migrated, CODEOWNERS in place, CI pipeline live
+- **Phase 3a (Parallel Operation):** Q1–Q2 2027 — commit-tracked sync running, WGs reviewing migrated content
 - **Phase 4 (Cutover):** Q2 2027 — `docs.cloudfoundry.org` DNS switched, old infrastructure decommissioned
 
 ## Impact and Consequences
