@@ -220,7 +220,6 @@ areas:
   - cloudfoundry/tps
   - cloudfoundry/cc-uploader
   - cloudfoundry/sync-integration-tests
-  - cloudfoundry/blobstore_url_signer
   - cloudfoundry/capi-workspace
   - cloudfoundry/delayed_job_sequel
   - cloudfoundry/stack-auditor

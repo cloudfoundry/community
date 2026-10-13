@@ -136,6 +136,7 @@ orgs:
         has_projects: false
         has_wiki: false
       blobstore_url_signer:
+        archived: true
         description: Signed URLs, or your money back!
         has_projects: true
       bosh:
