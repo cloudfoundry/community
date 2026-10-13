@@ -92,6 +92,8 @@ areas:
     github: duanemay
   - name: Amin Jamali
     github: winkingturtle-vmw
+  - name: Ned Petrov
+    github: neddp
   bots:
   - name: CF CLI Eng
     github: cf-cli-eng
