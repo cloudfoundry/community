@@ -10,206 +10,149 @@
 
 ## Summary
 
-Give applications a stable identity they can share, without distributing a shared
-secret. Developers assign a **service account**. Cloud Foundry issues and rotates
-each app instance's certificate, which the app uses to obtain short-lived JWTs
-from UAA. External services can trust those JWTs directly or exchange them for
-their own credentials.
+Cloud Foundry apps need an identity that external services can trust, without
+being handed a secret. This RFC proposes **service accounts**: named identities
+that a team creates in a space and assigns to one or more apps.
 
-The primary use case is **workload identity federation (WIF)** to off-platform
-services, especially services managed by service brokers.
+Apps prove their account with the certificate Cloud Foundry already gives every
+instance, and exchange it for short-lived tokens from UAA. The main use is
+**workload identity federation (WIF)** with cloud services, whether owned by the
+team itself or provisioned by a service broker. The same identity also lets
+coding agents call the Cloud Foundry API and authorizes app-to-app routes.
 
-**One account, multiple apps, independent keys, explicit permissions.**
+**One account, multiple apps, no shared secrets, explicit permissions.**
 
 ## Problem
 
-A payments API stores uploaded invoices in a broker-managed cloud object store;
-a background worker reads them for processing. Both need access to that external
-service, without storing a long-lived access key in their service bindings.
-The cloud provider supports WIF: exchange a JWT from a trusted issuer for
-short-lived service credentials. The missing piece is a stable workload identity
-that the provider can trust, without distributing another secret.
+A payments team runs two apps: an API that stores invoices in a PostgreSQL
+database on Amazon RDS, and a worker that processes them. Today both apps get a
+long-lived database password, from a service binding or a user-provided service.
+Credentials like this leak, are hard to rotate, and are shared by everything that
+can read the binding.
 
-**Broker-managed services are a natural fit.** A broker already provisions the
-service and its access. An identity-aware binding could configure trust and grants
-for the app's service account, returning federation/connection metadata instead
-of a long-lived password. Developers would retain the familiar service-binding UX.
+Cloud providers offer **WIF** instead: the app presents a signed token from a
+trusted issuer and receives short-lived credentials. UAA can issue such tokens.
+What is missing is a suitable **identity** to put in them. Platform teams have
+repeatedly asked for one that is:
 
-Cloud Foundry already gives every instance its own certificate. However, instance
-identities change on replacement, and app identities do not describe an intentional
-group of apps. The team needs a durable **payments identity**, independent of which
-instances or blue/green apps currently implement it.
+| Requirement | Why it matters |
+| --- | --- |
+| **Shared** by a chosen set of apps | The API and worker are one workload; blue/green apps come and go |
+| **Stable** across app replacement and renames | External policies should not change on every deployment |
+| **Human-readable** | For sensitive data, teams own their cloud accounts and write and review trust policies themselves |
+| **Known in advance** | For disaster recovery, external roles exist *before* the platform and apps |
+| **Secretless** | Nothing long-lived to store, leak or rotate |
+| **Explicitly authorized** | Having an identity must not grant access by itself |
 
-**Next, coding agents running as CF apps** may need to push the applications they
-generate. Explicit CAPI roles can give an agent that ability in a chosen space.
-This is an emerging use case; off-platform federation is the primary motivation.
+Instance, app, org and space identities each fail at least one of these; see
+[Alternatives considered](#alternatives-considered).
 
-## Proposal
+## Developer experience
 
-### 1. Create once, assign to apps
-
-First, give the payments apps an identity that the object store's federation
-provider can recognize across deployments. The account belongs to the targeted
-space: each app can use one account, and multiple apps in that space can share
-it. Cross-space assignment is excluded. Service access is granted in the next step.
+### 1. Create an account and assign it to apps
 
 ```sh
 cf target -o acme -s payments
-cf push payments-api --no-start
-cf push payments-jobs --no-start
-
 cf create-service-account payments-worker
 cf bind-service-account payments-api payments-worker
 cf bind-service-account payments-jobs payments-worker
-
-cf start payments-api
-cf start payments-jobs
-cf service-account payments-worker
+cf restart payments-api
+cf restart payments-jobs
 ```
+
+An app has at most one account; many apps in the same space can share one. Apps
+in other spaces cannot use it. Changes apply on restart. Assigning an account
+grants no permissions: an account answers **"who am I?"**, grants and roles
+answer **"what may I do?"**
 
 ```mermaid
 flowchart LR
-    CLI["Developer: create and bind"] --> CAPI["CAPI: account and assignments"]
-    CAPI -->|"first bind: managed OAuth client"| UAA["UAA"]
-    CAPI -->|"typed account identity"| Diego["BBS / Diego"]
+    CLI["Developer: create and bind"] --> CAPI["Cloud Controller: account and assignments"]
+    CAPI -->|"first bind: register account"| UAA["UAA"]
+    CAPI -->|"account identity"| Diego["Diego"]
     subgraph Space["Space: payments"]
-        API["payments-api<br/>instance key A"]
-        Jobs["payments-jobs<br/>instance key B"]
+        API["payments-api<br/>own instance certificate"]
+        Jobs["payments-jobs<br/>own instance certificate"]
     end
-    Diego -->|"issue certificate"| API
-    Diego -->|"issue certificate"| Jobs
-    API -.-> SAN["Shared DNS SAN:<br/>payments-worker.svc.identity"]
-    Jobs -.-> SAN
+    Diego -->|"certificate"| API
+    Diego -->|"certificate"| Jobs
+    API -.-> ID["Shared identity:<br/>payments-worker"]
+    Jobs -.-> ID
 ```
 
-First bind provisions one secretless UAA client and a roleless CAPI principal;
-subsequent binds reuse them. The CLI waits for provisioning jobs, including retries.
-No account certificate is issued before authorized provisioning is ready.
+*Both apps carry the same account identity, each in its own platform-issued,
+automatically rotated certificate. Nothing is shared between them.*
 
-### 2. Bind a broker-managed service using federation
+### 2. Access a cloud service
 
-Binding an account answers **“Who am I?”**, not **“What may I do?”** For a service
-whose broker supports identity federation, the proposed UX is:
+The app needs a role in the cloud account that trusts its service account. Who
+creates that role depends on who owns the resource; the app works the same way.
+
+#### Team-owned resources
+
+For the most sensitive data, shared brokers are often not allowed: following
+least privilege, databases live in cloud accounts owned by the team, which
+writes its own trust policies, usually as infrastructure as code. The team
+creates an IAM role that trusts exactly one identity:
+
+```json
+{
+  "Effect": "Allow",
+  "Principal": { "Federated": "arn:aws:iam::123456789012:oidc-provider/uaa.example.org/oauth/token" },
+  "Action": "sts:AssumeRoleWithWebIdentity",
+  "Condition": {
+    "StringEquals": {
+      "uaa.example.org/oauth/token:sub": "cf:service-account:payments-worker",
+      "uaa.example.org/oauth/token:aud": "https://sts.amazonaws.com"
+    }
+  }
+}
+```
+
+Every value is readable and known before any CF app or space exists, so the
+policy can be reviewed, versioned and applied in advance, including for a
+recovery foundation. The team passes the non-secret connection details and role
+to its apps, for example through a user-provided service:
 
 ```sh
-# Proposed option; requires broker and client-library support
-cf bind-service payments-api payments-store --authentication service-account
-cf bind-service payments-jobs payments-store --authentication service-account
+cf create-user-provided-service payments-db -p '{"host": "payments.abc123.eu-west-1.rds.amazonaws.com", "role_arn": "arn:aws:iam::123456789012:role/cf-payments-worker"}'
+cf bind-service payments-api payments-db
 ```
 
-CAPI conveys the platform-owned account identity to the broker, which configures
-the service's federation grants. Services may also be configured for federation
-outside a broker.
+#### Broker-managed services
 
-#### OSBAPI impact
+Where a broker is acceptable, it automates the same setup. `cf bind-service`
+works as today: if the app has an account, Cloud Controller tells the broker
+which account is binding. An RDS broker then creates a database user and an IAM
+role trusting only `payments-worker`, and returns connection details and the
+role: **no password** ([example](#b-example-rds-binding-and-operator-setup)).
+Brokers without support keep today's behavior.
 
-Propose a versioned service-plan capability, `service_account_binding`, and an
-additive `bind_resource.service_account` object in the OSBAPI binding request.
-These are **proposed extensions requiring OSBAPI agreement**, not existing fields.
-An explicitly negotiated CF context extension can pilot the same semantics.
-
-Illustrative request fragment supplied by CAPI, never by app binding parameters:
-
-```json
-{
-  "bind_resource": {
-    "app_guid": "<app-guid>",
-    "service_account": {
-      "version": "1.0",
-      "id": "<account-guid>",
-      "issuer": "https://uaa.example.org/oauth/token",
-      "subject": "cf:service-account:payments-worker"
-    }
-  }
-}
-```
-
-The broker accepts only configured issuer trust domains and returns non-secret
-connection/federation metadata through the binding's `credentials` object:
-
-```json
-{
-  "credentials": {
-    "uri": "https://storage.example.org/payments",
-    "authentication": {
-      "type": "oauth2-bearer-jwt",
-      "issuer": "https://uaa.example.org/oauth/token",
-      "audience": "https://identity.example.org/federation/cf-payments"
-    }
-  }
-}
-```
-
-CAPI approves and reconciles audience/scope targets before marking the binding
-ready; libraries perform token acquisition and provider-specific exchange.
-Unsupported brokers reject the requested mode; ordinary bindings stay unchanged.
-Retries/async completion retain the binding's identity snapshot; failed setup or
-cleanup remains visible and retryable. Grants and token targets are reference-counted
-per binding so one unbind cannot remove another binding's access.
-
-Account reassignment requires removing identity-based service bindings first.
-All apps sharing an account share its grants. The OSBAPI originating-identity header
-continues to identify the operation's caller, not the assigned workload account.
-
-Creating accounts follows service-instance creation permissions: **Space Developer
-or platform admin**, with readable/writable-space checks and operator controls.
-Other lifecycle management initially requires space manager/admin; assignment
-requires app-write permission. Ownership alone grants no account resource roles.
-
-### 3. From app certificate to off-platform access
-
-The app discovers its client ID and token endpoint through non-secret
-`VCAP_SERVICE_ACCOUNT` metadata. Its library reads `CF_INSTANCE_CERT` and
-`CF_INSTANCE_KEY`, reloading them when acquiring tokens after credential rotation.
+#### At runtime
 
 ```mermaid
 sequenceDiagram
     participant App as payments-api
     participant UAA
-    participant IdP as External federation provider
-    participant Service as Broker-managed service
-    App->>UAA: HTTPS POST /oauth/mtls/token + instance certificate
-    Note over App,UAA: grant_type=client_credentials<br/>client_id=cf:service-account:payments-worker
-    UAA->>UAA: Validate chain, key possession and exact account SAN
-    UAA-->>App: Signed JWT for the approved federation audience
-    App->>IdP: HTTPS token exchange with JWT
-    IdP->>IdP: Verify issuer, signature, audience and subject grant
-    IdP-->>App: Short-lived service credentials
-    App->>Service: Request using exchanged credentials
-    Service-->>App: Authorized data, or access denied
+    participant STS as AWS STS
+    participant DB as RDS database
+    App->>UAA: Request token, presenting instance certificate
+    UAA-->>App: Short-lived JWT for payments-worker
+    App->>STS: Assume the role with the JWT
+    STS->>STS: Check issuer and role trust for payments-worker
+    STS-->>App: Temporary AWS credentials
+    App->>DB: Connect with a short-lived IAM database token
 ```
 
-Illustrative **decoded UAA JWT** for an approved federation target (the provider's
-required audience and exchange protocol must be configured and tested):
+*The certificate is only used to get the token. Google Cloud and Azure follow the
+same pattern.*
 
-```json
-{
-  "iss": "https://uaa.example.org/oauth/token",
-  "sub": "cf:service-account:payments-worker",
-  "client_id": "cf:service-account:payments-worker",
-  "aud": ["https://identity.example.org/federation/cf-payments"],
-  "iat": 1791288000,
-  "exp": 1791288300
-}
-```
+- **Assign the account before binding brokered services.** Existing bindings keep
+  their credentials; rebind to switch.
+- **Access belongs to the account.** A role trusting `payments-worker` applies to
+  every app sharing the account. The CLI says so when binding.
 
-Both apps have the same subject, but authenticate with different keys. The token
-is limited to authorized audiences/scopes and expires within five minutes **and
-no later than the certificate used to obtain it**. The external provider controls
-the exchanged credentials' permissions and lifetime. Caller attribution should
-also be retained in platform-controlled claims; claim names remain to be agreed.
-
-There is deliberately **no `cnf`**: [RFC 8705][mtls] separates mTLS client
-authentication from certificate-bound tokens. UAA must honor the client policy
-`tls_client_certificate_bound_access_tokens: false`. The certificate is needed
-to obtain the token, not to present it to the federation provider. Token issuance needs no live CAPI
-assignment lookup; consumers validate issuer, signature, audience, expiry and
-permissions independently.
-
-### 4. Coding agents: the same identity, a CAPI target
-
-An agent app can instead request a CAPI-targeted token. An authorized role manager
-grants its account `SpaceDeveloper` in the space where generated apps may be pushed:
+### 3. Let a coding agent use the Cloud Foundry API
 
 ```sh
 cf set-space-role cf:service-account:app-builder acme generated-apps SpaceDeveloper --client
@@ -219,131 +162,234 @@ cf set-space-role cf:service-account:app-builder acme generated-apps SpaceDevelo
 sequenceDiagram
     participant Agent as Coding agent app
     participant UAA
-    participant CAPI as Cloud Foundry API
-    Agent->>UAA: mTLS token request for approved CAPI target
-    UAA-->>Agent: JWT with aud cloud_controller and CAPI scopes
-    Agent->>CAPI: Create and push generated app over HTTPS with bearer JWT
-    CAPI->>CAPI: Validate token and explicit SpaceDeveloper role
-    CAPI-->>Agent: Deployment result
+    participant CAPI as Cloud Controller
+    Agent->>UAA: Request token for Cloud Controller
+    UAA-->>Agent: JWT for app-builder
+    Agent->>CAPI: Push generated app
+    CAPI->>CAPI: Check SpaceDeveloper role for app-builder
+    CAPI-->>Agent: Result
 ```
 
-This is a separate token target, not an all-purpose multi-audience token. CAPI
-roles do not authorize external services, and federation grants confer no CAPI roles.
+*Cloud Controller roles and external grants are independent of each other.*
 
-### 5. Authorize app-to-app routes with the same identity
-
-Extend RFC 0055 route options with the source format
-`cf:svc:<service-account-name>`, for example `cf:svc:payments-worker`.
-The proposed CLI resolves the following to that route-option value:
+### 4. Authorize app-to-app routes
 
 ```sh
 cf add-route-policy apps.identity --hostname invoices --source-service-account payments-worker
 ```
 
-Both payments apps can now call the invoices route. GoRouter verifies the caller's
-certificate and checks for `payments-worker.svc.identity`; an app without that
-identity does not qualify for this grant. No JWT or token exchange is needed.
+Both payments apps can now call `invoices`. GoRouter checks the caller's
+certificate; no token is involved. Existing route policies and domain
+restrictions still apply.
 
-Existing route policies keep working. An account grant does not bypass a domain's
-org/space restriction: the **calling app** must still be in the allowed org or
-space. Without a matching grant, access remains denied.
+### 5. Manage the account
 
-**Disabling a service account stops new UAA tokens, not route access.** Route access
-uses the certificate directly, so an already-issued certificate may still work
-until expiry. Remove the route grant to withdraw that permission, and remove
-account route grants before deleting the account.
+| Intent | Command |
+| --- | --- |
+| List or show | `cf service-accounts`, `cf service-account payments-worker` |
+| Remove an app's account | `cf unbind-service-account payments-api` (then restart) |
+| Stop or resume new tokens | `cf disable-service-account` / `cf enable-service-account payments-worker` |
+| Delete | `cf delete-service-account payments-worker` |
+| Recover a deleted name (platform admin) | `cf create-service-account payments-worker --reuse-name` |
 
-### 6. Manage the account's lifecycle
+## Identity model
 
-| Intent | Command | Effect |
-| --- | --- | --- |
-| Inspect | `cf service-accounts` | List accounts in the targeted space |
-| Remove assignment | `cf unbind-service-account payments-api` | Changes desired identity; restart the app to apply |
-| Stop new tokens | `cf disable-service-account payments-worker` | Disables issuance for all apps sharing it |
-| Resume | `cf enable-service-account payments-worker` | Re-enables issuance, retaining roles |
-| Delete | `cf delete-service-account payments-worker` | Requires workload references removed; retains a name tombstone |
-| Recover a deleted name | `cf create-service-account payments-worker --reuse-name` | Explicit, audited platform-admin override |
+| Term | Meaning for `payments-worker` |
+| --- | --- |
+| **Service account** | Owned by one space; assigned to zero or more apps there |
+| **Account name** | `payments-worker`: chosen by the team, immutable, unique in the foundation |
+| **Token subject** (and UAA client ID) | `cf:service-account:payments-worker` |
+| **Certificate SAN** | `payments-worker.svc.identity`, added by Diego to each instance certificate |
+| **Route policy source** | `cf:svc:payments-worker` |
 
-**Space/org deletion cascades owned service accounts, as it does service instances.**
-CAPI cleans up account-backed service bindings and route grants, deletes the
-workloads and their account references, and removes managed UAA registrations and
-account roles before deleting the accounts. Name tombstones remain. Pending or
-failed cleanup prevents final space/org deletion and is visible through the
-deletion job; users need not manually delete each account first.
+- Names are lowercase [RFC 1123 hostname labels][names] of 3–63 characters.
+- External trust is always the pair **(UAA issuer, subject)**. A recovery
+  foundation with a new issuer must be trusted explicitly.
+- Deleted names stay reserved, so a new account cannot silently inherit old
+  external grants.
+- The SAN is an identifier only; it creates no DNS record or route.
 
-**Disabling an account is a token-issuance switch.**
-`cf disable-service-account payments-worker` disables its managed UAA client for
-all apps sharing the account; the CLI waits until reconciliation completes.
-The account, app assignments and CAPI roles remain, and apps keep running.
-Already-issued JWTs remain valid until expiry, and certificates can still grant
-route access. `cf enable-service-account payments-worker` restores token issuance
-with the retained assignments and roles. In the POC, disabling deletes the UAA
-client registration and enabling recreates it.
+## Lifecycle and security
 
-Running instances retain their launch identity—including renewal—until restart;
-new tasks use the desired assignment. Staging never receives the account identity.
-Unbind before assigning a different account. Zero-app accounts retain their client
-and roles until explicitly disabled/deleted.
+| Action | Running apps | New tokens | Existing tokens and certificates |
+| --- | --- | --- | --- |
+| Bind / unbind | Unchanged until restart | Follow the running identity | Unchanged |
+| Restart | Pick up the current assignment | Use the new identity | Valid until expiry |
+| Disable | Keep running, assignments and roles | Refused | Valid until expiry |
+| Delete | Not allowed while apps use it | Refused | Valid until expiry |
+| Space or org deletion | Deleted, like service instances | Refused | Valid until expiry |
 
-**Unbind, restart and disable do not revoke existing tokens or certificates.**
-Copied credentials can remain usable until expiry while the client is enabled;
-without restart, a running old assignment can keep renewing.
+New tasks use the current assignment; staging never receives the account. If
+space or org cleanup fails, the space or org is kept and can be retried.
 
-Names are immutable and unique within a foundation. They follow
-[RFC 1123 hostname-label syntax][names], restricted to lowercase ASCII and 3–63
-characters: letters, digits and hyphens, beginning and ending with a letter or digit.
-The SAN suffix creates no DNS record or route; external identity is the trusted
-`(issuer, subject)` pair. Admin `--reuse-name` creates a new UUID without restoring
-bindings/roles, preserves audit history and cannot bypass live-name conflicts or
-quotas. Its warning explains that external grants and valid old certificates may
-still apply to the reused identity.
+> **Nothing here is instant revocation.** To withdraw access immediately, remove
+> the external grant, Cloud Controller role or route policy.
 
-### 7. Extend space quotas
+**Tokens** are bearer JWTs, valid for at most five minutes and never past the
+certificate used to obtain them. Each is requested for one audience: Cloud
+Controller or an operator-configured federation endpoint. They record the
+requesting instance, app, space and org GUIDs for audit; authorization uses
+issuer and subject.
 
-Add a maximum account count to space quotas, with this proposed V3 fragment:
+**Tokens are not bound to the certificate.** [RFC 8705][mtls] separates using a
+certificate to authenticate the token request from binding the token to it with
+a `cnf` claim. AWS, Azure and Google Cloud WIF accept the token as a bearer
+assertion and do not verify proof of possession, so binding would add nothing.
+UAA already supports it per client, so it can be enabled later, through bound
+tokens or DPoP ([RFC 9449][dpop]), once providers support it.
+
+## Permissions and limits
+
+| Action or limit | Rule |
+| --- | --- |
+| Create an account | Space Developer or platform admin, like service instances |
+| Disable, enable, delete | Space Manager or platform admin |
+| Assign to an app | Anyone who can modify the app, within the owning space |
+| Grant Cloud Controller roles | Existing role managers |
+| Reuse a deleted name | Platform admin only, audited |
+| Space quota | New `service_accounts.total_service_accounts`; counts existing accounts, not deleted names |
+| Creation budget | Optional foundation-wide limit on creations per user or client per rolling seven days, or unlimited; admins exempt; deletion does not refund it |
+
+The creation budget prevents name hoarding on public platforms, since deleted
+names stay reserved.
+
+## Alternatives considered
+
+- **App labels.** A reasonable assignment UX, but labels are freely editable
+  metadata. Claiming an identity with existing grants must be authorized, and
+  roles, grants, disable and delete need a lifecycle beyond one app. A label UX
+  could be layered on top.
+- **GUID-based identity** (e.g. a SPIFFE ID with the space GUID). Valid, but not
+  readable, not known in advance, and changes when the space is recreated.
+- **Org and space names.** Readable, but CF names allow up to 255 characters with
+  punctuation and Unicode, which DNS and SPIFFE cannot represent without lossy
+  encoding, and renames change them. Hashing loses readability.
+- **Existing app identity.** Changes when an app is recreated, and cannot cover a
+  group of apps.
+- **Per-app client secrets.** Reintroduce the secrets this proposal removes.
+
+The account name is readable, chosen in advance and independent of mutable names
+and generated IDs. It could be expressed as a SPIFFE ID later; the decision here
+is the identity model, not the encoding.
+
+## Status and next steps
+
+**UAA certificate-based client authentication is implemented and agreed with the
+UAA team, pending final review in [UAA #4076][uaa]**, including the opt-in
+certificate binding policy, validated in a CF lab.
+
+Drafts in [Cloud Controller][capi], [capi-release][release], [BBS][bbs],
+[Diego][diego] and the [CLI][cli] demonstrate shared identity, explicit roles,
+disable/enable, unbind/restart, the creation budget and cascading space deletion.
+Creation permissions, attribution claims, CA rotation, space quotas, name reuse
+and upgrade compatibility remain.
+
+The next step is community review and approval of the identity model and
+developer experience.
+
+## Appendix: implementation notes
+
+### A. Open Service Broker API
+
+Cloud Controller adds the account to the Cloud Foundry `context` of a bind
+request, only when the app has a ready account (never for service keys):
 
 ```json
 {
-  "service_accounts": {
-    "total_service_accounts": 10
+  "context": {
+    "platform": "cloudfoundry",
+    "service_account": {
+      "issuer": "https://uaa.example.org/oauth/token",
+      "subject": "cf:service-account:payments-worker"
+    }
   }
 }
 ```
 
-Count existing accounts, including disabled/unprovisioned ones, not bindings or
-tombstones. Creation checks the limit atomically; deletion frees capacity. Lowering
-the limit blocks further creation rather than deleting accounts. Default/unlimited
-behavior follows existing space-quota conventions.
+This extends the CF platform profile, not core OSBAPI: no plan capability or
+version negotiation. The broker decides how to use it, may require it, and keeps
+an account's grant until its last binding is removed. The originating-identity
+header still identifies the user, not the account. Reassigning an app requires
+removing its identity-based bindings first.
 
-Separately, operators configure a foundation-wide creation budget per authenticated
-principal over a rolling seven-day window, with an explicit **unlimited** option.
-This constrains name-reservation abuse on public platforms; internal platforms may
-choose unlimited. The budget applies across all spaces to users and automation
-clients, but **platform admins are exempt**, including automation authenticated with
-platform-admin privileges. Each successful non-exempt creation consumes budget
-atomically; failed requests do not. Deletion remains available and does not replenish
-the budget. Admin-only `--reuse-name` remains subject to live-name and space-quota
-checks, but is exempt from this creation budget.
-This bounds per-principal creation rates, not total retained tombstones.
+### B. Example RDS binding and operator setup
 
-### Delivery
+Binding credentials returned by an RDS broker:
 
-**The UAA authentication foundation is already implemented and agreed with the
-UAA team, pending final review in [UAA #4076][uaa].** This covers certificate-based
-client authentication and registered subject/SAN matching. This RFC builds on
-that work; it does not propose starting UAA mTLS support from scratch.
+```json
+{
+  "host": "payments.abc123.eu-west-1.rds.amazonaws.com",
+  "port": 5432,
+  "database": "payments",
+  "username": "payments_worker",
+  "authentication": {
+    "type": "aws-web-identity",
+    "role_arn": "arn:aws:iam::123456789012:role/cf-payments-worker",
+    "audience": "https://sts.amazonaws.com",
+    "region": "eu-west-1"
+  }
+}
+```
 
-[CAPI][capi], [release wiring][release], [BBS][bbs], [Diego][diego] and [CLI][cli]
-drafts already demonstrate the shared two-app identity, explicit roles,
-disable/enable and unbind/restart against CAPI. Finish creation permissions,
-quotas/name reuse, cascading space/org cleanup, contract publication and compatible
-rollout before release.
+Platform operators configure once, at deploy time: UAA reachable as an OIDC
+issuer, the list of allowed token audiences, and, where brokers are used,
+permission for them to manage their grants. Whoever owns a cloud account
+registers UAA as a trusted issuer there (AWS IAM OIDC provider, Google Cloud
+workload identity pool, Azure federated credentials): the platform team for
+broker accounts, application teams for their own accounts.
 
-The next step is community review and RFC approval of the proposed identity model
-and developer experience. Detailed implementation and test evidence live in the
-linked PRs.
+### C. UAA client registration
 
-[mtls]: https://www.rfc-editor.org/rfc/rfc8705.html#section-3.4
+Cloud Controller registers one secretless client per account, using settings
+from [UAA #4076][uaa]:
+
+```json
+{
+  "client_id": "cf:service-account:payments-worker",
+  "authorized_grant_types": ["client_credentials"],
+  "authorities": ["cloud_controller.read", "cloud_controller.write"],
+  "access_token_validity": 300,
+  "tls-client-auth-ca": "<Diego instance identity CA>",
+  "tls_client_auth_san_dns": "payments-worker.svc.identity",
+  "tls_client_certificate_bound_access_tokens": false,
+  "tls-client-auth-allowed-resources": ["https://sts.amazonaws.com"],
+  "tls-client-auth-claim-mappings": [
+    { "field": "subject_cn", "claim": "cf_instance_guid" },
+    { "field": "subject_ou", "pattern": "^app:(.+)$", "claim": "app_guid" },
+    { "field": "subject_ou", "pattern": "^space:(.+)$", "claim": "space_guid" },
+    { "field": "subject_ou", "pattern": "^organization:(.+)$", "claim": "org_guid" }
+  ],
+  "tls-client-auth-required-claims": { "space_guid": "<owning-space-guid>" }
+}
+```
+
+Only Diego-issued certificates with this account's SAN, from the owning space,
+are accepted. Tokens are plain bearer tokens for Cloud Controller or the
+operator's federation audiences, and carry the instance, app, space and org GUIDs
+for audit. `authorities` only allow Cloud Controller tokens; actual access still
+depends on explicit roles. Developers cannot change any of these values.
+
+### D. Platform components
+
+- **Cloud Controller** stores accounts and assignments, registers the UAA client
+  on first bind and creates a roleless principal for role grants.
+- **BBS and Diego** add the account SAN to instance certificates; apps discover
+  their client ID and token endpoint through non-secret `VCAP_SERVICE_ACCOUNT`.
+- **GoRouter** matches route policies against the SAN.
+- Staging never receives an account. Components that do not support accounts
+  fail closed during upgrades.
+
+### E. CA rotation
+
+External providers trust UAA's signing keys, not Diego's CA, and are unaffected.
+When Diego's root CA rotates, UAA trusts old and new CAs during the overlap, then
+the new one only. Preferably, UAA gains operator-defined **named trust bundles**
+that clients reference (proposed on [UAA #4076][uaa]), making rotation a UAA
+configuration change. Until then, Cloud Controller copies its configured CA
+bundle into every account client and updates the clients it owns when it changes.
+
+[mtls]: https://www.rfc-editor.org/rfc/rfc8705.html
+[dpop]: https://www.rfc-editor.org/rfc/rfc9449.html
 [names]: https://www.rfc-editor.org/rfc/rfc1123.html#section-2.1
 [capi]: https://github.com/cloudfoundry/cloud_controller_ng/pull/5520
 [release]: https://github.com/cloudfoundry/capi-release/pull/702
