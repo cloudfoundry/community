@@ -380,8 +380,6 @@ branch-protection:
           protect: false
         hwc-buildpack:
           protect: false
-        java-buildpack:
-          protect: false
         nginx-buildpack:
           protect: false
         nodejs-buildpack:
@@ -403,8 +401,6 @@ branch-protection:
         go-buildpack-release:
           protect: false
         hwc-buildpack-release:
-          protect: false
-        java-buildpack-release:
           protect: false
         nginx-buildpack-release:
           protect: false
