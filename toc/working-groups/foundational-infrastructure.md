@@ -58,8 +58,6 @@ areas:
     github: peterhaochen47
   - name: Hongchol Sinn
     github: hsinn0
-  - name: Prateek Gangwal
-    github: coolgang123
   - name: Markus Strehle
     github: strehle
   - name: Daniel Linsley
@@ -98,8 +96,6 @@ areas:
     github: adrianhoelzl-sap
   - name: Duane May
     github: duanemay
-  - name: Prateek Gangwal
-    github: coolgang123
   - name: Daniel Garnier-Moiroux
     github: kehrlann
   - name: Filip Hanik
@@ -109,8 +105,6 @@ areas:
   reviewers:
   - name: Irene Gonzalez Ruiz
     github: ireneGonzalezRuiz
-  - name: Praveen K Kumar
-    github: praveenkalluri18
   - name: Georgi Genchev
     github: gdgenchev
   repositories:
@@ -141,9 +135,6 @@ areas:
     github: fhanik
   - name: Duane May
     github: duanemay
-  reviewers:
-  - name: Prateek Gangwal
-    github: coolgang123
   repositories:
   - cloudfoundry/go-uaa
 - name: Integrated Databases (Mysql / Postgres)
@@ -193,8 +184,6 @@ areas:
     github: mrosecrance
   - name: Brian Upton
     github: ystros
-  - name: Long Nguyen
-    github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
   - name: Aram Price
@@ -205,8 +194,6 @@ areas:
     github: anshrupani
   - name: Chris Selzo
     github: selzoc
-  - name: Nitin Ravindran
-    github: xtreme-nitin-ravindran
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -245,8 +232,6 @@ areas:
   - cloudfoundry/bosh-stemcells-ci
 - name: VM deployment lifecycle (BOSH)
   approvers:
-  - name: Long Nguyen
-    github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
   - name: Aram Price
@@ -398,8 +383,6 @@ areas:
   - name: ARI WG Git Bot
     github: ari-wg-gitbot
   approvers:
-  - name: Long Nguyen
-    github: lnguyen
   - name: Ramon Makkelie
     github: ramonskie
   - name: Aram Price
