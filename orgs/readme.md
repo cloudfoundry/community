@@ -32,14 +32,8 @@ Repositories listed in the working group yaml block that belong to github organi
 
 ### Branch Protection Rules
 
-Working groups can opt-in into branch protection rule generation for their projects according to [rfc-0015-branch-protection](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md) by setting a configuration flag in the working group charter yaml:
-
-```
-config:
-  generate_rfc0015_branch_protection_rules: true
-```
-
-Branch protection rules are applied using the [branchprotector tool from the prow toolset](https://docs.prow.k8s.io/docs/components/optional/branchprotector/).
+Branch protection rules are generated for every working group and the TOC according to [rfc-0015-branch-protection](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0015-branch-protection.md).
+They are applied using the [branchprotector tool from the prow toolset](https://docs.prow.k8s.io/docs/components/optional/branchprotector/).
 Rules specified in [branchprotection.yml](https://github.com/cloudfoundry/community/blob/main/orgs/branchprotection.yml) take precedence, i.e. no RFC-0015 rules are generated for repositories listed here but the static configuration is taken without modification.
 
 The generated branch protection rules specification for working group projects look like:
@@ -65,11 +59,10 @@ branch-protection:
 
 #### Deploy Keys (opt-in)
 
-Repositories that require direct pushes via SSH deploy keys (e.g. automated releases that bypass PRs) can opt-in by listing them under `config.deploy_keys.repositories` in the working group charter yaml:
+Repositories that require direct pushes via SSH deploy keys (e.g. automated releases that bypass PRs) can list them under `config.deploy_keys.repositories` in the working group charter yaml:
 
 ```yaml
 config:
-  generate_rfc0015_branch_protection_rules: true
   deploy_keys:
     repositories:
       - cloudfoundry/my-repo
