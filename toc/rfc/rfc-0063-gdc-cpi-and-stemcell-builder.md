@@ -1,4 +1,10 @@
-# RFC: Add Google Distributed Cloud air-gapped (GDC) BOSH CPI and Stemcell Support
+# Meta
+[meta]: #meta
+- Name: Add Google Distributed Cloud air-gapped (GDC) BOSH CPI and Stemcell Support
+- Start Date: 2026-09-26
+- Author: @dilipkumar2k6
+- Status: Accepted 
+- RFC Pull Request: [community#1616](https://github.com/cloudfoundry/community/pull/1616)
 
 ## Summary
 This RFC proposes adding support for **Google Distributed Cloud air-gapped (GDC)** infrastructure to the Cloud Foundry ecosystem under the **Foundational Infrastructure (FI) Working Group**.
