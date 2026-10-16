@@ -276,13 +276,13 @@ is the identity model, not the encoding.
 
 **UAA certificate-based client authentication is implemented and agreed with the
 UAA team, pending final review in [UAA #4076][uaa]**, including the opt-in
-certificate binding policy, validated in a CF lab.
+certificate binding policy and named trust bundles, validated in a CF lab.
 
 Drafts in [Cloud Controller][capi], [capi-release][release], [BBS][bbs],
 [Diego][diego] and the [CLI][cli] demonstrate shared identity, explicit roles,
-disable/enable, unbind/restart, the creation budget and cascading space deletion.
-Creation permissions, attribution claims, CA rotation, space quotas, name reuse
-and upgrade compatibility remain.
+disable/enable, unbind/restart, the creation budget, cascading space deletion and
+clients referencing a UAA trust bundle. Creation permissions, attribution claims,
+space quotas, name reuse and upgrade compatibility remain.
 
 The next step is community review and approval of the identity model and
 developer experience.
@@ -332,7 +332,8 @@ Binding credentials returned by an RDS broker:
 ```
 
 Platform operators configure once, at deploy time: UAA reachable as an OIDC
-issuer, the list of allowed token audiences, and, where brokers are used,
+issuer, a named UAA trust bundle holding Diego's instance identity CA, the list of
+allowed token audiences, and, where brokers are used,
 permission for them to manage their grants. Whoever owns a cloud account
 registers UAA as a trusted issuer there (AWS IAM OIDC provider, Google Cloud
 workload identity pool, Azure federated credentials): the platform team for
@@ -349,7 +350,7 @@ from [UAA #4076][uaa]:
   "authorized_grant_types": ["client_credentials"],
   "authorities": ["cloud_controller.read", "cloud_controller.write"],
   "access_token_validity": 300,
-  "tls-client-auth-ca": "<Diego instance identity CA>",
+  "tls-client-auth-ca-ref": "diego-instance-identity",
   "tls_client_auth_san_dns": "payments-worker.svc.identity",
   "tls_client_certificate_bound_access_tokens": false,
   "tls-client-auth-allowed-resources": ["https://sts.amazonaws.com"],
@@ -363,8 +364,8 @@ from [UAA #4076][uaa]:
 }
 ```
 
-Only Diego-issued certificates with this account's SAN, from the owning space,
-are accepted. Tokens are plain bearer tokens for Cloud Controller or the
+Only certificates issued by a CA in the `diego-instance-identity` trust bundle,
+with this account's SAN and from the owning space, are accepted. Tokens are plain bearer tokens for Cloud Controller or the
 operator's federation audiences, and carry the instance, app, space and org GUIDs
 for audit. `authorities` only allow Cloud Controller tokens; actual access still
 depends on explicit roles. Developers cannot change any of these values.
@@ -382,11 +383,10 @@ depends on explicit roles. Developers cannot change any of these values.
 ### E. CA rotation
 
 External providers trust UAA's signing keys, not Diego's CA, and are unaffected.
-When Diego's root CA rotates, UAA trusts old and new CAs during the overlap, then
-the new one only. Preferably, UAA gains operator-defined **named trust bundles**
-that clients reference (proposed on [UAA #4076][uaa]), making rotation a UAA
-configuration change. Until then, Cloud Controller copies its configured CA
-bundle into every account client and updates the clients it owns when it changes.
+Account clients never contain the CA: they reference an operator-defined UAA trust
+bundle by name ([UAA #4076][uaa]). When Diego's root CA rotates, the operator
+updates that bundle in UAA's configuration, first to old and new CA, then to the
+new CA only. No account client changes, and Cloud Controller is not involved.
 
 [mtls]: https://www.rfc-editor.org/rfc/rfc8705.html
 [dpop]: https://www.rfc-editor.org/rfc/rfc9449.html
