@@ -168,6 +168,59 @@ areas:
   - cloudfoundry/staticfile-buildpack
   - cloudfoundry/staticfile-buildpack-release
 
+- name: Windows Buildpacks
+  approvers:
+  - name: Arjun Sreedharan
+    github: arjun024
+  - name: Rob Dimsdale-Zucker
+    github: robdimsdale
+  - name: Teodora Nikolova
+    github: tnikolova82
+  - name: Tsvetelina Marinova
+    github: ivanovac
+  - name: Plamen Bardarov
+    github: plamen-bardarov
+  - name: Ramon Makkelie
+    github: ramonskie
+  - name: Kiril Keranov
+    github: kiril-keranov
+  - name: Peter Paul Bakker
+    github: stokpop
+  - name: Chris Selzo
+    github: selzoc
+  - name: Aram Price
+    github: aramprice
+  - name: Geoff Franks
+    github: geofffranks
+  - name: Amelia Downs
+    github: ameowlia
+  - name: Clay Kauzlaric
+    github: KauzClay
+  - name: Amin Jamali
+    github: winkingturtle-vmw
+  - name: Brandon Roberson
+    github: ebroberson
+  reviewers:
+  - name: Wayne E. Seguin
+    github: wayneeseguin
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  - name: Michael Both
+    github: ionphractal
+  - name: Ivo Radkov
+    github: ivo1116
+  - name: Tim Downey
+    github: tcdowney
+  - name: Alexander Lais
+    github: peanball
+  - name: Joris Baum
+    github: jorbaum
+  repositories:
+  - cloudfoundry/binary-buildpack
+  - cloudfoundry/binary-buildpack-release
+  - cloudfoundry/hwc-buildpack
+  - cloudfoundry/hwc-buildpack-release
+
 - name: CAPI
   approvers:
   - name: Florian Braun
