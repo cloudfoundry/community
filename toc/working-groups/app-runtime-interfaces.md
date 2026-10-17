@@ -78,8 +78,6 @@ areas:
   approvers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   - name: Simon Jones
@@ -318,9 +316,7 @@ areas:
     github: Gourab1998
   - name: Anugrah Gupta
     github: ANUGRAHG
-  reviewers:
-  - name: Bhuvisha N
-    github: Bhuvisha03
+  reviewers: []
   repositories:
   - cloudfoundry/terraform-provider-cloudfoundry
 
