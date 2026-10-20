@@ -79,5 +79,6 @@ areas:
     github: al-gerd
   repositories:
   - cloudfoundry/agentic-runtime-notes
+  - cloudfoundry/juicefs-release
   - cloudfoundry/skills
 ```
