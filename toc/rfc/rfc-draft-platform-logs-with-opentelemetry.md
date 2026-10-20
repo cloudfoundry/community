@@ -128,6 +128,7 @@ The implementation phase covers two deployment targets:
 - Adjusted `otel-collector-release` which supports consumption and processing of platform component logs
 - Ops file in [cf-deployment](https://github.com/cloudfoundry/cf-deployment) with which the operators can select the mechanism for forwarding platform logs
 - A guide and tooling (ops-files and maybe scripts) for migration from Syslog to OpenTelemetry egress of platform component logs which will enable deprecation of the `syslog-release`
+- Any required Cloud Foundry and BOSH semantic-convention extensions published by OpenTelemetry and linked from the Cloud Foundry documentation
 
 ## Impact and Consequences
 
