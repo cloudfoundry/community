@@ -1702,6 +1702,10 @@ orgs:
         description: Deploy single vanilla jumpbox machine with BOSH
         has_projects: false
         has_wiki: false
+      juicefs-release:
+        default_branch: main
+        description: JuiceFS volume service for Cloud Foundry
+        has_projects: false
       jvm-application-cnb:
         archived: true
         has_projects: true
