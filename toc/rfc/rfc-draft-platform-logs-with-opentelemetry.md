@@ -88,9 +88,13 @@ Analyze the internals of both `syslog-release` and `windows-syslog-release` to u
 - Access permissions for log files. On Ubuntu Noble and higher the AppArmor rules are enforced.
 - Setting of proper context data with attributes like deployment, az, id, instance etc. All the data from [syslog-release-forwarding-setup.conf.erb](https://github.com/cloudfoundry/syslog-release/blob/main/jobs/syslog_forwarder/templates/syslog-release-forwarding-setup.conf.erb) has to be covered.
 
-**Track 2 — Agree on a resource-attribute naming convention**
+**Track 2 — Maintain and extend the semantic conventions upstream**
 
-The OpenTelemetry format will follow the [OpenTelemetry Semantic Conventions for Cloud Foundry](https://opentelemetry.io/docs/specs/semconv/resource/cloudfoundry/). Those conventions cover `cloudfoundry.*` (app/org/space/process) attributes but do **not** define BOSH-level context (deployment, az, instance-group, instance-id, job). A convention for those BOSH attributes therefore needs to be established. SAP has internal conventions for BOSH which we propose to contribute and publish as the basis for this. Because attribute names are the public contract with every downstream backend, they must be settled and documented before Phase 2 produces stable output. See [Open Questions](#open-questions).
+The OpenTelemetry format will follow the [OpenTelemetry Semantic Conventions for Cloud Foundry](https://opentelemetry.io/docs/specs/semconv/resource/cloudfoundry/). Those conventions cover `cloudfoundry.*` attributes and some system-component mappings, but do **not** define the full BOSH-level context (deployment, az, instance-group, instance-id, job).
+
+The App Runtime Platform WG and its [Logging and Metrics team](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/app-runtime-platform.md#logging-and-metrics) are responsible for the Cloud Foundry semantic conventions and, eventually, the BOSH semantic conventions. Following the OpenTelemetry model used by other domain communities, changes will be proposed, reviewed, and maintained in the upstream [OpenTelemetry semantic-conventions repository](https://github.com/open-telemetry/semantic-conventions), in accordance with its contribution and project-management processes, and published on `opentelemetry.io`. A separate project or repository will not be created in the Cloud Foundry community. When upstream work begins, the Cloud Foundry community will be notified of the relevant issue or pull request and invited to collaborate there. The published specification will be linked from the Cloud Foundry documentation.
+
+SAP has internal BOSH conventions which we propose as a starting point for the upstream contribution. Because attribute names are the public contract with every downstream backend, they must be settled and documented before Phase 2 produces stable output.
 
 ##### Phase 2 - Implementation
 
