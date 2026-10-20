@@ -158,7 +158,6 @@ OpenTelemetry has become the de facto standard in the observability space, has a
 
 ## Open Questions
 
-- **BOSH resource-attribute naming convention.** The OpenTelemetry Semantic Conventions for Cloud Foundry do not define BOSH-level attributes (deployment, az, instance-group, instance-id, job). This RFC proposes to establish one, seeded from SAP's internal BOSH conventions. Open: is this owned as a Cloud Foundry standard, who maintains it, and should it be pursued for upstream OpenTelemetry adoption? This must be settled before Phase 2.
 - **Windows parity.** Can the OpenTelemetry Collector / `filelogreceiver` cover everything `windows-syslog-release` does, and with acceptable resource usage on Windows cells? To be answered in Phase 1.
 - **Log-file access permissions.** On Ubuntu Noble and higher, AppArmor rules are enforced. What changes are needed for the Collector to read `/var/vcap/sys/log` under those rules?
 - **Non-standard log paths.** Handling logs stored outside `/var/vcap/sys/log` is currently listed as nice-to-have — do any in-scope components require it?
