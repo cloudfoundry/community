@@ -4,7 +4,7 @@
 - Start Date: 2026-10-09
 - Author(s): @benjaminguttmann-avtq
 - Status: Draft
-- RFC Pull Request: Not yet submitted
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1657/changes
 - Related RFCs:
 - Approving Working Groups: Buildpacks and Stacks; Docs
 - Affected Component(s): cloudfoundry-samples repositories; sample documentation and validation for classic Cloud Foundry buildpacks
