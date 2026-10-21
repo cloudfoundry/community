@@ -21,7 +21,8 @@ A static source review, embedded in the Appendix, recommends retaining 12 exampl
 replacing 8 while preserving their capabilities, consolidating 34 into 10 existing
 repositories, deciding 11 platform/service demos separately, and excluding 8 helper
 or superseded projects. Validation will use kind-deployment with the latest
-respective buildpacks on all available stacks, currently cflinuxfs4 and cflinuxfs5.
+published release of each respective buildpack on all available stacks, currently
+cflinuxfs4 and cflinuxfs5.
 The Buildpacks and Stacks and Docs working groups review this proposal. It reports
 no successful deployments and does not authorize archiving or deleting repositories.
 
@@ -157,10 +158,10 @@ affected working-group approvals. A destination organization is not assumed; agr
 owners, permissions and security responsibility before any move, prefer GitHub
 transfers, and check history, issues, releases, redirects and CI integrations.
 
-Each maintained example needs a named owner, feature goal, runnable instructions,
-required services and recorded runtime/buildpack/stack support. Tests establish only
-the recorded combinations. Owners and capacity are open; no dates, costs or savings
-are established.
+The Docs working group owns the sample applications and assigns a named maintainer
+to each. Each maintained example needs a feature goal, runnable instructions, required
+services and recorded runtime/buildpack/stack support. Tests establish only the
+recorded combinations. Capacity is open; no dates, costs or savings are established.
 
 ### Automated dependency maintenance
 
@@ -169,7 +170,7 @@ equivalent) for all sample and variant directories, covering manifests, lockfile
 CI dependencies. Owners handle unsupported ecosystems.
 
 Update PRs run build/unit tests and feature smoke tests on kind-deployment with the
-latest respective buildpacks on all available stacks. Failed, missing, skipped or stale
+latest published buildpack releases on all available stacks. Failed, missing, skipped or stale
 required checks MUST block merging.
 
 Repositories can auto-merge dependency-only PRs from trusted automation without
@@ -191,9 +192,9 @@ flowchart LR
     C -- fail --> B
 ```
 
-Before each validation run, resolve the latest buildpack for each capability (plus Apt
-for the composition example) and record its exact version or artifact; do not assume
-the bootstrap pins are latest. Install missing or outdated artifacts through the CF
+Before each validation run, resolve the latest published release of each capability's
+buildpack (plus Apt for the composition example) and record its exact version or
+artifact; do not assume the bootstrap pins are latest, and do not use unreleased builds. Install missing or outdated artifacts through the CF
 buildpack API/CLI, verify installed buildpacks and stacks, select each stack
 explicitly, and record the kind-deployment revision. Unavailable or failing
 combinations stay blocked, not skipped.
@@ -252,11 +253,10 @@ repositories remain.
 
 - Which destination organization, if any, and which ownership/charter entries and
   RFC 0007 approvals are involved?
-- Who owns the retained examples, replacements and new buildpack samples, with what capacity?
+- What capacity does the Docs working group have for the retained examples,
+  replacements and new buildpack samples?
 - Which service instances and access does kind-deployment provide, and who maintains
   repeatable validation?
-- Does "latest" mean published releases or default-branch builds? Record exact artifacts
-  either way.
 - What are the owner decisions for the 11 platform/service demos and 8 helper or
   superseded projects?
 
