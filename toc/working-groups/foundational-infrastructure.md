@@ -374,6 +374,33 @@ areas:
   - cloudfoundry/bosh-alicloud-light-stemcell-builder
   - cloudfoundry/stemcells-alicloud-index
 
+- name: GDC VM deployment lifecycle (BOSH)
+  approvers:
+  # Google
+  - name: Ang Li
+    github: ajlfleos
+  - name: Sanjay Nagarur
+    github: sanjay-nagarur
+  - name: Dilip Kumar
+    github: dilipkumar2k6
+  - name: Daniel Sarran
+    github: daniel-sarran
+  - name: Christian Muuss
+    github: cmuuss
+  - name: Ahsan Sardar
+    github: ahsanasardar
+  # SAP
+  - name: Ahmed Hassanin
+    github: a-hassanin
+  - name: Ned Petrov
+    github: neddp
+  - name: Gowrisankar Marichetty
+    github: gowrisankar22
+  - name: Ivaylo Ivanov
+    github: ivaylogi98
+  repositories:
+  - cloudfoundry/bosh-gdc-cpi-release
+
 - name: Prometheus (Bosh)
   approvers:
     - name: Benjamin Guttmann
