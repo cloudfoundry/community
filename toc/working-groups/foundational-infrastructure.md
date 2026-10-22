@@ -227,13 +227,13 @@ areas:
     github: ivaylogi98
   - name: Allan Yu
     github: ay901246
+  - name: Saumya Dudeja
+    github: dudejas
   reviewers:
   - name: Yuri Adam
     github: yuriadam-sap
   - name: Danitsa Kostova
     github: lunaticomic-vc
-  - name: Saumya Dudeja
-    github: dudejas
   - name: Harry Metske
     github: metskem
   - name: Rene Dollevoet
@@ -398,6 +398,8 @@ areas:
     github: gowrisankar22
   - name: Ivaylo Ivanov
     github: ivaylogi98
+  - name: Saumya Dudeja
+    github: dudejas
   repositories:
   - cloudfoundry/bosh-gdc-cpi-release
 
