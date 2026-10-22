@@ -20,7 +20,7 @@ Load testing demonstrates that AWS-LC delivers **43% lower CPU usage** and **65%
 
 In addition to the performance gap, AWS-LC ships native **post-quantum-safe TLS key exchange** (ML-KEM / Kyber), which OpenSSL 3.0 does not support. Adopting AWS-LC therefore unlocks a forward-looking security capability that the current stemcell-provided OpenSSL cannot offer, ahead of the upcoming OpenSSL 3.5 stemcell adoption.
 
-The change is non-breaking: OpenSSL remains the default, and AWS-LC is offered as an opt-in variant alongside existing releases.
+The change is non-breaking: a single release bundles every variant, OpenSSL remains the default, and AWS-LC is selected opt-in at deploy time via a BOSH property — existing deployments are unaffected.
 
 ## Problem
 
@@ -59,96 +59,90 @@ Adopting AWS-LC therefore closes a forward-looking security gap that cannot be c
 
 ## Proposal
 
-Extend the haproxy-boshrelease build matrix: keep the existing OpenSSL-based release as the default, and additionally ship slim single-variant releases for AWS-LC and AWS-LC FIPS — each available with and without custom HAProxy patches. In addition, ship one multi-variant release that bundles all six HAProxy binaries together and lets operators switch between TLS backends at deploy time via a BOSH property, without recompiling.
+Ship a **single haproxy-boshrelease** that bundles every HAProxy build — the three SSL backends (system OpenSSL, AWS-LC, AWS-LC FIPS), each compiled both with and without the custom HAProxy patches — and let operators select which binary runs at deploy time via two BOSH properties. OpenSSL remains the default, so existing deployments are unaffected and no new release tarballs or naming schemes are introduced.
 
-### Release Variants
+> **Design note:** an earlier revision of this RFC proposed a matrix of slim single-variant release tarballs plus a separate `multi` release. During implementation we consolidated to a *single* release containing all variants, because compiling the complete release takes only ~5–6 minutes — so the slim per-variant tarballs saved little deploy-time compile while multiplying the release/pipeline surface to maintain. The sections below describe the consolidated design.
 
-Produce the following BOSH release tarballs from haproxy-boshrelease:
+### Selectable Builds
 
-The naming schema treats OpenSSL as the standard: the existing release keeps its current name with no `-openssl` suffix and continues to link against the system-provided OpenSSL from the stemcell. AWS-LC variants carry an explicit `awslc` (and `awslc-fips`) suffix, so existing deployments see no naming change.
+The single release bundles all six HAProxy binaries. Two orthogonal BOSH properties select which one runs at deploy time:
 
-| Variant | TLS Backend | Description |
-|---------|-------------|-------------|
-| `openssl` | System OpenSSL | Default, backward-compatible (no change for existing users) |
-| `openssl-patched` | System OpenSSL | With custom HAProxy patches |
-| `awslc` | AWS-LC | High-performance, non-FIPS |
-| `awslc-patched` | AWS-LC | With custom HAProxy patches |
-| `awslc-fips` | AWS-LC FIPS 3.3.0 | FIPS 140-3 validated |
-| `awslc-fips-patched` | AWS-LC FIPS | FIPS with custom HAProxy patches |
-| `multi` | All of the above | Runtime-switchable, for migration |
+- `ha_proxy.ssl_variant` — the TLS backend: `openssl` (default), `awslc`, or `awslc-fips`.
+- `ha_proxy.include_haproxy_patches` — whether to run the build carrying the custom HAProxy patches: `false` (default) or `true`.
 
-#### Custom HAProxy Patches (the `-patched` variants)
+OpenSSL remains the standard: both properties default to the OpenSSL/unpatched build, which continues to link against the system-provided OpenSSL from the stemcell, so existing deployments see no change. The resulting combinations:
 
-The `-patched` variants apply a single patch that relaxes HAProxy's enforcement of [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) (the WebSocket protocol). Stock HAProxy rejects a WebSocket upgrade request whose `Sec-WebSocket-Key` header is missing or malformed; the patch removes that validation in the HTTP/1 multiplexer so such requests are accepted and forwarded to the backend.
+| `ssl_variant` | `include_haproxy_patches` | Binary | Notes |
+|---|---|---|---|
+| `openssl` (default) | `false` (default) | system OpenSSL | backward-compatible default — no change for existing users |
+| `openssl` | `true` | system OpenSSL + patches | |
+| `awslc` | `false` | AWS-LC | high-performance, non-FIPS |
+| `awslc` | `true` | AWS-LC + patches | |
+| `awslc-fips` | `false` | AWS-LC FIPS 3.3.0 | FIPS 140-3 validated |
+| `awslc-fips` | `true` | AWS-LC FIPS + patches | FIPS with custom HAProxy patches |
+
+#### Custom HAProxy Patches (`include_haproxy_patches`)
+
+The patched builds apply a single patch that relaxes HAProxy's enforcement of [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) (the WebSocket protocol). Stock HAProxy rejects a WebSocket upgrade request whose `Sec-WebSocket-Key` header is missing or malformed; the patch removes that validation in the HTTP/1 multiplexer so such requests are accepted and forwarded to the backend.
 
 - **Why it is needed:** some scenarios require WebSocket support for legacy clients that open long-lived WebSocket connections without sending a spec-compliant `Sec-WebSocket-Key`. These clients predate strict RFC 6455 enforcement and cannot be changed; without the patch their connections are rejected at the ingress. This requirement has been carried across HAProxy releases (it is not new to any particular HAProxy major version).
-- **Why it cannot be the default:** the patch makes HAProxy intentionally non-compliant with RFC 6455 (it accepts malformed WebSocket handshakes). Shipping it by default would weaken protocol conformance for every operator, so it is offered only as an explicit opt-in variant.
-- **Why it is a separate variant rather than a runtime toggle:** BOSH properties are evaluated at deploy time, not at package-compilation time, and BOSH does not recompile a package when a property changes. A compile-time toggle is therefore not expressible as a BOSH property. Shipping the patch as its own variant keeps each compiled binary content-addressable and lets operators who do not need it avoid it entirely.
+- **Why it cannot be the default:** the patch makes HAProxy intentionally non-compliant with RFC 6455 (it accepts malformed WebSocket handshakes). Shipping it by default would weaken protocol conformance for every operator, so it is offered only as an explicit opt-in.
+- **Why it is a precompiled build selected by a property, not a compile-time toggle:** BOSH properties are evaluated at deploy time, and BOSH does not recompile a package when a property changes — so the patch cannot be applied conditionally at compile time from a property. Instead the release ships both the patched and the unpatched binary for every SSL backend (each content-addressable), and `ha_proxy.include_haproxy_patches` selects between the already-compiled binaries at deploy time.
 
-Operators who do not have this legacy-WebSocket requirement should use the unpatched variants (`openssl`, `awslc`, `awslc-fips`).
+Operators who do not have this legacy-WebSocket requirement leave `include_haproxy_patches` at its default (`false`).
 
-#### Single-Variant Releases
+#### One Release, Selected at Deploy Time
 
-Each single-variant release contains one monolithic `haproxy` package with only the blobs required for that specific TLS backend. The packaging script auto-detects which library to build based on the included blobs.
-
-These releases are **slim and deploy quickly**: only the necessary dependencies are compiled, and the release tarball contains no unused components. A typical OpenSSL deployment compiles in ~15 minutes; AWS-LC in ~25 minutes (including cmake).
-
-#### Multi-Variant Release
-
-The multi release bundles all six HAProxy binaries into a single deployment. A BOSH property selects the active variant at runtime:
+There is a single release tarball. It bundles all six HAProxy binaries plus the shared dependencies, and the two properties above pick the active binary at runtime:
 
 ```yaml
 properties:
   ha_proxy:
-    ssl_variant: awslc  # openssl | openssl-patched | awslc | awslc-patched | awslc-fips | awslc-fips-patched
+    ssl_variant: awslc              # openssl (default) | awslc | awslc-fips
+    include_haproxy_patches: false  # default; set true for the patched build
 ```
 
-The multi release is **useful for migration scenarios**. When adopting AWS-LC, operators can switch back to OpenSSL in ~2 minutes (property change + redeploy) without recompilation. This is critical because:
+Switching TLS backend (or toggling the patches) is a **property change plus redeploy (~2 minutes), with no recompilation** — the target binary is already compiled and installed. Adoption and rollback are therefore cheap and fully reversible: if an AWS-LC issue surfaces under production traffic, flipping `ssl_variant` back to `openssl` and redeploying restores the previous behaviour in minutes. This matters because:
 
 - AWS-LC has slightly different cipher/curve support (no DHE, no X448)
 - Issues may only surface under production traffic patterns
-- Recompilation from scratch takes ~25 minutes; a property switch takes ~2 minutes
 
-Once migration is validated, operators can switch to the slim single-variant `awslc` release for production.
+Compiling the **complete** release on the deploy target takes only **~5–6 minutes** for all variants combined, because the expensive dependencies (`haproxy-deps`, `aws-lc-src`, `cmake`) are compiled once and shared (see Build Architecture). Because the full build is this cheap, there is no benefit to maintaining separate slim per-variant releases: a single release keeps the build matrix, the CI pipeline, and the operator-facing choices simple, while costing only a few minutes of one-time deploy compilation.
 
 ### Build Architecture
 
-The multi release avoids redundant compilation through shared packages:
+The release avoids redundant compilation through shared packages, so building all variants together is far cheaper than six independent builds:
 
 ```
-haproxy-deps       → Lua, PCRE2, socat, hatop (compiled once, shared by all 6 variants)
-cmake              → CMake (compiled once, shared by aws-lc and aws-lc-fips)
-aws-lc             → AWS-LC library (non-FIPS)
-aws-lc-fips        → AWS-LC FIPS library (requires Go toolchain for delocate)
-haproxy-openssl    → HAProxy binary linked to system OpenSSL
-haproxy-awslc      → HAProxy binary linked to AWS-LC
-haproxy-awslc-fips → HAProxy binary linked to AWS-LC FIPS
+haproxy-deps                 → Lua, PCRE2, socat, hatop (compiled once, shared by all binaries)
+aws-lc-src                   → AWS-LC source, unpacked once (shared by aws-lc and aws-lc-fips)
+cmake                        → CMake (shared by aws-lc and aws-lc-fips)
+aws-lc / aws-lc-fips         → AWS-LC libraries (FIPS adds -DFIPS=1 + a Go toolchain for delocate)
+haproxy-openssl[-patched]    → HAProxy linked to system OpenSSL  (± patches)
+haproxy-awslc[-patched]      → HAProxy linked to AWS-LC          (± patches)
+haproxy-awslc-fips[-patched] → HAProxy linked to AWS-LC FIPS     (± patches)
 ```
 
-HAProxy is compiled with `USE_OPENSSL_AWSLC=1` for both FIPS and non-FIPS. FIPS is a library property — HAProxy itself does not need separate FIPS logic.
+HAProxy is compiled with `USE_OPENSSL_AWSLC=1` for both FIPS and non-FIPS. FIPS is a library property — HAProxy itself does not need separate FIPS logic. With the shared packages, compiling the entire release — all six HAProxy binaries plus both AWS-LC libraries — on the deploy target takes about **5–6 minutes**.
 
 ### Costs and CI Impact
 
-It is worth being precise about where the cost of the expanded variant matrix actually lands, because the two obvious concerns — CI build time and operator deploy time — behave very differently.
+Consolidating to a single release keeps both the pipeline and operator deploys simple.
 
-**Operator deploy-time compilation is unchanged.** A BOSH release tarball ships source and blobs; the actual compilation happens on the target VM at deploy time and, for the single-variant releases, compiles **only the one variant an operator deploys**. A slim single-variant release compiles exactly one TLS library plus one HAProxy binary regardless of how many variants exist in the matrix. Adding more variants to the matrix therefore imposes **no additional compilation cost** on any operator who does not deploy them. The multi release is the only exception — it compiles every bundled variant — and it is explicitly a migration/testing artifact, not the recommended production target.
+**Operator deploy-time compilation is a one-time ~5–6 minutes.** A BOSH release tarball ships source and blobs; the compilation happens on the target VM at deploy time. Because every binary is bundled, a deploy compiles all of them — but thanks to the shared `haproxy-deps`, `aws-lc-src`, and `cmake` packages this is only ~5–6 minutes total, and it happens once. Subsequent redeploys reuse the compiled packages, so switching `ssl_variant` / `include_haproxy_patches` is a ~2-minute property change with no recompilation.
 
-**The incremental cost is confined to the release-build pipeline.** Producing the extra tarballs in Concourse means running `bosh create-release` once per variant. All the additional variants together add a few minutes of pipeline wall-clock (tarring source + blobs, computing fingerprints, uploading to the blobstore), plus the disk to store the extra tarballs (each AWS-LC variant bundles the AWS-LC source blob, so the AWS-LC tarballs are a few hundred MB each and the multi tarball larger still). It does **not** compile HAProxy or AWS-LC in the pipeline — that cost is deferred to deploy time as described above.
+**The release pipeline produces exactly one tarball.** There is no per-variant fan-out: `bosh create-release` runs once, so pipeline wall-clock and artifact storage are those of a single release rather than seven. This is the main reason the design consolidated to one release — the slim per-variant tarballs saved only a couple of minutes of deploy-time compile (out of 5–6) while multiplying the number of artifacts, tarball-naming schemes, and release-pipeline steps to maintain.
 
-**This recurring cost is small in absolute terms.** haproxy-boshrelease cut **9 releases in the first half of 2026**. At that cadence, a few extra minutes of pipeline time and a doubling of per-release artifact disk are negligible against the value of shipping the variants operators need. The CI acceptance-test matrix does not grow linearly with the tarball count either: acceptance jobs are defined per TLS backend (`awslc`, `awslc-fips`), and the `-patched` axis reuses the same backend under test rather than adding new backend combinations.
-
-In short: the matrix size is a release-pipeline concern measured in minutes-per-release and disk, not a per-operator or per-deploy cost.
+**CI acceptance tests** exercise each TLS backend by deploying the single release and selecting the backend via `ha_proxy.ssl_variant` (`openssl`, `awslc`, `awslc-fips`), rather than building a separate release per backend.
 
 ### Runtime Selection
 
-The job wrapper resolves the binary path at startup:
+The job wrapper composes the binary package from the two properties at startup — `haproxy-<ssl_variant>`, with a `-patched` suffix appended when `include_haproxy_patches` is `true` — and runs it:
 
-1. If `/var/vcap/packages/haproxy-<ssl_variant>` exists → use variant binary (multi release).
-2. If `ssl_variant` is unset (or the release ships only the monolithic `haproxy` package) → use `/var/vcap/packages/haproxy` (single-variant release).
+- `ssl_variant` unset / `openssl` **and** `include_haproxy_patches` unset / `false` → `haproxy-openssl`, the backward-compatible default; existing deployments need no manifest change.
+- e.g. `ssl_variant: awslc-fips` + `include_haproxy_patches: true` → `haproxy-awslc-fips-patched`.
 
-This ensures backward compatibility: existing deployments that use the single-variant `openssl` release continue to work without manifest changes.
-
-Setting `ssl_variant` to a value whose package is not present in the deployed release is a configuration error and **must fail fast with a clear message** rather than silently falling back to a different binary. This covers two cases: an unknown value (e.g. `foobar`) in any release, and a valid variant name on a single-variant release that does not contain it (e.g. `awslc-fips` on the `openssl` release). 
+`ssl_variant` accepts only `openssl`, `awslc`, or `awslc-fips`. Any other value — including an old-style combined name such as `awslc-patched` — is a configuration error, and the job **fails fast with a clear message** rather than silently falling back to a different binary.
 
 ### Measured Performance Gap
 
@@ -190,7 +184,7 @@ The practical impact is small but **not zero**. Clients that already support ECD
 
 Crucially, a DHE-only client does **not** transparently fall back to ECDHE: under the default cipher ordering, if it were capable of ECDHE it would already have negotiated ECDHE. This is because HAProxy enables server cipher preference by default (`SSL_OP_CIPHER_SERVER_PREFERENCE`, which also governs curve/group selection), so HAProxy picks the first entry in its own ordered list that the client supports — and every ECDHE suite sits ahead of any DHE suite in the default list. So the clients currently negotiating DHE are, by definition, the ones for which DHE was the only mutually-supported key exchange. This preference ordering is operator-configurable — it can be inverted with `prefer-client-ciphers` (which haproxy-boshrelease does not set by default), and an operator could place DHE ahead of ECDHE in the list, though there is no practical reason to — so it is a property of the shipped default rather than a guarantee.
 
-That said, genuinely **TLS 1.2-capable but DHE-only** clients are rare in absolute terms, and the affected volume is quantifiable in advance from the access logs: before DHE is disabled these handshakes still succeed (so they produce no `ssl_fc_err`), but they can be counted by the negotiated-cipher fetch, i.e. requests where a `DHE-*` suite was selected. This lets the impact be measured and the affected clients identified *before* the switch, rather than discovered afterwards. The migration path further de-risks it via the reversible `multi`-release rollback.
+That said, genuinely **TLS 1.2-capable but DHE-only** clients are rare in absolute terms, and the affected volume is quantifiable in advance from the access logs: before DHE is disabled these handshakes still succeed (so they produce no `ssl_fc_err`), but they can be counted by the negotiated-cipher fetch, i.e. requests where a `DHE-*` suite was selected. This lets the impact be measured and the affected clients identified *before* the switch, rather than discovered afterwards. The migration path further de-risks it via the reversible, property-based rollback (flip `ssl_variant` back to `openssl` and redeploy).
 
 Recommended curve configuration for AWS-LC: `X25519:P-256:P-384:P-521`
 
@@ -212,22 +206,15 @@ haproxy-boshrelease already has a substantial test suite that this proposal reus
 
 ### Version Management
 
-All component versions (HAProxy, Lua, PCRE2, AWS-LC, CMake, Go) are defined in a single `src/haproxy-versions.sh` file, sourced by all packaging scripts. The existing autobump CI job updates this file for automated dependency bumps.
+Component versions are defined in two files sourced by the packaging scripts: `src/haproxy-versions.sh` (HAProxy, Lua, PCRE2, socat, hatop) and `src/aws-lc-versions.sh` (AWS-LC, CMake, Go). They are kept separate so a HAProxy bump does not change the AWS-LC packages' fingerprints and force an unnecessary AWS-LC recompile. The existing autobump CI job updates both for automated dependency bumps.
 
 ### Proposed, Low-Risk Migration Path
 
-The path below is **fully optional**. The multi release exists as a **safety net** for operators who want fast rollback to OpenSSL during the transition. It is not a required step, and it is not the intended long-term home for AWS-LC deployments — once a deployment has settled on AWS-LC, the slim single-variant `awslc` (or `awslc-fips`) release is the recommended target. The slim release contains exactly one HAProxy binary, has a small tarball, deploys quickly, and **does not require the `ha_proxy.ssl_variant` property** at all (it falls back to `/var/vcap/packages/haproxy` directly).
+Because everything lives in one release and switching is a property change, adoption and rollback are both cheap and fully reversible — there is no separate release to move between, and the reversibility *is* the safety net.
 
-Two equally valid adoption routes:
-
-- **Direct route (recommended once confident)**: deploy the slim `awslc` release. No `ssl_variant` property, no multi-binary overhead, no compilation of unused variants.
-- **Safety-net route (recommended for risk-averse migrations)**: deploy the multi release first, set `ssl_variant: awslc`, validate under production traffic, and once confident, switch to the slim `awslc` release. If problems surface during the multi-release phase, flipping `ssl_variant` back to `openssl` and redeploying takes ~2 minutes with no recompilation.
-
-Phased rollout:
-
-1. **Phase 1** (this RFC): ship AWS-LC variants alongside OpenSSL. No change for existing deployments.
-2. **Phase 2** (optional): operators choose the safety-net route via the multi release, **or** jump directly to the slim single-variant `awslc` release.
-3. **Phase 3**: switch the default release shipped by haproxy-boshrelease (the no-suffix slim release) from OpenSSL to AWS-LC. The multi release continues to exist for migrations but is not the long-term target — most production deployments end up on a slim single-variant release.
+1. **Phase 1** (this RFC): ship the release with AWS-LC bundled. No change for existing deployments — `ssl_variant` defaults to `openssl`.
+2. **Phase 2** (optional): operators set `ssl_variant: awslc` (or `awslc-fips`) and redeploy, then validate under production traffic. If an issue surfaces, flipping `ssl_variant` back to `openssl` and redeploying restores the prior behaviour in ~2 minutes with no recompilation.
+3. **Phase 3**: change the shipped default `ssl_variant` from `openssl` to `awslc` once the ecosystem has validated it, so new deployments get AWS-LC by default while OpenSSL remains selectable via the property.
 
 ### cf-deployment Integration
 
