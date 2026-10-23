@@ -102,11 +102,11 @@ areas:
     github: kiril-keranov
   - name: Peter Paul Bakker
     github: stokpop
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   reviewers:
   - name: Wayne E. Seguin
     github: wayneeseguin
-  - name: Benjamin Guttmann
-    github: benjaminguttmann-avtq
   - name: Michael Both
     github: ionphractal
   - name: Ivo Radkov
