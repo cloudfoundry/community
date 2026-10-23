@@ -229,6 +229,8 @@ areas:
     github: lodener
   - name: Sascha Stojanovic
     github: Sascha-Stoj
+  - name: Sven Schmidt
+    github: schmidtsv
   repositories:
   - cloudfoundry/concourse-infra-for-fiwg
   - cloudfoundry/bosh-stemcells-ci
@@ -287,6 +289,8 @@ areas:
     github: lunaticomic-vc
   - name: Sascha Stojanovic
     github: Sascha-Stoj
+  - name: Sven Schmidt
+    github: schmidtsv
   repositories:
     - cloudfoundry/backup-and-restore-sdk-release
     - cloudfoundry/bbl-state-resource
