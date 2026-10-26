@@ -64,6 +64,8 @@ areas:
     github: spgreenberg
   - name: Norman Abramovitz
     github: norman-abramovitz
+  - name: Anita Flegg
+    github: anita-flegg
   reviewers:
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
