@@ -31,9 +31,13 @@ name: Documentation
 execution_leads:
 - name: Norman Abramovitz
   github: norman-abramovitz
+- name: Katharina Przybill
+  github: kathap
 technical_leads:
 - name: Norman Abramovitz
   github: norman-abramovitz
+- name: Katharina Przybill
+  github: kathap
 bots: []
 areas:
 - name: Docs
@@ -42,6 +46,8 @@ areas:
     github: anita-flegg
   - name: Norman Abramovitz
     github: norman-abramovitz
+  - name: Katharina Przybill
+    github: kathap
   repositories:
   - cloudfoundry/docs-book-cloudfoundry
   - cloudfoundry/docs-cf-admin
@@ -66,6 +72,8 @@ areas:
     github: norman-abramovitz
   - name: Anita Flegg
     github: anita-flegg
+  - name: Katharina Przybill
+    github: kathap
   reviewers:
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
