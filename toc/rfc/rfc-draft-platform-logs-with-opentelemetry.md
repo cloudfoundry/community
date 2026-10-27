@@ -15,7 +15,9 @@ Members of the [App Runtime Platform WG](https://github.com/cloudfoundry/communi
 
 We believe that adding OpenTelemetry support for platform component logs will enable more reliable delivery and open possibilities for better processing of the telemetry data downstream inside and outside of Cloud Foundry.
 
-In this RFC, "platform component logs" means the BOSH job logs written to `/var/vcap/sys/log` on component VMs and forwarded off-box by [`syslog-release`](https://github.com/cloudfoundry/syslog-release). It does **not** cover the platform-emitted lines in the per-app Loggregator stream (source types `API`, `RTR`, ...), which reach users via `cf logs` and are unaffected by this proposal.
+In this RFC, "platform component logs" includes the BOSH job logs written under `/var/vcap/sys/log` on component VMs and forwarded off-box by [`syslog-release`](https://github.com/cloudfoundry/syslog-release). Collection from additional, operator-defined log paths will also be supported.
+
+It does **not** cover the platform-emitted lines in the per-app Loggregator stream (source types `API`, `RTR`, ...), which reach users via `cf logs` and are unaffected by this proposal.
 
 ## Problem
 
