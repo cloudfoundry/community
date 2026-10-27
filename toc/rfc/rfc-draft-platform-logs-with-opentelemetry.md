@@ -54,7 +54,9 @@ Cloud Foundry supports platform log collection on two major types of operating s
 
 #### Focus
 
-This implementation will focus on collection and processing of the platform component logs (BOSH job logs) stored in `/var/vcap/sys/log` directory. Supporting logs stored in other paths is a nice-to-have capability.
+This implementation will provide a standard configuration for collecting and processing platform component logs, including BOSH job logs stored under `/var/vcap/sys/log`. The file inputs and processing provided by `syslog-release` will be covered by equivalent OpenTelemetry `filelogreceiver` configuration and appropriate Collector pipelines.
+
+Operator-defined additional log paths will also be supported. The implementation will support configuring the necessary file-access permissions, including AppArmor rules where applicable.
 
 The two basic functions of the `syslog-release` will be supported by the OpenTelemetry-based approach as follows:
 - blackbox -> [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
