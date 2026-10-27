@@ -37,7 +37,7 @@ The `syslog-release` remains the default and stays in place; OpenTelemetry is of
 
 #### Out of scope
 
-This RFC covers only the `blackbox`/RSyslog path that tails `/var/vcap/sys/log` and forwards component logs off-box. It does **not** cover the paths by which some platform component logs reach operators through Loggregator:
+This RFC covers collection and off-box forwarding of platform logs to the `syslog-release` path, including support for operator-defined log paths. It does **not** cover the paths by which some platform component logs reach operators through Loggregator:
 
 - `BOSH jobs → forwarder-agent → syslog-agent → aggregate drain → log-cache`
 - `BOSH jobs → forwarder-agent → loggregator-agent → doppler → RLP` (legacy; removed in the shared-nothing architecture)
