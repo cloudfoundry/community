@@ -163,5 +163,4 @@ OpenTelemetry has become the de facto standard in the observability space, has a
 
 - **Windows parity.** Can the OpenTelemetry Collector / `filelogreceiver` cover everything `windows-syslog-release` does, and with acceptable resource usage on Windows cells? To be answered in Phase 1.
 - **Log-file access permissions.** On Ubuntu Noble and higher, AppArmor rules are enforced. What changes are needed for the Collector to read `/var/vcap/sys/log` under those rules?
-- **Non-standard log paths.** Handling logs stored outside `/var/vcap/sys/log` is currently listed as nice-to-have — do any in-scope components require it?
 
