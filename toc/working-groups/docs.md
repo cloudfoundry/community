@@ -29,11 +29,11 @@ To document the Cloud Foundry user experience.
 ```yaml
 name: Documentation
 execution_leads:
-- name: Anita Flegg
-  github: anita-flegg
+- name: Norman Abramovitz
+  github: norman-abramovitz
 technical_leads:
-- name: Anita Flegg
-  github: anita-flegg
+- name: Norman Abramovitz
+  github: norman-abramovitz
 bots: []
 areas:
 - name: Docs
@@ -62,6 +62,8 @@ areas:
   approvers:
   - name: Steve Greenberg
     github: spgreenberg
+  - name: Norman Abramovitz
+    github: norman-abramovitz
   - name: Anita Flegg
     github: anita-flegg
   reviewers:
