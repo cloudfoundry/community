@@ -3,9 +3,9 @@
 - Name: Support Platform Logs Collection and Processing with OpenTelemetry
 - Start Date: 2026-09-10
 - Author(s): @chombium, @jorbaum, @Katharin4, @beyhan, @silvestre
-- Status: Draft
+- Status: Accepted
 - Related RFCs: [rfc-0018-aggregate-metric-egress-with-opentelemetry-collector](https://github.com/cloudfoundry/community/blob/main/toc/rfc/rfc-0018-aggregate-metric-egress-with-opentelemetry-collector.md)
-- RFC Pull Request:
+- RFC Pull Request: [community#1624](https://github.com/cloudfoundry/community/pull/1624)
 - Affected Component(s): otel-collector-release, cf-deployment
 
 
