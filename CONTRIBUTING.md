@@ -8,7 +8,7 @@ We try to tag issues that should be reasonable for a new contributor to take on 
 - Create a new branch for the issue
 - Make the necessary changes on that branch
 - Commit and push to that branch
-- Make a Pull Request against the repo
+- Make a Pull Request against the repo. Pull requests that have been inactive for more than three months will be closed.
 - Sign the Contributor Licensing Agreement, if you haven’t already
 
 All committers to a Cloud Foundry Foundation project must sign a Contributor License Agreement. 
