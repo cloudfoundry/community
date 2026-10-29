@@ -332,8 +332,8 @@ is the identity model, not the encoding.
 
 ## Status and next steps
 
-**UAA certificate-based client authentication is implemented and agreed with the
-UAA team, pending final review in [UAA #4076][uaa]**, including the opt-in
+**UAA certificate-based client authentication is merged in [UAA #4109][uaa]**
+(superseding #4076), including the opt-in
 certificate binding policy and named trust bundles, validated in a CF lab.
 
 Drafts in [Cloud Controller][capi], [capi-release][release], [BBS][bbs],
@@ -399,6 +399,13 @@ issuer there (AWS IAM OIDC provider, Google Cloud workload identity pool, Azure
 federated credentials): the platform team for broker accounts, application teams
 for their own accounts.
 
+The app-facing `service_account_token_endpoint` must support **mTLS**, not just
+HTTPS. Use direct UAA TLS (for example,
+`https://uaa.service.cf.internal:8443/oauth/mtls/token`), TLS passthrough, or UAA's
+trusted-proxy mode with an authenticated proxy forwarding the client certificate.
+Ordinary L7 TLS termination alone is insufficient. Apps must be able to reach
+the endpoint and trust its server certificate.
+
 ### C. UAA client registration
 
 Cloud Controller registers one secretless client per account, using settings
@@ -424,6 +431,25 @@ from [UAA #4076][uaa]:
 }
 ```
 
+For federation, the app requests one allowed audience using RFC 8707:
+
+```text
+POST /oauth/mtls/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=cf%3Aservice-account%3Apayments-worker&resource=https%3A%2F%2Fsts.amazonaws.com
+```
+
+UAA checks the allowed-resource list and sets `aud` to the requested value.
+Provider-specific checks, including AWS's handling of `azp`, are described in
+[appendix F](#f-federation-audience-reference).
+
+The inline resource list above uses existing UAA support. The proposed integration
+is an operator-managed, named resource policy referenced by each client, so
+changing allowed audiences does not require updating every account registration.
+That reference mechanism is requested in [UAA #4125][resource-policy] and is not
+implemented yet; CAPI and application libraries also need federation integration.
+
 Only certificates issued by a CA in the `diego-instance-identity` trust bundle,
 with this account's SAN and from the owning org, are accepted. Entitlements are
 enforced by Cloud Controller and Diego, which only add the SAN to certificates of
@@ -447,10 +473,33 @@ explicit roles. Developers cannot change any of these values.
 
 External providers trust UAA's signing keys, not Diego's CA, and are unaffected.
 Account clients never contain the CA: they reference an operator-defined UAA trust
-bundle by name ([UAA #4076][uaa]). When Diego's root CA rotates, the operator
+bundle by name ([UAA #4109][uaa]). When Diego's root CA rotates, the operator
 updates that bundle in UAA's configuration, first to old and new CA, then to the
 new CA only. No account client changes, and Cloud Controller is not involved.
 
+### F. Federation audience reference
+
+Federation audiences are configured identifiers, not necessarily API endpoints or
+individual roles. Providers enforce them differently:
+
+| Provider | Documented audience checks | Configuration consequence |
+| --- | --- | --- |
+| [AWS STS][aws-audience] | The IAM OIDC provider's audience list is checked against `azp` when present, otherwise `aud`. In role trust policies, `:aud` follows that same mapping; `:oaud` maps to the original JWT `aud` ([condition keys][aws-claims]). | Custom-provider audiences are configurable; `sts.amazonaws.com` is a common convention. `https://sts.amazonaws.com` fits RFC 8707's absolute-URI requirement, but changing UAA's `aud` alone is insufficient while `azp` remains the client ID. |
+| [Google Cloud WIF][gcp-audience] | Rejects tokens whose `aud` does not match the provider's `allowedAudiences`. With no explicit list, accepts the provider's canonical resource name, with or without the HTTPS prefix. | A custom audience can be configured. The STS request's separate `audience` parameter still identifies the workload identity pool provider ([exchange API][gcp-exchange]). |
+| [Microsoft Entra WIF][azure-audience] | The federated identity credential's issuer, subject and audience must match the token case-sensitively. `api://AzureADTokenExchange` is the recommended audience ([credential schema][azure-credential]). | This audience identifies the exchange, not the database or other API. The token request separately selects the Entra application/managed identity and the desired resource scopes. |
+
+These are configuration choices, not permission grants or proof of possession.
+The provider also validates the issuer, signature and lifetime and applies its
+authorization rules. The AWS examples above illustrate the desired integration;
+UAA currently emits `azp` equal to its client ID, so that token profile needs
+alignment before the shared-audience AWS flow is considered validated.
+
+[aws-audience]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html#manage-oidc-provider-console
+[aws-claims]: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html#condition-keys-wif
+[gcp-audience]: https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#Oidc
+[gcp-exchange]: https://cloud.google.com/iam/docs/reference/sts/rest/v1/TopLevel/token
+[azure-audience]: https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation#how-it-works
+[azure-credential]: https://learn.microsoft.com/en-us/graph/api/resources/federatedidentitycredential?view=graph-rest-1.0
 [mtls]: https://www.rfc-editor.org/rfc/rfc8705.html
 [dpop]: https://www.rfc-editor.org/rfc/rfc9449.html
 [names]: https://www.rfc-editor.org/rfc/rfc1123.html#section-2.1
@@ -459,4 +508,5 @@ new CA only. No account client changes, and Cloud Controller is not involved.
 [bbs]: https://github.com/cloudfoundry/bbs/pull/168
 [diego]: https://github.com/cloudfoundry/diego-release/pull/1216
 [cli]: https://github.com/cloudfoundry/cli/pull/3875
-[uaa]: https://github.com/cloudfoundry/uaa/pull/4076
+[uaa]: https://github.com/cloudfoundry/uaa/pull/4109
+[resource-policy]: https://github.com/cloudfoundry/uaa/issues/4125
