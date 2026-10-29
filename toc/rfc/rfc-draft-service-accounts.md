@@ -409,7 +409,8 @@ the endpoint and trust its server certificate.
 ### C. UAA client registration
 
 Cloud Controller registers one secretless client per account, using settings
-from [UAA #4076][uaa]:
+from [UAA #4109][uaa] and the proposed named resource-policy reference in
+[UAA #4125][resource-policy]:
 
 ```json
 {
@@ -420,7 +421,7 @@ from [UAA #4076][uaa]:
   "tls-client-auth-ca-ref": "diego-instance-identity",
   "tls_client_auth_san_dns": "payments-worker.svc.identity",
   "tls_client_certificate_bound_access_tokens": false,
-  "tls-client-auth-allowed-resources": ["https://sts.amazonaws.com"],
+  "tls-client-auth-allowed-resources-ref": "cf-workload-federation",
   "tls-client-auth-claim-mappings": [
     { "field": "subject_cn", "claim": "cf_instance_guid" },
     { "field": "subject_ou", "pattern": "^app:(.+)$", "claim": "app_guid" },
@@ -444,11 +445,24 @@ UAA checks the allowed-resource list and sets `aud` to the requested value.
 Provider-specific checks, including AWS's handling of `azp`, are described in
 [appendix F](#f-federation-audience-reference).
 
-The inline resource list above uses existing UAA support. The proposed integration
-is an operator-managed, named resource policy referenced by each client, so
-changing allowed audiences does not require updating every account registration.
-That reference mechanism is requested in [UAA #4125][resource-policy] and is not
-implemented yet; CAPI and application libraries also need federation integration.
+Operators define the referenced policy in UAA, as proposed in
+[UAA #4125][resource-policy] (not implemented yet):
+
+```yaml
+uaa:
+  mtls:
+    resource_policies:
+      cf-workload-federation:
+        allowed_resources:
+          - https://sts.amazonaws.com
+          - api://AzureADTokenExchange
+```
+
+UAA resolves the policy in the client's identity zone during issuance. Changing
+the policy affects subsequent token requests without updating client registrations.
+Unknown or removed references fail closed; inline lists and references are mutually
+exclusive. Removing an audience does not revoke already-issued tokens or exchanged
+credentials. CAPI and application libraries also need federation integration.
 
 Only certificates issued by a CA in the `diego-instance-identity` trust bundle,
 with this account's SAN and from the owning org, are accepted. Entitlements are
