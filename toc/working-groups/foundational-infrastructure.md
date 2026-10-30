@@ -528,6 +528,7 @@ config:
       cloudfoundry: 21
   deploy_keys:
     repositories:
+    - cloudfoundry/backup-and-restore-sdk-release
     - cloudfoundry/bosh
     - cloudfoundry/bosh-agent-index
     - cloudfoundry/bosh-aws-cpi-release
