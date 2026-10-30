@@ -99,6 +99,7 @@ orgs:
         default_branch: main
         has_projects: true
       bbl-state-resource:
+        default_branch: main
         description: a concourse resource for manipulating bbl states
         has_projects: true
       bbs:
