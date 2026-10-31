@@ -1338,9 +1338,11 @@ orgs:
         has_issues: false
         has_projects: true
       exemplar-backup-and-restore-release:
+        default_branch: main
         description: Example release for with backup and restore scripts for bbr
         has_projects: true
       exemplar-release:
+        default_branch: main
         has_projects: true
       existingvolumebroker:
         has_projects: true
@@ -2295,6 +2297,7 @@ orgs:
         has_projects: true
         private: true
       sample-windows-bosh-release:
+        default_branch: main
         has_projects: true
         has_wiki: false
       sapi-env-pool:
