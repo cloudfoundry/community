@@ -198,6 +198,7 @@ orgs:
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
       bosh-backup-and-restore-test-releases:
+        default_branch: main
         description: Test Releases for bosh-backup-and-restore
         has_projects: true
       bosh-bbl-ci-envs:
@@ -255,6 +256,7 @@ orgs:
         has_projects: true
         private: true
       bosh-cpi-ruby:
+        default_branch: main
         description: Library for developing BOSH CPIs in Ruby
         has_projects: true
         has_wiki: false
@@ -1501,6 +1503,7 @@ orgs:
         description: Tree based pubsub library for Go.
         has_projects: true
       go-socks5:
+        default_branch: main
         description: SOCKS5 server in Golang
         has_issues: false
         has_projects: true
@@ -2640,6 +2643,7 @@ orgs:
         has_projects: false
         has_wiki: false
       usn-resource:
+        default_branch: main
         has_projects: true
       vantablackbox-release:
         archived: true
