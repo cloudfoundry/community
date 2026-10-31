@@ -148,6 +148,7 @@ orgs:
         has_wiki: false
         homepage: https://bosh.io
       bosh-acceptance-tests:
+        default_branch: main
         description: ' BATs: BOSH Acceptance Tests'
         has_projects: false
         has_wiki: false
