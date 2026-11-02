@@ -248,6 +248,7 @@ orgs:
         has_wiki: false
         private: true
       bosh-cpi-go:
+        default_branch: main
         description: Library for developing BOSH CPIs in Go
         has_projects: false
         has_wiki: false
@@ -1530,6 +1531,7 @@ orgs:
         description: generated real/fake os shim objects for tdd in go
         has_projects: true
       gosigar:
+        default_branch: main
         description: A Golang implementation of the Sigar API
         has_projects: true
         has_wiki: false
