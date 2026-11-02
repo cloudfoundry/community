@@ -270,6 +270,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-deployment-resource:
+        default_branch: main
         has_projects: true
       bosh-disaster-recovery-acceptance-tests:
         has_projects: true
@@ -283,6 +284,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-docker-cpi-release:
+        default_branch: main
         description: BOSH Docker CPI
         has_projects: true
         has_wiki: false
