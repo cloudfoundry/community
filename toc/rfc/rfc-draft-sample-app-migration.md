@@ -7,7 +7,7 @@
 - RFC Pull Request: [community#1657](https://github.com/cloudfoundry/community/pull/1657)
 - Related RFCs:
 - Approving Working Groups: Buildpacks and Stacks; Docs
-- Affected Component(s): cloudfoundry-samples repositories; sample documentation and validation for classic Cloud Foundry buildpacks
+- Affected Component(s): cloudfoundry-samples repositories; Docs working group charter (Cloud Foundry Tutorials area); sample documentation and validation for classic Cloud Foundry buildpacks
 
 ## Summary
 
@@ -133,13 +133,17 @@ relying on it.
 Each repository belongs to exactly one working group
 ([RFC 0007](rfc-0007-repository-ownership.md)). The Docs working group is the sole
 owner of the sample repositories and assigns a maintainer to each; Buildpacks and
-Stacks reviews this RFC but does not co-own them. No cloudfoundry-samples repository
-is listed in a working group charter today, so the Docs charter needs updating: either
-the existing Cloud Foundry Tutorials area or a new samples area (open decision below).
+Stacks reviews this RFC but does not co-own them. The repositories join the Docs
+working group's existing Cloud Foundry Tutorials area, and its charter entry is updated.
 
-Ownership changes, renames and archiving follow RFC 0007, including TOC and
-working-group approval. A move to another organization needs agreed owners,
-permissions and security responsibility first; prefer GitHub transfers.
+Working group ownership applies to repositories in CFF-managed GitHub organizations,
+and cloudfoundry-samples is not one. Maintained repositories therefore move to the
+`cloudfoundry` organization, by GitHub transfer where possible; retired sources are
+archived where they are. Check names against existing repositories before each
+transfer, and history, issues, releases, redirects and CI afterwards.
+@benjaminguttmann-avtq and @norman-abramovitz now have admin rights in
+cloudfoundry-samples. Charter changes, transfers and archiving follow RFC 0007,
+including TOC and Docs working group approval.
 
 ### Automated dependency maintenance
 
@@ -209,13 +213,10 @@ measured.
 
 ## Open decisions before implementation
 
-- Do the samples join the Docs working group's existing Cloud Foundry Tutorials area,
-  which already lists sample-app and korifi-sample-app, or form a separate area with
-  its own approvers?
-- Which destination organization, if any, and which RFC 0007 approvals are involved?
-- What capacity does the Docs working group have for the samples?
-- Which service instances and access does kind-deployment provide, and who maintains
-  repeatable validation?
+- Which maintainers, and what capacity, does the Docs working group commit to the
+  samples?
+- kind-deployment installs no MySQL, Redis, RabbitMQ or MongoDB: how are
+  service-dependent variants tested, and who maintains repeatable validation?
 - What are the owner decisions for the 11 platform/service demos and 8 helper or
   superseded projects?
 
