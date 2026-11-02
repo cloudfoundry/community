@@ -273,6 +273,7 @@ orgs:
       bosh-disaster-recovery-acceptance-tests:
         has_projects: true
       bosh-dns-aliases-release:
+        default_branch: main
         description: Misc release to specify additional DNS aliases
         has_projects: false
         has_wiki: false
@@ -425,6 +426,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-virtualbox-cpi-release:
+        default_branch: main
         description: BOSH VirtualBox CPI
         has_projects: false
         has_wiki: false
