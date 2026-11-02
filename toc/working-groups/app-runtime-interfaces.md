@@ -102,6 +102,8 @@ areas:
     github: stokpop
   - name: Benjamin Guttmann
     github: benjaminguttmann-avtq
+  - name: Ruben Koster
+    github: rkoster
   reviewers:
   - name: Wayne E. Seguin
     github: wayneeseguin
