@@ -438,6 +438,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-warden-cpi-release:
+        default_branch: main
         description: BOSH Garden (used to be Warden) CPI
         has_projects: false
         has_wiki: false
@@ -2054,6 +2055,7 @@ orgs:
         has_issues: false
         has_projects: true
       os-conf-release:
+        default_branch: main
         description: Additional Linux OS configuration release
         has_projects: false
         has_wiki: false
