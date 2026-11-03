@@ -197,6 +197,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-backup-and-restore:
+        default_branch: main
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
       bosh-backup-and-restore-test-releases:
@@ -389,6 +390,7 @@ orgs:
         has_projects: true
         private: true
       bosh-openstack-cpi-release:
+        default_branch: main
         description: BOSH OpenStack CPI
         has_projects: true
         has_wiki: false
