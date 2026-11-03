@@ -163,6 +163,7 @@ orgs:
         description: Builds light stemcells for Alibaba Cloud from a "full" bosh stemcell
         has_projects: true
       bosh-aws-cpi-release:
+        default_branch: main
         description: BOSH AWS CPI
         has_projects: true
         has_wiki: false
@@ -193,6 +194,7 @@ orgs:
         has_projects: true
         default_branch: main
       bosh-apt-resources:
+        default_branch: main
         description: Builds debian packages for public bosh apt repository
         has_projects: false
         has_wiki: false
@@ -243,6 +245,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-cpi-certification:
+        default_branch: main
         has_projects: false
         has_wiki: false
       bosh-cpi-environments:
@@ -1727,6 +1730,7 @@ orgs:
         has_wiki: false
         homepage: https://pkg.go.dev/code.cloudfoundry.org/jsonry?tab=doc
       jumpbox-deployment:
+        default_branch: main
         description: Deploy single vanilla jumpbox machine with BOSH
         has_projects: false
         has_wiki: false
@@ -2716,6 +2720,7 @@ orgs:
         has_projects: true
         has_wiki: false
       windows-utilities-release:
+        default_branch: main
         has_projects: true
       windows-utilities-tests:
         has_projects: true
