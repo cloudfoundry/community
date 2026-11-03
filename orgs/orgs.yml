@@ -158,6 +158,7 @@ orgs:
         has_projects: true
         has_wiki: false
       bosh-agent-index:
+        default_branch: main
         has_projects: true
       bosh-alicloud-light-stemcell-builder:
         description: Builds light stemcells for Alibaba Cloud from a "full" bosh stemcell
