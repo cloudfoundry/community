@@ -167,6 +167,7 @@ orgs:
         has_projects: true
         has_wiki: false
       bosh-aws-light-stemcell-builder:
+        default_branch: main
         description: Builds light stemcells for AWS from a "full" bosh stemcell
         has_projects: false
         has_wiki: false
@@ -175,6 +176,7 @@ orgs:
         has_projects: true
         private: true
       bosh-azure-cpi-release:
+        default_branch: main
         description: BOSH Azure CPI
         has_projects: true
         has_wiki: false
@@ -280,6 +282,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-dns-release:
+        default_branch: main
         description: BOSH DNS release
         has_projects: false
         has_wiki: false
@@ -301,6 +304,7 @@ orgs:
         default_branch: main
         has_projects: false
       bosh-google-cpi-release:
+        default_branch: main
         description: BOSH Google CPI
         has_projects: true
       bosh-google-light-stemcell-builder:
@@ -425,6 +429,7 @@ orgs:
         default_branch: main
         has_projects: true
       bosh-utils:
+        default_branch: main
         description: Generic packages extracted from bosh-agent and bosh-init
         has_projects: false
         has_wiki: false
@@ -434,6 +439,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-vsphere-cpi-release:
+        default_branch: main
         allow_merge_commit: false
         allow_squash_merge: false
         description: BOSH vSphere CPI
@@ -464,6 +470,7 @@ orgs:
         has_projects: true
         private: true
       bpm-release:
+        default_branch: main
         allow_merge_commit: false
         description: isolated bosh jobs
         has_projects: false
@@ -1209,6 +1216,7 @@ orgs:
         description: The bookbinder repository for open source Cloud Foundry documentation
         has_projects: true
       docs-bosh:
+        default_branch: main
         description: The docs repo for BOSH
         has_projects: false
         has_wiki: false
