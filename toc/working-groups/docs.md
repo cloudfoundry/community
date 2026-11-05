@@ -61,7 +61,6 @@ areas:
   - cloudfoundry/docs-cloudfoundry-concepts
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
-  - cloudfoundry/docs-credhub
   - cloudfoundry/docs-deploying-cf
   - cloudfoundry/docs-dotnet-core-tutorial
 - name: Cloud Foundry Tutorials
