@@ -2640,6 +2640,7 @@ orgs:
         description: Bosh Release for the UAA
         has_projects: true
       uaa-singular:
+        default_branch: main
         description: Singular Login for Web Applications
         has_projects: true
       uaa-singular-example:
