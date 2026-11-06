@@ -78,6 +78,14 @@ flowchart LR
 
 The arrows to internal components are fixed application wiring, not a configurable subscriber registry. Resurrection and Director event recording do not read the file or depend on a collector. Only deployment-health alerts enter resurrection decision handling; resulting decision alerts MUST NOT create a resurrection loop.
 
+### Independence from consumer execution
+
+Publishing events removes external integration execution from HM's responsibilities. HM MUST NOT wait for consumer startup, processing, completion, or delivery acknowledgment. An absent, stalled, or repeatedly failing consumer MUST NOT make HM wait or accumulate unbounded pending export work. Consumers and their supervisors own execution timeouts, retries, restart policies, and delivery outcomes.
+
+Callable binary plugins would improve process isolation and allow integrations written in other languages. However, whether HM invokes a binary for each event or feeds a long-running child process, HM still needs policies for invocation failures and resource limits. Depending on the invocation model, these include execution timeouts, pipe backpressure, concurrency limits, exit handling, and shutdown cleanup. Asynchronous invocation can keep the event processor responsive, but retains those responsibilities and the need to bound pending work. The existing [JSON plugin][json-plugin] already illustrates this coupling by discovering and restarting child processes and managing their stdin, stdout, and stderr.
+
+The event log provides a fixed publication boundary independent of consumer progress. HM still owns serialization, a bounded queue, file-write errors and latency, and rotation. Its event-processing path MUST use a non-waiting enqueue attempt and apply the documented drop policy when the queue is full; file I/O belongs to the independent writer. A collector outage can delay or lose external notifications without requiring HM to execute or recover that collector. Colocated collectors can still compete for host CPU, memory, and storage, so this is not a guarantee against shared resource exhaustion.
+
 ### One event log
 
 HM writes `/var/vcap/sys/log/health_monitor/events.log` whenever it is running. The stream contains every validated, deduplicated alert and heartbeat that would have reached the current plugin dispatcher. Existing enrichment, heartbeat eligibility, health-analysis rules, and deduplication remain unchanged.
@@ -178,6 +186,7 @@ Rollback instructions must explain how to return to a release supporting the old
 - Compare old plugin inputs with new records for agent alerts, Director notifications, heartbeats and metrics, VM-health alerts, aggregate deployment-health alerts, and resurrection decision alerts, including attributes missing from today's JSON serializer.
 - Verify existing serialization normalizations, including string heartbeat `index` values when the input is numeric and alert `summary` falling back to `title` when the input is null.
 - Exercise all resurrection controls with a healthy writer, a failing writer, and no collector, and confirm disabled resurrection still produces health events.
+- Run with stalled or repeatedly crashing collectors, and separately inject slow or blocked event-file writes. Verify health analysis and resurrection continue, pending export work remains bounded, and queue exhaustion produces observable drops rather than waiting for consumer progress.
 - Verify Director alert records, `bosh events`, and Director API failure cases.
 - Exercise rotation, partial writes, permission failures, full disk, queue exhaustion, collector restarts, downstream outages, and large records, and measure volume, CPU, memory, and disk at representative scale.
 - Demonstrate an independently supervised collector consuming both event kinds, and verify the migration path for identified hook consumers or document their retirement with the maintainers.
@@ -188,6 +197,7 @@ Rollback instructions must explain how to return to a release supporting the old
 | Alternative | Assessment |
 | --- | --- |
 | Keep only the current JSON plugin | Preserves executable discovery and HM-managed consumers; does not establish the requested boundary |
+| Invoke binary plugins from HM | Improves process isolation, but retains invocation, pipe backpressure, execution limits, and process lifecycle policies in HM, including with asynchronous dispatch |
 | Send syslog directly from HM | Adds socket behavior, framing, size handling, and transport configuration to HM; file collection already fits BOSH patterns |
 | Publish a public NATS stream | Requires a deliberate external access and isolation contract for the internal bus; raw agent subjects omit HM enrichment and generated alerts; core NATS has no replay ([NATS][nats]) |
 | Add an HTTP webhook or OTLP exporter | Introduces network clients, authentication, retries, and backpressure in HM |
@@ -200,6 +210,7 @@ Rollback instructions must explain how to return to a release supporting the old
 
 - BOSH maintainers gain one external event contract and can remove destination-specific code and dependencies.
 - Operators can use their existing collection systems and choose notification destinations without changing HM.
+- External integration latency and failures are handled by independently managed consumers, reducing the execution and recovery policies HM must maintain.
 - Security improves by removing arbitrary child-process execution and the unrestricted `/var/vcap/jobs` BPM mount.
 
 ### Negative
@@ -239,6 +250,7 @@ It does not. The Resurrector and Director event recording become built-in HM com
 [instances]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/instance_manager.rb
 [hm-template]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/jobs/health_monitor/templates/health_monitor.yml.erb
 [hm-bpm]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/jobs/health_monitor/templates/bpm.yml
+[json-plugin]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/plugins/json.rb
 [hm-ops]: https://github.com/cloudfoundry/bosh-deployment/tree/master/hm
 [hm-datadog-ops]: https://github.com/cloudfoundry/bosh-deployment/blob/master/hm/datadog.yml
 [hm-graphite-ops]: https://github.com/cloudfoundry/bosh-deployment/blob/master/hm/graphite.yml
