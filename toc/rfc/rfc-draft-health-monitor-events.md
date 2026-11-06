@@ -97,7 +97,7 @@ Each record MUST have a `schema_version`, an `emitted_at` timestamp, and an `eve
 | `alert` | `kind`, `id`, numeric `severity`, `category`, `title`, `summary`, `source`, `deployment`, `created_at`; also the structured `job`, `instance_id`, and `jobs_to_instance_ids` attributes when present |
 | `heartbeat` | `kind`, `id`, `timestamp`, `deployment`, `agent_id`, `job`, `index`, `instance_id`, `job_state`, `vitals`, `teams`, `metrics`, and optional `number_of_processes` |
 
-The existing [alert serializer][alert-model] omits attributes available to plugins, notably instance identity and the affected-instance map used by resurrection, so redirecting today's serialized output would lose them. The `event` object therefore combines the serialized attributes with the full internal attribute set, with the internal values taking precedence. Only event data is exported, never arbitrary objects, credentials, or HM configuration.
+The existing [alert serializer][alert-model] omits attributes available to plugins, notably instance identity and the affected-instance map used by resurrection, so redirecting today's serialized output would lose them. The `event` object preserves the existing serialized representation and supplements it with omitted internal event-data fields. Existing serialized values MUST take precedence for overlapping fields. Only event data is exported, never arbitrary objects, credentials, or HM configuration.
 
 Numeric severity remains BOSH severity, not syslog priority. Timestamps retain Unix seconds, including the existing distinction between alert `created_at` and heartbeat `timestamp`. Metric values keep their current string representation, and existing nulls and optional fields are preserved. This RFC adds no new health conditions, renames no metrics, and does not add Director audit events beyond the Director alerts HM already receives.
 
@@ -176,6 +176,7 @@ Rollback instructions must explain how to return to a release supporting the old
 ### Validation required before removal
 
 - Compare old plugin inputs with new records for agent alerts, Director notifications, heartbeats and metrics, VM-health alerts, aggregate deployment-health alerts, and resurrection decision alerts, including attributes missing from today's JSON serializer.
+- Verify existing serialization normalizations, including string heartbeat `index` values when the input is numeric and alert `summary` falling back to `title` when the input is null.
 - Exercise all resurrection controls with a healthy writer, a failing writer, and no collector, and confirm disabled resurrection still produces health events.
 - Verify Director alert records, `bosh events`, and Director API failure cases.
 - Exercise rotation, partial writes, permission failures, full disk, queue exhaustion, collector restarts, downstream outages, and large records, and measure volume, CPU, memory, and disk at representative scale.
