@@ -1559,6 +1559,7 @@ orgs:
         has_wiki: false
       grace:
         has_projects: true
+        default_branch: main
       greenhouse-ci:
         archived: true
         default_branch: windows-2019
