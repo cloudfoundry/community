@@ -187,6 +187,8 @@ areas:
   - name: Joris Baum
     github: jorbaum
   reviewers:
+  - name: Katharina Weisbarth
+    github: Katharin4
   - name: Pascal Zimmermann
     github: ZPascal
   - name: Andrew Costa
