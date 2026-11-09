@@ -13,6 +13,9 @@
 Cloud Foundry apps need an identity that external services can trust, without
 being handed a secret. This RFC proposes **service accounts**: named identities
 owned by an org and entitled to the spaces whose apps may use them.
+Each org has an optional, immutable **service-account prefix**. Its accounts use
+that readable prefix in external identities; account names are unique within the
+org. Without a prefix, service accounts are unavailable for that org.
 
 Apps prove their account with the certificate Cloud Foundry already gives every
 instance, and exchange it for short-lived tokens from UAA. The main use is
@@ -39,7 +42,7 @@ repeatedly asked for one that is:
 | --- | --- |
 | **Shared** by a chosen set of apps | The API and worker are one workload; blue/green apps come and go |
 | **Stable** across app replacement, renames and space recreation | External policies should not change on every deployment or reorganization |
-| **Human-readable** | For sensitive data, teams own their cloud accounts and write and review trust policies themselves |
+| **Human-readable** | Users need recognizable org and workload names in external WIF policies; GUID-only identities do not meet that requirement |
 | **Known in advance** | For disaster recovery, external roles exist *before* the platform and apps |
 | **Secretless** | Nothing long-lived to store, leak or rotate |
 | **Explicitly authorized** | Having an identity must not grant access by itself, and only chosen spaces may use it |
@@ -50,6 +53,10 @@ Instance, app, org and space identities each fail at least one of these; see
 ## Developer experience
 
 ### 1. Create an account and assign it to apps
+
+An operator first allocates the org's service-account prefix, either when creating
+the org or once later. For org `acme`, this example uses prefix `acme-payments`.
+The prefix is independent of the org's display name and survives org renames.
 
 ```sh
 cf target -o acme -s payments
@@ -120,16 +127,18 @@ creates an IAM role that trusts exactly one identity:
   "Action": "sts:AssumeRoleWithWebIdentity",
   "Condition": {
     "StringEquals": {
-      "uaa.example.org/oauth/token:sub": "cf:service-account:payments-worker",
+      "uaa.example.org/oauth/token:sub": "cf:service-account:acme-payments:payments-worker",
       "uaa.example.org/oauth/token:aud": "https://sts.amazonaws.com"
     }
   }
 }
 ```
 
-Every value is readable and known before any CF app, space or org exists, so the
-policy can be reviewed, versioned and applied in advance, including for a
-recovery foundation. The team passes the non-secret connection details and role
+The agreed org prefix and account name are readable and can be chosen before
+resources are created. Teams can review WIF policies without resolving GUIDs;
+this is the primary reason for readable identities. Pre-provisioning external
+roles, including for recovery, is an additional benefit. The team passes the
+non-secret connection details and role
 to its apps, for example through a user-provided service:
 
 ```sh
@@ -174,7 +183,7 @@ same pattern.*
 ### 4. Let a coding agent use the Cloud Foundry API
 
 ```sh
-cf set-space-role cf:service-account:app-builder acme generated-apps SpaceDeveloper --client
+cf set-space-role cf:service-account:acme-payments:app-builder acme generated-apps SpaceDeveloper --client
 ```
 
 ```mermaid
@@ -202,6 +211,8 @@ cf add-route-policy apps.identity --hostname invoices --source-service-account p
 Apps using `payments-worker` can now call `invoices`. GoRouter checks the
 caller's certificate; no token is involved. Existing route policies and domain
 restrictions still apply.
+The command resolves the account in the targeted org and writes the fully
+qualified source `cf:svc:acme-payments:payments-worker`.
 
 ### 6. Manage the account
 
@@ -214,7 +225,7 @@ restrictions still apply.
 | Remove an app's account | `cf unbind-service-account payments-api` (then restart) |
 | Stop or resume new tokens, e.g. after a compromise | `cf disable-service-account` / `cf enable-service-account payments-worker` |
 | Delete | `cf delete-service-account payments-worker` |
-| Recover a deleted name (platform admin) | `cf create-service-account payments-worker --reuse-name` |
+| Recover a deleted name (Org Manager or platform admin) | `cf create-service-account payments-worker --reuse-name` |
 
 ## Identity model
 
@@ -222,19 +233,55 @@ restrictions still apply.
 | --- | --- |
 | **Service account** | Owned by one org; used by apps in the spaces it is entitled to |
 | **Entitlement** | Permission for apps in one space of that org to use the account |
-| **Account name** | `payments-worker`: chosen by the team, immutable, unique in the foundation |
-| **Token subject** (and UAA client ID) | `cf:service-account:payments-worker` |
-| **Certificate SAN** | `payments-worker.svc.identity`, added by Diego to each instance certificate |
-| **Route policy source** | `cf:svc:payments-worker` |
+| **Org prefix** | `acme-payments`: immutable, globally unique within a foundation; independent of the org's display name |
+| **Account name** | `payments-worker`: chosen by the team, immutable, unique within its owning org |
+| **Token subject** (and UAA client ID) | `cf:service-account:acme-payments:payments-worker` |
+| **Certificate SAN** | `payments-worker.acme-payments.svc.identity`, added by Diego to each instance certificate |
+| **Route policy source** | `cf:svc:acme-payments:payments-worker` |
 
-- Names are lowercase [RFC 1123 hostname labels][names] of 3–63 characters.
-- The identity does not depend on the org, the spaces or their names. Moving a
-  workload between spaces of the org, or recreating a space, keeps the subject.
+- Prefixes and account names are lowercase [RFC 1123 hostname labels][names] of
+  3–63 characters: letters, digits and hyphens, beginning and ending alphanumeric.
+- Account names can repeat in different orgs. The prefix makes the complete
+  identity unambiguous in tokens, certificates and route policies.
+- Moving a workload between entitled spaces, recreating a space, or renaming an
+  org changes neither its prefix nor its account subjects.
 - External trust is always the pair **(UAA issuer, subject)**. A recovery
   foundation with a new issuer must be trusted explicitly.
-- Deleted names stay reserved, so a new account cannot silently inherit old
+- Deleted account names stay reserved within the org, so a new account cannot silently inherit old
   external grants.
+- Store when each deletion tombstone was created, independently of audit-log
+  retention. Collect reservation counts, growth rates and age distributions to
+  inform future retention decisions. Automatic release is not proposed here;
+  timestamps leave that option open if observed usage demonstrates a need.
+- The tombstone timestamp records deletion, not the original account creation.
+  Historical deletion dates are left unknown if they cannot be recovered reliably.
 - The SAN is an identifier only; it creates no DNS record or route.
+
+### Org prefix configuration
+
+Proposed V3 organization field: `service_account_prefix`. It may be supplied on
+org creation or set once on an existing org. An absent/null prefix means the org
+cannot create accounts, receive account entitlements or bind an account to an app.
+It does not affect ordinary app deployment or service bindings.
+
+For example, include `"service_account_prefix": "acme-payments"` in an org
+creation request, or PATCH that field onto an existing org whose prefix is unset.
+Creating an org without it remains supported; no prefix is generated from the
+display name or GUID.
+
+Only the transition **unset → a valid, available prefix** is allowed. Once set,
+it cannot be renamed, cleared or reassigned; setting the same value again is an
+idempotent no-op. Validation and global uniqueness are enforced atomically.
+
+Prefix allocation is a platform-admin operation in this review proposal. Org
+Managers manage accounts inside their assigned namespace, not foundation-wide
+prefix allocation. This keeps the remaining global decision at org provisioning.
+Deleting an org does not automatically release its prefix: a later org must not
+silently inherit all of its external identities.
+
+In independent foundations, operators coordinate prefix allocation where needed.
+A predictable prefix is not a guarantee of availability on another foundation;
+external policies can pre-authorize a different standby prefix and issuer.
 
 ## Lifecycle and security
 
@@ -287,6 +334,7 @@ instances.
 
 | Action or limit | Rule |
 | --- | --- |
+| Allocate the org prefix (on creation or once later) | Platform admin; proposed allocation policy for review |
 | Create an account (entitled to the targeted space) | Space Developer or platform admin, like service instances |
 | Entitle another space | Org Manager or platform admin; or a Space Developer of an already entitled space who is also Space Developer of the new space |
 | Unentitle a space | Org Manager or platform admin; or a Space Developer of that space, unless it is the account's last entitlement (delete the account instead) |
@@ -294,12 +342,18 @@ instances.
 | Assign to an app | Anyone who can modify the app, in an entitled space |
 | See an account | Members of entitled spaces; Org Managers see all accounts in the org |
 | Grant Cloud Controller roles to an account | Existing role managers |
-| Reuse a deleted name | Platform admin only, audited |
+| Reuse a deleted account name within the org prefix | Org Manager or platform admin, explicit `--reuse-name`, audited |
 | Org quota | New `service_accounts.total_service_accounts`; counts existing accounts, not deleted names |
 | Creation budget | Optional foundation-wide limit on creations per user or client per rolling seven days, or unlimited; admins exempt; deletion does not refund it |
 
-The creation budget prevents name hoarding on public platforms, since deleted
-names stay reserved.
+The optional creation budget constrains reservation growth within a tenant's
+namespace. Org quotas limit the number of live accounts.
+
+Org Managers can recover names only within their own org. Reuse creates a new
+account UUID without restoring bindings, entitlements or roles; the normal
+creation-in-a-space flow grants only that space its initial entitlement. The
+warning explains that external grants and still-valid old certificates can apply
+to the reused identity. Live collisions and quotas are never bypassed.
 
 ## Alternatives considered
 
@@ -318,7 +372,11 @@ names stay reserved.
   roles, grants, entitlements, disable and delete need a lifecycle beyond one app. A label UX
   could be layered on top.
 - **GUID-based identity** (e.g. a SPIFFE ID with the space GUID). Valid, but not
-  readable, not known in advance, and changes when the space is recreated.
+  readable in external WIF policies. Users repeatedly requested recognizable
+  names there; requiring a lookup from GUID to tenant does not meet that need.
+- **Foundation-global account names.** Predictable, but tenants compete for every
+  account name. An immutable org prefix confines global allocation to one value
+  per org while keeping local account names readable and independently managed.
 - **Org and space names.** Readable, but CF names allow up to 255 characters with
   punctuation and Unicode, which DNS and SPIFFE cannot represent without lossy
   encoding, and renames change them. Hashing loses readability.
@@ -326,23 +384,25 @@ names stay reserved.
   group of apps.
 - **Per-app client secrets.** Reintroduce the secrets this proposal removes.
 
-The account name is readable, chosen in advance and independent of mutable names
-and generated IDs. It could be expressed as a SPIFFE ID later; the decision here
+The org prefix and account name are readable and independent of mutable display
+names and generated IDs. They could be expressed as a SPIFFE ID later; the decision here
 is the identity model, not the encoding.
 
 ## Status and next steps
 
-**UAA certificate-based client authentication is merged in [UAA #4109][uaa]**
-(superseding #4076), including the opt-in
+**UAA certificate-based client authentication is merged in [UAA #4109][uaa]**,
+including the opt-in
 certificate binding policy and named trust bundles, validated in a CF lab.
 
 Drafts in [Cloud Controller][capi], [capi-release][release], [BBS][bbs],
 [Diego][diego] and the [CLI][cli] demonstrate shared identity, explicit roles,
 disable/enable, unbind/restart, the creation budget and clients referencing a UAA
-trust bundle, using an earlier space-owned model. Org ownership with entitlements,
-entitlement permissions, creation permissions, attribution claims,
-org quotas, name reuse and upgrade compatibility remain. BBS, Diego and UAA are
-unaffected by the ownership change.
+trust bundle. Org
+prefix allocation, org-local uniqueness, qualified subjects/SANs, org ownership
+and entitlements, permissions, attribution claims, org quotas, tombstone timestamps
+and name reuse remain implementation work. The CAPI/BBS/Diego identity contract
+must carry the org prefix and account name. UAA's exact-SAN matching and org claim
+restriction represent the identity without a new authentication mode.
 
 The next step is community review and approval of the identity model and
 developer experience.
@@ -360,7 +420,7 @@ request, only when the app has a ready account (never for service keys):
     "platform": "cloudfoundry",
     "service_account": {
       "issuer": "https://uaa.example.org/oauth/token",
-      "subject": "cf:service-account:payments-worker"
+      "subject": "cf:service-account:acme-payments:payments-worker"
     }
   }
 }
@@ -414,12 +474,12 @@ from [UAA #4109][uaa] and the proposed named resource-policy reference in
 
 ```json
 {
-  "client_id": "cf:service-account:payments-worker",
+  "client_id": "cf:service-account:acme-payments:payments-worker",
   "authorized_grant_types": ["client_credentials"],
   "authorities": ["cloud_controller.read", "cloud_controller.write"],
   "access_token_validity": 300,
   "tls-client-auth-ca-ref": "diego-instance-identity",
-  "tls_client_auth_san_dns": "payments-worker.svc.identity",
+  "tls_client_auth_san_dns": "payments-worker.acme-payments.svc.identity",
   "tls_client_certificate_bound_access_tokens": false,
   "tls-client-auth-allowed-resources-ref": "cf-workload-federation",
   "tls-client-auth-claim-mappings": [
@@ -438,7 +498,7 @@ For federation, the app requests one allowed audience using RFC 8707:
 POST /oauth/mtls/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=client_credentials&client_id=cf%3Aservice-account%3Apayments-worker&resource=https%3A%2F%2Fsts.amazonaws.com
+grant_type=client_credentials&client_id=cf%3Aservice-account%3Aacme-payments%3Apayments-worker&resource=https%3A%2F%2Fsts.amazonaws.com
 ```
 
 UAA checks the allowed-resource list and sets `aud` to the requested value.
