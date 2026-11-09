@@ -103,8 +103,6 @@ areas:
   - name: Joe Mahady
     github: joemahady-comm  
   reviewers:
-  - name: Irene Gonzalez Ruiz
-    github: ireneGonzalezRuiz
   - name: Georgi Genchev
     github: gdgenchev
   repositories:
@@ -145,8 +143,6 @@ areas:
     github: colins
   - name: Kim Basset
     github: kimago
-  - name: Ryan Wittrup
-    github: ryanwittrup
   - name: Pascal Zimmermann
     github: ZPascal
   - name: Nishad Mathur
@@ -190,8 +186,6 @@ areas:
     github: aramprice
   - name: Joerg W
     github: joergdw
-  - name: Ansh Rupani
-    github: anshrupani
   - name: Chris Selzo
     github: selzoc
   - name: Nishad Mathur
@@ -250,8 +244,6 @@ areas:
     github: selzoc
   - name: Ahmed Hassanin
     github: a-hassanin
-  - name: Ansh Rupani
-    github: anshrupani
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -434,8 +426,6 @@ areas:
     github: selzoc
   - name: Ahmed Hassanin
     github: a-hassanin
-  - name: Ansh Rupani
-    github: anshrupani
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Benjamin Guttmann
