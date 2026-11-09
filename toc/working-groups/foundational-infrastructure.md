@@ -103,8 +103,6 @@ areas:
   - name: Joe Mahady
     github: joemahady-comm  
   reviewers:
-  - name: Irene Gonzalez Ruiz
-    github: ireneGonzalezRuiz
   - name: Georgi Genchev
     github: gdgenchev
   repositories:
