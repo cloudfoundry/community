@@ -170,6 +170,8 @@ areas:
   reviewers:
   - name: Wei Li
     github: weili-broadcom
+  - name: Katharina Weisbarth
+    github: Katharin4
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
