@@ -2,26 +2,28 @@ The Cloud Foundry Foundation Charter
 
 The Linux Foundation
 
-Effective September 15, 2023
+Amended  October 8, 2026
 
 
 #### 1)	Mission and Scope of the Cloud Foundry Foundation.  
 
-a)	The purpose of the Cloud Foundry Foundation (the “CFF”) is to raise, budget and spend funds in support of various open source, open data and/or open standards projects relating to development of a Platform-as-a-Service (PaaS) open source technology, including infrastructure and support initiatives related thereto.  The governance of each project is as set forth in the applicable charter for each project.
+- a) The purpose of the Cloud Foundry Foundation (the “CFF”) is to raise, budget and  spend funds in support of various open source, open data and/or open standards  projects relating to development of a Platform-as-a-Service (PaaS) open source  technology, including infrastructure and support initiatives related thereto. The  governance of each project is as set forth in the applicable charter for each project. 
 
-b)	The CFF supports the projects. The initial projects include Cloud Foundry, Paketo, and Open Service Broker API. The CFF operates under the guidance of the Governing Board of the CFF (the “Governing Board”) and The Linux Foundation (the “LF”) as may be consistent with The Linux Foundation’s tax-exempt status.  
+- b) The CFF supports the projects. The initial projects include Cloud Foundry, Paketo, and  Open Service Broker API. The CFF operates under the guidance of the Governing Board  of the CFF (the “Governing Board”) and The Linux Foundation (the “LF”) as may be  consistent with The Linux Foundation’s tax-exempt status. 
 
-c)	The Governing Board manages the CFF. The CFF will also have an Outreach Committee, Technical Oversight Committee (TOC), Budget Committee, Legal Committee and other working groups, councils, committees and similar bodies (collectively, “Committees”) that may be established by the Governing Board.  These committees report to the Governing Board.
+- c) The Governing Board manages the CFF. The CFF will also have an Outreach Committee, Technical Oversight Committee (TOC), Budget Committee, Legal Committee and other working groups, councils, committees and similar bodies (collectively, “Committees”) that may be established by the Governing Board. These committees report to the Governing Board. 
 
 #### 2)	Membership.
 
--   a)	The CFF will be composed of Platinum, Silver and Associate Members (each, a “Member” and, collectively, the “Members”) in Good Standing. All Members must be current corporate members of the LF (at any level) to participate in the CFF as a member. All participants in the CFF, enjoy the privileges and undertake the obligations described in this Charter, as from time to time amended by the Governing Board with the approval of the LF. During the term of their membership, all members will comply with all such policies as the LF Board of Directors and/or the CFF may adopt with notice to members.
+-   a) The CFF will be composed of Platinum, Gold, Silver and Associate Members (each, a “Member” and, collectively, the “Members”) in Good Standing. All Members must be current corporate members of the LF (at any level) to participate in the CFF as a member. All participants in the CFF, enjoy the privileges and undertake the obligations described in this Charter, as from time to time amended by the Governing Board with the approval of the LF. During the term of their membership, all members will comply with all such policies as the LF Board of Directors and/or the CFF may adopt with notice to members. 
 
--   b)	Platinum Members will be entitled to appoint a representative to the Governing Board and receive the most prominent placement in any listing of members.
+-   b) Platinum Members will be entitled to appoint a representative (each, a “Platinum Representative”) to the Governing Board and receive the most prominent placement in any listing of members.  Except for purposes of quorum, each Platinum Representative will have two votes on matters before the Governing Board.
 
--   c)	Each Silver Member will be entitled to annually nominate a representative for a Silver Member representative seat (the “Silver Member Representative”) on the Governing Board. The Governing Board will determines the nomination process and when nominations will be held. The Governing Board will select one Silver Member Representative from among the nominees based on objective criteria. Unless otherwise determined by the Governing Board, the Silver Member Representative will serve a term of one year or until their resignation or replacement.
+-   c) Gold Members will be entitled to appoint a representative (each, a “Gold Member Representative”) to the Governing Board.
 
--   d)	The Associate Member category of membership is limited to Associate Members of The Linux Foundation. The Governing Board may set additional criteria for joining the CFF as an Associate Member. If the Associate Member is a membership organization, Associate Membership in the CFF does not confer any benefits or rights to the members of the Associate Member. 
+-   d) Each Silver Member will be entitled to annually nominate a representative for a Silver Member representative seat (the “Silver Member Representative”) on the Governing Board. The Governing Board will determine the nomination process and when nominations will be held. The Governing Board will select one Silver Member Representative from among the nominees based on objective criteria. Unless otherwise determined by the Governing Board, the Silver Member Representative will serve a term of one year or until their resignation or replacement. 
+
+-   e)	The Associate Member category of membership is limited to Associate Members of The Linux Foundation. The Governing Board may set additional criteria for joining the CFF as an Associate Member. If the Associate Member is a membership organization, Associate Membership in the CFF does not confer any benefits or rights to the members of the Associate Member. 
 
 -   e)	Members will be entitled to:
 
@@ -35,11 +37,13 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
     -   i)	one representative appointed by each Platinum Member;
 
-    -   ii)	one Silver Member Representative selected as defined in Section 2.c; and
+    -   ii) one representative appointed by each Gold Member;
+       
+    -   iii) one Silver Member Representative selected as defined in Section 2.c; and
 
-    -   iii) the TOC Chair
+    -   iv) the TOC Chair
 
--   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate, a representative on the Governing Board.  No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate more than one representative for the Governing Board, or (ii) have more than one voting representatives on the Governing Board. 
+-   b)	Only one Member that is part of a group of Related Companies (as defined in Section 9) may appoint, or nominate, a representative on the Governing Board. No single Member, company or set of Related Companies will be entitled to: (i) appoint or nominate more than one representative for the Governing Board, or (ii) have more than one voting representative on the Governing Board. 
 
     -   i)	Please note that it will be acceptable for one Member to appoint or nominate a representative to the Governing Board and have another of its employees, or an employee of one of its Related Companies, serve as the TOC Chair on the Governing Board, however in this case the TOC Chair would sit on the Governing Board in a non-voting role.
 
@@ -230,9 +234,9 @@ c)	The Governing Board manages the CFF. The CFF will also have an Outreach Commi
 
 -   a)	Quorum for Governing Board and Committee meetings will require at least fifty percent of the voting representatives. If advance notice of the meeting has been given per normal means and timing, the Governing Board may continue to meet even if quorum is not met, but will be prevented from making any decisions at the meeting.
 
--   b)	Ideally decisions will be made based on consensus. Consensus is defined as the lack of sustained objection. If, however, any decision requires a vote to move forward, the representatives of the Governing Board or Committee, as applicable, will vote on a one vote per voting representative basis.
+-   b)	Ideally decisions will be made based on consensus. Consensus is defined as the lack of sustained objection. If, however, any decision requires a vote to move forward, the representatives of the Governing Board or Committee, as applicable, will vote on a one vote per voting representative basis with the exception of any Platinum Representative, who will vote on a two votes per Platinum Representative basis.
 
--   c)	Except as provided in Section 16.a. or elsewhere in this Charter, decisions by vote at a meeting will require a simple majority vote, provided quorum is met. Except as provided in Section 16.a. or elsewhere in this Charter, decisions by electronic vote without a meeting will require a majority of all voting representatives.
+-   c)	Except as provided in Section 16.a. or elsewhere in this Charter, decisions by vote at a meeting will require a simple majority of votes cast, provided quorum is met. Except as provided in Section 16.a. or elsewhere in this Charter, decisions by electronic vote without a meeting will require a majority of all votes that can be cast by all voting representatives (such amount, the “Eligible Vote Pool”).
 
 -   d)	In the event of a tied vote with respect to an action that cannot be resolved by the Governing Board, any member of the Governing Board may refer the matter to the LF for assistance in helping the Governing Board reach a decision. If there is a tied vote in any Committee that cannot be resolved, the matter may be referred to the Governing Board.
 
