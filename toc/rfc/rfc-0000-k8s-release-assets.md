@@ -12,7 +12,11 @@
 
 Running Cloud Foundry on Kubernetes requires a Helm chart and one or more container images per component. Today these Kubernetes assets are maintained in the central `cloudfoundry/cf-k8s-releases` repository.
 
-We propose requiring working groups to communicate breaking or otherwise important changes to their BOSH components through GitHub issues in `cf-k8s-releases`. Working groups are encouraged to contribute Kubernetes asset updates directly to that repository. Groups that want to maintain their own pipelines and fully control their Kubernetes assets may take ownership and move them to a repository of their choice.
+We propose a three step approach to gradually increase the adoption of these assets:
+
+1. Working groups must communicate breaking or otherwise important changes to their BOSH components through GitHub issues in cf-k8s-releases.
+1. Working groups are encouraged to contribute Kubernetes asset updates directly to that repository.
+1. Groups that want to maintain their own pipelines and fully control their Kubernetes assets may take ownership and move them to a repository of their choice.
 
 ## Problem
 
@@ -34,17 +38,13 @@ Working groups are encouraged to contribute corresponding Helm chart, Dockerfile
 
 The repository remains the home for assets whose ownership has not been transferred. Its maintainers continue to maintain and publish those assets, supported by notifications and contributions from the component-owning working groups.
 
-### Optional ownership transfer
+### Ownership transfer
 
 Working groups that want full control over their Kubernetes assets and release pipelines may move those assets from `cf-k8s-releases` to a repository of their choice. This may be the corresponding BOSH release repository or another repository selected by the working group.
 
 Taking ownership means accepting full responsibility for maintaining, building, and publishing the assets and keeping them aligned with the component.
 
-Ownership transfers happen independently for each component, at the working group's chosen pace. There is no requirement for all assets to move out of `cf-k8s-releases`.
-
-### Publishing continuity
-
-An ownership transfer must preserve existing chart and image names and registry locations. Charts continue to be published to `oci://ghcr.io/cloudfoundry/helm` and images to `ghcr.io/cloudfoundry/k8s`.
+Ownership transfers happen independently for each component, at the working group's chosen pace. An ownership transfer must preserve existing chart and image names and registry locations. Charts and images should continue to be published to `ghcr.io/cloudfoundry/k8s`.
 
 The working group and `cf-k8s-releases` maintainers coordinate the handoff so that publishing continues from the destination repository and stops in `cf-k8s-releases`. At no point are the same assets published from two repositories.
 
