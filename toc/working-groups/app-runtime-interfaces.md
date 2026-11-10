@@ -76,8 +76,6 @@ areas:
 
 - name: Buildpacks and Stacks
   approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
   - name: Rob Dimsdale-Zucker
     github: robdimsdale
   - name: Simon Jones
