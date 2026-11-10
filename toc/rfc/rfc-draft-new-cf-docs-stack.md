@@ -51,7 +51,7 @@ The documentation site MUST be deployed to GitHub Pages under the `cloudfoundry`
 
 - **Zero hosting cost** for a static site within GitHub's free tier.
 - **Full community visibility:** deployment is driven by a GitHub Actions workflow in a public repository.
-- **Access model mirrors existing patterns:** repository access SHOULD follow the GitHub Teams / CODEOWNERS pattern established for Concourse and other CF org repos (see RFC-0014), removing any dependency on CFF staff. Merging and publishing remain with the Docs WG — "community self-serve" means transparency and no external dependencies, not that anyone can publish.
+- **Access model mirrors existing patterns:** repository access SHOULD follow the GitHub Teams pattern established for Concourse and other CF org repos (see RFC-0014), removing any dependency on CFF staff. Merging and publishing remain with the Docs WG — "community self-serve" means transparency and no external dependencies, not that anyone can publish.
 
 #### Domain Handling
 
@@ -72,11 +72,12 @@ Docs-related content in other repositories is migrated into this repository duri
 
 #### Ownership and Notifications
 
-Cross-WG contribution already happens today — `docs-cloudfoundry-concepts`, `docs-running-cf`, `docs-cf-admin` and others take contributions from ARP, ARI, ARD, FI, and the Docs WG. A single repository keeps that, with clearer directory-level boundaries, and adds **per-area notifications** that are not possible across many separate repos today.
+Documentation is already a cross-Working-Group effort today, and the new repository MUST preserve that while making ownership clearer. Two properties MUST hold:
 
-- A `CODEOWNERS` entry names the **Docs WG team** as the required reviewer, so the Docs WG is always the approver that merges.
-- Per-area WG notifications are notify-only (via a tool such as CODENOTIFY) — awareness and optional review, never a merge gate. This avoids the GitHub limitation that any single `CODEOWNERS` owner satisfies a required review.
-- The GitHub teams SHOULD track WG membership defined in the community repo.
+- **The Docs WG approves every merge.** Approval authority for merging into the docs repository rests with the Docs WG, regardless of which area a change touches.
+- **The owning Working Group is notified for its area.** When a change touches a given area, the responsible WG is automatically informed and MAY review, but this is awareness and optional review — never a merge gate.
+
+The exact mechanism is an implementation detail to be settled by the Docs WG, as long as it satisfies the two properties above. Area-to-WG ownership and the corresponding GitHub teams are defined in Phase 1 and SHOULD track WG membership in the community repo.
 
 #### Review Process
 
@@ -108,7 +109,7 @@ Parts of the existing documentation rely on HTML tables and CSS layouts that pla
 
 Before technical work begins:
 
-- **Identify all doc sources:** Produce a definitive list of all repositories feeding the public CF docs and the WG responsible for each. This defines the migration scope and the `CODEOWNERS` areas. Led by the TOC with input from all WGs.
+- **Identify all doc sources:** Produce a definitive list of all repositories feeding the public CF docs and the WG responsible for each. This defines the migration scope and the per-area ownership mapping. Led by the TOC with input from all WGs.
 - **Survey consumers:** Ask WG leads and known downstream consumers (e.g., SAP BTP, anynines; VMware Tanzu works from its own branches and is not affected) whether they consume the docs as-is or maintain derivatives.
 - **Clarify ownership:** Each section MUST have a named WG owner before migration.
 - **Onboard maintainers:** Plan a familiarization period with the new toolchain for current docs maintainers before cutover.
@@ -144,7 +145,7 @@ This phase ends when all WGs confirm their content is fully migrated and the cut
 
 - **Phase 1 (Discovery):** October – November 2026 — stakeholder survey completed, repository inventory published
 - **Phase 2 (PoC):** November – December 2026 — working Docusaurus site with representative content, deployed to GitHub Pages
-- **Phase 3 (Full Migration):** Q1 2027 — all content migrated, CODEOWNERS in place, CI pipeline live
+- **Phase 3 (Full Migration):** Q1 2027 — all content migrated, ownership mapping in place, CI pipeline live
 - **Phase 3a (Parallel Operation):** Q1–Q2 2027 — commit-tracked sync running, WGs reviewing migrated content
 - **Phase 4 (Cutover):** Q2 2027 — `docs.cloudfoundry.org` DNS switched, old infrastructure decommissioned
 
