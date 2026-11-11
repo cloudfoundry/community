@@ -10,7 +10,7 @@
 
 ## Summary
 
-This RFC proposes migrating the Cloud Foundry documentation (CF, UAA API) from the current Ruby/ERB HTML build system to a Markdown-first toolchain hosted on GitHub Pages. The goals are to lower the contribution barrier, re-enable full-text search, cut hosting costs, and give the community full ownership of the documentation pipeline. Two independent proofs of concept already demonstrate the approach (see [Proof of Concept](#proof-of-concept)).
+This RFC proposes migrating the Cloud Foundry documentation (CF, UAA API) from the current Ruby/ERB HTML build system to a Markdown-first toolchain hosted on GitHub Pages. The goals are to lower the contribution barrier, re-enable full-text search, cut hosting costs, and give the community full ownership of the documentation pipeline. Two exploratory proofs of concept support discussion and alignment during RFC review (see [Proof of Concept for RFC Review](#proof-of-concept-for-rfc-review)).
 
 ## Problem
 
@@ -29,13 +29,14 @@ The current CF documentation system has accumulated several issues:
 
 ### 1. Migrate to Markdown and Docusaurus
 
-The CF documentation SHOULD be rewritten in plain Markdown and managed by **Docusaurus** (current major version, v3 or newer — maintained by Meta, MIT-licensed, widely adopted in the CNCF ecosystem). Docusaurus is the recommended engine for this migration; the PoC confirms the choice and MAY propose an alternative only if a hard requirement cannot be met (see [Phase 2](#phase-2-proof-of-concept)). Docusaurus uses MDX for templating and reusable components, replacing the ERB templating. A working proof of concept already demonstrates the approach end to end (see [Proof of Concept](#proof-of-concept)).
+The CF documentation SHOULD be rewritten in plain Markdown and managed by **Docusaurus** (current major version, v3 or newer — maintained by Meta, MIT-licensed, widely adopted in the CNCF ecosystem). Docusaurus is the recommended engine for this migration; initial implementation validates the choice, and an alternative MAY be proposed only if a hard requirement cannot be met (see [Phase 2](#phase-2-initial-implementation)). Docusaurus uses MDX for templating and reusable components, replacing the ERB templating. A working proof of concept already demonstrates the approach end to end (see [Proof of Concept for RFC Review](#proof-of-concept-for-rfc-review)).
 
 Docusaurus provides the capabilities the new stack requires:
 
 - Markdown/MDX authoring with no custom templating language
 - Built-in full-text search (e.g., Algolia DocSearch or a self-hosted option such as Pagefind or lunr.js)
-- Versioned documentation support tied to CF release cycles
+- Clear, easy-to-maintain navigation that helps readers, including first-time CF users, find their way through the documentation
+- Technical support for multiple documentation versions; the versioning concept is outside the scope of this RFC
 - A one-command local development server (`npm start`)
 - A lightweight component system (admonitions, tabs, reusable MDX partials/snippets) that does not require Ruby or ERB
 - SEO-friendly output (structured metadata, canonical URLs, sitemap) and AI-agent-friendly crawlable HTML, optionally an `/llms.txt` index
@@ -51,7 +52,7 @@ The documentation site MUST be deployed to GitHub Pages under the `cloudfoundry`
 
 - **Zero hosting cost** for a static site within GitHub's free tier.
 - **Full community visibility:** deployment is driven by a GitHub Actions workflow in a public repository.
-- **Access model mirrors existing patterns:** repository access SHOULD follow the GitHub Teams pattern established for Concourse and other CF org repos (see RFC-0014), removing any dependency on CFF staff. Merging and publishing remain with the Docs WG — "community self-serve" means transparency and no external dependencies, not that anyone can publish.
+- **Access model mirrors existing patterns:** repository access SHOULD follow the GitHub Teams pattern established for Concourse and other CF org repos (see RFC-0014), removing any dependency on CFF staff. Documentation changes require Docs WG approval. Docs WG approvers and leads SHOULD be able to trigger publishing of approved content.
 
 #### Domain Handling
 
@@ -70,6 +71,8 @@ The new CF documentation lives in **one single repository**: all content is auth
 
 Docs-related content in other repositories is migrated into this repository during Phase 3 (see [Phases](#phases)).
 
+Contributors SHOULD be able to navigate between code repositories and their corresponding documentation sources.
+
 #### Ownership and Notifications
 
 Documentation is already a cross-Working-Group effort today, and the new repository MUST preserve that while making ownership clearer. Two properties MUST hold:
@@ -83,56 +86,48 @@ The exact mechanism is an implementation detail to be settled by the Docs WG, as
 
 1. A contributor opens a PR against the docs repository.
 2. The owning WG is notified for awareness and optional review — not a merge requirement.
-3. The Docs WG reviews and approves every PR before merge (content, style, consistency with the style guide).
+3. The Docs WG reviews and approves every PR before merge, using a shared documentation style and structure guide that it maintains.
 4. Merging into the main branch triggers build and deployment to GitHub Pages.
 
 #### Automation
 
-- A GitHub Actions CI pipeline validates Markdown linting and broken links on every PR. Spell-checking is added in Version 2 (see [Versioning Strategy](#4-versioning-strategy)).
+- Automated checks for document structure and broken links MUST run on every PR and pass before merge. Approvers SHOULD also be able to trigger these checks on demand.
+- Spell-checking is planned as a follow-up, using a shared dictionary for CF and technical terms maintained by the Docs WG.
 - Draft PRs are encouraged for early-stage work to enable async feedback.
 
-### 4. Versioning Strategy
+### 4. Documentation Versioning
 
-Documentation versioning is intended to be tied to CF Deployment release branches. In Version 1 (PoC) this mapping is not yet implemented: the docs start with a single `v1.0` version. The concrete approach — how many versions are tracked, how prior versions are retained, and how breaking changes are published — is defined in Version 2 after the migration, based on Version 1 experience.
-
-Version 2 also adds **docs spellcheck**: an automated spell-check (e.g., `cspell` or a unified.js tool such as `retext`, selected in Version 2) runs in CI on every PR, with a configurable shared dictionary for CF and technical terms, maintained by the Docs WG.
+The documentation initially has only version `1.0`. This RFC does not define a documentation versioning concept. Although the toolchain technically supports multiple versions, a versioning concept MAY be introduced in a follow-up.
 
 ### 5. Extension and Customization
 
-Working Groups MUST NOT need custom extensions, plugins, or JavaScript to author documentation. Customization (CLI examples, version-specific callouts, tables, layouts) is handled by Docusaurus's built-in MDX features — admonitions, tabs, and reusable partials/snippets — keeping the contribution barrier low.
+The new toolchain MUST support existing documentation content using standard formatting wherever possible. Custom HTML and layouts SHOULD be used only where standard formatting is insufficient. The Docs WG owns and approves shared tooling; contributors MUST NOT need to develop it themselves.
 
-Parts of the existing documentation rely on HTML tables and CSS layouts that plain Markdown handles poorly. The PoC MUST validate that the most complex existing pages can be represented with MDX and Docusaurus components alone, and any gap MUST be reported as a PoC finding.
+Initial implementation MUST validate the most complex existing pages and report any gaps.
 
 ### Phases
 
 #### Phase 1: Discovery and Stakeholder Alignment (Prerequisite)
 
-Before technical work begins:
+Before migration implementation begins:
 
 - **Identify all doc sources:** Produce a definitive list of all repositories feeding the public CF docs and the WG responsible for each. This defines the migration scope and the per-area ownership mapping. Led by the TOC with input from all WGs.
-- **Survey consumers:** Ask WG leads and known downstream consumers (e.g., SAP BTP, anynines; VMware Tanzu works from its own branches and is not affected) whether they consume the docs as-is or maintain derivatives.
 - **Clarify ownership:** Each section MUST have a named WG owner before migration.
 - **Onboard maintainers:** Plan a familiarization period with the new toolchain for current docs maintainers before cutover.
 
-#### Phase 2: Proof of Concept
+#### Phase 2: Initial Implementation
 
-A PoC SHOULD stand up Docusaurus with a representative subset of CF docs to validate local dev, search, versioning, GitHub Pages deployment, and the domain redirect strategy, and to gather feedback from at least three active contributors. A working PoC already exists (see [Proof of Concept](#proof-of-concept)); its results SHOULD be presented in a TOC / Docs WG meeting.
+This phase establishes the initial documentation site as the foundation for the full migration. It SHOULD set up Docusaurus with a representative subset of CF docs, establish local dev, search, and GitHub Pages deployment, validate the domain redirect strategy, and gather feedback from at least three active contributors. The existing [RFC-review PoCs](#proof-of-concept-for-rfc-review) MAY inform this work, but do not replace it. Implementation results SHOULD be presented in a TOC / Docs WG meeting.
 
-Docusaurus is the recommended engine. If the PoC surfaces a requirement Docusaurus cannot meet, the PoC team MAY evaluate and propose an alternative, documenting the reason as a PoC finding for the TOC / Docs WG to decide.
+Docusaurus is the recommended engine. If initial implementation surfaces a requirement Docusaurus cannot meet, the implementation team MAY evaluate and propose an alternative, documenting the reason for the TOC / Docs WG to decide.
 
 #### Phase 3: Full Migration
 
-Based on PoC findings, all content SHOULD be migrated to Markdown by **one central migration team** for consistency. A migration script MAY be developed and AI tooling MAY be used for bulk conversion, as long as cross-repository links are preserved. Every section receives a manual review pass by the owning WG. A full migration timeline MUST be published and agreed by all affected WGs before this phase begins.
+Building on the initial implementation and findings from Phase 2, all remaining content SHOULD be migrated to Markdown by **one central migration team** for consistency. A migration script MAY be developed and AI tooling MAY be used for bulk conversion, as long as cross-repository links are preserved. Every section receives a manual review pass by the owning WG. A full migration timeline MUST be published and agreed by all affected WGs before this phase begins.
 
-#### Phase 3a: Parallel Operation and Commit-Tracked Sync
+#### Phase 3a: Parallel Operation
 
-After initial migration, the new docs repository and the existing source repositories run in parallel until cutover:
-
-- The new repository tracks upstream sources via a manifest (e.g., `.docs-sources.json`) recording the last-synced commit SHA per source.
-- A scheduled CI job converts changed content, opens a PR against the new repository, and updates the manifest on merge — so contributors need not change their existing workflow before cutover.
-- The manifest and sync tooling are owned by the Docs WG.
-
-This phase ends when all WGs confirm their content is fully migrated and the cutover date is set.
+During parallel operation, existing repositories remain the source of truth until cutover. The Docs WG defines synchronization, review, and conflict handling to ensure no changes are lost. Cutover follows confirmation from all affected WGs that their content is fully migrated.
 
 #### Phase 4: Cutover and Decommission
 
@@ -143,18 +138,18 @@ This phase ends when all WGs confirm their content is fully migrated and the cut
 
 ### Suggested Timeline
 
-- **Phase 1 (Discovery):** October – November 2026 — stakeholder survey completed, repository inventory published
-- **Phase 2 (PoC):** November – December 2026 — working Docusaurus site with representative content, deployed to GitHub Pages
+- **Phase 1 (Discovery):** October – November 2026 — repository inventory and ownership mapping published
+- **Phase 2 (Initial Implementation):** November – December 2026 — working Docusaurus site with representative content, deployed to GitHub Pages
 - **Phase 3 (Full Migration):** Q1 2027 — all content migrated, ownership mapping in place, CI pipeline live
-- **Phase 3a (Parallel Operation):** Q1–Q2 2027 — commit-tracked sync running, WGs reviewing migrated content
+- **Phase 3a (Parallel Operation):** Q1–Q2 2027 — synchronization running, WGs reviewing migrated content
 - **Phase 4 (Cutover):** Q2 2027 — `docs.cloudfoundry.org` DNS switched, old infrastructure decommissioned
 
-## Proof of Concept
+## Proof of Concept for RFC Review
 
-A working Docusaurus implementation already demonstrates the advantages of this proposal to the audience and SHOULD inform the Phase 2 review:
+The following small, exploratory proofs of concept were created to make this RFC easier to discuss and give reviewers concrete examples of the proposed approach. They support discussion and alignment during RFC review; they are not the initial implementation planned for Phase 2:
 
 - **Docusaurus PoC** (@johha, @ZPascal) — [johha/cf-docs-new](https://github.com/johha/cf-docs-new), live at <https://johha.github.io/cf-docs-new/>. It automatically migrates all 41 files of `docs-cloudfoundry-concepts` from the legacy ERB/book pipeline to Docusaurus 3, regenerating the sidebar, variables, and MDX output from source with a single `npm run gen:all`. It shows the full set of benefits in one place: Markdown/MDX authoring, variables, full-text search, SEO-ready output, and a one-command local preview.
-- **Repository-layout comparison** (@norman-abramovitz) — [norman-abramovitz/cf-docs-rfc-proposal](https://github.com/norman-abramovitz/cf-docs-rfc-proposal) builds representative content in both single-repository and separate-repository layouts and confirms that published URLs and links are identical regardless of layout — supporting the single-repository decision in §3.
+- **Repository-layout comparison** (@norman-abramovitz) — [norman-abramovitz/cf-docs-rfc-proposal](https://github.com/norman-abramovitz/cf-docs-rfc-proposal) builds representative content in both single-repository and separate-repository layouts and confirms that published URLs and links are identical regardless of layout.
 
 ## Impact and Consequences
 
@@ -165,7 +160,6 @@ A working Docusaurus implementation already demonstrates the advantages of this 
 - **Cost reduction:** GitHub Pages hosting eliminates ongoing infrastructure costs.
 - **Community ownership:** Documentation deployment is run transparently by the Docs WG without depending on CFF staff.
 - **AI and SEO readiness:** Modern static site output is well-suited for search engine indexing and AI developer tools.
-- **Versioning:** Documentation versions tied to releases reduce confusion about what applies to which CF version. This is planned for Version 2, scheduled after the migration.
 
 ### Negative / Risks
 
@@ -177,8 +171,8 @@ A working Docusaurus implementation already demonstrates the advantages of this 
 ## Open Questions
 
 - Which repositories currently feed the public CF docs, and which Working Groups own them? (Phase 1.)
-- Do downstream distributions (SAP, VMware Tanzu) consume the raw source or the rendered HTML, and would Markdown require changes on their end?
+- After initial implementation, do any downstream companies still republish or derive the official CF documentation, and are there compatibility requirements to consider?
 - Which search backend (Algolia DocSearch, Pagefind, or lunr.js) should back the Docusaurus site?
-- Who owns and staffs the Phase 1 survey, the central migration team, and ongoing technical support for the new stack?
+- Who owns and staffs discovery, the central migration team, and ongoing technical support for the new stack?
 - Who can vet this proposal for the UAA API and CredHub API docs?
 - Who owns the `docs.cloudfoundry.org` domain (registrar, DNS, hosting) and can change the DNS records for cutover?
