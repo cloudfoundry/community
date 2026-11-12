@@ -29,14 +29,13 @@ The current CF documentation system has accumulated several issues:
 
 ### 1. Migrate to Markdown and Docusaurus
 
-The CF documentation SHOULD be rewritten in plain Markdown and managed by **Docusaurus** (current major version, v3 or newer — maintained by Meta, MIT-licensed, widely adopted in the CNCF ecosystem). Docusaurus is the recommended engine for this migration; initial implementation validates the choice, and an alternative MAY be proposed only if a hard requirement cannot be met (see [Phase 2](#phase-2-initial-implementation)). Docusaurus uses MDX for templating and reusable components, replacing the ERB templating. A working proof of concept already demonstrates the approach end to end (see [Proof of Concept for RFC Review](#proof-of-concept-for-rfc-review)).
+The CF documentation SHOULD be rewritten in plain Markdown and managed by **Docusaurus** (current major version, v3 or newer — maintained by Meta, MIT-licensed, widely adopted in the CNCF ecosystem). Phase 2 validates this choice (see [Phase 2](#phase-2-initial-implementation)). Docusaurus uses MDX for templating and reusable components, replacing the ERB templating.
 
 Docusaurus provides the capabilities the new stack requires:
 
 - Markdown/MDX authoring with no custom templating language
 - Built-in full-text search (e.g., Algolia DocSearch or a self-hosted option such as Pagefind or lunr.js)
 - Clear, easy-to-maintain navigation that helps readers, including first-time CF users, find their way through the documentation
-- Technical support for multiple documentation versions; the versioning concept is outside the scope of this RFC
 - A one-command local development server (`npm start`)
 - A lightweight component system (admonitions, tabs, reusable MDX partials/snippets) that does not require Ruby or ERB
 - SEO-friendly output (structured metadata, canonical URLs, sitemap) and AI-agent-friendly crawlable HTML, optionally an `/llms.txt` index
@@ -44,7 +43,7 @@ Docusaurus provides the capabilities the new stack requires:
 - Variables for values that repeat across pages, in a way that is transparent to contributors
 - Code snippets of various types (shell, console, json, yaml) displayed by language with a copy button
 
-The migration SHOULD use a phased approach (see [Phases](#phases)) and MUST NOT break the existing canonical `docs.cloudfoundry.org` URL during transition.
+The migration SHOULD use a phased approach (see [Phases](#phases)).
 
 ### 2. Deployment: GitHub Pages with Full Community Access
 
@@ -52,7 +51,7 @@ The documentation site MUST be deployed to GitHub Pages under the `cloudfoundry`
 
 - **Zero hosting cost** for a static site within GitHub's free tier.
 - **Full community visibility:** deployment is driven by a GitHub Actions workflow in a public repository.
-- **Access model mirrors existing patterns:** repository access SHOULD follow the GitHub Teams pattern established for Concourse and other CF org repos (see RFC-0014), removing any dependency on CFF staff. Documentation changes require Docs WG approval. Docs WG approvers and leads SHOULD be able to trigger publishing of approved content.
+- **Access model mirrors existing patterns:** repository access SHOULD follow the GitHub Teams pattern established for Concourse and other CF org repos (see RFC-0014), removing any dependency on CFF staff. Docs WG approvers and leads SHOULD be able to trigger publishing of approved content.
 
 #### Domain Handling
 
@@ -85,8 +84,8 @@ The exact mechanism is an implementation detail to be settled by the Docs WG, as
 #### Review Process
 
 1. A contributor opens a PR against the docs repository.
-2. The owning WG is notified for awareness and optional review — not a merge requirement.
-3. The Docs WG reviews and approves every PR before merge, using a shared documentation style and structure guide that it maintains.
+2. The owning WG is notified (see [Ownership and Notifications](#ownership-and-notifications)).
+3. The Docs WG reviews and approves the PR, using a shared documentation style and structure guide that it maintains.
 4. Merging into the main branch triggers build and deployment to GitHub Pages.
 
 #### Automation
@@ -133,20 +132,19 @@ During parallel operation, existing repositories remain the source of truth unti
 
 - The new site goes live at `docs.cloudfoundry.org`.
 - The old build system is archived (not deleted) for historical reference.
-- Redirect rules ensure all old URLs resolve correctly.
 - The old hosting infrastructure is decommissioned after a defined stabilization window (suggested: 90 days).
 
 ### Suggested Timeline
 
-- **Phase 1 (Discovery):** October – November 2026 — repository inventory and ownership mapping published
-- **Phase 2 (Initial Implementation):** November – December 2026 — working Docusaurus site with representative content, deployed to GitHub Pages
-- **Phase 3 (Full Migration):** Q1 2027 — all content migrated, ownership mapping in place, CI pipeline live
-- **Phase 3a (Parallel Operation):** Q1–Q2 2027 — synchronization running, WGs reviewing migrated content
-- **Phase 4 (Cutover):** Q2 2027 — `docs.cloudfoundry.org` DNS switched, old infrastructure decommissioned
+- **Phase 1 (Discovery):** December 2026 – January 2027 — repository inventory and ownership mapping published
+- **Phase 2 (Initial Implementation):** February – March 2027 — working Docusaurus site with representative content, deployed to GitHub Pages
+- **Phase 3 (Full Migration):** Q2 2027 — all content migrated, ownership mapping in place, CI pipeline live
+- **Phase 3a (Parallel Operation):** Q2–Q3 2027 — synchronization running, WGs reviewing migrated content
+- **Phase 4 (Cutover):** Q3 2027 — `docs.cloudfoundry.org` DNS switched, old infrastructure decommissioned
 
 ## Proof of Concept for RFC Review
 
-The following small, exploratory proofs of concept were created to make this RFC easier to discuss and give reviewers concrete examples of the proposed approach. They support discussion and alignment during RFC review; they are not the initial implementation planned for Phase 2:
+The following small, exploratory proofs of concept were created to make this RFC easier to discuss and give reviewers concrete examples of the proposed approach. They do not replace the Phase 2 initial implementation:
 
 - **Docusaurus PoC** (@johha, @ZPascal) — [johha/cf-docs-new](https://github.com/johha/cf-docs-new), live at <https://johha.github.io/cf-docs-new/>. It automatically migrates all 41 files of `docs-cloudfoundry-concepts` from the legacy ERB/book pipeline to Docusaurus 3, regenerating the sidebar, variables, and MDX output from source with a single `npm run gen:all`. It shows the full set of benefits in one place: Markdown/MDX authoring, variables, full-text search, SEO-ready output, and a one-command local preview.
 - **Repository-layout comparison** (@norman-abramovitz) — [norman-abramovitz/cf-docs-rfc-proposal](https://github.com/norman-abramovitz/cf-docs-rfc-proposal) builds representative content in both single-repository and separate-repository layouts and confirms that published URLs and links are identical regardless of layout.
@@ -170,7 +168,6 @@ The following small, exploratory proofs of concept were created to make this RFC
 
 ## Open Questions
 
-- Which repositories currently feed the public CF docs, and which Working Groups own them? (Phase 1.)
 - After initial implementation, do any downstream companies still republish or derive the official CF documentation, and are there compatibility requirements to consider?
 - Which search backend (Algolia DocSearch, Pagefind, or lunr.js) should back the Docusaurus site?
 - Who owns and staffs discovery, the central migration team, and ongoing technical support for the new stack?
