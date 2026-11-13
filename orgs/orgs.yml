@@ -2915,7 +2915,6 @@ orgs:
         description: "Admin team for managing GDC BOSH CPI repository, secrets, and environments."
         maintainers:
           # Google
-          - ajlfleos
           - sanjay-nagarur
           - dilipkumar2k6
           - daniel-sarran

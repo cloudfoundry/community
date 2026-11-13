@@ -368,8 +368,6 @@ areas:
 - name: GDC VM deployment lifecycle (BOSH)
   approvers:
   # Google
-  - name: Ang Li
-    github: ajlfleos
   - name: Sanjay Nagarur
     github: sanjay-nagarur
   - name: Dilip Kumar
