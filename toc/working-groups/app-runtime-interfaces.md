@@ -86,8 +86,6 @@ areas:
     github: dmikusa
   - name: David O'Sullivan
     github: pivotal-david-osullivan
-  - name: Anthony Dahanne
-    github: anthonydahanne
   - name: Teodora Nikolova
     github: tnikolova82
   - name: Tsvetelina Marinova
