@@ -38,8 +38,6 @@ All working groups should notify the maintainers of `cf-k8s-releases` (e.g. via 
 
 Relevant changes may include changes to configuration, dependencies, build requirements, or runtime behavior.
 
-This notification is how working groups take Kubernetes into account as a supported deployment option. It does not block BOSH releases.
-
 ### Contributions to the central repository
 
 Working groups are encouraged to contribute corresponding Helm chart, Dockerfile, and release workflow updates directly to `cf-k8s-releases`.
