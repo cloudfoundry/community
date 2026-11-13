@@ -4,21 +4,27 @@
 - Start Date: 2026-09-14
 - Author(s): @beyhan, @c0d1ngm0nk3y, @loewenstein-sap, @modulo11, @mvach, @nicolasbender, @pbusko
 - Status: Draft <!-- Acceptable values: Draft, Approved, On Hold, Superseded -->
-- RFC Pull Request: (fill in with PR link after you submit it)
+- RFC Pull Request: https://github.com/cloudfoundry/community/pull/1630
 - Related RFCs: [RFC-0049 CF on KinD](rfc-0049-cf-on-kind.md)
 - Affected Component(s): App Runtime Interfaces, App Runtime Platform, Foundational Infrastructure, App Runtime Deployments (see the appendix for the per-component list)
 
 ## Summary
 
+Cloud Foundry can be deployed with BOSH (`cf-deployment`) and, following [RFC-0049](rfc-0049-cf-on-kind.md), on Kubernetes (`kind-deployment`). This RFC establishes Kubernetes as a second community-supported deployment option alongside BOSH, and defines how working groups support it.
+
+A renaming from `kind-deployment` to `k8s-deployment` might make this clearer.
+
 Running Cloud Foundry on Kubernetes requires a Helm chart and one or more container images per component. Today these Kubernetes assets are maintained in the central `cloudfoundry/cf-k8s-releases` repository.
 
-We propose a three step approach to gradually increase the adoption of these assets:
+We propose a three step approach to gradually share responsibility for these assets with the working groups:
 
 1. Working groups should communicate breaking or otherwise important changes to their BOSH components (e.g. via GitHub issues in cf-k8s-releases).
 1. Working groups are encouraged to contribute Kubernetes asset updates directly to that repository.
 1. Groups that want to maintain their own pipelines and fully control their Kubernetes assets may take ownership and even move them to a repository of their choice.
 
 ## Problem
+
+Cloud Foundry components are developed with BOSH as the only deployment target in mind. With Kubernetes as a second supported option, component changes need to be considered for both.
 
 A component's Kubernetes packaging is built from its source, but the team maintaining that packaging is often different from the team developing the component. Without timely communication, component changes can leave Kubernetes assets outdated or broken.
 
@@ -31,6 +37,8 @@ A clear notification process and opportunities for direct contribution would imp
 All working groups should notify the maintainers of `cf-k8s-releases` (e.g. via GitHub issues in that repository) about breaking or otherwise important changes to their BOSH components. Notifications should describe the change and identify the affected release so maintainers can assess the impact on Kubernetes assets.
 
 Relevant changes may include changes to configuration, dependencies, build requirements, or runtime behavior.
+
+This notification is how working groups take Kubernetes into account as a supported deployment option. It does not block BOSH releases.
 
 ### Contributions to the central repository
 
