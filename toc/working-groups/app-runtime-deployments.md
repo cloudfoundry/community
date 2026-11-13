@@ -108,6 +108,6 @@ areas:
   repositories:
   - cloudfoundry/k8s-garden-client
   - cloudfoundry/k8s-policy-agent
-  - cloudfoundry/kind-deployment
+  - cloudfoundry/k8s-deployment
   - cloudfoundry/cf-k8s-releases
 ```

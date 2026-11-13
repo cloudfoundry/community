@@ -1761,7 +1761,7 @@ orgs:
         description: Policy Agent implementation for Kubernetes
         has_projects: false
         has_wiki: false
-      kind-deployment:
+      k8s-deployment:
         allow_merge_commit: false
         default_branch: main
         description: Deploying Cloud Foundry on a local kind cluster
