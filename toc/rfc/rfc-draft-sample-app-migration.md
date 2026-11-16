@@ -48,8 +48,9 @@ business workflows of old applications.
 ### Consolidation
 
 Each of the 34 consolidation candidates maps to one of 10 existing destination
-repositories. These are not new repositories or the final portfolio size. The
-[Appendix](#appendix) links to the full analysis with destinations, missing variants
+repositories. The updated apps of those 10 respositories should get moved into one repository within the `cloudfoundry` organization.
+That repository should have one folder per buildpack, and one or more examples each, similar to the (Paketo Samples)[https://github.com/paketo-buildpacks/samples].
+The [Appendix](#appendix) links to the full analysis with destinations, missing variants
 and the mapping for each source.
 Replacements keep deployment and configuration demonstrations only, not business
 workflows. Variants stay small and independent and are built once per destination.
@@ -65,7 +66,7 @@ relying on it.
 
 ### Ownership
 
-The samples will be owned by the Cloud Foundry Tutorials area of the Docs WG.
+The samples will be owned by the Cloud Foundry Tutorials area of the Docs WG. A WG group that adds samples to the respository is responsible to keep those samples up-to-date.
 
 ### Automated dependency maintenance
 
