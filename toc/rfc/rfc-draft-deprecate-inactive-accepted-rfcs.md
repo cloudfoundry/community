@@ -13,7 +13,6 @@
 ## Summary
 
 Define criteria for identifying accepted RFCs that are no longer being actively worked on, and establish a process to deprecate and archive them. This keeps the set of active accepted RFCs an accurate reflection of the community's current intentions and ongoing work.
-
 ## Problem
 
 Accepted RFCs that define action plans may remain in the accepted state indefinitely even when no one is actively working on them. This creates several problems:
@@ -32,7 +31,7 @@ This process applies only to accepted RFCs whose outcome is an **Action Plan** â
 
 ### Criteria for Inactivity
 
-An accepted action-plan RFC is considered inactive if all of the following are true for the past **12 months**:
+An accepted action-plan RFC is considered inactive if all of the following are true for the past **6 months**:
 
 - No pull request updating the RFC has been merged or is open.
 - No linked issue or tracking item shows active progress.
@@ -40,9 +39,9 @@ An accepted action-plan RFC is considered inactive if all of the following are t
 
 ### Deprecation Process
 
-1. Any community member, Working Group lead, or TOC member MAY open a pull request (PR) that:
+1. Any community member MAY open a pull request (PR) that:
    - Changes the RFC's `Status` field to `Deprecated`.
-   - Moves the RFC file (and any associated image directory) into the `toc/rfc/archived/` directory using `git mv`.
+   - Moves the RFC file (and any associated image directory) into the `toc/rfc/deprecated/` directory using `git mv`.
    - Includes a brief comment in the PR explaining the inactivity criteria that were met.
 
 2. The PR description MUST mention `@cloudfoundry/toc` and the leads of any relevant Working Groups to raise awareness.
@@ -51,16 +50,17 @@ An accepted action-plan RFC is considered inactive if all of the following are t
    - The original RFC authors and any interested community members MAY step up to claim active ownership of the work by commenting on the PR.
    - If someone credibly commits to resuming work on the RFC (e.g., by opening a follow-up PR or issue within the notice period), the deprecation PR MUST be closed.
 
-4. After the notice period, if no one has claimed ownership, a TOC member or the PR author MAY merge the deprecation PR.
+4. After the notice period, if no one has claimed ownership, a TOC member or the PR author MAY merge the deprecation PR and close the tracking issue.
 
 ### Revival of a Deprecated RFC
 
-A deprecated RFC MAY be revived at any time by creating a new RFC that:
+A deprecated RFC MAY be revived at any time by any community member opening a pull request that:
 
-- References the deprecated RFC.
-- Picks up or updates the original action plan.
+- Moves the RFC file (and any associated image directory) back into the `toc/rfc/` directory using `git mv`.
+- Changes the RFC's `Status` field back to `Draft`.
+- Updates the RFC content as needed to reflect the current state of the action plan.
 
-The new RFC follows the standard RFC process from the beginning.
+The PR follows the standard RFC review and approval process from the beginning.
 
 ### Summary of Status Values
 
