@@ -1270,6 +1270,11 @@ orgs:
         has_projects: true
       docs-uaa:
         has_projects: true
+      docs-wg-private:
+        default_branch: main
+        description: Private records and deploy secrets for the Documentation Working Group leads
+        has_projects: false
+        private: true
       dontpanic:
         description: system data collector for disaster-struck garden vms
         has_projects: true
