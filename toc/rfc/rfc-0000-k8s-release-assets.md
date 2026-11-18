@@ -10,6 +10,10 @@
 
 ## Summary
 
+Cloud Foundry can be deployed with BOSH (`cf-deployment`) and, following [RFC-0049](rfc-0049-cf-on-kind.md), on Kubernetes (`kind-deployment`). This RFC establishes Kubernetes as a second community-supported deployment option alongside BOSH, and defines how working groups support it.
+
+A renaming from `kind-deployment` to `k8s-deployment` will make this clearer.
+
 Running Cloud Foundry on Kubernetes requires a Helm chart and one or more container images per component. Today these Kubernetes assets are maintained in the central `cloudfoundry/cf-k8s-releases` repository.
 
 We propose a three step approach to gradually share responsibility for these assets with the working groups:
