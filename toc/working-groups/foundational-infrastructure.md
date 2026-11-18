@@ -170,6 +170,8 @@ areas:
     github: weili-broadcom
   - name: Katharina Weisbarth
     github: Katharin4
+  - name: Daniel Linsley
+    github: dlinsley
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
