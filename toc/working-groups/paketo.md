@@ -40,19 +40,19 @@ Technical assets for the Paketo working group are contained in the following Git
 ```yaml
 name: Paketo
 execution_leads:
-- name: Jerico Pena
-  github: jericop
+- name: Anthony Dahanne
+  github: anthonydahanne
 - name: Daniel Mikusa
   github: dmikusa
-- name: Jan von Löwenstein
-  github: loewenstein-sap
+- name: Jerico Pena
+  github: jericop
 technical_leads:
-- name: Jerico Pena
-  github: jericop
+- name: Anthony Dahanne
+  github: anthonydahanne
 - name: Daniel Mikusa
   github: dmikusa
-- name: Jan von Löwenstein
-  github: loewenstein-sap
+- name: Jerico Pena
+  github: jericop
 bots:
 - name: paketo-bot
   github: paketo-bot
@@ -61,64 +61,52 @@ bots:
 areas:
 - name: App Monitoring
   approvers:
-  - name: Daniel Mikusa
-    github: dmikusa
-  - name: Joshua Casey
-    github: joshuatcasey
-  - name: David O'Sullivan
-    github: pivotal-david-osullivan
   - name: Anthony Dahanne
     github: anthonydahanne
-  reviewers: []
+  - name: Daniel Mikusa
+    github: dmikusa
+  reviewers:
+  - name: Joshua Casey
+    github: joshuatcasey
   repositories: []
 - name: Builders
   approvers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Michael Dawson
-    github: mhdawson
+  - name: Jerico Pena
+    github: jericop
+  - name: Costas Papastathis
+    github: pacostas
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Jerico Pena
-    github: jericop
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories: []
 - name: Content
   approvers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
   - name: Anthony Dahanne
     github: anthonydahanne
+  - name: Jan von Löwenstein
+    github: loewenstein
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories: []
 - name: Dependencies
   approvers:
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
+  - name: Jerico Pena
+    github: jericop
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
   - name: Joshua Casey
     github: joshuatcasey
   repositories: []
 - name: Dotnet Core
   approvers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
+  - name: Daniel Mikusa
+    github: dmikusa
+  - name: Brynley McDonald
+    github: ZephireNZ
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -127,26 +115,22 @@ areas:
   repositories: []
 - name: Go
   approvers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
+  - name: Jerico Pena
+    github: jericop
+  - name: Samuel Gaist
+    github: sgaist
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Genevieve L'Esperance
-    github: genevieve
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories: []
 - name: Java
   approvers:
-  - name: Daniel Mikusa
-    github: dmikusa
   - name: Anthony Dahanne
     github: anthonydahanne
-  - name: David O'Sullivan
-    github: pivotal-david-osullivan
+  - name: Daniel Mikusa
+    github: dmikusa
+  - name: Jerico Pena
+    github: jericop
   reviewers:
   - name: Ralf Pannemans
     github: c0d1ngm0nk3y
@@ -155,88 +139,76 @@ areas:
   repositories: []
 - name: NodeJS
   approvers:
-  - name: Michael Dawson
-    github: mhdawson
   - name: Costas Papastathis
     github: pacostas
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Ames
-    github: accrazed
   - name: Ralf Pannemans
     github: c0d1ngm0nk3y
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Emily Johnson
-    github: emmjohnson
   repositories: []
 - name: PHP
   approvers:
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
+  reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  reviewers:
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Forest Eckhardt
-    github: ForestEckhardt
+  - name: Michael Both
+    github: ionphractal
   - name: Joshua Casey
     github: joshuatcasey
   repositories: []
 - name: Python
   approvers:
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Joshua Casey
-    github: joshuatcasey
+  - name: Jerico Pena
+    github: jericop
+  - name: Samuel Gaist
+    github: sgaist
+  - name: Stanislav Khlud
+    github: TheSuperiorStanislav
   reviewers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Emily Johnson
-    github: emmjohnson
   - name: Arjun Sreedharan
     github: arjun024
+  - name: Joshua Casey
+    github: joshuatcasey
   repositories: []
 - name: Ruby
   approvers:
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
+  - name: Benjamin Guttmann
+    github: benjaminguttmann-avtq
   reviewers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Genevieve L'Esperance
-    github: genevieve
   - name: Arjun Sreedharan
     github: arjun024
+  - name: Michael Both
+    github: ionphractal
   repositories: []
 - name: Rust
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
-  - name: Forest Eckhardt
-    github: ForestEckhardt
   reviewers: []
   repositories: []
 - name: Stacks
   approvers:
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Michael Dawson
-    github: mhdawson
+  - name: Jerico Pena
+    github: jericop
+  - name: Costas Papastathis
+    github: pacostas
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Jerico Pena
-    github: jericop
   repositories: []
 - name: Tooling
   approvers:
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
+  - name: Jerico Pena
+    github: jericop
+  - name: Johannes Dillmann
+    github: modulo11
+  - name: Nicolas Bender
+    github: nicolasbender
+  - name: Costas Papastathis
+    github: pacostas
   reviewers:
   - name: Arjun Sreedharan
     github: arjun024
@@ -245,30 +217,22 @@ areas:
   repositories: []
 - name: Utilities
   approvers:
-  - name: Arjun Sreedharan
-    github: arjun024
-  - name: Daniel Mikusa
-    github: dmikusa
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  - name: David O'Sullivan
-    github: pivotal-david-osullivan
-  reviewers:
-  - name: Sophie Wigmore
-    github: sophiewigmore
   - name: Anthony Dahanne
     github: anthonydahanne
+  - name: Daniel Mikusa
+    github: dmikusa
+  - name: Jerico Pena
+    github: jericop
+  reviewers:
+  - name: Arjun Sreedharan
+    github: arjun024
   repositories: []
 - name: Web Servers
   approvers:
+  - name: Daniel Mikusa
+    github: dmikusa
+  reviewers:
   - name: Arjun Sreedharan
     github: arjun024
-  - name: Forest Eckhardt
-    github: ForestEckhardt
-  reviewers:
-  - name: Rob Dimsdale-Zucker
-    github: robdimsdale
-  - name: Sophie Wigmore
-    github: sophiewigmore
   repositories: []
 ```
