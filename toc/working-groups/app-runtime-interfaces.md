@@ -278,8 +278,6 @@ areas:
     github: s-yonkov-yonkov
   - name: Kristian Atanasov
     github: theghost5800
-  - name: Pascal Zimmermann
-    github: ZPascal
   approvers:
   - name: Daniel Mikusa
     github: dmikusa
@@ -291,6 +289,8 @@ areas:
     github: kehrlann
   - name: Georg Lokowandt
     github: Lokowandtg
+  - name: Pascal Zimmermann
+    github: ZPascal
   repositories:
   - cloudfoundry/cf-java-client
   - cloudfoundry/app-runtime-interfaces-infrastructure
