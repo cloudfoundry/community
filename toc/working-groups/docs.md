@@ -61,7 +61,6 @@ areas:
   - cloudfoundry/docs-cloudfoundry-concepts
   - cloudfoundry/docs-dev-guide
   - cloudfoundry/docs-services
-  - cloudfoundry/docs-credhub
   - cloudfoundry/docs-deploying-cf
   - cloudfoundry/docs-dotnet-core-tutorial
 - name: Cloud Foundry Tutorials
@@ -95,4 +94,12 @@ areas:
   - cloudfoundry/tutorials
   - cloudfoundry/unhappy-appy
   - cloudfoundry/what-is-cf
+- name: Operations
+  approvers:
+  - name: Norman Abramovitz
+    github: norman-abramovitz
+  - name: Katharina Przybill
+    github: kathap
+  repositories:
+  - cloudfoundry/docs-wg-private
 ```

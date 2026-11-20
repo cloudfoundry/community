@@ -158,15 +158,18 @@ orgs:
         has_projects: true
         has_wiki: false
       bosh-agent-index:
+        default_branch: main
         has_projects: true
       bosh-alicloud-light-stemcell-builder:
         description: Builds light stemcells for Alibaba Cloud from a "full" bosh stemcell
         has_projects: true
       bosh-aws-cpi-release:
+        default_branch: main
         description: BOSH AWS CPI
         has_projects: true
         has_wiki: false
       bosh-aws-light-stemcell-builder:
+        default_branch: main
         description: Builds light stemcells for AWS from a "full" bosh stemcell
         has_projects: false
         has_wiki: false
@@ -175,6 +178,7 @@ orgs:
         has_projects: true
         private: true
       bosh-azure-cpi-release:
+        default_branch: main
         description: BOSH Azure CPI
         has_projects: true
         has_wiki: false
@@ -185,19 +189,22 @@ orgs:
       bosh-alicloud-cpi-release:
         description: BOSH Alibaba CPI
         has_projects: true
-        default_branch: master
+        default_branch: main
       bosh-ali-storage-cli:
         description: Go CLI for Alibaba storage
         has_projects: true
         default_branch: main
       bosh-apt-resources:
+        default_branch: main
         description: Builds debian packages for public bosh apt repository
         has_projects: false
         has_wiki: false
       bosh-backup-and-restore:
+        default_branch: main
         has_projects: true
         homepage: https://docs.cloudfoundry.org/bbr
       bosh-backup-and-restore-test-releases:
+        default_branch: main
         description: Test Releases for bosh-backup-and-restore
         has_projects: true
       bosh-bbl-ci-envs:
@@ -239,6 +246,7 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-cpi-certification:
+        default_branch: main
         has_projects: false
         has_wiki: false
       bosh-cpi-environments:
@@ -247,6 +255,7 @@ orgs:
         has_wiki: false
         private: true
       bosh-cpi-go:
+        default_branch: main
         description: Library for developing BOSH CPIs in Go
         has_projects: false
         has_wiki: false
@@ -255,6 +264,7 @@ orgs:
         has_projects: true
         private: true
       bosh-cpi-ruby:
+        default_branch: main
         description: Library for developing BOSH CPIs in Ruby
         has_projects: true
         has_wiki: false
@@ -263,22 +273,27 @@ orgs:
         has_projects: false
         has_wiki: false
       bosh-deployment:
+        default_branch: main
         description: Collection of BOSH manifests referenced by cloudfoundry/docs-bosh
         has_projects: false
         has_wiki: false
       bosh-deployment-resource:
+        default_branch: main
         has_projects: true
       bosh-disaster-recovery-acceptance-tests:
         has_projects: true
       bosh-dns-aliases-release:
+        default_branch: main
         description: Misc release to specify additional DNS aliases
         has_projects: false
         has_wiki: false
       bosh-dns-release:
+        default_branch: main
         description: BOSH DNS release
         has_projects: false
         has_wiki: false
       bosh-docker-cpi-release:
+        default_branch: main
         description: BOSH Docker CPI
         has_projects: true
         has_wiki: false
@@ -295,6 +310,7 @@ orgs:
         default_branch: main
         has_projects: false
       bosh-google-cpi-release:
+        default_branch: main
         description: BOSH Google CPI
         has_projects: true
       bosh-google-light-stemcell-builder:
@@ -379,6 +395,7 @@ orgs:
         has_projects: true
         private: true
       bosh-openstack-cpi-release:
+        default_branch: main
         description: BOSH OpenStack CPI
         has_projects: true
         has_wiki: false
@@ -419,20 +436,24 @@ orgs:
         default_branch: main
         has_projects: true
       bosh-utils:
+        default_branch: main
         description: Generic packages extracted from bosh-agent and bosh-init
         has_projects: false
         has_wiki: false
       bosh-virtualbox-cpi-release:
+        default_branch: main
         description: BOSH VirtualBox CPI
         has_projects: false
         has_wiki: false
       bosh-vsphere-cpi-release:
+        default_branch: main
         allow_merge_commit: false
         allow_squash_merge: false
         description: BOSH vSphere CPI
         has_projects: false
         has_wiki: false
       bosh-warden-cpi-release:
+        default_branch: main
         description: BOSH Garden (used to be Warden) CPI
         has_projects: false
         has_wiki: false
@@ -456,6 +477,7 @@ orgs:
         has_projects: true
         private: true
       bpm-release:
+        default_branch: main
         allow_merge_commit: false
         description: isolated bosh jobs
         has_projects: false
@@ -1201,6 +1223,7 @@ orgs:
         description: The bookbinder repository for open source Cloud Foundry documentation
         has_projects: true
       docs-bosh:
+        default_branch: main
         description: The docs repo for BOSH
         has_projects: false
         has_wiki: false
@@ -1247,6 +1270,11 @@ orgs:
         has_projects: true
       docs-uaa:
         has_projects: true
+      docs-wg-private:
+        default_branch: main
+        description: Private records and deploy secrets for the Documentation Working Group leads
+        has_projects: false
+        private: true
       dontpanic:
         description: system data collector for disaster-struck garden vms
         has_projects: true
@@ -1501,6 +1529,7 @@ orgs:
         description: Tree based pubsub library for Go.
         has_projects: true
       go-socks5:
+        default_branch: main
         description: SOCKS5 server in Golang
         has_issues: false
         has_projects: true
@@ -1525,6 +1554,7 @@ orgs:
         description: generated real/fake os shim objects for tdd in go
         has_projects: true
       gosigar:
+        default_branch: main
         description: A Golang implementation of the Sigar API
         has_projects: true
         has_wiki: false
@@ -1534,6 +1564,7 @@ orgs:
         has_wiki: false
       grace:
         has_projects: true
+        default_branch: main
       greenhouse-ci:
         archived: true
         default_branch: windows-2019
@@ -1707,6 +1738,7 @@ orgs:
         has_wiki: false
         homepage: https://pkg.go.dev/code.cloudfoundry.org/jsonry?tab=doc
       jumpbox-deployment:
+        default_branch: main
         description: Deploy single vanilla jumpbox machine with BOSH
         has_projects: false
         has_wiki: false
@@ -2047,6 +2079,7 @@ orgs:
         has_issues: false
         has_projects: true
       os-conf-release:
+        default_branch: main
         description: Additional Linux OS configuration release
         has_projects: false
         has_wiki: false
@@ -2613,6 +2646,7 @@ orgs:
         description: Bosh Release for the UAA
         has_projects: true
       uaa-singular:
+        default_branch: main
         description: Singular Login for Web Applications
         has_projects: true
       uaa-singular-example:
@@ -2640,6 +2674,7 @@ orgs:
         has_projects: false
         has_wiki: false
       usn-resource:
+        default_branch: main
         has_projects: true
       vantablackbox-release:
         archived: true
@@ -2694,6 +2729,7 @@ orgs:
         has_projects: true
         has_wiki: false
       windows-utilities-release:
+        default_branch: main
         has_projects: true
       windows-utilities-tests:
         has_projects: true
@@ -2884,7 +2920,6 @@ orgs:
         description: "Admin team for managing GDC BOSH CPI repository, secrets, and environments."
         maintainers:
           # Google
-          - ajlfleos
           - sanjay-nagarur
           - dilipkumar2k6
           - daniel-sarran

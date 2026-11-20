@@ -38,7 +38,6 @@ The current working groups are:
 - App Runtime Deployments
 - App Runtime Interfaces
 - App Runtime Platform
-- CF on K8s
 - Docs
 - Foundational Infrastructure
 - Paketo
@@ -124,28 +123,6 @@ The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are t
 | &nbsp;                                                   | Leads            | Company | Profile                                  |
 | -------------------------------------------------------- | ---------------- | ------- | ---------------------------------------- |
 | <img width="30px" src="https://github.com/ameowlia.png"> | Amelia Downs     | VMware  | [@ameowlia](https://github.com/ameowlia) |
-
-
-
-## CF on K8s
-
-Mission: To bring the ease and simplicity of the Cloud Foundry developer experience to Kubernetes.
-
-The GitHub repos this WG manages in the `cloudfoundry` GitHub organization are to be labeled with the `cff-wg-cf-on-k8s` topic.
-
-| Artifact                   | Link |
-| -------------------------- | ---- |
-| Charter                    | [cf-on-k8s.md](./cf-on-k8s.md)  |
-| Forum                      | [Video chat](https://zoom.us/j/98762513821?pwd=dUk1WGZwcXJqR0UxRXQ4NnljcCtydz09)  |
-| Community Meeting Calendar | Every other Wednesday at 11:30 am ET / 8:30 am PT  |
-| Meeting Notes              | [Google Doc](https://docs.google.com/document/d/1ULNBEjlrNAgn3ko9y8ZJfwI7mw5-oofYdjl-dhkEoDA/edit)  |
-| Slack Channel              | [&#x23;korifi-dev](https://cloudfoundry.slack.com/archives/C0297673ASK) |
-
-| &nbsp;                                                          | Leads           | Company | Profile                                                |
-| --------------------------------------------------------------- | --------------- | ------- | ------------------------------------------------------ |
-| <img width="30px" src="https://github.com/georgethebeatle.png"> | Georgi Sabev    | SAP     | [@georgethebeatle](https://github.com/georgethebeatle) |
-| <img width="30px" src="https://github.com/Birdrock.png">        | Andrew Wittrock | VMware  | [@Birdrock](https://github.com/Birdrock)               |
-| <img width="30px" src="https://github.com/davewalter.png">      | Dave Walter     | VMware  | [@davewalter](https://github.com/davewalter)           |
 
 
 ## Docs
