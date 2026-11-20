@@ -199,6 +199,8 @@ areas:
     github: tcdowney
   - name: Wei Li
     github: weili-broadcom
+  - name: Daniel Linsley
+    github: dlinsley
   repositories:
   - cloudfoundry/app-runtime-platform-envs
   - cloudfoundry/bosh-system-metrics-forwarder-release
