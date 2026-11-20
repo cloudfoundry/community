@@ -380,6 +380,8 @@ areas:
     github: itsouvalas
   - name: Ruben Koster
     github: rkoster
+  - name: Chris Weibel
+    github: cweibel
   reviewers:
   - name: Tristan Poland
     github: tristanpoland

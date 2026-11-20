@@ -143,8 +143,6 @@ areas:
     github: colins
   - name: Kim Basset
     github: kimago
-  - name: Ryan Wittrup
-    github: ryanwittrup
   - name: Pascal Zimmermann
     github: ZPascal
   - name: Nishad Mathur
@@ -168,6 +166,8 @@ areas:
   reviewers:
   - name: Wei Li
     github: weili-broadcom
+  - name: Katharina Weisbarth
+    github: Katharin4
   repositories:
   - cloudfoundry/blackbox
   - cloudfoundry/bosh-system-metrics-server-release
@@ -188,8 +188,6 @@ areas:
     github: aramprice
   - name: Joerg W
     github: joergdw
-  - name: Ansh Rupani
-    github: anshrupani
   - name: Chris Selzo
     github: selzoc
   - name: Nishad Mathur
@@ -248,8 +246,6 @@ areas:
     github: selzoc
   - name: Ahmed Hassanin
     github: a-hassanin
-  - name: Ansh Rupani
-    github: anshrupani
   - name: Nishad Mathur
     github: alphasite
   - name: Julian Hjortshoj
@@ -430,8 +426,6 @@ areas:
     github: selzoc
   - name: Ahmed Hassanin
     github: a-hassanin
-  - name: Ansh Rupani
-    github: anshrupani
   - name: Julian Hjortshoj
     github: julian-hj
   - name: Benjamin Guttmann

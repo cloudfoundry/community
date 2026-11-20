@@ -94,4 +94,12 @@ areas:
   - cloudfoundry/tutorials
   - cloudfoundry/unhappy-appy
   - cloudfoundry/what-is-cf
+- name: Operations
+  approvers:
+  - name: Norman Abramovitz
+    github: norman-abramovitz
+  - name: Katharina Przybill
+    github: kathap
+  repositories:
+  - cloudfoundry/docs-wg-private
 ```
