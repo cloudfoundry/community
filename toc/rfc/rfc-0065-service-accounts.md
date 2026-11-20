@@ -653,8 +653,9 @@ it is emitted only for a validated account, so unrelated SANs such as the instan
 GUID or internal route names never enlarge the header. GoRouter reads `SVC=` only
 from elements ahead of the `Subject`, which carries values taken from the
 certificate. Repeated `SVC=` elements, or text inside or after the `Subject`,
-cannot introduce an account. This extension should be recorded in RFC 0055's XFCC
-format description; no change to RFC 0055's configuration is needed.
+cannot introduce an account. The proposed extension is also described in
+[RFC 0055's XFCC format section](rfc-0055-identity-aware-routing-for-gorouter.md#xfcc-header-format);
+no change to RFC 0055's configuration is needed.
 
 ### E. CA rotation
 
