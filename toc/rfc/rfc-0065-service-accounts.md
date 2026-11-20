@@ -435,7 +435,7 @@ including the opt-in
 certificate binding policy and named trust bundles, validated in a CF lab.
 
 Drafts in [Cloud Controller][capi], [capi-release][release], [BBS][bbs],
-[Diego][diego] and the [CLI][cli] demonstrate shared identity, explicit roles,
+[Diego][diego], [GoRouter][routing] and the [CLI][cli] demonstrate shared identity, explicit roles,
 disable/enable, unbind/restart, the creation budget and clients referencing a UAA
 trust bundle. Org
 prefix allocation, org-local uniqueness, qualified subjects/SANs, org ownership
@@ -451,13 +451,15 @@ developer experience.
 
 The follow-up amendment PR proposes nested `cf` attribution, an
 operator-configurable lifetime with a 300-second default, independent CAPI user
-lifecycle, and timestamp-only reservation observability. These changes remain
+lifecycle, timestamp-only reservation observability, and the GoRouter caller
+identity rules described in [appendix D](#d-platform-components). These changes remain
 proposals until this amendment is accepted; merging the original RFC PR does not
 approve them automatically. In [Cloud Controller][capi], independent user lifecycle
 and timestamp-only retention are implemented; nested claim mappings and configurable
 token validity are follow-up implementation work. UAA required-claim matching for
 dotted paths and reconciliation of changed operator token-validity settings must
-be verified before those changes are considered complete.
+be verified before those changes are considered complete. The GoRouter rules are
+tracked in the [GoRouter draft][routing].
 
 ## Appendix: implementation notes
 
@@ -600,9 +602,59 @@ explicit roles. Developers cannot change any of these values.
   independently managed; binding/retiring the account does not create/delete them.
 - **BBS and Diego** add the account SAN to instance certificates; apps discover
   their client ID and token endpoint through non-secret `VCAP_SERVICE_ACCOUNT`.
-- **GoRouter** matches route policies against the SAN.
+- **GoRouter** matches `cf:svc:<prefix>:<name>` route-policy sources against the
+  account SAN `<name>.<prefix>.svc.identity`; see
+  [GoRouter caller identity](#gorouter-caller-identity).
 - Staging never receives an account. Components that do not support accounts
   fail closed during upgrades.
+
+#### GoRouter caller identity
+
+GoRouter authorizes a caller from one identity made up of its app, space, org and
+service account. All four come from the same source, the
+`X-Forwarded-Client-Cert` (XFCC) data for the request, and never partly from the
+TLS connection and partly from a forwarded header. This matters because the
+`forward` and `always_forward` modes of [RFC 0055][rfc-0055] pass a client-supplied
+header through. If the account came from the TLS certificate while the other
+fields came from that header, a caller could pair a genuine account with another
+space's identity and satisfy a space-scoped domain.
+
+- With the default `sanitize_set` mode, GoRouter replaces any incoming header with
+  one derived from the client certificate it verified, so the identity is
+  authenticated end to end.
+- With `forward` or `always_forward`, the operator has chosen to trust the
+  forwarded header. That trust covers the service account exactly as it already
+  covers app, space and org.
+- A certificate has a service account only if it carries **exactly one**
+  well-formed `<name>.<prefix>.svc.identity` DNS SAN (lowercase
+  [RFC 1123 labels][names] of 3–63 characters). Other DNS SANs are ignored. A
+  second account SAN, or any malformed `*.svc.identity` SAN, makes the identity
+  ambiguous: the caller has no account and `cf:svc:` rules deny it.
+- A rule matches when its qualified source equals the caller's account exactly.
+  Rules for app, space, org and `cf:any` keep their semantics, any matching rule
+  allows the request, and domain caller-scope restrictions and default deny still
+  apply. A rule is never satisfied by an app, space or org value.
+- A `cf:svc:` rule that is not `cf:svc:<prefix>:<name>` with valid labels is
+  skipped and logged as `malformed-route-policy`, like other unrecognized rules,
+  so a mistyped rule is visible to operators rather than silently ignored.
+
+In the `raw` XFCC format the certificate itself carries the SAN. The compact
+`envoy` format of [RFC 0055][rfc-0055] contains only `Hash` and `Subject`, so
+GoRouter adds one element, `SVC=<SAN>`, between them when the certificate has a
+service account:
+
+```text
+Hash=<sha256>;SVC=payments-worker.acme-payments.svc.identity;Subject="CN=<instance>,OU=app:<guid>,OU=space:<guid>,OU=organization:<guid>"
+```
+
+`SVC=` is a GoRouter extension to the Envoy-style format, not an Envoy key. It
+lets backends and GoRouter itself see the account without the full certificate, and
+it is emitted only for a validated account, so unrelated SANs such as the instance
+GUID or internal route names never enlarge the header. GoRouter reads `SVC=` only
+from elements ahead of the `Subject`, which carries values taken from the
+certificate. Repeated `SVC=` elements, or text inside or after the `Subject`,
+cannot introduce an account. This extension should be recorded in RFC 0055's XFCC
+format description; no change to RFC 0055's configuration is needed.
 
 ### E. CA rotation
 
@@ -642,6 +694,8 @@ alignment before the shared-audience AWS flow is considered validated.
 [release]: https://github.com/cloudfoundry/capi-release/pull/702
 [bbs]: https://github.com/cloudfoundry/bbs/pull/168
 [diego]: https://github.com/cloudfoundry/diego-release/pull/1216
+[routing]: https://github.com/cloudfoundry/routing-release/pull/603
+[rfc-0055]: rfc-0055-identity-aware-routing-for-gorouter.md
 [cli]: https://github.com/cloudfoundry/cli/pull/3875
 [uaa]: https://github.com/cloudfoundry/uaa/pull/4109
 [resource-policy]: https://github.com/cloudfoundry/uaa/issues/4125
