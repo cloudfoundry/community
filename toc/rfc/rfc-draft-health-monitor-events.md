@@ -91,13 +91,17 @@ The event log provides a fixed publication boundary independent of consumer prog
 
 HM writes `/var/vcap/sys/log/health_monitor/events.log` whenever it is running. The stream contains every validated, deduplicated alert and heartbeat that would have reached the current plugin dispatcher. Existing enrichment, heartbeat eligibility, health-analysis rules, and deduplication remain unchanged.
 
-The file contains UTF-8 JSON, one complete object followed by a newline per record, with no logging prefix. Operational messages remain in `health_monitor.log`; `hm.loglevel` does not filter the event stream. There is no destination selector, executable path, template callback, configurable serializer, or event-type filter. Any filter, for example to emit only alerts, would be a separate follow-up that does not alter the schema.
+The file MUST conform to [NDJSON v1.0.0][ndjson], with exactly one event record per line and no logging prefix. A reader tailing the file MUST hold a trailing line until its newline arrives and MUST discard and count malformed lines. Operational messages remain in `health_monitor.log`; `hm.loglevel` does not filter the event stream. There is no destination selector, executable path, template callback, configurable serializer, or event-type filter. Any filter, for example to emit only alerts, would be a separate follow-up that does not alter the schema.
 
 Multiple local readers can consume the file independently. Remote consumers use an independently deployed collector to forward it over syslog, OTLP, or another transport. HM has no knowledge of those destinations and does not supervise the collector.
 
 ### Event contract
 
 Each record MUST have a `schema_version`, an `emitted_at` timestamp, and an `event` object. Version 1 preserves existing event field names, values, timestamps, metric names, and units. Consumers MUST tolerate additional fields; changing existing field meanings or types requires a new schema version and a migration plan.
+
+Every record uses the same envelope; `event.kind` identifies whether the event is an `alert` or a `heartbeat`, and the event's fields depend on its kind. Each `schema_version` is described by a [JSON Schema 2020-12][json-schema] document that is versioned with HM in the `cloudfoundry/bosh` repository and linked from bosh.io. That schema is the normative field reference. During a rolling upgrade or a rollback, one file can contain records of more than one `schema_version`, so consumers MUST dispatch on `schema_version` for each record.
+
+Batching, compression, and de-duplicating repeated envelope fields are left to collectors. Mapping records to OpenTelemetry, including BOSH semantic conventions, is also a collector concern and is out of scope; RFC-0064 assigns those conventions to the App Runtime Platform Logging and Metrics team.
 
 `emitted_at` is an RFC 3339 UTC timestamp with microsecond resolution recording when HM serialized the record, so log indexers can order events that share the same integer-second producer timestamp.
 
@@ -205,6 +209,8 @@ Rollback instructions must explain how to return to a release supporting the old
 | Publish a public NATS stream | Requires a deliberate external access and isolation contract for the internal bus; raw agent subjects omit HM enrichment and generated alerts; core NATS has no replay ([NATS][nats]) |
 | Add an HTTP webhook or OTLP exporter | Introduces network clients, authentication, retries, and backpressure in HM |
 | Expose a polling or streaming HTTP API | Requires serving consumers and defining cursors or stream lifecycle; more surface than a file |
+| Wrap records in a CloudEvents 1.0 envelope | Not chosen because of per-record overhead at heartbeat volume: additional envelope attributes, a newly minted unique `id` because HM event IDs can repeat, and a `source` identity policy, while the HM payload stays unchanged inside `data` |
+| Write OTLP-shaped records | Depends on BOSH semantic conventions that are not yet defined, enlarges each record, gives syslog consumers no benefit, and changes the payload existing JSON consumers parse; collectors can map records to OTLP |
 | Use Director events or Prometheus metrics alone | Director recording lacks the full heartbeat payload; metric scrapes do not preserve all HM events |
 
 ## Impact and Consequences
@@ -266,6 +272,8 @@ It does not. The Resurrector and Director event recording become built-in HM com
 [bosh-exporter]: https://github.com/cloudfoundry/bosh_exporter
 [filelog]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 [rfc-0064]: rfc-0064-platform-logs-with-opentelemetry.md
+[ndjson]: https://github.com/ndjson/ndjson-spec#3-functional-specification
+[json-schema]: https://json-schema.org/draft/2020-12
 [metrics-collector]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-director/lib/bosh/director/metrics_collector.rb
 [cf-log-streaming]: https://docs.cloudfoundry.org/devguide/streaming-logs-index.html
 [alert-model]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/events/alert.rb
