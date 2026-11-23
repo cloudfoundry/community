@@ -147,6 +147,9 @@ areas:
     github: ZPascal
   - name: Nishad Mathur
     github: alphasite
+  reviewers:
+  - name: Andreas Kyrian
+    github: Jobsby
   repositories:
   - cloudfoundry/mysql-backup-release
   - cloudfoundry/mysql-monitoring-release
