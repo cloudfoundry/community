@@ -259,7 +259,6 @@ It does not. The Resurrector and Director event recording become built-in HM com
 - Which release defines the end of the overlap period and the removal milestone?
 - Should jobs declare per-job rotation in `bpm.yml` (with BPM writing the logrotate rule or the agent reading it) or in a rendered job `config/logrotate.conf` read by the agent?
 - Will Jammy stemcells receive logrotate 3.21 or later, or will zero-loss rotation of `events.log` be limited to Noble?
-- Is logrotate scheduled on `create-env` Directors, and does the agent's rotation setup run there?
 
 [bosh-baseline]: https://github.com/cloudfoundry/bosh/tree/979e3032c3f04b4e6f3543425a2f24562d3fa171
 [processor]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/event_processor.rb
