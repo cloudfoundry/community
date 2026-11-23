@@ -2862,7 +2862,6 @@ orgs:
       temp-uaa-ci-admins:
         description: "Temporary team for managing UAA CI"
         maintainers:
-          - coolgang123
           - duanemay
           - fhanik
           - hsinn0
