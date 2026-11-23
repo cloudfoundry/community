@@ -715,7 +715,6 @@ branch-protection:
             - "DAV Integration Tests"
             - "GCS Integation All Tests"
             - "GCS Integation Fast Tests"
-            - "AWS S3 European Sovereign Cloud Integration"
             - "AWS S3 Frankfurt Integration"
             - "AWS S3 Public Read Integration"
             - "AWS S3 US Integration"
