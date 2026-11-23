@@ -5,7 +5,7 @@
 - Author(s): @aramprice
 - Status: Draft
 - RFC Pull Request: [community#1671](https://github.com/cloudfoundry/community/pull/1671)
-- Related RFCs: [Support Platform Logs Collection and Processing with OpenTelemetry](https://github.com/cloudfoundry/community/pull/1624)
+- Related RFCs: [RFC-0064: Support Platform Logs Collection and Processing with OpenTelemetry](rfc-0064-platform-logs-with-opentelemetry.md)
 - Affected Component(s): BOSH Health Monitor, bosh-release, bosh-deployment, BOSH documentation, syslog-release, bosh-system-metrics-server-release, bosh-hm-forwarder-release
 
 ## Summary
@@ -51,7 +51,8 @@ Known consumers, from a source-based inventory rather than a census of installat
 - [`syslog-release`][syslog-spec] tails job logs with [Blackbox][blackbox]. Its local transport and message-size settings affect complete JSON records, and Blackbox assigns a fixed syslog priority.
 - The deprecated [BOSH System Metrics Server][metrics-server] consumes the JSON plugin's stdin interface, and its [forwarder][metrics-forwarder] sends heartbeats to Loggregator. The older [BOSH HM Forwarder][hm-forwarder] depends on HM's OpenTSDB output.
 - [BOSH Exporter][bosh-exporter] exposes Director metrics but does not replace the HM alert stream.
-- The platform logs OpenTelemetry RFC proposes independent collection of BOSH job logs. It is a draft, not an assumed capability. The [filelog receiver][filelog] already supports JSON parsing and rotation.
+- The Director's [metrics collector][metrics-collector] polls HM's HTTP API (for example `/unresponsive_agents` and `/failing_instances`) to populate Prometheus gauges. These endpoints are not plugin infrastructure; they are retained unchanged and are outside the scope of this proposal.
+- [RFC-0064][rfc-0064] is accepted and defines independent collection of BOSH job logs with OpenTelemetry, but its implementation is not yet available, so this proposal does not depend on it. The [filelog receiver][filelog] already supports JSON parsing and rotation.
 
 Maintainers must solicit additional consumers during the deprecation period.
 
@@ -145,9 +146,11 @@ External delivery remains best effort. HM does not wait for reader acknowledgmen
 
 ### Independent collection
 
-The initial migration documentation MUST include a tested syslog collection example using existing BOSH deployment patterns. It MUST colocate and independently supervise the collector on the HM VM (including `create-env` Directors), identify the event file separately from diagnostic logs, parse the JSON payload, and attach Director identity. When using Blackbox it MUST set `syslog.use_tcp_for_file_forwarding_local_transport: true` and size `syslog.max_message_size` for the supported record size, because the job warns about UDP truncation above 1 KB and defaults the rsyslog maximum to 8 KB. It MUST demonstrate rotation, collector restart, a disconnected destination, and oversized records, and document offsets, retention, possible duplicates or loss, and secure remote forwarding.
+The event file is local to the HM VM, so every collector, whether syslog, OpenTelemetry, or another agent, MUST be deployed on that VM.
 
-An OpenTelemetry filelog example MAY be supplied. It MUST pin the collector version and verify JSON parsing, truncation handling, and maximum record size. It adds no OTLP client to HM and does not make acceptance of the platform logs RFC a prerequisite.
+The initial migration documentation MUST include a tested syslog collection example using existing BOSH deployment patterns. It MUST colocate and independently supervise the collector on the HM VM (including `create-env` Directors), identify the event file separately from diagnostic logs, parse the JSON payload, and attach Director identity. When using Blackbox it MUST set `syslog.use_tcp_for_file_forwarding_local_transport: true` and size `syslog.max_message_size` for the supported record size, because the job warns about UDP truncation above 1 KB and defaults the rsyslog maximum to 8 KB. It MUST demonstrate rotation, collector restart, a disconnected destination, and oversized records, and document offsets, retention, possible duplicates or loss, and secure remote forwarding. Any `syslog-release` changes this needs, such as identifying the event file and parsing or enriching its JSON records, are part of the migration work.
+
+An OpenTelemetry filelog example MAY be supplied. It MUST pin the collector version and verify JSON parsing, truncation handling, and maximum record size. It adds no OTLP client to HM and does not make implementation of RFC-0064 a prerequisite.
 
 ### Built-in resurrection
 
@@ -173,8 +176,8 @@ The Director database remains the queryable event history, not a configurable ex
 
 Release numbers are set at acceptance. Removal is conditional on a working replacement and the validation below, not solely on elapsed time. Proposed milestones, relative to acceptance:
 
-- **Within one month:** ship the first HM release with the event log and tested syslog collector example. Mark both Ruby plugins and executable hooks as deprecated in documentation, and warn once at startup for configured destination plugins and discovered hooks. Mark the `bosh-deployment` [Datadog][hm-datadog-ops] and [Graphite][hm-graphite-ops] ops files as deprecated.
-- **Overlap, at least three months after the event log ships:** the new stream and existing plugins run side by side. Move resurrection and Director recording to internal components, without running duplicate copies through the plugin dispatcher. Publish field mappings and migration guidance for each bundled integration and identified ecosystem consumer. Operators compare event content and explicitly choose the active notification path to avoid duplicate paging or metrics.
+- **Within one month:** ship the first HM release with the event log and tested syslog collector example. Publish migration documentation on bosh.io describing how to collect the event log and rebuild existing integrations, following the pattern of the Cloud Foundry [syslog drain documentation][cf-log-streaming]. Mark both Ruby plugins and executable hooks as deprecated in documentation, and warn once at startup for configured destination plugins and discovered hooks. Mark the `bosh-deployment` [Datadog][hm-datadog-ops] and [Graphite][hm-graphite-ops] ops files as deprecated.
+- **Overlap, at least three months after the event log ships:** the new stream and existing plugins run side by side. Move resurrection and Director recording to internal components, without running duplicate copies through the plugin dispatcher. Add field mappings and migration guidance to the bosh.io documentation for each bundled integration and identified ecosystem consumer. Operators compare event content and explicitly choose the active notification path to avoid duplicate paging or metrics.
 - **Removal, once the overlap ends and the validation gates pass:** remove destination plugins, class lookup and registration, the plugin base interface, JSON process management, plugin-only helpers and dependencies, plugin configuration, execution permissions, and the BPM `/var/vcap/jobs` mount. Keep the internal HTTP and authentication code needed for resurrection and Director recording. Provide explicit diagnostics for obsolete integration configuration wherever release rendering can detect it, and document how to find and remove abandoned hook jobs.
 
 The migration preserves source events, not vendor-specific behavior. Email batching, incident grouping, destination-imposed metric names and tags, and Consul TTL registration must be reproduced or intentionally changed by consumers. HM will not ship vendor adapters.
@@ -262,6 +265,9 @@ It does not. The Resurrector and Director event recording become built-in HM com
 [hm-forwarder]: https://github.com/cloudfoundry/bosh-hm-forwarder-release
 [bosh-exporter]: https://github.com/cloudfoundry/bosh_exporter
 [filelog]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
+[rfc-0064]: rfc-0064-platform-logs-with-opentelemetry.md
+[metrics-collector]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-director/lib/bosh/director/metrics_collector.rb
+[cf-log-streaming]: https://docs.cloudfoundry.org/devguide/streaming-logs-index.html
 [alert-model]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/events/alert.rb
 [resurrector]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/plugins/resurrector.rb
 [resurrector-helper]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/plugins/resurrector_helper.rb
