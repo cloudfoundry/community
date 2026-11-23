@@ -6,7 +6,7 @@
 - Status: Draft
 - RFC Pull Request: [community#1671](https://github.com/cloudfoundry/community/pull/1671)
 - Related RFCs: [RFC-0064: Support Platform Logs Collection and Processing with OpenTelemetry](rfc-0064-platform-logs-with-opentelemetry.md)
-- Affected Component(s): BOSH Health Monitor, bosh-release, bosh-deployment, BOSH documentation, syslog-release, bosh-system-metrics-server-release, bosh-hm-forwarder-release
+- Affected Component(s): BOSH Health Monitor, bosh-release, bosh-deployment, BOSH documentation, syslog-release, bosh-system-metrics-server-release, bosh-hm-forwarder-release; for per-job log rotation: bosh-agent or bpm-release, and bosh-linux-stemcell-builder
 
 ## Summary
 
@@ -143,7 +143,10 @@ External delivery remains best effort. HM does not wait for reader acknowledgmen
 
 - The writer MUST use a bounded queue and an independent worker so event handling never waits for filesystem I/O. A full queue drops records and increments a drop counter.
 - Write failures MUST be contained, reported with rate-limited diagnostics and operational counters, and MUST NOT block resurrection decisions or Director event recording. Diagnostics MUST NOT enqueue an alert into a failing writer.
-- A single writer serializes records without interleaving. It appends with `O_APPEND` to remain compatible with stemcell log rotation, and after an interrupted write MUST restore a record boundary before appending. Readers discard incomplete or malformed records. Restart and rotation behavior MUST be tested with the supported stemcell logging configuration.
+- A single writer serializes records without interleaving, appends with `O_APPEND`, and after an interrupted write MUST restore a record boundary before appending. Readers discard incomplete or malformed records.
+- The bosh-agent currently rotates every `*.log` file under `/var/vcap/sys/log` with `copytruncate` ([agent rule][agent-logrotate]). Records written between the copy and the truncation are lost, and a tailing reader can miss or re-read data around the truncation. The first release ships under this rule; its release notes and the migration documentation MUST describe this loss window.
+- Rotating without loss requires rename-style rotation (`create` and `delaycompress`, without `copytruncate`), which BOSH does not offer per job today. A follow-up RFC will define a per-job opt-in that supports names the default rule matches and names it does not, while the existing `copytruncate` rule remains the default. Because `events.log` matches the default rule, its rule must take precedence via `ignoreduplicates`, which requires logrotate 3.21 or later.
+- The writer MUST detect rename-based rotation by comparing the device and inode of the path with those of its open descriptor, then reopen the path; reopening is serialized with writes and needs no signal. Restart and rotation behavior MUST be tested with each supported stemcell logging configuration.
 - Oversized records MUST be rejected whole with an observable error, never truncated into invalid JSON. Collector limits MUST accommodate the supported record size.
 - Queue capacity, record-size limit, retention, and rotation thresholds MUST be justified by measurements, including large deployment-health alerts, before release. Rotation MUST bound disk usage and avoid competing rotation rules. The release introducing the event log MUST ship a default retained-disk budget derived from those measurements and state it in its release notes.
 - The log exposes health information from multiple deployments. Grant read access to authorized collectors and account for file permissions, BPM mounts, and AppArmor. Alert summaries can contain error details, so diagnostic-text exposure should be reviewed when publishing the schema.
@@ -195,7 +198,8 @@ Rollback instructions must explain how to return to a release supporting the old
 - Exercise all resurrection controls with a healthy writer, a failing writer, and no collector, and confirm disabled resurrection still produces health events.
 - Run with stalled or repeatedly crashing collectors, and separately inject slow or blocked event-file writes. Verify health analysis and resurrection continue, pending export work remains bounded, and queue exhaustion produces observable drops rather than waiting for consumer progress.
 - Verify Director alert records, `bosh events`, and Director API failure cases.
-- Exercise rotation, partial writes, permission failures, full disk, queue exhaustion, collector restarts, downstream outages, and large records, and measure volume, CPU, memory, and disk at representative scale.
+- Exercise both `copytruncate` and rename-style rotation, including a partial record at the rotation point, a collector restarted mid-file, a collector lagging beyond retention, and a reopen racing compression.
+- Exercise partial writes, permission failures, full disk, queue exhaustion, collector restarts, downstream outages, and large records, and measure volume, CPU, memory, and disk at representative scale.
 - Demonstrate an independently supervised collector consuming both event kinds, and verify the migration path for identified hook consumers or document their retirement with the maintainers.
 - Verify the final HM starts and operates with no plugin registry, dynamic class selection, executable discovery, or consumer process supervision.
 
@@ -253,6 +257,9 @@ It does not. The Resurrector and Director event recording become built-in HM com
 - What measured queue, record-size, and rotation limits cover supported deployment scales without endangering the Director?
 - Which collector and stemcell versions form the tested reference configurations, and who maintains them?
 - Which release defines the end of the overlap period and the removal milestone?
+- Should jobs declare per-job rotation in `bpm.yml` (with BPM writing the logrotate rule or the agent reading it) or in a rendered job `config/logrotate.conf` read by the agent?
+- Will Jammy stemcells receive logrotate 3.21 or later, or will zero-loss rotation of `events.log` be limited to Noble?
+- Is logrotate scheduled on `create-env` Directors, and does the agent's rotation setup run there?
 
 [bosh-baseline]: https://github.com/cloudfoundry/bosh/tree/979e3032c3f04b4e6f3543425a2f24562d3fa171
 [processor]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/event_processor.rb
@@ -274,6 +281,7 @@ It does not. The Resurrector and Director event recording become built-in HM com
 [rfc-0064]: rfc-0064-platform-logs-with-opentelemetry.md
 [ndjson]: https://github.com/ndjson/ndjson-spec#3-functional-specification
 [json-schema]: https://json-schema.org/draft/2020-12
+[agent-logrotate]: https://github.com/cloudfoundry/bosh-agent/blob/a17e0ea7b8bb466394eb80344c679b565109c174/platform/linux_platform.go#L631-L641
 [metrics-collector]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-director/lib/bosh/director/metrics_collector.rb
 [cf-log-streaming]: https://docs.cloudfoundry.org/devguide/streaming-logs-index.html
 [alert-model]: https://github.com/cloudfoundry/bosh/blob/979e3032c3f04b4e6f3543425a2f24562d3fa171/src/bosh-monitor/lib/bosh/monitor/events/alert.rb
