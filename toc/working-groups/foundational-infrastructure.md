@@ -374,6 +374,10 @@ areas:
     github: cmuuss
   - name: Ahsan Sardar
     github: ahsanasardar
+  - name: Hophin Kibona
+    github: hophinkibona
+  - name: Sam Ngo
+    github: fuzzdota
   # SAP
   - name: Ahmed Hassanin
     github: a-hassanin
