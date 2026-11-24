@@ -5,6 +5,7 @@
 - Author(s): @rkoster
 - Status: Accepted
 - RFC Pull Request: [community#1645](https://github.com/cloudfoundry/community/pull/1645)
+- Proposed Amendments: [community#1709](https://github.com/cloudfoundry/community/pull/1709) (Draft)
 - Related RFCs: [RFC 0055: Identity-Aware Routing for GoRouter](rfc-0055-identity-aware-routing-for-gorouter.md)
 - Affected Component(s): Cloud Controller, BBS, Diego, UAA, CF CLI, service brokers; later GoRouter
 
@@ -202,6 +203,13 @@ sequenceDiagram
 entitlement decides which apps may **use** the account, a role decides what the
 account may **do**.*
 
+Binding an account provisions its UAA client, not a CAPI user. CAPI users and
+their role grants have an independent lifecycle. Existing CAPI authentication
+can create a roleless OAuth user lazily on the client's first API request;
+existing user-management APIs can also create the record explicitly before role
+assignment. This proposal adds no new CAPI user-creation command or implicit role
+grant. Workloads using only external WIF need no CAPI user.
+
 ### 5. Authorize app-to-app routes
 
 ```sh
@@ -250,9 +258,10 @@ qualified source `cf:svc:acme-payments:payments-worker`.
 - Deleted account names stay reserved within the org, so a new account cannot silently inherit old
   external grants.
 - Store when each deletion tombstone was created, independently of audit-log
-  retention. Collect reservation counts, growth rates and age distributions to
-  inform future retention decisions. Automatic release is not proposed here;
-  timestamps leave that option open if observed usage demonstrates a need.
+  retention, so operators can run ad hoc queries if reservation growth becomes an
+  issue. No statistics collection, metrics pipeline or age-bucket aggregation is
+  required. Automatic release is not proposed here; retained timestamps support
+  future investigation and retention decisions.
 - The tombstone timestamp records deletion, not the original account creation.
   Historical deletion dates are left unknown if they cannot be recovered reliably.
 - The SAN is an identifier only; it creates no DNS record or route.
@@ -313,11 +322,40 @@ issuing new tokens for it in one step, however many external grants exist. It
 does not end route access or cloud credentials already exchanged; remove the
 relevant grants and end provider sessions for those.
 
-**Tokens** are bearer JWTs, valid for at most five minutes and never past the
-certificate used to obtain them. Each is requested for one audience: Cloud
-Controller or an operator-configured federation endpoint. They record the
-requesting instance, app, space and org GUIDs for audit; authorization uses
-issuer and subject.
+**Tokens** are bearer JWTs with a default lifetime of five minutes (300 seconds).
+Platform operators configure the lifetime through BOSH/CAPI configuration and may
+choose a shorter or longer positive duration; five minutes is a default, not an
+RFC-imposed maximum. Developers cannot override it per account or request. UAA
+must still cap token expiry at the expiry of the certificate used to obtain it,
+and may apply additional token policy limits. A longer configured lifetime extends
+the possible use of an already-issued token after account disable.
+
+Each token is requested for one audience: Cloud Controller or an
+operator-configured federation endpoint. Attribution is grouped under a single
+`cf` object: `cf.instance_guid`, `cf.app_guid`, `cf.space_guid` and `cf.org_guid`.
+These are nested JSON fields, not literal dotted top-level claim names:
+
+```json
+{
+  "cf": {
+    "instance_guid": "<instance-guid>",
+    "app_guid": "<app-guid>",
+    "space_guid": "<space-guid>",
+    "org_guid": "<org-guid>"
+  }
+}
+```
+
+These fields provide audit attribution; authorization uses issuer and subject.
+The owning-org certificate restriction uses the corresponding `cf.org_guid`
+mapping path, so the change in claim layout does not weaken org isolation.
+
+Service-account disable, enable and deletion manage UAA token issuance; they do
+not create, disable or delete independent CAPI users or their role grants, or
+external WIF identities and grants. Ordinary space/org deletion still removes
+roles on the deleted resources. Remove independent grants explicitly when retiring
+access. If a deleted identity is explicitly reused, retained CAPI roles can apply
+to the same client ID, just as retained external grants can.
 
 **Tokens are not bound to the certificate.** [RFC 8705][mtls] separates using a
 certificate to authenticate the token request from binding the token to it with
@@ -341,7 +379,8 @@ instances.
 | Disable, enable, delete | Org Manager or platform admin; or a Space Developer of any entitled space |
 | Assign to an app | Anyone who can modify the app, in an entitled space |
 | See an account | Members of entitled spaces; Org Managers see all accounts in the org |
-| Grant Cloud Controller roles to an account | Existing role managers |
+| Grant Cloud Controller roles to an account | Existing role managers; CAPI user lifecycle remains independent of account binding/retirement |
+| Token lifetime | Operator-configurable positive duration via BOSH/CAPI; default 300 seconds, always capped by authenticating certificate expiry |
 | Reuse a deleted account name within the org prefix | Org Manager or platform admin, explicit `--reuse-name`, audited |
 | Org quota | New `service_accounts.total_service_accounts`; counts existing accounts, not deleted names |
 | Creation budget | Optional foundation-wide limit on creations per user or client per rolling seven days, or unlimited; admins exempt; deletion does not refund it |
@@ -350,9 +389,10 @@ The optional creation budget constrains reservation growth within a tenant's
 namespace. Org quotas limit the number of live accounts.
 
 Org Managers can recover names only within their own org. Reuse creates a new
-account UUID without restoring bindings, entitlements or roles; the normal
+account UUID without restoring bindings or entitlements; independently retained
+CAPI roles and external grants can apply to the reused client-ID string. The normal
 creation-in-a-space flow grants only that space its initial entitlement. The
-warning explains that external grants and still-valid old certificates can apply
+warning explains that retained CAPI roles, external grants and still-valid old certificates can apply
 to the reused identity. Live collisions and quotas are never bypassed.
 
 ## Alternatives considered
@@ -395,7 +435,7 @@ including the opt-in
 certificate binding policy and named trust bundles, validated in a CF lab.
 
 Drafts in [Cloud Controller][capi], [capi-release][release], [BBS][bbs],
-[Diego][diego] and the [CLI][cli] demonstrate shared identity, explicit roles,
+[Diego][diego], [GoRouter][routing] and the [CLI][cli] demonstrate shared identity, explicit roles,
 disable/enable, unbind/restart, the creation budget and clients referencing a UAA
 trust bundle. Org
 prefix allocation, org-local uniqueness, qualified subjects/SANs, org ownership
@@ -406,6 +446,20 @@ restriction represent the identity without a new authentication mode.
 
 The next step is community review and approval of the identity model and
 developer experience.
+
+### Proposed implementation-review amendments
+
+The follow-up amendment PR proposes nested `cf` attribution, an
+operator-configurable lifetime with a 300-second default, independent CAPI user
+lifecycle, timestamp-only reservation observability, and the GoRouter caller
+identity rules described in [appendix D](#d-platform-components). These changes remain
+proposals until this amendment is accepted; merging the original RFC PR does not
+approve them automatically. In [Cloud Controller][capi], independent user lifecycle
+and timestamp-only retention are implemented; nested claim mappings and configurable
+token validity are follow-up implementation work. UAA required-claim matching for
+dotted paths and reconciliation of changed operator token-validity settings must
+be verified before those changes are considered complete. The GoRouter rules are
+tracked in the [GoRouter draft][routing].
 
 ## Appendix: implementation notes
 
@@ -472,6 +526,13 @@ Cloud Controller registers one secretless client per account, using settings
 from [UAA #4109][uaa] and the proposed named resource-policy reference in
 [UAA #4125][resource-policy]:
 
+The following example uses the default 300-second validity. CAPI substitutes the
+operator-configured duration when registering managed clients. Updating that
+setting must reconcile the validity of existing managed clients without replacing
+their identities or overwriting unrelated registrations; it affects subsequent
+issuance, not already-issued tokens. Reconciliation details remain implementation
+work, rather than a reason to treat an operator policy change as an identity collision.
+
 ```json
 {
   "client_id": "cf:service-account:acme-payments:payments-worker",
@@ -483,12 +544,12 @@ from [UAA #4109][uaa] and the proposed named resource-policy reference in
   "tls_client_certificate_bound_access_tokens": false,
   "tls-client-auth-allowed-resources-ref": "cf-workload-federation",
   "tls-client-auth-claim-mappings": [
-    { "field": "subject_cn", "claim": "cf_instance_guid" },
-    { "field": "subject_ou", "pattern": "^app:(.+)$", "claim": "app_guid" },
-    { "field": "subject_ou", "pattern": "^space:(.+)$", "claim": "space_guid" },
-    { "field": "subject_ou", "pattern": "^organization:(.+)$", "claim": "org_guid" }
+    { "field": "subject_cn", "claim": "cf.instance_guid" },
+    { "field": "subject_ou", "pattern": "^app:(.+)$", "claim": "cf.app_guid" },
+    { "field": "subject_ou", "pattern": "^space:(.+)$", "claim": "cf.space_guid" },
+    { "field": "subject_ou", "pattern": "^organization:(.+)$", "claim": "cf.org_guid" }
   ],
-  "tls-client-auth-required-claims": { "org_guid": "<owning-org-guid>" }
+  "tls-client-auth-required-claims": { "cf.org_guid": "<owning-org-guid>" }
 }
 ```
 
@@ -536,12 +597,65 @@ explicit roles. Developers cannot change any of these values.
 ### D. Platform components
 
 - **Cloud Controller** stores accounts, entitlements and assignments, registers
-  the UAA client on first bind and creates a roleless principal for role grants.
+  the UAA client on first bind and configures its operator-selected token validity
+  and nested attribution mappings. CAPI user records and role grants remain
+  independently managed; binding/retiring the account does not create/delete them.
 - **BBS and Diego** add the account SAN to instance certificates; apps discover
   their client ID and token endpoint through non-secret `VCAP_SERVICE_ACCOUNT`.
-- **GoRouter** matches route policies against the SAN.
+- **GoRouter** matches `cf:svc:<prefix>:<name>` route-policy sources against the
+  account SAN `<name>.<prefix>.svc.identity`; see
+  [GoRouter caller identity](#gorouter-caller-identity).
 - Staging never receives an account. Components that do not support accounts
   fail closed during upgrades.
+
+#### GoRouter caller identity
+
+GoRouter authorizes a caller from one identity made up of its app, space, org and
+service account. All four come from the same source, the
+`X-Forwarded-Client-Cert` (XFCC) data for the request, and never partly from the
+TLS connection and partly from a forwarded header. This matters because the
+`forward` and `always_forward` modes of [RFC 0055][rfc-0055] pass a client-supplied
+header through. If the account came from the TLS certificate while the other
+fields came from that header, a caller could pair a genuine account with another
+space's identity and satisfy a space-scoped domain.
+
+- With the default `sanitize_set` mode, GoRouter replaces any incoming header with
+  one derived from the client certificate it verified, so the identity is
+  authenticated end to end.
+- With `forward` or `always_forward`, the operator has chosen to trust the
+  forwarded header. That trust covers the service account exactly as it already
+  covers app, space and org.
+- A certificate has a service account only if it carries **exactly one**
+  well-formed `<name>.<prefix>.svc.identity` DNS SAN (lowercase
+  [RFC 1123 labels][names] of 3–63 characters). Other DNS SANs are ignored. A
+  second account SAN, or any malformed `*.svc.identity` SAN, makes the identity
+  ambiguous: the caller has no account and `cf:svc:` rules deny it.
+- A rule matches when its qualified source equals the caller's account exactly.
+  Rules for app, space, org and `cf:any` keep their semantics, any matching rule
+  allows the request, and domain caller-scope restrictions and default deny still
+  apply. A rule is never satisfied by an app, space or org value.
+- A `cf:svc:` rule that is not `cf:svc:<prefix>:<name>` with valid labels is
+  skipped and logged as `malformed-route-policy`, like other unrecognized rules,
+  so a mistyped rule is visible to operators rather than silently ignored.
+
+In the `raw` XFCC format the certificate itself carries the SAN. The compact
+`envoy` format of [RFC 0055][rfc-0055] contains only `Hash` and `Subject`, so
+GoRouter adds one element, `SVC=<SAN>`, between them when the certificate has a
+service account:
+
+```text
+Hash=<sha256>;SVC=payments-worker.acme-payments.svc.identity;Subject="CN=<instance>,OU=app:<guid>,OU=space:<guid>,OU=organization:<guid>"
+```
+
+`SVC=` is a GoRouter extension to the Envoy-style format, not an Envoy key. It
+lets backends and GoRouter itself see the account without the full certificate, and
+it is emitted only for a validated account, so unrelated SANs such as the instance
+GUID or internal route names never enlarge the header. GoRouter reads `SVC=` only
+from elements ahead of the `Subject`, which carries values taken from the
+certificate. Repeated `SVC=` elements, or text inside or after the `Subject`,
+cannot introduce an account. The proposed extension is also described in
+[RFC 0055's XFCC format section](rfc-0055-identity-aware-routing-for-gorouter.md#xfcc-header-format);
+no change to RFC 0055's configuration is needed.
 
 ### E. CA rotation
 
@@ -581,6 +695,8 @@ alignment before the shared-audience AWS flow is considered validated.
 [release]: https://github.com/cloudfoundry/capi-release/pull/702
 [bbs]: https://github.com/cloudfoundry/bbs/pull/168
 [diego]: https://github.com/cloudfoundry/diego-release/pull/1216
+[routing]: https://github.com/cloudfoundry/routing-release/pull/603
+[rfc-0055]: rfc-0055-identity-aware-routing-for-gorouter.md
 [cli]: https://github.com/cloudfoundry/cli/pull/3875
 [uaa]: https://github.com/cloudfoundry/uaa/pull/4109
 [resource-policy]: https://github.com/cloudfoundry/uaa/issues/4125
