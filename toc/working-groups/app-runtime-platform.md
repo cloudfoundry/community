@@ -283,9 +283,9 @@ areas:
     github: kart2bc
   - name: Soha Alboghdady
     github: Soha-Albaghdady
-  reviewers:
   - name: Daria Anton
-    github: Dariquest
+    github: Dariquest   
+  reviewers:
   - name: Konstantin Lapkov
     github: klapkov
   - name: M Rizwan Shaik
